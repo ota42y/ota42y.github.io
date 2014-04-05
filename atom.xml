@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[おおたの物置]]></title>
+  <link href="http://ota42y.github.io/atom.xml" rel="self"/>
+  <link href="http://ota42y.github.io/"/>
+  <updated>2014-04-05T22:39:28+09:00</updated>
+  <id>http://ota42y.github.io/</id>
+  <author>
+    <name><![CDATA[ota42y]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsはアクセスをどう処理しているのか(1)]]></title>
+    <link href="http://ota42y.github.io/blog/2013/11/10/rails-trace-1/"/>
+    <updated>2013-11-10T22:23:00+09:00</updated>
+    <id>http://ota42y.github.io/blog/2013/11/10/rails-trace-1</id>
+    <content type="html"><![CDATA[<p>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、
+何が起きているのか気になったので、全部追ってみようと思います。</p>
+
+<p>まだ全部追い切れてないですが、思った以上に長くなったのでとりあえずメモとして出
+してみます。<br/>
+一部Rails力やRuby力が足りなくて追い切れない部分がありますが(´･_･`)</p>
+
+<h2>準備</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails g controller Trace index
+</span><span class='line'>      create  app/controllers/trace_controller.rb
+</span><span class='line'>       route  get "trace/index"
+</span><span class='line'>      invoke  erb
+</span><span class='line'>      create    app/views/trace
+</span><span class='line'>      create    app/views/trace/index.html.erb
+</span><span class='line'>      invoke  test_unit
+</span><span class='line'>      create    test/controllers/trace_controller_test.rb
+</span><span class='line'>      invoke  helper
+</span><span class='line'>      create    app/helpers/trace_helper.rb
+</span><span class='line'>      invoke    test_unit
+</span><span class='line'>      create      test/helpers/trace_helper_test.rb
+</span><span class='line'>      invoke  assets
+</span><span class='line'>      invoke    coffee
+</span><span class='line'>      create      app/assets/javascripts/trace.js.coffee
+</span><span class='line'>      invoke    scss
+</span><span class='line'>      create      app/assets/stylesheets/trace.css.scss</span></code></pre></td></tr></table></div></figure>
+
+
+<p>というコントローラーを作り、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class TraceController &lt; ApplicationController
+</span><span class='line'>  def index
+</span><span class='line'>    caller().each{ |line| p line}
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>というtraceを用意し、ここにアクセスしてみました。</p>
+
+<p>出力されたログは以下のようになりました。(見にくかったので、GEMまでのパスはGEM_FILE_PATHとしてます)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Started GET "/trace/index" for 127.0.0.1 at 2013-11-02 20:22:17 +0900
+</span><span class='line'>Processing by TraceController#index as HTML
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/implicit_render.rb:4:in `send_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/base.rb:189:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/rendering.rb:10:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/callbacks.rb:18:in `block in process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:403:in `_run__2108733439165396685__process_action__callbacks'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/callbacks.rb:17:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/rescue.rb:29:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/notifications.rb:159:in `block in instrument'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/notifications/instrumenter.rb:20:in `instrument'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/notifications.rb:159:in `instrument'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/instrumentation.rb:30:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/railties/controller_runtime.rb:18:in `process_action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/base.rb:136:in `process'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/rendering.rb:44:in `process'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal.rb:195:in `dispatch'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal.rb:231:in `block in action'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:80:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:48:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/journey/router.rb:71:in `block in call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/journey/router.rb:59:in `each'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/journey/router.rb:59:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:680:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/etag.rb:23:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/head.rb:11:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/params_parser.rb:27:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/flash.rb:241:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/cookies.rb:486:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/query_cache.rb:36:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/migration.rb:369:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:373:in `_run__4335260606468341692__call__callbacks'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/reloader.rb:64:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app'"
+</span><span class='line'>"/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged'"
+</span><span class='line'>"/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/runtime.rb:17:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/railties-4.0.1/lib/rails/application.rb:97:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/content_length.rb:14:in `call'"
+</span><span class='line'>"/GEMLIFE_PATH/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'"
+</span><span class='line'>"/RUBY_PATH/webrick/httpserver.rb:138:in `service'"
+</span><span class='line'>"/RUBY_PATH/webrick/httpserver.rb:94:in `run'"
+</span><span class='line'>"/RUBY_PATH/webrick/server.rb:295:in `block in start_thread'"
+</span><span class='line'>  Rendered trace/index.html.erb within layouts/application (0.9ms)
+</span><span class='line'>Completed 200 OK in 94ms (Views: 61.8ms | ActiveRecord: 0.0ms)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>恐ろしい量(´･_･`)<br/>
+とりあえず、こんな感じで動いてるんだなーというイメージをつかむ程度の理解度で、<br/>
+ゆるふわに読んでいきたいと思います。</p>
+
+<h2>コードをざっと見たところ</h2>
+
+<p>下の階層にenvを渡して[status, headers, body]の三つを受け取り、それを返す関数がほとんど。<br/>
+関数によってenvに変更を加えたり、戻り値の三つを加工したりとやってること自体はまちまちです。</p>
+
+<p>ただ、各処理は本当に単一の処理だけをして次に処理を渡しており、<br/>
+ifかswitchがせいぜい一つぐらい、全体も20行程度の関数であることが多い印象です。</p>
+
+<h2>Railsのコードを読む</h2>
+
+<p>上のログはスタックの上から順に出力しているはずなので、<br/>
+実際の処理は下から上に向かって行われます。</p>
+
+<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/server.rb#L295">&#8220;/RUBY_PATH/webrick/server.rb:295:in `block in start_thread&#8217;&#8221;</a></h3>
+
+<p>名前の通りThread.startしてるだけ。</p>
+
+<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L94">&#8220;/RUBY_PATH/webrick/httpserver.rb:94:in `run&#8217;&#8221;</a></h3>
+
+<p>名前の通りひたすらループしている。<br/>
+リクエストを受け取って後述のserviceを呼び出し、その後返答を送信する処理を行う。</p>
+
+<p>また、各種エラーが起こった場合もそれをキャッチし、エラーだということを送信している模様。</p>
+
+<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L138">&#8220;/RUBY_PATH/webrick/httpserver.rb:138:in `service&#8217;&#8221;</a></h3>
+
+<p>実際に処理をするところっぽい。<br/>
+search_servletにパスを渡し、どんな返答を返すべきなのかを探して、そこに処理を渡している。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/handler/webrick.rb#L60">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service&#8217;&#8221;</a></h3>
+
+<p>名前の通りwebrickから直接値を渡され、処理するところ。<br/>
+webrickからはreqとresという値を受け取っている。</p>
+
+<p>ハッシュであるreq.meta_varsを元に、必要な値が入ってなければ初期値を入れている。<br/>
+以降の処理はほとんどがこのハッシュを受け渡して処理を行っている。</p>
+
+<p>また、処理した後に結果を受け取り、引数のresに入れている。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/content_length.rb#L14">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/content_length.rb:14:in `call&#8217;&#8221;</a></h3>
+
+<p>次の処理を読んで、帰ってきた結果にBODYが含まれているなら、<br/>
+ヘッダーにContent-Lengthを計算して追加している。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#8217;&#8221;</a></h3>
+
+<p>Mutex使ってロックをかけているだけみたい</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/application.rb#L97">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/application.rb:97:in `call&#8217;&#8221;</a></h3>
+
+<p>rackから呼び出されるためだけに存在するやつっぽい。<br/>
+引数を少しいじってる程度</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/engine.rb#L511">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call&#8217;&#8221;</a></h3>
+
+<p>&#8216;action_dispatch.routes&#8217;というキーで、ActionDispatch::Routing::RouteSetを追加している。<br/>
+また、SCRIPT_NAMEが存在する場合には、<br/>
+ROUTES_オブジェクトID_SCRIPT_NAMEという名前で、同じ値をコピーして代入している。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/sendfile.rb#L112">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call&#8217;&#8221;</a></h3>
+
+<p>より下の階層に処理をさせた後ファイル送信の場合にヘッダーの書き換えを行っている。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/static.rb#L64">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call&#8217;&#8221;</a></h3>
+
+<p>REQUEST_METHODがGETかHEADの時に、ルートからのパスを調べ、<br/>
+ファイルとして存在している場合には否かをチェックして、<br/>
+ある場合にはRack::Fileのcallを呼んでその結果を返している。<br/>
+たぶんRailsに処理させず、ファイルを読んで返してるだけかと。<br/>
+無い場合は特に何もせず下の階層を呼んでいる。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#8217;&#8221;</a></h3>
+
+<p>mutexを使ってロックをかけているだけっぽい。<br/>
+また、下の階層を呼んで得られたbodyに対して、BodyProxyに処理させた結果と入れ替えている。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/cache/strategy/local_cache.rb#L83">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call&#8217;&#8221;</a></h3>
+
+<p>LocalCacheRegistryにLocalStoreオブジェクトを初期化してセットしてる。<br/>
+コメントによると、簡単なメモリキャッシュに使うらしい。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/runtime.rb#L17">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/runtime.rb:17:in `call&#8217;&#8221;</a></h3>
+
+<p>X-Runtimeヘッダに、ここから下の処理にかかった時間をセットしている。</p>
+
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/methodoverride.rb#L21">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call&#8217;&#8221;</a></h3>
+
+<p>POSTメソッドだった場合に、METHOD_OVERRIDE_PARAM_KEYやHTTP_METHOD_OVERRIDE_HEADERを見て、<br/>
+登録されているメソッド名GET HEAD PUT POST DELETE OPTIONS PATCHだったらそれと入れ替えている。<br/>
+おそらく、PUTとかを実装していないブラウザで、POSTに特別な種類のデータを入れてPUTとして扱うための対応。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/request_id.rb#L21">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call&#8217;&#8221;</a></h3>
+
+<p>あるならばHTTP_X_REQUEST_IDの値か、無いならばSecureRandom.uuidの結果を、<br/>
+action_dispatch.request_idとして設定している。<br/>
+たぶんリクエストを一意に識別したいんだと思う。<br/>
+また、ヘッダのX-Request-Idにもその価を入れている。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call&#8217;&#8221;</a></h3>
+
+<p>事前に設定されたタグごとに処理をしているみたい。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged&#8217;&#8221;</a></h3>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L25">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged&#8217;&#8221;</a></h3>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged&#8217;&#8221;</a></h3>
+
+<p>この辺ちょっと何やってるかわからない(´･_･`)<br/>
+なんか引数で与えられたタグに処理してるっぽいけど、Ruby力が低くて読み取れない (´・ω・｀)</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call&#8217;&#8221;</a></h3>
+
+<p>４つ上のところと同じ箇所。<br/>
+上で用意したloggerにブロックで次の処理を呼ぶように指定しているため、<br/>
+ブロックを渡す相手の初期化→ブロック内の実行と、二回同じ箇所にくる。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L38">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app&#8217;&#8221;</a></h3>
+
+<p>Debugの場合はログ出力にスペースを二つ挟んでいる。<br/>
+その後、ActiveSupport::Nortificationsを使い、&#8217;request.action_dispatch&#8217;という名前で、requestを通知している。<br/>
+ここでリクエスト直後に処理を挟むようなライブラリを呼び出しているとか？</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/show_exceptions.rb#L30">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#8217;&#8221;</a></h3>
+
+<p>基本何もしないけど、ここより下の階層から例外が投げられた場合に、<br/>
+例外用のレスポンスを作成して返している。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/debug_exceptions.rb#L17">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#8217;&#8221;</a></h3>
+
+<p>ヘッダにX-Cascadeがpassと設定されている場合、もしくは任意の他のエラーが起きた場合に、<br/>
+エラーレスポンスを作成している。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L76">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#8217;&#8221;</a></h3>
+
+<p>action_dispatch.remote_ipにアクセスしてきたIPアドレスを保存している。<br/>
+保存はGetIpクラスで行われており、calculate_ipメソッドを実行することで、<br/>
+アクセスしてきたIPアドレスを計算している。<br/>
+そのため、IPアドレスが必要ない場合は計算が行われない。<br/>
+どうやら、GetIpクラスの中でかなり巨大な正規表現を用いてIPアドレスを計算しているらしく、<br/>
+そこの処理が重いため、必要が無ければ計算しないand計算したらメモするようにしているみたい。<br/>
+(この正規表現を使っているみたい<a href="https://gist.github.com/gazay/1289635">https://gist.github.com/gazay/1289635</a>)</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/reloader.rb#L64">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/reloader.rb:64:in `call&#8217;&#8221;</a></h3>
+
+<p>コールバックとして設定されたprepareとcleanupを処理の最初と最後に呼んでいる。</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L27">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:27:in `call&#8217;&#8221;</a></h3>
+
+<p>コールバックとして登録された関数に、より下の処理を実行するようにブロックで渡し、<br/>
+ブロック内で例外が出た場合にその例外を返す。
+何でわざわざこんな回りくどい例外の拾い方をしてるのかな？<br/>
+一応、ブロック内で例外が発生したとしても、コールバック関数はそのまま処理が実行され、<br/>
+その後再び同じ例外をなげる事になるんだけれどこれが目的？</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L80">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks&#8217;&#8221;</a></h3>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L373">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:373:in `_run<strong>4335260606468341692</strong>call__callbacks&#8217;&#8221;</a></h3>
+
+<p>与えられたシンボル(イベント名？)からコールバック先を見つけ、それに対して引数のブロックを渡している？<br/>
+なんかEVALしてクラスを作ってたりしてて、ちょっと意味不明なことやってる(´･_･`)</p>
+
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L29">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#8217;&#8221;</a></h3>
+
+<p>三つ上の位置から渡されたブロック内部。<br/>
+下の処理を呼んでるだけ。</p>
+
+<h2>続く</h2>
+
+<p>ここまではRails以前のいろんな処理が多かったですが、<br/>
+ここから先はActiveRecordが現れ始め、いかにもRails本体の動きっぽい感じがします。<br/>
+が、長くなりすぎたのでいったん切ります。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WordpressからOctopressへ]]></title>
+    <link href="http://ota42y.github.io/blog/2013/09/25/octopress/"/>
+    <updated>2013-09-25T07:49:00+09:00</updated>
+    <id>http://ota42y.github.io/blog/2013/09/25/octopress</id>
+    <content type="html"><![CDATA[<p>前までブログシステムにはWordpressを使っていたんですが、<br/>
+個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。</p>
+
+<p>そこで、ちょっと話題になってる(らしい)<a href="http://octopress.org/">Octopress</a>を導入してみました。</p>
+
+<h1>Octopressって何？</h1>
+
+<p><a href="http://jekyllrb.com/">jekyll</a>を使って、<br/>
+github pages上で簡単にブログを作れるシステムらしいです。</p>
+
+<p>テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、<br/>
+githubのへデプロイすることでweb上に公開できるシステムになります。</p>
+
+<p>そのため、gitを使ってブログのデプロイやバックアップを作れるという、<br/>
+まさにプログラマー向けなブログシステムです。<br/>
+公式サイトにも、A blogging framework for hackersって書いてありますしね。</p>
+
+<p>インストールの仕方は<a href="http://qiita.com/ota42y/items/dcb32930d1153aa9f452">こっち</a></p>
+
+<h1>運用方法</h1>
+
+<p>デプロイする<a href="https://github.com/ota42y/ota42y.github.io">githubのリポジトリ</a>には、このブログのファイルが全部入ってます。<br/>
+ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、<br/>
+このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。</p>
+
+<p>そこで、公開用のリポジトリとは別に、<br/>
+Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。<br/>
+こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。</p>
+
+<p>今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。</p>
+]]></content>
+  </entry>
+  
+</feed>
