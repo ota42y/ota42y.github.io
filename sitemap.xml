@@ -2,22 +2,26 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://ota42y.github.io/blog/2013/09/25/octopress/</loc>
-        <lastmod>2014-04-05T22:21:45+09:00</lastmod>
+        <lastmod>2014-04-08T22:27:53+09:00</lastmod>
     </url>
     <url>
         <loc>http://ota42y.github.io/blog/2013/11/10/rails-trace-1/</loc>
-        <lastmod>2014-04-05T22:21:45+09:00</lastmod>
+        <lastmod>2014-04-08T22:27:53+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ota42y.github.io/blog/2014/04/08/atom-plugin1/</loc>
+        <lastmod>2014-04-08T22:34:27+09:00</lastmod>
     </url>
     <url>
         <loc>http://ota42y.github.io/blog/archives/</loc>
-        <lastmod>2014-04-05T22:21:45+09:00</lastmod>
+        <lastmod>2014-04-08T22:34:27+09:00</lastmod>
     </url>
     <url>
         <loc>http://ota42y.github.io/</loc>
-        <lastmod>2014-04-05T22:21:47+09:00</lastmod>
+        <lastmod>2014-04-08T22:34:27+09:00</lastmod>
     </url>
     <url>
         <loc>http://ota42y.github.io/robots.txt</loc>
-        <lastmod>2014-04-05T22:21:24+09:00</lastmod>
+        <lastmod>2014-04-08T22:27:53+09:00</lastmod>
     </url>
 </urlset>

@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-04-05T22:39:28+09:00</updated>
+  <updated>2014-04-08T22:53:35+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Atomのプラグイン作の作り方その１]]></title>
+    <link href="http://ota42y.github.io/blog/2014/04/08/atom-plugin1/"/>
+    <updated>2014-04-08T22:33:14+09:00</updated>
+    <id>http://ota42y.github.io/blog/2014/04/08/atom-plugin1</id>
+    <content type="html"><![CDATA[<p>Github製のエディタAtomの招待が来ました。<br/>
+簡単なプラグインの作り方が公開されていましたので、
+自分でも作ってみました。</p>
+
+<p>[Create Your First Package]https://atom.io/docs/latest/your-first-package)</p>
+
+<h1>テンプレート作成</h1>
+
+<p>Atomはプラグインのテンプレートを作る仕組みが入っています。
+コマンドパレットから</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Generate Package</span></code></pre></td></tr></table></div></figure>
+
+
+<p>を選択して実行します。</p>
+
+<p>するとパッケージ名を聞かれます。<br/>
+適当に入力すると(ここではデフォルトのmy-package)、
+ひな形がエディタで開きます。</p>
+
+<h1>コマンドを作る</h1>
+
+<p>コマンドパレットに表示されて実行可能なコマンドを作ります。</p>
+
+<p>Atomの処理はCoffeeScriptで書きます。<br/>
+メイン部分はlib/my-package.coffeeなので、
+このファイルを編集します。</p>
+
+<p>基本的に、module.exports =以降を書き換えればいいみたいです。<br/>
+この中にはテンプレートを作った段階でいろいろ書いてありますが、<br/>
+基本的に全部削除して大丈夫です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>module.exports =
+</span><span class='line'>  activate: -&gt;
+</span><span class='line'>    # コマンドと実行する関数を登録する
+</span><span class='line'>    atom.workspaceView.command "my-package:hello", =&gt; @hello()
+</span><span class='line'>
+</span><span class='line'>  hello: -&gt;
+</span><span class='line'>    # 今いるパネルを得る
+</span><span class='line'>    editor = atom.workspace.activePaneItem
+</span><span class='line'>  # 文字の挿入
+</span><span class='line'>    editor.insertText('Hello, World!')</span></code></pre></td></tr></table></div></figure>
+
+
+<p>package jsonに
+&#8220;activationEvents&#8221;が存在するので、<br/>
+その値をさっき登録したコマンドを入れた配列
+<code>["my-package:hello"]</code>
+に変更します。</p>
+
+<blockquote><p> チュートリアルにはこれをしないと、<br/>
+ コマンドパレットに出ないと書いてありますが、<br/>
+ <code>atom.workspaceView.command "test-pkg:test", =&gt; @test()</code><br/>
+ を実行するだけで出てくるので、必ずしも必要ではなさそうです<br/>
+ (ただし、書いてあった方が安心できそう)</p></blockquote>
+
+<p>変更を反映するために、コマンドパレットから<br/>
+<code>Window:Reload</code>
+を実行します。</p>
+
+<p>そうすると、コマンドパレットにmy-package:helloが出てくるので、<br/>
+実行すると、今のカーソルの部分にHello, World!が挿入されます。</p>
+
+<h1>キーバインディング</h1>
+
+<p>さっきのコマンドにキーバインドをつけます<br/>
+<code>keymaps/my-package.cson</code>
+にキーバインドを記述すると使えるようになります。</p>
+
+<p>ここはチュートリアルにあるのをそのまま…</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>'.editor':
+</span><span class='line'>  'ctrl-alt-a': 'my-package:hello'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>CSSっぽいやり方でキーバインドを記述できるようです。<br/>
+基本的に</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>有効にする条件:
+</span><span class='line'> キーバインド : ひも付けるactivationEvents</span></code></pre></td></tr></table></div></figure>
+
+
+<p>になります。</p>
+
+<p>とりあえずここまで。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Railsはアクセスをどう処理しているのか(1)]]></title>
