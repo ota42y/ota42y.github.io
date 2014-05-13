@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング 丸一日かけて読んだので書評っぽいのを。 Webで何かしようとする人はどのレイヤの人も必読だと思います。
+インフラはもちろんのこと、アプリを作っている人も知らないでは済まされません。 概要 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.github.io/blog/2014/05/13/browser-networking">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.github.io/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h2 class="entry_title">Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>丸一日かけて読んだので書評っぽいのを。</p>
+
+<p>Webで何かしようとする人はどのレイヤの人も必読だと思います。<br/>
+インフラはもちろんのこと、アプリを作っている人も知らないでは済まされません。</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=ota42y-22&o=9&p=8&l=as1&asins=4873116767&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h1>概要</h1>
+
+<p>目次としてはこんな感じで、TCP/UDPから無線ネットワークの特性から最新のプロトコルまで、<br/>
+今のインターネットに触れる場合に触りそうな部分を、だいたいカバーしてます。<br/>
+特にTCPとHTTP、WebRTCについてはとてもしっかりと書かれていました。</p>
+
+<p>また具体的な最適化や、目次に乗っていない関係する技術に関してはかなりばっさり切り落としており、<br/>
+取り扱っている内容の割にはすんなり読むことができました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1章　レイテンシ・帯域幅入門
+</span><span class='line'>2章　TCPの構成要素
+</span><span class='line'>3章　UDPの構成要素
+</span><span class='line'>4章　TLS
+</span><span class='line'>
+</span><span class='line'>II部　ワイヤレスネットワークのパフォーマンス
+</span><span class='line'>
+</span><span class='line'>5章　ワイヤレスネットワーク入門
+</span><span class='line'>6章　WiFi
+</span><span class='line'>7章　モバイルネットワーク
+</span><span class='line'>8章　モバイルネットワークの最適化
+</span><span class='line'>
+</span><span class='line'>III部　HTTP
+</span><span class='line'>
+</span><span class='line'>9章　HTTPの歴史
+</span><span class='line'>10章　Webパフォーマンス入門
+</span><span class='line'>11章　HTTP 1.x
+</span><span class='line'>12章　HTTP 2.0
+</span><span class='line'>13章　アプリケーション配信最適化
+</span><span class='line'>
+</span><span class='line'>IV部　ブラウザAPIとプロトコル
+</span><span class='line'>
+</span><span class='line'>14章　ブラウザネットワーク入門
+</span><span class='line'>15章　XMLHttpRequest
+</span><span class='line'>16章　Server-Sent Events
+</span><span class='line'>17章　WebSocket
+</span><span class='line'>18章　WebRTC</span></code></pre></td></tr></table></div></figure>
+
+
+<p>本のレベルとしては、3ウェイ・ハンドシェイクの基礎から教えてくれたりと、<br/>
+かなり詳細に説明してくれるため、TCPやHTTPの詳しい知識は必要ありません。<br/>
+だだし、ネットワークとは何かとかサーバとは何かとかの説明はないので、<br/>
+最低限のネットワークの知識は必須です。</p>
+
+<h1>感想</h1>
+
+<p>この本で特にいいと思ったところは、定義通りの何もしていない状態から、<br/>
+順序立てて一つ一つ効率良くしていく様子を示している所です。</p>
+
+<p>これはキープアライブからHTTPパイプラインの説明のところが顕著ですが、<br/>
+まずはじめに何も考えずに愚直にやって、どれだけ無駄が多いかを説明し、<br/>
+次にキープアライブを有効にすることでこれだけ無駄が省ける、<br/>
+さらにHTTPパイプラインでこんなに無駄が省ける。</p>
+
+<p>といったように、いきなり仕組みの解説から入るのではなく、<br/>
+今までの方法と比較しつつ、新しい仕組みの利点と欠点を説明しており、<br/>
+ものすごく理解しやすく書いてあります。</p>
+
+<h1>まとめ</h1>
+
+<p>これ一冊読めば、Webで何かを作る際に実際は何が起こっているのか、<br/>
+ということが大体わかるようになるので、<br/>
+是非ともwebに関わる人は読んでおくべきだと思います。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-05-13 22:30:54 +0900" pubdate>2014年 05月 13日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.github.io/blog/2014/05/13/browser-networking/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.github.io/blog/2014/05/13/browser-networking/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+  
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
