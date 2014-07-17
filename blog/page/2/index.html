@@ -6,10 +6,10 @@
     
 
 <meta charset="utf-8">
-<title>過去の記事 - おおたの物置</title>
+<title>おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="過去記事の一覧 2014 年 07月 18日 &mdash; 2進数の引き算で補数を使う 06月 03日 &mdash; GitHub Kaigiに行ってきた 05月 13日 &mdash; Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング 04月 &hellip;">
+      content="最近のブログ投稿 WordpressからOctopressへ （2013年 09月 25日） &laquo; 過去の記事 Git リポジトリ &mdash; GitHub 読込中 &#8230; $.domReady(function(){ if (!window.jXHR){ var jxhr &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -17,7 +17,7 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="canonical" href="http://ota42y.github.io/blog/archives">
+<link rel="canonical" href="http://ota42y.github.io/blog/page/2">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
       media="screen, projection"
@@ -27,6 +27,13 @@
       rel="alternate"
       title="おおたの物置"
       type="application/atom+xml">
+
+<style type="text/css">
+  header[role="banner"] hgroup h1 {
+    /* font-size: 180% */
+    color: #999;
+  }
+</style>
 
 
 <script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
@@ -77,111 +84,70 @@
       <div id="content">
 	<!-- content -->
 	<div id="page">
-  <h2>過去記事の一覧</h2>
+  <div id="top">
 
-<div id="blog-archives">
+  <div id="recent_posts">
+    <h2>最近のブログ投稿</h2>
 
-
-
-
-  
-
-  
-    
-    
-      
-    
-
-    <h3>2014 年</h3>
     <ul>
-  
-
-      <li>
-        <time datetime="2014-07-18T00:00:00+09:00" pubdate>
-          <span class='month'>07月</span> <span class='day'>18日</span>
-        </time>
-        &mdash;
-        <a href="/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/">2進数の引き算で補数を使う</a>
-      </li>
-  
-
-
-  
-
-  
-
-      <li>
-        <time datetime="2014-06-03T22:49:12+09:00" pubdate>
-          <span class='month'>06月</span> <span class='day'>03日</span>
-        </time>
-        &mdash;
-        <a href="/blog/2014/06/03/github-kaigi/">GitHub Kaigiに行ってきた</a>
-      </li>
-  
-
-
-  
-
-  
-
-      <li>
-        <time datetime="2014-05-13T22:30:54+09:00" pubdate>
-          <span class='month'>05月</span> <span class='day'>13日</span>
-        </time>
-        &mdash;
-        <a href="/blog/2014/05/13/browser-networking/">Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング</a>
-      </li>
-  
-
-
-  
-
-  
-
-      <li>
-        <time datetime="2014-04-08T22:33:14+09:00" pubdate>
-          <span class='month'>04月</span> <span class='day'>08日</span>
-        </time>
-        &mdash;
-        <a href="/blog/2014/04/08/atom-plugin1/">Atomのプラグイン作の作り方その１</a>
-      </li>
-  
-
-
-  
-
-  
     
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2013/09/25/octopress/">WordpressからOctopressへ</a>
+          （<time datetime="2013-09-25 07:49:00 +0900" pubdate>2013年 09月 25日</time>）
+        </article>
+      </li>
     
     </ul>
-    
 
-    <h3>2013 年</h3>
-    <ul>
+    <p><a href="/blog/archives">&laquo; 過去の記事</a></p>
+
+  </div>
+
+
+  <!-- include asides.html -->
+  
   
 
-      <li>
-        <time datetime="2013-11-10T22:23:00+09:00" pubdate>
-          <span class='month'>11月</span> <span class='day'>10日</span>
-        </time>
-        &mdash;
-        <a href="/blog/2013/11/10/rails-trace-1/">Railsはアクセスをどう処理しているのか(1)</a>
-      </li>
+<section>
+  <h2>
+    Git リポジトリ
+    &mdash;
+    <a href="https://github.com/ota42y">GitHub</a>
+  </h2>
+  <ul id="gh_repos">
+    <li class="loading">読込中 &#8230;</li>
+  </ul>
   
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ota42y',
+            count: 4,
+            skip_forks: true,
+            type: 'all',
+            sort: 'updated',
+            direction: 'desc',
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
-  
 
-  
 
-      <li>
-        <time datetime="2013-09-25T07:49:00+09:00" pubdate>
-          <span class='month'>09月</span> <span class='day'>25日</span>
-        </time>
-        &mdash;
-        <a href="/blog/2013/09/25/octopress/">WordpressからOctopressへ</a>
-      </li>
-  
+
+  <!-- /include asides.html -->
 
 </div>
 
