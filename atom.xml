@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-07-21T21:53:01+09:00</updated>
+  <updated>2014-07-21T21:54:02+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -138,6 +138,8 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 <p> だたし、問題点としてmaster-slave構成にするため、稼働するマシンが増える、<br/>
  jobをmasterとslaveどっちでやるかを考えないといけない、<br/>
  下流jobとして紐付けはされるが、ログはまだ細切れになっているといった問題があります。</p>
+
+<h1>おわりに</h1>
 
 <p>とりあえず今のところは、4番が一番いい方法ではないかと考えています。<br/>
 そのためしばらくこれで運用し、また問題が起きた場合、<br/>
