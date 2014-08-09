@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-08-05T21:32:36+09:00</updated>
+  <updated>2014-08-09T22:19:52+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -14,248 +14,23 @@
 
   
   <entry>
-    <title type="html"><![CDATA[MessagePack とはなんぞや]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/05/msgpack/"/>
-    <updated>2014-08-05T21:46:00+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/05/msgpack</id>
-    <content type="html"><![CDATA[<p>最近よく聞くMessagePackとは何かを調べたのでメモ。</p>
+    <title type="html"><![CDATA[IRCはCL-LFでメッセージを区切る]]></title>
+    <link href="http://ota42y.github.io/blog/2014/08/09/irc/"/>
+    <updated>2014-08-09T22:14:32+09:00</updated>
+    <id>http://ota42y.github.io/blog/2014/08/09/irc</id>
+    <content type="html"><![CDATA[<p>IRCのプロトコルはRFCで決められていて、<br/>
+一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。<br/>
+<a href="http://tools.ietf.org/html/rfc1459.html#section-2.3">http://tools.ietf.org/html/rfc1459.html#section-2.3</a></p>
 
-<h1>MessagePackとは</h1>
+<p>が、古いやつとかは対応してない場合もあるらしく、<br/>
+メッセージを受け取る部分は両方に対応できるようにした方がいいとのことです。<br/>
+<a href="http://tools.ietf.org/html/rfc1459.html#section-8">http://tools.ietf.org/html/rfc1459.html#section-8</a></p>
 
-<p>バイナリでデータを保存するフォーマットです。<br/>
-JSONと比べると、保存した状態の可読性を犠牲にする代わりに、<br/>
-より早くて小さいフォーマットになっています。</p>
+<p>と、ちょうどLFしか送ってこないIRCサーバに、<br/>
+node-ircで接続したらはまったのでメモ。</p>
 
-<p>また、汎用的なフォーマットのため、<br/>
-いろんな言語(nodeとかrubyとかcppとか)
-で相互にデータを使えます。</p>
-
-<h1>他のバイナリシリアライズフォーマットとの差</h1>
-
-<p>MessagePackはバッファをうまく使って早かったり、
-読み込み途中でもデシリアライズできるとか、<br/>
-結構いろいろと高速化のための工夫がされています。<br/>
-(ただし、実装によって若干違いがあるようです)</p>
-
-<h1>使い方</h1>
-
-<p>rubyなら<code>gem install msgpack</code>で、
-MacのC++なら<code>brew install msgpack</code>で使えるようになります。</p>
-
-<p>なお、C++はgccに以下のオプションをつける必要があります。<br/>
-<code>g++ test.cpp -lmsgpack -o test</code></p>
-
-<p>また、基本型は全てシリアライズ可能で、保存したいクラスのメンバ変数を、<br/>
-MSGPACK_DEFINEマクロに入れると、<br/>
-自動でシリアライズ/デシリアライズできるみたいです。</p>
-
-<h1>コード</h1>
-
-<h2>C++</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="cp">#include &lt;msgpack.hpp&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;vector&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;fstream&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">User</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">User</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower</span><span class="p">)</span>
-</span><span class='line'>    <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">,</span> <span class="n">id</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">,</span> <span class="n">follower_id</span><span class="p">(</span><span class="n">follower</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// 引数なしのコンストラクタは必須</span>
-</span><span class='line'>  <span class="n">User</span><span class="p">()</span>
-</span><span class='line'>    <span class="o">:</span> <span class="n">id</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">MSGPACK_DEFINE</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">follower_id</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower_id</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">string</span> <span class="n">toString</span><span class="p">(){</span>
-</span><span class='line'>    <span class="n">string</span> <span class="n">ret</span> <span class="o">=</span> <span class="s">&quot;name: &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="n">name</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="s">&quot;  id: &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="s">&quot;  follower: &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">follower_id</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-</span><span class='line'>      <span class="n">ret</span> <span class="o">+=</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">follower_id</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span><span class='line'>      <span class="n">ret</span> <span class="o">+=</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// データを作って書き込む</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower_1</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">follower_1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">follower_1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower_2</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">follower_2</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">users</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">User</span><span class="p">(</span><span class="s">&quot;user1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">follower_1</span><span class="p">));</span>
-</span><span class='line'>  <span class="n">users</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">User</span><span class="p">(</span><span class="s">&quot;user2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">follower_2</span><span class="p">));</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">sbuffer</span> <span class="n">sbuf</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">pack</span><span class="p">(</span><span class="n">sbuf</span><span class="p">,</span> <span class="n">users</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">ofstream</span> <span class="n">myFile</span> <span class="p">(</span><span class="s">&quot;cpp_data.bin&quot;</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">myFile</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">sbuf</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">sbuf</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-</span><span class='line'>  <span class="n">myFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// ファイルからデータを読み込む</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">ifstream</span> <span class="n">inFile</span> <span class="p">(</span><span class="s">&quot;ruby_data.bin&quot;</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">inFile</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">inFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">unpacked</span> <span class="n">msg</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">unpack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">object</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">load_users</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">obj</span><span class="p">.</span><span class="n">convert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">load_users</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">load_users</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">load_users</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>ruby</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;msgpack&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># load data and deserialize</span>
-</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">MessagePack</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;cpp_data.bin&quot;</span><span class="p">)</span> <span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">users</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># serialize and output data</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;100user&quot;</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">100</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;101user&quot;</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">101</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">101</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;ruby_data.bin&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">f</span><span class="o">.</span><span class="n">print</span> <span class="n">users</span><span class="o">.</span><span class="n">to_msgpack</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>修正プルリクは出したけど、メンテ止まってる予感が…<br/>
+<a href="https://github.com/martynsmith/node-irc/pull/246">https://github.com/martynsmith/node-irc/pull/246</a></p>
 ]]></content>
   </entry>
   
