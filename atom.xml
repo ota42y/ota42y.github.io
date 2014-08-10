@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-08-10T18:10:32+09:00</updated>
+  <updated>2014-08-11T07:26:33+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[sortやfind_ifの条件指定はどういう動きをしているのか]]></title>
+    <link href="http://ota42y.github.io/blog/2014/08/11/find-if/"/>
+    <updated>2014-08-11T07:17:02+09:00</updated>
+    <id>http://ota42y.github.io/blog/2014/08/11/find-if</id>
+    <content type="html"><![CDATA[<p>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、<br/>
+関数orオブジェクトを渡すことで条件を自由に設定できます。<br/>
+<a href="http://www.cplusplus.com/reference/algorithm/sort/">参考</a></p>
+
+<p>このとき内部がどういう処理をして渡した関数を呼び出しているのかが気になったので調べました。<br/>
+特に、第三引数にクラスを渡す場合、何故()オペレータに条件を書く必要があるのかが気になりました。</p>
+
+<p>結論としては、実装を見れば簡単に解決しました。</p>
+
+<h1>内部実装</h1>
+
+<h2>find_ifの場合</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">_InputIter</span><span class="p">,</span> <span class="k">class</span> <span class="nc">_Predicate</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kr">inline</span> <span class="n">_InputIter</span> <span class="n">find_if</span><span class="p">(</span><span class="n">_InputIter</span> <span class="n">__first</span><span class="p">,</span> <span class="n">_InputIter</span> <span class="n">__last</span><span class="p">,</span>
+</span><span class='line'>                          <span class="n">_Predicate</span> <span class="n">__pred</span><span class="p">,</span>
+</span><span class='line'>                          <span class="n">input_iterator_tag</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">__first</span> <span class="o">!=</span> <span class="n">__last</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">__pred</span><span class="p">(</span><span class="o">*</span><span class="n">__first</span><span class="p">))</span>
+</span><span class='line'>    <span class="o">++</span><span class="n">__first</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">__first</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ソートの場合</h2>
+
+<p>ソートは少々複雑なので、該当部分だけ抜き出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">_RandomAccessIter</span><span class="p">,</span> <span class="k">class</span> <span class="nc">_Tp</span><span class="p">,</span> <span class="k">class</span> <span class="nc">_Compare</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">__unguarded_linear_insert</span><span class="p">(</span><span class="n">_RandomAccessIter</span> <span class="n">__last</span><span class="p">,</span> <span class="n">_Tp</span> <span class="n">__val</span><span class="p">,</span>
+</span><span class='line'>                               <span class="n">_Compare</span> <span class="n">__comp</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">_RandomAccessIter</span> <span class="n">__next</span> <span class="o">=</span> <span class="n">__last</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">--</span><span class="n">__next</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">__comp</span><span class="p">(</span><span class="n">__val</span><span class="p">,</span> <span class="o">*</span><span class="n">__next</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">*</span><span class="n">__last</span> <span class="o">=</span> <span class="o">*</span><span class="n">__next</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">__last</span> <span class="o">=</span> <span class="n">__next</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">--</span><span class="n">__next</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="o">*</span><span class="n">__last</span> <span class="o">=</span> <span class="n">__val</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>まとめ</h2>
+
+<p>動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。</p>
+
+<p>おそらく、テンプレートの展開時に第三期引数の()を呼び出すように展開されるため、<br/>
+関数の場合はそのまま関数呼び出しに、クラスの場合は()オペレーターの実行になるようです。</p>
+
+<p><a href="https://www.sgi.com/tech/stl/download.html">参考ソース</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした]]></title>
