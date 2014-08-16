@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-08-11T07:26:33+09:00</updated>
+  <updated>2014-08-16T09:49:55+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,132 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AutomatorでEvernoteのノートリンクを置き換える]]></title>
+    <link href="http://ota42y.github.io/blog/2014/08/16/evernote-url/"/>
+    <updated>2014-08-16T09:46:56+09:00</updated>
+    <id>http://ota42y.github.io/blog/2014/08/16/evernote-url</id>
+    <content type="html"><![CDATA[<h1>まとめ</h1>
+
+<ul>
+<li>シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる</li>
+<li>Automatorならターミナルを立ち上げずにスクリプトを実行できる</li>
+</ul>
+
+
+<h1>Automatorでスクリプトを実行する</h1>
+
+<p>前回(<a href="http://ota42y.com/blog/2014/08/10/evernote-link/">Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</a>)
+では、<br/>
+スクリプトの実行方法が微妙たったのでもう少し修正してみました。</p>
+
+<p>結論としては、Macと標準で入っているAutomatorを使うことで、<br/>
+ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。</p>
+
+<h1>Automatorのワークフローを作る</h1>
+
+<p>単体のアプリケーションとして実行するため、<br/>
+Automatorを立ち上げアプリケーションを選択します。</p>
+
+<h2>実行ディレクトリの取得</h2>
+
+<p>私の環境では、clipboardのインストール先はグローバルではなく、<br/>
+スクリプトのあるフォルダにbundler専用のディレクトリを作り、<br/>
+そこにインストールしています。</p>
+
+<p>そのため、スクリプトを実行するためにはそのパスに移動しないといけません。<br/>
+ですが、Automatorを実行した場合、<br/>
+カレントパスはユーザのホームディレクトリになり、<br/>
+実行したファイルのディレクトリではありません。<br/>
+参考: <a href="http://mattintosh.hatenablog.com/entry/2013/03/19/152813">iNSTANTWiNE or Wine.framework と Automator の連携</a></p>
+
+<p>そのため、Apple Scriptを先に実行し、<br/>
+Automatorの実行ファイルがあるパスを求め、<br/>
+そこに移動するようにしています。</p>
+
+<h2>自分自身のパスを求めるApple Script</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>on run {input, parameters}
+</span><span class='line'>set p to POSIX path of (path to me)
+</span><span class='line'>return {p}
+</span><span class='line'>
+</span><span class='line'>return input
+</span><span class='line'>end run</span></code></pre></td></tr></table></div></figure>
+
+
+<p>AutomatorのAppleScriptを実行を選び、<br/>
+このスクリプトを後述するシェルスクリプトの前に実行するようにします。<br/>
+これでシェルスクリプトに引数としてパスを渡せます。</p>
+
+<h2>Evernote URLを置換するスクリプト</h2>
+
+<p>内容はほぼ前回と同じです。<br/>
+ただし、各種環境設定は読み込んでくれないため、<br/>
+sourceで読み込む必要があります。</p>
+
+<p>また、Automator側で引数の引き渡し方法を<br/>
+<code>引数として</code>に設定する必要もあります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">source</span> .zshrc
+</span><span class='line'>
+</span><span class='line'><span class="nb">pushd</span> <span class="k">$(</span>dirname <span class="nv">$1</span><span class="k">)</span>
+</span><span class='line'>
+</span><span class='line'>bundle <span class="nb">exec </span>ruby -e <span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">require &#39;clipboard&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">url = Clipboard.paste</span>
+</span><span class='line'><span class="s2">r = Regexp.new(\&quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&quot;)</span>
+</span><span class='line'><span class="s2">result = r.match url</span>
+</span><span class='line'><span class="s2">if result</span>
+</span><span class='line'><span class="s2">  new_url = \&quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&quot;</span>
+</span><span class='line'><span class="s2">  p new_url</span>
+</span><span class='line'><span class="s2">  Clipboard.copy new_url</span>
+</span><span class='line'><span class="s2">end</span>
+</span><span class='line'><span class="s2">&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">popd</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こうして作ったアプリケーションを.appに書き出し、<br/>
+Alfredから実行することでターミナルを立ち上げることなく、<br/>
+クリップボードのノートリンクを置換できます。</p>
+
+<h1>完成品</h1>
+
+<p>できあがったスクリプトは<br/>
+<a href="https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace">https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace</a><br/>
+にあります。</p>
+
+<p>github上では.appがフォルダとして扱われていますが、<br/>
+Mac上ではアプリケーションとして扱われます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[sortやfind_ifの条件指定はどういう動きをしているのか]]></title>

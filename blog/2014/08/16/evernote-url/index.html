@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>AutomatorでEvernoteのノートリンクを置き換える - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="AutomatorでEvernoteのノートリンクを置き換える まとめ シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる
+Automatorならターミナルを立ち上げずにスクリプトを実行できる Automatorでスクリプトを実行する 前回( &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.github.io/blog/2014/08/16/evernote-url">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.github.io/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h2 class="entry_title">AutomatorでEvernoteのノートリンクを置き換える</h2>
+    
+  </header>
+
+  <div class="entry_content"><h1>まとめ</h1>
+
+<ul>
+<li>シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる</li>
+<li>Automatorならターミナルを立ち上げずにスクリプトを実行できる</li>
+</ul>
+
+
+<h1>Automatorでスクリプトを実行する</h1>
+
+<p>前回(<a href="http://ota42y.com/blog/2014/08/10/evernote-link/">Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</a>)
+では、<br/>
+スクリプトの実行方法が微妙たったのでもう少し修正してみました。</p>
+
+<p>結論としては、Macと標準で入っているAutomatorを使うことで、<br/>
+ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。</p>
+
+<h1>Automatorのワークフローを作る</h1>
+
+<p>単体のアプリケーションとして実行するため、<br/>
+Automatorを立ち上げアプリケーションを選択します。</p>
+
+<h2>実行ディレクトリの取得</h2>
+
+<p>私の環境では、clipboardのインストール先はグローバルではなく、<br/>
+スクリプトのあるフォルダにbundler専用のディレクトリを作り、<br/>
+そこにインストールしています。</p>
+
+<p>そのため、スクリプトを実行するためにはそのパスに移動しないといけません。<br/>
+ですが、Automatorを実行した場合、<br/>
+カレントパスはユーザのホームディレクトリになり、<br/>
+実行したファイルのディレクトリではありません。<br/>
+参考: <a href="http://mattintosh.hatenablog.com/entry/2013/03/19/152813">iNSTANTWiNE or Wine.framework と Automator の連携</a></p>
+
+<p>そのため、Apple Scriptを先に実行し、<br/>
+Automatorの実行ファイルがあるパスを求め、<br/>
+そこに移動するようにしています。</p>
+
+<h2>自分自身のパスを求めるApple Script</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>on run {input, parameters}
+</span><span class='line'>set p to POSIX path of (path to me)
+</span><span class='line'>return {p}
+</span><span class='line'>
+</span><span class='line'>return input
+</span><span class='line'>end run</span></code></pre></td></tr></table></div></figure>
+
+
+<p>AutomatorのAppleScriptを実行を選び、<br/>
+このスクリプトを後述するシェルスクリプトの前に実行するようにします。<br/>
+これでシェルスクリプトに引数としてパスを渡せます。</p>
+
+<h2>Evernote URLを置換するスクリプト</h2>
+
+<p>内容はほぼ前回と同じです。<br/>
+ただし、各種環境設定は読み込んでくれないため、<br/>
+sourceで読み込む必要があります。</p>
+
+<p>また、Automator側で引数の引き渡し方法を<br/>
+<code>引数として</code>に設定する必要もあります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">source</span> .zshrc
+</span><span class='line'>
+</span><span class='line'><span class="nb">pushd</span> <span class="k">$(</span>dirname <span class="nv">$1</span><span class="k">)</span>
+</span><span class='line'>
+</span><span class='line'>bundle <span class="nb">exec </span>ruby -e <span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">require &#39;clipboard&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">url = Clipboard.paste</span>
+</span><span class='line'><span class="s2">r = Regexp.new(\&quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&quot;)</span>
+</span><span class='line'><span class="s2">result = r.match url</span>
+</span><span class='line'><span class="s2">if result</span>
+</span><span class='line'><span class="s2">  new_url = \&quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&quot;</span>
+</span><span class='line'><span class="s2">  p new_url</span>
+</span><span class='line'><span class="s2">  Clipboard.copy new_url</span>
+</span><span class='line'><span class="s2">end</span>
+</span><span class='line'><span class="s2">&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">popd</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こうして作ったアプリケーションを.appに書き出し、<br/>
+Alfredから実行することでターミナルを立ち上げることなく、<br/>
+クリップボードのノートリンクを置換できます。</p>
+
+<h1>完成品</h1>
+
+<p>できあがったスクリプトは<br/>
+<a href="https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace">https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace</a><br/>
+にあります。</p>
+
+<p>github上では.appがフォルダとして扱われていますが、<br/>
+Mac上ではアプリケーションとして扱われます。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-08-16 09:46:56 +0900" pubdate>2014年 08月 16日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.github.io/blog/2014/08/16/evernote-url/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.github.io/blog/2014/08/16/evernote-url/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+  
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
