@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-08-16T09:49:55+09:00</updated>
+  <updated>2014-08-17T11:00:47+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[chrome extensionでデータを保存する]]></title>
+    <link href="http://ota42y.github.io/blog/2014/08/17/local-storage/"/>
+    <updated>2014-08-17T10:56:58+09:00</updated>
+    <id>http://ota42y.github.io/blog/2014/08/17/local-storage</id>
+    <content type="html"><![CDATA[<p>Chrome拡張でデータを保存しようとした場合に、<br/>
+最も簡単に扱えるのが、localStorageです。</p>
+
+<h1>manifest.jsonの設定</h1>
+
+<p>manifest.jsonに以下のパーミッションを追加してください</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'>  <span class="s2">&quot;permissions&quot;</span><span class="err">:</span> <span class="p">[</span>
+</span><span class='line'>    <span class="s2">&quot;storage&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;unlimitedStorage&quot;</span>
+</span><span class='line'>  <span class="p">]</span><span class="err">,</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>使い方</h1>
+
+<p>localStorageという辞書型の変数が定義されるので、<br/>
+それに対して読み書きを行うだけで大丈夫です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="err">localStorage</span><span class="p">[</span><span class="err">‘data’</span><span class="p">]</span> <span class="err">=</span> <span class="err">‘aaa&#39;</span>
+</span><span class='line'><span class="err">var</span> <span class="err">data</span> <span class="err">=</span> <span class="err">localStorage</span><span class="p">[</span><span class="err">‘data’</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>注意点</h1>
+
+<h2>保存形式の制約</h2>
+
+<p>この方法で保存できるのは文字列だけになります。<br/>
+true/falseを保存しても文字列として出てきますし、<br/>
+オブジェクトを入れても正しく保存されません。</p>
+
+<p>このような場合、JSON.stringifyとJSON.parseを使い、<br/>
+JSONに変換して保存すると解決します。</p>
+
+<h2>読み出せる場所の制約</h2>
+
+<p>localStorageはページごとに保存するデータがわかれているため、<br/>
+読み書きは同じ場所で行う必要があります。</p>
+
+<p>基本的にはbackgruond.jsで読み書きを行い、<br/>
+content_scriptsやpopupからbackground.jsを呼び出すのがいいと思います。</p>
+
+<p>popupからは以下のように、background.jsの関数を簡単に呼び出すことができます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// background.jsのgetDataを呼び出す</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">chrome</span><span class="p">.</span><span class="nx">extension</span><span class="p">.</span><span class="nx">getBackgroundPage</span><span class="p">().</span><span class="nx">getData</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>content_scriptsからは直接アクセスできないため、<br/>
+メッセージを通して呼び出す必要があり、少々面倒です。</p>
+
+<p>まず、background側にメッセージ受け取りと、コールバックを定義します。<br/>
+content_scriptsからのメッセージ内容がrequestに入っているので、<br/>
+それによって処理を分けています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">sender</span><span class="p">,</span> <span class="nx">sendResponse</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span> <span class="o">==</span> <span class="s2">&quot;getUser&quot;</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">sendResponse</span><span class="p">({</span><span class="nx">user_id</span><span class="o">:</span> <span class="nx">localStorage</span><span class="p">[</span><span class="nx">request</span><span class="p">.</span><span class="nx">user_id</span><span class="p">]});</span>
+</span><span class='line'>  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>    <span class="nx">sendResponse</span><span class="p">({});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>content_scriptから呼び出す場合は以下のように、<br/>
+データとコールバックを渡します。<br/>
+受け取り側でsendResponse()を読んだときの引数がresponseに入るので、<br/>
+それを利用してデータを取り出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;getUser&quot;</span><span class="p">,</span> <span class="nx">user_id</span><span class="o">:</span> <span class="nx">user_id</span><span class="p">},</span>
+</span><span class='line'> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_name</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_name</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AutomatorでEvernoteのノートリンクを置き換える]]></title>
