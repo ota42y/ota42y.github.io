@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.github.io/atom.xml" rel="self"/>
   <link href="http://ota42y.github.io/"/>
-  <updated>2014-08-17T11:00:47+09:00</updated>
+  <updated>2014-08-20T07:35:07+09:00</updated>
   <id>http://ota42y.github.io/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pixivの検索フィルタ作った]]></title>
+    <link href="http://ota42y.github.io/blog/2014/08/20/pixiv-follow-filter/"/>
+    <updated>2014-08-20T07:52:49+09:00</updated>
+    <id>http://ota42y.github.io/blog/2014/08/20/pixiv-follow-filter</id>
+    <content type="html"><![CDATA[<p>まとめ</p>
+
+<ul>
+<li>Pixivの検索は全ユーザから</li>
+<li>○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる</li>
+<li>検索結果からフォローしている人を非表示にする拡張作った</li>
+<li>DLは<a href="https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;authuser=1">ここ</a>から</li>
+</ul>
+
+
+<h1>Pixivのイラスト検索でフォロワーを除外できない</h1>
+
+<p>Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、<br/>
+検索結果にフォローしてる人とそうでない人が交じります。</p>
+
+<p>私の場合、<a href="http://www.pixiv.net/bookmark_new_illust.php">フォロー新着作品</a>を全てチェックしているため、<br/>
+検索をする場合は、このイラスト書いてる新しい人を見つけたい！といった目的で行うことがほとんどです。</p>
+
+<p>そのため、フォロワー以外からの検索を行いたいのですが、<br/>
+残念ながらPixivにそのような機能はありませんでした。</p>
+
+<p>というわけで、Chrome拡張で実現しました。</p>
+
+<h1>フィルタの基本機能</h1>
+
+<p>DLは<a href="https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;authuser=1">ここ</a>から。</p>
+
+<p>検索結果にはユーザのユニークIDが含まれているため、<br/>
+自分のフォローしている人と一致していれば非表示にしています。</p>
+
+<p>また、毎回通信するのは無駄が多いため、<br/>
+事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。<br/>
+そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。</p>
+
+<h1>ソースコード</h1>
+
+<p><a href="https://github.com/ota42y/pixiv_follower_filter">https://github.com/ota42y/pixiv_follower_filter</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[chrome extensionでデータを保存する]]></title>
