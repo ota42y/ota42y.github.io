@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>IntelliJ IDEAで node.jsとmochaを使ってテストする - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="IntelliJ IDEAで node.jsとmochaを使ってテストする node.js+mocha+coffeescriptな環境で開発をしていたところ、
+IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.jsプラグインのインストール Node. &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.github.io/blog/2014/08/21/intellij-node">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.github.io/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h2 class="entry_title">IntelliJ IDEAで node.jsとmochaを使ってテストする</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>node.js+mocha+coffeescriptな環境で開発をしていたところ、<br/>
+IntelliJ IDEAの設定方法が調べても無かったのでメモ。</p>
+
+<h1>Node.jsプラグインのインストール</h1>
+
+<p>Node.jsプラグインは公式から提供されています。<br/>
+そのため、IntelliJ のPreferences からPluginsを選び、<br/>
+NodeJSプラグインを選択するだけでインストール出来ます。</p>
+
+<h1>ビルド設定</h1>
+
+<p>以下の画像の通りです。</p>
+
+<p><img src="/images/posts/2014-08-21-intellij-node.png" alt="設定画像" /></p>
+
+<ul>
+<li>Node interpreter<br/>
+node.jsの実行ファイルの位置を設定します。</li>
+<li>working directory<br/>
+対象のディレクトリ</li>
+<li>Mocha package<br/>
+Mochaの実行ファイルの位置</li>
+<li>Extra Mocha options<br/>
+Mochaの設定を指定します
+詳しくは後述</li>
+<li>Test Directory<br/>
+Mochaのテストが入っている場所</li>
+</ul>
+
+
+<h1>Mochaのオプション</h1>
+
+<p>私の環境では主に次のような設定をしています、</p>
+
+<ul>
+<li>coffeescriptを利用している</li>
+<li>spec形式で出力</li>
+<li>共通で読み込むファイルがある</li>
+</ul>
+
+
+<p>これは、以下のオプションを入れることで実現できます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>--compilers
+</span><span class='line'>coffee:coffee-script/register
+</span><span class='line'>--reporter
+</span><span class='line'>spec
+</span><span class='line'>--require
+</span><span class='line'>coffee-script
+</span><span class='line'>--require
+</span><span class='line'>test/test_helper.coffee
+</span><span class='line'>--colors</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>問題点</h1>
+
+<p>以上で設定は終わりですが、いくつか問題点があります。</p>
+
+<ul>
+<li>デバッガが動かない<br/>
+coffeescriptから変換してるので、<br/>
+ブレークポイントがうまく動きません</li>
+<li>エラーになったテストに飛べない<br/>
+テストがエラーになったとしても、そのテストの位置に飛ぶ機能がありません。<br/>
+最も、IDEを使わずに開発している時と同じく、<br/>
+テストメッセージを頼りにテストファイルに移動すればいいので、<br/>
+大きな問題ではありませんが。</li>
+</ul>
+
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-08-21 07:40:33 +0900" pubdate>2014年 08月 21日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.github.io/blog/2014/08/21/intellij-node/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.github.io/blog/2014/08/21/intellij-node/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+  
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
