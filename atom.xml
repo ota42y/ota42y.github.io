@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[おおたの物置]]></title>
-  <link href="http://ota42y.github.io/atom.xml" rel="self"/>
-  <link href="http://ota42y.github.io/"/>
-  <updated>2014-08-21T07:47:23+09:00</updated>
-  <id>http://ota42y.github.io/</id>
+  <link href="http://ota42y.com/atom.xml" rel="self"/>
+  <link href="http://ota42y.com/"/>
+  <updated>2014-08-23T18:49:14+09:00</updated>
+  <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
     
@@ -14,10 +14,217 @@
 
   
   <entry>
+    <title type="html"><![CDATA[mocha+chai+sinsonでテストを書く為に必要な最低限の知識]]></title>
+    <link href="http://ota42y.com/blog/2014/08/22/mocha-test/"/>
+    <updated>2014-08-22T07:52:16+09:00</updated>
+    <id>http://ota42y.com/blog/2014/08/22/mocha-test</id>
+    <content type="html"><![CDATA[<h1>まとめ</h1>
+
+<ul>
+<li>Mochaではrspecっぽい感じにテストが書ける</li>
+<li>ただし、done()を呼ぶ必要がある等、細かい部分に差異がある</li>
+<li>sinonにはいろいろ便利機能がある</li>
+</ul>
+
+
+<h1>Mochaの使い方</h1>
+
+<p>coffeescriptを前提にしています。</p>
+
+<h2>テストの書き方</h2>
+
+<p>Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、<br/>
+そのitを呼び出す関数をdescribeに渡すしようです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">describe</span> <span class="s">&quot;test root&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="nf">(done) -&gt;</span>
+</span><span class='line'>        <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span> <span class="nx">getUserName</span><span class="p">,</span> <span class="s">&quot;user&quot;</span>
+</span><span class='line'>        <span class="nx">done</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ただし、it関数では必ずdone()を呼び出す必要があります。<br/>
+これを呼ばない場合は終了を待ち続け、<br/>
+一定時間後にタイムアウトしてテストが失敗した扱いになります。</p>
+
+<h2>beforeの使い方</h2>
+
+<p> rspecのbeforeにあたるものは、beforeEachになります。<br/>
+ なお、変数を他のブロックに渡したい場合、<br/>
+ 以下のようにdescribeの中に変数名を書いておいて、<br/>
+ beforeEachのなかで設定する必要があるみたいです。<br/>
+<a href="http://stackoverflow.com/questions/20584233/mocha-pass-variable-to-the-next-test">参考</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">describe</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">room_name = </span><span class="kc">undefined</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">beforeEach</span> <span class="nf">(done) -&gt;</span>
+</span><span class='line'>    <span class="nv">room_name = </span><span class="s">&quot;test_room&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">done</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">describe</span> <span class="s">&quot;functions&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;executeNoteShow&quot;</span><span class="p">,</span> <span class="nf">(done) -&gt;</span>
+</span><span class='line'>        <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span> <span class="nx">getRoomName</span><span class="p">(</span><span class="nx">room_name</span><span class="p">),</span> <span class="nx">room_name</span>
+</span><span class='line'>        <span class="nx">done</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>pendingテストの作り方</h2>
+
+<p>テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'>  <span class="nx">describe</span> <span class="s">&quot;functions&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;pending test&quot;</span> <span class="o">//</span> <span class="err">関数を渡さない場合</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">//</span> <span class="nx">it</span><span class="p">.</span><span class="nx">skip</span><span class="err">の場合、引数を渡しても実行されずにスキップする</span>
+</span><span class='line'>      <span class="nx">it</span><span class="p">.</span><span class="nx">skip</span> <span class="s">&quot;pending test 2&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>          <span class="nx">done</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>外部ファイル読み込み</h2>
+
+<p>test.coffeeで</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
+</span><span class='line'>  <span class="err">なんかいろいろ</span>
+</span><span class='line'><span class="nv">module.exports.Test = </span><span class="nx">Test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と、クラスを宣言し、module.exportsに代入します。
+その後、使いたいファイル側で</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">Test = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;../src/test.coffee&#39;</span><span class="p">).</span><span class="nx">Test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と書くと、以降Testでそのクラスが呼び出せます。</p>
+
+<h1>chaiの使い方</h1>
+
+<h2>assertを使う</h2>
+
+<p>前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、<br/>
+別ライブラリのchaiを読み込む必要があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">global.assert = </span><span class="nx">require</span><span class="p">(</span><span class="s">&quot;chai&quot;</span><span class="p">).</span><span class="nx">assert</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで、 assert.equalや assert.notEqualが使えます。</p>
+
+<h1>sinonの使い方</h1>
+
+<h2>mockやstubを使う</h2>
+
+<p>Mochaにはmockやstubの為の物は含まれていないので、<br/>
+今度はsinonを読み込む必要があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">global.sinon = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;simon&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使い方は以下の通りです</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="o">//</span> <span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="err">が</span><span class="nx">stub</span><span class="err">になる</span>
+</span><span class='line'><span class="nv">robot = </span><span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
+</span><span class='line'><span class="nv">robot.brain = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="o">//</span> <span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeNoteShow</span><span class="err">を置き換え、</span>
+</span><span class='line'><span class="o">//</span> <span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeMessage</span><span class="err">実行時に、</span>
+</span><span class='line'><span class="o">//</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="err">の引数で一回だけ実行されたかをチェックする</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">spy = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span><span class="nx">hubot_note</span><span class="p">,</span> <span class="s">&quot;executeNoteShow&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">spy</span><span class="p">.</span><span class="nx">withArgs</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+</span><span class='line'><span class="nv">response = </span><span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeMessage</span><span class="p">(</span><span class="nx">room_name</span><span class="p">,</span> <span class="s">&quot;hubot note show&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">assert</span><span class="p">.</span><span class="nx">ok</span> <span class="nx">spy</span><span class="p">.</span><span class="nx">withArgs</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">).</span><span class="nx">calledOnce</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>時間変更の仕方</h2>
+
+<p><code>new Date()</code>などによって日付がちゃんと設定されたかどうかを確認したい場合、<br/>
+グローバルなDate()部分を置き換える必要があります。</p>
+
+<p>…というのはよくあることなので、sinon側で既に用意されています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="vi">@clock = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;setTimeout&quot;</span><span class="p">,</span> <span class="s">&quot;clearTimeout&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;setInterval&quot;</span><span class="p">,</span> <span class="s">&quot;clearInterval&quot;</span><span class="p">,</span> <span class="s">&quot;Date&quot;</span><span class="p">)</span><span class="o">`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで、以降のDateコマンドは第一引数で指定した0(1970年1月1日0時0分0秒)を必ず返すようになるため、<br/>
+この時間かどうかをチェックすれば大丈夫です。<br/>
+また、以下のように戻り値のオブジェクトのtickメソッドにより、<br/>
+指定したミリ秒だけ時間を進めることもできます。<br/>
+<code>@clock.tick(3600000)</code></p>
+
+<h2>sinonのその他の機能</h2>
+
+<p>sinonに関しては他にもいろいろ有用なものがあります。<br/>
+ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。</p>
+
+<p><a href="http://alpha.mixi.co.jp/2011/10798/">http://alpha.mixi.co.jp/2011/10798/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[IntelliJ IDEAで node.jsとmochaを使ってテストする]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/21/intellij-node/"/>
+    <link href="http://ota42y.com/blog/2014/08/21/intellij-node/"/>
     <updated>2014-08-21T07:40:33+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/21/intellij-node</id>
+    <id>http://ota42y.com/blog/2014/08/21/intellij-node</id>
     <content type="html"><![CDATA[<p>node.js+mocha+coffeescriptな環境で開発をしていたところ、<br/>
 IntelliJ IDEAの設定方法が調べても無かったのでメモ。</p>
 
@@ -31,7 +238,7 @@ NodeJSプラグインを選択するだけでインストール出来ます。</
 
 <p>以下の画像の通りです。</p>
 
-<p><img src="http://ota42y.github.io/images/posts/2014-08-21-intellij-node.png" alt="設定画像" /></p>
+<p><img src="http://ota42y.com/images/posts/2014-08-21-intellij-node.png" alt="設定画像" /></p>
 
 <ul>
 <li>Node interpreter<br/>
@@ -101,9 +308,9 @@ coffeescriptから変換してるので、<br/>
   
   <entry>
     <title type="html"><![CDATA[Pixivの検索フィルタ作った]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/20/pixiv-follow-filter/"/>
+    <link href="http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/"/>
     <updated>2014-08-20T07:52:49+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/20/pixiv-follow-filter</id>
+    <id>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter</id>
     <content type="html"><![CDATA[<p>まとめ</p>
 
 <ul>
@@ -146,9 +353,9 @@ coffeescriptから変換してるので、<br/>
   
   <entry>
     <title type="html"><![CDATA[chrome extensionでデータを保存する]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/17/local-storage/"/>
+    <link href="http://ota42y.com/blog/2014/08/17/local-storage/"/>
     <updated>2014-08-17T10:56:58+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/17/local-storage</id>
+    <id>http://ota42y.com/blog/2014/08/17/local-storage</id>
     <content type="html"><![CDATA[<p>Chrome拡張でデータを保存しようとした場合に、<br/>
 最も簡単に扱えるのが、localStorageです。</p>
 
@@ -255,9 +462,9 @@ content_scriptsからのメッセージ内容がrequestに入っているので�
   
   <entry>
     <title type="html"><![CDATA[AutomatorでEvernoteのノートリンクを置き換える]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/16/evernote-url/"/>
+    <link href="http://ota42y.com/blog/2014/08/16/evernote-url/"/>
     <updated>2014-08-16T09:46:56+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/16/evernote-url</id>
+    <id>http://ota42y.com/blog/2014/08/16/evernote-url</id>
     <content type="html"><![CDATA[<h1>まとめ</h1>
 
 <ul>
@@ -381,9 +588,9 @@ Mac上ではアプリケーションとして扱われます。</p>
   
   <entry>
     <title type="html"><![CDATA[sortやfind_ifの条件指定はどういう動きをしているのか]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/11/find-if/"/>
+    <link href="http://ota42y.com/blog/2014/08/11/find-if/"/>
     <updated>2014-08-11T07:17:02+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/11/find-if</id>
+    <id>http://ota42y.com/blog/2014/08/11/find-if</id>
     <content type="html"><![CDATA[<p>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、<br/>
 関数orオブジェクトを渡すことで条件を自由に設定できます。<br/>
 <a href="http://www.cplusplus.com/reference/algorithm/sort/">参考</a></p>
@@ -462,9 +669,9 @@ Mac上ではアプリケーションとして扱われます。</p>
   
   <entry>
     <title type="html"><![CDATA[Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/10/evernote-link/"/>
+    <link href="http://ota42y.com/blog/2014/08/10/evernote-link/"/>
     <updated>2014-08-10T18:03:43+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/10/evernote-link</id>
+    <id>http://ota42y.com/blog/2014/08/10/evernote-link</id>
     <content type="html"><![CDATA[<h1>まとめ</h1>
 
 <ul>
@@ -478,7 +685,7 @@ Mac上ではアプリケーションとして扱われます。</p>
 
 <p>Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。</p>
 
-<p><img src="http://ota42y.github.io/images/posts/2014-08-10-evernote-link.jpg" alt="Evernote link" /></p>
+<p><img src="http://ota42y.com/images/posts/2014-08-10-evernote-link.jpg" alt="Evernote link" /></p>
 
 <p>この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。<br/>
 そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。<br/>
@@ -572,9 +779,9 @@ Alfredなどから実行すればいける！！と思ったのですが、<br/>
   
   <entry>
     <title type="html"><![CDATA[IRCはCL-LFでメッセージを区切る]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/09/irc/"/>
+    <link href="http://ota42y.com/blog/2014/08/09/irc/"/>
     <updated>2014-08-09T22:14:32+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/09/irc</id>
+    <id>http://ota42y.com/blog/2014/08/09/irc</id>
     <content type="html"><![CDATA[<p>IRCのプロトコルはRFCで決められていて、<br/>
 一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。<br/>
 <a href="http://tools.ietf.org/html/rfc1459.html#section-2.3">http://tools.ietf.org/html/rfc1459.html#section-2.3</a></p>
@@ -592,256 +799,10 @@ node-ircで接続したらはまったのでメモ。</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[MessagePack とはなんぞや]]></title>
-    <link href="http://ota42y.github.io/blog/2014/08/05/msgpack/"/>
-    <updated>2014-08-05T21:30:00+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/08/05/msgpack</id>
-    <content type="html"><![CDATA[<p>最近よく聞くMessagePackとは何かを調べたのでメモ。</p>
-
-<h1>MessagePackとは</h1>
-
-<p>バイナリでデータを保存するフォーマットです。<br/>
-JSONと比べると、保存した状態の可読性を犠牲にする代わりに、<br/>
-より早くて小さいフォーマットになっています。</p>
-
-<p>また、汎用的なフォーマットのため、<br/>
-いろんな言語(nodeとかrubyとかcppとか)
-で相互にデータを使えます。</p>
-
-<h1>他のバイナリシリアライズフォーマットとの差</h1>
-
-<p>MessagePackはバッファをうまく使って早かったり、
-読み込み途中でもデシリアライズできるとか、<br/>
-結構いろいろと高速化のための工夫がされています。<br/>
-(ただし、実装によって若干違いがあるようです)</p>
-
-<h1>使い方</h1>
-
-<p>rubyなら<code>gem install msgpack</code>で、
-MacのC++なら<code>brew install msgpack</code>で使えるようになります。</p>
-
-<p>なお、C++はgccに以下のオプションをつける必要があります。<br/>
-<code>g++ test.cpp -lmsgpack -o test</code></p>
-
-<p>また、基本型は全てシリアライズ可能で、保存したいクラスのメンバ変数を、<br/>
-MSGPACK_DEFINEマクロに入れると、<br/>
-自動でシリアライズ/デシリアライズできるみたいです。</p>
-
-<h1>コード</h1>
-
-<h2>C++</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="cp">#include &lt;msgpack.hpp&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;vector&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;fstream&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">User</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">User</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower</span><span class="p">)</span>
-</span><span class='line'>    <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">,</span> <span class="n">id</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">,</span> <span class="n">follower_id</span><span class="p">(</span><span class="n">follower</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// 引数なしのコンストラクタは必須</span>
-</span><span class='line'>  <span class="n">User</span><span class="p">()</span>
-</span><span class='line'>    <span class="o">:</span> <span class="n">id</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">MSGPACK_DEFINE</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">follower_id</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower_id</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">string</span> <span class="n">toString</span><span class="p">(){</span>
-</span><span class='line'>    <span class="n">string</span> <span class="n">ret</span> <span class="o">=</span> <span class="s">&quot;name: &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="n">name</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="s">&quot;  id: &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">ret</span> <span class="o">+=</span> <span class="s">&quot;  follower: &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">follower_id</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-</span><span class='line'>      <span class="n">ret</span> <span class="o">+=</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">follower_id</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span><span class='line'>      <span class="n">ret</span> <span class="o">+=</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// データを作って書き込む</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower_1</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">follower_1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">follower_1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">follower_2</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">follower_2</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">users</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">User</span><span class="p">(</span><span class="s">&quot;user1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">follower_1</span><span class="p">));</span>
-</span><span class='line'>  <span class="n">users</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">User</span><span class="p">(</span><span class="s">&quot;user2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">follower_2</span><span class="p">));</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">sbuffer</span> <span class="n">sbuf</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">pack</span><span class="p">(</span><span class="n">sbuf</span><span class="p">,</span> <span class="n">users</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">ofstream</span> <span class="n">myFile</span> <span class="p">(</span><span class="s">&quot;cpp_data.bin&quot;</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">myFile</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">sbuf</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">sbuf</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-</span><span class='line'>  <span class="n">myFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// ファイルからデータを読み込む</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">ifstream</span> <span class="n">inFile</span> <span class="p">(</span><span class="s">&quot;ruby_data.bin&quot;</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">inFile</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">inFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">unpacked</span> <span class="n">msg</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">unpack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">msgpack</span><span class="o">::</span><span class="n">object</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">load_users</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">obj</span><span class="p">.</span><span class="n">convert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">load_users</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">load_users</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">load_users</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>ruby</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;msgpack&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># load data and deserialize</span>
-</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">MessagePack</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;cpp_data.bin&quot;</span><span class="p">)</span> <span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">users</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># serialize and output data</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;100user&quot;</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">100</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;101user&quot;</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">101</span>
-</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">101</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;ruby_data.bin&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">f</span><span class="o">.</span><span class="n">print</span> <span class="n">users</span><span class="o">.</span><span class="n">to_msgpack</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Jenkinsで複雑な処理をするときのjob構成について]]></title>
-    <link href="http://ota42y.github.io/blog/2014/07/21/jenkins-architecture/"/>
+    <link href="http://ota42y.com/blog/2014/07/21/jenkins-architecture/"/>
     <updated>2014-07-21T21:12:36+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/07/21/jenkins-architecture</id>
+    <id>http://ota42y.com/blog/2014/07/21/jenkins-architecture</id>
     <content type="html"><![CDATA[<p>変数やビルド後の通知設定等が違うために、<br/>
 ほぼ同じ内容のjobを15個ぐらい使っていたら、<br/>
 だんだんと運用が死んできたのでメモ。</p>
@@ -888,7 +849,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 ほぼ同じだけれど若干違うjobを15個並べるといった運用をしていました。</p>
 
 <p>こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。<br/>
-<img src="http://ota42y.github.io/images/posts/2014-07-21-jenkins-1.png" alt="こんな感じ" /></p>
+<img src="http://ota42y.com/images/posts/2014-07-21-jenkins-1.png" alt="こんな感じ" /></p>
 
 <p>結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、<br/>
 古い手順のバージョンのマイクロアップデートと、<br/>
@@ -918,7 +879,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   ビルドジョブを下流ビルドとして呼び出す方式です。</p>
 
 <p>  こんな感じですね。<br/>
-  <img src="http://ota42y.github.io/images/posts/2014-07-21-jenkins-2.png" alt="ワークスペース共有" /></p>
+  <img src="http://ota42y.com/images/posts/2014-07-21-jenkins-2.png" alt="ワークスペース共有" /></p>
 
 <p>  ワークスペース共有を使い、<br/>
   下流ビルドは上流のワークスペース上でビルド作業を行うようにすることで、<br/>
@@ -973,9 +934,9 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   
   <entry>
     <title type="html"><![CDATA[2進数の引き算で補数を使う]]></title>
-    <link href="http://ota42y.github.io/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/"/>
+    <link href="http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/"/>
     <updated>2014-07-18T00:00:00+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u</id>
+    <id>http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u</id>
     <content type="html"><![CDATA[<p>2進数の引き算で補数表現を使うと足し算にできることの説明が見あたら無かったのでやってみる</p>
 
 <p>ここでは2の補数表現の求め方がすでに解っている前提で進める、<br/>
@@ -1033,9 +994,9 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   
   <entry>
     <title type="html"><![CDATA[GitHub Kaigiに行ってきた]]></title>
-    <link href="http://ota42y.github.io/blog/2014/06/03/github-kaigi/"/>
+    <link href="http://ota42y.com/blog/2014/06/03/github-kaigi/"/>
     <updated>2014-06-03T22:49:12+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/06/03/github-kaigi</id>
+    <id>http://ota42y.com/blog/2014/06/03/github-kaigi</id>
     <content type="html"><![CDATA[<h1>スライドまとめ</h1>
 
 <ul>
@@ -1063,7 +1024,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 すぐに導入したいような内容ばかりでした。<br/>
 特に前者は凄くいい本っぽかったので(載せられてる)、会場で注文しましたw</p>
 
-<p><img src="http://ota42y.github.io/images/posts/2014-06-03-github-kaigi.jpg" alt="届いた" /></p>
+<p><img src="http://ota42y.com/images/posts/2014-06-03-github-kaigi.jpg" alt="届いた" /></p>
 
 <h2>Atomの発表が凄かった</h2>
 
@@ -1089,9 +1050,9 @@ Developer Toolsを使ってWebサイトのように、Atomのデザインを変�
   
   <entry>
     <title type="html"><![CDATA[Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング]]></title>
-    <link href="http://ota42y.github.io/blog/2014/05/13/browser-networking/"/>
+    <link href="http://ota42y.com/blog/2014/05/13/browser-networking/"/>
     <updated>2014-05-13T22:30:54+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/05/13/browser-networking</id>
+    <id>http://ota42y.com/blog/2014/05/13/browser-networking</id>
     <content type="html"><![CDATA[<p>丸一日かけて読んだので書評っぽいのを。</p>
 
 <p>Webで何かしようとする人はどのレイヤの人も必読だと思います。<br/>
@@ -1195,9 +1156,9 @@ Developer Toolsを使ってWebサイトのように、Atomのデザインを変�
   
   <entry>
     <title type="html"><![CDATA[Atomのプラグイン作の作り方その１]]></title>
-    <link href="http://ota42y.github.io/blog/2014/04/08/atom-plugin1/"/>
+    <link href="http://ota42y.com/blog/2014/04/08/atom-plugin1/"/>
     <updated>2014-04-08T22:33:14+09:00</updated>
-    <id>http://ota42y.github.io/blog/2014/04/08/atom-plugin1</id>
+    <id>http://ota42y.com/blog/2014/04/08/atom-plugin1</id>
     <content type="html"><![CDATA[<p>Github製のエディタAtomの招待が来ました。<br/>
 簡単なプラグインの作り方が公開されていましたので、
 自分でも作ってみました。</p>
@@ -1303,9 +1264,9 @@ Developer Toolsを使ってWebサイトのように、Atomのデザインを変�
   
   <entry>
     <title type="html"><![CDATA[Railsはアクセスをどう処理しているのか(1)]]></title>
-    <link href="http://ota42y.github.io/blog/2013/11/10/rails-trace-1/"/>
+    <link href="http://ota42y.com/blog/2013/11/10/rails-trace-1/"/>
     <updated>2013-11-10T22:23:00+09:00</updated>
-    <id>http://ota42y.github.io/blog/2013/11/10/rails-trace-1</id>
+    <id>http://ota42y.com/blog/2013/11/10/rails-trace-1</id>
     <content type="html"><![CDATA[<p>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、
 何が起きているのか気になったので、全部追ってみようと思います。</p>
 
@@ -1694,9 +1655,9 @@ action_dispatch.request_idとして設定している。<br/>
   
   <entry>
     <title type="html"><![CDATA[WordpressからOctopressへ]]></title>
-    <link href="http://ota42y.github.io/blog/2013/09/25/octopress/"/>
+    <link href="http://ota42y.com/blog/2013/09/25/octopress/"/>
     <updated>2013-09-25T07:49:00+09:00</updated>
-    <id>http://ota42y.github.io/blog/2013/09/25/octopress</id>
+    <id>http://ota42y.com/blog/2013/09/25/octopress</id>
     <content type="html"><![CDATA[<p>前までブログシステムにはWordpressを使っていたんですが、<br/>
 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。</p>
 

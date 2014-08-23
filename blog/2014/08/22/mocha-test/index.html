@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>mocha+chai+sinsonでテストを書く為に必要な最低限の知識 - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="mocha+chai+sinsonでテストを書く為に必要な最低限の知識 まとめ Mochaではrspecっぽい感じにテストが書ける
+ただし、done()を呼ぶ必要がある等、細かい部分に差異がある
+sinonにはいろいろ便利機能がある Mochaの使い方 coffeescriptを前提にしています &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/08/22/mocha-test">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">mocha+chai+sinsonでテストを書く為に必要な最低限の知識</h2>
+    
+  </header>
+
+  <div class="entry_content"><h1>まとめ</h1>
+
+<ul>
+<li>Mochaではrspecっぽい感じにテストが書ける</li>
+<li>ただし、done()を呼ぶ必要がある等、細かい部分に差異がある</li>
+<li>sinonにはいろいろ便利機能がある</li>
+</ul>
+
+
+<h1>Mochaの使い方</h1>
+
+<p>coffeescriptを前提にしています。</p>
+
+<h2>テストの書き方</h2>
+
+<p>Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、<br/>
+そのitを呼び出す関数をdescribeに渡すしようです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">describe</span> <span class="s">&quot;test root&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="nf">(done) -&gt;</span>
+</span><span class='line'>        <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span> <span class="nx">getUserName</span><span class="p">,</span> <span class="s">&quot;user&quot;</span>
+</span><span class='line'>        <span class="nx">done</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ただし、it関数では必ずdone()を呼び出す必要があります。<br/>
+これを呼ばない場合は終了を待ち続け、<br/>
+一定時間後にタイムアウトしてテストが失敗した扱いになります。</p>
+
+<h2>beforeの使い方</h2>
+
+<p> rspecのbeforeにあたるものは、beforeEachになります。<br/>
+ なお、変数を他のブロックに渡したい場合、<br/>
+ 以下のようにdescribeの中に変数名を書いておいて、<br/>
+ beforeEachのなかで設定する必要があるみたいです。<br/>
+<a href="http://stackoverflow.com/questions/20584233/mocha-pass-variable-to-the-next-test">参考</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">describe</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">room_name = </span><span class="kc">undefined</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">beforeEach</span> <span class="nf">(done) -&gt;</span>
+</span><span class='line'>    <span class="nv">room_name = </span><span class="s">&quot;test_room&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">done</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">describe</span> <span class="s">&quot;functions&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;executeNoteShow&quot;</span><span class="p">,</span> <span class="nf">(done) -&gt;</span>
+</span><span class='line'>        <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span> <span class="nx">getRoomName</span><span class="p">(</span><span class="nx">room_name</span><span class="p">),</span> <span class="nx">room_name</span>
+</span><span class='line'>        <span class="nx">done</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>pendingテストの作り方</h2>
+
+<p>テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'>  <span class="nx">describe</span> <span class="s">&quot;functions&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;pending test&quot;</span> <span class="o">//</span> <span class="err">関数を渡さない場合</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">//</span> <span class="nx">it</span><span class="p">.</span><span class="nx">skip</span><span class="err">の場合、引数を渡しても実行されずにスキップする</span>
+</span><span class='line'>      <span class="nx">it</span><span class="p">.</span><span class="nx">skip</span> <span class="s">&quot;pending test 2&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class='line'>          <span class="nx">done</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>外部ファイル読み込み</h2>
+
+<p>test.coffeeで</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
+</span><span class='line'>  <span class="err">なんかいろいろ</span>
+</span><span class='line'><span class="nv">module.exports.Test = </span><span class="nx">Test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と、クラスを宣言し、module.exportsに代入します。
+その後、使いたいファイル側で</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">Test = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;../src/test.coffee&#39;</span><span class="p">).</span><span class="nx">Test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と書くと、以降Testでそのクラスが呼び出せます。</p>
+
+<h1>chaiの使い方</h1>
+
+<h2>assertを使う</h2>
+
+<p>前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、<br/>
+別ライブラリのchaiを読み込む必要があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">global.assert = </span><span class="nx">require</span><span class="p">(</span><span class="s">&quot;chai&quot;</span><span class="p">).</span><span class="nx">assert</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで、 assert.equalや assert.notEqualが使えます。</p>
+
+<h1>sinonの使い方</h1>
+
+<h2>mockやstubを使う</h2>
+
+<p>Mochaにはmockやstubの為の物は含まれていないので、<br/>
+今度はsinonを読み込む必要があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">global.sinon = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;simon&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使い方は以下の通りです</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="o">//</span> <span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="err">が</span><span class="nx">stub</span><span class="err">になる</span>
+</span><span class='line'><span class="nv">robot = </span><span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
+</span><span class='line'><span class="nv">robot.brain = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="o">//</span> <span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeNoteShow</span><span class="err">を置き換え、</span>
+</span><span class='line'><span class="o">//</span> <span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeMessage</span><span class="err">実行時に、</span>
+</span><span class='line'><span class="o">//</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="err">の引数で一回だけ実行されたかをチェックする</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">spy = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span><span class="nx">hubot_note</span><span class="p">,</span> <span class="s">&quot;executeNoteShow&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">spy</span><span class="p">.</span><span class="nx">withArgs</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+</span><span class='line'><span class="nv">response = </span><span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeMessage</span><span class="p">(</span><span class="nx">room_name</span><span class="p">,</span> <span class="s">&quot;hubot note show&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">assert</span><span class="p">.</span><span class="nx">ok</span> <span class="nx">spy</span><span class="p">.</span><span class="nx">withArgs</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">).</span><span class="nx">calledOnce</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>時間変更の仕方</h2>
+
+<p><code>new Date()</code>などによって日付がちゃんと設定されたかどうかを確認したい場合、<br/>
+グローバルなDate()部分を置き換える必要があります。</p>
+
+<p>…というのはよくあることなので、sinon側で既に用意されています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="vi">@clock = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;setTimeout&quot;</span><span class="p">,</span> <span class="s">&quot;clearTimeout&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;setInterval&quot;</span><span class="p">,</span> <span class="s">&quot;clearInterval&quot;</span><span class="p">,</span> <span class="s">&quot;Date&quot;</span><span class="p">)</span><span class="o">`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで、以降のDateコマンドは第一引数で指定した0(1970年1月1日0時0分0秒)を必ず返すようになるため、<br/>
+この時間かどうかをチェックすれば大丈夫です。<br/>
+また、以下のように戻り値のオブジェクトのtickメソッドにより、<br/>
+指定したミリ秒だけ時間を進めることもできます。<br/>
+<code>@clock.tick(3600000)</code></p>
+
+<h2>sinonのその他の機能</h2>
+
+<p>sinonに関しては他にもいろいろ有用なものがあります。<br/>
+ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。</p>
+
+<p><a href="http://alpha.mixi.co.jp/2011/10798/">http://alpha.mixi.co.jp/2011/10798/</a></p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-08-22 07:52:16 +0900" pubdate>2014年 08月 22日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/08/22/mocha-test/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/08/22/mocha-test/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
