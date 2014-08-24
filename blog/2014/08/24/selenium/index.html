@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>selenium-webdriverでRuby からブラウザを操作する - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="selenium-webdriverでRuby からブラウザを操作する まとめ selenium-webdriverでプログラムからブラウザを制御できる
+ページのロードをまったり、ページ内のJSを実行したりできる。
+rubyのgemがあり、簡単に導入できる &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/08/24/selenium">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">selenium-webdriverでRuby からブラウザを操作する</h2>
+    
+  </header>
+
+  <div class="entry_content"><h1>まとめ</h1>
+
+<ul>
+<li>selenium-webdriverでプログラムからブラウザを制御できる</li>
+<li>ページのロードをまったり、ページ内のJSを実行したりできる。</li>
+<li>rubyのgemがあり、簡単に導入できる</li>
+<li>Firefoxならgemを入れるだけで動かせる</li>
+</ul>
+
+
+<h1>Rubyのスクレイピング方法</h1>
+
+<p>Rubyでスクレイピングする方法としては、
+NokogiriやMechanizeが存在します。</p>
+
+<p>どちらもHTMLを解析してページの要素にアクセスします。<br/>
+ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、<br/>
+Javascriptで動的に変化するページなどにちゃんと対応するのはとても大変です。</p>
+
+<p>そこで、Webブラウザを直接操作してスクレイピングするライブラリの一つが、<br/>
+selenium-webdriverになります。</p>
+
+<h1>selenium-webdriverのインストール</h1>
+
+<p>Rubyではselenium-webdrierのgemをインストールするだけで完了です。</p>
+
+<p>なお、Google Chromeだとgem以外にもう一つインストールするものがありますが、<br/>
+今回は説明が面倒なので省略し、Firefoxで動かします。</p>
+
+<h1>使い方</h1>
+
+<p><code>Selenium::WebDriver.for :firefox</code>
+で、firefoxのウインドウに対応するWebDriverオブジェクトが取得できます。<br/>
+このWebDriverに対して、移動先のURLやDOM要素の取得などを行えます。</p>
+
+<p>また、細かい設定などの変更のために、Profileというものが用意されています。<br/>
+これに対して様々な設定をし、WebDriver作成時に設定することで、<br/>
+ブラウザの挙動を変更出来ます。</p>
+
+<p>以下は、pdfを開いたときに特定のフォルダに保存する設定がされた状態で、<br/>
+Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロードするコードになります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;selenium-webdriver&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">profile</span> <span class="o">=</span> <span class="ss">Selenium</span><span class="p">:</span><span class="ss">:WebDriver</span><span class="o">::</span><span class="ss">Firefox</span><span class="p">:</span><span class="ss">:Profile</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">profile</span><span class="o">[</span><span class="s1">&#39;browser.download.dir&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">))</span><span class="si">}</span><span class="s2">/down&quot;</span>
+</span><span class='line'><span class="n">profile</span><span class="o">[</span><span class="s1">&#39;browser.download.folderList&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="n">profile</span><span class="o">[</span><span class="s1">&#39;browser.download.useDownloadDir&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'><span class="n">profile</span><span class="o">[</span><span class="s1">&#39;browser.helperApps.neverAsk.saveToDisk&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;application/pdf&quot;</span>
+</span><span class='line'><span class="n">profile</span><span class="o">[</span><span class="s1">&#39;pdfjs.disabled&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">driver</span> <span class="o">=</span> <span class="ss">Selenium</span><span class="p">:</span><span class="ss">:WebDriver</span><span class="o">.</span><span class="n">for</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
+</span><span class='line'><span class="n">driver</span><span class="o">.</span><span class="n">navigate</span><span class="o">.</span><span class="n">to</span> <span class="s2">&quot;https://www.google.com/search?as_q=&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_nlo=&amp;as_nhi=&amp;lr=&amp;cr=&amp;as_qdr=all&amp;as_sitesearch=&amp;as_occt=any&amp;safe=images&amp;as_filetype=pdf&amp;as_rights=&amp;gws_rd=ssl&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">links</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="ss">:class</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="ss">:tag_name</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span> <span class="n">links</span>
+</span><span class='line'>  <span class="n">links</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">displayed?</span>
+</span><span class='line'>      <span class="n">element</span><span class="o">.</span><span class="n">click</span>
+</span><span class='line'>      <span class="nb">exit</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-08-24 18:53:52 +0900" pubdate>2014年 08月 24日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/08/24/selenium/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/08/24/selenium/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
