@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-08-25T07:50:43+09:00</updated>
+  <updated>2014-08-26T07:53:52+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,135 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavascriptでオプションのパースをするOptparse-js]]></title>
+    <link href="http://ota42y.com/blog/2014/08/26/optparse/"/>
+    <updated>2014-08-26T07:49:10+09:00</updated>
+    <id>http://ota42y.com/blog/2014/08/26/optparse</id>
+    <content type="html"><![CDATA[<p><code>find /tmp -name core -type f -print</code>
+のように、渡されたオプションを解析するのはよく行うことのため、<br/>
+各言語でそれをやってくれるライブラリが作られています。</p>
+
+<p>javascriptでそれにあたるのがOptparse-jsですが、<br/>
+使い方がちょっと独特です。</p>
+
+<h1>インストール</h1>
+
+<p><a href="https://github.com/jfd/optparse-js">https://github.com/jfd/optparse-js</a>からどうぞ。<br/>
+npmにも登録されているので、node.jsからも簡単に使えます。</p>
+
+<h1>使い方</h1>
+
+<h2>オプション指定</h2>
+
+<p>どのようなオプションを宇受け取るかは配列で定義します。<br/>
+なお、短縮形も同時に定義できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>  <span class="p">[</span><span class="s2">&quot;-n&quot;</span><span class="p">,</span> <span class="s2">&quot;--name FILENAME&quot;</span><span class="p">,</span> <span class="s2">&quot;filename&quot;</span><span class="p">],</span>
+</span><span class='line'>  <span class="p">[</span><span class="s2">&quot;-t&quot;</span><span class="p">,</span> <span class="s2">&quot;--type TYPE&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この場合、filenameを受け取る-nもしくは&#8211;nameと、<br/>
+typeを受け取る-tもしくは&#8211;typeを定義しています。</p>
+
+<p>この配列をOptionParserに渡してパーサー用オブジェクトを受け取ります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">optparse</span><span class="p">.</span><span class="nx">OptionParser</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>オプション処理</h2>
+
+<p>オプションを受け取ったときの処理は、パーサーオブジェクトに関数を渡して登録します。<br/>
+第一引数にオプション名、第二引数にそのオプションがあったときの処理を渡します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">parser</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opt</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">parameter</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">filename</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>パース実行</h2>
+
+<p>パーサーオブジェクトのparseメソッドでパースを実行できます。
+ただし、スペースを自分で区切ってはくれないため、<br/>
+先に配列に分けておく必要があります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">command_str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(勝手にオプション足したり、区切り文字を自由に設定できる、こうしていると思われます)</p>
+
+<h1>サンプルコード</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">optparse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;optparse&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">command_str</span> <span class="o">=</span> <span class="s2">&quot;-name core -type f&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>  <span class="p">[</span><span class="s2">&quot;-n&quot;</span><span class="p">,</span> <span class="s2">&quot;--name FILENAME&quot;</span><span class="p">,</span> <span class="s2">&quot;filename&quot;</span><span class="p">],</span>
+</span><span class='line'>  <span class="p">[</span><span class="s2">&quot;-t&quot;</span><span class="p">,</span> <span class="s2">&quot;--type TYPE&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">optparse</span><span class="p">.</span><span class="nx">OptionParser</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">parameter</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">parser</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opt</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">parameter</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">filename</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">parser</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opt</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">parameter</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">command_str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parameter</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[スマホアプリ開発でgit-new-workdirがとても便利だった]]></title>
