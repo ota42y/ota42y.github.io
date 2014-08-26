@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-08-26T07:53:52+09:00</updated>
+  <updated>2014-08-27T07:56:16+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ブラウザからArduinoを制御する]]></title>
+    <link href="http://ota42y.com/blog/2014/08/27/arduino-browser/"/>
+    <updated>2014-08-27T07:52:09+09:00</updated>
+    <id>http://ota42y.com/blog/2014/08/27/arduino-browser</id>
+    <content type="html"><![CDATA[<p>Webブラウザから、接続されているArduinoの値を取りたいのですが、<br/>
+当然ながらブラウザ本体やJavascriptにはそんな機能はありません。</p>
+
+<p>そこで、Arduinoの制御をやるWebサーバをローカルに立てて、<br/>
+そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？<br/>
+と考えたところ、既にそのようなものがありました。</p>
+
+<p>試した結果をまとめます。</p>
+
+<h1>noduino</h1>
+
+<p><a href="http://semu.github.io/noduino/">http://semu.github.io/noduino/</a><br/>
+Node.jsでArduinoを制御できます。
+<a href="https://github.com/ecto/duino">duino</a>というNode.jsからArduinoに接続するライブラリを利用し、<br/>
+Webサーバとして扱えるようにしているものみたいです。</p>
+
+<p>かなりいろいろな事ができ、使いやすいように作られていますが、<br/>
+ブラウザから制御するのはかなり苦労します。
+ですが、Node.jsで実行する前提ならば、<br/>
+簡単でいろいろなことができるため最適だと思います。</p>
+
+<h1>Serialport-server</h1>
+
+<p><a href="http://shokai.github.io/serialport-server/">http://shokai.github.io/serialport-server/</a><br/>
+RubyからArduinoにアクセスし、その結果を返すサーバです。<br/>
+noduinoに比べるとできることは少ないですが、<br/>
+サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。</p>
+
+<br />
+
+
+<p>というわけで、ブラウザからArduinoを制御する場合は、<br/>
+Serialport-serverが良さそうです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavascriptでオプションのパースをするOptparse-js]]></title>
