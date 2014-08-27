@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>コマンドラインからiOSアプリをビルドする - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="コマンドラインからiOSアプリをビルドする JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、
+普通にコマンドラインからビルドを実行していただけなので、
+使っているコマンドをまとめました。 なお、 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/08/28/ios-build">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">コマンドラインからiOSアプリをビルドする</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、<br/>
+普通にコマンドラインからビルドを実行していただけなので、
+使っているコマンドをまとめました。</p>
+
+<p>なお、以下のサンプルプロジェクトを使って確認しました。<br/>
+<a href="https://developer.apple.com/library/ios/samplecode/CustomHTTPProtocol/Introduction/Intro.html#//apple_ref/doc/uid/DTS40013653">CustomHTTPProtocol</a></p>
+
+<h1>/usr/bin/agvtool</h1>
+
+<h2>バージョンを設定する</h2>
+
+<p><code>/usr/bin/agvtool new-version -all (VERSION_NUMBER)</code><br/>
+xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更できます。</p>
+
+<h2>バージョンを確認する</h2>
+
+<p><code>/usr/bin/agvtool mvers -terse</code>
+アプリのバージョン番号を確認出来ます。<br/>
+プロジェクト設定のVersionの部分ですね。<br/>
+(mversはmarketing-versionの略です)</p>
+
+<h1>使える証明書を確認する</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/bin/security find-identity -p codesigning -v
+</span><span class='line'>  1<span class="o">)</span> ABCDEFGHIJKLMNOPQRSTUVWXYZ<span class="o">(</span>識別子<span class="o">)</span> <span class="s2">&quot;iPhone Developer: ota42y (XXXXXXXX識別子)&quot;</span>
+</span><span class='line'>     1 valid identities found
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このコンピュータで使えるcodesigningの一覧が取れます。</p>
+
+<h1>/usr/bin/xcodebuild</h1>
+
+<h2>使えるSDKを確認する</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/bin/xcodebuild -showsdks
+</span><span class='line'>OS X SDKs:
+</span><span class='line'>        OS X 10.8                       -sdk macosx10.8
+</span><span class='line'>        OS X 10.9                       -sdk macosx10.9
+</span><span class='line'>
+</span><span class='line'>iOS SDKs:
+</span><span class='line'>        iOS 7.1                         -sdk iphoneos7.1
+</span><span class='line'>
+</span><span class='line'>iOS Simulator SDKs:
+</span><span class='line'>        Simulator - iOS 6.1             -sdk iphonesimulator6.1
+</span><span class='line'>        Simulator - iOS 7.1             -sdk iphonesimulator7.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使えるSDK一覧が表示されます。</p>
+
+<h2>ビルド設定を表示する</h2>
+
+<p><code>/usr/bin/xcodebuild -list</code></p>
+
+<p>プロジェクトで使えるビルド設定一覧と
+デフォルトで何が有効になっているかを表示できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Information about project <span class="s2">&quot;CustomHTTPProtocol&quot;</span>:
+</span><span class='line'>    Targets:
+</span><span class='line'>        CustomHTTPProtocol
+</span><span class='line'>
+</span><span class='line'>    Build Configurations:
+</span><span class='line'>        Debug
+</span><span class='line'>        Release
+</span><span class='line'>
+</span><span class='line'>    If no build configuration is specified and -scheme is not passed <span class="k">then</span> <span class="s2">&quot;Release&quot;</span> is used.
+</span><span class='line'>
+</span><span class='line'>    Schemes:
+</span><span class='line'>        CustomHTTPProtocol
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ビルドする</h2>
+
+<p><code>/usr/bin/xcodebuild -target CustomHTTPProtocol -configuration Debug build CONFIGURATION_BUILD_DIR=./app</code><br/>
+でビルドを実行できます。<br/>
+target、configurationを指定し、appディレクトリにappファイルとdSYMファイルを作成します。</p>
+
+<h1>appを署名してipaファイルにする</h1>
+
+<p><code>/usr/bin/xcrun -sdk iphoneos PackageApplication -v (appファイルへのフルパス) -o (保存するipaファイルのフルパス)</code><br/>
+何故か相対パスだとうまくいきませんでした</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-08-28 07:42:55 +0900" pubdate>2014年 08月 28日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/08/28/ios-build/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/08/28/ios-build/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
