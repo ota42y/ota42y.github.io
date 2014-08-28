@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-08-28T07:57:44+09:00</updated>
+  <updated>2014-08-29T07:49:49+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った]]></title>
+    <link href="http://ota42y.com/blog/2014/08/29/hubot-post-server/"/>
+    <updated>2014-08-29T07:42:48+09:00</updated>
+    <id>http://ota42y.com/blog/2014/08/29/hubot-post-server</id>
+    <content type="html"><![CDATA[<p>実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、<br/>
+Webサーバへのアクセスに対して反応することができます。<br/>
+例: <a href="https://github.com/github/hubot/blob/master/src/scripts/httpd.coffee">scripts/httpd.coffee</a></p>
+
+<p>今回はその機能を利用し、<br/>
+/hubot/send_messageにPOSTされたデータをチャットに流すスクリプトを作りました。</p>
+
+<p>Hubot以外のアプリからこのURLを叩くことで、hubotの接続しているチャットに対して簡単にデータを送信できます。</p>
+
+<script src="https://gist.github.com/ota42y/5b4342b36ba845d40197.js"></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[コマンドラインからiOSアプリをビルドする]]></title>
@@ -2113,44 +2132,6 @@ action_dispatch.request_idとして設定している。<br/>
 <p>ここまではRails以前のいろんな処理が多かったですが、<br/>
 ここから先はActiveRecordが現れ始め、いかにもRails本体の動きっぽい感じがします。<br/>
 が、長くなりすぎたのでいったん切ります。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[WordpressからOctopressへ]]></title>
-    <link href="http://ota42y.com/blog/2013/09/25/octopress/"/>
-    <updated>2013-09-25T07:49:00+09:00</updated>
-    <id>http://ota42y.com/blog/2013/09/25/octopress</id>
-    <content type="html"><![CDATA[<p>前までブログシステムにはWordpressを使っていたんですが、<br/>
-個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。</p>
-
-<p>そこで、ちょっと話題になってる(らしい)<a href="http://octopress.org/">Octopress</a>を導入してみました。</p>
-
-<h1>Octopressって何？</h1>
-
-<p><a href="http://jekyllrb.com/">jekyll</a>を使って、<br/>
-github pages上で簡単にブログを作れるシステムらしいです。</p>
-
-<p>テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、<br/>
-githubのへデプロイすることでweb上に公開できるシステムになります。</p>
-
-<p>そのため、gitを使ってブログのデプロイやバックアップを作れるという、<br/>
-まさにプログラマー向けなブログシステムです。<br/>
-公式サイトにも、A blogging framework for hackersって書いてありますしね。</p>
-
-<p>インストールの仕方は<a href="http://qiita.com/ota42y/items/dcb32930d1153aa9f452">こっち</a></p>
-
-<h1>運用方法</h1>
-
-<p>デプロイする<a href="https://github.com/ota42y/ota42y.github.io">githubのリポジトリ</a>には、このブログのファイルが全部入ってます。<br/>
-ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、<br/>
-このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。</p>
-
-<p>そこで、公開用のリポジトリとは別に、<br/>
-Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。<br/>
-こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。</p>
-
-<p>今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。</p>
 ]]></content>
   </entry>
   
