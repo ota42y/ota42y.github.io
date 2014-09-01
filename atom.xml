@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-01T08:09:10+09:00</updated>
+  <updated>2014-09-02T07:54:16+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -14,7 +14,26 @@
 
   
   <entry>
-    <title type="html"><![CDATA[MongoDBでインデックスとexplainを使う]]></title>
+    <title type="html"><![CDATA[golangでmongodbを使う]]></title>
+    <link href="http://ota42y.com/blog/2014/09/02/go-mongodb/"/>
+    <updated>2014-09-02T07:40:29+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/02/go-mongodb</id>
+    <content type="html"><![CDATA[<p>mgoというライブラリが便利そうです。<br/>
+<a href="http://labix.org/mgo">http://labix.org/mgo</a></p>
+
+<p>以下はtwitterからツイートを取ってきて、<br/>
+未登録のツイートをmongodbに保存するスクリプトです。</p>
+
+<p>今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、<br/>
+件数を数えてその結果をチェックしています。</p>
+
+<script src="https://gist.github.com/ota42y/7e493449beec0fe73f62.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MongoDB]]></title>
     <link href="http://ota42y.com/blog/2014/09/01/mongodb-explain/"/>
     <updated>2014-09-01T08:01:51+09:00</updated>
     <id>http://ota42y.com/blog/2014/09/01/mongodb-explain</id>
@@ -1612,62 +1631,6 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 </span><span class='line'>x        = - (3) (10進数に変換)
 </span><span class='line'>x        = - 3</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GitHub Kaigiに行ってきた]]></title>
-    <link href="http://ota42y.com/blog/2014/06/03/github-kaigi/"/>
-    <updated>2014-06-03T22:49:12+09:00</updated>
-    <id>http://ota42y.com/blog/2014/06/03/github-kaigi</id>
-    <content type="html"><![CDATA[<h1>スライドまとめ</h1>
-
-<ul>
-<li><p><a href="http://hiroki.jp/githubkaigi">GitHub実践入門は活用するためのガイドブック</a></p></li>
-<li><p><a href="https://speakerdeck.com/shibayu36/hatenaburogutimufalsekai-fa-hurotogithub">はてなブログチームの開発フローとGitHub</a></p></li>
-<li><p><a href="https://speakerdeck.com/a_matsuda/oss-to-github">OSS と GitHub</a></p></li>
-<li><p><a href="https://speakerdeck.com/cobyism/how-github-works-github-kaigi-tokyo-2014">How GitHub Works (GitHub Kaigi, Tokyo, 2014)</a></p></li>
-<li><p><a href="http://www.slideshare.net/inao/githubkaigi">GitHubで雑誌・書籍を作る</a></p></li>
-<li><p><a href="https://www.dropbox.com/s/utaud80bk5egse3/Atom%20%E2%80%93%20GitHub%20Kaigi_jp.pdf">Atom, the Programmable Text Editor</a></p></li>
-<li><p><a href="https://speakerdeck.com/yuku/ru-men-shu-nihazai-tutenai-git-and-github-tips">入門書には載ってない Git &amp; GitHub Tips</a></p></li>
-</ul>
-
-
-<p>LTは用事があって聞けませんでした…(´･_･`)</p>
-
-<h1>感想</h1>
-
-<h2>全体的な感想</h2>
-
-<p>githubのハックや事例はもちろんですが、<br/>
-どちらかというとgithubを利用してのワークフローとか、<br/>
-エンジニアを含む環境がどう変化したか的なお話が多かったです。</p>
-
-<p>一番はじめの、GitHub実践入門や、Gitのティップスに関しては、<br/>
-すぐに導入したいような内容ばかりでした。<br/>
-特に前者は凄くいい本っぽかったので(載せられてる)、会場で注文しましたw</p>
-
-<p><img src="http://ota42y.com/images/posts/2014-06-03-github-kaigi.jpg" alt="届いた" /></p>
-
-<h2>Atomの発表が凄かった</h2>
-
-<p>他にもいろいろ発表がありましたが、特に私にヒットしたのは、Atomのプレゼンでした。</p>
-
-<p>AtomはChromiumベースで、エディタ部分をHTML5/CSSで作っているので、<br/>
-Developer Toolsを使ってWebサイトのように、Atomのデザインを変えられます。<br/>
-プレゼン中に変更している様子を見せてもらいましたが、<br/>
-本当に何でもリアルタイムで変更できて凄く未来を感じました。</p>
-
-<p>また、DOM要素を直接いじることで、APIが提供されていなくても、<br/>
-画面上の全ての要素(Macのメニューバーに出てる部分ですら！）を<br/>
-自由に変更することが可能で、javascriptをコンソールに書いて、<br/>
-新しいメニューがついたのは本当に度肝を抜かれました。</p>
-
-<p>スライドの資料には映像がないため、<br/>
-後日映像がアップロードされるのを待つしか無いのが凄く残念ですが、<br/>
-とにかく未来を感じるエディタでした。</p>
-
-<p>もの凄くおもしろかったので、第二回開催はまだですかね。</p>
 ]]></content>
   </entry>
   
