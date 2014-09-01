@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-02T07:54:16+09:00</updated>
+  <updated>2014-09-02T07:55:22+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -33,7 +33,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[MongoDB]]></title>
+    <title type="html"><![CDATA[MongoDBでインデックスとexplainを使う]]></title>
     <link href="http://ota42y.com/blog/2014/09/01/mongodb-explain/"/>
     <updated>2014-09-01T08:01:51+09:00</updated>
     <id>http://ota42y.com/blog/2014/09/01/mongodb-explain</id>
