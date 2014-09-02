@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-02T07:55:22+09:00</updated>
+  <updated>2014-09-03T07:38:50+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[mgoのConsistencyについて]]></title>
+    <link href="http://ota42y.com/blog/2014/09/03/mgo-consistency/"/>
+    <updated>2014-09-03T07:12:45+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/03/mgo-consistency</id>
+    <content type="html"><![CDATA[<p>mgoのサンプルにあった<br/>
+<code>session.SetMode(mgo.Monotonic, true)</code><br/>
+の意味がよくわからないので調べてみました。</p>
+
+<p>結論から書きますと、これは複数DBを利用した際の、<br/>
+データの一貫性をどの程度保証するかの設定です。</p>
+
+<h1>一貫性制御</h1>
+
+<p>mgoには複数のDB間での一貫性を制御する３種類のモードがあります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">const</span> <span class="p">(</span>
+</span><span class='line'>  <span class="nx">Eventual</span>  <span class="nx">mode</span> <span class="p">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nx">Monotonic</span> <span class="nx">mode</span> <span class="p">=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="nx">Strong</span>    <span class="nx">mode</span> <span class="p">=</span> <span class="mi">2</span>
+</span><span class='line'>  <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>SetModeにこれを渡すことで、モードを切り替えられます。</p>
+
+<p>それぞれの内容は以下の通りです。<br/>
+おそらく一貫性がちゃんとしていくに従って、複雑化&amp;遅くなっていきます。</p>
+
+<h2>Eventual Consistency</h2>
+
+<p>最終的に辻褄が合えばいいよね設定です。<br/>
+データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。</p>
+
+<p>更新済みのノードと、そうでないノードが混在する可能性があるため、<br/>
+どのノードから読み込むのかが固定されない場合、<br/>
+新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…<br/>
+といったことが起きる可能性があるはずです。</p>
+
+<p>同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。</p>
+
+<h2>Monotonic Consistency</h2>
+
+<p>あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。<br/>
+おそらく、値を参照したタイミングで最新かどうかは保証されないが、<br/>
+少なくとも古い値が読み込まれることはない、という状態だと思われます。</p>
+
+<h2>Strong Consistency</h2>
+
+<p>常に必ず最新の値が読み込めるという状態です。<br/>
+一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、<br/>
+注意が必要です。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[golangでmongodbを使う]]></title>
@@ -1571,66 +1631,6 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 <p>とりあえず今のところは、4番が一番いい方法ではないかと考えています。<br/>
 そのためしばらくこれで運用し、また問題が起きた場合、<br/>
 次なる手を考えるとして、今のところは4番で行く予定です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2進数の引き算で補数を使う]]></title>
-    <link href="http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/"/>
-    <updated>2014-07-18T00:00:00+09:00</updated>
-    <id>http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u</id>
-    <content type="html"><![CDATA[<p>2進数の引き算で補数表現を使うと足し算にできることの説明が見あたら無かったのでやってみる</p>
-
-<p>ここでは2の補数表現の求め方がすでに解っている前提で進める、<br/>
-(要するに1000-101=010+1=011は相互に変換可能ということ)</p>
-
-<p>結果がプラスになる場合</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>x        = 5 - 2 (10進数)
-</span><span class='line'>x        = 101 - 010 (2進数に変換)
-</span><span class='line'>x + 1000 = 101 - 010 + 1000  (両辺に+1000)
-</span><span class='line'>x + 1000 = 101 + (1000 - 010)
-</span><span class='line'>x + 1000 = 101 + 110 (2の補数表現)
-</span><span class='line'>x + 1000 = 1011
-</span><span class='line'>x        = 1011 - 1000
-</span><span class='line'>x        = 11
-</span><span class='line'>x        = 3 (10進数に変換)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>結果がマイナスになる場合</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>x        = 2 - 5 (10進数)
-</span><span class='line'>x        = 010 - 101 (2進数に変換)
-</span><span class='line'>x + 1000 = 010 - 101 + 1000  (両辺に+1000)
-</span><span class='line'>x + 1000 = 010 + (1000 - 101)
-</span><span class='line'>x + 1000 = 010 + 011 (2の補数表現)
-</span><span class='line'>x + 1000 = 101
-</span><span class='line'>x        = 101 - 1000
-</span><span class='line'>x        = - (1000 - 101)
-</span><span class='line'>x        = - (11) (2の補数表現)
-</span><span class='line'>x        = - (3) (10進数に変換)
-</span><span class='line'>x        = - 3</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
