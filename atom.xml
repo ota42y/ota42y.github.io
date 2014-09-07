@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-06T11:56:03+09:00</updated>
+  <updated>2014-09-07T09:23:25+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[gitで現在のブランチ名をクリップボードにコピーする]]></title>
+    <link href="http://ota42y.com/blog/2014/09/07/git-copy-current-branch/"/>
+    <updated>2014-09-07T09:19:58+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/07/git-copy-current-branch</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># copy current branch</span>
+</span><span class='line'><span class="nv">ccb</span> <span class="o">=</span> <span class="s2">&quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Jenkinsでブランチ○○をビルドしたいような場合に、<br/>
+jenkinsに渡すために現在のブランチを調べるのが面倒だったので、<br/>
+簡単にコピペできるようにしました。</p>
+
+<p>なお、Mac限定です。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CEDEC2014 9月3日まとめ]]></title>
@@ -1641,116 +1661,6 @@ Mac上ではアプリケーションとして扱われます。</p>
 関数の場合はそのまま関数呼び出しに、クラスの場合は()オペレーターの実行になるようです。</p>
 
 <p><a href="https://www.sgi.com/tech/stl/download.html">参考ソース</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした]]></title>
-    <link href="http://ota42y.com/blog/2014/08/10/evernote-link/"/>
-    <updated>2014-08-10T18:03:43+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/10/evernote-link</id>
-    <content type="html"><![CDATA[<h1>まとめ</h1>
-
-<ul>
-<li>Evernoteのノートリンクの仕様が変わって使い物にならなくなった</li>
-<li>前の仕様でも動くので変換スクリプトを書いた</li>
-<li>ただし、Macではスクリプトの実行方法で問題あり</li>
-</ul>
-
-
-<h1>Evernoteのノートリンク仕様の変更</h1>
-
-<p>Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。</p>
-
-<p><img src="http://ota42y.com/images/posts/2014-08-10-evernote-link.jpg" alt="Evernote link" /></p>
-
-<p>この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。<br/>
-そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。<br/>
-AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、<br/>
-同じようにアプリでノートを開いてくれるため、とても便利でした。</p>
-
-<p>しかし、最近の変更により、https://www.evernote.com/ へのリンクに変わってしまい、<br/>
-ブラウザが起動してノートがEvernoteのサイト上で表示され、<br/>
-そこからさらにEvernoteのアプリが開くという挙動になりました。</p>
-
-<p>これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、<br/>
-オフライン状態ではノートを開くことができなくなってしまいました。</p>
-
-<p>正直使い物にならないレベルになってしまったのですが、<br/>
-幸いなことにevernote:///スキームは未だ有効です。<br/>
-また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。</p>
-
-<h1>リンク置換スクリプトの作成</h1>
-
-<h2>ノートリンクの仕様</h2>
-
-<p><strong><em>以下は予想であり、正確なものではありません</em></strong></p>
-
-<p>Evernoteのhttpsリンクは以下のようになっています。<br/>
-<code>https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/</code><br/>
-対して、evernote:///スキームは以下のようになっています。<br/>
-<code>evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/</code><br/>
-<code>(ノート固有の文字列は二回とも同じ値になります)</code>　　</p>
-
-<p>どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。</p>
-
-<p>Windowsならクリップボードの置換ソフトはたくさんあるのですが、<br/>
-Macでは残念ながらまともな物はありませんでした。</p>
-
-<p>一応、<a href="http://www.clipmenu.com/ja/">ClipMenu</a>は正規表現で置換ができますが、<br/>
-それを実行するまでにかなりキーストロークが必要なため、見送りました。<br/>
-理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。</p>
-
-<h2>リンク置換スクリプト</h2>
-
-<p>結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。<br/>
-事前にclipboard gemをインストールしておく必要があります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">pushd</span> <span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span>
-</span><span class='line'>
-</span><span class='line'>bundle <span class="nb">exec </span>ruby -e <span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">require &#39;clipboard&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s2">url = Clipboard.paste</span>
-</span><span class='line'><span class="s2">r = Regexp.new(\&quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&quot;)</span>
-</span><span class='line'><span class="s2">result = r.match url</span>
-</span><span class='line'><span class="s2">if result</span>
-</span><span class='line'><span class="s2">  new_url = \&quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&quot;</span>
-</span><span class='line'><span class="s2">  p new_url</span>
-</span><span class='line'><span class="s2">  Clipboard.copy new_url</span>
-</span><span class='line'><span class="s2">end</span>
-</span><span class='line'><span class="s2">&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">popd</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これをevernote.commandという名前で保存して、<br/>
-Alfredなどから実行すればいける！！と思ったのですが、<br/>
-実行すると新たなターミナルが起動してスクリプトが実行され、<br/>
-終了後にターミナルがそのまま残るという状態になってしまいました。</p>
-
-<p>毎回ターミナルを消すのは面倒すぎるので、とりあえずこの手法の採用は見送ることにします。</p>
 ]]></content>
   </entry>
   
