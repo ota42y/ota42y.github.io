@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-07T09:23:25+09:00</updated>
+  <updated>2014-09-08T07:49:23+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,180 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[パスワードの文字として避けた方がいい文字]]></title>
+    <link href="http://ota42y.com/blog/2014/09/08/password-word/"/>
+    <updated>2014-09-08T07:44:40+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/08/password-word</id>
+    <content type="html"><![CDATA[<p>ニンテンドー3DSのプリペイドカード入力画面を見て、<br/>
+見間違えやすい文字は使わないようにしてるんだーと気づいたので、<br/>
+他にもそういうのが無いかまとめました。</p>
+
+<p>もちろんaやtに代表されるように、フォントによって形は全然違うため、<br/>
+全ての状況に対して当てはまるとは限りませんが、<br/>
+目安程度としては使えると思います。</p>
+
+<p>横一列が間違える可能性の高い文字集合です。</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="center">0</td>
+<td>o</td>
+<td>O</td>
+<td>Q</td>
+<td>D</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">1</td>
+<td>7</td>
+<td>i</td>
+<td>I</td>
+<td>l</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">2</td>
+<td>z</td>
+<td>Z</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">5</td>
+<td>s</td>
+<td>S</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">6</td>
+<td>b</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">8</td>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">9</td>
+<td>q</td>
+<td>g</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">a</td>
+<td>d</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">c</td>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">k</td>
+<td>K</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">u</td>
+<td>U</td>
+<td>v</td>
+<td>V</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">w</td>
+<td>W</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">x</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">z</td>
+<td>Z</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>まとめると、</p>
+
+<p>数字だけを扱う場合は<br/>
+<code>2 3 4 5 6 8 9 0</code></p>
+
+<p>小文字大文字を区別する場合は<br/>
+<code>3 4 e f h j m n p r y A E F G H J L M N P R Y</code></p>
+
+<p>小文字大文字を区別しない場合は<br/>
+<code>3 4 c e f h j k m n p r t w x w x y z</code></p>
+
+<p>となります。<br/>
+思ったより少ないですね…</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[gitで現在のブランチ名をクリップボードにコピーする]]></title>
@@ -1580,87 +1754,6 @@ Alfredから実行することでターミナルを立ち上げることなく�
 
 <p>github上では.appがフォルダとして扱われていますが、<br/>
 Mac上ではアプリケーションとして扱われます。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[sortやfind_ifの条件指定はどういう動きをしているのか]]></title>
-    <link href="http://ota42y.com/blog/2014/08/11/find-if/"/>
-    <updated>2014-08-11T07:17:02+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/11/find-if</id>
-    <content type="html"><![CDATA[<p>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、<br/>
-関数orオブジェクトを渡すことで条件を自由に設定できます。<br/>
-<a href="http://www.cplusplus.com/reference/algorithm/sort/">参考</a></p>
-
-<p>このとき内部がどういう処理をして渡した関数を呼び出しているのかが気になったので調べました。<br/>
-特に、第三引数にクラスを渡す場合、何故()オペレータに条件を書く必要があるのかが気になりました。</p>
-
-<p>結論としては、実装を見れば簡単に解決しました。</p>
-
-<h1>内部実装</h1>
-
-<h2>find_ifの場合</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">_InputIter</span><span class="p">,</span> <span class="k">class</span> <span class="nc">_Predicate</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kr">inline</span> <span class="n">_InputIter</span> <span class="n">find_if</span><span class="p">(</span><span class="n">_InputIter</span> <span class="n">__first</span><span class="p">,</span> <span class="n">_InputIter</span> <span class="n">__last</span><span class="p">,</span>
-</span><span class='line'>                          <span class="n">_Predicate</span> <span class="n">__pred</span><span class="p">,</span>
-</span><span class='line'>                          <span class="n">input_iterator_tag</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">__first</span> <span class="o">!=</span> <span class="n">__last</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">__pred</span><span class="p">(</span><span class="o">*</span><span class="n">__first</span><span class="p">))</span>
-</span><span class='line'>    <span class="o">++</span><span class="n">__first</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">__first</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>ソートの場合</h2>
-
-<p>ソートは少々複雑なので、該当部分だけ抜き出します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">_RandomAccessIter</span><span class="p">,</span> <span class="k">class</span> <span class="nc">_Tp</span><span class="p">,</span> <span class="k">class</span> <span class="nc">_Compare</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kt">void</span> <span class="n">__unguarded_linear_insert</span><span class="p">(</span><span class="n">_RandomAccessIter</span> <span class="n">__last</span><span class="p">,</span> <span class="n">_Tp</span> <span class="n">__val</span><span class="p">,</span>
-</span><span class='line'>                               <span class="n">_Compare</span> <span class="n">__comp</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">_RandomAccessIter</span> <span class="n">__next</span> <span class="o">=</span> <span class="n">__last</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">--</span><span class="n">__next</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">__comp</span><span class="p">(</span><span class="n">__val</span><span class="p">,</span> <span class="o">*</span><span class="n">__next</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>    <span class="o">*</span><span class="n">__last</span> <span class="o">=</span> <span class="o">*</span><span class="n">__next</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">__last</span> <span class="o">=</span> <span class="n">__next</span><span class="p">;</span>
-</span><span class='line'>    <span class="o">--</span><span class="n">__next</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="o">*</span><span class="n">__last</span> <span class="o">=</span> <span class="n">__val</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>まとめ</h2>
-
-<p>動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。</p>
-
-<p>おそらく、テンプレートの展開時に第三期引数の()を呼び出すように展開されるため、<br/>
-関数の場合はそのまま関数呼び出しに、クラスの場合は()オペレーターの実行になるようです。</p>
-
-<p><a href="https://www.sgi.com/tech/stl/download.html">参考ソース</a></p>
 ]]></content>
   </entry>
   
