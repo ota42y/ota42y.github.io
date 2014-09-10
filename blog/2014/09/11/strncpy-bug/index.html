@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>strncpyははまりやすい - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="strncpyははまりやすい strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 1
+2
+3
+4
+char str[100];
+const char * c = &quot;test&quot;;
+strncpy(str, c, strlen(c)); &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/09/11/strncpy-bug">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">strncpyははまりやすい</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>strncpyは結構はまりどころがあります。</p>
+
+<p>たとえば以下のコードは正しく動作しません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">strncpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>strncpyはコピー先、コピー元、コピー長を引数で取ります。<br/>
+この際、strlen等でコピー元の文字長ぴったりを指定すると、<br/>
+終端文字がコピー先にコピーされません。</p>
+
+<p>そのため、事前に終端文字を設定しておかないと、<br/>
+未初期化の部分まで文字列扱いになります。</p>
+
+<p>以下のコードでその様子をうかがえます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">strncpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">length %lu</span><span class="se">\n</span><span class="s">original length %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">strcat</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s">&quot;.txt&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">length %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>testz
+</span><span class='line'>length 5
+</span><span class='line'>original length 4
+</span><span class='line'>testz.txt
+</span><span class='line'>length 9
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>testという文字列をコピーし、.txtという文字列を追加して、<br/>
+test.txt作る予定が、間に他の値が入っています。</p>
+
+<p>strcatは第一引数の文字列の終わりに第二引数をつなげます。<br/>
+そのため、コピー時に終端文字を設定していなかったため、<br/>
+意図しない文字が間に挟まっています。<br/>
+特にバッファの初期化を忘れていた場合、終端文字がいつ現れるか確定しないため、<br/>
+注意が必要です。</p>
+
+<p>この挙動は文字列の間に置換する場合には重宝しますが、<br/>
+文字列結合などをする場合は気をつける必要があります。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-09-11 07:45:25 +0900" pubdate>2014年 09月 11日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/09/11/strncpy-bug/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/09/11/strncpy-bug/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>

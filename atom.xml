@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-10T07:57:15+09:00</updated>
+  <updated>2014-09-11T07:57:02+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[strncpyははまりやすい]]></title>
+    <link href="http://ota42y.com/blog/2014/09/11/strncpy-bug/"/>
+    <updated>2014-09-11T07:45:25+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/11/strncpy-bug</id>
+    <content type="html"><![CDATA[<p>strncpyは結構はまりどころがあります。</p>
+
+<p>たとえば以下のコードは正しく動作しません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">strncpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>strncpyはコピー先、コピー元、コピー長を引数で取ります。<br/>
+この際、strlen等でコピー元の文字長ぴったりを指定すると、<br/>
+終端文字がコピー先にコピーされません。</p>
+
+<p>そのため、事前に終端文字を設定しておかないと、<br/>
+未初期化の部分まで文字列扱いになります。</p>
+
+<p>以下のコードでその様子をうかがえます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">str</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">strncpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">length %lu</span><span class="se">\n</span><span class="s">original length %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">strcat</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s">&quot;.txt&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">length %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>testz
+</span><span class='line'>length 5
+</span><span class='line'>original length 4
+</span><span class='line'>testz.txt
+</span><span class='line'>length 9
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>testという文字列をコピーし、.txtという文字列を追加して、<br/>
+test.txt作る予定が、間に他の値が入っています。</p>
+
+<p>strcatは第一引数の文字列の終わりに第二引数をつなげます。<br/>
+そのため、コピー時に終端文字を設定していなかったため、<br/>
+意図しない文字が間に挟まっています。<br/>
+特にバッファの初期化を忘れていた場合、終端文字がいつ現れるか確定しないため、<br/>
+注意が必要です。</p>
+
+<p>この挙動は文字列の間に置換する場合には重宝しますが、<br/>
+文字列結合などをする場合は気をつける必要があります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[go runしても分割したファイルが認識されない]]></title>
@@ -1574,51 +1677,6 @@ coffeescriptから変換してるので、<br/>
 大きな問題ではありませんが。</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pixivの検索フィルタ作った]]></title>
-    <link href="http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/"/>
-    <updated>2014-08-20T07:52:49+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter</id>
-    <content type="html"><![CDATA[<p>まとめ</p>
-
-<ul>
-<li>Pixivの検索は全ユーザから</li>
-<li>○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる</li>
-<li>検索結果からフォローしている人を非表示にする拡張作った</li>
-<li>DLは<a href="https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;authuser=1">ここ</a>から</li>
-</ul>
-
-
-<h1>Pixivのイラスト検索でフォロワーを除外できない</h1>
-
-<p>Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、<br/>
-検索結果にフォローしてる人とそうでない人が交じります。</p>
-
-<p>私の場合、<a href="http://www.pixiv.net/bookmark_new_illust.php">フォロー新着作品</a>を全てチェックしているため、<br/>
-検索をする場合は、このイラスト書いてる新しい人を見つけたい！といった目的で行うことがほとんどです。</p>
-
-<p>そのため、フォロワー以外からの検索を行いたいのですが、<br/>
-残念ながらPixivにそのような機能はありませんでした。</p>
-
-<p>というわけで、Chrome拡張で実現しました。</p>
-
-<h1>フィルタの基本機能</h1>
-
-<p>DLは<a href="https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;authuser=1">ここ</a>から。</p>
-
-<p>検索結果にはユーザのユニークIDが含まれているため、<br/>
-自分のフォローしている人と一致していれば非表示にしています。</p>
-
-<p>また、毎回通信するのは無駄が多いため、<br/>
-事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。<br/>
-そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。</p>
-
-<h1>ソースコード</h1>
-
-<p><a href="https://github.com/ota42y/pixiv_follower_filter">https://github.com/ota42y/pixiv_follower_filter</a></p>
 ]]></content>
   </entry>
   
