@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-11T07:57:02+09:00</updated>
+  <updated>2014-09-12T07:44:45+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linux起動時に特定のシェルスクリプトを実行する]]></title>
+    <link href="http://ota42y.com/blog/2014/09/12/init-d/"/>
+    <updated>2014-09-12T07:40:38+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/12/init-d</id>
+    <content type="html"><![CDATA[<p>hubotを自動で実行してほしいなーと思ったので、<br/>
+OSの起動時にスクリプトを自動実行する方法を調べました。</p>
+
+<p>まず、<code>/etc/init.d/</code>
+に実行可能なスクリプトを置きます。</p>
+
+<p>次に、スクリプトの二行目に、起動設定を書きます。<br/>
+<code># chkconfig: 345 99 01</code></p>
+
+<p>一つ目がランレベル、二つ目が起動順番、三つ目が終了順番になります。<br/>
+起動・終了は小さい数値から行われるため、<br/>
+前述の例ですと一番最後に起動し、一番最初に終了します。</p>
+
+<p>ランレベルについては
+<a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%AC%E3%83%99%E3%83%AB">Wikipediaの記事</a>
+を参考にしてください</p>
+
+<p>最後に、<code>chkconfig --add (init.dに置いたスクリプト名)</code>を実行して登録を行います。</p>
+
+<p>これで、起動時にスクリプトが実行されます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[strncpyははまりやすい]]></title>
@@ -1591,92 +1619,6 @@ Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロー�
 ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。</p>
 
 <p><a href="http://alpha.mixi.co.jp/2011/10798/">http://alpha.mixi.co.jp/2011/10798/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[IntelliJ IDEAで node.jsとmochaを使ってテストする]]></title>
-    <link href="http://ota42y.com/blog/2014/08/21/intellij-node/"/>
-    <updated>2014-08-21T07:40:33+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/21/intellij-node</id>
-    <content type="html"><![CDATA[<p>node.js+mocha+coffeescriptな環境で開発をしていたところ、<br/>
-IntelliJ IDEAの設定方法が調べても無かったのでメモ。</p>
-
-<h1>Node.jsプラグインのインストール</h1>
-
-<p>Node.jsプラグインは公式から提供されています。<br/>
-そのため、IntelliJ のPreferences からPluginsを選び、<br/>
-NodeJSプラグインを選択するだけでインストール出来ます。</p>
-
-<h1>ビルド設定</h1>
-
-<p>以下の画像の通りです。</p>
-
-<p><img src="http://ota42y.com/images/posts/2014-08-21-intellij-node.png" alt="設定画像" /></p>
-
-<ul>
-<li>Node interpreter<br/>
-node.jsの実行ファイルの位置を設定します。</li>
-<li>working directory<br/>
-対象のディレクトリ</li>
-<li>Mocha package<br/>
-Mochaの実行ファイルの位置</li>
-<li>Extra Mocha options<br/>
-Mochaの設定を指定します
-詳しくは後述</li>
-<li>Test Directory<br/>
-Mochaのテストが入っている場所</li>
-</ul>
-
-
-<h1>Mochaのオプション</h1>
-
-<p>私の環境では主に次のような設定をしています、</p>
-
-<ul>
-<li>coffeescriptを利用している</li>
-<li>spec形式で出力</li>
-<li>共通で読み込むファイルがある</li>
-</ul>
-
-
-<p>これは、以下のオプションを入れることで実現できます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>--compilers
-</span><span class='line'>coffee:coffee-script/register
-</span><span class='line'>--reporter
-</span><span class='line'>spec
-</span><span class='line'>--require
-</span><span class='line'>coffee-script
-</span><span class='line'>--require
-</span><span class='line'>test/test_helper.coffee
-</span><span class='line'>--colors</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>問題点</h1>
-
-<p>以上で設定は終わりですが、いくつか問題点があります。</p>
-
-<ul>
-<li>デバッガが動かない<br/>
-coffeescriptから変換してるので、<br/>
-ブレークポイントがうまく動きません</li>
-<li>エラーになったテストに飛べない<br/>
-テストがエラーになったとしても、そのテストの位置に飛ぶ機能がありません。<br/>
-最も、IDEを使わずに開発している時と同じく、<br/>
-テストメッセージを頼りにテストファイルに移動すればいいので、<br/>
-大きな問題ではありませんが。</li>
-</ul>
-
 ]]></content>
   </entry>
   

@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>Linux起動時に特定のシェルスクリプトを実行する - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="Linux起動時に特定のシェルスクリプトを実行する hubotを自動で実行してほしいなーと思ったので、
+OSの起動時にスクリプトを自動実行する方法を調べました。 まず、/etc/init.d/
+に実行可能なスクリプトを置きます。 次に、スクリプトの二行目に、起動設定を書きます。
+# &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/09/12/init-d">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">Linux起動時に特定のシェルスクリプトを実行する</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>hubotを自動で実行してほしいなーと思ったので、<br/>
+OSの起動時にスクリプトを自動実行する方法を調べました。</p>
+
+<p>まず、<code>/etc/init.d/</code>
+に実行可能なスクリプトを置きます。</p>
+
+<p>次に、スクリプトの二行目に、起動設定を書きます。<br/>
+<code># chkconfig: 345 99 01</code></p>
+
+<p>一つ目がランレベル、二つ目が起動順番、三つ目が終了順番になります。<br/>
+起動・終了は小さい数値から行われるため、<br/>
+前述の例ですと一番最後に起動し、一番最初に終了します。</p>
+
+<p>ランレベルについては
+<a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%AC%E3%83%99%E3%83%AB">Wikipediaの記事</a>
+を参考にしてください</p>
+
+<p>最後に、<code>chkconfig --add (init.dに置いたスクリプト名)</code>を実行して登録を行います。</p>
+
+<p>これで、起動時にスクリプトが実行されます。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-09-12 07:40:38 +0900" pubdate>2014年 09月 12日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/09/12/init-d/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/09/12/init-d/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
