@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-12T07:44:45+09:00</updated>
+  <updated>2014-09-13T13:23:41+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[cronやinit.dでsudoを実行するとエラーになって実行できない]]></title>
+    <link href="http://ota42y.com/blog/2014/09/13/sudo-error/"/>
+    <updated>2014-09-13T13:21:06+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/13/sudo-error</id>
+    <content type="html"><![CDATA[<p>cronやinit.d以下に置いたスクリプトで、<br/>
+別の以外のユーザで作業しようと思い、sudoを実行したところ、<br/>
+以下のようなエラーが出て実行できませんでした。</p>
+
+<p><code>sudo: sorry, you must have a tty to run sudo</code></p>
+
+<p>どうやら、ttyを使わない場合、sudoは権限に関係なく実行できないようです。</p>
+
+<p>sudoersにある<br/>
+<code>Defaults    requiretty</code><br/>
+をコメントアウトすることで解決しました。</p>
+
+<p><a href="http://www.idimmu.net/2013/09/27/sudo-sorry-must-tty-run-sudo/">参考</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux起動時に特定のシェルスクリプトを実行する]]></title>
@@ -1412,213 +1433,6 @@ Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロー�
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mocha+chai+sinsonでテストを書く為に必要な最低限の知識]]></title>
-    <link href="http://ota42y.com/blog/2014/08/22/mocha-test/"/>
-    <updated>2014-08-22T07:52:16+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/22/mocha-test</id>
-    <content type="html"><![CDATA[<h1>まとめ</h1>
-
-<ul>
-<li>Mochaではrspecっぽい感じにテストが書ける</li>
-<li>ただし、done()を呼ぶ必要がある等、細かい部分に差異がある</li>
-<li>sinonにはいろいろ便利機能がある</li>
-</ul>
-
-
-<h1>Mochaの使い方</h1>
-
-<p>coffeescriptを前提にしています。</p>
-
-<h2>テストの書き方</h2>
-
-<p>Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、<br/>
-そのitを呼び出す関数をdescribeに渡すしようです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">describe</span> <span class="s">&quot;test root&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
-</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="nf">(done) -&gt;</span>
-</span><span class='line'>        <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span> <span class="nx">getUserName</span><span class="p">,</span> <span class="s">&quot;user&quot;</span>
-</span><span class='line'>        <span class="nx">done</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ただし、it関数では必ずdone()を呼び出す必要があります。<br/>
-これを呼ばない場合は終了を待ち続け、<br/>
-一定時間後にタイムアウトしてテストが失敗した扱いになります。</p>
-
-<h2>beforeの使い方</h2>
-
-<p> rspecのbeforeにあたるものは、beforeEachになります。<br/>
- なお、変数を他のブロックに渡したい場合、<br/>
- 以下のようにdescribeの中に変数名を書いておいて、<br/>
- beforeEachのなかで設定する必要があるみたいです。<br/>
-<a href="http://stackoverflow.com/questions/20584233/mocha-pass-variable-to-the-next-test">参考</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">describe</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
-</span><span class='line'>  <span class="nv">room_name = </span><span class="kc">undefined</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">beforeEach</span> <span class="nf">(done) -&gt;</span>
-</span><span class='line'>    <span class="nv">room_name = </span><span class="s">&quot;test_room&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">done</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">describe</span> <span class="s">&quot;functions&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
-</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;executeNoteShow&quot;</span><span class="p">,</span> <span class="nf">(done) -&gt;</span>
-</span><span class='line'>        <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span> <span class="nx">getRoomName</span><span class="p">(</span><span class="nx">room_name</span><span class="p">),</span> <span class="nx">room_name</span>
-</span><span class='line'>        <span class="nx">done</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>pendingテストの作り方</h2>
-
-<p>テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'>  <span class="nx">describe</span> <span class="s">&quot;functions&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
-</span><span class='line'>      <span class="nx">it</span> <span class="s">&quot;pending test&quot;</span> <span class="o">//</span> <span class="err">関数を渡さない場合</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>      <span class="o">//</span> <span class="nx">it</span><span class="p">.</span><span class="nx">skip</span><span class="err">の場合、引数を渡しても実行されずにスキップする</span>
-</span><span class='line'>      <span class="nx">it</span><span class="p">.</span><span class="nx">skip</span> <span class="s">&quot;pending test 2&quot;</span><span class="p">,</span> <span class="nf">-&gt;</span>
-</span><span class='line'>          <span class="nx">done</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>外部ファイル読み込み</h2>
-
-<p>test.coffeeで</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
-</span><span class='line'>  <span class="err">なんかいろいろ</span>
-</span><span class='line'><span class="nv">module.exports.Test = </span><span class="nx">Test</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>と、クラスを宣言し、module.exportsに代入します。
-その後、使いたいファイル側で</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">Test = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;../src/test.coffee&#39;</span><span class="p">).</span><span class="nx">Test</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>と書くと、以降Testでそのクラスが呼び出せます。</p>
-
-<h1>chaiの使い方</h1>
-
-<h2>assertを使う</h2>
-
-<p>前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、<br/>
-別ライブラリのchaiを読み込む必要があります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">global.assert = </span><span class="nx">require</span><span class="p">(</span><span class="s">&quot;chai&quot;</span><span class="p">).</span><span class="nx">assert</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで、 assert.equalや assert.notEqualが使えます。</p>
-
-<h1>sinonの使い方</h1>
-
-<h2>mockやstubを使う</h2>
-
-<p>Mochaにはmockやstubの為の物は含まれていないので、<br/>
-今度はsinonを読み込む必要があります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">global.sinon = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;simon&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使い方は以下の通りです</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="o">//</span> <span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="err">が</span><span class="nx">stub</span><span class="err">になる</span>
-</span><span class='line'><span class="nv">robot = </span><span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
-</span><span class='line'><span class="nv">robot.brain = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="o">//</span> <span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeNoteShow</span><span class="err">を置き換え、</span>
-</span><span class='line'><span class="o">//</span> <span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeMessage</span><span class="err">実行時に、</span>
-</span><span class='line'><span class="o">//</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="err">の引数で一回だけ実行されたかをチェックする</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">spy = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span><span class="nx">hubot_note</span><span class="p">,</span> <span class="s">&quot;executeNoteShow&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="nx">spy</span><span class="p">.</span><span class="nx">withArgs</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
-</span><span class='line'><span class="nv">response = </span><span class="nx">hubot_note</span><span class="p">.</span><span class="nx">executeMessage</span><span class="p">(</span><span class="nx">room_name</span><span class="p">,</span> <span class="s">&quot;hubot note show&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="nx">assert</span><span class="p">.</span><span class="nx">ok</span> <span class="nx">spy</span><span class="p">.</span><span class="nx">withArgs</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">).</span><span class="nx">calledOnce</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>時間変更の仕方</h2>
-
-<p><code>new Date()</code>などによって日付がちゃんと設定されたかどうかを確認したい場合、<br/>
-グローバルなDate()部分を置き換える必要があります。</p>
-
-<p>…というのはよくあることなので、sinon側で既に用意されています。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="vi">@clock = </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
-</span><span class='line'>  <span class="s">&quot;setTimeout&quot;</span><span class="p">,</span> <span class="s">&quot;clearTimeout&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="s">&quot;setInterval&quot;</span><span class="p">,</span> <span class="s">&quot;clearInterval&quot;</span><span class="p">,</span> <span class="s">&quot;Date&quot;</span><span class="p">)</span><span class="o">`</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで、以降のDateコマンドは第一引数で指定した0(1970年1月1日0時0分0秒)を必ず返すようになるため、<br/>
-この時間かどうかをチェックすれば大丈夫です。<br/>
-また、以下のように戻り値のオブジェクトのtickメソッドにより、<br/>
-指定したミリ秒だけ時間を進めることもできます。<br/>
-<code>@clock.tick(3600000)</code></p>
-
-<h2>sinonのその他の機能</h2>
-
-<p>sinonに関しては他にもいろいろ有用なものがあります。<br/>
-ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。</p>
-
-<p><a href="http://alpha.mixi.co.jp/2011/10798/">http://alpha.mixi.co.jp/2011/10798/</a></p>
 ]]></content>
   </entry>
   
