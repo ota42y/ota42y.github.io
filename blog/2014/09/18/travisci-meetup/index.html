@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>Travis CI Meetup Tokyoに行ってきた - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="Travis CI Meetup Tokyoに行ってきた 前半はTravis CIのデモ、真ん中てCEOのお話、最後にLTと三部構成でした。
+こちらに動画があるそうです。
+http://www.ustream.tv/recorded/52769967 デモは一通りのTravis &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/09/18/travisci-meetup">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">Travis CI Meetup Tokyoに行ってきた</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>前半はTravis CIのデモ、真ん中てCEOのお話、最後にLTと三部構成でした。<br/>
+こちらに動画があるそうです。<br/>
+<a href="http://www.ustream.tv/recorded/52769967">http://www.ustream.tv/recorded/52769967</a></p>
+
+<p>デモは一通りのTravis CIの使い方をデモしていただきました。<br/>
+何となくわかってるデフォルトの挙動などにちゃんと説明がはいり、<br/>
+基礎知識を固めるには凄く良かったです。<br/>
+また、いくつか知らない機能(sudo false)や、<br/>
+.travis.ymlの書式をオンラインで確認できる<a href="http://lint.travis-ci.org/">Travis WebLint</a>等が紹介されていました。</p>
+
+<p>なお、デモに使ったリポジトリは以下にあるようです。<br/>
+<a href="https://github.com/BanzaiMan/travis-intro-tokyo">https://github.com/BanzaiMan/travis-intro-tokyo</a></p>
+
+<p>CEOの話では、現在のjob数やVM数、サーバの数などを話していただきました。<br/>
+それと後半では環境によって良くはまる10個が紹介されていました。<br/>
+ファイルシステムのケースセンシティブや、GNUとBSDの違いだったり、aptから古いバージョンが消えたり、<br/>
+タイムゾーンやOSの違いによる環境構築や<a href="https://github.com/travis-ci/travis-ci/issues/2755">言語自体のバグ</a>等々…<br/>
+ここ最近に当たった奴がいくつかあり頭が痛かったです…(´･_･`)</p>
+
+<p>最後のLTではいろんな発表が行われました。<br/>
+見つけた分だけまとめておきます。</p>
+
+<h2>Automated releasing iOS app with Travis CI</h2>
+
+<p><a href="https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci">https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci</a><br/>
+私はJenkinsを使っていますが、似たような構成でやってるので参考になりました。<br/>
+ただ、ビルド時間が5倍ぐらい長いので、こちらのプロジェクトにそのまま導入は難しそうです…<br/>
+xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。</p>
+
+<h2>Travis CI API LT</h2>
+
+<p><a href="https://speakerdeck.com/pinzolo/travis-ci-api-lt">https://speakerdeck.com/pinzolo/travis-ci-api-lt</a><br/>
+Travis CIのAPIと、gemの利用例です。<br/>
+パッと見た限り、必要最低限は揃ってそうなので、hubotから叩くみたいなことが出来そうです。</p>
+
+<h2>QUnit on Travis CI @shigemk2</h2>
+
+<p><a href="https://shigemk2.github.io/travisci_jp/#/step-1">https://shigemk2.github.io/travisci_jp/#/step-1</a><br/>
+jsのライブラリを作った際の利用例でした。<br/>
+実際に作る際に参考に出来そうでした。</p>
+
+<h2>When was the build passing?</h2>
+
+<p><a href="http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/">http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/</a><br/>
+依存してるライブラリが更新すると、いつの間にかテストが落ちるようになってるけど、<br/>
+テストが実行されないとわからないので、活発でないプロジェクトだと大変だよね…って話です。</p>
+
+<p>これに対して、定期的にPRを送る<a href="http://tachikoma.io/">Tachikoma.io - Interval Pull Request App</a>というものを作ったそうです。<br/>
+bundle updateをしてPR送るみたいなこともやってくれるため、とりあえず仕掛けておいて損は無さそうです。</p>
+
+<h2>Testing your app with Selenium on Travis CI by Yusuke Ando</h2>
+
+<p><a href="https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1">https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1</a><br/>
+Travis CIでのSelenium導入の話です。<br/>
+FirefoxやX等ははじめから入っているため、立ち上げるだけでいいらしく、<br/>
+面倒なインストールをしなくていいためとても楽そうでした。</p>
+
+<h1>懇親会</h1>
+
+<p>DeNAさんがお寿司を出してくれました！！！！！！！！</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>お寿司だヽ( ･∀･)ﾉ <a href="https://twitter.com/hashtag/travisci_jp?src=hash">#travisci_jp</a> <a href="http://t.co/zrmrhO6WMw">pic.twitter.com/zrmrhO6WMw</a></p>&mdash; おおた (@ota42y) <a href="https://twitter.com/ota42y/status/512210649699463168">2014, 9月 17</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>懇親会で聞いたところ、大体の人がJenkinsは保守が死ねるよね…<br/>
+って言っていたので、やっぱりみんな大変なんだな…となりました(´･_･`)<br/>
+やはりYAMLで設定できるTravis CIの方が楽ですよね…</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-09-18 08:09:43 +0900" pubdate>2014年 09月 18日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/09/18/travisci-meetup/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/09/18/travisci-meetup/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
