@@ -117,7 +117,14 @@ http://www.ustream.tv/recorded/52769967 デモは一通りのTravis &hellip;">
 <p><a href="https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci">https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci</a><br/>
 私はJenkinsを使っていますが、似たような構成でやってるので参考になりました。<br/>
 ただ、ビルド時間が5倍ぐらい長いので、こちらのプロジェクトにそのまま導入は難しそうです…<br/>
-xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。</p>
+xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。<br/>
+(追記: 発表者様から指摘がありました)　　</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/ota42y">@ota42y</a> 僕の話し方が悪かったのですが、xcarchiveだから、というわけではなくて、AppStoreとAdHocのプロビジョニングは互換性があるので、xcarchiveからipaにするところでプロビジョニングをAdHocにしています。同じビルドで署名だけ変える方法です。</p>&mdash; kishikawa katsumi (@k_katsumi) <a href="https://twitter.com/k_katsumi/status/512399910176432130">2014, 9月 18</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 <h2>Travis CI API LT</h2>
 

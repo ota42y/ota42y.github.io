@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-19T07:57:16+09:00</updated>
+  <updated>2014-09-19T08:00:22+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -83,7 +83,14 @@
 <p><a href="https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci">https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci</a><br/>
 私はJenkinsを使っていますが、似たような構成でやってるので参考になりました。<br/>
 ただ、ビルド時間が5倍ぐらい長いので、こちらのプロジェクトにそのまま導入は難しそうです…<br/>
-xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。</p>
+xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。<br/>
+(追記: 発表者様から指摘がありました)　　</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/ota42y">@ota42y</a> 僕の話し方が悪かったのですが、xcarchiveだから、というわけではなくて、AppStoreとAdHocのプロビジョニングは互換性があるので、xcarchiveからipaにするところでプロビジョニングをAdHocにしています。同じビルドで署名だけ変える方法です。</p>&mdash; kishikawa katsumi (@k_katsumi) <a href="https://twitter.com/k_katsumi/status/512399910176432130">2014, 9月 18</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 <h2>Travis CI API LT</h2>
 
