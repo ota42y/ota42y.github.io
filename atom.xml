@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-18T08:16:00+09:00</updated>
+  <updated>2014-09-19T07:57:16+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Twitterのoath_callbackは設定していないと上書きできない]]></title>
+    <link href="http://ota42y.com/blog/2014/09/19/twitter-callback/"/>
+    <updated>2014-09-19T07:49:01+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/19/twitter-callback</id>
+    <content type="html"><![CDATA[<p>Twitterは<a href="https://dev.twitter.com/oauth/reference/post/oauth/request_token">oauth/request_token</a>へのアクセス時に、<br/>
+認証後のコールバック先をoauth_callbackパラメータで上書きできます。</p>
+
+<p>Twitterの開発者画面からは独自スキーマは登録できませんが、<br/>
+この機能で上書きをすると任意のスキーマをコールバックに設定できます。</p>
+
+<p>ただし、Twitterに何らかのURL(ダミーでも可)を設定してないと上書きできないようです。</p>
+
+<p>たとえば以下のようなコードを書いた場合、Twitterの開発者画面でURLを登録していないと、<br/>
+<code>401 Authorization Required (OAuth::Unauthorized)</code>が帰ってきますが、<br/>
+<code>http://example.com</code>のようにダミーURLを登録すると認証画面用のURLが帰ってきます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;oauth&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">consumer_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="n">consumer_secret</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="n">consumer</span> <span class="o">=</span> <span class="ss">OAuth</span><span class="p">:</span><span class="ss">:Consumer</span><span class="o">.</span><span class="n">new</span> <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="ss">site</span><span class="p">:</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
+</span><span class='line'><span class="n">request_token</span> <span class="o">=</span> <span class="n">consumer</span><span class="o">.</span><span class="n">get_request_token</span>  <span class="n">oauth_callback</span><span class="p">:</span> <span class="s2">&quot;ota42y://test&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Please visit here: </span><span class="si">#{</span><span class="n">request_token</span><span class="o">.</span><span class="n">authorize_url</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考: <a href="http://qiita.com/johnny-miyake/items/a432cc4fea3b1b8c6b1e">Twitter の AccessToken と AccessTokenSecret を Ruby で取得する</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Travis CI Meetup Tokyoに行ってきた]]></title>
@@ -1424,123 +1462,6 @@ Webサーバへのアクセスに対して反応することができます。<b
 
 <script src="https://gist.github.com/ota42y/5b4342b36ba845d40197.js"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[コマンドラインからiOSアプリをビルドする]]></title>
-    <link href="http://ota42y.com/blog/2014/08/28/ios-build/"/>
-    <updated>2014-08-28T07:42:55+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/28/ios-build</id>
-    <content type="html"><![CDATA[<p>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、<br/>
-普通にコマンドラインからビルドを実行していただけなので、
-使っているコマンドをまとめました。</p>
-
-<p>なお、以下のサンプルプロジェクトを使って確認しました。<br/>
-<a href="https://developer.apple.com/library/ios/samplecode/CustomHTTPProtocol/Introduction/Intro.html#//apple_ref/doc/uid/DTS40013653">CustomHTTPProtocol</a></p>
-
-<h1>/usr/bin/agvtool</h1>
-
-<h2>バージョンを設定する</h2>
-
-<p><code>/usr/bin/agvtool new-version -all (VERSION_NUMBER)</code><br/>
-xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更できます。</p>
-
-<h2>バージョンを確認する</h2>
-
-<p><code>/usr/bin/agvtool mvers -terse</code>
-アプリのバージョン番号を確認出来ます。<br/>
-プロジェクト設定のVersionの部分ですね。<br/>
-(mversはmarketing-versionの略です)</p>
-
-<h1>使える証明書を確認する</h1>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/bin/security find-identity -p codesigning -v
-</span><span class='line'>  1<span class="o">)</span> ABCDEFGHIJKLMNOPQRSTUVWXYZ<span class="o">(</span>識別子<span class="o">)</span> <span class="s2">&quot;iPhone Developer: ota42y (XXXXXXXX識別子)&quot;</span>
-</span><span class='line'>     1 valid identities found
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このコンピュータで使えるcodesigningの一覧が取れます。</p>
-
-<h1>/usr/bin/xcodebuild</h1>
-
-<h2>使えるSDKを確認する</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/bin/xcodebuild -showsdks
-</span><span class='line'>OS X SDKs:
-</span><span class='line'>        OS X 10.8                       -sdk macosx10.8
-</span><span class='line'>        OS X 10.9                       -sdk macosx10.9
-</span><span class='line'>
-</span><span class='line'>iOS SDKs:
-</span><span class='line'>        iOS 7.1                         -sdk iphoneos7.1
-</span><span class='line'>
-</span><span class='line'>iOS Simulator SDKs:
-</span><span class='line'>        Simulator - iOS 6.1             -sdk iphonesimulator6.1
-</span><span class='line'>        Simulator - iOS 7.1             -sdk iphonesimulator7.1
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使えるSDK一覧が表示されます。</p>
-
-<h2>ビルド設定を表示する</h2>
-
-<p><code>/usr/bin/xcodebuild -list</code></p>
-
-<p>プロジェクトで使えるビルド設定一覧と
-デフォルトで何が有効になっているかを表示できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Information about project <span class="s2">&quot;CustomHTTPProtocol&quot;</span>:
-</span><span class='line'>    Targets:
-</span><span class='line'>        CustomHTTPProtocol
-</span><span class='line'>
-</span><span class='line'>    Build Configurations:
-</span><span class='line'>        Debug
-</span><span class='line'>        Release
-</span><span class='line'>
-</span><span class='line'>    If no build configuration is specified and -scheme is not passed <span class="k">then</span> <span class="s2">&quot;Release&quot;</span> is used.
-</span><span class='line'>
-</span><span class='line'>    Schemes:
-</span><span class='line'>        CustomHTTPProtocol
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>ビルドする</h2>
-
-<p><code>/usr/bin/xcodebuild -target CustomHTTPProtocol -configuration Debug build CONFIGURATION_BUILD_DIR=./app</code><br/>
-でビルドを実行できます。<br/>
-target、configurationを指定し、appディレクトリにappファイルとdSYMファイルを作成します。</p>
-
-<h1>appを署名してipaファイルにする</h1>
-
-<p><code>/usr/bin/xcrun -sdk iphoneos PackageApplication -v (appファイルへのフルパス) -o (保存するipaファイルのフルパス)</code><br/>
-何故か相対パスだとうまくいきませんでした</p>
 ]]></content>
   </entry>
   
