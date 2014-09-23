@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>C++で少しでもビルド速度を速くする方法 - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="C++で少しでもビルド速度を速くする方法 結論 キャッシュを使う
+不要なinclude削除
+static or dynamic library化する
+並列コンパイルする
+分散コンパイルする
+いいパソコンを使う C++のビルドをちょっとでも高速化したかったので、 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/09/23/cpp-build">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">C++で少しでもビルド速度を速くする方法</h2>
+    
+  </header>
+
+  <div class="entry_content"><h1>結論</h1>
+
+<ul>
+<li>キャッシュを使う</li>
+<li>不要なinclude削除</li>
+<li>static or dynamic library化する</li>
+<li>並列コンパイルする</li>
+<li>分散コンパイルする</li>
+<li>いいパソコンを使う</li>
+</ul>
+
+
+<p>C++のビルドをちょっとでも高速化したかったので、<br/>
+どうすれば早くなるのかを調べたのでまとめました。</p>
+
+<p>どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。</p>
+
+<h1>キャッシュを使う</h1>
+
+<p>ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、<br/>
+2回目以降のビルドは差分だけをコンパイルし直すため早くなります。<br/>
+といっても、多分使わない方が珍しいと思いますが。</p>
+
+<h1>不要なinclude削除</h1>
+
+<p><a href="http://ota42y.com/blog/2014/09/22/cpp-include/">C++で不要なincludeを減らす</a>のように、<br/>
+不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。</p>
+
+<h1>Static Library or Dynamic Library化する</h1>
+
+<p>切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、<br/>
+本体のコンパイル時間が短縮されます。<br/>
+簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。</p>
+
+<p>Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、<br/>
+コンパイル時間は省略できるため大幅に早くなります。</p>
+
+<p>Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。<br/>
+代わりに、ライブラリの部分だけ入れ換えるといったことができます。<br/>
+ただし、iOSでは使えません…(´・_・`)　</p>
+
+<h1>並列コンパイルする</h1>
+
+<p>makeにはjオプションがあり、指定した数だけ並列実行されます。<br/>
+多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。</p>
+
+<h1>分散コンパイルする</h1>
+
+<p>distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。<br/>
+ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)</p>
+
+<h1>いいパソコンを使う</h1>
+
+<p>当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。<br/>
+ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-09-23 09:15:48 +0900" pubdate>2014年 09月 23日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/09/23/cpp-build/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/09/23/cpp-build/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>

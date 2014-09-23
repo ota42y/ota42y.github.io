@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-22T08:03:23+09:00</updated>
+  <updated>2014-09-23T09:27:16+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[C++で少しでもビルド速度を速くする方法]]></title>
+    <link href="http://ota42y.com/blog/2014/09/23/cpp-build/"/>
+    <updated>2014-09-23T09:15:48+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/23/cpp-build</id>
+    <content type="html"><![CDATA[<h1>結論</h1>
+
+<ul>
+<li>キャッシュを使う</li>
+<li>不要なinclude削除</li>
+<li>static or dynamic library化する</li>
+<li>並列コンパイルする</li>
+<li>分散コンパイルする</li>
+<li>いいパソコンを使う</li>
+</ul>
+
+
+<p>C++のビルドをちょっとでも高速化したかったので、<br/>
+どうすれば早くなるのかを調べたのでまとめました。</p>
+
+<p>どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。</p>
+
+<h1>キャッシュを使う</h1>
+
+<p>ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、<br/>
+2回目以降のビルドは差分だけをコンパイルし直すため早くなります。<br/>
+といっても、多分使わない方が珍しいと思いますが。</p>
+
+<h1>不要なinclude削除</h1>
+
+<p><a href="http://ota42y.com/blog/2014/09/22/cpp-include/">C++で不要なincludeを減らす</a>のように、<br/>
+不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。</p>
+
+<h1>Static Library or Dynamic Library化する</h1>
+
+<p>切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、<br/>
+本体のコンパイル時間が短縮されます。<br/>
+簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。</p>
+
+<p>Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、<br/>
+コンパイル時間は省略できるため大幅に早くなります。</p>
+
+<p>Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。<br/>
+代わりに、ライブラリの部分だけ入れ換えるといったことができます。<br/>
+ただし、iOSでは使えません…(´・_・`)　</p>
+
+<h1>並列コンパイルする</h1>
+
+<p>makeにはjオプションがあり、指定した数だけ並列実行されます。<br/>
+多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。</p>
+
+<h1>分散コンパイルする</h1>
+
+<p>distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。<br/>
+ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)</p>
+
+<h1>いいパソコンを使う</h1>
+
+<p>当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。<br/>
+ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[C++で不要なincludeを減らす]]></title>
@@ -1765,25 +1828,6 @@ http://docs.mongodb.org/manual/reference/method/cursor.explain/</p>
 
 <script src="https://gist.github.com/ota42y/258616adf5087d2d2186.js"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[sending authentication information]]></title>
-    <link href="http://ota42y.com/blog/2014/08/30/sending-authentication-information/"/>
-    <updated>2014-08-30T10:07:58+09:00</updated>
-    <id>http://ota42y.com/blog/2014/08/30/sending-authentication-information</id>
-    <content type="html"><![CDATA[<p>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、<br/>
-<code>'sending authentication information', system error: 32".</code><br/>
-といったエラーが出て、mysqlへのログインすら不可能になってしまいました。</p>
-
-<p>どうやら、MySQL5.6から<br/>
-<code>innodb_file_per_table</code>のデフォルト値が変わったのが原因みたいです。</p>
-
-<p>my.cnfに<br/>
-<code>innodb_file_per_table = OFF</code><br/>
-を書くことでで解決します。<br/>
-<a href="http://bugs.mysql.com/bug.php?id=71960">参考</a></p>
 ]]></content>
   </entry>
   
