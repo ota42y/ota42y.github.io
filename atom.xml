@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-26T07:40:24+09:00</updated>
+  <updated>2014-09-29T08:00:47+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[npmにパッケージを公開する手順]]></title>
+    <link href="http://ota42y.com/blog/2014/09/29/npm-publish/"/>
+    <updated>2014-09-29T07:49:16+09:00</updated>
+    <id>http://ota42y.com/blog/2014/09/29/npm-publish</id>
+    <content type="html"><![CDATA[<p>とても簡単でしたがつい忘れるのでメモ。</p>
+
+<h1>公開手順</h1>
+
+<ol>
+<li><p>npmjsに開発者登録をします。<br/>
+<a href="https://www.npmjs.org/">https://www.npmjs.org/</a></p></li>
+<li><p><code>npm adduser</code>で~/.npmrcにnpmへのログイントークンを保存します。</p></li>
+<li><p>package.jsonに必要事項を書きます。<br/>
+<a href="https://github.com/ota42y/stamina-calculator/blob/master/package.json">こんな感じ</a>ですね。</p></li>
+<li><p><code>npm publish</code>で公開</p></li>
+<li><p>アップグレード版の配布も<code>npm publish</code>で可能です。<br/>
+(ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)</p></li>
+</ol>
+
+
+<h1>非公開手順</h1>
+
+<p>間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、<br/>
+<code>npm unpublish パッケージ名前@バージョン</code>で削除出来ます。<br/>
+何も指定しない場合全てのバージョンが対象になりますが、<code>--force</code>をつける必要があります。</p>
+
+<p>ただし、削除してしまうので、そのパッケージに依存しているパッケージが悲惨なことになります。<br/>
+そのため、<code>npm deprecate</code>の方がアップグレードを促せるし推奨すると<a href="https://www.npmjs.org/doc/cli/npm-unpublish.html">公式サイト</a>には書いてあります。<br/>
+unpublishは間違えて公開した場合用ですね。</p>
+
+<p>なお、全てのバージョンを削除するとnpmからパッケージの情報も削除されます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Debian squeezeでShellShock対策]]></title>
@@ -1780,114 +1815,6 @@ case sensitiveな環境に持って行った場合に特に死にやすいです
 
 <script src="https://gist.github.com/ota42y/7e493449beec0fe73f62.js"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MongoDBでインデックスとexplainを使う]]></title>
-    <link href="http://ota42y.com/blog/2014/09/01/mongodb-explain/"/>
-    <updated>2014-09-01T08:01:51+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/01/mongodb-explain</id>
-    <content type="html"><![CDATA[<h1>事前データ準備</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> for (var i=0; i&lt;100; i++) { db.test_object.save({name: "test1", num: i}) }
-</span><span class='line'> for (var i=0; i&lt;100; i++) { db.test_object.save({name: "test2", num: i*1000}) }
-</span><span class='line'> for (var i=0; i&lt;100; i++) { db.test_object.save({name: "test3", num: i*10000}) }</span></code></pre></td></tr></table></div></figure>
-
-
-<p>stringは3種類100個ずつ、numはuniqueなオブジェクトを作成します。</p>
-
-<h1>インデックス作成</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.test_object.ensureIndex({"name": 1})</span></code></pre></td></tr></table></div></figure>
-
-
-<p>で、test_objectコレクションのnameに対してインデックスを作成できます。</p>
-
-<p>また、</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.test_object.getIndexes()</span></code></pre></td></tr></table></div></figure>
-
-
-<p>でインデックスを確認出来ます。</p>
-
-<p>なお、MongoDBのばあい、インデックスに使用したキーが存在しない場合もあります。
-そのような場合は、キーを持っていないものはNULLとして扱われます。</p>
-
-<h1>explain</h1>
-
-<p>検索したときにindexが使われているかはexplainで確認出来ます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.test_object.find({"name": "test1", "num": 10}).explain()
-</span><span class='line'>{
-</span><span class='line'>        "cursor" : "BtreeCursor name_1",
-</span><span class='line'>        "isMultiKey" : false,
-</span><span class='line'>        "n" : 1,
-</span><span class='line'>        "nscannedObjects" : 100,
-</span><span class='line'>        "nscanned" : 100,
-</span><span class='line'>        "nscannedObjectsAllPlans" : 100,
-</span><span class='line'>        "nscannedAllPlans" : 100,
-</span><span class='line'>        "scanAndOrder" : false,
-</span><span class='line'>        "indexOnly" : false,
-</span><span class='line'>        "nYields" : 0,
-</span><span class='line'>        "nChunkSkips" : 0,
-</span><span class='line'>        "millis" : 0,
-</span><span class='line'>        "indexBounds" : {
-</span><span class='line'>                "string" : [
-</span><span class='line'>                        [
-</span><span class='line'>                                "test1",
-</span><span class='line'>                                "test1"
-</span><span class='line'>                        ]
-</span><span class='line'>                ]
-</span><span class='line'>        },
-</span><span class='line'>        "server" : "ota42y:27017",
-</span><span class='line'>        "filterSet" : false
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>cursorが BasicCursorではなく、<br/>
-getIndexesで表示されたインデックス名が表示されていれば大丈夫です。</p>
-
-<p>nscannedはキーを使って絞り込みをしたオブジェクトの数です。<br/>
-この場合は事前の設定通り、100個の&#8221;test1&#8221;をキーに持つオブジェクトが引っかかっています。<br/>
-その後numキーによって検索が行われ、<br/>
-&#8220;n&#8221;の個数分(1件)表示されます。</p>
-
-<p>できる限りn=nscannedに近くなるようにインデックスを貼ったり、<br/>
-検索クエリを工夫するといいと思います。</p>
-
-<p>詳しくはこちら<br/>
-http://docs.mongodb.org/manual/reference/method/cursor.explain/</p>
 ]]></content>
   </entry>
   
