@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-09-29T08:00:47+09:00</updated>
+  <updated>2014-10-02T07:41:28+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ソシャゲ用のスタミナ計算機を作った]]></title>
+    <link href="http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/"/>
+    <updated>2014-10-02T07:35:04+09:00</updated>
+    <id>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc</id>
+    <content type="html"><![CDATA[<p>作りました。</p>
+
+<p>スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー<br/>
+みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。</p>
+
+<h1>使い方</h1>
+
+<h2>初期化</h2>
+
+<p>スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。<br/>
+なお、指定は秒で行います。<br/>
+<code>stamina_calculator = new StaminaCalculator 6*60</code><br/>
+この例ですと、6分で1スタミナ回復するゲームになります。</p>
+
+<h2>指定した値までの回復時間(getNextMaxStaminaTime)</h2>
+
+<p>現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。<br/>
+Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。<br/>
+<code>stamina_calculator.getNextMaxStaminaTime(10, 60)</code></p>
+
+<h2>指定した倍数の値まで回復する時間(getMultipleRecoveryTime)</h2>
+
+<p>現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。<br/>
+今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。<br/>
+<code>next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)</code></p>
+
+<h2>結果をDateオブジェクトにする</h2>
+
+<p>メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。<br/>
+Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。<br/>
+<code>stamina_calculator.convertToDate(second)</code></p>
+
+<h1>サンプルコード</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>StaminaCalculator = require('stamina-calculator').StaminaCalculator;
+</span><span class='line'>
+</span><span class='line'>stamina_calculator = new StaminaCalculator 6*60
+</span><span class='line'>
+</span><span class='line'>second = stamina_calculator.getNextMaxStaminaTime(10, 60)
+</span><span class='line'>
+</span><span class='line'>console.log second
+</span><span class='line'># 今から何秒後にスタミナが５０回復するか
+</span><span class='line'>
+</span><span class='line'>console.log stamina_calculator.convertToDate(second)
+</span><span class='line'># 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[npmにパッケージを公開する手順]]></title>
@@ -1796,25 +1861,6 @@ case sensitiveな環境に持って行った場合に特に死にやすいです
 <p>常に必ず最新の値が読み込めるという状態です。<br/>
 一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、<br/>
 注意が必要です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[golangでmongodbを使う]]></title>
-    <link href="http://ota42y.com/blog/2014/09/02/go-mongodb/"/>
-    <updated>2014-09-02T07:40:29+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/02/go-mongodb</id>
-    <content type="html"><![CDATA[<p>mgoというライブラリが便利そうです。<br/>
-<a href="http://labix.org/mgo">http://labix.org/mgo</a></p>
-
-<p>以下はtwitterからツイートを取ってきて、<br/>
-未登録のツイートをmongodbに保存するスクリプトです。</p>
-
-<p>今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、<br/>
-件数を数えてその結果をチェックしています。</p>
-
-<script src="https://gist.github.com/ota42y/7e493449beec0fe73f62.js"></script>
-
 ]]></content>
   </entry>
   

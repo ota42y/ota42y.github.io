@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>ソシャゲ用のスタミナ計算機を作った - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="ソシャゲ用のスタミナ計算機を作った 作りました。 スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー
+みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。 使い方 初期化 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/10/02/social-game-stamina-calc">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">ソシャゲ用のスタミナ計算機を作った</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>作りました。</p>
+
+<p>スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー<br/>
+みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。</p>
+
+<h1>使い方</h1>
+
+<h2>初期化</h2>
+
+<p>スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。<br/>
+なお、指定は秒で行います。<br/>
+<code>stamina_calculator = new StaminaCalculator 6*60</code><br/>
+この例ですと、6分で1スタミナ回復するゲームになります。</p>
+
+<h2>指定した値までの回復時間(getNextMaxStaminaTime)</h2>
+
+<p>現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。<br/>
+Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。<br/>
+<code>stamina_calculator.getNextMaxStaminaTime(10, 60)</code></p>
+
+<h2>指定した倍数の値まで回復する時間(getMultipleRecoveryTime)</h2>
+
+<p>現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。<br/>
+今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。<br/>
+<code>next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)</code></p>
+
+<h2>結果をDateオブジェクトにする</h2>
+
+<p>メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。<br/>
+Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。<br/>
+<code>stamina_calculator.convertToDate(second)</code></p>
+
+<h1>サンプルコード</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>StaminaCalculator = require('stamina-calculator').StaminaCalculator;
+</span><span class='line'>
+</span><span class='line'>stamina_calculator = new StaminaCalculator 6*60
+</span><span class='line'>
+</span><span class='line'>second = stamina_calculator.getNextMaxStaminaTime(10, 60)
+</span><span class='line'>
+</span><span class='line'>console.log second
+</span><span class='line'># 今から何秒後にスタミナが５０回復するか
+</span><span class='line'>
+</span><span class='line'>console.log stamina_calculator.convertToDate(second)
+</span><span class='line'># 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-10-02 07:35:04 +0900" pubdate>2014年 10月 02日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
