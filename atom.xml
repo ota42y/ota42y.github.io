@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-10-02T07:41:28+09:00</updated>
+  <updated>2014-10-03T07:49:16+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HDDのパーティションテーブルが消えてからのデータ復旧]]></title>
+    <link href="http://ota42y.com/blog/2014/10/03/hdd-post/"/>
+    <updated>2014-10-03T07:36:29+09:00</updated>
+    <id>http://ota42y.com/blog/2014/10/03/hdd-post</id>
+    <content type="html"><![CDATA[<p>先日デスクトップPCのデータ用HDDが吹っ飛びました。<br/>
+原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。<br/>
+復旧に成功したのでその手順をメモっておきます。</p>
+
+<h1>問題推定</h1>
+
+<p>初めは何故データが消えたのかわからなかったため、その調査から始めました。<br/>
+消えたのはデータ用HDDで、Windows本体は問題なく起動していたため、WindowsからHDDを見ると、<br/>
+未フォーマット状態のディスクとして認識され、パーティションスタイルの選択から始まっていました。</p>
+
+<p>HDDは数ヶ月前に新調したものであり、異音やエラーなどの問題も無かったため、物理的な可能性は薄いと考えました。<br/>
+また、直前に大量にデータを書き込んでもいないため、データを削除した線も薄そうです。</p>
+
+<p>さらに、一部のデータが読み込めなくなるのではなく、全データが一度に読み取り不能になったことから、<br/>
+何らかの要因でパーティションが消えてデータが読み取り不能になり、<br/>
+データ自体は残っているのではないかと考えました。</p>
+
+<h1>パーティションの確認</h1>
+
+<p>運良く手元にLinuxの起動ディスクがあったため、とりあえずパーティションがどうなっているかを確認しました。</p>
+
+<p>手順としては以下のようになります。<br/>
+なお、HDDがsdaにマウントされていると仮定します。</p>
+
+<ul>
+<li>ddコマンドでHDDの先頭をコピーする<br/>
+ddコマンドはディスクからファイルやディスクにデータをコピーできるコマンドです。<br/>
+<code>sudo dd if=/dev/sda of=/tmp/hdd count=100</code><br/>
+のようにすることで、sdaの先頭から100ブロック分を/tmp/hddファイルにコピーします。</li>
+<li>hexdumpコマンドで中身を見る<br/>
+hexdumpコマンドはファイルの中身を16進数で出力します。<br/>
+<code>hexdump /tmp/hdd</code></li>
+</ul>
+
+
+<p>私の場合、hexdumpの出力が先頭50MBぐらい全て0だらけだったので、<br/>
+パーティションが全て0埋めされて消えていました。</p>
+
+<p>そのため、次にパーティションの復活を試みます。</p>
+
+<h1>TestDiskでパーティション復活</h1>
+
+<p>壊れたディスクはPBRにしていたため、MBRと比べて大変になる場合が多いらしいですが、<br/>
+TestDiskを使うと特に問題なく修復できました。</p>
+
+<p>詳しい使い方はこちら。<br/>
+<a href="http://uiuicy.cs.land.to/testdisk1.html">【TestDisk】について</a></p>
+
+<p>私の場合、これでNTFSのパーティションを修復できましたが、<br/>
+何故か書き込んでいないはずのWindowsディスクが壊れてしまい、<br/>
+データと引き替えにWindowsが消えてしまいました…</p>
+
+<p>幸いWindowsディスクには特に重要なデータを入れていなかったのと、<br/>
+Macからデータを読み出すことができたために難を逃れました。</p>
+
+<p>念のため、Windowsディスクは外して作業をした方がよさそうです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ソシャゲ用のスタミナ計算機を作った]]></title>
@@ -1801,66 +1865,6 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
 CentOSだと普通はcase sensitiveなので注意です。<br/>
 特にCのincludeは大文字小文字を区別せずに動くため、<br/>
 case sensitiveな環境に持って行った場合に特に死にやすいです…(´・_・`)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mgoのConsistencyについて]]></title>
-    <link href="http://ota42y.com/blog/2014/09/03/mgo-consistency/"/>
-    <updated>2014-09-03T07:12:45+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/03/mgo-consistency</id>
-    <content type="html"><![CDATA[<p>mgoのサンプルにあった<br/>
-<code>session.SetMode(mgo.Monotonic, true)</code><br/>
-の意味がよくわからないので調べてみました。</p>
-
-<p>結論から書きますと、これは複数DBを利用した際の、<br/>
-データの一貫性をどの程度保証するかの設定です。</p>
-
-<h1>一貫性制御</h1>
-
-<p>mgoには複数のDB間での一貫性を制御する３種類のモードがあります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">const</span> <span class="p">(</span>
-</span><span class='line'>  <span class="nx">Eventual</span>  <span class="nx">mode</span> <span class="p">=</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="nx">Monotonic</span> <span class="nx">mode</span> <span class="p">=</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="nx">Strong</span>    <span class="nx">mode</span> <span class="p">=</span> <span class="mi">2</span>
-</span><span class='line'>  <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>SetModeにこれを渡すことで、モードを切り替えられます。</p>
-
-<p>それぞれの内容は以下の通りです。<br/>
-おそらく一貫性がちゃんとしていくに従って、複雑化&amp;遅くなっていきます。</p>
-
-<h2>Eventual Consistency</h2>
-
-<p>最終的に辻褄が合えばいいよね設定です。<br/>
-データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。</p>
-
-<p>更新済みのノードと、そうでないノードが混在する可能性があるため、<br/>
-どのノードから読み込むのかが固定されない場合、<br/>
-新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…<br/>
-といったことが起きる可能性があるはずです。</p>
-
-<p>同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。</p>
-
-<h2>Monotonic Consistency</h2>
-
-<p>あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。<br/>
-おそらく、値を参照したタイミングで最新かどうかは保証されないが、<br/>
-少なくとも古い値が読み込まれることはない、という状態だと思われます。</p>
-
-<h2>Strong Consistency</h2>
-
-<p>常に必ず最新の値が読み込めるという状態です。<br/>
-一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、<br/>
-注意が必要です。</p>
 ]]></content>
   </entry>
   
