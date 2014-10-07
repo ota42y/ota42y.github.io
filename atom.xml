@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-10-05T11:42:34+09:00</updated>
+  <updated>2014-10-08T07:46:11+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[goでtime.Timeをmysqlから読む]]></title>
+    <link href="http://ota42y.com/blog/2014/10/08/go-mysql-time/"/>
+    <updated>2014-10-08T07:44:37+09:00</updated>
+    <id>http://ota42y.com/blog/2014/10/08/go-mysql-time</id>
+    <content type="html"><![CDATA[<p>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…<br/>
+<code>sql: Scan error on column index 3: unsupported driver -&gt; Scan pair: []uint8 -&gt; *time.Time</code></p>
+
+<p>どうやらDSNに<code>parseTime=true</code>オプションをつける必要があるようです(何故かは不明)<br/>
+<code>db, err := sql.Open("mysql", "username:passy@/database_name?parseTime=true")</code></p>
+
+<p>参考リンク<br/>
+<a href="https://github.com/go-sql-driver/mysql#timetime-support">https://github.com/go-sql-driver/mysql#timetime-support</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[進捗どうですか？を訪ねるhubotスクリプトを作った]]></title>
@@ -1814,26 +1830,6 @@ time.Sleep等で処理を止めておく必要があります。</p>
 
 <p>となります。<br/>
 思ったより少ないですね…</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[gitで現在のブランチ名をクリップボードにコピーする]]></title>
-    <link href="http://ota42y.com/blog/2014/09/07/git-copy-current-branch/"/>
-    <updated>2014-09-07T09:19:58+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/07/git-copy-current-branch</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># copy current branch</span>
-</span><span class='line'><span class="nv">ccb</span> <span class="o">=</span> <span class="s2">&quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Jenkinsでブランチ○○をビルドしたいような場合に、<br/>
-jenkinsに渡すために現在のブランチを調べるのが面倒だったので、<br/>
-簡単にコピペできるようにしました。</p>
-
-<p>なお、Mac限定です。</p>
 ]]></content>
   </entry>
   
