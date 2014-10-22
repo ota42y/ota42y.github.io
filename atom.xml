@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-10-08T07:46:11+09:00</updated>
+  <updated>2014-10-23T07:46:04+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,147 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[javascriptの関数リテラルではインスタンス変数にアクセスできない]]></title>
+    <link href="http://ota42y.com/blog/2014/10/23/javascript-callback/"/>
+    <updated>2014-10-23T07:41:23+09:00</updated>
+    <id>http://ota42y.com/blog/2014/10/23/javascript-callback</id>
+    <content type="html"><![CDATA[<p>関数リテラルではローカル変数には自由にアクセスできるので、<br/>
+ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</p>
+
+<p>以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、<br/>
+実行時にエラーになります。<br/>
+(coffeescriptで書いていますがjavascriptと同じ結果です)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
+</span><span class='line'>  <span class="nv">hello: </span><span class="nf">(num) -&gt;</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">num</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">call: </span><span class="nf">(test2) -&gt;</span>
+</span><span class='line'>    <span class="nx">@hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">test2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">@hello</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nx">Test2</span>
+</span><span class='line'>  <span class="nv">call: </span><span class="nf">(callback) -&gt;</span>
+</span><span class='line'>    <span class="nx">callback</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>関数リテラルはそれを作ったオブジェクトとは別のオブジェクトから呼び出されるらしく、<br/>
+またその時のthis(coffeescriptなので@hello(2)はthis.hello(2)と等価です)は、<br/>
+そのオブジェクトになり、メソッドがないため失敗するようです。</p>
+
+<p>以下のように、一度thisを待避させることで呼び出すことが出来ます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
+</span><span class='line'>  <span class="nv">hello: </span><span class="nf">(num) -&gt;</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">num</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">call: </span><span class="nf">(test2) -&gt;</span>
+</span><span class='line'>    <span class="nx">@hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">self = </span><span class="k">this</span>
+</span><span class='line'>    <span class="nx">test2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="nx">self</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nx">Test2</span>
+</span><span class='line'>  <span class="nv">call: </span><span class="nf">(callback) -&gt;</span>
+</span><span class='line'>    <span class="nx">callback</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>完全なコードはこちら</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
+</span><span class='line'>  <span class="nv">hello: </span><span class="nf">(num) -&gt;</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">num</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">call: </span><span class="nf">(test2) -&gt;</span>
+</span><span class='line'>    <span class="vi">@test = </span><span class="s">&quot;test&quot;</span>
+</span><span class='line'>    <span class="nx">@hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">self = </span><span class="k">this</span>
+</span><span class='line'>    <span class="nx">test2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nf">-&gt;</span>
+</span><span class='line'>      <span class="c1"># ここで@hello(2) はエラー</span>
+</span><span class='line'>      <span class="nx">self</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1"># Test2オブジェクトでもないので、これもエラー</span>
+</span><span class='line'>      <span class="c1"># @world()</span>
+</span><span class='line'>      <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nx">Test2</span>
+</span><span class='line'>  <span class="nv">call: </span><span class="nf">(callback) -&gt;</span>
+</span><span class='line'>    <span class="nx">callback</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">world: </span><span class="nf">-&gt;</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;world&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">test = </span><span class="k">new</span> <span class="nx">Test</span>
+</span><span class='line'><span class="nv">test2 = </span><span class="k">new</span> <span class="nx">Test2</span>
+</span><span class='line'><span class="nx">test</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">test2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[goでtime.Timeをmysqlから読む]]></title>
@@ -1656,180 +1797,6 @@ time.Sleep等で処理を止めておく必要があります。</p>
 
 <script src="https://gist.github.com/ota42y/d8c0d2426bb5dc0cf9e9.js"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[パスワードの文字として避けた方がいい文字]]></title>
-    <link href="http://ota42y.com/blog/2014/09/08/password-word/"/>
-    <updated>2014-09-08T07:44:40+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/08/password-word</id>
-    <content type="html"><![CDATA[<p>ニンテンドー3DSのプリペイドカード入力画面を見て、<br/>
-見間違えやすい文字は使わないようにしてるんだーと気づいたので、<br/>
-他にもそういうのが無いかまとめました。</p>
-
-<p>もちろんaやtに代表されるように、フォントによって形は全然違うため、<br/>
-全ての状況に対して当てはまるとは限りませんが、<br/>
-目安程度としては使えると思います。</p>
-
-<p>横一列が間違える可能性の高い文字集合です。</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="center"></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td align="center">0</td>
-<td>o</td>
-<td>O</td>
-<td>Q</td>
-<td>D</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">1</td>
-<td>7</td>
-<td>i</td>
-<td>I</td>
-<td>l</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">2</td>
-<td>z</td>
-<td>Z</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">5</td>
-<td>s</td>
-<td>S</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">6</td>
-<td>b</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">8</td>
-<td>B</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">9</td>
-<td>q</td>
-<td>g</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">a</td>
-<td>d</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">c</td>
-<td>C</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">k</td>
-<td>K</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">u</td>
-<td>U</td>
-<td>v</td>
-<td>V</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">w</td>
-<td>W</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">x</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">z</td>
-<td>Z</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-
-<p>まとめると、</p>
-
-<p>数字だけを扱う場合は<br/>
-<code>2 3 4 5 6 8 9 0</code></p>
-
-<p>小文字大文字を区別する場合は<br/>
-<code>3 4 e f h j m n p r y A E F G H J L M N P R Y</code></p>
-
-<p>小文字大文字を区別しない場合は<br/>
-<code>3 4 c e f h j k m n p r t w x w x y z</code></p>
-
-<p>となります。<br/>
-思ったより少ないですね…</p>
 ]]></content>
   </entry>
   
