@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-10-23T07:46:04+09:00</updated>
+  <updated>2014-10-26T14:09:21+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linux上でrubyのPTYを使うと、Errno::EIOが出る]]></title>
+    <link href="http://ota42y.com/blog/2014/10/26/pty-ieo-error/"/>
+    <updated>2014-10-26T14:06:39+09:00</updated>
+    <id>http://ota42y.com/blog/2014/10/26/pty-ieo-error</id>
+    <content type="html"><![CDATA[<p>以下のコードはMac OS X上だと上手く動きますが、Linux上だと<br/>
+<code>Errno::EIO: Input/output error @ io_fillbuf</code>
+というエラーが起きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;pty&#39;</span>
+</span><span class='line'><span class="no">PTY</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;ls&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">pid</span><span class="o">|</span>
+</span><span class='line'>    <span class="k">until</span> <span class="n">r</span><span class="o">.</span><span class="n">eof?</span> <span class="k">do</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="n">r</span><span class="o">.</span><span class="n">readline</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうやら、読み込んだ際にBSDだとnilになりますが、GNU/LinuxだとErrno::EIOが発生する仕様らしいです。</p>
+
+<p><a href="http://stackoverflow.com/questions/10238298/ruby-on-linux-pty-goes-away-without-eof-raises-errnoeio">Ruby on Linux PTY goes away without EOF, raises Errno::EIO</a><br/>
+にあるように、resqueするSafePtyを作ることで回避できます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[javascriptの関数リテラルではインスタンス変数にアクセスできない]]></title>
@@ -1782,20 +1813,6 @@ go run *.goか、必要なファイルを全てオプションとして渡す必
 </span><span class='line'>main file
 </span><span class='line'>div file
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[golangでcronを使う]]></title>
-    <link href="http://ota42y.com/blog/2014/09/09/golang-cron/"/>
-    <updated>2014-09-09T07:32:37+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/09/golang-cron</id>
-    <content type="html"><![CDATA[<p>cronというライブラリがあるので、それを使うととても簡単です。
-なお、終了すると当然ながら実行しないので、
-time.Sleep等で処理を止めておく必要があります。</p>
-
-<script src="https://gist.github.com/ota42y/d8c0d2426bb5dc0cf9e9.js"></script>
 
 ]]></content>
   </entry>
