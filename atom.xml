@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-10-26T14:09:21+09:00</updated>
+  <updated>2014-10-28T07:39:50+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[スクフェス用の機能が詰まったHubotパッケージを作った]]></title>
+    <link href="http://ota42y.com/blog/2014/10/28/hubot-scfes/"/>
+    <updated>2014-10-28T07:34:32+09:00</updated>
+    <id>http://ota42y.com/blog/2014/10/28/hubot-scfes</id>
+    <content type="html"><![CDATA[<p><a href="http://lovelive.bushimo.jp/">スクフェス</a>用の色々便利な機能が入ったHubotパッケージを作りました。<br/>
+<a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>
+
+<p>今のところ主な機能は2つです。</p>
+
+<h2>スタミナがMaxになる時間になったら通知する</h2>
+
+<p><code>hubot scfes remind stamina 10 50</code><br/>
+で、スタミナの現在値が10、最大値が50の場合に、Maxになる時刻に通知してくれます。<br/>
+それ以外の値の場合は調節してください。</p>
+
+<h2>スタミナがnの倍数になったときに通知する</h2>
+
+<p><code>hubot scfes remind stamina 10 50 25</code><br/>
+で、スタミナの現在値が10、最大値が50として、25の倍数の時に通知してくれます。<br/>
+EXでちょうど使い切れるタイミングで通知するといった使い方を想定しています。</p>
+
+<h2>未実装機能</h2>
+
+<p>イベント終了までにどれくらいスタミナが回復するかとか、<br/>
+レベルアップするのはいつぐらいになるかとか、<br/>
+そういった頭の中で適当に計算してる奴を機能化していこうと思います。</p>
+
+<p>ちなみにこいつは前に作った<a href="https://github.com/ota42y/stamina-calculator">stamina-calculator</a>を内部で使用しています。<br/>
+node.jsで細かくパッケージに分けて開発ってどうやるんだろうなーと思って、実益と練習がてら作った感じです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux上でrubyのPTYを使うと、Errno::EIOが出る]]></title>
@@ -1728,92 +1761,6 @@ test.txt作る予定が、間に他の値が入っています。</p>
 
 <p>この挙動は文字列の間に置換する場合には重宝しますが、<br/>
 文字列結合などをする場合は気をつける必要があります。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[go runしても分割したファイルが認識されない]]></title>
-    <link href="http://ota42y.com/blog/2014/09/10/golang-file-split/"/>
-    <updated>2014-09-10T07:48:24+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/10/golang-file-split</id>
-    <content type="html"><![CDATA[<blockquote><p>Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。</p></blockquote>
-
-<p><a href="http://golang.jp/tag/go%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9">Goコードの書き方</a></p>
-
-<p>とのことなので、試しに以下のようにmainパッケージを分割してコンパイルしたところ、上手くいきませんでした(´･_･`)</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">// main.go</span>
-</span><span class='line'><span class="kn">package</span> <span class="nx">main</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
-</span><span class='line'>  <span class="s">&quot;fmt&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;main file&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">OutputDiv</span><span class="p">()</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">// div.go</span>
-</span><span class='line'><span class="kn">package</span> <span class="nx">main</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
-</span><span class='line'>  <span class="s">&quot;fmt&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">OutputDiv</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;div file&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>go runの結果、分割したファイルにある関数を見つけられないエラーになります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>go run main.go
-</span><span class='line'><span class="c"># command-line-arguments</span>
-</span><span class='line'>./main.go:9: undefined: OutputDiv
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>どうやら、go runした場合は引数のファイルのみがコンパイル対象になるため、<br/>
-go run *.goか、必要なファイルを全てオプションとして渡す必要があるようです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>go run main.go div.go
-</span><span class='line'>main file
-</span><span class='line'>div file
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
