@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-01T21:04:38+09:00</updated>
+  <updated>2014-11-06T07:56:40+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[汎用ポインタを使う]]></title>
+    <link href="http://ota42y.com/blog/2014/11/06/cpp-void-pointer/"/>
+    <updated>2014-11-06T07:24:31+09:00</updated>
+    <id>http://ota42y.com/blog/2014/11/06/cpp-void-pointer</id>
+    <content type="html"><![CDATA[<p>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。<br/>
+ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、<br/>
+どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。<br/>
+（勿論、ポインタの示すアドレスに何があるかは異なります）</p>
+
+<p>そのため、ポインタ専用の変数を利用することで、あらゆる型のポインタを同じ変数に代入することができます。</p>
+
+<h1>汎用ポインタ</h1>
+
+<p>void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。<br/>
+これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。</p>
+
+<p>この場合、変数定義をvoid *型にしておき、使う前後に目的の型にキャストすることで、<br/>
+様々な型を1つの変数で扱うことが出来ます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">struct</span> <span class="n">Container</span><span class="p">{</span>
+</span><span class='line'>  <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">Num</span><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;text&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">Container</span> <span class="n">con1</span><span class="p">;</span>
+</span><span class='line'><span class="n">con1</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">text</span><span class="p">;</span> <span class="c1">// dataにconst charのポインタを入れる</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Num</span><span class="o">*</span> <span class="n">numPointer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Num</span><span class="p">();</span>
+</span><span class='line'><span class="n">numPointer</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+</span><span class='line'><span class="n">Container</span> <span class="n">con2</span><span class="p">;</span>
+</span><span class='line'><span class="n">con2</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">numPointer</span><span class="p">;</span> <span class="c1">// dataにNum型のポインタを入れる</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">con1</span><span class="p">.</span><span class="n">data</span><span class="p">);</span> <span class="c1">// 取り出す際にキャストする</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">((</span><span class="n">Num</span><span class="o">*</span><span class="p">)</span><span class="n">con2</span><span class="p">.</span><span class="n">data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なお、違うポインタを違う型にキャストして使うと、メモリ破壊などの予期せぬエラーを引き起こしますが、<br/>
+構文上はvoid *から元の型に戻す際のキャストは全て正しいと処理されます。</p>
+
+<p>そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。<br/>
+C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。</p>
+
+<h1>mallocの戻り値</h1>
+
+<p>void *はmallocの戻り値としても使われています。<br/>
+<a href="http://www.cplusplus.com/reference/cstdlib/malloc/">http://www.cplusplus.com/reference/cstdlib/malloc/</a></p>
+
+<p>mallocの戻り値が何にでもキャスト出来るのは、この仕様によるものです。　</p>
+
+<h1>ポインタを整数値として扱う</h1>
+
+<p>ポインタを整数値として利用したい場合、intptr_tとuintptr_tが利用できます。<br/>
+これはそれぞれ符号つき、符号なしの整数として扱うことができます。</p>
+
+<p>間違ってもそのままintにキャスとして代入してはいけません。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[hubot-ircではmsg.replyのリプライ先が変わるので注意]]></title>
@@ -1946,34 +2029,6 @@ rubyとかjavaではこのような違いは基本的に意識する必要が無
 をコメントアウトすることで解決しました。</p>
 
 <p><a href="http://www.idimmu.net/2013/09/27/sudo-sorry-must-tty-run-sudo/">参考</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux起動時に特定のシェルスクリプトを実行する]]></title>
-    <link href="http://ota42y.com/blog/2014/09/12/init-d/"/>
-    <updated>2014-09-12T07:40:38+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/12/init-d</id>
-    <content type="html"><![CDATA[<p>hubotを自動で実行してほしいなーと思ったので、<br/>
-OSの起動時にスクリプトを自動実行する方法を調べました。</p>
-
-<p>まず、<code>/etc/init.d/</code>
-に実行可能なスクリプトを置きます。</p>
-
-<p>次に、スクリプトの二行目に、起動設定を書きます。<br/>
-<code># chkconfig: 345 99 01</code></p>
-
-<p>一つ目がランレベル、二つ目が起動順番、三つ目が終了順番になります。<br/>
-起動・終了は小さい数値から行われるため、<br/>
-前述の例ですと一番最後に起動し、一番最初に終了します。</p>
-
-<p>ランレベルについては
-<a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%AC%E3%83%99%E3%83%AB">Wikipediaの記事</a>
-を参考にしてください</p>
-
-<p>最後に、<code>chkconfig --add (init.dに置いたスクリプト名)</code>を実行して登録を行います。</p>
-
-<p>これで、起動時にスクリプトが実行されます。</p>
 ]]></content>
   </entry>
   
