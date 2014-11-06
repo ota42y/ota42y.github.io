@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-07T07:57:51+09:00</updated>
+  <updated>2014-11-07T07:58:42+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -19,8 +19,8 @@
     <updated>2014-11-07T07:42:43+09:00</updated>
     <id>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast</id>
     <content type="html"><![CDATA[<p>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、<br/>
-コンパイラもエラーにしない場合が多いです。
-ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、  <br/>
+コンパイラもエラーにしない場合が多いです。<br/>
+ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、
 突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)</p>
 
 <h1>intからvoid型のポインタへの変換</h1>
