@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-07T07:51:45+09:00</updated>
+  <updated>2014-11-07T07:55:39+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -18,7 +18,12 @@
     <link href="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/"/>
     <updated>2014-11-07T07:42:43+09:00</updated>
     <id>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast</id>
-    <content type="html"><![CDATA[<h1>intからvoid型のポインタへの変換</h1>
+    <content type="html"><![CDATA[<p>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、<br/>
+コンパイラもエラーにしない場合が多いです。
+ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをするコンパイラがあり、<br/>
+突然わいて出る大量のエラーに悩まされます…</p>
+
+<h1>intからvoid型のポインタへの変換</h1>
 
 <p>int型の値をvoid *を利用して保持したい場合、<a href="http://ota42y.com/blog/2014/11/06/cpp-void-pointer/">前の例</a>のように、int型を保持するオブジェクトを作り、<br/>
 その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。</p>
@@ -213,7 +218,8 @@ C++の場合はテンプレートやクラスの継承、dynamic_castで解決�
 <p>ポインタを整数値として利用したい場合、intptr_tとuintptr_tが利用できます。<br/>
 これはそれぞれ符号つき、符号なしの整数として扱うことができます。</p>
 
-<p>間違ってもそのままintにキャスとして代入してはいけません。</p>
+<p>間違ってもそのままintにキャスとして代入してはいけません。<br/>
+<a href="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/">void型のポインタとint型を相互変換するなという話</a></p>
 ]]></content>
   </entry>
   
