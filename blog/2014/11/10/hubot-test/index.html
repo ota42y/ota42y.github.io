@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>Hubotの追加機能作成をテストで楽にする - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="Hubotの追加機能作成をテストで楽にする Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
+普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、
+面倒な手順を踏むことになります。
+また、普通に起動するとエラーも吐いてくれないため、 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/11/10/hubot-test">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">Hubotの追加機能作成をテストで楽にする</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。<br/>
+普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、<br/>
+面倒な手順を踏むことになります。<br/>
+また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。</p>
+
+<p>しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、<br/>
+Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。</p>
+
+<p>そこで、作りたい機能をパッケージ化して作成することで、<br/>
+トライアンドエラーをする部分を最低限に絞って開発することができました。</p>
+
+<h1>Hubot用パッケージの構成</h1>
+
+<p>Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、<br/>
+ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。</p>
+
+<p>さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、<br/>
+Hubotの連携部分と実際の処理を分けることができます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">PackageClass = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;./package-name/package-class.coffee&#39;</span><span class="p">).</span><span class="nx">PackageClass</span>
+</span><span class='line'><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class='line'>  <span class="nv">package_class = </span><span class="k">new</span> <span class="nx">PackageClass</span>
+</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/test call (\d+)( \w+)?/</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>    <span class="nv">arg1 = </span><span class="nb">parseInt</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="nv">arg2 = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">msg</span><span class="p">.</span><span class="nx">reply</span> <span class="nx">package_class</span><span class="p">.</span><span class="nx">testCall</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>フォルダ構成は以下のようになります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">parkage</span><span class="o">-</span><span class="nx">root</span><span class="o">/</span>
+</span><span class='line'> <span class="err">├</span> <span class="nx">package</span><span class="p">.</span><span class="nx">json</span>
+</span><span class='line'> <span class="err">│</span>
+</span><span class='line'> <span class="err">├</span> <span class="nx">src</span><span class="o">/</span>
+</span><span class='line'> <span class="err">│</span>  <span class="err">├</span> <span class="nx">hubot</span><span class="o">-</span><span class="nx">command</span><span class="p">.</span><span class="nx">coffee</span>
+</span><span class='line'> <span class="err">│</span>  <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="nx">name</span><span class="o">/</span>
+</span><span class='line'> <span class="err">│</span>     <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
+</span><span class='line'> <span class="err">│</span>
+</span><span class='line'> <span class="err">└</span> <span class="nx">test</span><span class="o">/</span>
+</span><span class='line'>    <span class="err">├</span> <span class="nx">test</span><span class="o">-</span><span class="nx">helper</span><span class="p">.</span><span class="nx">coffee</span>
+</span><span class='line'>    <span class="err">└</span> <span class="nx">test</span><span class="o">-</span><span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このように構成し、package-classに対してテストを作成することで、<br/>
+Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。</p>
+
+<p>前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。<br/>
+ですが、やっていることは正規表現の結果をクラスのメソッドに渡すだけなので、<br/>
+手作業でやってしまう方が簡単で早いです。</p>
+
+<h1>参考</h1>
+
+<p>hubot-scfesはこの方針に則って作ったため、参考になるかもしれません。<br/>
+<a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-11-10 07:54:39 +0900" pubdate>2014年 11月 10日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/11/10/hubot-test/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/11/10/hubot-test/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
