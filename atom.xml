@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-10T07:57:02+09:00</updated>
+  <updated>2014-11-12T11:39:50+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[スクフェス用パッケージの更新]]></title>
+    <link href="http://ota42y.com/blog/2014/11/12/scfes-update/"/>
+    <updated>2014-11-12T11:28:23+09:00</updated>
+    <id>http://ota42y.com/blog/2014/11/12/scfes-update</id>
+    <content type="html"><![CDATA[<p><a href="http://ota42y.com/blog/2014/10/28/hubot-scfes/">前に作った</a>スクフェス用パッケージを更新しました。<br/>
+<a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>
+
+<p>今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。<br/>
+真夜中にレベルアップが起きたりすると面倒なので、これを見て事前に石を使うなり、<br/>
+別の難易度をやって遅らせるなりして、レベルアップのタイミング調整をすることが簡単になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="c1"># 次のレベルアップまでexを何回プレイするか</span>
+</span><span class='line'><span class="nx">hubot</span> <span class="nx">scfes</span> <span class="nx">levelup</span> <span class="nx">count</span> <span class="mi">830</span> <span class="nx">ex</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="mi">10</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 次のレベルアップはいつか</span>
+</span><span class='line'><span class="nx">hubot</span> <span class="nx">scfes</span> <span class="nx">levelup</span> <span class="nx">time</span> <span class="mi">830</span> <span class="nx">ex</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="nx">next</span> <span class="nx">levelup</span> <span class="o">is</span> <span class="nx">Sun</span> <span class="nx">Aug</span> <span class="mi">3</span> <span class="mi">2014</span> <span class="mi">2</span><span class="o">:</span><span class="mi">52</span><span class="o">:</span><span class="mi">52</span> <span class="nx">GMT</span><span class="o">+</span><span class="mi">0900</span> <span class="p">(</span><span class="nx">JST</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hubotの追加機能作成をテストで楽にする]]></title>
@@ -1912,215 +1945,6 @@ FirefoxやX等ははじめから入っているため、立ち上げるだけで
 <p>懇親会で聞いたところ、大体の人がJenkinsは保守が死ねるよね…<br/>
 って言っていたので、やっぱりみんな大変なんだな…となりました(´･_･`)<br/>
 やはりYAMLで設定できるTravis CIの方が楽ですよね…</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[スタックに確保した変数の有効範囲に気をつける]]></title>
-    <link href="http://ota42y.com/blog/2014/09/16/stack-heap/"/>
-    <updated>2014-09-16T07:46:07+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/16/stack-heap</id>
-    <content type="html"><![CDATA[<p>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。<br/>
-rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。</p>
-
-<p>例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。</p>
-
-<p>以下に、関数の中で文字バッファをスタックに確保し、その参照を戻す関数の間違った例を上げます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;string&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">getTextFilename</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">basename</span><span class="p">){</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-</span><span class='line'>  <span class="n">strncpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">basename</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">strncat</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s">&quot;.txt&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">test_filename</span> <span class="o">=</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_filename</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">example_filename</span> <span class="o">=</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="s">&quot;example&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">example_filename</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_filename</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>環境によりますが、おそらく二回目のtest_filenameの出力がおかしくなると思います。<br/>
-私の場合は以下のように、test_filenameにexample_filenameの内容が書き込まれていました。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">test</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">example</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">example</span><span class="p">.</span><span class="n">txt</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>getTextFilename内のstrはスタックに確保されるので、関数終了時に解放されます。<br/>
-そのため、戻り値の指し示す文字列は解放済みメモリとなり、勝手に変更される可能性があります。</p>
-
-<p>上の例ではたまたま同じアドレスが再利用されたため、同じ文字列が設定されました。<br/>
-ですが、間に様々な処理を実行した場合は、謎の値が書き込まれるなどがあり得るため注意が必要です。</p>
-
-<h1>対策</h1>
-
-<p>このような場合、いくつかの対策があります。</p>
-
-<h2>引数で渡す</h2>
-
-<p>1つ目が、strncpyやstrncatのように、メモリ利用域を引数として受け取る方法です。<br/>
-これにより、自分のスコープから外れても値を保持することができます。<br/>
-先ほどの例ですと、main側でcharの配列を確保して関数の引数でそれを受け取るといった形です。</p>
-
-<p>確保したスコープを抜けるとやはり解放されますが、確実に解放されるためとても楽です。</p>
-
-<h2>ヒープに確保する</h2>
-
-<p>2つ目はmallocやnewでヒープ領域に確保する方法です。<br/>
-以下はnewで配列を確保するように書き換えました。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;string&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">getTextFilename</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">basename</span><span class="p">){</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">strncpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">basename</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">strncat</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s">&quot;.txt&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">test_filename</span> <span class="o">=</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_filename</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">example_filename</span> <span class="o">=</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="s">&quot;example&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">example_filename</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_filename</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">　</span><span class="c1">// 明示的に解放しないと絶対に解放されない</span>
-</span><span class='line'>  <span class="k">delete</span> <span class="n">test_filename</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">delete</span> <span class="n">example_filename</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>newやmallocでメモリ領域を確保した場合、ヒープ領域に確保され、スコープを超えてメモリを確保し続けられます。<br/>
-ただし、明示的に解放しないとメモリリークが起きるため、注意が必要です。</p>
-
-<h2>オブジェクトをコピーする</h2>
-
-<p>3つめがコピーを使う方法です。<br/>
-今回の関数では配列を使っていますが、コピーコンストラクタをもつstd::stringを使うと、<br/>
-スタック上の内容を関数の外に安全にコピー出来ます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;string&gt;</span>
-</span><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">basename</span><span class="p">){</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">(</span><span class="n">basename</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">text</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;.txt&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">text</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">test_filename</span> <span class="o">=</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">example_filename</span> <span class="o">=</span> <span class="n">getTextFilename</span><span class="p">(</span><span class="s">&quot;example&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">example_filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>関数の戻り値は戻り先にコピーされるまでは保持されるという仕様があるらしく、<br/>
-コピー可能なものに関しては戻り値としてちゃんと返すことが出来ます。<br/>
-(これが無い場合、return 0の0も変更される可能性が出てきてしまうため、当然の仕様と言えます)</p>
-
-<p>ただし、コピー処理が走るため、オブジェクトが巨大な場合、<br/>
-メモリ消費が増えたり、時間がかかる可能性があるので注意が必要です。</p>
-
-<h1>　まとめ</h1>
-
-<p>スタックで確保した場合、解放忘れ等がないためとても簡単ですが、<br/>
-スコープから抜けると解放されてしまうため、有効範囲を考えないといけません。</p>
-
-<p>今回は文字列で例を挙げましたが、自作クラスなどでもほぼ同じ事がいえます。<br/>
-ただし、3つ目の方法はそのクラスと、メンバ変数として持ってるクラス全てにコピーコンストラクタを書いていないと、
-中途半端にコピーされ、ß予期せぬエラーに繋がります。　　</p>
 ]]></content>
   </entry>
   
