@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-13T07:38:27+09:00</updated>
+  <updated>2014-11-20T08:00:49+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Github Pagesの新しいIPアドレス対応]]></title>
+    <link href="http://ota42y.com/blog/2014/11/20/github-pages-new-ip/"/>
+    <updated>2014-11-20T07:54:24+09:00</updated>
+    <id>http://ota42y.com/blog/2014/11/20/github-pages-new-ip</id>
+    <content type="html"><![CDATA[<p>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、<br/>
+新しいIDアドレスを利用するようにとのwarningが来るようになりました。</p>
+
+<p>そのときに解消方法を調べたのですが、よくわからず放置していたところ、<br/>
+12月から新しいアドレスに設定にしないと使えなくなるらしいので慌ててアップデートしました。</p>
+
+<blockquote class="twitter-tweet" data-cards="hidden" lang="ja"><p>GitHub Pagesの旧IPアドレスが利用できなくなります。独自ドメインを利用しているユーザーで旧IPアドレスのままのレポジトリが影響されます。 <a href="https://t.co/1XI3X3NheA">https://t.co/1XI3X3NheA</a></p>&mdash; GitHub Japan (@GitHubJapan) <a href="https://twitter.com/GitHubJapan/status/530526223785811969">2014, 11月 7</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h1>確認方法</h1>
+
+<p>正しく設定されているかは、
+<a href="https://github.com/blog/1917-github-pages-legacy-ip-deprecation">GitHub Pages Legacy IP Deprecation</a>
+に書いてある確認スクリプトを実行して、<br/>
+OK以外が表示されたらダメです。</p>
+
+<p>このサイトの場合は以下の通りですね。<br/>
+<code>dig ota42y.com | grep -E '(207.97.227.245|204.232.175.78|199.27.73.133)' || echo “OK”</code></p>
+
+<h1>修正手順</h1>
+
+<p>修正手順は簡単で、自分の持っているドメインを管理しているサービスに行って、<br/>
+Aレコードを下記のページにあるように変更するだけです。<br/>
+<a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/">Tips for configuring an A record with your DNS provider - User Documentation</a></p>
+
+<p>私はさくらインターネットを使っていたため、以下の手順で変更できました。</p>
+
+<ol>
+<li><a href="https://secure.sakura.ad.jp/menu/domain/">ドメインメニュー</a></li>
+<li>対象のドメインのゾーン編集をクリック</li>
+<li>左側の変更をクリック</li>
+<li>既存のIPアドレスをクリックし、前述のGithubの新しいIPアドレスを設定する</li>
+</ol>
+
+
+<p><img src="http://ota42y.com/images/posts/2014-11-20-github-pages-ip.png" alt="設定画面" /></p>
+
+<p>変更をすると、先ほどのdigコマンドがOKを出すようになり、<br/>
+Github Pagesにコミットしても警告メールが飛ばなくなります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[golangでYAMLファイルを読み込む]]></title>
@@ -1912,44 +1962,6 @@ TestAクラスだけをコンパイルすれば良くなります。</p>
 継承を使わなくすることで前方宣言を利用できます。</p>
 
 <p>ただし、それによってコードが読みにくくなると別の問題を引き起こすので、ケースバイケースになります。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Twitterのoath_callbackは設定していないと上書きできない]]></title>
-    <link href="http://ota42y.com/blog/2014/09/19/twitter-callback/"/>
-    <updated>2014-09-19T07:49:01+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/19/twitter-callback</id>
-    <content type="html"><![CDATA[<p>Twitterは<a href="https://dev.twitter.com/oauth/reference/post/oauth/request_token">oauth/request_token</a>へのアクセス時に、<br/>
-認証後のコールバック先をoauth_callbackパラメータで上書きできます。</p>
-
-<p>Twitterの開発者画面からは独自スキーマは登録できませんが、<br/>
-この機能で上書きをすると任意のスキーマをコールバックに設定できます。</p>
-
-<p>ただし、Twitterに何らかのURL(ダミーでも可)を設定してないと上書きできないようです。</p>
-
-<p>たとえば以下のようなコードを書いた場合、Twitterの開発者画面でURLを登録していないと、<br/>
-<code>401 Authorization Required (OAuth::Unauthorized)</code>が帰ってきますが、<br/>
-<code>http://example.com</code>のようにダミーURLを登録すると認証画面用のURLが帰ってきます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;oauth&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">consumer_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">consumer_secret</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">consumer</span> <span class="o">=</span> <span class="ss">OAuth</span><span class="p">:</span><span class="ss">:Consumer</span><span class="o">.</span><span class="n">new</span> <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="ss">site</span><span class="p">:</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
-</span><span class='line'><span class="n">request_token</span> <span class="o">=</span> <span class="n">consumer</span><span class="o">.</span><span class="n">get_request_token</span>  <span class="n">oauth_callback</span><span class="p">:</span> <span class="s2">&quot;ota42y://test&quot;</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Please visit here: </span><span class="si">#{</span><span class="n">request_token</span><span class="o">.</span><span class="n">authorize_url</span><span class="si">}</span><span class="s2">&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考: <a href="http://qiita.com/johnny-miyake/items/a432cc4fea3b1b8c6b1e">Twitter の AccessToken と AccessTokenSecret を Ruby で取得する</a></p>
 ]]></content>
   </entry>
   
