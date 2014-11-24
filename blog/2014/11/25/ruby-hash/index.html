@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>YAMLでnilをキーにしたハッシュを扱う - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="YAMLでnilをキーにしたハッシュを扱う 例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、
+以下のように書いても&#8221;nil&#8221;という文字列として認識されます。 1
+2
+--- nil : nil =&gt; {"nil &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/11/25/ruby-hash">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">YAMLでnilをキーにしたハッシュを扱う</h2>
+    
+  </header>
+
+  <div class="entry_content"><p><em>例は全てRuby 2.0を利用しています</em></p>
+
+<p>nilをキーとした値を持つハッシュをYAMLに書きたい場合、<br/>
+以下のように書いても&#8221;nil&#8221;という文字列として認識されます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">nil</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>=&gt; {"nil"=&gt;"nil"}</code></p>
+
+<p>データがnilの場合は、データ部分に何も書かないことでnilを表現できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">datanil</span> <span class="p-Indicator">:</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>=&gt; {"datanil"=&gt;nil}</code></p>
+
+<p>キーをnilにしたい場合、以下のように書いても、(Rubyだと)パースに失敗します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'>  <span class="p-Indicator">:</span> <span class="s">&quot;key</span><span class="nv"> </span><span class="s">nil&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このような場合もYAMLの仕様では想定済みらしく、<br/>
+クエッションマークを使うことで、その後ろにあるものがキーであると明示できる仕様があります。<br/>
+<a href="http://yaml.org/spec/1.2/spec.html#id2772075">http://yaml.org/spec/1.2/spec.html#id2772075</a></p>
+
+<p>これを利用して、以下のようにクエッションマークの後に何も書かず、<br/>
+その後コロンと値を設定することで、nilをキーとして設定できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="p-Indicator">?</span>
+</span><span class='line'><span class="p-Indicator">:</span> <span class="s">&quot;key</span><span class="nv"> </span><span class="s">nil&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>rubyで長い文字列をキーにする</h2>
+
+<p>Rubyが利用しているPsychでは、以下のように128byte以上のデータをキーにして書き出した場合、<br/>
+?マークをつけて書き出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;yaml&#39;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mkhash</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span>
+</span><span class='line'>  <span class="n">h</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">long</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span> <span class="o">*</span> <span class="mi">129</span>
+</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;long.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">file</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="no">YAML</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mkhash</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="p-Indicator">?</span> <span class="l-Scalar-Plain">aaaaaaaaaaaaaaaaaaaaaaaaaa...aaa</span>
+</span><span class='line'><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">long</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうやらRubyが使っているYAMLライブラリのPsych内で、<br/>
+128文字以上だったら?マークを出力するようにしているみたいです。</p>
+
+<p><a href="https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816">https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816</a>
+<a href="https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168">https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168</a></p>
+
+<p>一応YAMLの仕様としては1024文字までは?を使わなくてもいいらしいですが、何故128byteで切ってるのかは謎です。
+<a href="http://yaml.org/spec/1.2/spec.html#id2792501">http://yaml.org/spec/1.2/spec.html#id2792501</a></p>
+
+<p>なお読み込む際は、クエッションマークをつけずに128byte以上のキーを指定しても問題なく読み込めます。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-11-25 07:55:14 +0900" pubdate>2014年 11月 25日</time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/11/25/ruby-hash/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/11/25/ruby-hash/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>

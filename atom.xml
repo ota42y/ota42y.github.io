@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-20T08:00:49+09:00</updated>
+  <updated>2014-11-25T08:00:19+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[YAMLでnilをキーにしたハッシュを扱う]]></title>
+    <link href="http://ota42y.com/blog/2014/11/25/ruby-hash/"/>
+    <updated>2014-11-25T07:55:14+09:00</updated>
+    <id>http://ota42y.com/blog/2014/11/25/ruby-hash</id>
+    <content type="html"><![CDATA[<p><em>例は全てRuby 2.0を利用しています</em></p>
+
+<p>nilをキーとした値を持つハッシュをYAMLに書きたい場合、<br/>
+以下のように書いても&#8221;nil&#8221;という文字列として認識されます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">nil</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>=&gt; {"nil"=&gt;"nil"}</code></p>
+
+<p>データがnilの場合は、データ部分に何も書かないことでnilを表現できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">datanil</span> <span class="p-Indicator">:</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>=&gt; {"datanil"=&gt;nil}</code></p>
+
+<p>キーをnilにしたい場合、以下のように書いても、(Rubyだと)パースに失敗します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'>  <span class="p-Indicator">:</span> <span class="s">&quot;key</span><span class="nv"> </span><span class="s">nil&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このような場合もYAMLの仕様では想定済みらしく、<br/>
+クエッションマークを使うことで、その後ろにあるものがキーであると明示できる仕様があります。<br/>
+<a href="http://yaml.org/spec/1.2/spec.html#id2772075">http://yaml.org/spec/1.2/spec.html#id2772075</a></p>
+
+<p>これを利用して、以下のようにクエッションマークの後に何も書かず、<br/>
+その後コロンと値を設定することで、nilをキーとして設定できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="p-Indicator">?</span>
+</span><span class='line'><span class="p-Indicator">:</span> <span class="s">&quot;key</span><span class="nv"> </span><span class="s">nil&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>rubyで長い文字列をキーにする</h2>
+
+<p>Rubyが利用しているPsychでは、以下のように128byte以上のデータをキーにして書き出した場合、<br/>
+?マークをつけて書き出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;yaml&#39;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mkhash</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span>
+</span><span class='line'>  <span class="n">h</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">long</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span> <span class="o">*</span> <span class="mi">129</span>
+</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;long.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">file</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="no">YAML</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mkhash</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="p-Indicator">?</span> <span class="l-Scalar-Plain">aaaaaaaaaaaaaaaaaaaaaaaaaa...aaa</span>
+</span><span class='line'><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">long</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうやらRubyが使っているYAMLライブラリのPsych内で、<br/>
+128文字以上だったら?マークを出力するようにしているみたいです。</p>
+
+<p><a href="https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816">https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816</a>
+<a href="https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168">https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168</a></p>
+
+<p>一応YAMLの仕様としては1024文字までは?を使わなくてもいいらしいですが、何故128byteで切ってるのかは謎です。
+<a href="http://yaml.org/spec/1.2/spec.html#id2792501">http://yaml.org/spec/1.2/spec.html#id2792501</a></p>
+
+<p>なお読み込む際は、クエッションマークをつけずに128byte以上のキーを指定しても問題なく読み込めます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Github Pagesの新しいIPアドレス対応]]></title>
@@ -1628,340 +1737,6 @@ apt-getの<code>update</code>と<code>install bash</code>だけですむと思�
 
 <p>当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。<br/>
 ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[C++で不要なincludeを減らす]]></title>
-    <link href="http://ota42y.com/blog/2014/09/22/cpp-include/"/>
-    <updated>2014-09-22T07:50:08+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/22/cpp-include</id>
-    <content type="html"><![CDATA[<h1>不要なinclude削除</h1>
-
-<p>cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。<br/>
-そのため、includeする量が増えるほどコンパイラが解析する量も増え、<br/>
-結果としてコンパイル時間が長くなります。</p>
-
-<p>また、キャッシュを利用している場合、<br/>
-includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、<br/>
-不要なincludeを消すとよりキャッシュを活用できます。</p>
-
-<h1>クラスの前方宣言を活用する</h1>
-
-<p>クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。<br/>
-そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、<br/>
-ヘッダファイルにincludeを書く必要が無くなります。<br/>
-これにより、不要なincludeを減らすことができます。</p>
-
-<p>例えば、以下のようなAクラスがあるとします。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// TestA.h</span>
-</span><span class='line'><span class="cp">#include “InClass.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
-</span><span class='line'><span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">private</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">InClass</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">//TestA.cpp</span>
-</span><span class='line'><span class="cp">#include “TestA.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">TestA</span><span class="o">::</span><span class="n">TestA</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getNumber</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">m_inclass</span><span class="p">.</span><span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このとき、TestAクラスをincludeするクラスは、InClassを使わない場合でも、<br/>
-TestA.hに書かれているために読み込んでしまいます。<br/>
-そのため、コンパイラが処理する量が増えるのと、<br/>
-InClass.hに変更があった場合に使っていないファイルまでコンパイルし直しになります。</p>
-
-<p>ここで、以下のようにクラスの前方宣言を使い、<br/>
-cppファイル側で読み込むことで、includeをヘッダファイルから削除できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">//TestA.h</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">InClass</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
-</span><span class='line'><span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="o">~</span><span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">private</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">InClass</span><span class="o">*</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">//TestA.cpp</span>
-</span><span class='line'><span class="cp">#include “TestA.h&quot;</span>
-</span><span class='line'><span class="cp">#include &quot;InClass.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">TestA</span><span class="o">::</span><span class="n">TestA</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">m_inclass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InClass</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">TestA</span><span class="o">::~</span><span class="n">TestA</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">delete</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getNumber</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">m_inclass</span><span class="o">-&gt;</span><span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これにより、TestAクラスをincludeしているクラスは、InClass.hをincludeしなくなります。<br/>
-これにより、コンパイラが処理するコード量が減りますし、InClass.hに変更があった場合でも、<br/>
-TestAクラスだけをコンパイルすれば良くなります。</p>
-
-<p>ただし、メモリをきちんと確保しないと行けないため、デストラクタでの解放忘れなどに注意する必要があります。<br/>
-また、最近の環境ではそれほど問題にはならないと思いますが、ヒープを確保するのでメモリが断片化します。</p>
-
-<h1>Pimplイディオム</h1>
-
-<p>classの前方宣言をさらに活用し、privateな物を全て別クラスにして持つ方法です。
-これにより、privateの変数を外から完全に見えなくしたり、<br/>
-内部実装の変更時に外への影響の抑止できます。</p>
-
-<p>以下のようにprivateな変数を持つクラスがあるとします。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">//TestA.h</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">InClass</span><span class="p">;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
-</span><span class='line'><span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="o">~</span><span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getWeight</span><span class="p">(</span><span class="kt">int</span> <span class="n">density</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">private</span><span class="o">:</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">depth</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">InClass</span><span class="o">*</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getVolume</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>この中で、privateな部分を全て別クラスにしてしまい、メンバ変数をヘッダから消すことが出来ます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">//TestA.h</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
-</span><span class='line'><span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="o">~</span><span class="n">TestA</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getWeight</span><span class="p">(</span><span class="kt">int</span> <span class="n">density</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">private</span><span class="o">:</span>
-</span><span class='line'>  <span class="k">class</span> <span class="nc">TestApImpl</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">TestApImpl</span><span class="o">*</span> <span class="n">pImpl</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">//TestA.cpp</span>
-</span><span class='line'><span class="cp">#include &quot;test.h&quot;</span>
-</span><span class='line'><span class="cp">#include &quot;InClass.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="o">::</span><span class="n">TestApImpl</span><span class="p">{</span>
-</span><span class='line'><span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">TestApImpl</span><span class="p">()</span> <span class="o">:</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">depth</span><span class="p">(</span><span class="mi">0</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">delete</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="o">~</span><span class="n">TestApImpl</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">delete</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getVolume</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">height</span><span class="o">*</span><span class="n">width</span><span class="o">*</span><span class="n">depth</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">depth</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">InClass</span><span class="o">*</span> <span class="n">m_inclass</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">TestA</span><span class="o">::</span><span class="n">TestA</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">pImpl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestApImpl</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">TestA</span><span class="o">::~</span><span class="n">TestA</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">delete</span> <span class="n">pImpl</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getNumber</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">pImpl</span><span class="o">-&gt;</span><span class="n">m_inclass</span><span class="o">-&gt;</span><span class="n">getNumber</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getWeight</span><span class="p">(</span><span class="kt">int</span> <span class="n">density</span><span class="p">){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">pImpl</span><span class="o">-&gt;</span><span class="n">getVolume</span><span class="p">()</span> <span class="o">*</span> <span class="n">density</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これにより実装を外側から完全に隠せるのと、内部の実装変更時にヘッダファイルを変更する必要がなくなり、<br/>
-コンパイル時のキャッシュを最大限に活用できます。</p>
-
-<p>ただし、一つのcppに複数のクラスが入り、さらに外から見える部分と実際の実装が離れるため、<br/>
-かなりコードが読みにくくなります。</p>
-
-<h1>前方宣言を使えない場合</h1>
-
-<p>クラスの実態を持つ場合や、継承したクラスの場合は前方宣言にすることはできません。<br/>
-このような場合はポインタを持つようにしたり、<a href="http://ja.m.wikipedia.org/wiki/Decorator_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">Decorator パターン</a>によって、<br/>
-継承を使わなくすることで前方宣言を利用できます。</p>
-
-<p>ただし、それによってコードが読みにくくなると別の問題を引き起こすので、ケースバイケースになります。</p>
 ]]></content>
   </entry>
   
