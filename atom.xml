@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-25T08:00:19+09:00</updated>
+  <updated>2014-11-26T07:46:25+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dockerとは何か]]></title>
+    <link href="http://ota42y.com/blog/2014/11/26/docker/"/>
+    <updated>2014-11-26T07:33:43+09:00</updated>
+    <id>http://ota42y.com/blog/2014/11/26/docker</id>
+    <content type="html"><![CDATA[<p>Dockerについて調べたので概要と簡単な使い方のメモ</p>
+
+<h1>Dockerとは何か</h1>
+
+<p>いわゆるコンテナ型仮想化ツールの1つです。<br/>
+VMwareやKVMのような完全仮想化と違い、<br/>
+ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。</p>
+
+<p>あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、<br/>
+手元の数年前のmac book airでもかなり快適に動いています。</p>
+
+<p>あくまでゲストOSを隔離環境に置いただけのため 、<br/>
+ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。<br/>
+(ゲストからはホストの中身は当然見えない)</p>
+
+<p>また、DockerではDockerfileというファイルに設定を書くことで、<br/>
+その設定を反映した状態のコンテナを作成することが出来ます。<br/>
+そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。</p>
+
+<h1>Docker上のCent OSにJenkinsを立てる</h1>
+
+<h2>Dockerの起動</h2>
+
+<p>Dockerコマンドを実行するためには、Macだとboot2dockerを<br/>
+<code>boot2docker start</code>で起動し、そのとき提示された環境変数を設定する必要があります。</p>
+
+<p>また、<br/>
+<code>boot2docker ip</code><br/>
+を実行し、コンテナに対してアクセスできるようにする必要があります。<br/>
+なお、この時出たURLは後で使います。</p>
+
+<h2>Cent OSの構築</h2>
+
+<h3>Dockerfileの準備</h3>
+
+<p>以下のファイルをDockerfileという名前で適当なディレクトリに保存します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>FROM centos:centos6
+</span><span class='line'>
+</span><span class='line'>RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+</span><span class='line'>RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+</span><span class='line'>RUN yum -y install java-1.7.0-openjdk jenkins</span></code></pre></td></tr></table></div></figure>
+
+
+<p>見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。</p>
+
+<h3>コンテナの作成</h3>
+
+<p>次に、Dockerfileを保存したディレクトリで<br/>
+<code>docker build -t jenkins .</code>
+を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。</p>
+
+<h3>コンテナの起動</h3>
+
+<p><code>docker run -p 8080:8080 -i -t jenkins bash</code><br/>
+を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、<br/>
+<code>service jenkins start</code><br/>
+を実行するとjenkinsが起動します。</p>
+
+<p>この状態で、<code>boot2docker ip</code>で出てきたURLの8080ポートにブラウザでアクセスすると、<br/>
+いつものJenkins画面が表示されます。</p>
+
+<h1>その他</h1>
+
+<p>Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、<br/>
+それを他のセットアップの下地にするといったことも出来るそうです。</p>
+
+<p>また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、<br/>
+Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。<br/>
+今回はとりあえずさわりだけなので、手で起動してログインしっぱなしにしています。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[YAMLでnilをキーにしたハッシュを扱う]]></title>
@@ -26,7 +109,7 @@
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">nil</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">nil</span>
+</span><span class='line'><span class="l-Scalar-Plain">nil</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">nil</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -37,7 +120,7 @@
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">datanil</span> <span class="p-Indicator">:</span>
+</span><span class='line'><span class="l-Scalar-Plain">datanil</span> <span class="p-Indicator">:</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1674,69 +1757,6 @@ ltsリポジトリを参照する必要があります。(2014/09/26 7:00現在)
 <p>ただし、この修正だけでは不十分という指摘があり、今後さらなる修正パッチが出てくる可能性があります。<br/>
 おそらく同じリポジトリに更新が来ると思うので、上記の手順を実行したならば、<br/>
 apt-getの<code>update</code>と<code>install bash</code>だけですむと思われます。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[C++で少しでもビルド速度を速くする方法]]></title>
-    <link href="http://ota42y.com/blog/2014/09/23/cpp-build/"/>
-    <updated>2014-09-23T09:15:48+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/23/cpp-build</id>
-    <content type="html"><![CDATA[<h1>結論</h1>
-
-<ul>
-<li>キャッシュを使う</li>
-<li>不要なinclude削除</li>
-<li>static or dynamic library化する</li>
-<li>並列コンパイルする</li>
-<li>分散コンパイルする</li>
-<li>いいパソコンを使う</li>
-</ul>
-
-
-<p>C++のビルドをちょっとでも高速化したかったので、<br/>
-どうすれば早くなるのかを調べたのでまとめました。</p>
-
-<p>どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。</p>
-
-<h1>キャッシュを使う</h1>
-
-<p>ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、<br/>
-2回目以降のビルドは差分だけをコンパイルし直すため早くなります。<br/>
-といっても、多分使わない方が珍しいと思いますが。</p>
-
-<h1>不要なinclude削除</h1>
-
-<p><a href="http://ota42y.com/blog/2014/09/22/cpp-include/">C++で不要なincludeを減らす</a>のように、<br/>
-不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。</p>
-
-<h1>Static Library or Dynamic Library化する</h1>
-
-<p>切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、<br/>
-本体のコンパイル時間が短縮されます。<br/>
-簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。</p>
-
-<p>Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、<br/>
-コンパイル時間は省略できるため大幅に早くなります。</p>
-
-<p>Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。<br/>
-代わりに、ライブラリの部分だけ入れ換えるといったことができます。<br/>
-ただし、iOSでは使えません…(´・_・`)　</p>
-
-<h1>並列コンパイルする</h1>
-
-<p>makeにはjオプションがあり、指定した数だけ並列実行されます。<br/>
-多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。</p>
-
-<h1>分散コンパイルする</h1>
-
-<p>distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。<br/>
-ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)</p>
-
-<h1>いいパソコンを使う</h1>
-
-<p>当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。<br/>
-ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</p>
 ]]></content>
   </entry>
   
