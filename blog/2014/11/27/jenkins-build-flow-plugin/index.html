@@ -6,10 +6,12 @@
     
 
 <meta charset="utf-8">
-<title>Jenkinsのbuild flow pluginを使うとビルド設定管理が少し楽になる - おおたの物置</title>
+<title>Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="Jenkinsのbuild flow pluginを使うとビルド設定管理が少し楽になる Jenkinsのビルド設定問題 Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。 例えばビルド手順を変更する場合、プラグイン設定に後方互換性がないような変更を行うと &hellip;">
+      content="Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる まとめ Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒
+全てをスクリプトで実行するのが理想だが、本体の機能を使いたい場合は対応できない
+build flow &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -84,11 +86,21 @@
 <article class="entry" role="article">
 
   <header>
-    <h1 class="entry_title">Jenkinsのbuild flow pluginを使うとビルド設定管理が少し楽になる</h2>
+    <h1 class="entry_title">Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる</h2>
     
   </header>
 
-  <div class="entry_content"><h1>Jenkinsのビルド設定問題</h1>
+  <div class="entry_content"><h1>まとめ</h1>
+
+<ul>
+<li>Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒</li>
+<li>全てをスクリプトで実行するのが理想だが、本体の機能を使いたい場合は対応できない</li>
+<li>build flow pluginがファイルを読み込んで実行できるようになった</li>
+<li>これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る</li>
+</ul>
+
+
+<h1>Jenkinsのjob設定問題</h1>
 
 <p>Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。</p>
 
@@ -177,10 +189,12 @@ Jenkinsはjobのコピーが容易なため、後方互換性のない変更を�
 
 <p>このbuild flow pluginですが、最近の変更でリポジトリ内のファイルを実行することができるようになりました。<br/>
 そのため、メインのjobがリポジトリ内のスクリプトを読み込んで、ビルド用のjobを呼び出すように構築することで、<br/>
-二つ目の新しいjobを作っていく方法の問題点だった、リポジトリのバージョンとjobの対応付けが解決し、<br/>
-若干運用周りが楽になります。</p>
+二つ目の新しいjobを作っていく方法の問題点だった、リポジトリのバージョンとjobの対応付けが解決します。</p>
 
-<p>一つ目の全てをスクリプトで行う方法と同じく、リポジトリ内のgroovyファイルを実行する方法になりますが、<br/>
+<p>残念ながら、job自体の設定は管理出来ないため、設定を変更したい場合はjobを増やしていく必要がありますが、<br/>
+呼び出しはスクリプトから行うため、ビルドの実行自体はスクリプトを呼ぶだけで済みます。</p>
+
+<p>これは一つ目の全てをスクリプトで行う方法と同じく、リポジトリ内のgroovyファイルを実行する方法になりますが、<br/>
 Jenkinsのjobをスクリプト内から呼び出せるため、プラグインといったJenkinsの機能を利用できる利点があります。</p>
 
 <p>ただし、別のjobに別れてしまうため、<br/>
