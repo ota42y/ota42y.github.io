@@ -314,23 +314,23 @@ ifかswitchがせいぜい一つぐらい、全体も20行程度の関数であ�
 <p>上のログはスタックの上から順に出力しているはずなので、<br/>
 実際の処理は下から上に向かって行われます。</p>
 
-<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/server.rb#L295">&#8220;/RUBY_PATH/webrick/server.rb:295:in `block in start_thread&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/server.rb#L295">&ldquo;/RUBY_PATH/webrick/server.rb:295:in `block in start_thread&#8217;&rdquo;</a></h3>
 
 <p>名前の通りThread.startしてるだけ。</p>
 
-<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L94">&#8220;/RUBY_PATH/webrick/httpserver.rb:94:in `run&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L94">&ldquo;/RUBY_PATH/webrick/httpserver.rb:94:in `run&#8217;&rdquo;</a></h3>
 
 <p>名前の通りひたすらループしている。<br/>
 リクエストを受け取って後述のserviceを呼び出し、その後返答を送信する処理を行う。</p>
 
 <p>また、各種エラーが起こった場合もそれをキャッチし、エラーだということを送信している模様。</p>
 
-<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L138">&#8220;/RUBY_PATH/webrick/httpserver.rb:138:in `service&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L138">&ldquo;/RUBY_PATH/webrick/httpserver.rb:138:in `service&#8217;&rdquo;</a></h3>
 
 <p>実際に処理をするところっぽい。<br/>
 search_servletにパスを渡し、どんな返答を返すべきなのかを探して、そこに処理を渡している。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/handler/webrick.rb#L60">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/handler/webrick.rb#L60">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service&#8217;&rdquo;</a></h3>
 
 <p>名前の通りwebrickから直接値を渡され、処理するところ。<br/>
 webrickからはreqとresという値を受け取っている。</p>
@@ -340,31 +340,31 @@ webrickからはreqとresという値を受け取っている。</p>
 
 <p>また、処理した後に結果を受け取り、引数のresに入れている。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/content_length.rb#L14">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/content_length.rb:14:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/content_length.rb#L14">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/content_length.rb:14:in `call&#8217;&rdquo;</a></h3>
 
 <p>次の処理を読んで、帰ってきた結果にBODYが含まれているなら、<br/>
 ヘッダーにContent-Lengthを計算して追加している。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#8217;&rdquo;</a></h3>
 
 <p>Mutex使ってロックをかけているだけみたい</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/application.rb#L97">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/application.rb:97:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/application.rb#L97">&ldquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/application.rb:97:in `call&#8217;&rdquo;</a></h3>
 
 <p>rackから呼び出されるためだけに存在するやつっぽい。<br/>
 引数を少しいじってる程度</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/engine.rb#L511">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/engine.rb#L511">&ldquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call&#8217;&rdquo;</a></h3>
 
-<p>&#8216;action_dispatch.routes&#8217;というキーで、ActionDispatch::Routing::RouteSetを追加している。<br/>
+<p>&lsquo;action_dispatch.routes&#8217;というキーで、ActionDispatch::Routing::RouteSetを追加している。<br/>
 また、SCRIPT_NAMEが存在する場合には、<br/>
 ROUTES_オブジェクトID_SCRIPT_NAMEという名前で、同じ値をコピーして代入している。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/sendfile.rb#L112">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/sendfile.rb#L112">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call&#8217;&rdquo;</a></h3>
 
 <p>より下の階層に処理をさせた後ファイル送信の場合にヘッダーの書き換えを行っている。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/static.rb#L64">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/static.rb#L64">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call&#8217;&rdquo;</a></h3>
 
 <p>REQUEST_METHODがGETかHEADの時に、ルートからのパスを調べ、<br/>
 ファイルとして存在している場合には否かをチェックして、<br/>
@@ -372,69 +372,69 @@ ROUTES_オブジェクトID_SCRIPT_NAMEという名前で、同じ値をコピ�
 たぶんRailsに処理させず、ファイルを読んで返してるだけかと。<br/>
 無い場合は特に何もせず下の階層を呼んでいる。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#8217;&rdquo;</a></h3>
 
 <p>mutexを使ってロックをかけているだけっぽい。<br/>
 また、下の階層を呼んで得られたbodyに対して、BodyProxyに処理させた結果と入れ替えている。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/cache/strategy/local_cache.rb#L83">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/cache/strategy/local_cache.rb#L83">&ldquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call&#8217;&rdquo;</a></h3>
 
 <p>LocalCacheRegistryにLocalStoreオブジェクトを初期化してセットしてる。<br/>
 コメントによると、簡単なメモリキャッシュに使うらしい。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/runtime.rb#L17">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/runtime.rb:17:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/runtime.rb#L17">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/runtime.rb:17:in `call&#8217;&rdquo;</a></h3>
 
 <p>X-Runtimeヘッダに、ここから下の処理にかかった時間をセットしている。</p>
 
-<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/methodoverride.rb#L21">&#8220;/GEMLIFE_PATH/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/methodoverride.rb#L21">&ldquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call&#8217;&rdquo;</a></h3>
 
 <p>POSTメソッドだった場合に、METHOD_OVERRIDE_PARAM_KEYやHTTP_METHOD_OVERRIDE_HEADERを見て、<br/>
 登録されているメソッド名GET HEAD PUT POST DELETE OPTIONS PATCHだったらそれと入れ替えている。<br/>
 おそらく、PUTとかを実装していないブラウザで、POSTに特別な種類のデータを入れてPUTとして扱うための対応。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/request_id.rb#L21">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/request_id.rb#L21">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call&#8217;&rdquo;</a></h3>
 
 <p>あるならばHTTP_X_REQUEST_IDの値か、無いならばSecureRandom.uuidの結果を、<br/>
 action_dispatch.request_idとして設定している。<br/>
 たぶんリクエストを一意に識別したいんだと思う。<br/>
 また、ヘッダのX-Request-Idにもその価を入れている。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20">&ldquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call&#8217;&rdquo;</a></h3>
 
 <p>事前に設定されたタグごとに処理をしているみたい。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67">&ldquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged&#8217;&rdquo;</a></h3>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L25">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L25">&ldquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged&#8217;&rdquo;</a></h3>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67">&ldquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged&#8217;&rdquo;</a></h3>
 
 <p>この辺ちょっと何やってるかわからない(´･_･`)<br/>
 なんか引数で与えられたタグに処理してるっぽいけど、Ruby力が低くて読み取れない (´・ω・｀)</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20">&ldquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call&#8217;&rdquo;</a></h3>
 
 <p>４つ上のところと同じ箇所。<br/>
 上で用意したloggerにブロックで次の処理を呼ぶように指定しているため、<br/>
 ブロックを渡す相手の初期化→ブロック内の実行と、二回同じ箇所にくる。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L38">&#8220;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L38">&ldquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app&#8217;&rdquo;</a></h3>
 
 <p>Debugの場合はログ出力にスペースを二つ挟んでいる。<br/>
 その後、ActiveSupport::Nortificationsを使い、&#8217;request.action_dispatch&#8217;という名前で、requestを通知している。<br/>
 ここでリクエスト直後に処理を挟むようなライブラリを呼び出しているとか？</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/show_exceptions.rb#L30">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/show_exceptions.rb#L30">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#8217;&rdquo;</a></h3>
 
 <p>基本何もしないけど、ここより下の階層から例外が投げられた場合に、<br/>
 例外用のレスポンスを作成して返している。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/debug_exceptions.rb#L17">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/debug_exceptions.rb#L17">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#8217;&rdquo;</a></h3>
 
 <p>ヘッダにX-Cascadeがpassと設定されている場合、もしくは任意の他のエラーが起きた場合に、<br/>
 エラーレスポンスを作成している。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L76">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L76">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#8217;&rdquo;</a></h3>
 
 <p>action_dispatch.remote_ipにアクセスしてきたIPアドレスを保存している。<br/>
 保存はGetIpクラスで行われており、calculate_ipメソッドを実行することで、<br/>
@@ -444,11 +444,11 @@ action_dispatch.request_idとして設定している。<br/>
 そこの処理が重いため、必要が無ければ計算しないand計算したらメモするようにしているみたい。<br/>
 (この正規表現を使っているみたい<a href="https://gist.github.com/gazay/1289635">https://gist.github.com/gazay/1289635</a>)</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/reloader.rb#L64">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/reloader.rb:64:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/reloader.rb#L64">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/reloader.rb:64:in `call&#8217;&rdquo;</a></h3>
 
 <p>コールバックとして設定されたprepareとcleanupを処理の最初と最後に呼んでいる。</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L27">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:27:in `call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L27">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:27:in `call&#8217;&rdquo;</a></h3>
 
 <p>コールバックとして登録された関数に、より下の処理を実行するようにブロックで渡し、<br/>
 ブロック内で例外が出た場合にその例外を返す。
@@ -456,14 +456,14 @@ action_dispatch.request_idとして設定している。<br/>
 一応、ブロック内で例外が発生したとしても、コールバック関数はそのまま処理が実行され、<br/>
 その後再び同じ例外をなげる事になるんだけれどこれが目的？</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L80">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L80">&ldquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks&#8217;&rdquo;</a></h3>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L373">&#8220;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:373:in `_run<strong>4335260606468341692</strong>call__callbacks&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L373">&ldquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:373:in `_run<strong>4335260606468341692</strong>call__callbacks&#8217;&rdquo;</a></h3>
 
 <p>与えられたシンボル(イベント名？)からコールバック先を見つけ、それに対して引数のブロックを渡している？<br/>
 なんかEVALしてクラスを作ってたりしてて、ちょっと意味不明なことやってる(´･_･`)</p>
 
-<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L29">&#8220;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#8217;&#8221;</a></h3>
+<h3><a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L29">&ldquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#8217;&rdquo;</a></h3>
 
 <p>三つ上の位置から渡されたブロック内部。<br/>
 下の処理を呼んでるだけ。</p>
@@ -481,7 +481,7 @@ action_dispatch.request_idとして設定している。<br/>
       
 
       
-      <time datetime="2013-11-10 22:23:00 +0900" pubdate>2013年 11月 10日</time>
+      <time datetime="2013-11-10 22:23:00 +0900" pubdate></time>
       
 
       

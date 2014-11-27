@@ -9,7 +9,7 @@
 <title>おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="最近のブログ投稿 IRCはCL-LFでメッセージを区切る （2014年 08月 09日） Jenkinsで複雑な処理をするときのjob構成について （2014年 07月 21日） 2進数の引き算で補数を使う （2014年 07月 18日） GitHub Kaigiに行ってきた （2014年 &hellip;">
+      content="最近のブログ投稿 strncpyははまりやすい （2014年 09月 11日） go runしても分割したファイルが認識されない （2014年 09月 10日） golangでcronを使う （2014年 09月 09日） パスワードの文字として避けた方がいい文字 （2014年 09月 08日 &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -17,7 +17,7 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="canonical" href="http://ota42y.com/blog/page/12">
+<link rel="canonical" href="http://ota42y.com/posts/4">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
       media="screen, projection"
@@ -29,7 +29,7 @@
       type="application/atom+xml">
 
 <style type="text/css">
-  header[role="banner"] hgroup h1 {
+  header[role=&#8221;banner&#8221;] hgroup h1 {
     /* font-size: 180% */
     color: #999;
   }
@@ -93,36 +93,71 @@
     
       <li>
         <article>
-          <a rel="full-article" href="/blog/2014/08/09/irc/">IRCはCL-LFでメッセージを区切る</a>
-          （<time datetime="2014-08-09 22:14:32 +0900" pubdate>2014年 08月 09日</time>）
+          <a rel="full-article" href="/blog/2014/09/11/strncpy-bug/">strncpyははまりやすい</a>
+          （<time class='entry-date' datetime='2014-09-11T07:45:25+09:00'><span class='date'>2014年 09月 11日</span></time>）
         </article>
       </li>
     
       <li>
         <article>
-          <a rel="full-article" href="/blog/2014/07/21/jenkins-architecture/">Jenkinsで複雑な処理をするときのjob構成について</a>
-          （<time datetime="2014-07-21 21:12:36 +0900" pubdate>2014年 07月 21日</time>）
+          <a rel="full-article" href="/blog/2014/09/10/golang-file-split/">go runしても分割したファイルが認識されない</a>
+          （<time class='entry-date' datetime='2014-09-10T07:48:24+09:00'><span class='date'>2014年 09月 10日</span></time>）
         </article>
       </li>
     
       <li>
         <article>
-          <a rel="full-article" href="/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/">2進数の引き算で補数を使う</a>
-          （<time datetime="2014-07-18 00:00:00 +0900" pubdate>2014年 07月 18日</time>）
+          <a rel="full-article" href="/blog/2014/09/09/golang-cron/">golangでcronを使う</a>
+          （<time class='entry-date' datetime='2014-09-09T07:32:37+09:00'><span class='date'>2014年 09月 09日</span></time>）
         </article>
       </li>
     
       <li>
         <article>
-          <a rel="full-article" href="/blog/2014/06/03/github-kaigi/">GitHub Kaigiに行ってきた</a>
-          （<time datetime="2014-06-03 22:49:12 +0900" pubdate>2014年 06月 03日</time>）
+          <a rel="full-article" href="/blog/2014/09/08/password-word/">パスワードの文字として避けた方がいい文字</a>
+          （<time class='entry-date' datetime='2014-09-08T07:44:40+09:00'><span class='date'>2014年 09月 08日</span></time>）
         </article>
       </li>
     
       <li>
         <article>
-          <a rel="full-article" href="/blog/2014/05/13/browser-networking/">Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング</a>
-          （<time datetime="2014-05-13 22:30:54 +0900" pubdate>2014年 05月 13日</time>）
+          <a rel="full-article" href="/blog/2014/09/07/git-copy-current-branch/">gitで現在のブランチ名をクリップボードにコピーする</a>
+          （<time class='entry-date' datetime='2014-09-07T09:19:58+09:00'><span class='date'>2014年 09月 07日</span></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2014/09/06/cedec2014-09-03/">CEDEC2014 9月3日まとめ</a>
+          （<time class='entry-date' datetime='2014-09-06T10:20:41+09:00'><span class='date'>2014年 09月 06日</span></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2014/09/04/centos7-android-build/">CentOS7でAndroid SDKとNDKを使う</a>
+          （<time class='entry-date' datetime='2014-09-04T07:46:28+09:00'><span class='date'>2014年 09月 04日</span></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2014/09/03/mgo-consistency/">mgoのConsistencyについて</a>
+          （<time class='entry-date' datetime='2014-09-03T07:12:45+09:00'><span class='date'>2014年 09月 03日</span></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2014/09/02/go-mongodb/">golangでmongodbを使う</a>
+          （<time class='entry-date' datetime='2014-09-02T07:40:29+09:00'><span class='date'>2014年 09月 02日</span></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2014/09/01/mongodb-explain/">MongoDBでインデックスとexplainを使う</a>
+          （<time class='entry-date' datetime='2014-09-01T08:01:51+09:00'><span class='date'>2014年 09月 01日</span></time>）
         </article>
       </li>
     
