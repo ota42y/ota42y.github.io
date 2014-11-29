@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-11-28T07:47:00+09:00</updated>
+  <updated>2014-11-29T17:21:03+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[参加記録 BPStudy ♯87]]></title>
+    <link href="http://ota42y.com/blog/2014/11/29/bpstudy-87/"/>
+    <updated>2014-11-29T17:17:19+09:00</updated>
+    <id>http://ota42y.com/blog/2014/11/29/bpstudy-87</id>
+    <content type="html"><![CDATA[<p><a href="http://bpstudy.connpass.com/event/9741/">BPStudy#87</a>に参加しました。<br/>
+<a href="http://togetter.com/li/751302">togetterまとめ</a></p>
+
+<h1>じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？</h1>
+
+<p><a href="http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6">http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6</a></p>
+
+<p>iOS8とiPhone6の新機能まとめと、それによって生じる問題紹介でした。</p>
+
+<p>スライド46ページ目の親指の可動範囲の図を見せられると一目瞭然ですが、<br/>
+画面サイズが大きくなったことによるタッチ領域の変化はとても激しく、<br/>
+iPhone6や6+では従来のUIはかなり使いづらいものになってしまいます。</p>
+
+<p>あと、リモートで任意の端末をレンタルできるRemote TestKitが凄い便利そうでした。<br/>
+<a href="http://appkitbox.com/testkit/">Remote TestKit</a></p>
+
+<h1>iPhone 6がリリースされて2ヶ月が過ぎました　〜iOSの分断化時代を乗り切ろう〜</h1>
+
+<p><a href="http://www.slideshare.net/masashiono1/bpstudy-87">http://www.slideshare.net/masashiono1/bpstudy-87</a><br/>
+<a href="https://github.com/akisute/AutoLayoutTest">akisute/AutoLayoutTest</a></p>
+
+<p>前半のスワイプUIのススメは、前の発表のiPhone6や6+向けのUIの回答として、<br/>
+かなり良い回答ではないかなと思いました。<br/>
+あと後半のSwiftのまとめが、Swiftの闇をひしひしと感じる内容で凄いです…<em>(:3 」∠)</em></p>
+
+<h1>LT</h1>
+
+<p>一件目はiOS7と8で遭遇したブラウザバグの紹介でした。<br/>
+画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、<br/>
+同時接続数が2個になったが、レスポンスの受信時間がかぶるとクラッシュするので同時接続してはいけないとか、<br/>
+かなり辛い感じのバグが多かったです…</p>
+
+<p>二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…<br/>
+恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる]]></title>
@@ -1767,41 +1809,6 @@ Dateオブジェクトのコンストラクタには、指定時間後のオブ�
 </span><span class='line'>console.log stamina_calculator.convertToDate(second)
 </span><span class='line'># 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[npmにパッケージを公開する手順]]></title>
-    <link href="http://ota42y.com/blog/2014/09/29/npm-publish/"/>
-    <updated>2014-09-29T07:49:16+09:00</updated>
-    <id>http://ota42y.com/blog/2014/09/29/npm-publish</id>
-    <content type="html"><![CDATA[<p>とても簡単でしたがつい忘れるのでメモ。</p>
-
-<h1>公開手順</h1>
-
-<ol>
-<li><p>npmjsに開発者登録をします。<br/>
-<a href="https://www.npmjs.org/">https://www.npmjs.org/</a></p></li>
-<li><p><code>npm adduser</code>で~/.npmrcにnpmへのログイントークンを保存します。</p></li>
-<li><p>package.jsonに必要事項を書きます。<br/>
-<a href="https://github.com/ota42y/stamina-calculator/blob/master/package.json">こんな感じ</a>ですね。</p></li>
-<li><p><code>npm publish</code>で公開</p></li>
-<li><p>アップグレード版の配布も<code>npm publish</code>で可能です。<br/>
-(ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)</p></li>
-</ol>
-
-
-<h1>非公開手順</h1>
-
-<p>間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、<br/>
-<code>npm unpublish パッケージ名前@バージョン</code>で削除出来ます。<br/>
-何も指定しない場合全てのバージョンが対象になりますが、<code>--force</code>をつける必要があります。</p>
-
-<p>ただし、削除してしまうので、そのパッケージに依存しているパッケージが悲惨なことになります。<br/>
-そのため、<code>npm deprecate</code>の方がアップグレードを促せるし推奨すると<a href="https://www.npmjs.org/doc/cli/npm-unpublish.html">公式サイト</a>には書いてあります。<br/>
-unpublishは間違えて公開した場合用ですね。</p>
-
-<p>なお、全てのバージョンを削除するとnpmからパッケージの情報も削除されます。</p>
 ]]></content>
   </entry>
   
