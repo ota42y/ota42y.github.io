@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>Octopressのアップデート手順 - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="Octopressのアップデート手順 見た目は変わっていませんが、このブログのOctopressをアップデートしました。
+だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、
+forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2014/11/30/octopress-update">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">Octopressのアップデート手順</h2>
+    
+  </header>
+
+  <div class="entry_content"><p>見た目は変わっていませんが、このブログのOctopressをアップデートしました。<br/>
+だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、<br/>
+forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。</p>
+
+<h1>ブログ用リポジトリの状態</h1>
+
+<p>このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。<br/>
+<a href="https://github.com/ota42y/ota42y.github.io">https://github.com/ota42y/ota42y.github.io</a></p>
+
+<p>ですが、これはOctopressの出力先のリポジトリであり、<br/>
+bitbucket上にOctopress自体のリポジトリが存在します。<br/>
+このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。</p>
+
+<h1>Octopressのアップデート</h1>
+
+<p>普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。<br/>
+その後、Octopress側のmasterとマージをするだけになります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git remote add octopress git@github.com:imathis/octopress.git
+</span><span class='line'>git fetch octopress
+</span><span class='line'>git merge octopress/master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>その後、bundle installすれば終了…のはずでしたが、1つ落とし穴がありました。<br/>
+Jekyllがアップデートされたため、日付を出力するdate_time_htmlが変更されていました。<br/>
+<a href="https://github.com/imathis/octopress/pull/1643/files">https://github.com/imathis/octopress/pull/1643/files</a><br/>
+そのため、これを直すことで、無事アップデートは終了になりました。</p>
+
+<p>date_time_htmlが無くなったことはすぐに発見できましたが、<br/>
+このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。<br/>
+Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、<br/>
+その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2014-11-30 07:50:22 +0900" pubdate></time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2014/11/30/octopress-update/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2014/11/30/octopress-update/" >Tweet</a>
+      
+
+      
+
+      
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2014 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>
