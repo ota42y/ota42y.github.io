@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-02T07:51:49+09:00</updated>
+  <updated>2014-12-03T07:57:00+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,168 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[golangでYAMLファイルを読み込んで構造体に入れる]]></title>
+    <link href="http://ota42y.com/blog/2014/12/03/go-yaml-struct/"/>
+    <updated>2014-12-03T07:46:50+09:00</updated>
+    <id>http://ota42y.com/blog/2014/12/03/go-yaml-struct</id>
+    <content type="html"><![CDATA[<p>使い方がかなり特殊だったのでメモ<br/>
+(ドキュメントには書いてありますが…)</p>
+
+<p>goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、<br/>
+データを構造体にセットした状態で読み込むことが出来ます。</p>
+
+<p>特にGoでは構造体を使わない場合、<a href="http://ota42y.com/blog/2014/11/13/go-yaml/">interfaceへの変換を書きまくる事になる</a>ので、<br/>
+できる限り構造体を利用した方がお勧めです。</p>
+
+<p>以下のように、YAMLのキーとGoの構造体の名前を揃えることで、<br/>
+YAMLから構造体に直接データを代入できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">type</span> <span class="nx">Data</span> <span class="kd">struct</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">UserId</span>      <span class="kt">int</span>
+</span><span class='line'>  <span class="nx">UserName</span>    <span class="kt">string</span> <span class="s">`yaml:&quot;user_name&quot;`</span>
+</span><span class='line'>  <span class="nx">Follownum</span>   <span class="kt">int</span>    <span class="s">`yaml:&quot;followNum&quot;`</span>
+</span><span class='line'>  <span class="nx">MessageText</span> <span class="kt">string</span>
+</span><span class='line'>  <span class="nx">invaliddata</span> <span class="kt">string</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">userid</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">123</span>
+</span><span class='line'><span class="l-Scalar-Plain">user_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">name</span>
+</span><span class='line'><span class="l-Scalar-Plain">followNum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">42</span>
+</span><span class='line'><span class="l-Scalar-Plain">messageText</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">text</span>
+</span><span class='line'><span class="l-Scalar-Plain">invaliddata</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">data</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>後述するコードでYAMLを読み込むと、出力は以下の通りになります、<br/>
+<code>=&gt; {123 name 42  }</code></p>
+
+<p>UserIdに123、UserNameにname、Follownumに42、<br/>
+MessageTextとinvaliddataは空になっています。</p>
+
+<h1>構造体とYAMLの対応付け仕様</h1>
+
+<p>特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。<br/>
+対応するキーは以下のような仕様になっているようです。</p>
+
+<ul>
+<li>指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける
+
+<ul>
+<li>UserIdはuseridと対応付けられます</li>
+</ul>
+</li>
+<li>後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます
+
+<ul>
+<li>messageTextはダメで、messagetextでないといけません</li>
+</ul>
+</li>
+<li>構造体のメンバは大文字から始まる
+
+<ul>
+<li>そのため、invaliddataにはデータ入っていません</li>
+<li>大文字から始まれば、途中が大文字でも大丈夫です
+
+<ul>
+<li>UserIdはuseridと対応付けられます</li>
+</ul>
+</li>
+<li>途中を大文字にしても、全て小文字のキーを見に行きます
+
+<ul>
+<li>MessageTextはmessagetextと対応付けられます</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>明示的に対応を設定することもできる
+
+<ul>
+<li>UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない)</li>
+<li>Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる</li>
+</ul>
+</li>
+</ul>
+
+
+<p>暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。</p>
+
+<h1>サンプルコード</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;gopkg.in/yaml.v2&quot;</span>
+</span><span class='line'>  <span class="s">&quot;io/ioutil&quot;</span>
+</span><span class='line'>  <span class="s">&quot;fmt&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">type</span> <span class="nx">Data</span> <span class="kd">struct</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">UserId</span>      <span class="kt">int</span>
+</span><span class='line'>  <span class="nx">UserName</span>    <span class="kt">string</span> <span class="s">`yaml:&quot;user_name&quot;`</span>
+</span><span class='line'>  <span class="nx">Follownum</span>   <span class="kt">int</span>     <span class="s">`yaml:&quot;followNum&quot;`</span>
+</span><span class='line'>  <span class="nx">MessageText</span> <span class="kt">string</span>
+</span><span class='line'>  <span class="nx">invaliddata</span> <span class="kt">string</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">buf</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;test.yml&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">d</span> <span class="nx">Data</span>
+</span><span class='line'>  <span class="nx">err</span> <span class="p">=</span> <span class="nx">yaml</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">d</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[参加記録 Go Conference 2014 autumn]]></title>
@@ -81,7 +243,7 @@ Goは1.0の時点で言語の機能を固定し、機能をとても少なく持
 
 <h1>Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)</h1>
 
-<p>スライドは未公開？</p>
+<p><a href="http://ukai-go-talks.appspot.com/2014/gocon.slide#1">資料</a></p>
 
 <p>Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。</p>
 
@@ -300,7 +462,9 @@ iPhone6や6+では従来のUIはかなり使いづらいものになってしま
 <h1>LT</h1>
 
 <p>一件目はiOS7と8で遭遇したブラウザバグの紹介でした。<br/>
-画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、<br/>
+<a href="http://slides.com/monjudoh/ios_browser_bugs">資料</a></p>
+
+<p>画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、<br/>
 同時接続数が2個になったが、レスポンスの受信時間がかぶるとクラッシュするので同時接続してはいけないとか、<br/>
 かなり辛い感じのバグが多かったです…</p>
 
@@ -1718,222 +1882,6 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 
 <script src="https://gist.github.com/ota42y/41fed7d94c23836f3440.js"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[goでmysqlを使う]]></title>
-    <link href="http://ota42y.com/blog/2014/10/04/go-mysql/"/>
-    <updated>2014-10-04T18:18:22+09:00</updated>
-    <id>http://ota42y.com/blog/2014/10/04/go-mysql</id>
-    <content type="html"><![CDATA[<p><a href="http://github.com/go-sql-driver/mysql">http://github.com/go-sql-driver/mysql</a><br/>
-がありましたので、それを使います。</p>
-
-<p>以下のように読み込むことで、<code>sql.Open</code>でmysqlを開くことが出来ます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="p">(</span>
-</span><span class='line'>  <span class="nx">_</span> <span class="s">&quot;github.com/go-sql-driver/mysql&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>DB設定</h1>
-
-<p>以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;mysql&quot;</span><span class="p">,</span> <span class="s">&quot;user:password@/dbname&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">defer</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>サーバやデータベース名などはDSN (Data Source Name)で指定するようです。<br/>
-あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。</p>
-
-<h1>使い方</h1>
-
-<h2>前提条件</h2>
-
-<p>上記の方法でsql.Openの結果を変数のdbに保存済み、<br/>
-以下の構造体をDBに書き込むとします。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">type</span> <span class="nx">Post</span> <span class="kd">struct</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">RoomName</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="nx">Message</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="nx">MessageId</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="nx">IsSend</span> <span class="kt">bool</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>また、tableNameに書き込むテーブル名が保存されているとします。</p>
-
-<h2>INSERT</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">post</span> <span class="o">:=</span> <span class="nx">getPost</span><span class="p">()</span><span class="err">　</span><span class="c1">// 書き込むためのデータを取得する</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">stmtIns</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Prepare</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?, ?)&quot;</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">))</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">defer</span> <span class="nx">stmtIns</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span> <span class="c1">// Close the statement when we leave main() / the program terminates</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">stmtIns</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">RoomName</span><span class="p">,</span> <span class="nx">post</span><span class="p">.</span><span class="nx">Message</span><span class="p">,</span> <span class="nx">post</span><span class="p">.</span><span class="nx">MessageId</span><span class="p">,</span> <span class="nx">post</span><span class="p">.</span><span class="nx">IsSend</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>db.PrepareでSQL文を用意し、Execの引数にプレースフォルダの数だけ書き込むデータを渡しています。<br/>
-テーブル名をプレースホルダにするなど、SQLの文法的におかしい場合は、db.Prepareの戻り値がエラーになります。</p>
-
-<h2>UPDATE</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">stmtIns</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Prepare</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;UPDATE %s SET is_send = 1 WHERE ( message_id = ?)&quot;</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">))</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">defer</span> <span class="nx">stmtIns</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">stmtIns</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">MessageId</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>INSERTとほぼ同じです。</p>
-
-<h2>SELECT</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">stmtOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Prepare</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;SELECT room_name, message, message_id, is_send FROM %s WHERE message_id = ? LIMIT 1&quot;</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">))</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">defer</span> <span class="nx">stmtOut</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">room_name</span> <span class="kt">string</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">message</span> <span class="kt">string</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">message_id</span> <span class="kt">string</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">is_send</span> <span class="kt">bool</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">stmtOut</span><span class="p">.</span><span class="nx">QueryRow</span><span class="p">(</span><span class="nx">searchMessageId</span><span class="p">).</span><span class="nx">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">room_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">message</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">message_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">is_send</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="kc">nil</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">postData</span> <span class="nx">Post</span>
-</span><span class='line'><span class="nx">postData</span><span class="p">.</span><span class="nx">RoomName</span> <span class="p">=</span> <span class="nx">room_name</span>
-</span><span class='line'><span class="nx">postData</span><span class="p">.</span><span class="nx">Message</span> <span class="p">=</span> <span class="nx">message</span>
-</span><span class='line'><span class="nx">postData</span><span class="p">.</span><span class="nx">MessageId</span> <span class="p">=</span> <span class="nx">message_id</span>
-</span><span class='line'><span class="nx">postData</span><span class="p">.</span><span class="nx">IsSend</span> <span class="p">=</span> <span class="nx">is_send</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ORマッパーではないので、一つ一つ取り出した値をオブジェクトにセットしていく必要があります。</p>
-
-<h2>複数SELECT</h2>
-
-<p>上の例はLIMIT 1を設定して1件だけ取得していましたが、複数取得の場合はscanではうまきいきません。
-複数取り出す場合はこちらです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Query</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;SELECT room_name, message, message_id, is_send FROM %s WHERE is_send = false LIMIT 100&quot;</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">))</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span> <span class="c1">// proper error handling instead of panic in your app</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">posts</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">Post</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">Next</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">room_name</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">message</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">message_id</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">is_send</span> <span class="kt">bool</span>
-</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">room_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">message</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">message_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">is_send</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">postData</span> <span class="nx">Post</span>
-</span><span class='line'>  <span class="nx">postData</span><span class="p">.</span><span class="nx">RoomName</span> <span class="p">=</span> <span class="nx">room_name</span>
-</span><span class='line'>  <span class="nx">postData</span><span class="p">.</span><span class="nx">Message</span> <span class="p">=</span> <span class="nx">message</span>
-</span><span class='line'>  <span class="nx">postData</span><span class="p">.</span><span class="nx">MessageId</span> <span class="p">=</span> <span class="nx">message_id</span>
-</span><span class='line'>  <span class="nx">postData</span><span class="p">.</span><span class="nx">IsSend</span> <span class="p">=</span> <span class="nx">is_send</span>
-</span><span class='line'>  <span class="nx">posts</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">posts</span><span class="p">,</span> <span class="nx">postData</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Nextを利用して一件ずつScanしています。</p>
-
-<h1>まとめ</h1>
-
-<p>dp.Prepareでプレースホルダー付きのSQL文を作成。<br/>
-INSERTやUPDATEはExecで実行、SELECTはQueryやQueryRowで実行してScanでデータを取り出します。<br/>
-テーブル構造が変わると読み込み部分が変わったり、順番を間違えると悲惨なことになるため面倒です。<br/>
-ORマッパーは偉大ですね…</p>
 ]]></content>
   </entry>
   
