@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-20T15:32:09+09:00</updated>
+  <updated>2014-12-20T16:24:09+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GoのORマッパーGORMが便利]]></title>
+    <link href="http://ota42y.com/blog/2014/12/19/gorm/"/>
+    <updated>2014-12-19T07:40:11+09:00</updated>
+    <id>http://ota42y.com/blog/2014/12/19/gorm</id>
+    <content type="html"><![CDATA[<p>golangではmysqldriverでmysqlにアクセスできますが、<br/>
+一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。<br/>
+<a href="http://ota42y.com/blog/2014/10/04/go-mysql/">goでmysqlを使う</a></p>
+
+<p>そこでいろいろ探していたところ、<br/>
+ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。<br/>
+<a href="https://github.com/jinzhu/gorm">https://github.com/jinzhu/gorm</a></p>
+
+<p>自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。<br/>
+リレーションも勝手に貼ってくれるみたいです。<br/>
+ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、<br/>
+順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。<br/>
+(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'><span class="s">&quot;fmt&quot;</span>
+</span><span class='line'><span class="s">&quot;github.com/jinzhu/gorm&quot;</span>
+</span><span class='line'><span class="nx">_</span> <span class="s">&quot;github.com/lib/pq&quot;</span>
+</span><span class='line'><span class="nx">_</span> <span class="s">&quot;github.com/go-sql-driver/mysql&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">Id</span>           <span class="kt">int64</span>
+</span><span class='line'>  <span class="nx">Name</span>         <span class="kt">string</span>  <span class="s">`sql:&quot;size:255&quot;`</span>
+</span><span class='line'>  <span class="nx">Emails</span>            <span class="p">[]</span><span class="nx">Email</span>         <span class="c1">// One-To-Many relationship (has many)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">type</span> <span class="nx">Email</span> <span class="kd">struct</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">Id</span>         <span class="kt">int64</span>
+</span><span class='line'>  <span class="nx">UserId</span>     <span class="kt">int64</span>   <span class="c1">// Foreign key for User (belongs to)</span>
+</span><span class='line'>  <span class="nx">Email</span>      <span class="kt">string</span>  <span class="s">`sql:&quot;type:varchar(100);&quot;`</span> <span class="c1">// Set field&#39;s type</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;mysql&quot;</span><span class="p">,</span> <span class="s">&quot;root@/testdb?charset=utf8&amp;parseTime=True&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">DB</span><span class="p">()</span>
+</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Email</span><span class="p">{})</span>
+</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{})</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">user</span> <span class="o">:=</span> <span class="nx">User</span><span class="p">{</span>
+</span><span class='line'>    <span class="nx">Name</span><span class="p">:</span>            <span class="s">&quot;ota42y&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">Emails</span><span class="p">:</span>          <span class="p">[]</span><span class="nx">Email</span><span class="p">{</span> <span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&quot;ota42y@example.com&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&quot;ota42y@example@example.com&quot;</span><span class="p">}</span> <span class="p">},</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">me</span> <span class="nx">User</span>
+</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;name = ?&quot;</span><span class="p">,</span> <span class="s">&quot;ota42y&quot;</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">me</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">me</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">emails</span> <span class="p">[]</span><span class="nx">Email</span>
+</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">me</span><span class="p">).</span><span class="nx">Related</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">emails</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">emails</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[golangでYAMLファイルを読み込んで構造体に入れる]]></title>
@@ -1854,34 +1964,6 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 
 <p>参考リンク<br/>
 <a href="https://github.com/go-sql-driver/mysql#timetime-support">https://github.com/go-sql-driver/mysql#timetime-support</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[進捗どうですか？を訪ねるhubotスクリプトを作った]]></title>
-    <link href="http://ota42y.com/blog/2014/10/05/shinchoku/"/>
-    <updated>2014-10-05T11:07:10+09:00</updated>
-    <id>http://ota42y.com/blog/2014/10/05/shinchoku</id>
-    <content type="html"><![CDATA[<p>作りました。<br/>
-30分ごとに進捗どうですか？と聞いてきます。</p>
-
-<p>何をやったかを計測するために定期的にログを残そうと思うのですが、<br/>
-大体忘れるので、こうやって適度に通知することで思いだそう！という試みです。</p>
-
-<h1>使い方</h1>
-
-<p><code>進捗 start</code>で30分ごとに進捗どうですか？と聞いてきます。<br/>
-<code>進捗 stop</code>でストップします。</p>
-
-<h1>ホラー体験</h1>
-
-<p>setTimeoutが秒設定だと間違えて…(´･_･`)<br/>
-<img src="http://ota42y.com/images/posts/2014-10-05-shinchok.png" alt="ホラー体験" /></p>
-
-<h1>コード</h1>
-
-<script src="https://gist.github.com/ota42y/41fed7d94c23836f3440.js"></script>
-
 ]]></content>
   </entry>
   
