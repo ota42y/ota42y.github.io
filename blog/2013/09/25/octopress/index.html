@@ -9,8 +9,9 @@
 <title>WordpressからOctopressへ - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="WordpressからOctopressへ 前までブログシステムにはWordpressを使っていたんですが、
-個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。 そこで、ちょっと話題になってる(らしい)Octopressを導入してみました。 Octopressって何？ &hellip;">
+      content="WordpressからOctopressへ Contents 1 Octopressって何？
+2 運用方法 前までブログシステムにはWordpressを使っていたんですが、
+個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。 そこで、ちょっと話題になってる(らしい) &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -21,9 +22,13 @@
 <link rel="canonical" href="http://ota42y.com/blog/2013/09/25/octopress">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -89,33 +94,40 @@
     
   </header>
 
-  <div class="entry_content"><p>前までブログシステムにはWordpressを使っていたんですが、<br/>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Octopressって何？</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">運用方法</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>前までブログシステムにはWordpressを使っていたんですが、<br>
 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。</p>
 
 <p>そこで、ちょっと話題になってる(らしい)<a href="http://octopress.org/">Octopress</a>を導入してみました。</p>
 
-<h1>Octopressって何？</h1>
+<h1 id="tocAnchor-1-1">Octopressって何？</h1>
 
-<p><a href="http://jekyllrb.com/">jekyll</a>を使って、<br/>
+<p><a href="http://jekyllrb.com/">jekyll</a>を使って、<br>
 github pages上で簡単にブログを作れるシステムらしいです。</p>
 
-<p>テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、<br/>
+<p>テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、<br>
 githubのへデプロイすることでweb上に公開できるシステムになります。</p>
 
-<p>そのため、gitを使ってブログのデプロイやバックアップを作れるという、<br/>
-まさにプログラマー向けなブログシステムです。<br/>
+<p>そのため、gitを使ってブログのデプロイやバックアップを作れるという、<br>
+まさにプログラマー向けなブログシステムです。<br>
 公式サイトにも、A blogging framework for hackersって書いてありますしね。</p>
 
 <p>インストールの仕方は<a href="http://qiita.com/ota42y/items/dcb32930d1153aa9f452">こっち</a></p>
 
-<h1>運用方法</h1>
+<h1 id="tocAnchor-1-2">運用方法</h1>
 
-<p>デプロイする<a href="https://github.com/ota42y/ota42y.github.io">githubのリポジトリ</a>には、このブログのファイルが全部入ってます。<br/>
-ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、<br/>
+<p>デプロイする<a href="https://github.com/ota42y/ota42y.github.io">githubのリポジトリ</a>には、このブログのファイルが全部入ってます。<br>
+ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、<br>
 このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。</p>
 
-<p>そこで、公開用のリポジトリとは別に、<br/>
-Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。<br/>
+<p>そこで、公開用のリポジトリとは別に、<br>
+Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。<br>
 こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。</p>
 
 <p>今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。</p>

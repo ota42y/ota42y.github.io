@@ -9,10 +9,11 @@
 <title>mgoのConsistencyについて - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="mgoのConsistencyについて mgoのサンプルにあった
-session.SetMode(mgo.Monotonic, true)
-の意味がよくわからないので調べてみました。 結論から書きますと、これは複数DBを利用した際の、
-データの一貫性をどの程度保証するかの設定です。 一貫性制御 &hellip;">
+      content="mgoのConsistencyについて Contents 1 一貫性制御
+1.1 Eventual Consistency
+1.2 Monotonic Consistency
+1.3 Strong Consistency mgoのサンプルにあった
+session.SetMode(mgo. &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -23,9 +24,13 @@ session.SetMode(mgo.Monotonic, true)
 <link rel="canonical" href="http://ota42y.com/blog/2014/09/03/mgo-consistency">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -91,57 +96,70 @@ session.SetMode(mgo.Monotonic, true)
     
   </header>
 
-  <div class="entry_content"><p>mgoのサンプルにあった<br/>
-<code>session.SetMode(mgo.Monotonic, true)</code><br/>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul><li class="toc_level-1 toc_section-1">
+<a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">一貫性制御</span></a><ul>
+<li class="toc_level-2 toc_section-2"><a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">Eventual Consistency</span></a></li>
+<li class="toc_level-2 toc_section-3"><a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">Monotonic Consistency</span></a></li>
+<li class="toc_level-2 toc_section-4"><a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">Strong Consistency</span></a></li>
+</ul>
+</li></ul>
+</td></tr></tbody></table></div>
+<p>mgoのサンプルにあった<br>
+<code>session.SetMode(mgo.Monotonic, true)</code><br>
 の意味がよくわからないので調べてみました。</p>
 
-<p>結論から書きますと、これは複数DBを利用した際の、<br/>
+<p>結論から書きますと、これは複数DBを利用した際の、<br>
 データの一貫性をどの程度保証するかの設定です。</p>
 
-<h1>一貫性制御</h1>
+<h1 id="tocAnchor-1-1">一貫性制御</h1>
 
 <p>mgoには複数のDB間での一貫性を制御する３種類のモードがあります。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">const</span> <span class="p">(</span>
-</span><span class='line'>  <span class="nx">Eventual</span>  <span class="nx">mode</span> <span class="p">=</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="nx">Monotonic</span> <span class="nx">mode</span> <span class="p">=</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="nx">Strong</span>    <span class="nx">mode</span> <span class="p">=</span> <span class="mi">2</span>
-</span><span class='line'>  <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="go"><span class="line"><span class="kd">const</span> <span class="p">(</span>
+</span><span class="line">  <span class="nx">Eventual</span>  <span class="nx">mode</span> <span class="p">=</span> <span class="mi">0</span>
+</span><span class="line">  <span class="nx">Monotonic</span> <span class="nx">mode</span> <span class="p">=</span> <span class="mi">1</span>
+</span><span class="line">  <span class="nx">Strong</span>    <span class="nx">mode</span> <span class="p">=</span> <span class="mi">2</span>
+</span><span class="line">  <span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>SetModeにこれを渡すことで、モードを切り替えられます。</p>
 
-<p>それぞれの内容は以下の通りです。<br/>
+<p>それぞれの内容は以下の通りです。<br>
 おそらく一貫性がちゃんとしていくに従って、複雑化&amp;遅くなっていきます。</p>
 
-<h2>Eventual Consistency</h2>
+<h2 id="tocAnchor-1-1-1">Eventual Consistency</h2>
 
-<p>最終的に辻褄が合えばいいよね設定です。<br/>
+<p>最終的に辻褄が合えばいいよね設定です。<br>
 データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。</p>
 
-<p>更新済みのノードと、そうでないノードが混在する可能性があるため、<br/>
-どのノードから読み込むのかが固定されない場合、<br/>
-新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…<br/>
+<p>更新済みのノードと、そうでないノードが混在する可能性があるため、<br>
+どのノードから読み込むのかが固定されない場合、<br>
+新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…<br>
 といったことが起きる可能性があるはずです。</p>
 
 <p>同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。</p>
 
-<h2>Monotonic Consistency</h2>
+<h2 id="tocAnchor-1-1-2">Monotonic Consistency</h2>
 
-<p>あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。<br/>
-おそらく、値を参照したタイミングで最新かどうかは保証されないが、<br/>
+<p>あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。<br>
+おそらく、値を参照したタイミングで最新かどうかは保証されないが、<br>
 少なくとも古い値が読み込まれることはない、という状態だと思われます。</p>
 
-<h2>Strong Consistency</h2>
+<h2 id="tocAnchor-1-1-3">Strong Consistency</h2>
 
-<p>常に必ず最新の値が読み込めるという状態です。<br/>
-一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、<br/>
+<p>常に必ず最新の値が読み込めるという状態です。<br>
+一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、<br>
 注意が必要です。</p>
 </div>
 

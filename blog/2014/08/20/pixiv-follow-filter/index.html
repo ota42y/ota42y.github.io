@@ -9,10 +9,10 @@
 <title>Pixivの検索フィルタ作った - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="Pixivの検索フィルタ作った まとめ Pixivの検索は全ユーザから
-○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる
-検索結果からフォローしている人を非表示にする拡張作った
-DLはここから Pixivのイラスト検索でフォロワーを除外できない &hellip;">
+      content="Pixivの検索フィルタ作った Contents 1 Pixivのイラスト検索でフォロワーを除外できない
+2 フィルタの基本機能
+3 ソースコード まとめ Pixivの検索は全ユーザから
+○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -23,9 +23,13 @@ DLはここから Pixivのイラスト検索でフォロワーを除外できな
 <link rel="canonical" href="http://ota42y.com/blog/2014/08/20/pixiv-follow-filter">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -91,7 +95,15 @@ DLはここから Pixivのイラスト検索でフォロワーを除外できな
     
   </header>
 
-  <div class="entry_content"><p>まとめ</p>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Pixivのイラスト検索でフォロワーを除外できない</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">フィルタの基本機能</span></a></li>
+<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">ソースコード</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>まとめ</p>
 
 <ul>
 <li>Pixivの検索は全ユーザから</li>
@@ -101,31 +113,31 @@ DLはここから Pixivのイラスト検索でフォロワーを除外できな
 </ul>
 
 
-<h1>Pixivのイラスト検索でフォロワーを除外できない</h1>
+<h1 id="tocAnchor-1-1">Pixivのイラスト検索でフォロワーを除外できない</h1>
 
-<p>Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、<br/>
+<p>Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、<br>
 検索結果にフォローしてる人とそうでない人が交じります。</p>
 
-<p>私の場合、<a href="http://www.pixiv.net/bookmark_new_illust.php">フォロー新着作品</a>を全てチェックしているため、<br/>
+<p>私の場合、<a href="http://www.pixiv.net/bookmark_new_illust.php">フォロー新着作品</a>を全てチェックしているため、<br>
 検索をする場合は、このイラスト書いてる新しい人を見つけたい！といった目的で行うことがほとんどです。</p>
 
-<p>そのため、フォロワー以外からの検索を行いたいのですが、<br/>
+<p>そのため、フォロワー以外からの検索を行いたいのですが、<br>
 残念ながらPixivにそのような機能はありませんでした。</p>
 
 <p>というわけで、Chrome拡張で実現しました。</p>
 
-<h1>フィルタの基本機能</h1>
+<h1 id="tocAnchor-1-2">フィルタの基本機能</h1>
 
 <p>DLは<a href="https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;authuser=1">ここ</a>から。</p>
 
-<p>検索結果にはユーザのユニークIDが含まれているため、<br/>
+<p>検索結果にはユーザのユニークIDが含まれているため、<br>
 自分のフォローしている人と一致していれば非表示にしています。</p>
 
-<p>また、毎回通信するのは無駄が多いため、<br/>
-事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。<br/>
+<p>また、毎回通信するのは無駄が多いため、<br>
+事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。<br>
 そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。</p>
 
-<h1>ソースコード</h1>
+<h1 id="tocAnchor-1-3">ソースコード</h1>
 
 <p><a href="https://github.com/ota42y/pixiv_follower_filter">https://github.com/ota42y/pixiv_follower_filter</a></p>
 </div>

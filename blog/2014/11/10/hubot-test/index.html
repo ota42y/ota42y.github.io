@@ -9,10 +9,9 @@
 <title>Hubotの追加機能作成をテストで楽にする - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="Hubotの追加機能作成をテストで楽にする Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
-普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、
-面倒な手順を踏むことになります。
-また、普通に起動するとエラーも吐いてくれないため、 &hellip;">
+      content="Hubotの追加機能作成をテストで楽にする Contents 1 Hubot用パッケージの構成
+2 参考 Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
+普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、 &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -23,9 +22,13 @@
 <link rel="canonical" href="http://ota42y.com/blog/2014/11/10/hubot-test">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -91,81 +94,94 @@
     
   </header>
 
-  <div class="entry_content"><p>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。<br/>
-普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、<br/>
-面倒な手順を踏むことになります。<br/>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Hubot用パッケージの構成</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">参考</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。<br>
+普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、<br>
+面倒な手順を踏むことになります。<br>
 また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。</p>
 
-<p>しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、<br/>
+<p>しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、<br>
 Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。</p>
 
-<p>そこで、作りたい機能をパッケージ化して作成することで、<br/>
+<p>そこで、作りたい機能をパッケージ化して作成することで、<br>
 トライアンドエラーをする部分を最低限に絞って開発することができました。</p>
 
-<h1>Hubot用パッケージの構成</h1>
+<h1 id="tocAnchor-1-1">Hubot用パッケージの構成</h1>
 
-<p>Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、<br/>
+<p>Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、<br>
 ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。</p>
 
-<p>さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、<br/>
+<p>さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、<br>
 Hubotの連携部分と実際の処理を分けることができます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">PackageClass = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;./package-name/package-class.coffee&#39;</span><span class="p">).</span><span class="nx">PackageClass</span>
-</span><span class='line'><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
-</span><span class='line'>  <span class="nv">package_class = </span><span class="k">new</span> <span class="nx">PackageClass</span>
-</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/test call (\d+)( \w+)?/</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
-</span><span class='line'>    <span class="nv">arg1 = </span><span class="nb">parseInt</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="nv">arg2 = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">msg</span><span class="p">.</span><span class="nx">reply</span> <span class="nx">package_class</span><span class="p">.</span><span class="nx">testCall</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">PackageClass = </span><span class="nx">require</span><span class="p">(</span><span class="s">'./package-name/package-class.coffee'</span><span class="p">).</span><span class="nx">PackageClass</span>
+</span><span class="line"><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class="line">  <span class="nv">package_class = </span><span class="k">new</span> <span class="nx">PackageClass</span>
+</span><span class="line">  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/test call (\d+)( \w+)?/</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class="line">    <span class="nv">arg1 = </span><span class="nb">parseInt</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class="line">    <span class="nv">arg2 = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">msg</span><span class="p">.</span><span class="nx">reply</span> <span class="nx">package_class</span><span class="p">.</span><span class="nx">testCall</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>フォルダ構成は以下のようになります。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">parkage</span><span class="o">-</span><span class="nx">root</span><span class="o">/</span>
-</span><span class='line'> <span class="err">├</span> <span class="nx">package</span><span class="p">.</span><span class="nx">json</span>
-</span><span class='line'> <span class="err">│</span>
-</span><span class='line'> <span class="err">├</span> <span class="nx">src</span><span class="o">/</span>
-</span><span class='line'> <span class="err">│</span>  <span class="err">├</span> <span class="nx">hubot</span><span class="o">-</span><span class="nx">command</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'> <span class="err">│</span>  <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="nx">name</span><span class="o">/</span>
-</span><span class='line'> <span class="err">│</span>     <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'> <span class="err">│</span>
-</span><span class='line'> <span class="err">└</span> <span class="nx">test</span><span class="o">/</span>
-</span><span class='line'>    <span class="err">├</span> <span class="nx">test</span><span class="o">-</span><span class="nx">helper</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'>    <span class="err">└</span> <span class="nx">test</span><span class="o">-</span><span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nx">parkage</span><span class="o">-</span><span class="nx">root</span><span class="o">/</span>
+</span><span class="line"> <span class="err">├</span> <span class="nx">package</span><span class="p">.</span><span class="nx">json</span>
+</span><span class="line"> <span class="err">│</span>
+</span><span class="line"> <span class="err">├</span> <span class="nx">src</span><span class="o">/</span>
+</span><span class="line"> <span class="err">│</span>  <span class="err">├</span> <span class="nx">hubot</span><span class="o">-</span><span class="nx">command</span><span class="p">.</span><span class="nx">coffee</span>
+</span><span class="line"> <span class="err">│</span>  <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="nx">name</span><span class="o">/</span>
+</span><span class="line"> <span class="err">│</span>     <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
+</span><span class="line"> <span class="err">│</span>
+</span><span class="line"> <span class="err">└</span> <span class="nx">test</span><span class="o">/</span>
+</span><span class="line">    <span class="err">├</span> <span class="nx">test</span><span class="o">-</span><span class="nx">helper</span><span class="p">.</span><span class="nx">coffee</span>
+</span><span class="line">    <span class="err">└</span> <span class="nx">test</span><span class="o">-</span><span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
-<p>このように構成し、package-classに対してテストを作成することで、<br/>
+<p>このように構成し、package-classに対してテストを作成することで、<br>
 Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。</p>
 
-<p>前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。<br/>
-ですが、やっていることは正規表現の結果をクラスのメソッドに渡すだけなので、<br/>
+<p>前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。<br>
+ですが、やっていることは正規表現の結果をクラスのメソッドに渡すだけなので、<br>
 手作業でやってしまう方が簡単で早いです。</p>
 
-<h1>参考</h1>
+<h1 id="tocAnchor-1-2">参考</h1>
 
-<p>hubot-scfesはこの方針に則って作ったため、参考になるかもしれません。<br/>
+<p>hubot-scfesはこの方針に則って作ったため、参考になるかもしれません。<br>
 <a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>
 </div>
 

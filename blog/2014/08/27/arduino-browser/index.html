@@ -9,9 +9,9 @@
 <title>ブラウザからArduinoを制御する - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="ブラウザからArduinoを制御する Webブラウザから、接続されているArduinoの値を取りたいのですが、
-当然ながらブラウザ本体やJavascriptにはそんな機能はありません。 そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
-そこに向けて通信すれば、 &hellip;">
+      content="ブラウザからArduinoを制御する Contents 1 noduino
+2 Serialport-server Webブラウザから、接続されているArduinoの値を取りたいのですが、
+当然ながらブラウザ本体やJavascriptにはそんな機能はありません。 そこで、 &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -22,9 +22,13 @@
 <link rel="canonical" href="http://ota42y.com/blog/2014/08/27/arduino-browser">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -90,36 +94,43 @@
     
   </header>
 
-  <div class="entry_content"><p>Webブラウザから、接続されているArduinoの値を取りたいのですが、<br/>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">noduino</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">Serialport-server</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>Webブラウザから、接続されているArduinoの値を取りたいのですが、<br>
 当然ながらブラウザ本体やJavascriptにはそんな機能はありません。</p>
 
-<p>そこで、Arduinoの制御をやるWebサーバをローカルに立てて、<br/>
-そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？<br/>
+<p>そこで、Arduinoの制御をやるWebサーバをローカルに立てて、<br>
+そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？<br>
 と考えたところ、既にそのようなものがありました。</p>
 
 <p>試した結果をまとめます。</p>
 
-<h1>noduino</h1>
+<h1 id="tocAnchor-1-1">noduino</h1>
 
-<p><a href="http://semu.github.io/noduino/">http://semu.github.io/noduino/</a><br/>
+<p><a href="http://semu.github.io/noduino/">http://semu.github.io/noduino/</a><br>
 Node.jsでArduinoを制御できます。
-<a href="https://github.com/ecto/duino">duino</a>というNode.jsからArduinoに接続するライブラリを利用し、<br/>
+<a href="https://github.com/ecto/duino">duino</a>というNode.jsからArduinoに接続するライブラリを利用し、<br>
 Webサーバとして扱えるようにしているものみたいです。</p>
 
-<p>かなりいろいろな事ができ、使いやすいように作られていますが、<br/>
+<p>かなりいろいろな事ができ、使いやすいように作られていますが、<br>
 ブラウザから制御するのはかなり苦労します。
-ですが、Node.jsで実行する前提ならば、<br/>
+ですが、Node.jsで実行する前提ならば、<br>
 簡単でいろいろなことができるため最適だと思います。</p>
 
-<h1>Serialport-server</h1>
+<h1 id="tocAnchor-1-2">Serialport-server</h1>
 
-<p><a href="http://shokai.github.io/serialport-server/">http://shokai.github.io/serialport-server/</a><br/>
-RubyからArduinoにアクセスし、その結果を返すサーバです。<br/>
-noduinoに比べるとできることは少ないですが、<br/>
+<p><a href="http://shokai.github.io/serialport-server/">http://shokai.github.io/serialport-server/</a><br>
+RubyからArduinoにアクセスし、その結果を返すサーバです。<br>
+noduinoに比べるとできることは少ないですが、<br>
 サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。</p>
 
-<p><br />
-というわけで、ブラウザからArduinoを制御する場合は、<br/>
+<p><br>
+というわけで、ブラウザからArduinoを制御する場合は、<br>
 Serialport-serverが良さそうです。</p>
 </div>
 

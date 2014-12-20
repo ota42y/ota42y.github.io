@@ -9,8 +9,9 @@
 <title>Github Pagesの新しいIPアドレス対応 - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="Github Pagesの新しいIPアドレス対応 これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、
-新しいIDアドレスを利用するようにとのwarningが来るようになりました。 そのときに解消方法を調べたのですが、 &hellip;">
+      content="Github Pagesの新しいIPアドレス対応 Contents 1 確認方法
+2 修正手順 これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、
+新しいIDアドレスを利用するようにとのwarningが来るようになりました。 &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -21,9 +22,13 @@
 <link rel="canonical" href="http://ota42y.com/blog/2014/11/20/github-pages-new-ip">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -89,32 +94,41 @@
     
   </header>
 
-  <div class="entry_content"><p>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、<br/>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">確認方法</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">修正手順</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、<br>
 新しいIDアドレスを利用するようにとのwarningが来るようになりました。</p>
 
-<p>そのときに解消方法を調べたのですが、よくわからず放置していたところ、<br/>
+<p>そのときに解消方法を調べたのですが、よくわからず放置していたところ、<br>
 12月から新しいアドレスに設定にしないと使えなくなるらしいので慌ててアップデートしました。</p>
 
-<blockquote class="twitter-tweet" data-cards="hidden" lang="ja"><p>GitHub Pagesの旧IPアドレスが利用できなくなります。独自ドメインを利用しているユーザーで旧IPアドレスのままのレポジトリが影響されます。 <a href="https://t.co/1XI3X3NheA">https://t.co/1XI3X3NheA</a></p>&mdash; GitHub Japan (@GitHubJapan) <a href="https://twitter.com/GitHubJapan/status/530526223785811969">2014, 11月 7</a></blockquote>
+<blockquote class="twitter-tweet" data-cards="hidden" lang="ja">
+<p>GitHub Pagesの旧IPアドレスが利用できなくなります。独自ドメインを利用しているユーザーで旧IPアドレスのままのレポジトリが影響されます。 <a href="https://t.co/1XI3X3NheA">https://t.co/1XI3X3NheA</a></p>— GitHub Japan (@GitHubJapan) <a href="https://twitter.com/GitHubJapan/status/530526223785811969">2014, 11月 7</a>
+</blockquote>
 
 
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-<h1>確認方法</h1>
+<h1 id="tocAnchor-1-1">確認方法</h1>
 
 <p>正しく設定されているかは、
 <a href="https://github.com/blog/1917-github-pages-legacy-ip-deprecation">GitHub Pages Legacy IP Deprecation</a>
-に書いてある確認スクリプトを実行して、<br/>
+に書いてある確認スクリプトを実行して、<br>
 OK以外が表示されたらダメです。</p>
 
-<p>このサイトの場合は以下の通りですね。<br/>
+<p>このサイトの場合は以下の通りですね。<br>
 <code>dig ota42y.com | grep -E '(207.97.227.245|204.232.175.78|199.27.73.133)' || echo “OK”</code></p>
 
-<h1>修正手順</h1>
+<h1 id="tocAnchor-1-2">修正手順</h1>
 
-<p>修正手順は簡単で、自分の持っているドメインを管理しているサービスに行って、<br/>
-Aレコードを下記のページにあるように変更するだけです。<br/>
+<p>修正手順は簡単で、自分の持っているドメインを管理しているサービスに行って、<br>
+Aレコードを下記のページにあるように変更するだけです。<br>
 <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/">Tips for configuring an A record with your DNS provider - User Documentation</a></p>
 
 <p>私はさくらインターネットを使っていたため、以下の手順で変更できました。</p>
@@ -127,9 +141,9 @@ Aレコードを下記のページにあるように変更するだけです。<
 </ol>
 
 
-<p><img src="/images/posts/2014-11-20-github-pages-ip.png" alt="設定画面" /></p>
+<p><img src="/images/posts/2014-11-20-github-pages-ip.png" alt="設定画面"></p>
 
-<p>変更をすると、先ほどのdigコマンドがOKを出すようになり、<br/>
+<p>変更をすると、先ほどのdigコマンドがOKを出すようになり、<br>
 Github Pagesにコミットしても警告メールが飛ばなくなります。</p>
 </div>
 

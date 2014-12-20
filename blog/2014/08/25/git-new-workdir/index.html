@@ -9,9 +9,11 @@
 <title>スマホアプリ開発でgit-new-workdirがとても便利だった - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="スマホアプリ開発でgit-new-workdirがとても便利だった まとめ ビルドに時間がかかる環境下では、ビルドのキャッシュが重要
-ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる
-別ブランチでちょっとした修正を行おうとすると、移動と戻りとで二回ビルドし直しが起きる &hellip;">
+      content="スマホアプリ開発でgit-new-workdirがとても便利だった Contents 1 まとめ
+2 ビルドのキャッシュ
+3 gitのチェックアウトによるファイル変更問題 4 git-new-workdirとは
+4.1 インストール
+4.2 使い方 5 注意点 まとめ &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -22,9 +24,13 @@
 <link rel="canonical" href="http://ota42y.com/blog/2014/08/25/git-new-workdir">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -90,7 +96,22 @@
     
   </header>
 
-  <div class="entry_content"><h1>まとめ</h1>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">まとめ</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">ビルドのキャッシュ</span></a></li>
+<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">gitのチェックアウトによるファイル変更問題</span></a></li>
+<li class="toc_level-1 toc_section-4">
+<a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">git-new-workdirとは</span></a><ul>
+<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-4-1"><span class="tocnumber">4.1</span> <span class="toctext">インストール</span></a></li>
+<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-4-2"><span class="tocnumber">4.2</span> <span class="toctext">使い方</span></a></li>
+</ul>
+</li>
+<li class="toc_level-1 toc_section-7"><a href="#tocAnchor-1-7"><span class="tocnumber">5</span> <span class="toctext">注意点</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<h1 id="tocAnchor-1-1">まとめ</h1>
 
 <ul>
 <li>ビルドに時間がかかる環境下では、ビルドのキャッシュが重要</li>
@@ -103,66 +124,66 @@
 </ul>
 
 
-<h1>ビルドのキャッシュ</h1>
+<h1 id="tocAnchor-1-2">ビルドのキャッシュ</h1>
 
-<p>Objective-cやJava、C++でスマホアプリを作成する場合、<br/>
-どの言語もコンパイルが必要になります。<br/>
+<p>Objective-cやJava、C++でスマホアプリを作成する場合、<br>
+どの言語もコンパイルが必要になります。<br>
 このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。</p>
 
-<p>ただし、多くの場合はキャッシュ機能が有効になっており、<br/>
-変更したファイルのみがコンパイルされるため、<br/>
+<p>ただし、多くの場合はキャッシュ機能が有効になっており、<br>
+変更したファイルのみがコンパイルされるため、<br>
 フルビルドをしなければ気にならないはずです。</p>
 
-<h1>gitのチェックアウトによるファイル変更問題</h1>
+<h1 id="tocAnchor-1-3">gitのチェックアウトによるファイル変更問題</h1>
 
-<p>gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。<br/>
+<p>gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。<br>
 これにより、ブランチ間の差分が全てビルド対象になってしまいます。</p>
 
-<p>当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、<br/>
-別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。<br/>
-ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…<br/>
+<p>当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、<br>
+別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。<br>
+ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…<br>
 なんてこともあり、時間が勿体ないです。</p>
 
-<p>かといって、リポジトリを二つ別々のフォルダにcloneすると、<br/>
-別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々<br/>
+<p>かといって、リポジトリを二つ別々のフォルダにcloneすると、<br>
+別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々<br>
 いろいろと問題が起きます。</p>
 
 <p>こういった場合、git-new-workdirを使うことで、
 だいぶ楽に解決することができます。</p>
 
-<h1>git-new-workdirとは</h1>
+<h1 id="tocAnchor-1-4">git-new-workdirとは</h1>
 
-<p>これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。<br/>
-これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、<br/>
+<p>これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。<br>
+これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、<br>
 片方で作成したコミットや、ローカルブランチ、git stashなどをもう片方で参照することができます。</p>
 
-<p>また、gitのワーキングディレクトリやステージングエリアは共用されないため、<br/>
+<p>また、gitのワーキングディレクトリやステージングエリアは共用されないため、<br>
 コミットしていない変更が別のディレクトリに影響をあたることはありません。　</p>
 
-<h2>インストール</h2>
+<h2 id="tocAnchor-1-4-1">インストール</h2>
 
-<p><code>git/contrib/workdir/git-new-workdir</code>に入っていたので、<br/>
+<p><code>git/contrib/workdir/git-new-workdir</code>に入っていたので、<br>
 <code>export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH</code>
 でパスを通しました。</p>
 
-<h2>使い方</h2>
+<h2 id="tocAnchor-1-4-2">使い方</h2>
 
-<p><code>git-new-workdir repository_folder new_workdir branch_name(オプション)</code>です。<br/>
-後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、<br/>
+<p><code>git-new-workdir repository_folder new_workdir branch_name(オプション)</code>です。<br>
+後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、<br>
 ほぼcheckout時間しかかかりません。</p>
 
 <p>新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。</p>
 
-<h1>注意点</h1>
+<h1 id="tocAnchor-1-7">注意点</h1>
 
-<p>同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。<br/>
-なお、片方からもう片方が何をチェックアウトしているかはわからないため、<br/>
-main/subといった使い方や、develop/releaseといった風に分けたり、<br/>
+<p>同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。<br>
+なお、片方からもう片方が何をチェックアウトしているかはわからないため、<br>
+main/subといった使い方や、develop/releaseといった風に分けたり、<br>
 必要な時だけ作るといった方が事故らないと思います。</p>
 
-<p>また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、<br/>
-残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。<br/>
-そのため、高速に新しいworkdirを作れますが、<br/>
+<p>また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、<br>
+残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。<br>
+そのため、高速に新しいworkdirを作れますが、<br>
 元のリポジトリを消すとworkdirの方もおかしくなると思われます。</p>
 </div>
 

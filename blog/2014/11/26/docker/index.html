@@ -9,9 +9,9 @@
 <title>Dockerとは何か - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="Dockerとは何か Dockerについて調べたので概要と簡単な使い方のメモ Dockerとは何か いわゆるコンテナ型仮想化ツールの1つです。
-VMwareやKVMのような完全仮想化と違い、
-ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。 &hellip;">
+      content="Dockerとは何か Contents 1 Dockerとは何か 2 Docker上のCent OSにJenkinsを立てる
+2.1 Dockerの起動
+2.2 Cent OSの構築 3 その他 Dockerについて調べたので概要と簡単な使い方のメモ Dockerとは何か &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -22,9 +22,13 @@ VMwareやKVMのような完全仮想化と違い、
 <link rel="canonical" href="http://ota42y.com/blog/2014/11/26/docker">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
 <link href="/atom.xml"
       rel="alternate"
       title="おおたの物置"
@@ -90,80 +94,96 @@ VMwareやKVMのような完全仮想化と違い、
     
   </header>
 
-  <div class="entry_content"><p>Dockerについて調べたので概要と簡単な使い方のメモ</p>
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Dockerとは何か</span></a></li>
+<li class="toc_level-1 toc_section-2">
+<a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">Docker上のCent OSにJenkinsを立てる</span></a><ul>
+<li class="toc_level-2 toc_section-3"><a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">Dockerの起動</span></a></li>
+<li class="toc_level-2 toc_section-4"><a href="#tocAnchor-1-2-2"><span class="tocnumber">2.2</span> <span class="toctext">Cent OSの構築</span></a></li>
+</ul>
+</li>
+<li class="toc_level-1 toc_section-5"><a href="#tocAnchor-1-5"><span class="tocnumber">3</span> <span class="toctext">その他</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>Dockerについて調べたので概要と簡単な使い方のメモ</p>
 
-<h1>Dockerとは何か</h1>
+<h1 id="tocAnchor-1-1">Dockerとは何か</h1>
 
-<p>いわゆるコンテナ型仮想化ツールの1つです。<br/>
-VMwareやKVMのような完全仮想化と違い、<br/>
+<p>いわゆるコンテナ型仮想化ツールの1つです。<br>
+VMwareやKVMのような完全仮想化と違い、<br>
 ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。</p>
 
-<p>あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、<br/>
+<p>あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、<br>
 手元の数年前のmac book airでもかなり快適に動いています。</p>
 
-<p>あくまでゲストOSを隔離環境に置いただけのため 、<br/>
-ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。<br/>
+<p>あくまでゲストOSを隔離環境に置いただけのため 、<br>
+ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。<br>
 (ゲストからはホストの中身は当然見えない)</p>
 
-<p>また、DockerではDockerfileというファイルに設定を書くことで、<br/>
-その設定を反映した状態のコンテナを作成することが出来ます。<br/>
+<p>また、DockerではDockerfileというファイルに設定を書くことで、<br>
+その設定を反映した状態のコンテナを作成することが出来ます。<br>
 そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。</p>
 
-<h1>Docker上のCent OSにJenkinsを立てる</h1>
+<h1 id="tocAnchor-1-2">Docker上のCent OSにJenkinsを立てる</h1>
 
-<h2>Dockerの起動</h2>
+<h2 id="tocAnchor-1-2-1">Dockerの起動</h2>
 
-<p>Dockerコマンドを実行するためには、Macだとboot2dockerを<br/>
+<p>Dockerコマンドを実行するためには、Macだとboot2dockerを<br>
 <code>boot2docker start</code>で起動し、そのとき提示された環境変数を設定する必要があります。</p>
 
-<p>また、<br/>
-<code>boot2docker ip</code><br/>
-を実行し、コンテナに対してアクセスできるようにする必要があります。<br/>
+<p>また、<br>
+<code>boot2docker ip</code><br>
+を実行し、コンテナに対してアクセスできるようにする必要があります。<br>
 なお、この時出たURLは後で使います。</p>
 
-<h2>Cent OSの構築</h2>
+<h2 id="tocAnchor-1-2-2">Cent OSの構築</h2>
 
 <h3>Dockerfileの準備</h3>
 
 <p>以下のファイルをDockerfileという名前で適当なディレクトリに保存します。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>FROM centos:centos6
-</span><span class='line'>
-</span><span class='line'>RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
-</span><span class='line'>RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-</span><span class='line'>RUN yum -y install java-1.7.0-openjdk jenkins</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class=""><span class="line">FROM centos:centos6
+</span><span class="line">
+</span><span class="line">RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+</span><span class="line">RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+</span><span class="line">RUN yum -y install java-1.7.0-openjdk jenkins</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。</p>
 
 <h3>コンテナの作成</h3>
 
-<p>次に、Dockerfileを保存したディレクトリで<br/>
+<p>次に、Dockerfileを保存したディレクトリで<br>
 <code>docker build -t jenkins .</code>
 を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。</p>
 
 <h3>コンテナの起動</h3>
 
-<p><code>docker run -p 8080:8080 -i -t jenkins bash</code><br/>
-を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、<br/>
-<code>service jenkins start</code><br/>
+<p><code>docker run -p 8080:8080 -i -t jenkins bash</code><br>
+を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、<br>
+<code>service jenkins start</code><br>
 を実行するとjenkinsが起動します。</p>
 
-<p>この状態で、<code>boot2docker ip</code>で出てきたURLの8080ポートにブラウザでアクセスすると、<br/>
+<p>この状態で、<code>boot2docker ip</code>で出てきたURLの8080ポートにブラウザでアクセスすると、<br>
 いつものJenkins画面が表示されます。</p>
 
-<h1>その他</h1>
+<h1 id="tocAnchor-1-5">その他</h1>
 
-<p>Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、<br/>
+<p>Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、<br>
 それを他のセットアップの下地にするといったことも出来るそうです。</p>
 
-<p>また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、<br/>
-Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。<br/>
+<p>また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、<br>
+Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。<br>
 今回はとりあえずさわりだけなので、手で起動してログインしっぱなしにしています。</p>
 </div>
 
