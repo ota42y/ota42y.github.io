@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-21T21:22:33+09:00</updated>
+  <updated>2014-12-22T07:52:40+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Graphvizを使うと、グラフ描画がとても楽になる]]></title>
+    <link href="http://ota42y.com/blog/2014/12/22/graphviz/"/>
+    <updated>2014-12-22T07:42:27+09:00</updated>
+    <id>http://ota42y.com/blog/2014/12/22/graphviz</id>
+    <content type="html"><![CDATA[<p>こんな感じの画像を作る際に</p>
+
+<p><img src="http://ota42y.com/images/posts/2014-12-22-grahviz.png" alt="グラフ" /></p>
+
+<p>これまではパワポの図形機能とかペイントで頑張って作っていましたが、<br/>
+Graphvizを使うと自動で出力できます。</p>
+
+<h2>Graphvizとは</h2>
+
+<p>AT&amp;Tが作ったグラフ描画のツールパッケージです。<br/>
+<a href="http://ja.wikipedia.org/wiki/Graphviz">http://ja.wikipedia.org/wiki/Graphviz</a></p>
+
+<p>DOT言語というグラフ記述言語で記述されたグラフを、画像ファイル等に変換することができます。</p>
+
+<p>グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、<br/>
+SVGで出力できるため、他のソフトで調整ができます。</p>
+
+<h1>使い方</h1>
+
+<h2>インストール</h2>
+
+<p>brew gts graphviz</p>
+
+<h2>dotファイルの作成</h2>
+
+<p>最初に見せたグラフは以下のように作ります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>digraph G {
+</span><span class='line'>  Hono[image="th_hono.png", label="", shape=plaintext];
+</span><span class='line'>  Koto[image="th_koto.png", label="", shape=plaintext];
+</span><span class='line'>  Umi[image="th_umi.png", label="", shape=plaintext];
+</span><span class='line'>  Maki[image="th_maki.png", label="", shape=plaintext];
+</span><span class='line'>  Rin[image="th_rin.png", label="", shape=plaintext];
+</span><span class='line'>  Pana[image="th_pana.png", label="", shape=plaintext];
+</span><span class='line'>  Nico[image="th_nico.png", label="", shape=plaintext];
+</span><span class='line'>  Nozo[image="th_nozo.png", label="", shape=plaintext];
+</span><span class='line'>  Eli[image="th_eli.png", label="", shape=plaintext];
+</span><span class='line'>  Yuki[label="雪穂"];
+</span><span class='line'>
+</span><span class='line'>  Nico -&gt; Maki;
+</span><span class='line'>  Koto -&gt; Umi;
+</span><span class='line'>  Rin -&gt; Pana;
+</span><span class='line'>  Rin -&gt; Maki;
+</span><span class='line'>  Nozo -&gt; Eli;
+</span><span class='line'>  Nozo -&gt; Nico;
+</span><span class='line'>  Koto -&gt; Hono[dir = none];
+</span><span class='line'>  Hono -&gt; Umi;
+</span><span class='line'>  Hono -&gt; Nico;
+</span><span class='line'>  Hono -&gt; Maki;
+</span><span class='line'>  Hono -&gt; Yuki;
+</span><span class='line'>  Hono -&gt; Eli;
+</span><span class='line'>  Hono -&gt; Rin;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>初めにレイアウトに使うアルゴリズムを書きます。<br/>
+次に画像だけ、文字だけといったノードを定義し、その関係を記述します。</p>
+
+<h2>出力</h2>
+
+<p>上記のファイルをcp.dotという名前で保存し、以下のコマンドを実行するとSVGファイルに出力されます。<br/>
+<code>dot -Tsvg cp.dot -o cp.svg</code></p>
+
+<p>SVG以外にもgifやpngへの出力が可能です。<br/>
+<code>dot -Tpng cp.dot -o cp.png</code></p>
+
+<h1>レイアウト詳細</h1>
+
+<p>配置アルゴリズム等はこちらの記事が参考になると思います。<br/>
+<a href="http://melborne.github.io/2013/04/02/graphviz-layouts/">Graphvizレイアウトサンプル</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[参加記録 Android Bazaar and Conference 2014 Winter]]></title>
@@ -1900,147 +2004,6 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 
 <p><a href="http://stackoverflow.com/questions/10238298/ruby-on-linux-pty-goes-away-without-eof-raises-errnoeio">Ruby on Linux PTY goes away without EOF, raises Errno::EIO</a><br/>
 にあるように、resqueするSafePtyを作ることで回避できます。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[javascriptの関数リテラルではインスタンス変数にアクセスできない]]></title>
-    <link href="http://ota42y.com/blog/2014/10/23/javascript-callback/"/>
-    <updated>2014-10-23T07:41:23+09:00</updated>
-    <id>http://ota42y.com/blog/2014/10/23/javascript-callback</id>
-    <content type="html"><![CDATA[<p>関数リテラルではローカル変数には自由にアクセスできるので、<br/>
-ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</p>
-
-<p>以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、<br/>
-実行時にエラーになります。<br/>
-(coffeescriptで書いていますがjavascriptと同じ結果です)</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
-</span><span class='line'>  <span class="nv">hello: </span><span class="nf">(num) -&gt;</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">num</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">call: </span><span class="nf">(test2) -&gt;</span>
-</span><span class='line'>    <span class="nx">@hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">test2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nf">-&gt;</span>
-</span><span class='line'>      <span class="nx">@hello</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>      <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nx">Test2</span>
-</span><span class='line'>  <span class="nv">call: </span><span class="nf">(callback) -&gt;</span>
-</span><span class='line'>    <span class="nx">callback</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>関数リテラルはそれを作ったオブジェクトとは別のオブジェクトから呼び出されるらしく、<br/>
-またその時のthis(coffeescriptなので@hello(2)はthis.hello(2)と等価です)は、<br/>
-そのオブジェクトになり、メソッドがないため失敗するようです。</p>
-
-<p>以下のように、一度thisを待避させることで呼び出すことが出来ます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
-</span><span class='line'>  <span class="nv">hello: </span><span class="nf">(num) -&gt;</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">num</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">call: </span><span class="nf">(test2) -&gt;</span>
-</span><span class='line'>    <span class="nx">@hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nv">self = </span><span class="k">this</span>
-</span><span class='line'>    <span class="nx">test2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nf">-&gt;</span>
-</span><span class='line'>      <span class="nx">self</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>      <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nx">Test2</span>
-</span><span class='line'>  <span class="nv">call: </span><span class="nf">(callback) -&gt;</span>
-</span><span class='line'>    <span class="nx">callback</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>完全なコードはこちら</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Test</span>
-</span><span class='line'>  <span class="nv">hello: </span><span class="nf">(num) -&gt;</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">num</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">call: </span><span class="nf">(test2) -&gt;</span>
-</span><span class='line'>    <span class="vi">@test = </span><span class="s">&quot;test&quot;</span>
-</span><span class='line'>    <span class="nx">@hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nv">self = </span><span class="k">this</span>
-</span><span class='line'>    <span class="nx">test2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nf">-&gt;</span>
-</span><span class='line'>      <span class="c1"># ここで@hello(2) はエラー</span>
-</span><span class='line'>      <span class="nx">self</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="c1"># Test2オブジェクトでもないので、これもエラー</span>
-</span><span class='line'>      <span class="c1"># @world()</span>
-</span><span class='line'>      <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nx">Test2</span>
-</span><span class='line'>  <span class="nv">call: </span><span class="nf">(callback) -&gt;</span>
-</span><span class='line'>    <span class="nx">callback</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">world: </span><span class="nf">-&gt;</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;world&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">test = </span><span class="k">new</span> <span class="nx">Test</span>
-</span><span class='line'><span class="nv">test2 = </span><span class="k">new</span> <span class="nx">Test2</span>
-</span><span class='line'><span class="nx">test</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">test2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
