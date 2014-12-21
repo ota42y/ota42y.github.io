@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-20T16:24:09+09:00</updated>
+  <updated>2014-12-21T21:22:33+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[参加記録 Android Bazaar and Conference 2014 Winter]]></title>
+    <link href="http://ota42y.com/blog/2014/12/21/abc2014w/"/>
+    <updated>2014-12-21T20:57:45+09:00</updated>
+    <id>http://ota42y.com/blog/2014/12/21/abc2014w</id>
+    <content type="html"><![CDATA[<p><a href="http://abc.android-group.jp/2014w/">Android Bazaar and Conference 2014 Winter</a>に参加してきました。</p>
+
+<p>なかなか興味深いお話を聞けたので、気になった部分を抜粋</p>
+
+<ul>
+<li><p>携帯は９５％の人類が持ってる</p>
+
+<ul>
+<li>インターネットを利用するのは４割
+
+<ul>
+<li>スマホ利用者は３２％</li>
+<li>スマホは１０年前の携帯と同じ水準まで来てる
+-１０年後は世界の携帯がスマホに置き換わる</li>
+</ul>
+</li>
+<li>今後１０年間で７０億人がインターネットに繋がる</li>
+<li>Androidは今のところ全世界で84.4%のシェア</li>
+</ul>
+</li>
+<li><p>各国のもの作り政策</p>
+
+<ul>
+<li><p>ドイツのINDUSTRIE 4.0</p>
+
+<ul>
+<li>第四次産業革命</li>
+<li>多数の企業を結んだバリューネットワーク</li>
+<li>工場内の結合されたネットワーク　は出来てる</li>
+</ul>
+</li>
+<li><p>アメリカ</p>
+
+<ul>
+<li>AMP立ち上げ</li>
+<li>アメリカで発明し、アメリカで製造する</li>
+<li>Made in Americaの復活</li>
+</ul>
+</li>
+<li><p>中国</p>
+
+<ul>
+<li>2008年以降世界の製造業売り上げTop
+
+<ul>
+<li>EU全体を合わせて、ようやく中国をちょっと上回る</li>
+</ul>
+</li>
+<li>第１２期５カ年計画
+
+<ul>
+<li>５年で１６８兆円使う</li>
+<li>IoTを重視する</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Googleが買収したNest</p>
+
+<ul>
+<li><a href="http://japan.cnet.com/news/commentary/35042541/">http://japan.cnet.com/news/commentary/35042541/</a></li>
+<li>ネットに繋がるサーモスタット</li>
+</ul>
+</li>
+<li><p>Android Wear</p>
+
+<ul>
+<li>WearのNotificationはアプリの顔になる
+
+<ul>
+<li>ノイジーな通知をするとアンインストールされる</li>
+</ul>
+</li>
+<li>リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する
+
+<ul>
+<li>わざわざ起動するのは減っていく</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GoのORマッパーGORMが便利]]></title>
@@ -1948,22 +2041,6 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 </span><span class='line'><span class="nx">test</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">test2</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[goでtime.Timeをmysqlから読む]]></title>
-    <link href="http://ota42y.com/blog/2014/10/08/go-mysql-time/"/>
-    <updated>2014-10-08T07:44:37+09:00</updated>
-    <id>http://ota42y.com/blog/2014/10/08/go-mysql-time</id>
-    <content type="html"><![CDATA[<p>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…<br/>
-<code>sql: Scan error on column index 3: unsupported driver -&gt; Scan pair: []uint8 -&gt; *time.Time</code></p>
-
-<p>どうやらDSNに<code>parseTime=true</code>オプションをつける必要があるようです(何故かは不明)<br/>
-<code>db, err := sql.Open("mysql", "username:passy@/database_name?parseTime=true")</code></p>
-
-<p>参考リンク<br/>
-<a href="https://github.com/go-sql-driver/mysql#timetime-support">https://github.com/go-sql-driver/mysql#timetime-support</a></p>
 ]]></content>
   </entry>
   
