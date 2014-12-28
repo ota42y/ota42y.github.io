@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-27T12:33:34+09:00</updated>
+  <updated>2014-12-28T14:17:52+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ASUS MeMO Pad 7 ME572CをRoot化した]]></title>
+    <link href="http://ota42y.com/blog/2014/12/28/memopad-root/"/>
+    <updated>2014-12-28T12:50:49+09:00</updated>
+    <id>http://ota42y.com/blog/2014/12/28/memopad-root</id>
+    <content type="html"><![CDATA[<p>ASUS MeMO Pad 7 ME572Cを買いました。</p>
+
+<p><a href="http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/">タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS</a></p>
+
+<p>Nexus 9とかと迷いましたが、</p>
+
+<ul>
+<li>コストパフォーマンスがいい
+
+<ul>
+<li>安くてそこそこ高性能</li>
+</ul>
+</li>
+<li>SDカードが使える
+
+<ul>
+<li>気軽に容量増強出来る</li>
+</ul>
+</li>
+</ul>
+
+
+<p>といった点から、これに決めました。</p>
+
+<p>ですが実際に届いて起動してみたところ、<br/>
+余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。</p>
+
+<p>特に「やることリスト」(<a href="https://play.google.com/store/apps/details?id=com.asus.task&amp;hl=ja">ASUS Do It Later</a>)というアプリは、<br/>
+定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。</p>
+
+<p>そのため、Rootを取って無効化することにしました。</p>
+
+<h1>Root化手順</h1>
+
+<p>RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。<br/>
+(2014/12/28の最新版は1.4.6.8r)</p>
+
+<p>手順としては以下の通りになります。</p>
+
+<ul>
+<li>RootZenFoneをインストール</li>
+<li>Wifiと3Gを機内モードにして切る</li>
+<li>RootZenFoneを起動</li>
+<li>通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す</li>
+<li>変化がなくなるまで待つ
+
+<ul>
+<li>色々ポップアップが出たりする</li>
+</ul>
+</li>
+<li>もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
+
+<ul>
+<li>この時点でRoot化出来ています</li>
+</ul>
+</li>
+<li>AsusLiveDemoというアカウントが追加されているため削除</li>
+<li>RootZenFonを消す</li>
+<li>通信を有効か</li>
+<li>SuperSuが自動でインストールされているので、最新版に更新</li>
+<li>SuperSuを起動し、データ更新後に再起動を促されるので再起動</li>
+</ul>
+
+
+<p>Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。<br/>
+あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[pixivのタグから読み解くラブライブイラスト投稿者分析]]></title>
@@ -2029,93 +2103,6 @@ intに入りきらない部分が消滅してしまうため、ポインタに�
 <p>またそれ以外にも、ポインタに対して演算を行いたい場合に、int型に変換して計算をする場合があります。<br/>
 このような場合は、intptr_tかuintptr_tというポインタを扱う整数型が用意されており、<br/>
 こちらを使うことで32bitや64bitに適したサイズに変換されて扱うことができます。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[汎用ポインタを使う]]></title>
-    <link href="http://ota42y.com/blog/2014/11/06/cpp-void-pointer/"/>
-    <updated>2014-11-06T07:24:31+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/06/cpp-void-pointer</id>
-    <content type="html"><![CDATA[<p>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。<br/>
-ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、<br/>
-どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。<br/>
-（勿論、ポインタの示すアドレスに何があるかは異なります）</p>
-
-<p>そのため、ポインタ専用の変数を利用することで、あらゆる型のポインタを同じ変数に代入することができます。</p>
-
-<p>ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。<br/>
-C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。</p>
-
-<h1>汎用ポインタ</h1>
-
-<p>void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。<br/>
-これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。</p>
-
-<p>この場合、変数定義をvoid *型にしておき、使う前後に目的の型にキャストすることで、<br/>
-様々な型を1つの変数で扱うことが出来ます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">struct</span> <span class="n">Container</span><span class="p">{</span>
-</span><span class='line'>  <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">Num</span><span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;text&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="n">Container</span> <span class="n">con1</span><span class="p">;</span>
-</span><span class='line'><span class="n">con1</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">text</span><span class="p">;</span> <span class="c1">// dataにconst charのポインタを入れる</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Num</span><span class="o">*</span> <span class="n">numPointer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Num</span><span class="p">();</span>
-</span><span class='line'><span class="n">numPointer</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class='line'><span class="n">Container</span> <span class="n">con2</span><span class="p">;</span>
-</span><span class='line'><span class="n">con2</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">numPointer</span><span class="p">;</span> <span class="c1">// dataにNum型のポインタを入れる</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">con1</span><span class="p">.</span><span class="n">data</span><span class="p">);</span> <span class="c1">// 取り出す際にキャストする</span>
-</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">((</span><span class="n">Num</span><span class="o">*</span><span class="p">)</span><span class="n">con2</span><span class="p">.</span><span class="n">data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なお、違うポインタを違う型にキャストして使うと、メモリ破壊などの予期せぬエラーを引き起こしますが、<br/>
-構文上はvoid *から元の型に戻す際のキャストは全て正しいと処理されます。</p>
-
-<p>そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。<br/>
-前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。</p>
-
-<h1>mallocの戻り値</h1>
-
-<p>void *はmallocの戻り値としても使われています。<br/>
-<a href="http://www.cplusplus.com/reference/cstdlib/malloc/">http://www.cplusplus.com/reference/cstdlib/malloc/</a></p>
-
-<p>mallocの戻り値が何にでもキャスト出来るのは、この仕様によるものです。　</p>
-
-<h1>ポインタを整数値として扱う</h1>
-
-<p>ポインタを整数値として利用したい場合、intptr_tとuintptr_tが利用できます。<br/>
-これはそれぞれ符号つき、符号なしの整数として扱うことができます。</p>
-
-<p>間違ってもそのままintにキャスとして代入してはいけません。<br/>
-<a href="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/">void型のポインタとint型を相互変換するなという話</a></p>
 ]]></content>
   </entry>
   
