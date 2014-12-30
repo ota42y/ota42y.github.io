@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-28T14:17:52+09:00</updated>
+  <updated>2014-12-30T10:37:38+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ASUS MeMO Pad 7 ME572CでLink2SDを動かす]]></title>
+    <link href="http://ota42y.com/blog/2014/12/30/link2sd/"/>
+    <updated>2014-12-30T10:24:27+09:00</updated>
+    <id>http://ota42y.com/blog/2014/12/30/link2sd</id>
+    <content type="html"><![CDATA[<p>ME572CにはSDカードが挿せるため、<br/>
+本体の容量が足りなくなっても気軽に容量を追加できます。</p>
+
+<p>ですが、対応しているアプリしかSDカードにデータが保存できず、<br/>
+対応しているアプリでも機種によっては、<br/>
+上手くSDカードに入らない場合があります。</p>
+
+<p>実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、<br/>
+ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。</p>
+
+<p>このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。<br/>
+ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。</p>
+
+<p>なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。</p>
+
+<h1>Link2SD</h1>
+
+<p><a href="https://play.google.com/store/apps/details?id=com.buak.Link2SD&amp;hl=ja">Link2SD</a>は、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。<br/>
+おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、<br/>
+アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。</p>
+
+<h1>SDカードの準備</h1>
+
+<p>このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。</p>
+
+<p>このうち1つめが普通のSDカード領域として認識され、<br/>
+2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。<br/>
+なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。</p>
+
+<p>なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、<br/>
+<a href="http://www.partitionwizard.com/download.html">Mini Tool</a>のような専用ソフトでパーティションを作る必要があります。<br/>
+このとき、どちらのパーティションもPrimaryに設定しておく必要があります。</p>
+
+<p>パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。<br/>
+ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。<br/>
+fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、<br/>
+NTFS/ext3だと両方上手く認識したためこれを利用します。</p>
+
+<h1>アプリをSDカードに移す</h1>
+
+<p>Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。<br/>
+ただし、データをSDカードに移動する場合は<a href="https://play.google.com/store/apps/details?id=com.buak.link2sdplus&amp;hl=ja">有料アドオン</a>が必要です。</p>
+
+<p>Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。<br/>
+<img src="http://ota42y.com/images/posts/2014-12-30-link2sd.png" alt="Link2SD" /></p>
+
+<p>EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。<br/>
+ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ASUS MeMO Pad 7 ME572CをRoot化した]]></title>
@@ -1980,129 +2036,6 @@ size_tがunsigned intの場合、両者は同じ大きさのため特に意識�
 -1は-1として解釈されるため、unsigend longと比較した際に最大値に変換されるため、上手くいってしまいます。</p>
 
 <p>とはいえ、安全性を求めるならば、出来るだけsize_tはsize_tとして扱うようにした方がいいと思います。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[void型のポインタとint型を相互変換するなという話]]></title>
-    <link href="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/"/>
-    <updated>2014-11-07T07:42:43+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast</id>
-    <content type="html"><![CDATA[<p>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、<br/>
-コンパイラもエラーにしない場合が多いです。<br/>
-ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、<br/>
-突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)</p>
-
-<h1>intからvoid型のポインタへの変換</h1>
-
-<p>int型の値をvoid *を利用して保持したい場合、<a href="http://ota42y.com/blog/2014/11/06/cpp-void-pointer/">前の例</a>のように、int型を保持するオブジェクトを作り、<br/>
-その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">struct</span> <span class="n">Container</span><span class="p">{</span>
-</span><span class='line'>  <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">Num</span><span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// int型を保存する</span>
-</span><span class='line'><span class="n">Num</span><span class="o">*</span> <span class="n">numPointer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Num</span><span class="p">();</span>
-</span><span class='line'><span class="n">numPointer</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class='line'><span class="n">Container</span> <span class="n">con</span><span class="p">;</span>
-</span><span class='line'><span class="n">con</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">numPointer</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// 42を取り出す</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="p">((</span><span class="n">Num</span><span class="o">*</span><span class="p">)</span><span class="n">con</span><span class="p">.</span><span class="n">data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// newしたので必ず破棄する</span>
-</span><span class='line'><span class="k">delete</span> <span class="n">con</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
-</span><span class='line'><span class="n">con</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ですが、世の中にはたまにvoid *にint型（やその他のプリミティブ型）を代入する不届き者がいます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Container</span> <span class="n">con</span><span class="p">;</span>
-</span><span class='line'><span class="n">con</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">num</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// 42を取り出す</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">con</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>void <em>はポインタのため、32bit環境ではvoid</em>は32bitであり、intも基本的には32bitで同じサイズのため、<br/>
-32bit環境に限れば問題なくコンパイル、実行が出来ます。<br/>
-(エラーになる場合は、g++ test.cpp -m32で32bitのみのコンパイルが出来ます)</p>
-
-<p>ですが、当然ながら64bit環境ではvoid *は64bitのため、intが32bitの場合は足りない分が消滅します。<br/>
-多くのコンパイラでは64bitでコンパイルしようとしたときに、このキャストが行われるとエラーを出してくれますが、<br/>
-32bitのみコンパイルした場合は出してくれない場合があるため、<br/>
-対応しようとした時に大量のエラーに悩まされることになります…</p>
-
-<p>このような場合は最初に述べたとおり、オブジェクトを作ってそのポインタを利用しましょう。</p>
-
-<h1>ポインタ型をint型に代入している場合</h1>
-
-<p>上記の例は32bitを64bitにしてから32bitに戻すため、キャストの仕様によっては問題なく動きます。<br/>
-ですが、以下のようにポインタをintにキャストした場合、64bit環境かつintが32bitの場合、<br/>
-intに入りきらない部分が消滅してしまうため、ポインタに戻しても正しく戻すことができません。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">str</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// ここで不正なアドレスになる</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">string</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>この場合、メモリ破壊などといった特定しにくいエラーを引き起こすため、注意が必要です。<br/>
-ただし、例によってポインタとintサイズが同一の環境では問題なく動くため、<br/>
-そうでない環境に対応しようとした場合に悩まされる事になります。</p>
-
-<p>一見するとあまり使わなそうな書き方ですが、フレームワークで用意されているクラスとかでvoid *が無い場合、<br/>
-クラスのポインタを持たせたいが為に、適当なint型に持たせる…みたいな事をやらかす輩がいますので、<br/>
-注意が必要です。</p>
-
-<p>またそれ以外にも、ポインタに対して演算を行いたい場合に、int型に変換して計算をする場合があります。<br/>
-このような場合は、intptr_tかuintptr_tというポインタを扱う整数型が用意されており、<br/>
-こちらを使うことで32bitや64bitに適したサイズに変換されて扱うことができます。</p>
 ]]></content>
   </entry>
   
