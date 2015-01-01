@@ -6,13 +6,12 @@
     
 
 <meta charset="utf-8">
-<title>npmにパッケージを公開する手順 - おおたの物置</title>
+<title>大晦日ハッカソン2014&正月ハッカソン2015に参加した - おおたの物置</title>
 <meta name="author" content="ota42y">
 <meta name="description"
-      content="npmにパッケージを公開する手順 Contents 1 公開手順
-2 非公開手順 とても簡単でしたがつい忘れるのでメモ。 公開手順 npmjsに開発者登録をします。
-https://www.npmjs.org/
-npm adduserで~/.npmrcにnpmへのログイントークンを保存します。 &hellip;">
+      content="大晦日ハッカソン2014&正月ハッカソン2015に参加した Contents 1 どんなChrome拡張か
+2 使い方 2014/12/31にオンラインで行われた、
+大晦日ハッカソン2014に参加しました。 Evernoteのリンクをアプリで直接開くChrome拡張を作りました。 &hellip;">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ npm adduserで~/.npmrcにnpmへのログイントークンを保存します。 
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/09/29/npm-publish">
+<link rel="canonical" href="http://ota42y.com/blog/2015/01/01/1231-hackathon">
 <link href="/favicon.png" rel="icon">
 <link href="/stylesheets/screen.css"
 media="screen, projection"
@@ -91,44 +90,52 @@ type="text/css">
 <article class="entry" role="article">
 
   <header>
-    <h1 class="entry_title">npmにパッケージを公開する手順</h2>
+    <h1 class="entry_title">大晦日ハッカソン2014&正月ハッカソン2015に参加した</h2>
     
   </header>
 
   <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
 <div id="toctitle"><h2>Contents</h2></div>
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">公開手順</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">非公開手順</span></a></li>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">どんなChrome拡張か</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">使い方</span></a></li>
 </ul>
 </td></tr></tbody></table></div>
-<p>とても簡単でしたがつい忘れるのでメモ。</p>
+<p>2014/12/31にオンラインで行われた、<br>
+<a href="https://atnd.org/events/59470">大晦日ハッカソン2014</a>に参加しました。</p>
 
-<h1 id="tocAnchor-1-1">公開手順</h1>
+<p>Evernoteのリンクをアプリで直接開くChrome拡張を作りました。<br>
+<a href="https://chrome.google.com/webstore/detail/evernote-app-opener/pjkgaadffbojkgoocbobikkklpajjbgo">evernote url opener</a></p>
 
-<ol>
-<li><p>npmjsに開発者登録をします。<br>
-<a href="https://www.npmjs.org/">https://www.npmjs.org/</a></p></li>
-<li><p><code>npm adduser</code>で~/.npmrcにnpmへのログイントークンを保存します。</p></li>
-<li><p>package.jsonに必要事項を書きます。<br>
-<a href="https://github.com/ota42y/stamina-calculator/blob/master/package.json">こんな感じ</a>ですね。</p></li>
-<li><p><code>npm publish</code>で公開</p></li>
-<li><p>アップグレード版の配布も<code>npm publish</code>で可能です。<br>
-(ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)</p></li>
-</ol>
+<p>(なお、細かい修正やこの記事の執筆等を、<br>
+<a href="https://atnd.org/events/60889">正月ハッカソン2015</a>でやりました)</p>
 
+<h1 id="tocAnchor-1-1">どんなChrome拡張か</h1>
 
-<h1 id="tocAnchor-1-2">非公開手順</h1>
+<p>現在、Evernoteのノート固有のリンクを取得すると、<br>
+<code>https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/</code><br>
+といった、httpsのリンクが使われます。</p>
 
-<p>間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、<br>
-<code>npm unpublish パッケージ名前@バージョン</code>で削除出来ます。<br>
-何も指定しない場合全てのバージョンが対象になりますが、<code>--force</code>をつける必要があります。</p>
+<p>このリンクを開くと、EvernoteのWebアプリ上でノートを開くことが出来ますが、<br>
+Evernoteはログインが最長で一週間しか保てず、また二段階認証をしている場合は、<br>
+頻繁に面倒なログインを求められます。</p>
 
-<p>ただし、削除してしまうので、そのパッケージに依存しているパッケージが悲惨なことになります。<br>
-そのため、<code>npm deprecate</code>の方がアップグレードを促せるし推奨すると<a href="https://www.npmjs.org/doc/cli/npm-unpublish.html">公式サイト</a>には書いてあります。<br>
-unpublishは間違えて公開した場合用ですね。</p>
+<p>ですが多くの場合、開こうとしているノートはオフラインのEvernoteアプリでも開くことが出来ます。<br>
+そのため、Webではなくアプリで開く事が出来れば、わざわざログインせずともノートを開くことが出来ます。</p>
 
-<p>なお、全てのバージョンを削除するとnpmからパッケージの情報も削除されます。</p>
+<p>そのため、上記のようなWebアプリでノートを開くようなリンクを、<br>
+オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。</p>
+
+<h1 id="tocAnchor-1-2">使い方</h1>
+
+<p>事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。<br>
+Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、<br>
+そのURLに含まれているユーザIDとshard名をオプションページで設定してください。</p>
+
+<p>その状態で、Evernoteのノートリンクを開くと、ログイン/非ログインに関わらず、<br>
+Evernoteアプリが立ち上がり、そのノートを開いてくれます。</p>
+
+<p>これで、いちいちWebでログインすることなく、ノートリンクで指定したノートを表示することが出来ます。</p>
 </div>
 
   <footer>
@@ -137,7 +144,7 @@ unpublishは間違えて公開した場合用ですね。</p>
       
 
       
-      <time datetime="2014-09-29 07:49:16 +0900" pubdate></time>
+      <time datetime="2015-01-01 13:01:08 +0900" pubdate></time>
       
 
       
@@ -155,9 +162,9 @@ unpublishは間違えて公開した場合用ですね。</p>
       <span class="twitter">
       <a href="http://twitter.com/share"
 	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/09/29/npm-publish/"
+	 data-url="http://ota42y.com/blog/2015/01/01/1231-hackathon/"
 	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/09/29/npm-publish/" >Tweet</a>
+	 data-counturl="http://ota42y.com/blog/2015/01/01/1231-hackathon/" >Tweet</a>
  </span>
       
 
@@ -166,7 +173,7 @@ unpublishは間違えて公開した場合用ですね。</p>
       
 
       <span class="hatena">
-        <a href="/blog/2014/09/29/npm-publish/" class="hatena-bookmark-button"
+        <a href="/blog/2015/01/01/1231-hackathon/" class="hatena-bookmark-button"
          data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
          title="このエントリーをはてなブックマークに追加">
           <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"

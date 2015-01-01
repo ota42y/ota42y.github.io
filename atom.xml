@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2014-12-31T13:26:53+09:00</updated>
+  <updated>2015-01-01T14:11:48+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[大晦日ハッカソン2014&正月ハッカソン2015に参加した]]></title>
+    <link href="http://ota42y.com/blog/2015/01/01/1231-hackathon/"/>
+    <updated>2015-01-01T13:01:08+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/01/1231-hackathon</id>
+    <content type="html"><![CDATA[<p>2014/12/31にオンラインで行われた、<br/>
+<a href="https://atnd.org/events/59470">大晦日ハッカソン2014</a>に参加しました。</p>
+
+<p>Evernoteのリンクをアプリで直接開くChrome拡張を作りました。<br/>
+<a href="https://chrome.google.com/webstore/detail/evernote-app-opener/pjkgaadffbojkgoocbobikkklpajjbgo">evernote url opener</a></p>
+
+<p>(なお、細かい修正やこの記事の執筆等を、<br/>
+<a href="https://atnd.org/events/60889">正月ハッカソン2015</a>でやりました)</p>
+
+<h1>どんなChrome拡張か</h1>
+
+<p>現在、Evernoteのノート固有のリンクを取得すると、<br/>
+<code>https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/</code><br/>
+といった、httpsのリンクが使われます。</p>
+
+<p>このリンクを開くと、EvernoteのWebアプリ上でノートを開くことが出来ますが、<br/>
+Evernoteはログインが最長で一週間しか保てず、また二段階認証をしている場合は、<br/>
+頻繁に面倒なログインを求められます。</p>
+
+<p>ですが多くの場合、開こうとしているノートはオフラインのEvernoteアプリでも開くことが出来ます。<br/>
+そのため、Webではなくアプリで開く事が出来れば、わざわざログインせずともノートを開くことが出来ます。</p>
+
+<p>そのため、上記のようなWebアプリでノートを開くようなリンクを、<br/>
+オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。</p>
+
+<h1>使い方</h1>
+
+<p>事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。<br/>
+Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、<br/>
+そのURLに含まれているユーザIDとshard名をオプションページで設定してください。</p>
+
+<p>その状態で、Evernoteのノートリンクを開くと、ログイン/非ログインに関わらず、<br/>
+Evernoteアプリが立ち上がり、そのノートを開いてくれます。</p>
+
+<p>これで、いちいちWebでログインすることなく、ノートリンクで指定したノートを表示することが出来ます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GithubのContributionsを使ってアウトプットを150日続ける]]></title>
@@ -2040,90 +2083,6 @@ goでYAMLを扱うことが出来ます。</p>
 
 
 <p>なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hubotの追加機能作成をテストで楽にする]]></title>
-    <link href="http://ota42y.com/blog/2014/11/10/hubot-test/"/>
-    <updated>2014-11-10T07:54:39+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/10/hubot-test</id>
-    <content type="html"><![CDATA[<p>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。<br/>
-普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、<br/>
-面倒な手順を踏むことになります。<br/>
-また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。</p>
-
-<p>しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、<br/>
-Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。</p>
-
-<p>そこで、作りたい機能をパッケージ化して作成することで、<br/>
-トライアンドエラーをする部分を最低限に絞って開発することができました。</p>
-
-<h1>Hubot用パッケージの構成</h1>
-
-<p>Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、<br/>
-ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。</p>
-
-<p>さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、<br/>
-Hubotの連携部分と実際の処理を分けることができます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">PackageClass = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;./package-name/package-class.coffee&#39;</span><span class="p">).</span><span class="nx">PackageClass</span>
-</span><span class='line'><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
-</span><span class='line'>  <span class="nv">package_class = </span><span class="k">new</span> <span class="nx">PackageClass</span>
-</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/test call (\d+)( \w+)?/</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
-</span><span class='line'>    <span class="nv">arg1 = </span><span class="nb">parseInt</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="nv">arg2 = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">msg</span><span class="p">.</span><span class="nx">reply</span> <span class="nx">package_class</span><span class="p">.</span><span class="nx">testCall</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>フォルダ構成は以下のようになります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">parkage</span><span class="o">-</span><span class="nx">root</span><span class="o">/</span>
-</span><span class='line'> <span class="err">├</span> <span class="nx">package</span><span class="p">.</span><span class="nx">json</span>
-</span><span class='line'> <span class="err">│</span>
-</span><span class='line'> <span class="err">├</span> <span class="nx">src</span><span class="o">/</span>
-</span><span class='line'> <span class="err">│</span>  <span class="err">├</span> <span class="nx">hubot</span><span class="o">-</span><span class="nx">command</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'> <span class="err">│</span>  <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="nx">name</span><span class="o">/</span>
-</span><span class='line'> <span class="err">│</span>     <span class="err">└</span> <span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'> <span class="err">│</span>
-</span><span class='line'> <span class="err">└</span> <span class="nx">test</span><span class="o">/</span>
-</span><span class='line'>    <span class="err">├</span> <span class="nx">test</span><span class="o">-</span><span class="nx">helper</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'>    <span class="err">└</span> <span class="nx">test</span><span class="o">-</span><span class="nx">package</span><span class="o">-</span><span class="k">class</span><span class="p">.</span><span class="nx">coffee</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このように構成し、package-classに対してテストを作成することで、<br/>
-Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。</p>
-
-<p>前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。<br/>
-ですが、やっていることは正規表現の結果をクラスのメソッドに渡すだけなので、<br/>
-手作業でやってしまう方が簡単で早いです。</p>
-
-<h1>参考</h1>
-
-<p>hubot-scfesはこの方針に則って作ったため、参考になるかもしれません。<br/>
-<a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>
 ]]></content>
   </entry>
   
