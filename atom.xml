@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-01T14:15:43+09:00</updated>
+  <updated>2015-01-03T20:21:50+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,173 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[fork関数がどうやってプロセスを分割しているか]]></title>
+    <link href="http://ota42y.com/blog/2015/01/03/unix-fork/"/>
+    <updated>2015-01-03T20:15:43+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/03/unix-fork</id>
+    <content type="html"><![CDATA[<p><a href="http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEOS%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-~UNIX-V6%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF-Software-Design/dp/4774154644">はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ</a><br/>
+という本を読んでいます。</p>
+
+<p>この中で、fork関数がどうやって子プロセスを作り、<br/>
+親子かを識別して別の値を返しているのかが解説されており、<br/>
+とても興味深かったです。</p>
+
+<p>以下にその概要をまとめました。</p>
+
+<h1>fork関数</h1>
+
+<p>Cではfork関数を利用することで、子プロセスを作成することが出来ます。<br/>
+コードとしてはこんな感じですね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;unistd.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;sys/wait.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">pid_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;parent!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">waitpid</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">status</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;parent end</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。<br/>
+ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、<br/>
+ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。</p>
+
+<p>では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、<br/>
+別の値を返しているのでしょうか。</p>
+
+<p>これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。</p>
+
+<h1>fork関数がプロセスの親子を区別する仕組み</h1>
+
+<h2>親による子プロセスの作成</h2>
+
+<p>ライブラリのfork関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/source/s4/fork.s">source/s4/fork.s</a>)を実行すると、<br/>
+システムコールによってカーネルのfork関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/sys1.c">sys/ken/sys1.c</a>)が実行されます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">fork</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">register</span> <span class="k">struct</span> <span class="n">proc</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="o">*</span><span class="n">p2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">p1</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">u_procp</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span><span class="p">(</span><span class="n">p2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">proc</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">p2</span> <span class="o">&lt;</span> <span class="o">&amp;</span><span class="n">proc</span><span class="p">[</span><span class="n">NPROC</span><span class="p">];</span> <span class="n">p2</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">p2</span><span class="o">-&gt;</span><span class="n">p_stat</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">goto</span> <span class="n">found</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">u</span><span class="p">.</span><span class="n">u_error</span> <span class="o">=</span> <span class="n">EAGAIN</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nl">found</span><span class="p">:</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">newproc</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_ar0</span><span class="p">[</span><span class="n">R0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">p_pid</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_cstime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_cstime</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_stime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_cutime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_cutime</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">u</span><span class="p">.</span><span class="n">u_utime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">u</span><span class="p">.</span><span class="n">u_ar0</span><span class="p">[</span><span class="n">R0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">p_pid</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nl">out</span><span class="p">:</span>
+</span><span class='line'>  <span class="n">u</span><span class="p">.</span><span class="n">u_ar0</span><span class="p">[</span><span class="n">R7</span><span class="p">]</span> <span class="o">=+</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このカーネルのfork関数内でnewproc関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c">sys/ken/slp.c</a>)を呼び出し、子プロセスを作成しています。<br/>
+その後、newproc関数は0を返すため、カーネルのfork関数で0で帰ってきた場合に、<br/>
+作成した子プロセスのIDをレジスタに乗せ、ライブラリのfork関数で返すようにしています。</p>
+
+<h2>作成された子プロセス側の処理</h2>
+
+<p>子プロセスは作成された後、実行順番が回ってきたタイミングでswitch関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c">sys/ken/slp.c</a>)により再開します。<br/>
+この関数内では保存されたデータを復元し、最後にsavu関数を実行した関数の呼び出し元に、return 1で戻ります。</p>
+
+<p>カーネルのfork関数で呼び出しているnewproc関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c">sys/ken/slp.c</a>)内では、<br/>
+savu関数が実行されてから子プロセスがコピーされるため、<br/>
+switch関数はnewprocの呼び出し元であるfork関数に1で戻ります。</p>
+
+<p>これにより、カーネルのfork関数内で呼び出しているnewproc関数は、<br/>
+親プロセスの場合は0が、子プロセスの場合は1が返るようになり、<br/>
+その値を見て自身が親なのか子なのかを判断でき、別々の戻り値を返せるようになっています。</p>
+
+<h1>まとめ</h1>
+
+<ul>
+<li>親プロセスはforkで子プロセスを作成してそのまま処理を継続</li>
+<li>子プロセスは実行順番が回ってきたタイミングで処理を開始
+
+<ul>
+<li>switch関数で復帰した際に、通常とは別の戻り値が返るため親子を区別可能</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[大晦日ハッカソン2014&正月ハッカソン2015に参加した]]></title>
@@ -2050,39 +2217,6 @@ goでYAMLを扱うことが出来ます。</p>
 </span><span class='line'><span class="mi">2</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[スクフェス用パッケージの更新]]></title>
-    <link href="http://ota42y.com/blog/2014/11/12/scfes-update/"/>
-    <updated>2014-11-12T11:28:23+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/12/scfes-update</id>
-    <content type="html"><![CDATA[<p><a href="http://ota42y.com/blog/2014/10/28/hubot-scfes/">前に作った</a>スクフェス用パッケージを更新しました。<br/>
-<a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>
-
-<p>今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。<br/>
-真夜中にレベルアップが起きたりすると面倒なので、これを見て事前に石を使うなり、<br/>
-別の難易度をやって遅らせるなりして、レベルアップのタイミング調整をすることが簡単になります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="c1"># 次のレベルアップまでexを何回プレイするか</span>
-</span><span class='line'><span class="nx">hubot</span> <span class="nx">scfes</span> <span class="nx">levelup</span> <span class="nx">count</span> <span class="mi">830</span> <span class="nx">ex</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="mi">10</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># 次のレベルアップはいつか</span>
-</span><span class='line'><span class="nx">hubot</span> <span class="nx">scfes</span> <span class="nx">levelup</span> <span class="nx">time</span> <span class="mi">830</span> <span class="nx">ex</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="nx">next</span> <span class="nx">levelup</span> <span class="o">is</span> <span class="nx">Sun</span> <span class="nx">Aug</span> <span class="mi">3</span> <span class="mi">2014</span> <span class="mi">2</span><span class="o">:</span><span class="mi">52</span><span class="o">:</span><span class="mi">52</span> <span class="nx">GMT</span><span class="o">+</span><span class="mi">0900</span> <span class="p">(</span><span class="nx">JST</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。</p>
 ]]></content>
   </entry>
   
