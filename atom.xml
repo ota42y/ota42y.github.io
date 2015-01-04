@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-03T20:21:50+09:00</updated>
+  <updated>2015-01-04T11:28:23+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[UNIXという考え方という本を読んだ]]></title>
+    <link href="http://ota42y.com/blog/2015/01/04/unix-boox/"/>
+    <updated>2015-01-04T11:22:27+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/04/unix-boox</id>
+    <content type="html"><![CDATA[<p><a href="http://www.amazon.co.jp/UNIX%E3%81%A8%E3%81%84%E3%81%86%E8%80%83%E3%81%88%E6%96%B9%E2%80%95%E3%81%9D%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3%E3%81%A8%E5%93%B2%E5%AD%A6-Mike-Gancarz/dp/4274064069">UNIXという考え方</a>という本を読みました。<br/>
+原著は1994年に書かれている本で、
+<a href="http://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6">UNIXの哲学</a>を一つ一つ、その意味と利点について解説しています。</p>
+
+<p>「一つのことを、うまくやれ」や「小さいものは美しい」等、ある程度ハッカー文化に詳しい人ならばどれかは聞いたことがあるぐらい有名な哲学です。</p>
+
+<p>面白いのは、例えば「できるだけ早く試作を作成する」という項目では、設計を完璧にしてから取りかかるのではなく、
+プロトタイプを作り、それをユーザに見せてフィードバックをもらい、良い設計にしていくべきと述べられています。<br/>
+これはアジャイル開発のイテレーションを回していく手法ととても似ており、開発手法の歴史を感じます。</p>
+
+<p>また、「一つのことを、うまくやれ」は色々やる巨大な関数より、ちゃんと機能毎に分割しろと解釈できますし、「ソフトウェアの挺子（てこ）を有効に活用する」は他のいいプログラムからコードを借りてきたり、gemやnpmで既にあるソフトウェアを利用するといった、コードの再利用性の話だと解釈できます。</p>
+
+<p>原著は1994年に書かれたにもかかわらず、今日でも普通に通用する哲学がちりばめられており、UNIX哲学の現代のプログラミング文化への強い影響と、その普遍性をかんじます。</p>
+
+<p>ただ、本書の中でシェルスクリプトが移植性もいいし簡潔に書けるしと礼賛されていますが、デバッグしにくい上に、コマンドがGNUかBSDかで結果が変わる場合があるので実は移植性がそんなに無いですし、現代ではちょっとどうなのかな…みたいな部分もあります。<br/>
+今ですと、スクリプト言語かクロスコンパイルが簡単にできるGo言語が良い選択肢でしょうか。</p>
+
+<p>そういった具体的な部分に関しては時代の変化で合わなくなっている部分もありますが、その哲学自体は普遍的なもので、今読んでも、おそらくは10年後に読んでも得るものが多い本だと思います。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[fork関数がどうやってプロセスを分割しているか]]></title>
@@ -2127,96 +2153,6 @@ Aレコードを下記のページにあるように変更するだけです。<
 
 <p>変更をすると、先ほどのdigコマンドがOKを出すようになり、<br/>
 Github Pagesにコミットしても警告メールが飛ばなくなります。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[golangでYAMLファイルを読み込む]]></title>
-    <link href="http://ota42y.com/blog/2014/11/13/go-yaml/"/>
-    <updated>2014-11-13T07:31:35+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/13/go-yaml</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/go-yaml/yaml">https://github.com/go-yaml/yaml</a>を使う事で、
-goでYAMLを扱うことが出来ます。</p>
-
-<p>サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、<br/>
-以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。</p>
-
-<p>またExampleには型を決めて読み込む方法しか乗っていませんが、<br/>
-以下の例では、<a href="http://qiita.com/yamasaki-masahide/items/d6e406c4c11d5870a1c6">go で yaml 等を「map[interface{}]interface{}」型で読み込んだ際の動的型の参照方法</a><br/>
-を参考に型を決めずにMapで読み込んでいます。</p>
-
-<p>かなり冗長な表現になっていますが…(´･_･`)</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">a</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Easy!</span>
-</span><span class='line'><span class="l-Scalar-Plain">b</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">c</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">d</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
-</span><span class='line'>  <span class="s">&quot;fmt&quot;</span>
-</span><span class='line'>  <span class="s">&quot;io/ioutil&quot;</span>
-</span><span class='line'>  <span class="s">&quot;gopkg.in/yaml.v2&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">buf</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;test.yml&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kd">interface</span><span class="p">{}]</span><span class="kd">interface</span><span class="p">{})</span>
-</span><span class='line'>  <span class="nx">err</span> <span class="p">=</span> <span class="nx">yaml</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\n&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">])</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">].(</span><span class="kd">map</span><span class="p">[</span><span class="kd">interface</span> <span class="p">{}]</span><span class="kd">interface</span> <span class="p">{})[</span><span class="s">&quot;c&quot;</span><span class="p">])</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>出力結果</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">Easy</span><span class="p">!</span>
-</span><span class='line'><span class="mi">2</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
