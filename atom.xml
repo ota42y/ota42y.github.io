@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-05T08:01:53+09:00</updated>
+  <updated>2015-01-06T07:45:23+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,178 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[インライン展開についての追加調査]]></title>
+    <link href="http://ota42y.com/blog/2015/01/06/c-inline-postscript/"/>
+    <updated>2015-01-06T07:37:34+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/06/c-inline-postscript</id>
+    <content type="html"><![CDATA[<p>昨日の記事で、インライン展開について調べましたが、<br/>
+よくよく考えると片手落ちだったので追加調査しました。</p>
+
+<p><a href="http://ota42y.com/blog/2015/01/05/c-inline/">インライン展開がどう展開されるのかを調べた</a></p>
+
+<h1>調査内容</h1>
+
+<p>昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、<br/>
+同じファイル内でどのようになるかは調べていませんでしたので、<br/>
+追加調査しました。</p>
+
+<p>方法は昨日と同じく、-Sオプションをつけて結果を見ます。</p>
+
+<h1>ソースコード</h1>
+
+<p>以下のようなファイルを使います</p>
+
+<p>test.cpp</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &quot;func.h&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">TestA</span> <span class="n">test</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getDirect</span><span class="p">();</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getThrough</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>func.h</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
+</span><span class='line'><span class="k">public</span><span class="o">:</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">getDirect</span><span class="p">();</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="nf">getThrough</span><span class="p">();</span>
+</span><span class='line'><span class="k">private</span><span class="o">:</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">getPrivate</span><span class="p">();</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>func.cpp</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &quot;func.h&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getDirect</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getThrough</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">getDirect</span><span class="p">()</span> <span class="o">+</span> <span class="n">getPrivate</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getPrivate</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">73</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>func.cppのgetThrough関数に対して、インライン展開が行われる事が予想されますが、<br/>
+getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。<br/>
+getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。</p>
+
+<h1>最適化しない場合</h1>
+
+<p>3つの関数は全て普通にコンパイルされました。</p>
+
+<h1>最適化した場合</h1>
+
+<h2>同じファイル内のインライン展開</h2>
+
+<p>getThrough関数は以下のようになりました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="nl">__ZN5TestA10getThroughEv</span><span class="p">:</span>               <span class="err">##</span> <span class="err">@</span><span class="n">_ZN5TestA10getThroughEv</span>
+</span><span class='line'><span class="n">pushq</span>  <span class="o">%</span><span class="n">rbp</span>
+</span><span class='line'><span class="n">movq</span>   <span class="o">%</span><span class="n">rsp</span><span class="p">,</span> <span class="o">%</span><span class="n">rbp</span>
+</span><span class='line'><span class="n">movl</span>   <span class="err">$</span><span class="mi">115</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span>
+</span><span class='line'><span class="n">popq</span>   <span class="o">%</span><span class="n">rbp</span>
+</span><span class='line'><span class="n">retq</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>42+73=115なので、インライン展開と最適化がされているのがわかります。<br/>
+そのため、同じファイル内なら、ヘッダに書いていなくても勝手にインライン展開されるみたいです。</p>
+
+<p>よくよく考えると、includeが処理されるのはプリプロセスのタイミングで処理されます。<br/>
+そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。<br/>
+なので、どのファイルに関数が書かれているかは関係ないと思われます。</p>
+
+<h2>インライン展開後の関数</h2>
+
+<p>getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、<br/>
+関数が出力されていました。</p>
+
+<p>getDirect関数はpublic指定されているため、<br/>
+外部から参照される場合のために展開後も関数が残されるのは予想通りです。</p>
+
+<p>getPrivate関数はprivate指定されているため継承先のクラスから呼ばれることはなく、<br/>
+かつこのクラスはfriend指定もされていないため、外部から呼び出されることはありません。<br/>
+そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、<br/>
+この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。</p>
+
+<h1>まとめ</h1>
+
+<ul>
+<li>同じファイル内でもインライン展開は行われる
+
+<ul>
+<li>O3ならinline宣言とか要らない</li>
+</ul>
+</li>
+<li>インライン展開しても、展開元の関数は残る
+
+<ul>
+<li>ヘッダファイルに書いた関数は展開元が消えたので挙動が違う</li>
+<li>publicはリンクされるまで呼ばれるかわからないので消せない
+
+<ul>
+<li>privateは呼ばれない事が確定するはずだが何故か消さない</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[インライン展開がどう展開されるのかを調べた]]></title>
@@ -33,6 +205,8 @@
 <h1>ソースコード</h1>
 
 <p>以下のソースコードを使います</p>
+
+<p>test.cpp</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -63,7 +237,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>func.h</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -116,7 +290,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>func.cpp</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -2332,115 +2506,6 @@ VMwareやKVMのような完全仮想化と違い、<br/>
 <p>また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、<br/>
 Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。<br/>
 今回はとりあえずさわりだけなので、手で起動してログインしっぱなしにしています。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[YAMLでnilをキーにしたハッシュを扱う]]></title>
-    <link href="http://ota42y.com/blog/2014/11/25/ruby-hash/"/>
-    <updated>2014-11-25T07:55:14+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/25/ruby-hash</id>
-    <content type="html"><![CDATA[<p><em>例は全てRuby 2.0を利用しています</em></p>
-
-<p>nilをキーとした値を持つハッシュをYAMLに書きたい場合、<br/>
-以下のように書いても&#8221;nil&#8221;という文字列として認識されます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'><span class="l-Scalar-Plain">nil</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">nil</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>=&gt; {"nil"=&gt;"nil"}</code></p>
-
-<p>データがnilの場合は、データ部分に何も書かないことでnilを表現できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'><span class="l-Scalar-Plain">datanil</span> <span class="p-Indicator">:</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>=&gt; {"datanil"=&gt;nil}</code></p>
-
-<p>キーをnilにしたい場合、以下のように書いても、(Rubyだと)パースに失敗します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'>  <span class="p-Indicator">:</span> <span class="s">&quot;key</span><span class="nv"> </span><span class="s">nil&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このような場合もYAMLの仕様では想定済みらしく、<br/>
-クエッションマークを使うことで、その後ろにあるものがキーであると明示できる仕様があります。<br/>
-<a href="http://yaml.org/spec/1.2/spec.html#id2772075">http://yaml.org/spec/1.2/spec.html#id2772075</a></p>
-
-<p>これを利用して、以下のようにクエッションマークの後に何も書かず、<br/>
-その後コロンと値を設定することで、nilをキーとして設定できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'><span class="p-Indicator">?</span>
-</span><span class='line'><span class="p-Indicator">:</span> <span class="s">&quot;key</span><span class="nv"> </span><span class="s">nil&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>rubyで長い文字列をキーにする</h2>
-
-<p>Rubyが利用しているPsychでは、以下のように128byte以上のデータをキーにして書き出した場合、<br/>
-?マークをつけて書き出します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;yaml&#39;</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">mkhash</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class='line'>  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span>
-</span><span class='line'>  <span class="n">h</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">long</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span> <span class="o">*</span> <span class="mi">129</span>
-</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;long.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">file</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="no">YAML</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mkhash</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">))</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'><span class="p-Indicator">?</span> <span class="l-Scalar-Plain">aaaaaaaaaaaaaaaaaaaaaaaaaa...aaa</span>
-</span><span class='line'><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">long</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>どうやらRubyが使っているYAMLライブラリのPsych内で、<br/>
-128文字以上だったら?マークを出力するようにしているみたいです。</p>
-
-<p><a href="https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816">https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816</a>
-<a href="https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168">https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168</a></p>
-
-<p>一応YAMLの仕様としては1024文字までは?を使わなくてもいいらしいですが、何故128byteで切ってるのかは謎です。
-<a href="http://yaml.org/spec/1.2/spec.html#id2792501">http://yaml.org/spec/1.2/spec.html#id2792501</a></p>
-
-<p>なお読み込む際は、クエッションマークをつけずに128byte以上のキーを指定しても問題なく読み込めます。</p>
 ]]></content>
   </entry>
   
