@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-06T07:45:23+09:00</updated>
+  <updated>2015-01-07T07:58:58+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Macのghcは改行コードがCRだと動かない]]></title>
+    <link href="http://ota42y.com/blog/2015/01/07/mac-ghc-cr/"/>
+    <updated>2015-01-07T07:55:16+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/07/mac-ghc-cr</id>
+    <content type="html"><![CDATA[<p>Haskellでどう見ても文法的に間違っていないのに、<br/>
+何故かコンパイルエラーになっていましたが、<br/>
+改行コードが原因でした。</p>
+
+<p>ちょうど始めたばかりで、実は文法ミスや、<br/>
+バージョン違いとの切り分けが大変でしたが、<br/>
+結果は残念な結果になりました…</p>
+
+<h1>まとめ</h1>
+
+<ul>
+<li>GHCではLF、CRLFは正しく動くがCRはダメ</li>
+<li>PDFからサンプルコードをコピペしたらCRになっていた
+
+<ul>
+<li>Macのプレビューでいくつか試したが、現状全てCRになる</li>
+<li>PDFが原因か、Preview.appがそういう仕様なのかは用検証</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>調査方法</h1>
+
+<p>以下のファイルを改行コードLFで保存します。</p>
+
+<p>lf.hs</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>plus :: Integer -&gt; Integer -&gt; Integer
+</span><span class='line'>plus a b = a + b
+</span><span class='line'>
+</span><span class='line'>main = print (plus 40 2)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>LFのまま実行します</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>file lf.hs
+</span><span class='line'># lf.hs: ASCII text
+</span><span class='line'>runghc lf.hs
+</span><span class='line'># 42</span></code></pre></td></tr></table></div></figure>
+
+
+<p>CRLFに変換して実行します</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nkf -Lw lf.hs &gt; crlf.hs
+</span><span class='line'>file crlf.hs
+</span><span class='line'># crlf.hs: ASCII text, with CRLF line terminators
+</span><span class='line'>runghc crlf.hs
+</span><span class='line'>42</span></code></pre></td></tr></table></div></figure>
+
+
+<p>CRに変換して実行します</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nkf -Lm lf.hs &gt; cr.hs
+</span><span class='line'>file cr.hs
+</span><span class='line'># cr.hs: ASCII text, with CR line terminators
+</span><span class='line'>runghc cr.hs
+</span><span class='line'># cr.hs:1:62: parse error on input ‘=’</span></code></pre></td></tr></table></div></figure>
+
+
+<p>失敗しますね(´・_・`)</p>
+
+<h1>何故CRが紛れ込んだか</h1>
+
+<p>最近のmacは改行コードがLFですし、CRが混入するのは中々ありません。</p>
+
+<p>今回は、ちょうどサンプルに使っているPDFからコードをコピペしたところ、<br/>
+改行コードがCRになっていたのが原因でした。</p>
+
+<p>いくつかのPDFでやってみましたが、全てCRになっており、<br/>
+Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分けが必要です。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[インライン展開についての追加調査]]></title>
@@ -2423,89 +2520,6 @@ Jenkinsのjobをスクリプト内から呼び出せるため、プラグイン�
 実行時に設定したパラメーターなどは、呼び出すjob側に一つ一つ明示的に渡す必要があったり、<br/>
 ファイルの受け渡しを成果物とCopy Artifact Pluginを利用して行う必要があるなど、<br/>
 job間のデータの受け渡しが面倒になるという問題が生じますので注意が必要です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dockerとは何か]]></title>
-    <link href="http://ota42y.com/blog/2014/11/26/docker/"/>
-    <updated>2014-11-26T07:33:43+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/26/docker</id>
-    <content type="html"><![CDATA[<p>Dockerについて調べたので概要と簡単な使い方のメモ</p>
-
-<h1>Dockerとは何か</h1>
-
-<p>いわゆるコンテナ型仮想化ツールの1つです。<br/>
-VMwareやKVMのような完全仮想化と違い、<br/>
-ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。</p>
-
-<p>あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、<br/>
-手元の数年前のmac book airでもかなり快適に動いています。</p>
-
-<p>あくまでゲストOSを隔離環境に置いただけのため 、<br/>
-ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。<br/>
-(ゲストからはホストの中身は当然見えない)</p>
-
-<p>また、DockerではDockerfileというファイルに設定を書くことで、<br/>
-その設定を反映した状態のコンテナを作成することが出来ます。<br/>
-そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。</p>
-
-<h1>Docker上のCent OSにJenkinsを立てる</h1>
-
-<h2>Dockerの起動</h2>
-
-<p>Dockerコマンドを実行するためには、Macだとboot2dockerを<br/>
-<code>boot2docker start</code>で起動し、そのとき提示された環境変数を設定する必要があります。</p>
-
-<p>また、<br/>
-<code>boot2docker ip</code><br/>
-を実行し、コンテナに対してアクセスできるようにする必要があります。<br/>
-なお、この時出たURLは後で使います。</p>
-
-<h2>Cent OSの構築</h2>
-
-<h3>Dockerfileの準備</h3>
-
-<p>以下のファイルをDockerfileという名前で適当なディレクトリに保存します。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>FROM centos:centos6
-</span><span class='line'>
-</span><span class='line'>RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
-</span><span class='line'>RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-</span><span class='line'>RUN yum -y install java-1.7.0-openjdk jenkins</span></code></pre></td></tr></table></div></figure>
-
-
-<p>見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。</p>
-
-<h3>コンテナの作成</h3>
-
-<p>次に、Dockerfileを保存したディレクトリで<br/>
-<code>docker build -t jenkins .</code>
-を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。</p>
-
-<h3>コンテナの起動</h3>
-
-<p><code>docker run -p 8080:8080 -i -t jenkins bash</code><br/>
-を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、<br/>
-<code>service jenkins start</code><br/>
-を実行するとjenkinsが起動します。</p>
-
-<p>この状態で、<code>boot2docker ip</code>で出てきたURLの8080ポートにブラウザでアクセスすると、<br/>
-いつものJenkins画面が表示されます。</p>
-
-<h1>その他</h1>
-
-<p>Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、<br/>
-それを他のセットアップの下地にするといったことも出来るそうです。</p>
-
-<p>また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、<br/>
-Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。<br/>
-今回はとりあえずさわりだけなので、手で起動してログインしっぱなしにしています。</p>
 ]]></content>
   </entry>
   
