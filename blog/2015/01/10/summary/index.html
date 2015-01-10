@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>2015年2週目まとめ - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="2015年2週目まとめ Contents 1 なんでブログに書くのか
+2 node-tumblrのテストが動かせなかった
+3 node-ircへのPRが取り込まれた
+4 インターステラーとベイマックスを観た 毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2015/01/10/summary">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">2015年2週目まとめ</h2>
+    
+  </header>
+
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">なんでブログに書くのか</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">node-tumblrのテストが動かせなかった</span></a></li>
+<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">node-ircへのPRが取り込まれた</span></a></li>
+<li class="toc_level-1 toc_section-4"><a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">インターステラーとベイマックスを観た</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。<br>
+主に1記事にするには難しいものや、失敗してダメだったものをまとめていく予定です。</p>
+
+<p>思った以上に面倒なので、来週はしないかもしれません…</p>
+
+<h1 id="tocAnchor-1-1">なんでブログに書くのか</h1>
+
+<p>テキストでローカルに持っていても良いんですが、そうするとファイル管理が面倒になります。<br>
+こうやってブログに書いておけば検索エンジンからたどれますし、個々のファイルの管理をしなくて良くなります。</p>
+
+<p>また、<a href="/blog/2014/12/31/150-output/">GithubのContributionsを使ってアウトプットを150日続ける</a>でも書いたように、振り返りで1コミット稼げるので、振り返りをしっかりするようになるという狙いもあります。</p>
+
+<h1 id="tocAnchor-1-2">node-tumblrのテストが動かせなかった</h1>
+
+<p><a href="https://github.com/meritt/node-tumblr">node-tumblr</a>でリブログする機能が欲しかったので追加しようかと思いましたが、
+そもそも今の状態のテストができなくて諦めました。</p>
+
+<p>例えばtwitterであれば、自分のfav一覧を正常に取れるかをテストするためには、
+テストするアカウントでfavしておかなければなりません。
+同じようなことがnode-tumblrのテストでも起きているのですが、
+その準備に必要なものが何なのかがわからないため、テストできませんでした。</p>
+
+<p>テストを書くことも大事ですが、テストを実行するための手順を整えておくのも大事ですね…</p>
+
+<h1 id="tocAnchor-1-3">node-ircへのPRが取り込まれた</h1>
+
+<p>7月ぐらいに出した<a href="https://github.com/martynsmith/node-irc">node-irc</a>のPRが取り込まれました。内容としては<a href="/blog/2014/08/09/irc/">IRCはCL-LFでメッセージを区切る</a>に書いたように、古いサーバーは別の改行コードを送ってくるため、両方に対応できるようにする修正です。<br>
+<a href="https://github.com/martynsmith/node-irc/pull/280">https://github.com/martynsmith/node-irc/pull/280</a><br>
+ブランチ戦略が変わったらしく、出し直したためコミットは新しくなっています。</p>
+
+<p>PRにたいしてツッコミが来たり、出された反論コードがおかしいので、ちゃんと修正すれば動くよと返したりと大変でした。
+英語でのコミュニケーションは言いたいことをどう書けばいいか解らないので大変です…ボギャブラリー不足ですね。</p>
+
+<h1 id="tocAnchor-1-4">インターステラーとベイマックスを観た</h1>
+
+<p>ベイマックスは本国ではBig Hero 6というタイトルで公開されていて、
+そのタイトル通り、ベイマックスのみが主人公ではなく、彼？を含む6人がアメコミヒーローになるという話だった。
+また、映画の舞台が日本の風景をピクサー風に仕上げた街であり、主人公も日本人風の名前や顔立ちだったりと、
+随所に日本リスペクトが見られました。</p>
+
+<p>インターステラーは近年には珍しい本気で作られたSF映画で、これSF詳しくない人には辛いんじゃないかな？
+と心配になるぐらい、しっかりとSFしています。
+私は大好物ですが、興行収入が良いのかどうかは謎ですね。</p>
+
+<p>映像としては専門家の監修の元でしっかりとした映像が作られており、
+また、おそらく随所に2001年宇宙の旅のリスペクトっぽい部分があったのが面白かったです。</p>
+
+<p>特に好きなシーンは、物語の中盤で主人公が仲間の感情的な意見をバッサリと切り捨てて合理的な判断をしたのと、
+最後の方のシーンですね。</p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2015-01-10 20:44:25 +0900" pubdate></time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <span class="twitter">
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2015/01/10/summary/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2015/01/10/summary/" >Tweet</a>
+ </span>
+      
+
+      
+
+      
+
+      <span class="hatena">
+        <a href="/blog/2015/01/10/summary/" class="hatena-bookmark-button"
+         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+         title="このエントリーをはてなブックマークに追加">
+          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+         charset="utf-8" async="async">
+        </script>
+      </span>
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2015 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>

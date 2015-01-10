@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-07T07:58:58+09:00</updated>
+  <updated>2015-01-10T22:08:47+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年2週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/01/10/summary/"/>
+    <updated>2015-01-10T20:44:25+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/10/summary</id>
+    <content type="html"><![CDATA[<p>毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。<br/>
+主に1記事にするには難しいものや、失敗してダメだったものをまとめていく予定です。</p>
+
+<p>思った以上に面倒なので、来週はしないかもしれません…</p>
+
+<h1>なんでブログに書くのか</h1>
+
+<p>テキストでローカルに持っていても良いんですが、そうするとファイル管理が面倒になります。<br/>
+こうやってブログに書いておけば検索エンジンからたどれますし、個々のファイルの管理をしなくて良くなります。</p>
+
+<p>また、<a href="http://ota42y.com/blog/2014/12/31/150-output/">GithubのContributionsを使ってアウトプットを150日続ける</a>でも書いたように、振り返りで1コミット稼げるので、振り返りをしっかりするようになるという狙いもあります。</p>
+
+<h1>node-tumblrのテストが動かせなかった</h1>
+
+<p><a href="https://github.com/meritt/node-tumblr">node-tumblr</a>でリブログする機能が欲しかったので追加しようかと思いましたが、
+そもそも今の状態のテストができなくて諦めました。</p>
+
+<p>例えばtwitterであれば、自分のfav一覧を正常に取れるかをテストするためには、
+テストするアカウントでfavしておかなければなりません。
+同じようなことがnode-tumblrのテストでも起きているのですが、
+その準備に必要なものが何なのかがわからないため、テストできませんでした。</p>
+
+<p>テストを書くことも大事ですが、テストを実行するための手順を整えておくのも大事ですね…</p>
+
+<h1>node-ircへのPRが取り込まれた</h1>
+
+<p>7月ぐらいに出した<a href="https://github.com/martynsmith/node-irc">node-irc</a>のPRが取り込まれました。内容としては<a href="http://ota42y.com/blog/2014/08/09/irc/">IRCはCL-LFでメッセージを区切る</a>に書いたように、古いサーバーは別の改行コードを送ってくるため、両方に対応できるようにする修正です。<br/>
+<a href="https://github.com/martynsmith/node-irc/pull/280">https://github.com/martynsmith/node-irc/pull/280</a><br/>
+ブランチ戦略が変わったらしく、出し直したためコミットは新しくなっています。</p>
+
+<p>PRにたいしてツッコミが来たり、出された反論コードがおかしいので、ちゃんと修正すれば動くよと返したりと大変でした。
+英語でのコミュニケーションは言いたいことをどう書けばいいか解らないので大変です…ボギャブラリー不足ですね。</p>
+
+<h1>インターステラーとベイマックスを観た</h1>
+
+<p>ベイマックスは本国ではBig Hero 6というタイトルで公開されていて、
+そのタイトル通り、ベイマックスのみが主人公ではなく、彼？を含む6人がアメコミヒーローになるという話だった。
+また、映画の舞台が日本の風景をピクサー風に仕上げた街であり、主人公も日本人風の名前や顔立ちだったりと、
+随所に日本リスペクトが見られました。</p>
+
+<p>インターステラーは近年には珍しい本気で作られたSF映画で、これSF詳しくない人には辛いんじゃないかな？
+と心配になるぐらい、しっかりとSFしています。
+私は大好物ですが、興行収入が良いのかどうかは謎ですね。</p>
+
+<p>映像としては専門家の監修の元でしっかりとした映像が作られており、
+また、おそらく随所に2001年宇宙の旅のリスペクトっぽい部分があったのが面白かったです。</p>
+
+<p>特に好きなシーンは、物語の中盤で主人公が仲間の感情的な意見をバッサリと切り捨てて合理的な判断をしたのと、
+最後の方のシーンですね。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Macのghcは改行コードがCRだと動かない]]></title>
@@ -2401,125 +2458,6 @@ iPhone6や6+では従来のUIはかなり使いづらいものになってしま
 
 <p>二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…<br/>
 恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる]]></title>
-    <link href="http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/"/>
-    <updated>2014-11-27T07:44:41+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin</id>
-    <content type="html"><![CDATA[<h1>まとめ</h1>
-
-<ul>
-<li>Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒</li>
-<li>全てをスクリプトで実行するのが理想だが、本体の機能を使いたい場合は対応できない</li>
-<li>build flow pluginがファイルを読み込んで実行できるようになった</li>
-<li>これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る</li>
-</ul>
-
-
-<h1>Jenkinsのjob設定問題</h1>
-
-<p>Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。</p>
-
-<p>例えばビルド手順を変更する場合、プラグイン設定に後方互換性がないような変更を行うと、<br/>
-前のバージョンをビルドしたときにエラーになります。</p>
-
-<p>このような場合、通常は最新の変更を取り込む事で解決しますが、<br/>
-コードフリーズ中のリリースブランチのように、最新の変更を取り込めない場合はこの方法で解決できません。</p>
-
-<p>このような場合、二通りの解決方法が存在します。</p>
-
-<h2>全部スクリプトで処理する方法</h2>
-
-<p>一つ目が全部スクリプトでやってしまう方法です。<br/>
-Jenkinsのjobからは単一のスクリプトだけを実行し、その中で全てを行います。</p>
-
-<p>この方法はJenkinsを単なるcronとしてしか使わないため、<br/>
-全部自分でやる必要がありますが自由度がとても高いのが特徴です。</p>
-
-<p>ですがこの方法では、プラグインや下流jobとの連携、特定の処理だけ別ノードで実行するなど、<br/>
-Jenkinsの機能が使えなくなります。</p>
-
-<h2>新しいJobを作っていく方法</h2>
-
-<p>これに対し、jobの変更管理を諦め、どんどん新しいjobを作ってく方法があります。<br/>
-Jenkinsはjobのコピーが容易なため、後方互換性のない変更を加える段階で新しいjobに切り替え、<br/>
-以降はそちらでビルドし、過去のバージョン用のビルドが必要なときには残してある前のjobを実行します。</p>
-
-<p>この方法の場合、Jenkinsの機能を利用しつつ、複数のビルド設定を同時に扱うことが出来ますが、<br/>
-どのバージョンでどのjobを動かせばいいかを保存しておけないため、jobが増えていくと問題になります。</p>
-
-<p>これに対し、build flow pluginを使う事で、どのjobでビルドするかといった情報を、<br/>
-リポジトリ内に入れてバージョン管理することが出来ます。</p>
-
-<h1>build flow pluginでjobの関係をリポジトリに入れる</h1>
-
-<p>Jenkinsのbuild flow pluginでは、複数のjobをスクリプトから実行することが出来ます。<br/>
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Build+Flow+Plugin">Build Flow Plugin</a></p>
-
-<p>具体的には以下のように書くことで、job1が成功したらjob2を実行するといったことが出来ます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// 失敗から成功に変わったか判定
-</span><span class='line'>def isFixedBuild(result){
-</span><span class='line'>  prev = build.previousBuild
-</span><span class='line'>  return prev.result != SUCCESS && result == SUCCESS
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>// job1を実行
-</span><span class='line'>b = build("job1")
-</span><span class='line'>// job1のログを出力する
-</span><span class='line'>out.println b.getLog()
-</span><span class='line'>
-</span><span class='line'>if(b.result == SUCCESS){
-</span><span class='line'>  // job1が成功していたらjob2を実行
-</span><span class='line'>  b = build("job2")
-</span><span class='line'>
-</span><span class='line'>  if (isFixedBuild(b.result)){
-</span><span class='line'>    out.println "fixed"
-</span><span class='line'>  }else{
-</span><span class='line'>    out.println "success"
-</span><span class='line'>  }
-</span><span class='line'>}
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このbuild flow pluginですが、最近の変更でリポジトリ内のファイルを実行することができるようになりました。<br/>
-そのため、メインのjobがリポジトリ内のスクリプトを読み込んで、ビルド用のjobを呼び出すように構築することで、<br/>
-二つ目の新しいjobを作っていく方法の問題点だった、リポジトリのバージョンとjobの対応付けが解決します。</p>
-
-<p>残念ながら、job自体の設定は管理出来ないため、設定を変更したい場合はjobを増やしていく必要がありますが、<br/>
-呼び出しはスクリプトから行うため、ビルドの実行自体はスクリプトを呼ぶだけで済みます。</p>
-
-<p>これは一つ目の全てをスクリプトで行う方法と同じく、リポジトリ内のgroovyファイルを実行する方法になりますが、<br/>
-Jenkinsのjobをスクリプト内から呼び出せるため、プラグインといったJenkinsの機能を利用できる利点があります。</p>
-
-<p>ただし、別のjobに別れてしまうため、<br/>
-実行時に設定したパラメーターなどは、呼び出すjob側に一つ一つ明示的に渡す必要があったり、<br/>
-ファイルの受け渡しを成果物とCopy Artifact Pluginを利用して行う必要があるなど、<br/>
-job間のデータの受け渡しが面倒になるという問題が生じますので注意が必要です。</p>
 ]]></content>
   </entry>
   
