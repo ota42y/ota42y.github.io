@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-10T22:08:47+09:00</updated>
+  <updated>2015-01-11T21:01:52+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,335 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[参加記録 Jenkins ユーザ・カンファレンス 2015 東京]]></title>
+    <link href="http://ota42y.com/blog/2015/01/11/jenkins-conference/"/>
+    <updated>2015-01-11T18:26:43+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/11/jenkins-conference</id>
+    <content type="html"><![CDATA[<p><a href="http://build-shokunin.org/juc2015/">Jenkins ユーザ・カンファレンス 2015 東京</a>に参加しました。<br/>
+<a href="http://togetter.com/li/765735">Togetterまとめ</a></p>
+
+<h1>発表まとめ</h1>
+
+<h2>アンケート結果</h2>
+
+<ul>
+<li>参加申し込み時のアンケート結果</li>
+<li>多くの人のjobの数が1〜数個程度</li>
+<li>Jenkins無くても生きていける人が30％ぐらい</li>
+<li>思ったよりもみんなJenkinsを使い込んでいない印象</li>
+<li>アンケート結果は後日公開</li>
+</ul>
+
+
+<h2>Jenkinsプロジェクトの現状とワークフロー</h2>
+
+<ul>
+<li>DotCiが良さそう
+
+<ul>
+<li><a href="https://github.com/groupon/DotCi">https://github.com/groupon/DotCi</a></li>
+<li>Jenkinsを他のCIサービスみたいにする</li>
+<li>Github限定</li>
+<li>設定をYAMLファイルで管理出来たりする</li>
+</ul>
+</li>
+<li>Workflow Pluginすごい
+
+<ul>
+<li>Build Flow Pluginをいっそう強化した版</li>
+<li>ビルドが失敗しても途中から再開とかも出来る</li>
+<li>乗り換えよう</li>
+<li>ただ、DSLを覚えたりと学習コストが高くなるので秘伝のタレ化の危険が</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>JenkinsとSeleniumの活用事例：試験自動化のプロジェクトへの導入</h2>
+
+<ul>
+<li>アジャイル開発だとイテレーション毎に試験項目は増えていくが、開発後半になるほど試験に割ける時間は減る
+
+<ul>
+<li>あるあるすぎる</li>
+<li>試験自動化で試験項目の消化にかかるコストを下げる</li>
+</ul>
+</li>
+<li>スクリーンショットを撮って画像比較して変更検知
+
+<ul>
+<li>静的な画面なら効果的っぽい</li>
+<li>アニメーションする場合は撮るタイミングによりそうなので、目で比較かなぁ…</li>
+</ul>
+</li>
+<li>テストケースの保守大変そう
+
+<ul>
+<li>ちょっと変わっただけで使えなくなるし</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Jenkinsを使ったコンシューマゲームでのデプロイとテスト</h2>
+
+<ul>
+<li><a href="http://www.slideshare.net/swiftnest/jenkins-43394510">http://www.slideshare.net/swiftnest/jenkins-43394510</a></li>
+<li>圧縮して6GB、11万ファイルのプロジェクト
+
+<ul>
+<li>2プラットフォーム2言語にビルド</li>
+<li>これで中規模ぐらいと凄い世界が…
+
+<ul>
+<li>FFとかどんだけなんだろう…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>フルビルドに14時間かかる
+
+<ul>
+<li>リソースの事前処理に時間がかかる
+
+<ul>
+<li>リソース内での分岐処理が遅いため、全条件分のリソースを作る</li>
+</ul>
+</li>
+<li>データを実機上でビルドする必要がある
+
+<ul>
+<li>携帯機は貧弱なので差分ビルドでも4時間かかったりする</li>
+<li>プラットフォームで互換性なし
+
+<ul>
+<li>PS3はビッグエンディアン</li>
+<li>VITAはリトルエンディアン</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ファイルをパックするのでキャッシュが効かない
+
+<ul>
+<li>ファイルアクセス回数を減らすため必須</li>
+<li>全データを実機でパックするため6時間ぐらい</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>頑張って並列化して5〜9時間ぐらいまで減らす
+
+<ul>
+<li>データの処理を4台で並列化
+
+<ul>
+<li>一台4時間ぐらいに短縮</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>テスト
+
+<ul>
+<li>テストフレームワークなど無い</li>
+<li>スモークテスト
+
+<ul>
+<li>特定ミッションに入れるかどうかをテスト
+
+<ul>
+<li>引数で専用のミッションを始められるように
+
+<ul>
+<li>一定時間たったら終了させる</li>
+<li>正常終了しなかったらエラー</li>
+</ul>
+</li>
+<li>起動からスタート、終了までがちゃんと動くか</li>
+<li>リソースに問題ないか</li>
+</ul>
+</li>
+<li>エフェクト再生チェック
+
+<ul>
+<li>一定時間内に終わるか</li>
+</ul>
+</li>
+<li>データが変換可能か</li>
+</ul>
+</li>
+<li>モンキーテスト
+
+<ul>
+<li>開始からエンディングまでの通しプレイAI
+
+<ul>
+<li>良い感じに攻撃する
+
+<ul>
+<li>適当にボタン連打</li>
+</ul>
+</li>
+<li>適当に移動</li>
+<li>何回もゲームオーバーになったら無敵＆攻撃力１００倍</li>
+</ul>
+</li>
+<li>メニュー操作テスト
+
+<ul>
+<li>普通のUIテストっぽい</li>
+</ul>
+</li>
+<li>長時間テスト特有のバグ発見に繋がる
+
+<ul>
+<li>リソースの解放漏れ
+
+<ul>
+<li>携帯機はスリープできるので普通は電源を切らない</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>問題点
+
+<ul>
+<li>作成やメンテナンスにコストがかかる
+
+<ul>
+<li>ゆとりがある時期にどれだけ作れるか勝負</li>
+</ul>
+</li>
+<li>チェックに時間かかる
+
+<ul>
+<li>一日じゃ終わらない</li>
+</ul>
+</li>
+<li>手動テストの置き換えにはならない
+
+<ul>
+<li>テストのパターンが固定化されるため、外れた部分のバグは検知不可</li>
+<li>人の手のかかるテストを減らす効果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>おばかXFDコンテスト</h2>
+
+<ul>
+<li>人は慣れる生き物
+
+<ul>
+<li>何度も通知してるとそのうち無視するようになる
+
+<ul>
+<li>エラーメールを迷惑フォルダに入れたり</li>
+<li>パトランプの上に被せたり</li>
+</ul>
+</li>
+<li>XFDによる通知で、慣れに逆らう</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>LT大会</h2>
+
+<ul>
+<li>Jenkinsを使った継続的Webセキュリティテスト
+
+<ul>
+<li>継続的にセキュリティテストを実施するVAddyの話
+
+<ul>
+<li><a href="http://vaddy.net/ja/">http://vaddy.net/ja/</a></li>
+</ul>
+</li>
+<li>ちゃんと専門家が監修しているという噂がTLに流れた</li>
+</ul>
+</li>
+<li>Jenkinsおじさん、お堅いメガバンクに就職
+
+<ul>
+<li>金融系企業でJenkinsが使われているだと(´･_･`)！！</li>
+<li>ちゃんと聞きたかったけど、時間が足りなくて終了…</li>
+</ul>
+</li>
+<li>Jenkinsおじさんと楽しい連携ツールたち
+
+<ul>
+<li>Deploygate、Slack、Gitlabの連携話
+– だいたい似たようなことしてる</li>
+</ul>
+</li>
+<li>ゲーム業界の人がJenkinsさん3Dモデルで遊んでみた
+
+<ul>
+<li>Jenkinsの3Dモデルで遊んでる</li>
+</ul>
+</li>
+<li>CI”じゃない方”のJenkins
+
+<ul>
+<li><a href="http://www.slideshare.net/MiuraKatsu/ci-43396873">http://www.slideshare.net/MiuraKatsu/ci-43396873</a></li>
+<li>CI以外の使い道</li>
+<li>cronの置き換え</li>
+<li>外部ツールの連携
+
+<ul>
+<li>ピタゴラジェンキンス</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>まとめ</h1>
+
+<ul>
+<li>Jenkins単体の話はなくって、Jenkinsと○○連携してこう使ってますが多かった
+
+<ul>
+<li>Jenkinsを使うのは普通な世界になってる気がする</li>
+</ul>
+</li>
+<li>ちょこっとだけ設定を変えたJobが乱立するのはどこも同じっぽい
+
+<ul>
+<li>Workflow Pluginでそのあたりを吸収できそう</li>
+</ul>
+</li>
+<li>会場設備が凄く良い
+
+<ul>
+<li>ネット快適、教室は電源とLAN完備</li>
+<li>法政大学凄すぎる</li>
+</ul>
+</li>
+<li>Tシャツがフリー配布されてた
+
+<ul>
+<li>太っ腹</li>
+<li><blockquote class="twitter-tweet" lang="ja"><p>全てご自由にお持ちくださいらしい。 <a href="https://twitter.com/hashtag/juc2015?src=hash">#juc2015</a> <a href="http://t.co/0C4ZcEfHXg"><a href="http://t.co/0C4ZcEfHXg">http://t.co/0C4ZcEfHXg</a></a></p>&mdash; おおた (@ota42y) <a href="https://twitter.com/ota42y/status/554113306349539328">2015, 1月 11</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2015年2週目まとめ]]></title>
@@ -2414,50 +2743,6 @@ Jekyllがアップデートされたため、日付を出力するdate_time_html
 このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。<br/>
 Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、<br/>
 その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[参加記録 BPStudy ♯87]]></title>
-    <link href="http://ota42y.com/blog/2014/11/29/bpstudy-87/"/>
-    <updated>2014-11-29T17:17:19+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/29/bpstudy-87</id>
-    <content type="html"><![CDATA[<p><a href="http://bpstudy.connpass.com/event/9741/">BPStudy#87</a>に参加しました。<br/>
-<a href="http://togetter.com/li/751302">togetterまとめ</a></p>
-
-<h1>じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？</h1>
-
-<p><a href="http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6">http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6</a></p>
-
-<p>iOS8とiPhone6の新機能まとめと、それによって生じる問題紹介でした。</p>
-
-<p>スライド46ページ目の親指の可動範囲の図を見せられると一目瞭然ですが、<br/>
-画面サイズが大きくなったことによるタッチ領域の変化はとても激しく、<br/>
-iPhone6や6+では従来のUIはかなり使いづらいものになってしまいます。</p>
-
-<p>あと、リモートで任意の端末をレンタルできるRemote TestKitが凄い便利そうでした。<br/>
-<a href="http://appkitbox.com/testkit/">Remote TestKit</a></p>
-
-<h1>iPhone 6がリリースされて2ヶ月が過ぎました　〜iOSの分断化時代を乗り切ろう〜</h1>
-
-<p><a href="http://www.slideshare.net/masashiono1/bpstudy-87">http://www.slideshare.net/masashiono1/bpstudy-87</a><br/>
-<a href="https://github.com/akisute/AutoLayoutTest">akisute/AutoLayoutTest</a></p>
-
-<p>前半のスワイプUIのススメは、前の発表のiPhone6や6+向けのUIの回答として、<br/>
-かなり良い回答ではないかなと思いました。<br/>
-あと後半のSwiftのまとめが、Swiftの闇をひしひしと感じる内容で凄いです…<em>(:3 」∠)</em></p>
-
-<h1>LT</h1>
-
-<p>一件目はiOS7と8で遭遇したブラウザバグの紹介でした。<br/>
-<a href="http://slides.com/monjudoh/ios_browser_bugs">資料</a></p>
-
-<p>画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、<br/>
-同時接続数が2個になったが、レスポンスの受信時間がかぶるとクラッシュするので同時接続してはいけないとか、<br/>
-かなり辛い感じのバグが多かったです…</p>
-
-<p>二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…<br/>
-恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ</p>
 ]]></content>
   </entry>
   
