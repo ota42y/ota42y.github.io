@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-11T21:01:52+09:00</updated>
+  <updated>2015-01-17T15:15:05+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年3週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/01/17/summary/"/>
+    <updated>2015-01-17T13:38:07+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/17/summary</id>
+    <content type="html"><![CDATA[<h1>Jenkins ユーザ・カンファレンス 2015 東京</h1>
+
+<p><a href="http://ota42y.com/blog/2015/01/11/jenkins-conference/">参加しました</a><br/>
+Workflow Plugin等を導入したいのですが、<br/>
+現在クリティカルパス上の作業をしているために手が回りません…<br/>
+運用コストを下げられるので是非入れたいのですが、<br/>
+どうしても優先度は下がってしまいますね…</p>
+
+<h1>Tumblrのgolang用ライブラリ</h1>
+
+<p>見当たらなかったので作成中(まだ何も動きません)<br/>
+<a href="https://github.com/ota42y/go-tumblr">https://github.com/ota42y/go-tumblr</a></p>
+
+<p>goのテストは特殊なフレームワークとか作らずに、普通にコードとして書くのを推奨しているそうです。<br/>
+rspecとかで専用のフレームワークにそって作るのとは大違い。<br/>
+書くのは面倒だけど、フレームワークの知識が無くても大丈夫というのは良いかもしれません。</p>
+
+<p>フレームワークの学習コストとそれによって得る効率化と、使わないことによる効率の低下とどっちが得なのでしょうか。
+あと外部APIなので秘密情報をどうやってテストの時に設定するかが課題です。<br/>
+毎回書いては消すのはとても面倒なので…</p>
+
+<h1>UIと強結合しているテスト</h1>
+
+<p>cocos2d-xを使ってiPhoneアプリを作成していると、ゲームUIでTDDとかするのは実質不可能ではないかなと思います。
+これはおそらくUI層の正しさが、状態に強く依存するのが原因です。</p>
+
+<p>ボタンを配置してタッチで特定のメソッドを呼び出すような場合、<br/>
+ボタンが画面上に表示されるかは、他のよりZ座標が大きいオブジェクトと被さっていないかをチェックする必要や、<br/>
+より優先度の高いタッチオブジェクトが存在しないかといったことをチェックする必要があります。<br/>
+さらに、演出中は表示されるけどタッチは出来ないなど、その部分以外の所の状態によって結果を変える必要があります。</p>
+
+<p>つまり、新しいボタンを配置するためには様々な状態のテストを作成し、<br/>
+かつほかのオブジェクトに対して新しい状態を追加することになるため、テストの変更がとても大きくなります。<br/>
+そのため、UI層でテストをする場合、作成・維持ともにとても大きくなっていくため、<br/>
+完全に不可能ではないですがコストか高く、現実的に出来るものではありません。</p>
+
+<p>ただし、UIコンポーネントについて個別にテストするのは有効だと思います。<br/>
+例えばボタンクラスであればタッチした時に、コールバックが呼ばれるか、範囲外の時に呼ばれないか等です。<br/>
+ただし、UIを作る際に個別にクラスを作ることはそんなに多くなく、<br/>
+多くがコンポーネントの配置と、その画面専用ロジックとのつなぎになるため、大きな効果は見込めなさそうです。</p>
+
+<p>なお、ゲームはそもそも共通で使う部分が少なく、画面内の状態がとても多いという前提があります。<br/>
+例えば通販サイトではヘッダーやサイドバーは共通で使い、メインの部分とは独立していますし、<br/>
+メインの部分も商品データが違うだけでテンプレートは同じといったように、共通で使う部分が多いので、<br/>
+そのような部分のテストは有効ではないかと思います。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[参加記録 Jenkins ユーザ・カンファレンス 2015 東京]]></title>
@@ -2700,49 +2753,6 @@ Keynote2の@fumitoshi_ukaiさんも言っていたように、<br/>
 
 <p>Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。<br/>
 振り返る際にとてもお世話になったので、感謝の限りです。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopressのアップデート手順]]></title>
-    <link href="http://ota42y.com/blog/2014/11/30/octopress-update/"/>
-    <updated>2014-11-30T07:50:22+09:00</updated>
-    <id>http://ota42y.com/blog/2014/11/30/octopress-update</id>
-    <content type="html"><![CDATA[<p>見た目は変わっていませんが、このブログのOctopressをアップデートしました。<br/>
-だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、<br/>
-forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。</p>
-
-<h1>ブログ用リポジトリの状態</h1>
-
-<p>このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。<br/>
-<a href="https://github.com/ota42y/ota42y.github.io">https://github.com/ota42y/ota42y.github.io</a></p>
-
-<p>ですが、これはOctopressの出力先のリポジトリであり、<br/>
-bitbucket上にOctopress自体のリポジトリが存在します。<br/>
-このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。</p>
-
-<h1>Octopressのアップデート</h1>
-
-<p>普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。<br/>
-その後、Octopress側のmasterとマージをするだけになります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git remote add octopress git@github.com:imathis/octopress.git
-</span><span class='line'>git fetch octopress
-</span><span class='line'>git merge octopress/master</span></code></pre></td></tr></table></div></figure>
-
-
-<p>その後、bundle installすれば終了…のはずでしたが、1つ落とし穴がありました。<br/>
-Jekyllがアップデートされたため、日付を出力するdate_time_htmlが変更されていました。<br/>
-<a href="https://github.com/imathis/octopress/pull/1643/files">https://github.com/imathis/octopress/pull/1643/files</a><br/>
-そのため、これを直すことで、無事アップデートは終了になりました。</p>
-
-<p>date_time_htmlが無くなったことはすぐに発見できましたが、<br/>
-このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。<br/>
-Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、<br/>
-その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…</p>
 ]]></content>
   </entry>
   
