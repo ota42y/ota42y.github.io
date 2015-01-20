@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-17T15:15:05+09:00</updated>
+  <updated>2015-01-21T07:49:53+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Androidのオフライン辞書が便利]]></title>
+    <link href="http://ota42y.com/blog/2015/01/21/android-dict/"/>
+    <updated>2015-01-21T07:37:19+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/21/android-dict</id>
+    <content type="html"><![CDATA[<h1>まとめ</h1>
+
+<ul>
+<li>clip2dicを使うとクリップボード内を自動で辞書検索する</li>
+<li>オフラインの別アプリからも検索可能</li>
+<li>ColorDictとGolden Dictが連携先として優秀</li>
+<li>英辞郎は形式が違うため辛い</li>
+<li>Google Driveをビューワーとして使うといい</li>
+</ul>
+
+
+<h1>ポップアップ辞書アプリ</h1>
+
+<p>iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。</p>
+
+<p>Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、<br/>
+<a href="https://play.google.com/store/apps/details?id=com.jp.readers.clip2dic.lite&amp;hl=ja">clip2dic</a>というアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。</p>
+
+<p>私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、<br/>
+他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。</p>
+
+<h1>clip2dictから使えるオフライン辞書アプリ</h1>
+
+<h2>ColorDict</h2>
+
+<p><a href="https://play.google.com/store/apps/details?id=com.socialnmobile.colordict">https://play.google.com/store/apps/details?id=com.socialnmobile.colordict</a></p>
+
+<p>無料の辞書ソフトです。<br/>
+初期状態では日英、英日辞書は入っていませんが、<br/>
+別アプリとして配布されている辞書アプリをインストールすることで、
+対応辞書を増やすことができます。
+<a href="https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict">https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict</a><br/>
+(おそらく<a href="https://code.google.com/p/stardict-3/">こちらの辞書</a>を使用しています)<br/>
+StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。</p>
+
+<h2>GoldenDict</h2>
+
+<p><a href="https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;hl=ja">https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;hl=ja</a><br/>
+<a href="https://play.google.com/store/apps/details?id=mobi.goldendict.android.free&amp;hl=ja">Free版</a><br/>
+こちらもColorDictと同じく、辞書ファイルが必要になります。<br/>
+ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、<br/>
+より導入が簡単です（辞書としてはおそらく同じだと思います)。</p>
+
+<p>このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）</p>
+
+<p>複数の辞書ファイルを持っている場合は便利ですが、<br/>
+私はそんなに辞書ファイルを持っていないので無料で十分でした。</p>
+
+<h1>その他</h1>
+
+<p>手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。<br/>
+pdicからStartDict形式の変換はとても手間がかかるのと、<br/>
+古すぎてネット上にある手順では出来なさそうなので諦めました。</p>
+
+<p>また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…<br/>
+いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、<br/>
+今のところ唯一出来たGoogle Driveをビューワーとして使っています。<br/>
+(オフラインでも別アプリからPDFビューワーとして呼び出せる)</p>
+
+<p>辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。<br/>
+これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2015年3週目まとめ]]></title>
@@ -2542,217 +2611,6 @@ MessageTextとinvaliddataは空になっています。</p>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[参加記録 Go Conference 2014 autumn]]></title>
-    <link href="http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/"/>
-    <updated>2014-12-01T07:42:00+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn</id>
-    <content type="html"><![CDATA[<p><a href="http://gocon.connpass.com/event/9748/">Go Conference 2014 autumn</a>に参加しました。<br/>
-<a href="http://togetter.com/li/751700">togetterまとめ</a><br/>
-大体スライドが公開されているので、正確な内容はそちらをどうぞ。</p>
-
-<h1>まとめ</h1>
-
-<ul>
-<li>Go言語のシンプルさへのこだわりが凄い</li>
-<li>開発陣の徳の高さが凄い
-
-<ul>
-<li>難しい部分は俺らに任せておけ！的な</li>
-</ul>
-</li>
-<li>明日から使えるGo言語的な情報が盛りだくさん
-
-<ul>
-<li>エラーを<em>で無視して済みません…(´･</em>･`)</li>
-</ul>
-</li>
-<li>椅子が痛い
-
-<ul>
-<li>1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです…</li>
-</ul>
-</li>
-<li>英語頑張ろう
-
-<ul>
-<li>日本語スライドありがたや…</li>
-</ul>
-</li>
-</ul>
-
-
-<h1>Keynote1: Rob Pike (@rob_pike) (45min)</h1>
-
-<p>スライドは未公開？</p>
-
-<p>Go言語の設計者<a href="http://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%83%91%E3%82%A4%E3%82%AF">ロブ・パイク</a>さんのGo言語の思想とかについての話です。</p>
-
-<p>Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。<br/>
-他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、<br/>
-Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。<br/>
-書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。</p>
-
-<p>プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。<br/>
-言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、<br/>
-必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。<br/>
-おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。</p>
-
-<p>簡潔な記述でも理解するのが大変な複雑な事ができるため、<br/>
-簡潔なコード≠単純なコードと言えるのかなと思いました。</p>
-
-<p>また、Goではコード側ができる限り簡単になるように、<br/>
-複雑な事を可能な限り言語側で隠蔽しているとも言われていました。<br/>
-実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、<br/>
-使う側からはそれほど大変さを感じることなく使えます。</p>
-
-<p>ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…</p>
-
-<h1>Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)</h1>
-
-<p><a href="http://ukai-go-talks.appspot.com/2014/gocon.slide#1">資料</a></p>
-
-<p>Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。</p>
-
-<p>Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、<br/>
-ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。</p>
-
-<p>これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、<br/>
-是非ともスライドが公開されるといいなーと思います。</p>
-
-<h1>LT1</h1>
-
-<h2>Gardener &amp; Go</h2>
-
-<p><a href="https://docs.google.com/presentation/d/1cPtFXGVgWcjG7qpwNz7jLbMh9BUW13dM_n1-ls-2u0s/edit#slide=id.p">資料</a></p>
-
-<p>@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。<br/>
-<a href="http://ec-mail.freegufo.com/items/910014">GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</a></p>
-
-<h1>セッション</h1>
-
-<h2>App Engine for Golang Performance</h2>
-
-<p><a href="http://sinmetal-slide.appspot.com/2014/gocon1130/gaego.slide#1">資料</a></p>
-
-<p>@sinmetalさんのGAEとMVM上でのGoとJavaの速度比較です。<br/>
-Goは基本的に倍ぐらい速く、JavaはJavaらしくJVMの起動に時間がかかるといった結果みたいです。</p>
-
-<h2>Golang @ISUCON</h2>
-
-<p><a href="https://speakerdeck.com/ymatsuwitter/golang-at-isucon">資料</a></p>
-
-<p>@y_matsuwitterさんのISUCONでGo言語を使った話です。<br/>
-ISUCONでやった、Go言語の様々な効率化についてまとめられていました。</p>
-
-<p>話を聞くとかなり複雑な事をしているようですが、スライドのコードだととても簡単そうで凄いです。</p>
-
-<h2>mackerel-agent 徹底解説</h2>
-
-<p><a href="http://songmu.github.io/slides/gocon2014-autumn/#0">資料</a></p>
-
-<p>@Songmuさんによる、mackerel-agentのソースコード解説です。<br/>
-NewRelicっぽいサービスですが、OSSな分色々出来そうで夢が広がる感じです。</p>
-
-<h2>Why my Go program is slow?</h2>
-
-<p><a href="http://www.slideshare.net/InadaNaoki/gocon2014-pprof">資料</a></p>
-
-<p>@methaneさんによるCPUプロファイリングについての発表です。<br/>
-アセンブラまで出してくれるpprofの凄さをひしひしと感じます…</p>
-
-<p>また、Goでは他の関数呼び出しのない末端の関数をインライン展開してくれるので、<br/>
-関数に分けると早かったり、<br/>
-関数呼び出しで呼び出し側が使っているレジスタを全部待避するので、<br/>
-呼び出された側が使った分だけ待避する？Cよりも関数呼び出しは遅いなど、<br/>
-Goの速度についてしっかりと説明されています。</p>
-
-<h2>Golang JP Community</h2>
-
-<p><a href="https://docs.google.com/presentation/d/1UTi4uqt4sOrQ1dHJE0y8UB9BR9iqDK7dLP57QAfrOX4/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g4f1d3881c_00">資料</a><br/>
-<a href="https://www.youtube.com/watch?v=LJvEIjRBSDA">資料２</a></p>
-
-<p>@qt_luigiさんの日本のGo言語コミュニティの話でした。<br/>
-いくつか知っているものもありましたが、思った以上に大量にあって驚きました…</p>
-
-<h2>(タイトルメモり損ねました…GengoでGoの利用事例なお話)</h2>
-
-<p>PHPのAPIをGoに置き換えていったら、500msが10msになったというお話です。<br/>
-クリティカルな所ではなく影響の少ないところから、<br/>
-一気にではなく少しずつ置き換えていくといいそうです。</p>
-
-<p>Goで作られたデプロイツールが便利そうでした。<br/>
-<a href="https://github.com/gengo/goship">https://github.com/gengo/goship</a></p>
-
-<h2>NSQ-Centric Architecture</h2>
-
-<p><a href="http://www.slideshare.net/guregu/nsqcentric-architecture-gocon-autumn-2014">資料</a></p>
-
-<p><a href="https://github.com/guregu">gureguさん</a>のNSQの話です。</p>
-
-<p>bit.lyが作ったGo製のメッセージキューである<a href="https://github.com/bitly/nsq">NSQ</a>を使って、<br/>
-チャットアプリを作った発表でした。</p>
-
-<h2>(Go言語のコンパイラをハックした話)</h2>
-
-<p><a href="http://moriyoshi.hatenablog.com/entry/2014/06/03/121728">参考資料</a></p>
-
-<p>@moriyoshitさんがGo言語で寿司関数を作りたいがために？w　Goのコンパイラをハックしたのと、<br/>
-コンパイラの中についてのお話でした。</p>
-
-<p>教科書通りのコンパイラの作りしてるんだなーという印象でした。<br/>
-魔境と噂のGCCとかはどうなってるんだろう…と思いました。</p>
-
-<h1>LT</h1>
-
-<h2>nginx-build</h2>
-
-<p><a href="https://speakerdeck.com/cubicdaiya/nginx-build">https://speakerdeck.com/cubicdaiya/nginx-build</a><br/>
-NginxをビルドするためのツールのDLと、ビルドをやってくれるツールを書いたそうです。<br/>
-バイナリ単体で配布できますし、こういう用途には便利そうな感じ…</p>
-
-<h2>(楽天でTerraformを使てる話)</h2>
-
-<p>AWSとかのインスタンスをコードから立ち上げられるTerraformを利用して、<br/>
-楽天社内でinfrastructure as codeを進めている話です。</p>
-
-<h2>ビルドパイプラインツールをGoで作った話</h2>
-
-<p><a href="https://speakerdeck.com/ainoya/birudopaipurainturuwogodezuo-tutahua">資料</a></p>
-
-<p>個人的にはJenkinsでビルドパイプラインっぽいのを作るのには、<br/>
-いろんな点からうんざりしていたので、なんか凄い便利そうで気になります！　　
-似たようなのを作ろうと画策していたので、先を越された感はありますが…</p>
-
-<h2>go/parser, go/astの話</h2>
-
-<p><a href="http://yuroyoro.net/gocon_2014_autumn_lt/#/">資料</a></p>
-
-<p>Goの抽象構文木を生成する標準パッケージの紹介と、可視化するツールを作ったお話です。<br/>
-Goの<a href="http://ja.wikipedia.org/wiki/Lint">lint</a>ではここで紹介した技術を使って実装しているらしいです。</p>
-
-<h2>Unit-testing programs depend on I/O in Go</h2>
-
-<p><a href="https://yuya-takeyama.github.io/presentations/2014/11/30/gocon_2014_autumn/">資料</a></p>
-
-<p>表題の通り、I/Oに依存したテストについてのお話です。<br/>
-Keynote2の@fumitoshi_ukaiさんも言っていたように、<br/>
-データを読み書きするだけでファイルとしての挙動が不要な場合は、<br/>
-<code>os.File</code>ではなく<code>io.Reader</code>や<code>io.Writer</code>を使うと、ファイル以外の引数も与えられるため、<br/>
-汎用性が上がり、テストもしやすいそうです。</p>
-
-<h2>(consul.ioの話)</h2>
-
-<p><a href="https://consul.io/">https://consul.io/</a>を使うと、色々はかどるらしいが…<br/>
-ごめんなさい理解できてないです(´･_･`)</p>
-
-<h2>Togetterまとめ</h2>
-
-<p>Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。<br/>
-振り返る際にとてもお世話になったので、感謝の限りです。</p>
 ]]></content>
   </entry>
   
