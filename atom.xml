@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-21T07:49:53+09:00</updated>
+  <updated>2015-01-21T07:52:54+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Androidのオフライン辞書が便利]]></title>
+    <title type="html"><![CDATA[Androidでクリップボードの中身を自動で辞書検索]]></title>
     <link href="http://ota42y.com/blog/2015/01/21/android-dict/"/>
     <updated>2015-01-21T07:37:19+09:00</updated>
     <id>http://ota42y.com/blog/2015/01/21/android-dict</id>
