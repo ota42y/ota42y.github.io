@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-21T07:52:54+09:00</updated>
+  <updated>2015-01-23T08:05:53+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,128 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RAMディスクでiOSのビルド時間を短くする]]></title>
+    <link href="http://ota42y.com/blog/2015/01/23/ram-disk/"/>
+    <updated>2015-01-23T07:47:36+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/23/ram-disk</id>
+    <content type="html"><![CDATA[<h1>まとめ</h1>
+
+<ul>
+<li>RAMディスクを作ってビルドすると早くなる
+
+<ul>
+<li>SSD上でビルドすると9分</li>
+<li>RAMディスクでビルドすると6分</li>
+<li>Androidは未検証だが同じと思われる</li>
+</ul>
+</li>
+<li>Macだととても簡単にRAMディスクが作れる</li>
+<li>Jenkins等、ビルドが主目的の場合に有効と思われる</li>
+<li>メモリが余っているならやる価値はある</li>
+</ul>
+
+
+<h1>Mac OS XでのRAMディスク作成</h1>
+
+<p>Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。<br/>
+メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。</p>
+
+<p>また、rootでなくても作成できるため、非常に便利です</p>
+
+<h2>ディスク作成手順</h2>
+
+<p>2つコマンドを実行するだけです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>hdid -nomount ram://4096000
+</span><span class='line'><span class="c"># 指定した容量でRAMディスクが作成されます。</span>
+</span><span class='line'><span class="c"># /dev/disk2等作成された場所が返ります。</span>
+</span><span class='line'><span class="c"># ファイルシステムがないためマウントは失敗します。</span>
+</span><span class='line'><span class="c"># そのため、-nomuntをつけています。</span>
+</span><span class='line'>
+</span><span class='line'>diskutil eraseDisk HFS+ RAM /dev/disk2
+</span><span class='line'><span class="c"># 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします</span>
+</span><span class='line'><span class="c"># さらに、RAMという名前でマウントします。</span>
+</span><span class='line'><span class="c"># これにより、/Volumes/RAMでアクセスできるようになります。</span>
+</span><span class='line'>
+</span><span class='line'>detach disk2
+</span><span class='line'><span class="c"># 作成したディスクをアンマウントして削除します</span>
+</span><span class='line'><span class="c"># ディスクは消滅するのでご注意ください</span>
+</span><span class='line'><span class="c"># diskutil unmountDisk</span>
+</span><span class='line'><span class="c"># diskutil eject</span>
+</span><span class='line'><span class="c"># の組み合わせと同じですが、コマンド一つになるため楽です</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>速度比較</h2>
+
+<p>Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。<br/>
+速度計測には<a href="http://xbench.com/">Xbench</a>を使用しました。</p>
+
+<p>結果は以下の通りになりました。<br/>
+<img src="http://ota42y.com/images/posts/2015-01-23-speed.png" alt="2015-01-23-speed.png" /></p>
+
+<p>どれをとってもRAMディスクの方が圧倒的に早い結果になりました。<br/>
+ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。</p>
+
+<h1>ビルド時間比較</h1>
+
+<p>性能的には以上の通りですが、実際にビルド時間にはどれほど影響があるかを調べてみました。</p>
+
+<p>比較には<a href="https://github.com/cocos2d/cocos2d-x-samples">cocos2d-x-sample</a>を利用しました。<br/>
+ビルドには<a href="https://github.com/nomad/shenzhen">shenzhen</a>を利用し、コマンドラインからiOSのクリーンビルドを行いました。</p>
+
+<p>残念ながら証明書が無いためipaを作成することが出来ず、<br/>
+かつその場合にshenzhenが何故か終了せず、timeコマンド等で正確な時間計測が出来ませんでした。<br/>
+timeコマンドを使い手作業で計ったところ、SSD上では9分13秒、RAMディスク上では6分01秒とうい結果になりました。<br/>
+手計測による誤差はせいぜい数秒低度なため、3分以上早くなっているのは確実と言えます。</p>
+
+<h1>その他</h1>
+
+<ul>
+<li>R/Wの性能は5倍〜10倍と凄く高速になっている</li>
+<li>ビルド時間は30%ぐらい減った
+
+<ul>
+<li>ただし、プロジェクトによっては差異があると思われる</li>
+<li>CPUやメモリの影響もあるため、R/Wの性能向上がそのまま反映されるわけではない</li>
+</ul>
+</li>
+<li>電源を切ると消えるので使い道は慎重に
+
+<ul>
+<li>開発用よりもビルド専用に使った方が安心</li>
+<li>Jenkinsのビルドをここで行うのは良い案と思われる
+
+<ul>
+<li>ログが残らないので、成果物の保存はよく考える必要あり</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当然ながら空きメモリ容量を消費するので、余っていない場合は注意</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Androidでクリップボードの中身を自動で辞書検索]]></title>
@@ -2446,168 +2568,6 @@ ActiveRecordのように構造体を使ってDBにアクセスできるORMがあ
 </span><span class='line'>  <span class="kd">var</span> <span class="nx">emails</span> <span class="p">[]</span><span class="nx">Email</span>
 </span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">me</span><span class="p">).</span><span class="nx">Related</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">emails</span><span class="p">)</span>
 </span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">emails</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[golangでYAMLファイルを読み込んで構造体に入れる]]></title>
-    <link href="http://ota42y.com/blog/2014/12/03/go-yaml-struct/"/>
-    <updated>2014-12-03T07:46:50+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/03/go-yaml-struct</id>
-    <content type="html"><![CDATA[<p>使い方がかなり特殊だったのでメモ<br/>
-(ドキュメントには書いてありますが…)</p>
-
-<p>goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、<br/>
-データを構造体にセットした状態で読み込むことが出来ます。</p>
-
-<p>特にGoでは構造体を使わない場合、<a href="http://ota42y.com/blog/2014/11/13/go-yaml/">interfaceへの変換を書きまくる事になる</a>ので、<br/>
-できる限り構造体を利用した方がお勧めです。</p>
-
-<p>以下のように、YAMLのキーとGoの構造体の名前を揃えることで、<br/>
-YAMLから構造体に直接データを代入できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">type</span> <span class="nx">Data</span> <span class="kd">struct</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">UserId</span>      <span class="kt">int</span>
-</span><span class='line'>  <span class="nx">UserName</span>    <span class="kt">string</span> <span class="s">`yaml:&quot;user_name&quot;`</span>
-</span><span class='line'>  <span class="nx">Follownum</span>   <span class="kt">int</span>    <span class="s">`yaml:&quot;followNum&quot;`</span>
-</span><span class='line'>  <span class="nx">MessageText</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="nx">invaliddata</span> <span class="kt">string</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">userid</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">123</span>
-</span><span class='line'><span class="l-Scalar-Plain">user_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">name</span>
-</span><span class='line'><span class="l-Scalar-Plain">followNum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">42</span>
-</span><span class='line'><span class="l-Scalar-Plain">messageText</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">text</span>
-</span><span class='line'><span class="l-Scalar-Plain">invaliddata</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">data</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>後述するコードでYAMLを読み込むと、出力は以下の通りになります、<br/>
-<code>=&gt; {123 name 42  }</code></p>
-
-<p>UserIdに123、UserNameにname、Follownumに42、<br/>
-MessageTextとinvaliddataは空になっています。</p>
-
-<h1>構造体とYAMLの対応付け仕様</h1>
-
-<p>特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。<br/>
-対応するキーは以下のような仕様になっているようです。</p>
-
-<ul>
-<li>指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける
-
-<ul>
-<li>UserIdはuseridと対応付けられます</li>
-</ul>
-</li>
-<li>後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます
-
-<ul>
-<li>messageTextはダメで、messagetextでないといけません</li>
-</ul>
-</li>
-<li>構造体のメンバは大文字から始まる
-
-<ul>
-<li>そのため、invaliddataにはデータ入っていません</li>
-<li>大文字から始まれば、途中が大文字でも大丈夫です
-
-<ul>
-<li>UserIdはuseridと対応付けられます</li>
-</ul>
-</li>
-<li>途中を大文字にしても、全て小文字のキーを見に行きます
-
-<ul>
-<li>MessageTextはmessagetextと対応付けられます</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>明示的に対応を設定することもできる
-
-<ul>
-<li>UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない)</li>
-<li>Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる</li>
-</ul>
-</li>
-</ul>
-
-
-<p>暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。</p>
-
-<h1>サンプルコード</h1>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
-</span><span class='line'>  <span class="s">&quot;gopkg.in/yaml.v2&quot;</span>
-</span><span class='line'>  <span class="s">&quot;io/ioutil&quot;</span>
-</span><span class='line'>  <span class="s">&quot;fmt&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">type</span> <span class="nx">Data</span> <span class="kd">struct</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">UserId</span>      <span class="kt">int</span>
-</span><span class='line'>  <span class="nx">UserName</span>    <span class="kt">string</span> <span class="s">`yaml:&quot;user_name&quot;`</span>
-</span><span class='line'>  <span class="nx">Follownum</span>   <span class="kt">int</span>     <span class="s">`yaml:&quot;followNum&quot;`</span>
-</span><span class='line'>  <span class="nx">MessageText</span> <span class="kt">string</span>
-</span><span class='line'>  <span class="nx">invaliddata</span> <span class="kt">string</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">buf</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;test.yml&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">d</span> <span class="nx">Data</span>
-</span><span class='line'>  <span class="nx">err</span> <span class="p">=</span> <span class="nx">yaml</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">d</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
