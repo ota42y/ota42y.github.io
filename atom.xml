@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-23T08:05:53+09:00</updated>
+  <updated>2015-01-25T17:28:41+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,157 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[参加記録 情報科学若手の会冬の陣2015]]></title>
+    <link href="http://ota42y.com/blog/2015/01/25/wakate2015w/"/>
+    <updated>2015-01-25T07:51:43+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/25/wakate2015w</id>
+    <content type="html"><![CDATA[<p><a href="https://atnd.org/events/61060">情報科学若手の会冬の陣2015 #wakate2015w</a>に参加しました<br/>
+<a href="http://togetter.com/li/773792">Togetterまとめ</a><br/>
+会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした</p>
+
+<h1>まとめ</h1>
+
+<ul>
+<li><p>黒崎優太 (@kuro_m88)  ICTトラブルシューティングコンテストの紹介</p>
+
+<ul>
+<li><a href="http://icttoracon.net/">http://icttoracon.net/</a></li>
+<li>ネットワーク版CTFみたいなコンテスト</li>
+<li>Ciscoがスポンサーについているので、高価な機材がいっぱい用意されるみたい</li>
+<li>大きな規模のネットワークであれこれするのって普通じゃ出来ないし、面白そうです。</li>
+</ul>
+</li>
+<li><p>浅野智之 (@asanon_s)  Webの世界に散らばるデータをつなぐ技術</p>
+
+<ul>
+<li>semantic webやPDFの話</li>
+<li>人間が読めれば良い形式から、構造化されて機械も読める形式を加えるみたい</li>
+<li>なんとなく理解が深まった気がします</li>
+<li>完全なsemantic webへの道のりはまだまだ</li>
+</ul>
+</li>
+<li><p>門脇香子  証明プログラミング入門</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/ussopyon/ss-43846794">http://www.slideshare.net/ussopyon/ss-43846794</a></li>
+<li><a href="https://lepidum.co.jp/blog/2014-06-05/CCS-Injection/">OpenSSLの脆弱性をCoqで見つけた話</a>を聞いてから、証明プログラミング凄そうだけどよくわからない状態だったので、
+理解が深まりました。</li>
+<li>何を証明すれば良いかを補完してくれるのは便利そうでした</li>
+</ul>
+</li>
+<li><p>佐野岳人  コードを書けば複素数が分かる</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/taketo1024/ss-43853048">http://www.slideshare.net/taketo1024/ss-43853048</a></li>
+<li>初めて複素数が何なのかを感覚的に理解できた気がする…</li>
+<li>デモで関数をインタラクティブに可視化しているのが本当に凄かった</li>
+<li>ここから使える
+
+<ul>
+<li><a href="https://github.com/taketo1024/SwiftComplex">https://github.com/taketo1024/SwiftComplex</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>辻順平 (@tsujimotter)  日曜数学のススメ</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/junpeitsuji/2015-43856733">http://www.slideshare.net/junpeitsuji/2015-43856733</a></li>
+<li>コンパスと定規で作図可能かどうかを判定するガウスの判定法凄い
+
+<ul>
+<li>折り紙だと四次方程式が解けるので、作図できなくても折れる場合があるとか凄い</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>池尻良平  ニュースと類似した歴史を求めるアルゴリズムを考えてみた – 役に立つ歴史教育を目指して</p>
+
+<ul>
+<li>現代のニュースと、それに類似する歴史上の出来事を提示するシステムを作っているそうです</li>
+<li>過去にどんな解決策をとって、どういう結果になったかを考えるのにとても便利そうです</li>
+<li>早く使ってみたいですね</li>
+</ul>
+</li>
+<li><p>後藤紳 モバイルデータを用いた行動予測</p>
+
+<ul>
+<li>あんまり書いちゃいけなさそうなので割愛</li>
+<li>GPSの行動ログを蓄積して、次に何をしそうか提示するみたいです
+
+<ul>
+<li>同じような日々を送っている人には効果的っぽいです</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>宮代理弘 (@3846masa)  Processin.ga – Webで書いてスマホで動かすサイト開発話</p>
+
+<ul>
+<li><a href="http://processin.ga/">http://processin.ga/</a></li>
+<li><a href="http://3846masa.hatenablog.jp/entry/2015/01/25/011802">http://3846masa.hatenablog.jp/entry/2015/01/25/011802</a></li>
+<li>Processingをブラウザ上で書いて動かし、かつスマホでもリアルタイムに動かせるサイトです</li>
+<li>無ければ作る、あっても作る</li>
+<li>デザインはパクるもの</li>
+</ul>
+</li>
+<li><p>湯村翼 (@yumu19)   野生の研究について</p>
+
+<ul>
+<li><a href="http://yumulog.hatenablog.com/entry/2015/01/25/020313">http://yumulog.hatenablog.com/entry/2015/01/25/020313</a></li>
+<li>そもそもアーカイブ形式が動画だと、後から調べるのがとても大変になる気がします
+
+<ul>
+<li>今は何とかなってるけど、数年、数十年と続いていくと辛いかと</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>宮下芳明  明治大学宮下研究室の活動とABProの紹介</p>
+
+<ul>
+<li>Linear vs Circular
+
+<ul>
+<li>この研究が凄かった</li>
+<li><a href="https://www.youtube.com/watch?v=S1Roi2NOmx8">https://www.youtube.com/watch?v=S1Roi2NOmx8</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>懇親会</h1>
+
+<p>一晩寝たらだいたい忘れるという…(´･_･`)</p>
+
+<ul>
+<li><p>courseraで英語勉強</p>
+
+<ul>
+<li><a href="https://www.coursera.org/">https://www.coursera.org/</a></li>
+<li>ちょうど機械学習とかやってみたかったのでよさそう(o゜▽゜)</li>
+</ul>
+</li>
+<li><p>自動作曲の話</p>
+
+<ul>
+<li>歌詞を入れると自動でお音をつけてくれる</li>
+<li>日本語の音節？を見て色々やってるらしい？</li>
+<li>ミクと組み合わせて、詩を書ければ曲が書けるとか良さそう</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>その他</h1>
+
+<p>何か発表したい人生だった…<em>(:3 」∠)</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RAMディスクでiOSのビルド時間を短くする]]></title>
@@ -74,7 +225,7 @@
 </span><span class='line'><span class="c"># さらに、RAMという名前でマウントします。</span>
 </span><span class='line'><span class="c"># これにより、/Volumes/RAMでアクセスできるようになります。</span>
 </span><span class='line'>
-</span><span class='line'>detach disk2
+</span><span class='line'>hdiutil detach disk2
 </span><span class='line'><span class="c"># 作成したディスクをアンマウントして削除します</span>
 </span><span class='line'><span class="c"># ディスクは消滅するのでご注意ください</span>
 </span><span class='line'><span class="c"># diskutil unmountDisk</span>
@@ -2460,116 +2611,6 @@ SVGで出力できるため、他のソフトで調整ができます。</p>
 </ul>
 </li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GoのORマッパーGORMが便利]]></title>
-    <link href="http://ota42y.com/blog/2014/12/19/gorm/"/>
-    <updated>2014-12-19T07:40:11+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/19/gorm</id>
-    <content type="html"><![CDATA[<p>golangではmysqldriverでmysqlにアクセスできますが、<br/>
-一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。<br/>
-<a href="http://ota42y.com/blog/2014/10/04/go-mysql/">goでmysqlを使う</a></p>
-
-<p>そこでいろいろ探していたところ、<br/>
-ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。<br/>
-<a href="https://github.com/jinzhu/gorm">https://github.com/jinzhu/gorm</a></p>
-
-<p>自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。<br/>
-リレーションも勝手に貼ってくれるみたいです。<br/>
-ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、<br/>
-順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。<br/>
-(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
-</span><span class='line'><span class="s">&quot;fmt&quot;</span>
-</span><span class='line'><span class="s">&quot;github.com/jinzhu/gorm&quot;</span>
-</span><span class='line'><span class="nx">_</span> <span class="s">&quot;github.com/lib/pq&quot;</span>
-</span><span class='line'><span class="nx">_</span> <span class="s">&quot;github.com/go-sql-driver/mysql&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">Id</span>           <span class="kt">int64</span>
-</span><span class='line'>  <span class="nx">Name</span>         <span class="kt">string</span>  <span class="s">`sql:&quot;size:255&quot;`</span>
-</span><span class='line'>  <span class="nx">Emails</span>            <span class="p">[]</span><span class="nx">Email</span>         <span class="c1">// One-To-Many relationship (has many)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">type</span> <span class="nx">Email</span> <span class="kd">struct</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">Id</span>         <span class="kt">int64</span>
-</span><span class='line'>  <span class="nx">UserId</span>     <span class="kt">int64</span>   <span class="c1">// Foreign key for User (belongs to)</span>
-</span><span class='line'>  <span class="nx">Email</span>      <span class="kt">string</span>  <span class="s">`sql:&quot;type:varchar(100);&quot;`</span> <span class="c1">// Set field&#39;s type</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
-</span><span class='line'>  <span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;mysql&quot;</span><span class="p">,</span> <span class="s">&quot;root@/testdb?charset=utf8&amp;parseTime=True&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">DB</span><span class="p">()</span>
-</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Email</span><span class="p">{})</span>
-</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{})</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">user</span> <span class="o">:=</span> <span class="nx">User</span><span class="p">{</span>
-</span><span class='line'>    <span class="nx">Name</span><span class="p">:</span>            <span class="s">&quot;ota42y&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">Emails</span><span class="p">:</span>          <span class="p">[]</span><span class="nx">Email</span><span class="p">{</span> <span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&quot;ota42y@example.com&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&quot;ota42y@example@example.com&quot;</span><span class="p">}</span> <span class="p">},</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">me</span> <span class="nx">User</span>
-</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;name = ?&quot;</span><span class="p">,</span> <span class="s">&quot;ota42y&quot;</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">me</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">me</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">emails</span> <span class="p">[]</span><span class="nx">Email</span>
-</span><span class='line'>  <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">me</span><span class="p">).</span><span class="nx">Related</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">emails</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">emails</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
