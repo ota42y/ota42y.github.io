@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-25T17:28:41+09:00</updated>
+  <updated>2015-01-26T22:16:59+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年4週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/01/26/summary/"/>
+    <updated>2015-01-26T22:11:46+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/26/summary</id>
+    <content type="html"><![CDATA[<p>先週やったことまとめ<br/>
+以外とあまりやってない。<br/>
+作りたいものは増えていくけど時間は無い。</p>
+
+<h1>tumblrクライアント作ってる</h1>
+
+<p>info APIだけはできた。Posts APIを作りたいけど、ちょっとめんどくさそう。<br/>
+複数の型を一つの配列で返して来るので、どうやって同じ配列に入れようか…<br/>
+たぶん全部入りのクラスで取り出して、個別のクラスに入れていく形になるかと。</p>
+
+<p><a href="http://play.golang.org/p/tVLoIDVk--">http://play.golang.org/p/tVLoIDVk&ndash;</a>
+この技を使えば違う型でも共通の配列に入れられるはず</p>
+
+<h1>情報科学若手の会冬の陣2015に参加した</h1>
+
+<p><a href="http://ota42y.com/blog/2015/01/25/wakate2015w/">参加記録 情報科学若手の会冬の陣2015</a><br/>
+発表したい人生だった… _ (:3 」∠)_<br/>
+が、ここ半年間はずっと一日に使える時間が1〜2時間程度、かつ仕事は情報科学っぽい事をしてないので、<br/>
+発表ネタが全く作れないという…<br/>
+というか、特に技術的に成長してない気がするし、このままの生活を続けて大丈夫なのだろうか…</p>
+
+<h1>Remember The Milk使いやすいが使いにくい</h1>
+
+<p>わりといい線行ってるサービスだけど、Webクライアントが使いにくいのでちょっと残念。<br/>
+URLをショートカットから開けなかったり、ヘッダー画像が邪魔だったり…<br/>
+サブタスクが無いのもそれはそれで使いにくいですね。</p>
+
+<p>ただ、オフラインでスマホで見られますし、繰り返し設定など様々な設定が凄く楽にできる等<br/>
+機能的にはいいですし、UIもいいのであともう一声って感じですね…<br/>
+コマンドラインから対話的に操作できれば解決できそうな気がします。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[参加記録 情報科学若手の会冬の陣2015]]></title>
@@ -2519,99 +2557,6 @@ SVGで出力できるため、他のソフトで調整ができます。</p>
 
 <p>配置アルゴリズム等はこちらの記事が参考になると思います。<br/>
 <a href="http://melborne.github.io/2013/04/02/graphviz-layouts/">Graphvizレイアウトサンプル</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[参加記録 Android Bazaar and Conference 2014 Winter]]></title>
-    <link href="http://ota42y.com/blog/2014/12/21/abc2014w/"/>
-    <updated>2014-12-21T20:57:45+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/21/abc2014w</id>
-    <content type="html"><![CDATA[<p><a href="http://abc.android-group.jp/2014w/">Android Bazaar and Conference 2014 Winter</a>に参加してきました。</p>
-
-<p>なかなか興味深いお話を聞けたので、気になった部分を抜粋</p>
-
-<ul>
-<li><p>携帯は９５％の人類が持ってる</p>
-
-<ul>
-<li>インターネットを利用するのは４割
-
-<ul>
-<li>スマホ利用者は３２％</li>
-<li>スマホは１０年前の携帯と同じ水準まで来てる
--１０年後は世界の携帯がスマホに置き換わる</li>
-</ul>
-</li>
-<li>今後１０年間で７０億人がインターネットに繋がる</li>
-<li>Androidは今のところ全世界で84.4%のシェア</li>
-</ul>
-</li>
-<li><p>各国のもの作り政策</p>
-
-<ul>
-<li><p>ドイツのINDUSTRIE 4.0</p>
-
-<ul>
-<li>第四次産業革命</li>
-<li>多数の企業を結んだバリューネットワーク</li>
-<li>工場内の結合されたネットワーク　は出来てる</li>
-</ul>
-</li>
-<li><p>アメリカ</p>
-
-<ul>
-<li>AMP立ち上げ</li>
-<li>アメリカで発明し、アメリカで製造する</li>
-<li>Made in Americaの復活</li>
-</ul>
-</li>
-<li><p>中国</p>
-
-<ul>
-<li>2008年以降世界の製造業売り上げTop
-
-<ul>
-<li>EU全体を合わせて、ようやく中国をちょっと上回る</li>
-</ul>
-</li>
-<li>第１２期５カ年計画
-
-<ul>
-<li>５年で１６８兆円使う</li>
-<li>IoTを重視する</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Googleが買収したNest</p>
-
-<ul>
-<li><a href="http://japan.cnet.com/news/commentary/35042541/">http://japan.cnet.com/news/commentary/35042541/</a></li>
-<li>ネットに繋がるサーモスタット</li>
-</ul>
-</li>
-<li><p>Android Wear</p>
-
-<ul>
-<li>WearのNotificationはアプリの顔になる
-
-<ul>
-<li>ノイジーな通知をするとアンインストールされる</li>
-</ul>
-</li>
-<li>リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する
-
-<ul>
-<li>わざわざ起動するのは減っていく</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
 ]]></content>
   </entry>
   
