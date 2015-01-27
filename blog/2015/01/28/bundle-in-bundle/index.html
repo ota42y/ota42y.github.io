@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
+
+<meta charset="utf-8">
+<title>bundle中に別のbundleを呼ぶと予期しない結果になる対策 - おおたの物置</title>
+<meta name="author" content="ota42y">
+<meta name="description"
+      content="bundle中に別のbundleを呼ぶと予期しない結果になる対策 Contents 1 まとめ
+2 問題
+3 原因
+4 解決策
+5 補足 bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、 &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://ota42y.com/blog/2015/01/28/bundle-in-bundle">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/stylesheets/toc.css"
+media="screen, projection"
+rel="stylesheet"
+type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="おおたの物置"
+      type="application/atom+xml">
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
+  <h1><a href="/">おおたの物置</a></h1>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
+<div id="social-links">
+  <ul>
+    
+    <li id="social-links-github">
+      <a title="GitHub" href="https://github.com/ota42y">github</a>
+    </li>
+    
+    
+    <li id="social-links-twitter">
+      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
+    </li>
+    
+    
+    <li id="social-links-feed">
+      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
+    </li>
+  </ul>
+</div>
+
+
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	
+
+  
+
+
+<article class="entry" role="article">
+
+  <header>
+    <h1 class="entry_title">bundle中に別のbundleを呼ぶと予期しない結果になる対策</h2>
+    
+  </header>
+
+  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">まとめ</span></a></li>
+<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">問題</span></a></li>
+<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">原因</span></a></li>
+<li class="toc_level-1 toc_section-4"><a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">解決策</span></a></li>
+<li class="toc_level-1 toc_section-5"><a href="#tocAnchor-1-5"><span class="tocnumber">5</span> <span class="toctext">補足</span></a></li>
+</ul>
+</td></tr></tbody></table></div>
+<p>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、<br>
+一回目のbundlerに対してbundleが実行されてしまい、<br>
+別のbundleを呼び出せないという問題が起きました。<br>
+これはbundlerが設定する環境変数が原因でした。</p>
+
+<h1 id="tocAnchor-1-1">まとめ</h1>
+
+<ul>
+<li>bundle exec中に、別のbundlerを実行するとおかしくなる
+
+<ul>
+<li>主にsystemやspawn等を使った場合</li>
+<li>最初のbundle execと同じものであれば問題は起きない</li>
+</ul>
+</li>
+<li>bundlerが設定をしている環境変数が問題
+
+<ul>
+<li>別のbundlerを呼ぼうとして元のbundlerが呼ばれている</li>
+</ul>
+</li>
+<li>Bundler.with_clean_envで回避可能
+
+<ul>
+<li>Bundler.clean_systemでも可</li>
+</ul>
+</li>
+</ul>
+
+
+<h1 id="tocAnchor-1-2">問題</h1>
+
+<p>以下のような構成かつtestフォルダにいる状態で、<br>
+<code>bundle install --path vendor/bundle</code><br>
+<code>bundle exec test.rb</code>を実行すると、<br>
+test2内でbundlerを呼んだ時にエラーになります</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class=""><span class="line">.
+</span><span class="line">├─ test
+</span><span class="line">│  │  Gemfile (gemのhello_world_gemを使用)
+</span><span class="line">│  └─ test.rb
+</span><span class="line">|
+</span><span class="line">└─ test2
+</span><span class="line">   └─ Gemfile (gemのhello-worldを使用)</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">system</span> <span class="s1">'hello_world_gem'</span>
+</span><span class="line"><span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">"../test2"</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="c1"># error</span>
+</span><span class="line">  <span class="nb">system</span> <span class="s1">'bundle install --path vendor/bundle'</span>
+</span><span class="line">  <span class="nb">system</span> <span class="s1">'bundle exec hello-world'</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>エラー文言</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">oh</span> <span class="n">hai</span> <span class="n">thar</span>
+</span><span class="line"><span class="no">Using</span> <span class="n">hello_world_gem</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span>
+</span><span class="line"><span class="no">Using</span> <span class="n">bundler</span> <span class="mi">1</span><span class="o">.</span><span class="mi">7</span><span class="o">.</span><span class="mi">3</span>
+</span><span class="line"><span class="no">Your</span> <span class="n">bundle</span> <span class="n">is</span> <span class="n">complete!</span>
+</span><span class="line"><span class="no">It</span> <span class="n">was</span> <span class="n">installed</span> <span class="n">into</span> <span class="o">.</span><span class="n">/vendor</span><span class="o">/</span><span class="n">bundle</span>
+</span><span class="line"><span class="ss">bundler</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="ss">found</span><span class="p">:</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
+</span><span class="line"><span class="no">Install</span> <span class="n">missing</span> <span class="n">gem</span> <span class="n">executables</span> <span class="n">with</span> <span class="sb">`bundle install`</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h1 id="tocAnchor-1-3">原因</h1>
+
+<p>bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、<br>
+そこで指定されているbundlerから実行されていると見なされるため、<br>
+bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。<br>
+実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。</p>
+
+<p>この仕組みのおかげで同じbundleの場合はそのまま実行できるため、<br>
+1行目のhello_world_gemの呼び出しにbundle execが不要になっています。<br>
+このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。</p>
+
+<h1 id="tocAnchor-1-4">解決策</h1>
+
+<p><a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239">Bundler.with_clean_env</a>を利用することで、この問題を回避できます。<br>
+このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。<br>
+そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。<br>
+また、コマンドが一つだけの場合は<a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251">Bundler.clean_system</a>メソッドも使えます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">system</span> <span class="s1">'hello_world_gem'</span>
+</span><span class="line"><span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">"../test2"</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="no">Bundler</span><span class="o">.</span><span class="n">with_clean_env</span> <span class="k">do</span>
+</span><span class="line">    <span class="c1"># ok</span>
+</span><span class="line">    <span class="nb">system</span> <span class="s1">'bundle install --path vendor/bundle'</span>
+</span><span class="line">    <span class="nb">system</span> <span class="s1">'bundle exec hello-world'</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h1 id="tocAnchor-1-5">補足</h1>
+
+<p>他にGEM_HOMEという環境変数を設定していますが、<br>
+これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。<br>
+<a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416">https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416</a></p>
+</div>
+
+  <footer>
+    <p class="meta">
+
+      
+
+      
+      <time datetime="2015-01-28 07:46:54 +0900" pubdate></time>
+      
+
+      
+      <span class="categories">
+	
+      </span>
+      
+
+    </p>
+
+    
+    <div class="sharing">
+
+      
+      <span class="twitter">
+      <a href="http://twitter.com/share"
+	 class="twitter-share-button"
+	 data-url="http://ota42y.com/blog/2015/01/28/bundle-in-bundle/"
+	 data-via="ota42y"
+	 data-counturl="http://ota42y.com/blog/2015/01/28/bundle-in-bundle/" >Tweet</a>
+ </span>
+      
+
+      
+
+      
+
+      <span class="hatena">
+        <a href="/blog/2015/01/28/bundle-in-bundle/" class="hatena-bookmark-button"
+         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+         title="このエントリーをはてなブックマークに追加">
+          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+         charset="utf-8" async="async">
+        </script>
+      </span>
+    </div>
+    
+
+    
+
+  </footer>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2015 - ota42y -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
+</html>

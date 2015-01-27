@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-01-26T22:16:59+09:00</updated>
+  <updated>2015-01-28T07:59:15+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,145 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[bundle中に別のbundleを呼ぶと予期しない結果になる対策]]></title>
+    <link href="http://ota42y.com/blog/2015/01/28/bundle-in-bundle/"/>
+    <updated>2015-01-28T07:46:54+09:00</updated>
+    <id>http://ota42y.com/blog/2015/01/28/bundle-in-bundle</id>
+    <content type="html"><![CDATA[<p>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、<br/>
+一回目のbundlerに対してbundleが実行されてしまい、<br/>
+別のbundleを呼び出せないという問題が起きました。<br/>
+これはbundlerが設定する環境変数が原因でした。</p>
+
+<h1>まとめ</h1>
+
+<ul>
+<li>bundle exec中に、別のbundlerを実行するとおかしくなる
+
+<ul>
+<li>主にsystemやspawn等を使った場合</li>
+<li>最初のbundle execと同じものであれば問題は起きない</li>
+</ul>
+</li>
+<li>bundlerが設定をしている環境変数が問題
+
+<ul>
+<li>別のbundlerを呼ぼうとして元のbundlerが呼ばれている</li>
+</ul>
+</li>
+<li>Bundler.with_clean_envで回避可能
+
+<ul>
+<li>Bundler.clean_systemでも可</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>問題</h1>
+
+<p>以下のような構成かつtestフォルダにいる状態で、<br/>
+<code>bundle install --path vendor/bundle</code><br/>
+<code>bundle exec test.rb</code>を実行すると、<br/>
+test2内でbundlerを呼んだ時にエラーになります</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.
+</span><span class='line'>├─ test
+</span><span class='line'>│  │  Gemfile (gemのhello_world_gemを使用)
+</span><span class='line'>│  └─ test.rb
+</span><span class='line'>|
+</span><span class='line'>└─ test2
+</span><span class='line'>   └─ Gemfile (gemのhello-worldを使用)</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">system</span> <span class="s1">&#39;hello_world_gem&#39;</span>
+</span><span class='line'><span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;../test2&quot;</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># error</span>
+</span><span class='line'>  <span class="nb">system</span> <span class="s1">&#39;bundle install --path vendor/bundle&#39;</span>
+</span><span class='line'>  <span class="nb">system</span> <span class="s1">&#39;bundle exec hello-world&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>エラー文言</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">oh</span> <span class="n">hai</span> <span class="n">thar</span>
+</span><span class='line'><span class="no">Using</span> <span class="n">hello_world_gem</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span>
+</span><span class='line'><span class="no">Using</span> <span class="n">bundler</span> <span class="mi">1</span><span class="o">.</span><span class="mi">7</span><span class="o">.</span><span class="mi">3</span>
+</span><span class='line'><span class="no">Your</span> <span class="n">bundle</span> <span class="n">is</span> <span class="n">complete!</span>
+</span><span class='line'><span class="no">It</span> <span class="n">was</span> <span class="n">installed</span> <span class="n">into</span> <span class="o">.</span><span class="n">/vendor</span><span class="o">/</span><span class="n">bundle</span>
+</span><span class='line'><span class="ss">bundler</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="ss">found</span><span class="p">:</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
+</span><span class='line'><span class="no">Install</span> <span class="n">missing</span> <span class="n">gem</span> <span class="n">executables</span> <span class="n">with</span> <span class="sb">`bundle install`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>原因</h1>
+
+<p>bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、<br/>
+そこで指定されているbundlerから実行されていると見なされるため、<br/>
+bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。<br/>
+実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。</p>
+
+<p>この仕組みのおかげで同じbundleの場合はそのまま実行できるため、<br/>
+1行目のhello_world_gemの呼び出しにbundle execが不要になっています。<br/>
+このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。</p>
+
+<h1>解決策</h1>
+
+<p><a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239">Bundler.with_clean_env</a>を利用することで、この問題を回避できます。<br/>
+このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。<br/>
+そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。<br/>
+また、コマンドが一つだけの場合は<a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251">Bundler.clean_system</a>メソッドも使えます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">system</span> <span class="s1">&#39;hello_world_gem&#39;</span>
+</span><span class='line'><span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;../test2&quot;</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="no">Bundler</span><span class="o">.</span><span class="n">with_clean_env</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># ok</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;bundle install --path vendor/bundle&#39;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;bundle exec hello-world&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>補足</h1>
+
+<p>他にGEM_HOMEという環境変数を設定していますが、<br/>
+これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。<br/>
+<a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416">https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2015年4週目まとめ]]></title>
@@ -2453,110 +2592,6 @@ pixiv上のラブライブのイラストについて見ていこうと思いま
 
 <p>明日はカップリングについて現状と、その推移を調べていきます。<br/>
 <a href="http://ota42y.com/blog/2014/12/26/lovelive-cp/">pixivのタグから読み解くラブライブカップリング傾向(2014年11月現在)</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Graphvizを使うと、グラフ描画がとても楽になる]]></title>
-    <link href="http://ota42y.com/blog/2014/12/22/graphviz/"/>
-    <updated>2014-12-22T07:42:27+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/22/graphviz</id>
-    <content type="html"><![CDATA[<p>こんな感じの画像を作る際に</p>
-
-<p><img src="http://ota42y.com/images/posts/2014-12-22-grahviz.png" alt="グラフ" /></p>
-
-<p>これまではパワポの図形機能とかペイントで頑張って作っていましたが、<br/>
-Graphvizを使うと自動で出力できます。</p>
-
-<h2>Graphvizとは</h2>
-
-<p>AT&amp;Tが作ったグラフ描画のツールパッケージです。<br/>
-<a href="http://ja.wikipedia.org/wiki/Graphviz">http://ja.wikipedia.org/wiki/Graphviz</a></p>
-
-<p>DOT言語というグラフ記述言語で記述されたグラフを、画像ファイル等に変換することができます。</p>
-
-<p>グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、<br/>
-SVGで出力できるため、他のソフトで調整ができます。</p>
-
-<h1>使い方</h1>
-
-<h2>インストール</h2>
-
-<p>brew gts graphviz</p>
-
-<h2>dotファイルの作成</h2>
-
-<p>最初に見せたグラフは以下のように作ります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>digraph G {
-</span><span class='line'>  Hono[image="th_hono.png", label="", shape=plaintext];
-</span><span class='line'>  Koto[image="th_koto.png", label="", shape=plaintext];
-</span><span class='line'>  Umi[image="th_umi.png", label="", shape=plaintext];
-</span><span class='line'>  Maki[image="th_maki.png", label="", shape=plaintext];
-</span><span class='line'>  Rin[image="th_rin.png", label="", shape=plaintext];
-</span><span class='line'>  Pana[image="th_pana.png", label="", shape=plaintext];
-</span><span class='line'>  Nico[image="th_nico.png", label="", shape=plaintext];
-</span><span class='line'>  Nozo[image="th_nozo.png", label="", shape=plaintext];
-</span><span class='line'>  Eli[image="th_eli.png", label="", shape=plaintext];
-</span><span class='line'>  Yuki[label="雪穂"];
-</span><span class='line'>
-</span><span class='line'>  Nico -&gt; Maki;
-</span><span class='line'>  Koto -&gt; Umi;
-</span><span class='line'>  Rin -&gt; Pana;
-</span><span class='line'>  Rin -&gt; Maki;
-</span><span class='line'>  Nozo -&gt; Eli;
-</span><span class='line'>  Nozo -&gt; Nico;
-</span><span class='line'>  Koto -&gt; Hono[dir = none];
-</span><span class='line'>  Hono -&gt; Umi;
-</span><span class='line'>  Hono -&gt; Nico;
-</span><span class='line'>  Hono -&gt; Maki;
-</span><span class='line'>  Hono -&gt; Yuki;
-</span><span class='line'>  Hono -&gt; Eli;
-</span><span class='line'>  Hono -&gt; Rin;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>初めにレイアウトに使うアルゴリズムを書きます。<br/>
-次に画像だけ、文字だけといったノードを定義し、その関係を記述します。</p>
-
-<h2>出力</h2>
-
-<p>上記のファイルをcp.dotという名前で保存し、以下のコマンドを実行するとSVGファイルに出力されます。<br/>
-<code>dot -Tsvg cp.dot -o cp.svg</code></p>
-
-<p>SVG以外にもgifやpngへの出力が可能です。<br/>
-<code>dot -Tpng cp.dot -o cp.png</code></p>
-
-<h1>レイアウト詳細</h1>
-
-<p>配置アルゴリズム等はこちらの記事が参考になると思います。<br/>
-<a href="http://melborne.github.io/2013/04/02/graphviz-layouts/">Graphvizレイアウトサンプル</a></p>
 ]]></content>
   </entry>
   
