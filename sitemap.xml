@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://ota42y.com/blog/2015/02/02/summary/</loc>
+    <lastmod>2015-02-02T22:14:43+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</loc>
     <lastmod>2015-01-31T14:39:49+09:00</lastmod>
     <priority>0.8</priority>
@@ -457,13 +462,13 @@
   </url>
   <url>
     <loc>http://ota42y.com/blog/archives/</loc>
-    <lastmod>2015-01-31T14:44:24+09:00</lastmod>
+    <lastmod>2015-02-02T22:48:37+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://ota42y.com/</loc>
-    <lastmod>2015-01-31T14:44:24+09:00</lastmod>
+    <lastmod>2015-02-02T22:48:37+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
