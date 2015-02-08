@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-02-03T08:00:34+09:00</updated>
+  <updated>2015-02-09T07:42:53+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年6週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/02/09/summary/"/>
+    <updated>2015-02-09T07:37:10+09:00</updated>
+    <id>http://ota42y.com/blog/2015/02/09/summary</id>
+    <content type="html"><![CDATA[<p>ちゃんとその週に何をやったかをまとめると、<br/>
+今週はあんまり活動していない事がよくわかりますね…</p>
+
+<h1>Jenkins Workflow Pluginが素晴らしそう</h1>
+
+<p><a href="http://ota42y.com/blog/2015/01/11/jenkins-conference/">Jenkins ユーザ・カンファレンス 2015 東京</a>で知った、Workflow Pluginが思った以上に良さそうです。<br/>
+Jenkins本体の機能では出来ないmaster/slaveを選択してコマンドを実行するといったことが可能になり、<br/>
+効率の良い分散ビルドが出来るようになります。</p>
+
+<p>そのうち詳しくまとめる予定…</p>
+
+<h1>思った以上にTwitterに時間を取られる</h1>
+
+<p><a href="https://play.google.com/store/apps/details?id=com.binerx.aptrax&amp;hl=ja">Aptrax | App Usage Tracker</a>というツールで、<br/>
+スマホの各アプリの使用時間を計測していますが、Twitterの使用率が凄い結果になっていました。</p>
+
+<p>PC上で見ている時間も結構多く、かなりの時間を浪費している気がします…<br/>
+重要なことだけ抜き出してできる限り見ないみたいな事が必要ですね。</p>
+
+<h1>twieveでツイートをevernoteに保存</h1>
+
+<p><a href="http://twieve.net/">twieve</a>を使って、ツイートをevernoteに保存するようにしました。<br/>
+これでやってることを呟いておけば、今週何をやったかを簡単に思い出せるようになるはずです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Go言語で一次の最小二乗法を実装した]]></title>
@@ -2103,80 +2134,6 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。</p>
 
 <p>EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。<br/>
 ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ASUS MeMO Pad 7 ME572CをRoot化した]]></title>
-    <link href="http://ota42y.com/blog/2014/12/28/memopad-root/"/>
-    <updated>2014-12-28T12:50:49+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/28/memopad-root</id>
-    <content type="html"><![CDATA[<p>ASUS MeMO Pad 7 ME572Cを買いました。</p>
-
-<p><a href="http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/">タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS</a></p>
-
-<p>Nexus 9とかと迷いましたが、</p>
-
-<ul>
-<li>コストパフォーマンスがいい
-
-<ul>
-<li>安くてそこそこ高性能</li>
-</ul>
-</li>
-<li>SDカードが使える
-
-<ul>
-<li>気軽に容量増強出来る</li>
-</ul>
-</li>
-</ul>
-
-
-<p>といった点から、これに決めました。</p>
-
-<p>ですが実際に届いて起動してみたところ、<br/>
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。</p>
-
-<p>特に「やることリスト」(<a href="https://play.google.com/store/apps/details?id=com.asus.task&amp;hl=ja">ASUS Do It Later</a>)というアプリは、<br/>
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。</p>
-
-<p>そのため、Rootを取って無効化することにしました。</p>
-
-<h1>Root化手順</h1>
-
-<p>RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。<br/>
-(2014/12/28の最新版は1.4.6.8r)</p>
-
-<p>手順としては以下の通りになります。</p>
-
-<ul>
-<li>RootZenFoneをインストール</li>
-<li>Wifiと3Gを機内モードにして切る</li>
-<li>RootZenFoneを起動</li>
-<li>通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す</li>
-<li>変化がなくなるまで待つ
-
-<ul>
-<li>色々ポップアップが出たりする</li>
-</ul>
-</li>
-<li>もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
-
-<ul>
-<li>この時点でRoot化出来ています</li>
-</ul>
-</li>
-<li>AsusLiveDemoというアカウントが追加されているため削除</li>
-<li>RootZenFonを消す</li>
-<li>通信を有効か</li>
-<li>SuperSuが自動でインストールされているので、最新版に更新</li>
-<li>SuperSuを起動し、データ更新後に再起動を促されるので再起動</li>
-</ul>
-
-
-<p>Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。<br/>
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</p>
 ]]></content>
   </entry>
   
