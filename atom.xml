@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-02-09T07:42:53+09:00</updated>
+  <updated>2015-02-10T08:04:46+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins Workflow Pluginで複数slaveを扱うのが楽になる]]></title>
+    <link href="http://ota42y.com/blog/2015/02/10/workflow-plugin/"/>
+    <updated>2015-02-10T07:51:32+09:00</updated>
+    <id>http://ota42y.com/blog/2015/02/10/workflow-plugin</id>
+    <content type="html"><![CDATA[<h1>まとめ</h1>
+
+<ul>
+<li>Jenkinsはjob単位でしかノードに割り振れない
+
+<ul>
+<li>複数ノードで分散ビルドするには設定を駆使する必要がある</li>
+<li>結果としてjobの数が増えて管理コストが増大する</li>
+</ul>
+</li>
+<li>Workflow Pluginで大幅に改善する
+
+<ul>
+<li>スクリプトからノードを指定してコマンドを実行できる</li>
+<li>複数のjobを組み合わせていたのが一つのスクリプトですむ</li>
+<li>スクリプトをVCSに入れればビルド設定のバージョン管理も可能</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>Jenkinsで複数ノードをコントロールするのは難しい</h1>
+
+<p>Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、<br/>
+複数のノードで、jobの一部の部分だけを別のノードで実行するなど、<br/>
+ある程度複雑な分散をやろうとすると、Jenkins本体の機能では不足してきます。</p>
+
+<p>このような問題に対して、これまではBuild Flow Pluginを使う事で解決が可能でしたが、<br/>
+Workflow Pluginを使う事で、さらに簡単に解決することが出来ます。</p>
+
+<h1>Build Flow Pluginの問題点</h1>
+
+<p>Build Flow Pluginは基本的に複数の下流ビルドを管理するために作られているため、<br/>
+処理を分けようとするとjobの数が増加していきます。</p>
+
+<p>例えばネイティブアプリのビルドのようなCPUパワーを使う処理と、パワーを使わないアップロード処理がある場合、<br/>
+一つのノードで全てやるよりも、非力なサーバを確保してアップロード処理をそちらで実行した方が、<br/>
+ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。<br/>
+(また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)</p>
+
+<p><img src="http://ota42y.com/images/posts/2015-02-10-master-slave.jpg" alt="分割イメージ" /><br/>
+(上段のup#4はup#3の間違いです…)</p>
+
+<p>ビルドが数十分、数時間かかるような巨大な処理の場合、<br/>
+処理を分散することで稼げる時間はかなりのものになります。</p>
+
+<p>従来では分割する作業を別のjobにし、かつBuild Flow Plugin用のjobを作る必要があります。<br/>
+さらに、ファイルの受け渡しもできないため、成果物として保存して、<br/>
+次のjobは前のjobの特定のビルド番号の成果物を取り出す…といった風になります。</p>
+
+<p>jobの数が増えると管理も大変ですし、使う方もどれを使えば良いのか解らなくなります。<br/>
+ここで、Workflow Pluginを使うことで大きく改善することが出来ます。</p>
+
+<h1>Workflow Pluginを使ったビルド</h1>
+
+<p>Workflow Pluginでは、slaveを選択してコマンドを実行、<br/>
+特定のファイルを別のslaveにコピーして処理を実行ということががスクリプトで書けます。</p>
+
+<p>例えば以下のように書くことで、masterでファイルを生成してslaveで実行、<br/>
+その後結果をmasterにコピーしてアップロードみたいな事が出来ます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">node</span><span class="o">(</span><span class="err">‘</span><span class="n">master</span><span class="err">’</span><span class="o">){</span>
+</span><span class='line'>  <span class="n">sh</span> <span class="s2">&quot;bb&quot;</span>
+</span><span class='line'>  <span class="n">archive</span> <span class="s2">&quot;config.yml&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">node</span><span class="o">(</span><span class="err">‘</span><span class="n">slave</span><span class="err">’</span><span class="o">){</span>
+</span><span class='line'>  <span class="n">unarchive</span> <span class="nl">mapping:</span> <span class="o">[</span><span class="s1">&#39;config.yml&#39;</span> <span class="o">:</span> <span class="s1">&#39;.&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">sh</span> <span class="err">“</span><span class="n">rake</span> <span class="n">build</span><span class="err">”</span>
+</span><span class='line'>  <span class="n">archive</span> <span class="s2">&quot;result.zip&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">node</span><span class="o">(</span><span class="err">‘</span><span class="n">master</span><span class="err">’</span><span class="o">){</span>
+</span><span class='line'>  <span class="n">unarchive</span> <span class="nl">mapping:</span> <span class="o">[</span><span class="s1">&#39;result.zip&#39;</span> <span class="o">:</span> <span class="s1">&#39;.&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">sh</span> <span class="s2">&quot;rake upload&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>また、複数平行してのビルド等も出来るため、Jenkinsで複数ノードを使って分散ビルドをしたい場合に、<br/>
+一つのスクリプトで全てをコントロールできるため、とても重宝します。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2015年6週目まとめ]]></title>
@@ -2078,62 +2182,6 @@ gitだと別の日のコミットも、git rebase &ndash;ignore-dateでそのと
 <p>ただ、私の感覚として、できる限り頑張るといった意思の力に頼る事は避けた方がいいと思います。<br/>
 やる気は容易に無くなるため、やる気が無い状態でもいかに継続するかについては、<br/>
 ルールに上手く含めておいた方がいいと思います。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ASUS MeMO Pad 7 ME572CでLink2SDを動かす]]></title>
-    <link href="http://ota42y.com/blog/2014/12/30/link2sd/"/>
-    <updated>2014-12-30T10:24:27+09:00</updated>
-    <id>http://ota42y.com/blog/2014/12/30/link2sd</id>
-    <content type="html"><![CDATA[<p>ME572CにはSDカードが挿せるため、<br/>
-本体の容量が足りなくなっても気軽に容量を追加できます。</p>
-
-<p>ですが、対応しているアプリしかSDカードにデータが保存できず、<br/>
-対応しているアプリでも機種によっては、<br/>
-上手くSDカードに入らない場合があります。</p>
-
-<p>実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、<br/>
-ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。</p>
-
-<p>このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。<br/>
-ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。</p>
-
-<p>なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。</p>
-
-<h1>Link2SD</h1>
-
-<p><a href="https://play.google.com/store/apps/details?id=com.buak.Link2SD&amp;hl=ja">Link2SD</a>は、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。<br/>
-おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、<br/>
-アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。</p>
-
-<h1>SDカードの準備</h1>
-
-<p>このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。</p>
-
-<p>このうち1つめが普通のSDカード領域として認識され、<br/>
-2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。<br/>
-なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。</p>
-
-<p>なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、<br/>
-<a href="http://www.partitionwizard.com/download.html">Mini Tool</a>のような専用ソフトでパーティションを作る必要があります。<br/>
-このとき、どちらのパーティションもPrimaryに設定しておく必要があります。</p>
-
-<p>パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。<br/>
-ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。<br/>
-fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、<br/>
-NTFS/ext3だと両方上手く認識したためこれを利用します。</p>
-
-<h1>アプリをSDカードに移す</h1>
-
-<p>Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。<br/>
-ただし、データをSDカードに移動する場合は<a href="https://play.google.com/store/apps/details?id=com.buak.link2sdplus&amp;hl=ja">有料アドオン</a>が必要です。</p>
-
-<p>Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。<br/>
-<img src="http://ota42y.com/images/posts/2014-12-30-link2sd.png" alt="Link2SD" /></p>
-
-<p>EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。<br/>
-ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。</p>
 ]]></content>
   </entry>
   
