@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-02-10T08:04:46+09:00</updated>
+  <updated>2015-02-10T23:07:32+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -39,7 +39,7 @@
 </ul>
 
 
-<h1>Jenkinsで複数ノードをコントロールするのは難しい</h1>
+<h1>複数ノードをコントロールするのは難しい</h1>
 
 <p>Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、<br/>
 複数のノードで、jobの一部の部分だけを別のノードで実行するなど、<br/>
@@ -94,18 +94,18 @@ Workflow Pluginを使う事で、さらに簡単に解決することが出来�
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">node</span><span class="o">(</span><span class="err">‘</span><span class="n">master</span><span class="err">’</span><span class="o">){</span>
-</span><span class='line'>  <span class="n">sh</span> <span class="s2">&quot;bb&quot;</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">node</span><span class="o">(</span><span class="s2">&quot;master&quot;</span><span class="o">){</span>
+</span><span class='line'>  <span class="n">sh</span> <span class="s2">&quot;rake config&quot;</span>
 </span><span class='line'>  <span class="n">archive</span> <span class="s2">&quot;config.yml&quot;</span>
 </span><span class='line'><span class="o">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">node</span><span class="o">(</span><span class="err">‘</span><span class="n">slave</span><span class="err">’</span><span class="o">){</span>
-</span><span class='line'>  <span class="n">unarchive</span> <span class="nl">mapping:</span> <span class="o">[</span><span class="s1">&#39;config.yml&#39;</span> <span class="o">:</span> <span class="s1">&#39;.&#39;</span><span class="o">]</span>
-</span><span class='line'>  <span class="n">sh</span> <span class="err">“</span><span class="n">rake</span> <span class="n">build</span><span class="err">”</span>
+</span><span class='line'><span class="n">node</span><span class="o">(</span><span class="s2">&quot;slave&quot;</span><span class="o">){</span>
+</span><span class='line'>  <span class="n">unarchive</span> <span class="nl">mapping:</span> <span class="o">[</span><span class="s1">&#39;config.yml&#39;</span> <span class="o">:</span> <span class="s1">&#39;./&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">sh</span> <span class="s2">&quot;rake build&quot;</span>
 </span><span class='line'>  <span class="n">archive</span> <span class="s2">&quot;result.zip&quot;</span>
 </span><span class='line'><span class="o">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">node</span><span class="o">(</span><span class="err">‘</span><span class="n">master</span><span class="err">’</span><span class="o">){</span>
+</span><span class='line'><span class="n">node</span><span class="o">(</span><span class="s2">&quot;master&quot;</span><span class="o">){</span>
 </span><span class='line'>  <span class="n">unarchive</span> <span class="nl">mapping:</span> <span class="o">[</span><span class="s1">&#39;result.zip&#39;</span> <span class="o">:</span> <span class="s1">&#39;.&#39;</span><span class="o">]</span>
 </span><span class='line'>  <span class="n">sh</span> <span class="s2">&quot;rake upload&quot;</span>
 </span><span class='line'><span class="o">}</span>
