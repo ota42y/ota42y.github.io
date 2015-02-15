@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-02-11T19:01:37+09:00</updated>
+  <updated>2015-02-15T19:01:47+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年7週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/02/15/summary/"/>
+    <updated>2015-02-15T14:42:50+09:00</updated>
+    <id>http://ota42y.com/blog/2015/02/15/summary</id>
+    <content type="html"><![CDATA[<p>既に今年の1/8が終わっているという事実…</p>
+
+<h1>JenkinsのWorkflow Pluginがとても便利</h1>
+
+<p><a href="http://ota42y.com/blog/2015/02/10/workflow-plugin/">Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</a><br/>
+<a href="http://ota42y.com/blog/2015/02/11/jenkins-workflow/">Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点 </a><br/>
+にまとめています。
+Build Flow Pluginを多用していたならば、こっちに乗り換えた方がいろいろ楽ですね。</p>
+
+<p>ただし、まだ出たばかりでバグがあったり、所々かゆいところに手が届かなかったりするので、<br/>
+その辺の辛いところは結構あります…</p>
+
+<h1>Remember The Milkが使いにくく感じる</h1>
+
+<ul>
+<li><p>良い点</p>
+
+<ul>
+<li>タスクの追加時に独自の記法で様々な条件をつけられる</li>
+<li>オフラインでAndroid, iOSで見られる(有料)</li>
+<li>繰り返し処理、期日等の設定が十分に豊富</li>
+<li>Evernotのノートとタスクを関連づけれる
+
+<ul>
+<li>タスクと参考資料をくっつけられる</li>
+<li>ただし、RTM側でつけられる細かい情報をつけられない</li>
+<li>そのため設定はRTMでする必要があり、そこまで便利ではない</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>悪い点</p>
+
+<ul>
+<li>PC上で使いづらい
+
+<ul>
+<li>ブラウザアプリはURLをショートカットキーで使えない</li>
+<li>送信済みリスト等、複数人での作業用機能がOFFにできない</li>
+<li>別のリストに移動するショートカットキーがない</li>
+</ul>
+</li>
+<li>サブタスクが使えない
+
+<ul>
+<li>特定のタスクを細かく分割できない</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>特にサブタスクが使えず、かつリスト操作が弱いのがものすごく不便で、<br/>
+特定の大タスクに対してやることをざっと書き出したときに、<br/>
+それを上手くまとめられず、タスクの優先順位等がわかり辛くなります。</p>
+
+<p>もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、<br/>
+代わりのサービスを探すか作るかしようと思います…</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点]]></title>
@@ -2160,49 +2227,6 @@ switch関数はnewprocの呼び出し元であるfork関数に1で戻ります�
 </li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[大晦日ハッカソン2014&正月ハッカソン2015に参加した]]></title>
-    <link href="http://ota42y.com/blog/2015/01/01/1231-hackathon/"/>
-    <updated>2015-01-01T13:01:08+09:00</updated>
-    <id>http://ota42y.com/blog/2015/01/01/1231-hackathon</id>
-    <content type="html"><![CDATA[<p>2014/12/31にオンラインで行われた、<br/>
-<a href="https://atnd.org/events/59470">大晦日ハッカソン2014</a>に参加しました。</p>
-
-<p>Evernoteのリンクをアプリで直接開くChrome拡張を作りました。<br/>
-<a href="https://chrome.google.com/webstore/detail/evernote-app-opener/pjkgaadffbojkgoocbobikkklpajjbgo">evernote app opener - Chrome ウェブストア</a></p>
-
-<p>(なお、細かい修正やこの記事の執筆等を、<br/>
-<a href="https://atnd.org/events/60889">正月ハッカソン2015</a>でやりました)</p>
-
-<h1>どんなChrome拡張か</h1>
-
-<p>現在、Evernoteのノート固有のリンクを取得すると、<br/>
-<code>https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/</code><br/>
-といった、httpsのリンクが使われます。</p>
-
-<p>このリンクを開くと、EvernoteのWebアプリ上でノートを開くことが出来ますが、<br/>
-Evernoteはログインが最長で一週間しか保てず、また二段階認証をしている場合は、<br/>
-頻繁に面倒なログインを求められます。</p>
-
-<p>ですが多くの場合、開こうとしているノートはオフラインのEvernoteアプリでも開くことが出来ます。<br/>
-そのため、Webではなくアプリで開く事が出来れば、わざわざログインせずともノートを開くことが出来ます。</p>
-
-<p>そのため、上記のようなWebアプリでノートを開くようなリンクを、<br/>
-オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。</p>
-
-<h1>使い方</h1>
-
-<p>事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。<br/>
-Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、<br/>
-そのURLに含まれているユーザIDとshard名をオプションページで設定してください。</p>
-
-<p>その状態で、Evernoteのノートリンクを開くと、ログイン/非ログインに関わらず、<br/>
-Evernoteアプリが立ち上がり、そのノートを開いてくれます。</p>
-
-<p>これで、いちいちWebでログインすることなく、ノートリンクで指定したノートを表示することが出来ます。</p>
 ]]></content>
   </entry>
   
