@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-02-22T11:40:52+09:00</updated>
+  <updated>2015-02-27T07:52:18+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,129 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JenkinsをHTTP経由で叩く]]></title>
+    <link href="http://ota42y.com/blog/2015/02/27/jenkins-remote-api/"/>
+    <updated>2015-02-27T07:45:57+09:00</updated>
+    <id>http://ota42y.com/blog/2015/02/27/jenkins-remote-api</id>
+    <content type="html"><![CDATA[<h1>まとめ</h1>
+
+<ul>
+<li>JenkinsはWebベースのUI
+
+<ul>
+<li>操作の敷居が低い</li>
+<li>使い込むと使いづらくなる
+
+<ul>
+<li>反応速度</li>
+<li>複数のビルド実行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Remote access API
+
+<ul>
+<li>HTTP経由でJobを実行できる</li>
+<li>ページ表示を待たなくていいため高速</li>
+<li>プログラムから実行可能</li>
+<li>ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>JenkinsのJob実行は大変</h1>
+
+<p>JenkinsはWebブラウザを使ってGUIで操作するため、<br/>
+操作の敷居が低く、簡単に扱えるようになっています。</p>
+
+<p>ですが、ブラウザやJenkins本体の状態によってはとても遅くなってしまい、<br/>
+ページを切り替えるのに3，4秒待つといった状態まで遅くなると、<br/>
+ビルドをするのがとても辛くなります。</p>
+
+<p>また、パラメータの組み合わせの分だけビルドしようとすると、<br/>
+さらに辛くなってしまいます。</p>
+
+<p>このような場合に、Jenkinsに用意されているRemote access APIを使うことで、<br/>
+Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、<br/>
+パラメータの数だけクリックをする必要性から逃れられます。</p>
+
+<h1>Remote access API</h1>
+
+<p>詳しくはこちら<br/>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API">https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API</a><br/>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build">https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build</a></p>
+
+<p>要するに、パラメータが無い場合は<br/>
+<code>http://HOST/job/JOB_NAME/build</code>
+に、ある場合は<br/>
+<code>http://HOST/job/JOB_NAME/buildWithParameters</code>
+にPOSTで投げるとビルドできます。</p>
+
+<p>パラメータの投げ方はフォームデータとしてでもいいですし、<br/>
+<code>http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value</code>
+のように、URLに直接入れても大丈夫のようです。</p>
+
+<h1>サンプルスクリプト</h1>
+
+<p>3*3=9種類のビルドを一気に実行するスクリプトです</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">platforms</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;ios&quot;</span><span class="p">,</span>  <span class="s2">&quot;android&quot;</span><span class="p">,</span> <span class="s2">&quot;windows&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="n">settings</span> <span class="o">=</span>  <span class="o">[</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="s2">&quot;release&quot;</span><span class="p">,</span> <span class="s2">&quot;store&quot;</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">platforms</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">platform</span><span class="p">,</span> <span class="n">setting</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:PLATFORM</span> <span class="o">=&gt;</span> <span class="n">platform</span><span class="p">,</span> <span class="ss">:SETTING</span> <span class="o">=&gt;</span> <span class="n">setting</span><span class="p">}</span>
+</span><span class='line'>  <span class="nb">p</span> <span class="n">params</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://HOST/job/JOB_NAME/buildWithParameters&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">req</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">req</span><span class="o">.</span><span class="n">basic_auth</span> <span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;PASSWORD&#39;</span>
+</span><span class='line'>  <span class="n">req</span><span class="o">.</span><span class="n">set_form_data</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">res</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="o">.</span><span class="n">start</span> <span class="p">{</span><span class="o">|</span><span class="n">http</span><span class="o">|</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">res</span>
+</span><span class='line'>  <span class="k">when</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTPSuccess</span><span class="p">,</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTPRedirection</span>
+</span><span class='line'>    <span class="nb">p</span> <span class="s2">&quot;OK&quot;</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">res</span><span class="o">.</span><span class="n">value</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>問題点</h1>
+
+<p>Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。<br/>
+そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2015年8週目まとめ]]></title>
@@ -2073,32 +2196,6 @@ duplicate symbolになっています。</p>
 </li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[UNIXという考え方という本を読んだ]]></title>
-    <link href="http://ota42y.com/blog/2015/01/04/unix-boox/"/>
-    <updated>2015-01-04T11:22:27+09:00</updated>
-    <id>http://ota42y.com/blog/2015/01/04/unix-boox</id>
-    <content type="html"><![CDATA[<p><a href="http://www.amazon.co.jp/UNIX%E3%81%A8%E3%81%84%E3%81%86%E8%80%83%E3%81%88%E6%96%B9%E2%80%95%E3%81%9D%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3%E3%81%A8%E5%93%B2%E5%AD%A6-Mike-Gancarz/dp/4274064069">UNIXという考え方</a>という本を読みました。<br/>
-原著は1994年に書かれている本で、
-<a href="http://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6">UNIXの哲学</a>を一つ一つ、その意味と利点について解説しています。</p>
-
-<p>「一つのことを、うまくやれ」や「小さいものは美しい」等、ある程度ハッカー文化に詳しい人ならばどれかは聞いたことがあるぐらい有名な哲学です。</p>
-
-<p>面白いのは、例えば「できるだけ早く試作を作成する」という項目では、設計を完璧にしてから取りかかるのではなく、
-プロトタイプを作り、それをユーザに見せてフィードバックをもらい、良い設計にしていくべきと述べられています。<br/>
-これはアジャイル開発のイテレーションを回していく手法ととても似ており、開発手法の歴史を感じます。</p>
-
-<p>また、「一つのことを、うまくやれ」は色々やる巨大な関数より、ちゃんと機能毎に分割しろと解釈できますし、「ソフトウェアの挺子（てこ）を有効に活用する」は他のいいプログラムからコードを借りてきたり、gemやnpmで既にあるソフトウェアを利用するといった、コードの再利用性の話だと解釈できます。</p>
-
-<p>原著は1994年に書かれたにもかかわらず、今日でも普通に通用する哲学がちりばめられており、UNIX哲学の現代のプログラミング文化への強い影響と、その普遍性をかんじます。</p>
-
-<p>ただ、本書の中でシェルスクリプトが移植性もいいし簡潔に書けるしと礼賛されていますが、デバッグしにくい上に、コマンドがGNUかBSDかで結果が変わる場合があるので実は移植性がそんなに無いですし、現代ではちょっとどうなのかな…みたいな部分もあります。<br/>
-今ですと、スクリプト言語かクロスコンパイルが簡単にできるGo言語が良い選択肢でしょうか。</p>
-
-<p>そういった具体的な部分に関しては時代の変化で合わなくなっている部分もありますが、その哲学自体は普遍的なもので、今読んでも、おそらくは10年後に読んでも得るものが多い本だと思います。</p>
 ]]></content>
   </entry>
   
