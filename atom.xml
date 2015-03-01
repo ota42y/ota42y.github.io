@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-02-27T07:52:18+09:00</updated>
+  <updated>2015-03-02T07:48:40+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,168 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年９週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/03/02/summary/"/>
+    <updated>2015-03-02T07:38:05+09:00</updated>
+    <id>http://ota42y.com/blog/2015/03/02/summary</id>
+    <content type="html"><![CDATA[<p>今年も15%が終わった…</p>
+
+<h1>GoのcronにPR送った</h1>
+
+<p>Goのcronとして<a href="https://github.com/robfig/cron">https://github.com/robfig/cron</a>を使ってますが、<br/>
+実行中か否かを取得できずに不便でした。<br/>
+内部では管理しているので、それに対するゲッターを追加したPRを送りました。<br/>
+<a href="https://github.com/robfig/cron/pull/21">https://github.com/robfig/cron/pull/21</a></p>
+
+<h1>Hugoが良さそう</h1>
+
+<p>このサイトはOctopressで運用しています。<br/>
+ですが、記事数が増えてきたためか、変更して作り直すのに5秒ぐらいかかってしまいます。<br/>
+ちょっとした変更でも若干時間がかるため、かなりストレスがたまる仕組みです…</p>
+
+<p>同じく静的サイトを作成するソフトウェアで、Hugoというものがあるそうです。<br/>
+<a href="https://github.com/spf13/hugo">https://github.com/spf13/hugo</a></p>
+
+<p>Goで書かれており、作成する速度がかなり早いらしいので、乗り換えを検討中です。<br/>
+残念ながら、良い感じのテンプレートがないので、まずはそこから作る必要がありそうです。</p>
+
+<h1>テキストベースのToDoアプリを考えた</h1>
+
+<ul>
+<li>Todo.txtが行けてないので自分に合ったやつを考える</li>
+<li>スペースと改行ででサブタスクを指定
+
+<ul>
+<li>箇条書きがそのままサブタスクになる</li>
+</ul>
+</li>
+<li>タスク名とサブタスク以外は全てオプションとして提供
+
+<ul>
+<li>優先度とかをベースシステムとしては持たない
+
+<ul>
+<li>:due 2015-02-01とか、オプションとしてつける</li>
+<li>ベースはサブタスクとタスク名だけ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>多分こんな感じになります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>タスク１ :due 2015-02-01
+</span><span class='line'>  サブタスク1 :due 2015-01-31
+</span><span class='line'>  サブタスク2 :due 2015-01-01 :repeat 1 week
+</span><span class='line'>    サブタスク3 :url http://example.com/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>テキストベースで編集するのとは別に、CLIも作らないとダメですね。<br/>
+フィルターとか、デフォルト値を入れて追加とかしにくいので…</p>
+
+<p>リポジトリはこれになります。<br/>
+<a href="https://github.com/ota42y/plaintodo">https://github.com/ota42y/plaintodo</a></p>
+
+<h1>今やってるもの＆これからやりたいこと</h1>
+
+<ul>
+<li><p>今やってること</p>
+
+<ul>
+<li><p>Goによるtumblr apiライブラリ</p>
+
+<ul>
+<li>進捗どうですか？時に画像もつけてほしくなった</li>
+<li>tumblr apiからランダムで取ってくるために、tumblrライブラリを作る
+
+<ul>
+<li>ついでにリブログもする</li>
+<li>node-tumblrがリブログしないので作った</li>
+</ul>
+</li>
+<li>goでやりたかっただけ</li>
+<li>予定していた機能(投稿取得、リブログ)はだいたい完成
+
+<ul>
+<li>完全にカバーしてないけど、ほしい部分は出来た</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自分用自動化システム</p>
+
+<ul>
+<li>Goである程度の大きさのアプリを作るテスト</li>
+<li>日々の作業を自動化
+
+<ul>
+<li>twitterの公式アカウントチェック</li>
+<li>チャットのログ保存等</li>
+</ul>
+</li>
+<li>hubotとhttp経由でやりとり出来るため、botのバックエンドとしても使える
+
+<ul>
+<li>いずれはhubotを全て置き換えるようにしたい</li>
+</ul>
+</li>
+<li>結果通知部分はかなり良くない作りなので、そこは何とかしたい
+
+<ul>
+<li>そもそも設計もあまり良くない感じ</li>
+</ul>
+</li>
+<li>進捗どうですか？の修正を入れたらしばらく放置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>次にやろうとしているもの</p>
+
+<ul>
+<li><p>Hugoのテンプレート作成</p>
+
+<ul>
+<li>このサイトをベースに、色々不都合があるところを直す</li>
+</ul>
+</li>
+<li><p>ToDoシステム(CLI)</p>
+
+<ul>
+<li>スペースを使った箇条書きがそのままサブタスクになる</li>
+<li>テキストファイルを編集すると、そのままタスクに出来る</li>
+<li>専用のCLIを使うことで、フィルターや繰り返しが出来る</li>
+</ul>
+</li>
+<li><p>ToDoシステム(Android)</p>
+
+<ul>
+<li>普通にリストビューでタスク表示</li>
+<li>Dropboxを使ってデータは共有</li>
+<li>Androidメインなのでないと辛い
+
+<ul>
+<li>上記のCLIがある程度出来てから</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>当面は下の3つを進めていく方向でいきます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JenkinsをHTTP経由で叩く]]></title>
@@ -1852,346 +2014,6 @@ getPrivate関数は外部から呼ばれないため、インライン展開後�
 <li>privateは呼ばれない事が確定するはずだが何故か消さない</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[インライン展開がどう展開されるのかを調べた]]></title>
-    <link href="http://ota42y.com/blog/2015/01/05/c-inline/"/>
-    <updated>2015-01-05T07:51:43+09:00</updated>
-    <id>http://ota42y.com/blog/2015/01/05/c-inline</id>
-    <content type="html"><![CDATA[<p>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、<br/>
-関数呼び出しのオーバーヘッドを削減する、インライン展開をします。</p>
-
-<p>インライン展開はコンパイル時にされるため、<br/>
-実際に行われたのか、どう行われているかは出力されません。</p>
-
-<p>そのため、コンパイルたコードがどうなってるかを調べ、<br/>
-インライン展開がどう展開しているのかを調べました。</p>
-
-<p>なお、アセンブラに関してはほとんど説明しません。<br/>
-「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。</p>
-
-<h1>ソースコード</h1>
-
-<p>以下のソースコードを使います</p>
-
-<p>test.cpp</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &quot;stdio.h&quot;</span>
-</span><span class='line'><span class="cp">#include &quot;func.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>  <span class="n">TestA</span> <span class="n">test</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getNumInCpp</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getNumInH</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getNumInline</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getNumCallCpp</span><span class="p">();</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>func.h</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
-</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">privateFunc</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getNumInCpp</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="nf">getNumInH</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="nf">getNumCallCpp</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">privateFunc</span><span class="p">()</span> <span class="o">+</span> <span class="n">getNumInH</span><span class="p">();</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="nf">getNumInline</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">//int getNumNormal();</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kr">inline</span> <span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getNumInline</span><span class="p">(){</span><span class="k">return</span> <span class="mi">321</span><span class="p">;}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// そもそも定義できない</span>
-</span><span class='line'><span class="c1">// int TestA::getNumNormal(){return 111;}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>func.cpp</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &quot;func.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">privateFunc</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">123</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getNumInCpp</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">73</span> <span class="o">+</span> <span class="n">getNumInH</span><span class="p">();</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>内容としては、</p>
-
-<ul>
-<li>getNumInCpp()
-
-<ul>
-<li>cpp内に関数の中身が書かれている</li>
-<li>cpp内のものはインライン展開されないはず</li>
-</ul>
-</li>
-<li>getNumInH()
-
-<ul>
-<li>ヘッダファイル内に関数の中身が置かれている</li>
-<li>インライン展開される</li>
-</ul>
-</li>
-<li>getNumInline()
-
-<ul>
-<li>インライン不可能なprivateメソッドと、cpp内の関数を呼ぶ</li>
-</ul>
-</li>
-<li>getNumCallCpp()
-
-<ul>
-<li>明示的にインライン展開指定をしたもの</li>
-<li>インライン展開される</li>
-</ul>
-</li>
-</ul>
-
-
-<p>になります。</p>
-
-<h1>最適化しない場合</h1>
-
-<p>まずは最適化オプションをつけずにコンパイルしました。<br/>
-<code>g++ -S test.cpp func.cpp</code></p>
-
-<p>そのため、インライン展開はされません。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">subq</span>   <span class="err">$</span><span class="mi">32</span><span class="p">,</span> <span class="o">%</span><span class="n">rsp</span>
-</span><span class='line'><span class="n">leaq</span>   <span class="o">-</span><span class="mi">8</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="n">movl</span>   <span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">)</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">__ZN5TestA11getNumInCppEv</span> <span class="err">#</span> <span class="p">(</span><span class="err">変数</span><span class="n">a</span><span class="err">の計算</span><span class="p">)</span>
-</span><span class='line'><span class="n">leaq</span>   <span class="o">-</span><span class="mi">8</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">%</span><span class="n">eax</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">)</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">__ZN5TestA9getNumInHEv</span> <span class="err">#</span> <span class="p">(</span><span class="err">変数</span><span class="n">b</span><span class="err">の計算</span><span class="p">)</span>
-</span><span class='line'><span class="n">leaq</span>   <span class="o">-</span><span class="mi">8</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">%</span><span class="n">eax</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">)</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">__ZN5TestA12getNumInlineEv</span> <span class="err">#</span> <span class="p">(</span><span class="err">変数</span><span class="n">c</span><span class="err">の計算</span><span class="p">)</span>
-</span><span class='line'><span class="n">leaq</span>   <span class="o">-</span><span class="mi">8</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">%</span><span class="n">eax</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">)</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">__ZN5TestA13getNumCallCppEv</span> <span class="err">#</span> <span class="p">(</span><span class="err">変数</span><span class="n">d</span><span class="err">の計算</span><span class="p">)</span>
-</span><span class='line'><span class="n">leaq</span>   <span class="n">L_</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="o">%</span><span class="n">rip</span><span class="p">),</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">%</span><span class="n">eax</span><span class="p">,</span> <span class="o">-</span><span class="mi">24</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">)</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">-</span><span class="mi">12</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">esi</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">-</span><span class="mi">16</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">edx</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">-</span><span class="mi">20</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">ecx</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">-</span><span class="mi">24</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">r8d</span>
-</span><span class='line'><span class="n">movb</span>   <span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="o">%</span><span class="n">al</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">_printf</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>callqで4種類の関数を全て呼び出しているのがわかります。<br/>
-インライン展開はされていないため、func.hやfunc.cppで直接書いている数値はどこにも出てきません。</p>
-
-<h1>最適化した場合</h1>
-
-<p>O3オプションをつけてインライン展開されるようにしました。<br/>
-<code>g++ -S -O3 test.cpp func.cpp</code></p>
-
-<p>なお、#で注釈を入れています</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">leaq</span>   <span class="o">-</span><span class="mi">24</span><span class="p">(</span><span class="o">%</span><span class="n">rbp</span><span class="p">),</span> <span class="o">%</span><span class="n">rbx</span>
-</span><span class='line'><span class="n">movq</span>   <span class="o">%</span><span class="n">rbx</span><span class="p">,</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'>
-</span><span class='line'><span class="cp"># getNumInCppの呼び出し(変数aの計算)</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">__ZN5TestA11getNumInCppEv</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">%</span><span class="n">eax</span><span class="p">,</span> <span class="o">%</span><span class="n">r14d</span>
-</span><span class='line'><span class="n">movq</span>   <span class="o">%</span><span class="n">rbx</span><span class="p">,</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="cp"># privateFuncの呼び出し(変数dの計算)</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">__ZN5TestA11privateFuncEv</span>
-</span><span class='line'><span class="cp"># getNumInHの結果が直接書かれている(変数dの計算)</span>
-</span><span class='line'><span class="n">leal</span>   <span class="mi">42</span><span class="p">(</span><span class="o">%</span><span class="n">rax</span><span class="p">),</span> <span class="o">%</span><span class="n">r8d</span>
-</span><span class='line'><span class="n">leaq</span>   <span class="n">L_</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="o">%</span><span class="n">rip</span><span class="p">),</span> <span class="o">%</span><span class="n">rdi</span>
-</span><span class='line'><span class="cp"># getNumInHの結果が直接書かれている(変数bの計算)</span>
-</span><span class='line'><span class="n">movl</span>   <span class="err">$</span><span class="mi">42</span><span class="p">,</span> <span class="o">%</span><span class="n">edx</span>
-</span><span class='line'><span class="cp"># getNumInlineの結果が直接書かれている(変数cの計算)</span>
-</span><span class='line'><span class="n">movl</span>   <span class="err">$</span><span class="mi">321</span><span class="p">,</span> <span class="o">%</span><span class="n">ecx</span>
-</span><span class='line'><span class="n">xorl</span>   <span class="o">%</span><span class="n">eax</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span>
-</span><span class='line'><span class="n">movl</span>   <span class="o">%</span><span class="n">r14d</span><span class="p">,</span> <span class="o">%</span><span class="n">esi</span>
-</span><span class='line'>
-</span><span class='line'><span class="cp"># printfの呼び出し</span>
-</span><span class='line'><span class="n">callq</span>  <span class="n">_printf</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>最適化した場合、関数呼び出しの量も内容もかなり変化しています。</p>
-
-<p>一番初めのgetNumInCpp関数はcppに書かれており、インライン展開が出来ないため、<br/>
-最適化しない場合と同じく関数呼び出しをしています。</p>
-
-<p>次にprivateFunc関数の呼び出しを行っていますが、<br/>
-これはgetNumCallCpp関数が展開され、それ以上展開できないprivateFunc関数と、<br/>
-42を返すだけのgetNumInH関数がさらにインライン展開されたものと思われます。<br/>
-privateFunc関数はprivateメソッドですが、アセンブラではアクセス指定子は無視されます。</p>
-
-<p>また、321を返すgetNumInline関数もインライン展開されて直接数値が書かれているのがわかります。</p>
-
-<p>なお、ソースコード上で変数bやcに代入している部分は、<br/>
-直接値を書いてある状態と同じになるようにインライン展開されるため、<br/>
-コンパイラの最適化によって処理順番を入れ替えられ、printfへの呼び出し直前に移動させられています。</p>
-
-<h1>インライン指定しない場合のエラー</h1>
-
-<p>コメントアウトしてあるgetNumNormal関数は、ヘッダファイル内でインライン指定をせずに定義しています。<br/>
-このコメントアウトを戻すと、以下のエラーにより失敗します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">duplicate</span> <span class="n">symbol</span> <span class="n">__ZN5TestA12getNumNormalEv</span> <span class="nl">in</span><span class="p">:</span>
-</span><span class='line'><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">md</span><span class="o">/</span><span class="n">b8zf203j65b0qt_t4439fdvm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="mf">837e1</span><span class="n">d</span><span class="p">.</span><span class="n">o</span>
-</span><span class='line'><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">md</span><span class="o">/</span><span class="n">b8zf203j65b0qt_t4439fdvm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">func</span><span class="o">-</span><span class="n">c8b605</span><span class="p">.</span><span class="n">o</span>
-</span><span class='line'><span class="nl">ld</span><span class="p">:</span> <span class="mi">1</span> <span class="n">duplicate</span> <span class="n">symbol</span> <span class="k">for</span> <span class="n">architecture</span> <span class="n">x86_64</span>
-</span><span class='line'><span class="nl">clang</span><span class="p">:</span> <span class="nl">error</span><span class="p">:</span> <span class="n">linker</span> <span class="n">command</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">1</span> <span class="p">(</span><span class="n">use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">see</span> <span class="n">invocation</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>sファイルの作成には成功するため調べてみたところ、
-getNumNormal関数がfunc.sとtest.s両方に定義されていました。</p>
-
-<p>この関数はインライン展開されないため、func.hを読み込むtest.cppとfunc.cpp両方で定義されてしまい、<br/>
-duplicate symbolになっています。</p>
-
-<p>インライン展開されるgetNumInline関数は、関数自体はどこにも定義されないため二重定義にはならず、<br/>
-問題なく動いているようです。</p>
-
-<h1>まとめ</h1>
-
-<ul>
-<li>最適化しないとインライン展開されない</li>
-<li>hファイルの中に実装を書くとインライン展開される
-
-<ul>
-<li>そもそもインライン展開しないとduplicateになる
-
-<ul>
-<li>そのため、ヘッダに書いた関数は全てインライン展開されるはず?</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>cppファイルに実装を書くとインライン展開されない
-
-<ul>
-<li>include対象に入ってないのだからあたりまえ</li>
-<li>複数のcppファイルに書かれた内容を繋げるのはリンク時なのでコンパイル後</li>
 </ul>
 </li>
 </ul>
