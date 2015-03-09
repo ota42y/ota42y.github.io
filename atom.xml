@@ -4,7 +4,7 @@
   <title><![CDATA[おおたの物置]]></title>
   <link href="http://ota42y.com/atom.xml" rel="self"/>
   <link href="http://ota42y.com/"/>
-  <updated>2015-03-02T07:48:40+09:00</updated>
+  <updated>2015-03-09T21:44:32+09:00</updated>
   <id>http://ota42y.com/</id>
   <author>
     <name><![CDATA[ota42y]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2015年10週目まとめ]]></title>
+    <link href="http://ota42y.com/blog/2015/03/09/summary/"/>
+    <updated>2015-03-09T21:32:03+09:00</updated>
+    <id>http://ota42y.com/blog/2015/03/09/summary</id>
+    <content type="html"><![CDATA[<h1>Hugoを実験中</h1>
+
+<p>今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。</p>
+
+<p>ゼロから作ると、テンプレート作成の大変さが身にしみます…<br/>
+デザインを考える部分はもちろんのこと、CSSとの格闘や、<br/>
+フレームワークの使い方とかを調べる必要があり、中々大変です。</p>
+
+<p>また、golangのテンプレート機能については情報が少ないので、<br/>
+やりたいことがあっても、普通に書くとうまくいかずに実現できない事が多々あったので、<br/>
+あとでちゃんと勉強し直した方がよさそうです。</p>
+
+<p>最も、本来テンプレート層で複雑な操作はするべきではなく、コントローラー側で処理をし、<br/>
+テンプレートは渡されたデータを表示するだけにした方が望ましいです。<br/>
+ただ、今回はhugo側にはあまり手を加えるのは避けたいため、<br/>
+コントローラ側に処理を追加する事が出来ず、テンプレート部分で頑張る必要がでてしまいました。<br/>
+テンプレートとhugoの間に普通のgoで処理を追加できたらいいのですが…</p>
+
+<p>また、hugo側で用意されている奴を上手く使えばできる事も、<br/>
+わざわざ自前でがんばって実装しようとしていたりしてて無駄が多いです…<br/>
+サンプル集みたいなのがもう少し整っていると良い気がします。</p>
+
+<p>ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。<br/>
+テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2015年９週目まとめ]]></title>
@@ -1846,178 +1878,6 @@ rspecとかで専用のフレームワークにそって作るのとは大違い
 
 <p>いくつかのPDFでやってみましたが、全てCRになっており、<br/>
 Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分けが必要です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[インライン展開についての追加調査]]></title>
-    <link href="http://ota42y.com/blog/2015/01/06/c-inline-postscript/"/>
-    <updated>2015-01-06T07:37:34+09:00</updated>
-    <id>http://ota42y.com/blog/2015/01/06/c-inline-postscript</id>
-    <content type="html"><![CDATA[<p>昨日の記事で、インライン展開について調べましたが、<br/>
-よくよく考えると片手落ちだったので追加調査しました。</p>
-
-<p><a href="http://ota42y.com/blog/2015/01/05/c-inline/">インライン展開がどう展開されるのかを調べた</a></p>
-
-<h1>調査内容</h1>
-
-<p>昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、<br/>
-同じファイル内でどのようになるかは調べていませんでしたので、<br/>
-追加調査しました。</p>
-
-<p>方法は昨日と同じく、-Sオプションをつけて結果を見ます。</p>
-
-<h1>ソースコード</h1>
-
-<p>以下のようなファイルを使います</p>
-
-<p>test.cpp</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'><span class="cp">#include &quot;func.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">TestA</span> <span class="n">test</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getDirect</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">getThrough</span><span class="p">();</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>func.h</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">TestA</span><span class="p">{</span>
-</span><span class='line'><span class="k">public</span><span class="o">:</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getDirect</span><span class="p">();</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="nf">getThrough</span><span class="p">();</span>
-</span><span class='line'><span class="k">private</span><span class="o">:</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">getPrivate</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>func.cpp</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &quot;func.h&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getDirect</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getThrough</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">getDirect</span><span class="p">()</span> <span class="o">+</span> <span class="n">getPrivate</span><span class="p">();</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">TestA</span><span class="o">::</span><span class="n">getPrivate</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">73</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>func.cppのgetThrough関数に対して、インライン展開が行われる事が予想されますが、<br/>
-getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。<br/>
-getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。</p>
-
-<h1>最適化しない場合</h1>
-
-<p>3つの関数は全て普通にコンパイルされました。</p>
-
-<h1>最適化した場合</h1>
-
-<h2>同じファイル内のインライン展開</h2>
-
-<p>getThrough関数は以下のようになりました。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="nl">__ZN5TestA10getThroughEv</span><span class="p">:</span>               <span class="err">##</span> <span class="err">@</span><span class="n">_ZN5TestA10getThroughEv</span>
-</span><span class='line'><span class="n">pushq</span>  <span class="o">%</span><span class="n">rbp</span>
-</span><span class='line'><span class="n">movq</span>   <span class="o">%</span><span class="n">rsp</span><span class="p">,</span> <span class="o">%</span><span class="n">rbp</span>
-</span><span class='line'><span class="n">movl</span>   <span class="err">$</span><span class="mi">115</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span>
-</span><span class='line'><span class="n">popq</span>   <span class="o">%</span><span class="n">rbp</span>
-</span><span class='line'><span class="n">retq</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>42+73=115なので、インライン展開と最適化がされているのがわかります。<br/>
-そのため、同じファイル内なら、ヘッダに書いていなくても勝手にインライン展開されるみたいです。</p>
-
-<p>よくよく考えると、includeが処理されるのはプリプロセスのタイミングで処理されます。<br/>
-そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。<br/>
-なので、どのファイルに関数が書かれているかは関係ないと思われます。</p>
-
-<h2>インライン展開後の関数</h2>
-
-<p>getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、<br/>
-関数が出力されていました。</p>
-
-<p>getDirect関数はpublic指定されているため、<br/>
-外部から参照される場合のために展開後も関数が残されるのは予想通りです。</p>
-
-<p>getPrivate関数はprivate指定されているため継承先のクラスから呼ばれることはなく、<br/>
-かつこのクラスはfriend指定もされていないため、外部から呼び出されることはありません。<br/>
-そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、<br/>
-この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。</p>
-
-<h1>まとめ</h1>
-
-<ul>
-<li>同じファイル内でもインライン展開は行われる
-
-<ul>
-<li>O3ならinline宣言とか要らない</li>
-</ul>
-</li>
-<li>インライン展開しても、展開元の関数は残る
-
-<ul>
-<li>ヘッダファイルに書いた関数は展開元が消えたので挙動が違う</li>
-<li>publicはリンクされるまで呼ばれるかわからないので消せない
-
-<ul>
-<li>privateは呼ばれない事が確定するはずだが何故か消さない</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
 ]]></content>
   </entry>
   
