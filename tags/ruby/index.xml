@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby on おおたの物置</title>
+    <link>http://localhost:1313/tags/ruby/</link>
+    <description>Recent content in Ruby on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 28 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
+      <link>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</link>
+      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</guid>
+      <description>
+
+&lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
+一回目のbundlerに対してbundleが実行されてしまい、&lt;br /&gt;
+別のbundleを呼び出せないという問題が起きました。&lt;br /&gt;
+これはbundlerが設定する環境変数が原因でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bundle exec中に、別のbundlerを実行するとおかしくなる
+
+&lt;ul&gt;
+&lt;li&gt;主にsystemやspawn等を使った場合&lt;/li&gt;
+&lt;li&gt;最初のbundle execと同じものであれば問題は起きない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;bundlerが設定をしている環境変数が問題
+
+&lt;ul&gt;
+&lt;li&gt;別のbundlerを呼ぼうとして元のbundlerが呼ばれている&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Bundler.with_clean_envで回避可能
+
+&lt;ul&gt;
+&lt;li&gt;Bundler.clean_systemでも可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;問題:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;問題&lt;/h1&gt;
+
+&lt;p&gt;以下のような構成かつtestフォルダにいる状態で、&lt;br /&gt;
+&lt;code&gt;bundle install --path vendor/bundle&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;bundle exec test.rb&lt;/code&gt;を実行すると、&lt;br /&gt;
+test2内でbundlerを呼んだ時にエラーになります&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.
+├─ test
+│  │  Gemfile (gemのhello_world_gemを使用)
+│  └─ test.rb
+|
+└─ test2
+   └─ Gemfile (gemのhello-worldを使用)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
+Dir.chdir(&amp;quot;../test2&amp;quot;) do
+  # error
+  system &#39;bundle install --path vendor/bundle&#39;
+  system &#39;bundle exec hello-world&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;エラー文言&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;oh hai thar
+Using hello_world_gem 0.0.3
+Using bundler 1.7.3
+Your bundle is complete!
+It was installed into ./vendor/bundle
+bundler: command not found: hello-world
+Install missing gem executables with `bundle install`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;原因:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;原因&lt;/h1&gt;
+
+&lt;p&gt;bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、&lt;br /&gt;
+そこで指定されているbundlerから実行されていると見なされるため、&lt;br /&gt;
+bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。&lt;br /&gt;
+実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。&lt;/p&gt;
+
+&lt;p&gt;この仕組みのおかげで同じbundleの場合はそのまま実行できるため、&lt;br /&gt;
+1行目のhello_world_gemの呼び出しにbundle execが不要になっています。&lt;br /&gt;
+このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。&lt;/p&gt;
+
+&lt;h1 id=&#34;解決策:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;解決策&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239&#34;&gt;Bundler.with_clean_env&lt;/a&gt;を利用することで、この問題を回避できます。&lt;br /&gt;
+このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。&lt;br /&gt;
+そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。&lt;br /&gt;
+また、コマンドが一つだけの場合は&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251&#34;&gt;Bundler.clean_system&lt;/a&gt;メソッドも使えます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
+Dir.chdir(&amp;quot;../test2&amp;quot;) do
+  Bundler.with_clean_env do
+    # ok
+    system &#39;bundle install --path vendor/bundle&#39;
+    system &#39;bundle exec hello-world&#39;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;補足:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;補足&lt;/h1&gt;
+
+&lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
+これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>YAMLでnilをキーにしたハッシュを扱う</title>
+      <link>http://localhost:1313/blog/2014/11/25/ruby-hash/</link>
+      <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/11/25/ruby-hash/</guid>
+      <description>
+
+&lt;p&gt;&lt;em&gt;例は全てRuby 2.0を利用しています&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;nilをキーとした値を持つハッシュをYAMLに書きたい場合、&lt;br /&gt;
+以下のように書いても&amp;rdquo;nil&amp;rdquo;という文字列として認識されます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+nil : nil
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;=&amp;gt; {&amp;quot;nil&amp;quot;=&amp;gt;&amp;quot;nil&amp;quot;}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;データがnilの場合は、データ部分に何も書かないことでnilを表現できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+datanil :
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;=&amp;gt; {&amp;quot;datanil&amp;quot;=&amp;gt;nil}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;キーをnilにしたい場合、以下のように書いても、(Rubyだと)パースに失敗します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+  : &amp;quot;key nil&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このような場合もYAMLの仕様では想定済みらしく、&lt;br /&gt;
+クエッションマークを使うことで、その後ろにあるものがキーであると明示できる仕様があります。&lt;br /&gt;
+&lt;a href=&#34;http://yaml.org/spec/1.2/spec.html#id2772075&#34;&gt;http://yaml.org/spec/1.2/spec.html#id2772075&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これを利用して、以下のようにクエッションマークの後に何も書かず、&lt;br /&gt;
+その後コロンと値を設定することで、nilをキーとして設定できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+?
+: &amp;quot;key nil&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;rubyで長い文字列をキーにする:b45a66bf9aa46ee4caf2ab50792b689e&#34;&gt;rubyで長い文字列をキーにする&lt;/h2&gt;
+
+&lt;p&gt;Rubyが利用しているPsychでは、以下のように128byte以上のデータをキーにして書き出した場合、&lt;br /&gt;
+?マークをつけて書き出します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;yaml&#39;
+def mkhash(k,v)
+  h = {}
+  h[k] = v
+  h
+end
+
+long = &amp;quot;a&amp;quot; * 129
+open(&amp;quot;long.yml&amp;quot;, &amp;quot;w&amp;quot;) {|file|
+  file.write YAML.dump(mkhash(long, &amp;quot;long&amp;quot;))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+? aaaaaaaaaaaaaaaaaaaaaaaaaa...aaa
+: long
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうやらRubyが使っているYAMLライブラリのPsych内で、&lt;br /&gt;
+128文字以上だったら?マークを出力するようにしているみたいです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816&#34;&gt;https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L816&lt;/a&gt;
+&lt;a href=&#34;https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168&#34;&gt;https://github.com/tenderlove/psych/blob/7e7ccf6fa4ee084c673d5a52888e2e18a41bfb5b/ext/psych/yaml/emitter.c#L1168&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一応YAMLの仕様としては1024文字までは?を使わなくてもいいらしいですが、何故128byteで切ってるのかは謎です。
+&lt;a href=&#34;http://yaml.org/spec/1.2/spec.html#id2792501&#34;&gt;http://yaml.org/spec/1.2/spec.html#id2792501&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;なお読み込む際は、クエッションマークをつけずに128byte以上のキーを指定しても問題なく読み込めます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux上でrubyのPTYを使うと、Errno::EIOが出る</title>
+      <link>http://localhost:1313/blog/2014/10/26/pty-ieo-error/</link>
+      <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/26/pty-ieo-error/</guid>
+      <description>&lt;p&gt;以下のコードはMac OS X上だと上手く動きますが、Linux上だと&lt;br /&gt;
+&lt;code&gt;Errno::EIO: Input/output error @ io_fillbuf&lt;/code&gt;
+というエラーが起きます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;pty&#39;
+PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid|
+    until r.eof? do
+      puts r.readline
+    end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうやら、読み込んだ際にBSDだとnilになりますが、GNU/LinuxだとErrno::EIOが発生する仕様らしいです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/10238298/ruby-on-linux-pty-goes-away-without-eof-raises-errnoeio&#34;&gt;Ruby on Linux PTY goes away without EOF, raises Errno::EIO&lt;/a&gt;&lt;br /&gt;
+にあるように、resqueするSafePtyを作ることで回避できます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>selenium-webdriverでRuby からブラウザを操作する</title>
+      <link>http://localhost:1313/blog/2014/08/24/selenium/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/24/selenium/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:d157112c7e386a17d6adace835fb3779&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;selenium-webdriverでプログラムからブラウザを制御できる&lt;/li&gt;
+&lt;li&gt;ページのロードをまったり、ページ内のJSを実行したりできる。&lt;/li&gt;
+&lt;li&gt;rubyのgemがあり、簡単に導入できる&lt;/li&gt;
+&lt;li&gt;Firefoxならgemを入れるだけで動かせる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;rubyのスクレイピング方法:d157112c7e386a17d6adace835fb3779&#34;&gt;Rubyのスクレイピング方法&lt;/h1&gt;
+
+&lt;p&gt;Rubyでスクレイピングする方法としては、
+NokogiriやMechanizeが存在します。&lt;/p&gt;
+
+&lt;p&gt;どちらもHTMLを解析してページの要素にアクセスします。&lt;br /&gt;
+ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、&lt;br /&gt;
+Javascriptで動的に変化するページなどにちゃんと対応するのはとても大変です。&lt;/p&gt;
+
+&lt;p&gt;そこで、Webブラウザを直接操作してスクレイピングするライブラリの一つが、&lt;br /&gt;
+selenium-webdriverになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;selenium-webdriverのインストール:d157112c7e386a17d6adace835fb3779&#34;&gt;selenium-webdriverのインストール&lt;/h1&gt;
+
+&lt;p&gt;Rubyではselenium-webdrierのgemをインストールするだけで完了です。&lt;/p&gt;
+
+&lt;p&gt;なお、Google Chromeだとgem以外にもう一つインストールするものがありますが、&lt;br /&gt;
+今回は説明が面倒なので省略し、Firefoxで動かします。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:d157112c7e386a17d6adace835fb3779&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;Selenium::WebDriver.for :firefox&lt;/code&gt;
+で、firefoxのウインドウに対応するWebDriverオブジェクトが取得できます。&lt;br /&gt;
+このWebDriverに対して、移動先のURLやDOM要素の取得などを行えます。&lt;/p&gt;
+
+&lt;p&gt;また、細かい設定などの変更のために、Profileというものが用意されています。&lt;br /&gt;
+これに対して様々な設定をし、WebDriver作成時に設定することで、&lt;br /&gt;
+ブラウザの挙動を変更出来ます。&lt;/p&gt;
+
+&lt;p&gt;以下は、pdfを開いたときに特定のフォルダに保存する設定がされた状態で、&lt;br /&gt;
+Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロードするコードになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &amp;quot;selenium-webdriver&amp;quot;
+
+profile = Selenium::WebDriver::Firefox::Profile.new
+profile[&#39;browser.download.dir&#39;] = &amp;quot;#{File.expand_path(File.dirname(__FILE__))}/down&amp;quot;
+profile[&#39;browser.download.folderList&#39;] = 2
+profile[&#39;browser.download.useDownloadDir&#39;] = true
+profile[&#39;browser.helperApps.neverAsk.saveToDisk&#39;] = &amp;quot;application/pdf&amp;quot;
+profile[&#39;pdfjs.disabled&#39;] = true
+
+driver = Selenium::WebDriver.for :firefox, :profile =&amp;gt; profile
+driver.navigate.to &amp;quot;https://www.google.com/search?as_q=&amp;amp;as_epq=&amp;amp;as_oq=&amp;amp;as_eq=&amp;amp;as_nlo=&amp;amp;as_nhi=&amp;amp;lr=&amp;amp;cr=&amp;amp;as_qdr=all&amp;amp;as_sitesearch=&amp;amp;as_occt=any&amp;amp;safe=images&amp;amp;as_filetype=pdf&amp;amp;as_rights=&amp;amp;gws_rd=ssl&amp;quot;
+
+links = driver.find_element(:class, &#39;r&#39;).find_elements(:tag_name, &#39;a&#39;)
+if links
+  links.each do |element|
+    if element.displayed?
+      element.click
+      exit 0
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AutomatorでEvernoteのノートリンクを置き換える</title>
+      <link>http://localhost:1313/blog/2014/08/16/evernote-url/</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/16/evernote-url/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる&lt;/li&gt;
+&lt;li&gt;Automatorならターミナルを立ち上げずにスクリプトを実行できる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;automatorでスクリプトを実行する:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;Automatorでスクリプトを実行する&lt;/h1&gt;
+
+&lt;p&gt;前回(&lt;a href=&#34;http://ota42y.com/blog/2014/08/10/evernote-link/&#34;&gt;Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした&lt;/a&gt;)
+では、&lt;br /&gt;
+スクリプトの実行方法が微妙たったのでもう少し修正してみました。&lt;/p&gt;
+
+&lt;p&gt;結論としては、Macと標準で入っているAutomatorを使うことで、&lt;br /&gt;
+ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;automatorのワークフローを作る:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;Automatorのワークフローを作る&lt;/h1&gt;
+
+&lt;p&gt;単体のアプリケーションとして実行するため、&lt;br /&gt;
+Automatorを立ち上げアプリケーションを選択します。&lt;/p&gt;
+
+&lt;h2 id=&#34;実行ディレクトリの取得:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;実行ディレクトリの取得&lt;/h2&gt;
+
+&lt;p&gt;私の環境では、clipboardのインストール先はグローバルではなく、&lt;br /&gt;
+スクリプトのあるフォルダにbundler専用のディレクトリを作り、&lt;br /&gt;
+そこにインストールしています。&lt;/p&gt;
+
+&lt;p&gt;そのため、スクリプトを実行するためにはそのパスに移動しないといけません。&lt;br /&gt;
+ですが、Automatorを実行した場合、&lt;br /&gt;
+カレントパスはユーザのホームディレクトリになり、&lt;br /&gt;
+実行したファイルのディレクトリではありません。&lt;br /&gt;
+参考: &lt;a href=&#34;http://mattintosh.hatenablog.com/entry/2013/03/19/152813&#34;&gt;iNSTANTWiNE or Wine.framework と Automator の連携&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そのため、Apple Scriptを先に実行し、&lt;br /&gt;
+Automatorの実行ファイルがあるパスを求め、&lt;br /&gt;
+そこに移動するようにしています。&lt;/p&gt;
+
+&lt;h2 id=&#34;自分自身のパスを求めるapple-script:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;自分自身のパスを求めるApple Script&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;on run {input, parameters}
+set p to POSIX path of (path to me)
+return {p}
+
+return input
+end run
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;AutomatorのAppleScriptを実行を選び、&lt;br /&gt;
+このスクリプトを後述するシェルスクリプトの前に実行するようにします。&lt;br /&gt;
+これでシェルスクリプトに引数としてパスを渡せます。&lt;/p&gt;
+
+&lt;h2 id=&#34;evernote-urlを置換するスクリプト:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;Evernote URLを置換するスクリプト&lt;/h2&gt;
+
+&lt;p&gt;内容はほぼ前回と同じです。&lt;br /&gt;
+ただし、各種環境設定は読み込んでくれないため、&lt;br /&gt;
+sourceで読み込む必要があります。&lt;/p&gt;
+
+&lt;p&gt;また、Automator側で引数の引き渡し方法を&lt;br /&gt;
+&lt;code&gt;引数として&lt;/code&gt;に設定する必要もあります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;source .zshrc
+
+pushd $(dirname $1)
+
+bundle exec ruby -e &amp;quot;
+require &#39;clipboard&#39;
+
+url = Clipboard.paste
+r = Regexp.new(\&amp;quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&amp;quot;)
+result = r.match url
+if result
+  new_url = \&amp;quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&amp;quot;
+  p new_url
+  Clipboard.copy new_url
+end
+&amp;quot;
+
+popd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こうして作ったアプリケーションを.appに書き出し、&lt;br /&gt;
+Alfredから実行することでターミナルを立ち上げることなく、&lt;br /&gt;
+クリップボードのノートリンクを置換できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;完成品:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;完成品&lt;/h1&gt;
+
+&lt;p&gt;できあがったスクリプトは&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace&#34;&gt;https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace&lt;/a&gt;&lt;br /&gt;
+にあります。&lt;/p&gt;
+
+&lt;p&gt;github上では.appがフォルダとして扱われていますが、&lt;br /&gt;
+Mac上ではアプリケーションとして扱われます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
+      <link>http://localhost:1313/blog/2014/08/10/evernote-link/</link>
+      <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/10/evernote-link/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Evernoteのノートリンクの仕様が変わって使い物にならなくなった&lt;/li&gt;
+&lt;li&gt;前の仕様でも動くので変換スクリプトを書いた&lt;/li&gt;
+&lt;li&gt;ただし、Macではスクリプトの実行方法で問題あり&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
+
+&lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。&lt;br /&gt;
+そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。&lt;br /&gt;
+AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、&lt;br /&gt;
+同じようにアプリでノートを開いてくれるため、とても便利でした。&lt;/p&gt;
+
+&lt;p&gt;しかし、最近の変更により、&lt;a href=&#34;https://www.evernote.com/&#34;&gt;https://www.evernote.com/&lt;/a&gt; へのリンクに変わってしまい、&lt;br /&gt;
+ブラウザが起動してノートがEvernoteのサイト上で表示され、&lt;br /&gt;
+そこからさらにEvernoteのアプリが開くという挙動になりました。&lt;/p&gt;
+
+&lt;p&gt;これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、&lt;br /&gt;
+オフライン状態ではノートを開くことができなくなってしまいました。&lt;/p&gt;
+
+&lt;p&gt;正直使い物にならないレベルになってしまったのですが、&lt;br /&gt;
+幸いなことにevernote:///スキームは未だ有効です。&lt;br /&gt;
+また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。&lt;/p&gt;
+
+&lt;h1 id=&#34;リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
+
+&lt;h2 id=&#34;ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;以下は予想であり、正確なものではありません&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Evernoteのhttpsリンクは以下のようになっています。&lt;br /&gt;
+&lt;code&gt;https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/&lt;/code&gt;&lt;br /&gt;
+対して、evernote:///スキームは以下のようになっています。&lt;br /&gt;
+&lt;code&gt;evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;(ノート固有の文字列は二回とも同じ値になります)&lt;/code&gt;　　&lt;/p&gt;
+
+&lt;p&gt;どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。&lt;/p&gt;
+
+&lt;p&gt;Windowsならクリップボードの置換ソフトはたくさんあるのですが、&lt;br /&gt;
+Macでは残念ながらまともな物はありませんでした。&lt;/p&gt;
+
+&lt;p&gt;一応、&lt;a href=&#34;http://www.clipmenu.com/ja/&#34;&gt;ClipMenu&lt;/a&gt;は正規表現で置換ができますが、&lt;br /&gt;
+それを実行するまでにかなりキーストロークが必要なため、見送りました。&lt;br /&gt;
+理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。&lt;/p&gt;
+
+&lt;h2 id=&#34;リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
+
+&lt;p&gt;結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。&lt;br /&gt;
+事前にclipboard gemをインストールしておく必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+
+pushd $(dirname $0)
+
+bundle exec ruby -e &amp;quot;
+require &#39;clipboard&#39;
+
+url = Clipboard.paste
+r = Regexp.new(\&amp;quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&amp;quot;)
+result = r.match url
+if result
+  new_url = \&amp;quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&amp;quot;
+  p new_url
+  Clipboard.copy new_url
+end
+&amp;quot;
+
+popd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これをevernote.commandという名前で保存して、&lt;br /&gt;
+Alfredなどから実行すればいける！！と思ったのですが、&lt;br /&gt;
+実行すると新たなターミナルが起動してスクリプトが実行され、&lt;br /&gt;
+終了後にターミナルがそのまま残るという状態になってしまいました。&lt;/p&gt;
+
+&lt;p&gt;毎回ターミナルを消すのは面倒すぎるので、とりあえずこの手法の採用は見送ることにします。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Railsはアクセスをどう処理しているのか(1)</title>
+      <link>http://localhost:1313/blog/2013/11/10/rails-trace-1/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2013/11/10/rails-trace-1/</guid>
+      <description>&lt;p&gt;ふと、Railsのコントローラーに書いたコードがが実行されるまでに、
+何が起きているのか気になったので、全部追ってみようと思います。&lt;/p&gt;
+
+&lt;p&gt;まだ全部追い切れてないですが、思った以上に長くなったのでとりあえずメモとして出
+してみます。&lt;br /&gt;
+一部Rails力やRuby力が足りなくて追い切れない部分がありますが(´･_･`)&lt;/p&gt;
+
+&lt;p&gt;##準備&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g controller Trace index
+      create  app/controllers/trace_controller.rb
+       route  get &amp;quot;trace/index&amp;quot;
+      invoke  erb
+      create    app/views/trace
+      create    app/views/trace/index.html.erb
+      invoke  test_unit
+      create    test/controllers/trace_controller_test.rb
+      invoke  helper
+      create    app/helpers/trace_helper.rb
+      invoke    test_unit
+      create      test/helpers/trace_helper_test.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/trace.js.coffee
+      invoke    scss
+      create      app/assets/stylesheets/trace.css.scss
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;というコントローラーを作り、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class TraceController &amp;lt; ApplicationController
+  def index
+    caller().each{ |line| p line}
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;というtraceを用意し、ここにアクセスしてみました。&lt;/p&gt;
+
+&lt;p&gt;出力されたログは以下のようになりました。(見にくかったので、GEMまでのパスはGEM_FILE_PATHとしてます)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Started GET &amp;quot;/trace/index&amp;quot; for 127.0.0.1 at 2013-11-02 20:22:17 +0900
+Processing by TraceController#index as HTML
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/base.rb:189:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/rendering.rb:10:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:403:in `_run__2108733439165396685__process_action__callbacks&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/callbacks.rb:17:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/rescue.rb:29:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/notifications.rb:159:in `block in instrument&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/notifications.rb:159:in `instrument&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/instrumentation.rb:30:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/params_wrapper.rb:245:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/railties/controller_runtime.rb:18:in `process_action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/base.rb:136:in `process&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/abstract_controller/rendering.rb:44:in `process&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal.rb:195:in `dispatch&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_controller/metal.rb:231:in `block in action&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:80:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:80:in `dispatch&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:48:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/journey/router.rb:71:in `block in call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/journey/router.rb:59:in `each&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/journey/router.rb:59:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/routing/route_set.rb:680:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/etag.rb:23:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/head.rb:11:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/params_parser.rb:27:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/flash.rb:241:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/cookies.rb:486:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/query_cache.rb:36:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activerecord-4.0.1/lib/active_record/migration.rb:369:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:373:in `_run__4335260606468341692__call__callbacks&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/runtime.rb:17:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/application.rb:97:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/content_length.rb:14:in `call&#39;&amp;quot;
+&amp;quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service&#39;&amp;quot;
+&amp;quot;/RUBY_PATH/webrick/httpserver.rb:138:in `service&#39;&amp;quot;
+&amp;quot;/RUBY_PATH/webrick/httpserver.rb:94:in `run&#39;&amp;quot;
+&amp;quot;/RUBY_PATH/webrick/server.rb:295:in `block in start_thread&#39;&amp;quot;
+  Rendered trace/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 94ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;恐ろしい量(´･_･`)&lt;br /&gt;
+とりあえず、こんな感じで動いてるんだなーというイメージをつかむ程度の理解度で、&lt;br /&gt;
+ゆるふわに読んでいきたいと思います。&lt;/p&gt;
+
+&lt;p&gt;##コードをざっと見たところ&lt;/p&gt;
+
+&lt;p&gt;下の階層にenvを渡して[status, headers, body]の三つを受け取り、それを返す関数がほとんど。&lt;br /&gt;
+関数によってenvに変更を加えたり、戻り値の三つを加工したりとやってること自体はまちまちです。&lt;/p&gt;
+
+&lt;p&gt;ただ、各処理は本当に単一の処理だけをして次に処理を渡しており、&lt;br /&gt;
+ifかswitchがせいぜい一つぐらい、全体も20行程度の関数であることが多い印象です。&lt;/p&gt;
+
+&lt;p&gt;##Railsのコードを読む
+上のログはスタックの上から順に出力しているはずなので、&lt;br /&gt;
+実際の処理は下から上に向かって行われます。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/server.rb#L295&#34;&gt;&amp;rdquo;/RUBY_PATH/webrick/server.rb:295:in `block in start_thread&amp;rsquo;&amp;rdquo;&lt;/a&gt;&lt;br /&gt;
+名前の通りThread.startしてるだけ。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L94&#34;&gt;&amp;rdquo;/RUBY_PATH/webrick/httpserver.rb:94:in `run&amp;rsquo;&amp;rdquo;&lt;/a&gt;&lt;br /&gt;
+名前の通りひたすらループしている。&lt;br /&gt;
+リクエストを受け取って後述のserviceを呼び出し、その後返答を送信する処理を行う。&lt;/p&gt;
+
+&lt;p&gt;また、各種エラーが起こった場合もそれをキャッチし、エラーだということを送信している模様。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/ruby/ruby/blob/v2_0_0_247/lib/webrick/httpserver.rb#L138&#34;&gt;&amp;rdquo;/RUBY_PATH/webrick/httpserver.rb:138:in `service&amp;rsquo;&amp;rdquo;&lt;/a&gt;&lt;br /&gt;
+実際に処理をするところっぽい。&lt;br /&gt;
+search_servletにパスを渡し、どんな返答を返すべきなのかを探して、そこに処理を渡している。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/handler/webrick.rb#L60&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service&amp;rsquo;&amp;rdquo;&lt;/a&gt;&lt;br /&gt;
+名前の通りwebrickから直接値を渡され、処理するところ。&lt;br /&gt;
+webrickからはreqとresという値を受け取っている。&lt;/p&gt;
+
+&lt;p&gt;ハッシュであるreq.meta_varsを元に、必要な値が入ってなければ初期値を入れている。&lt;br /&gt;
+以降の処理はほとんどがこのハッシュを受け渡して処理を行っている。&lt;/p&gt;
+
+&lt;p&gt;また、処理した後に結果を受け取り、引数のresに入れている。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/content_length.rb#L14&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/content_length.rb:14:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+次の処理を読んで、帰ってきた結果にBODYが含まれているなら、&lt;br /&gt;
+ヘッダーにContent-Lengthを計算して追加している。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+Mutex使ってロックをかけているだけみたい&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/application.rb#L97&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/application.rb:97:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+rackから呼び出されるためだけに存在するやつっぽい。&lt;br /&gt;
+引数を少しいじってる程度&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/engine.rb#L511&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+&amp;lsquo;action_dispatch.routes&amp;rsquo;というキーで、ActionDispatch::Routing::RouteSetを追加している。&lt;br /&gt;
+また、SCRIPT_NAMEが存在する場合には、&lt;br /&gt;
+ROUTES_オブジェクトID_SCRIPT_NAMEという名前で、同じ値をコピーして代入している。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/sendfile.rb#L112&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+より下の階層に処理をさせた後ファイル送信の場合にヘッダーの書き換えを行っている。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/static.rb#L64&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+REQUEST_METHODがGETかHEADの時に、ルートからのパスを調べ、&lt;br /&gt;
+ファイルとして存在している場合には否かをチェックして、&lt;br /&gt;
+ある場合にはRack::Fileのcallを呼んでその結果を返している。&lt;br /&gt;
+たぶんRailsに処理させず、ファイルを読んで返してるだけかと。&lt;br /&gt;
+無い場合は特に何もせず下の階層を呼んでいる。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/lock.rb#L17&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/lock.rb:17:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+mutexを使ってロックをかけているだけっぽい。&lt;br /&gt;
+また、下の階層を呼んで得られたbodyに対して、BodyProxyに処理させた結果と入れ替えている。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/cache/strategy/local_cache.rb#L83&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+LocalCacheRegistryにLocalStoreオブジェクトを初期化してセットしてる。&lt;br /&gt;
+コメントによると、簡単なメモリキャッシュに使うらしい。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/runtime.rb#L17&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/runtime.rb:17:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+X-Runtimeヘッダに、ここから下の処理にかかった時間をセットしている。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rack/rack/blob/1.5.2/lib/rack/methodoverride.rb#L21&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+POSTメソッドだった場合に、METHOD_OVERRIDE_PARAM_KEYやHTTP_METHOD_OVERRIDE_HEADERを見て、&lt;br /&gt;
+登録されているメソッド名GET HEAD PUT POST DELETE OPTIONS PATCHだったらそれと入れ替えている。&lt;br /&gt;
+おそらく、PUTとかを実装していないブラウザで、POSTに特別な種類のデータを入れてPUTとして扱うための対応。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/request_id.rb#L21&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+あるならばHTTP_X_REQUEST_IDの値か、無いならばSecureRandom.uuidの結果を、&lt;br /&gt;
+action_dispatch.request_idとして設定している。&lt;br /&gt;
+たぶんリクエストを一意に識別したいんだと思う。&lt;br /&gt;
+また、ヘッダのX-Request-Idにもその価を入れている。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+事前に設定されたタグごとに処理をしているみたい。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L25&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/tagged_logging.rb#L67&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+この辺ちょっと何やってるかわからない(´･_･`)&lt;br /&gt;
+なんか引数で与えられたタグに処理してるっぽいけど、Ruby力が低くて読み取れない (´・ω・｀)&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L20&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+４つ上のところと同じ箇所。&lt;br /&gt;
+上で用意したloggerにブロックで次の処理を呼ぶように指定しているため、&lt;br /&gt;
+ブロックを渡す相手の初期化→ブロック内の実行と、二回同じ箇所にくる。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L38&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+Debugの場合はログ出力にスペースを二つ挟んでいる。&lt;br /&gt;
+その後、ActiveSupport::Nortificationsを使い、&amp;rsquo;request.action_dispatch&amp;rsquo;という名前で、requestを通知している。&lt;br /&gt;
+ここでリクエスト直後に処理を挟むようなライブラリを呼び出しているとか？&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/show_exceptions.rb#L30&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+基本何もしないけど、ここより下の階層から例外が投げられた場合に、&lt;br /&gt;
+例外用のレスポンスを作成して返している。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/debug_exceptions.rb#L17&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+ヘッダにX-Cascadeがpassと設定されている場合、もしくは任意の他のエラーが起きた場合に、&lt;br /&gt;
+エラーレスポンスを作成している。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L76&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/remote_ip.rb:76:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+action_dispatch.remote_ipにアクセスしてきたIPアドレスを保存している。&lt;br /&gt;
+保存はGetIpクラスで行われており、calculate_ipメソッドを実行することで、&lt;br /&gt;
+アクセスしてきたIPアドレスを計算している。&lt;br /&gt;
+そのため、IPアドレスが必要ない場合は計算が行われない。&lt;br /&gt;
+どうやら、GetIpクラスの中でかなり巨大な正規表現を用いてIPアドレスを計算しているらしく、&lt;br /&gt;
+そこの処理が重いため、必要が無ければ計算しないand計算したらメモするようにしているみたい。&lt;br /&gt;
+(この正規表現を使っているみたい&lt;a href=&#34;https://gist.github.com/gazay/1289635&#34;&gt;https://gist.github.com/gazay/1289635&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/reloader.rb#L64&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/reloader.rb:64:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+コールバックとして設定されたprepareとcleanupを処理の最初と最後に呼んでいる。&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L27&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:27:in `call&amp;rsquo;&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;コールバックとして登録された関数に、より下の処理を実行するようにブロックで渡し、&lt;br /&gt;
+ブロック内で例外が出た場合にその例外を返す。
+何でわざわざこんな回りくどい例外の拾い方をしてるのかな？&lt;br /&gt;
+一応、ブロック内で例外が発生したとしても、コールバック関数はそのまま処理が実行され、&lt;br /&gt;
+その後再び同じ例外をなげる事になるんだけれどこれが目的？&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L80&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:80:in `run_callbacks&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/activesupport/lib/active_support/callbacks.rb#L373&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/activesupport-4.0.1/lib/active_support/callbacks.rb:373:in `_run&lt;strong&gt;4335260606468341692&lt;/strong&gt;call__callbacks&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+与えられたシンボル(イベント名？)からコールバック先を見つけ、それに対して引数のブロックを渡している？&lt;br /&gt;
+なんかEVALしてクラスを作ってたりしてて、ちょっと意味不明なことやってる(´･_･`)&lt;/p&gt;
+
+&lt;p&gt;###&lt;a href=&#34;https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/callbacks.rb#L29&#34;&gt;&amp;rdquo;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&amp;rsquo;&amp;rdquo;&lt;/a&gt;
+三つ上の位置から渡されたブロック内部。&lt;br /&gt;
+下の処理を呼んでるだけ。&lt;/p&gt;
+
+&lt;p&gt;##続く
+ここまではRails以前のいろんな処理が多かったですが、&lt;br /&gt;
+ここから先はActiveRecordが現れ始め、いかにもRails本体の動きっぽい感じがします。&lt;br /&gt;
+が、長くなりすぎたのでいったん切ります。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

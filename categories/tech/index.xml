@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech on おおたの物置</title>
+    <link>http://localhost:1313/categories/tech/</link>
+    <description>Recent content in Tech on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Fri, 27 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>JenkinsをHTTP経由で叩く</title>
+      <link>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</link>
+      <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JenkinsはWebベースのUI
+
+&lt;ul&gt;
+&lt;li&gt;操作の敷居が低い&lt;/li&gt;
+&lt;li&gt;使い込むと使いづらくなる&lt;/li&gt;
+&lt;li&gt;反応速度&lt;/li&gt;
+&lt;li&gt;複数のビルド実行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Remote access API
+
+&lt;ul&gt;
+&lt;li&gt;HTTP経由でJobを実行できる&lt;/li&gt;
+&lt;li&gt;ページ表示を待たなくていいため高速&lt;/li&gt;
+&lt;li&gt;プログラムから実行可能&lt;/li&gt;
+&lt;li&gt;ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;jenkinsのjob実行は大変:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
+
+&lt;p&gt;JenkinsはWebブラウザを使ってGUIで操作するため、&lt;br /&gt;
+操作の敷居が低く、簡単に扱えるようになっています。&lt;/p&gt;
+
+&lt;p&gt;ですが、ブラウザやJenkins本体の状態によってはとても遅くなってしまい、&lt;br /&gt;
+ページを切り替えるのに3，4秒待つといった状態まで遅くなると、&lt;br /&gt;
+ビルドをするのがとても辛くなります。&lt;/p&gt;
+
+&lt;p&gt;また、パラメータの組み合わせの分だけビルドしようとすると、&lt;br /&gt;
+さらに辛くなってしまいます。&lt;/p&gt;
+
+&lt;p&gt;このような場合に、Jenkinsに用意されているRemote access APIを使うことで、&lt;br /&gt;
+Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、&lt;br /&gt;
+パラメータの数だけクリックをする必要性から逃れられます。&lt;/p&gt;
+
+&lt;h1 id=&#34;remote-access-api:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;Remote access API&lt;/h1&gt;
+
+&lt;p&gt;詳しくはこちら&lt;br /&gt;
+&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;要するに、パラメータが無い場合は&lt;br /&gt;
+&lt;code&gt;http://HOST/job/JOB_NAME/build&lt;/code&gt;
+に、ある場合は&lt;br /&gt;
+&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters&lt;/code&gt;
+にPOSTで投げるとビルドできます。&lt;/p&gt;
+
+&lt;p&gt;パラメータの投げ方はフォームデータとしてでもいいですし、&lt;br /&gt;
+&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value&lt;/code&gt;
+のように、URLに直接入れても大丈夫のようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルスクリプト:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;サンプルスクリプト&lt;/h1&gt;
+
+&lt;p&gt;3*3=9種類のビルドを一気に実行するスクリプトです&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require &#39;open-uri&#39;
+require &#39;net/http&#39;
+
+platforms = [&amp;quot;ios&amp;quot;,  &amp;quot;android&amp;quot;, &amp;quot;windows&amp;quot;]
+settings =  [&amp;quot;debug&amp;quot;,&amp;quot;release&amp;quot;, &amp;quot;store&amp;quot;]
+
+platforms.product(settings).each do |platform, setting|
+  params = {:PLATFORM =&amp;gt; platform, :SETTING =&amp;gt; setting}
+  p params
+
+  url = URI.parse(&#39;http://HOST/job/JOB_NAME/buildWithParameters&#39;)
+  req = Net::HTTP::Post.new(url.path)
+  req.basic_auth &#39;NAME&#39;, &#39;PASSWORD&#39;
+  req.set_form_data(params)
+  res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
+  case res
+  when Net::HTTPSuccess, Net::HTTPRedirection
+    p &amp;quot;OK&amp;quot;
+  else
+    res.value
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;問題点:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;問題点&lt;/h1&gt;
+
+&lt;p&gt;Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。&lt;br /&gt;
+そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
+      <link>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</link>
+      <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ブランチをパラメーターにするとスクリプトを読めない
+
+&lt;ul&gt;
+&lt;li&gt;中身ではなく変数名のブランチを探しに行く&lt;/li&gt;
+&lt;li&gt;多分バグ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ファイルから読み込むるスクリプトを書けば解決
+
+&lt;ul&gt;
+&lt;li&gt;公式のflow.groovyを参考に&lt;/li&gt;
+&lt;li&gt;変数を使おうとすると面倒&lt;/li&gt;
+&lt;li&gt;java.io.Serializableを実装する必要あり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
+
+&lt;p&gt;(以下に用意されているdocker上のJenkinsで確認しました)&lt;br /&gt;
+&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&#34;&gt;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込んで実行する機能があります。&lt;br /&gt;
+この機能を使うことで、リポジトリの内容とそれに対応するビルド手順を同時にバージョン管理出来るため、&lt;br /&gt;
+ビルド手順の変更がとてもやりやすくなります。&lt;/p&gt;
+
+&lt;p&gt;ですが残念ながら、パラメータで指定したブランチをチェックアウトして読み込むと、以下のエラーになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; git config remote.origin.url /var/lib/jenkins/workflow-plugin-pipeline-demo # timeout=10
+Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo
+&amp;gt; git --version # timeout=10
+&amp;gt; git -c core.askpass=true fetch --tags --progress /var/lib/jenkins/workflow-plugin-pipeline-demo
++refs/heads/*:refs/remotes/origin/*
+&amp;gt; git rev-parse origin/$BRANCH_NAME^{commit} # timeout=10
+&amp;gt; git rev-parse $BRANCH_NAME^{commit} # timeout=10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;パラメータの内容ではなく、パラメータの名前そのものを探しに行っており、おそらくバグと思われます。&lt;br /&gt;
+通常のJobでGit Pluginを使うと問題なくパラメータ指定が出来るため、Workflowのバグと思われます。&lt;/p&gt;
+
+&lt;p&gt;このバグは、Jenkinsでは事前に設定した特定ブランチしかビルドしない場合は問題ありません。&lt;br /&gt;
+ですが、様々なブランチで実行する可能性がある場合、JenkinsのJob設定にスクリプトを書かなければならず、&lt;br /&gt;
+ビルド手順自体の管理が大変になります。&lt;/p&gt;
+
+&lt;p&gt;このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、&lt;br /&gt;
+指定したブランチからスクリプトを読み込んで実行できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
+
+&lt;p&gt;(公式のdockerにも&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin-pipeline-demo/blob/master/flow.groovy&#34;&gt;スクリプト&lt;/a&gt;がありますが、より簡単化したもので説明します)&lt;/p&gt;
+
+&lt;p&gt;以下のようなスクリプトをリポジトリのルートに起きます&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;// build.groovy
+def build(){
+  node(&amp;quot;slave&amp;quot;) {
+    git url: ‘RIPOSITORY_URL&#39;, branch: “$BRANCH_NAME&amp;quot;
+    sh “rake build&amp;quot;
+  }
+}
+return this
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Jobには以下のスクリプトを書きます&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def flow
+node(&amp;quot;master&amp;quot;) {
+    git url: ‘RIPOSITORY_URL&#39;, branch: “$BRANCH_NAME&amp;quot;
+    flow = load &#39;flow.groovy&#39;
+}
+flow.build()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;loadは指定したパスのgroovyスクリプトを読み込み、returnしたオブジェクトを返します。&lt;br /&gt;
+そのため、これでリポジトリ内のファイルをロードして実行することが出来ます。&lt;br /&gt;
+また、buildメソッドをnodeの外側で実行することで、ビルド中はmasterのキューを開けておくことが出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
+
+&lt;p&gt;上記の方式の場合、masterにcloneしてその後にslave上に再度cloneしてビルドを始めています。&lt;br /&gt;
+slaveの選択を凝らない場合は問題ないですが、リリースビルド専用マシンがあったり、&lt;br /&gt;
+特定のミドルウェアを使うビルドの場合など、slaveの選択をパラメータによって切り替えたい場合があります。&lt;/p&gt;
+
+&lt;p&gt;パラメータだけで決定できる場合は問題ありませんが、リポジトリ内のファイルを読み込む必要がある場合、&lt;br /&gt;
+上記のスクリプトの場合でいうところの、node(&amp;ldquo;master&amp;rdquo;)内で処理しなければなりません。&lt;br /&gt;
+当然Job側にそれを書くとメンテが大変になるため、flow.groovy内に書く必要があります。&lt;/p&gt;
+
+&lt;p&gt;このような場合、groovyスクリプトの戻り値で独自クラスを返すことで解決できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
+
+&lt;p&gt;Jenkinsから以下のようなgroovyスクリプトを読み込むことで、slaveの選択も柔軟にできるようになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def buildSlave(slaveName){
+  slave(slaveName){
+    sh &amp;quot;echo ’slave&#39;&amp;quot;
+  }
+}
+
+class FlowStruct implements java.io.Serializable{
+  def slaveName
+  def flow
+  public void build(){
+    flow.buildSlave(slaveName)
+  }
+}
+
+f = new FlowStruct()
+f.slaveName = readFile(“settings/config_${SETTING}&amp;quot;).trim()
+f.flow = this
+
+return f;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;load関数では通常の文はすべて実行されるため、FlowStruct()以降が実行されてから関数が終了します。&lt;br /&gt;
+また、戻り値は固定ではないため、上記のように独自のクラスを作成して返すことができます。&lt;br /&gt;
+この際、戻り値はjava.io.Serializableを実装している必要がありますのでご注意ください。&lt;/p&gt;
+
+&lt;p&gt;これで、複雑な設定をしていたとしても、すべてリポジトリ内のスクリプトで処理することが出来ます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
+      <link>http://localhost:1313/blog/2015/02/10/workflow-plugin/</link>
+      <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/10/workflow-plugin/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jenkinsはjob単位でしかノードに割り振れない
+
+&lt;ul&gt;
+&lt;li&gt;複数ノードで分散ビルドするには設定を駆使する必要がある&lt;/li&gt;
+&lt;li&gt;結果としてjobの数が増えて管理コストが増大する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Workflow Pluginで大幅に改善する
+
+&lt;ul&gt;
+&lt;li&gt;スクリプトからノードを指定してコマンドを実行できる&lt;/li&gt;
+&lt;li&gt;複数のjobを組み合わせていたのが一つのスクリプトですむ&lt;/li&gt;
+&lt;li&gt;スクリプトをVCSに入れればビルド設定のバージョン管理も可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;複数ノードをコントロールするのは難しい:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;複数ノードをコントロールするのは難しい&lt;/h1&gt;
+
+&lt;p&gt;Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、&lt;br /&gt;
+複数のノードで、jobの一部の部分だけを別のノードで実行するなど、&lt;br /&gt;
+ある程度複雑な分散をやろうとすると、Jenkins本体の機能では不足してきます。&lt;/p&gt;
+
+&lt;p&gt;このような問題に対して、これまではBuild Flow Pluginを使う事で解決が可能でしたが、&lt;br /&gt;
+Workflow Pluginを使う事で、さらに簡単に解決することが出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;build-flow-pluginの問題点:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Build Flow Pluginの問題点&lt;/h1&gt;
+
+&lt;p&gt;Build Flow Pluginは基本的に複数の下流ビルドを管理するために作られているため、&lt;br /&gt;
+処理を分けようとするとjobの数が増加していきます。&lt;/p&gt;
+
+&lt;p&gt;例えばネイティブアプリのビルドのようなCPUパワーを使う処理と、パワーを使わないアップロード処理がある場合、&lt;br /&gt;
+一つのノードで全てやるよりも、非力なサーバを確保してアップロード処理をそちらで実行した方が、&lt;br /&gt;
+ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。&lt;br /&gt;
+(また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
+&lt;br /&gt;
+(上段のup#4はup#3の間違いです…)&lt;/p&gt;
+
+&lt;p&gt;ビルドが数十分、数時間かかるような巨大な処理の場合、&lt;br /&gt;
+処理を分散することで稼げる時間はかなりのものになります。&lt;/p&gt;
+
+&lt;p&gt;従来では分割する作業を別のjobにし、かつBuild Flow Plugin用のjobを作る必要があります。&lt;br /&gt;
+さらに、ファイルの受け渡しもできないため、成果物として保存して、&lt;br /&gt;
+次のjobは前のjobの特定のビルド番号の成果物を取り出す…といった風になります。&lt;/p&gt;
+
+&lt;p&gt;jobの数が増えると管理も大変ですし、使う方もどれを使えば良いのか解らなくなります。&lt;br /&gt;
+ここで、Workflow Pluginを使うことで大きく改善することが出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;workflow-pluginを使ったビルド:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Workflow Pluginを使ったビルド&lt;/h1&gt;
+
+&lt;p&gt;Workflow Pluginでは、slaveを選択してコマンドを実行、&lt;br /&gt;
+特定のファイルを別のslaveにコピーして処理を実行ということががスクリプトで書けます。&lt;/p&gt;
+
+&lt;p&gt;例えば以下のように書くことで、masterでファイルを生成してslaveで実行、&lt;br /&gt;
+その後結果をmasterにコピーしてアップロードみたいな事が出来ます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;node(&amp;quot;master&amp;quot;){
+  sh &amp;quot;rake config&amp;quot;
+  archive &amp;quot;config.yml&amp;quot;
+}
+
+node(&amp;quot;slave&amp;quot;){
+  unarchive mapping: [&#39;config.yml&#39; : &#39;./&#39;]
+  sh &amp;quot;rake build&amp;quot;
+  archive &amp;quot;result.zip&amp;quot;
+}
+
+node(&amp;quot;master&amp;quot;){
+  unarchive mapping: [&#39;result.zip&#39; : &#39;.&#39;]
+  sh &amp;quot;rake upload&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、複数平行してのビルド等も出来るため、Jenkinsで複数ノードを使って分散ビルドをしたい場合に、&lt;br /&gt;
+一つのスクリプトで全てをコントロールできるため、とても重宝します。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go言語で一次の最小二乗法を実装した</title>
+      <link>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</link>
+      <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</guid>
+      <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
+暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
+&lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
+      <link>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</link>
+      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</guid>
+      <description>
+
+&lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
+一回目のbundlerに対してbundleが実行されてしまい、&lt;br /&gt;
+別のbundleを呼び出せないという問題が起きました。&lt;br /&gt;
+これはbundlerが設定する環境変数が原因でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bundle exec中に、別のbundlerを実行するとおかしくなる
+
+&lt;ul&gt;
+&lt;li&gt;主にsystemやspawn等を使った場合&lt;/li&gt;
+&lt;li&gt;最初のbundle execと同じものであれば問題は起きない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;bundlerが設定をしている環境変数が問題
+
+&lt;ul&gt;
+&lt;li&gt;別のbundlerを呼ぼうとして元のbundlerが呼ばれている&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Bundler.with_clean_envで回避可能
+
+&lt;ul&gt;
+&lt;li&gt;Bundler.clean_systemでも可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;問題:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;問題&lt;/h1&gt;
+
+&lt;p&gt;以下のような構成かつtestフォルダにいる状態で、&lt;br /&gt;
+&lt;code&gt;bundle install --path vendor/bundle&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;bundle exec test.rb&lt;/code&gt;を実行すると、&lt;br /&gt;
+test2内でbundlerを呼んだ時にエラーになります&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.
+├─ test
+│  │  Gemfile (gemのhello_world_gemを使用)
+│  └─ test.rb
+|
+└─ test2
+   └─ Gemfile (gemのhello-worldを使用)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
+Dir.chdir(&amp;quot;../test2&amp;quot;) do
+  # error
+  system &#39;bundle install --path vendor/bundle&#39;
+  system &#39;bundle exec hello-world&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;エラー文言&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;oh hai thar
+Using hello_world_gem 0.0.3
+Using bundler 1.7.3
+Your bundle is complete!
+It was installed into ./vendor/bundle
+bundler: command not found: hello-world
+Install missing gem executables with `bundle install`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;原因:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;原因&lt;/h1&gt;
+
+&lt;p&gt;bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、&lt;br /&gt;
+そこで指定されているbundlerから実行されていると見なされるため、&lt;br /&gt;
+bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。&lt;br /&gt;
+実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。&lt;/p&gt;
+
+&lt;p&gt;この仕組みのおかげで同じbundleの場合はそのまま実行できるため、&lt;br /&gt;
+1行目のhello_world_gemの呼び出しにbundle execが不要になっています。&lt;br /&gt;
+このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。&lt;/p&gt;
+
+&lt;h1 id=&#34;解決策:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;解決策&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239&#34;&gt;Bundler.with_clean_env&lt;/a&gt;を利用することで、この問題を回避できます。&lt;br /&gt;
+このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。&lt;br /&gt;
+そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。&lt;br /&gt;
+また、コマンドが一つだけの場合は&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251&#34;&gt;Bundler.clean_system&lt;/a&gt;メソッドも使えます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
+Dir.chdir(&amp;quot;../test2&amp;quot;) do
+  Bundler.with_clean_env do
+    # ok
+    system &#39;bundle install --path vendor/bundle&#39;
+    system &#39;bundle exec hello-world&#39;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;補足:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;補足&lt;/h1&gt;
+
+&lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
+これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RAMディスクでiOSのビルド時間を短くする</title>
+      <link>http://localhost:1313/blog/2015/01/23/ram-disk/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/23/ram-disk/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RAMディスクを作ってビルドすると早くなる
+
+&lt;ul&gt;
+&lt;li&gt;SSD上でビルドすると9分&lt;/li&gt;
+&lt;li&gt;RAMディスクでビルドすると6分&lt;/li&gt;
+&lt;li&gt;Androidは未検証だが同じと思われる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Macだととても簡単にRAMディスクが作れる&lt;/li&gt;
+&lt;li&gt;Jenkins等、ビルドが主目的の場合に有効と思われる&lt;/li&gt;
+&lt;li&gt;メモリが余っているならやる価値はある&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mac-os-xでのramディスク作成:60a44556319ed47b4775982878e62460&#34;&gt;Mac OS XでのRAMディスク作成&lt;/h1&gt;
+
+&lt;p&gt;Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。&lt;br /&gt;
+メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。&lt;/p&gt;
+
+&lt;p&gt;また、rootでなくても作成できるため、非常に便利です&lt;/p&gt;
+
+&lt;h2 id=&#34;ディスク作成手順:60a44556319ed47b4775982878e62460&#34;&gt;ディスク作成手順&lt;/h2&gt;
+
+&lt;p&gt;2つコマンドを実行するだけです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hdid -nomount ram://4096000
+# 指定した容量でRAMディスクが作成されます。
+# /dev/disk2等作成された場所が返ります。
+# ファイルシステムがないためマウントは失敗します。
+# そのため、-nomuntをつけています。
+
+diskutil eraseDisk HFS+ RAM /dev/disk2
+# 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします
+# さらに、RAMという名前でマウントします。
+# これにより、/Volumes/RAMでアクセスできるようになります。
+
+hdiutil detach disk2
+# 作成したディスクをアンマウントして削除します
+# ディスクは消滅するのでご注意ください
+# diskutil unmountDisk
+# diskutil eject
+# の組み合わせと同じですが、コマンド一つになるため楽です
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;速度比較:60a44556319ed47b4775982878e62460&#34;&gt;速度比較&lt;/h2&gt;
+
+&lt;p&gt;Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。&lt;br /&gt;
+速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
+
+&lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
+&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
+ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。&lt;/p&gt;
+
+&lt;h1 id=&#34;ビルド時間比較:60a44556319ed47b4775982878e62460&#34;&gt;ビルド時間比較&lt;/h1&gt;
+
+&lt;p&gt;性能的には以上の通りですが、実際にビルド時間にはどれほど影響があるかを調べてみました。&lt;/p&gt;
+
+&lt;p&gt;比較には&lt;a href=&#34;https://github.com/cocos2d/cocos2d-x-samples&#34;&gt;cocos2d-x-sample&lt;/a&gt;を利用しました。&lt;br /&gt;
+ビルドには&lt;a href=&#34;https://github.com/nomad/shenzhen&#34;&gt;shenzhen&lt;/a&gt;を利用し、コマンドラインからiOSのクリーンビルドを行いました。&lt;/p&gt;
+
+&lt;p&gt;残念ながら証明書が無いためipaを作成することが出来ず、&lt;br /&gt;
+かつその場合にshenzhenが何故か終了せず、timeコマンド等で正確な時間計測が出来ませんでした。&lt;br /&gt;
+timeコマンドを使い手作業で計ったところ、SSD上では9分13秒、RAMディスク上では6分01秒とうい結果になりました。&lt;br /&gt;
+手計測による誤差はせいぜい数秒低度なため、3分以上早くなっているのは確実と言えます。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:60a44556319ed47b4775982878e62460&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;R/Wの性能は5倍〜10倍と凄く高速になっている&lt;/li&gt;
+&lt;li&gt;ビルド時間は30%ぐらい減った
+
+&lt;ul&gt;
+&lt;li&gt;ただし、プロジェクトによっては差異があると思われる&lt;/li&gt;
+&lt;li&gt;CPUやメモリの影響もあるため、R/Wの性能向上がそのまま反映されるわけではない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;電源を切ると消えるので使い道は慎重に
+
+&lt;ul&gt;
+&lt;li&gt;開発用よりもビルド専用に使った方が安心&lt;/li&gt;
+&lt;li&gt;Jenkinsのビルドをここで行うのは良い案と思われる&lt;/li&gt;
+&lt;li&gt;ログが残らないので、成果物の保存はよく考える必要あり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;当然ながら空きメモリ容量を消費するので、余っていない場合は注意&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Androidでクリップボードの中身を自動で辞書検索</title>
+      <link>http://localhost:1313/blog/2015/01/21/android-dict/</link>
+      <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/21/android-dict/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clip2dicを使うとクリップボード内を自動で辞書検索する&lt;/li&gt;
+&lt;li&gt;オフラインの別アプリからも検索可能&lt;/li&gt;
+&lt;li&gt;ColorDictとGolden Dictが連携先として優秀&lt;/li&gt;
+&lt;li&gt;英辞郎は形式が違うため辛い&lt;/li&gt;
+&lt;li&gt;Google Driveをビューワーとして使うといい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;ポップアップ辞書アプリ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;ポップアップ辞書アプリ&lt;/h1&gt;
+
+&lt;p&gt;iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。&lt;/p&gt;
+
+&lt;p&gt;Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、&lt;br /&gt;
+&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.jp.readers.clip2dic.lite&amp;amp;hl=ja&#34;&gt;clip2dic&lt;/a&gt;というアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。&lt;/p&gt;
+
+&lt;p&gt;私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、&lt;br /&gt;
+他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;clip2dictから使えるオフライン辞書アプリ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;clip2dictから使えるオフライン辞書アプリ&lt;/h1&gt;
+
+&lt;h2 id=&#34;colordict:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;ColorDict&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&#34;&gt;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;無料の辞書ソフトです。&lt;br /&gt;
+初期状態では日英、英日辞書は入っていませんが、&lt;br /&gt;
+別アプリとして配布されている辞書アプリをインストールすることで、
+対応辞書を増やすことができます。
+&lt;a href=&#34;https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict&#34;&gt;https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict&lt;/a&gt;&lt;br /&gt;
+(おそらく&lt;a href=&#34;https://code.google.com/p/stardict-3/&#34;&gt;こちらの辞書&lt;/a&gt;を使用しています)&lt;br /&gt;
+StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。&lt;/p&gt;
+
+&lt;h2 id=&#34;goldendict:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;GoldenDict&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&#34;&gt;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android.free&amp;amp;hl=ja&#34;&gt;Free版&lt;/a&gt;&lt;br /&gt;
+こちらもColorDictと同じく、辞書ファイルが必要になります。&lt;br /&gt;
+ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、&lt;br /&gt;
+より導入が簡単です（辞書としてはおそらく同じだと思います)。&lt;/p&gt;
+
+&lt;p&gt;このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）&lt;/p&gt;
+
+&lt;p&gt;複数の辞書ファイルを持っている場合は便利ですが、&lt;br /&gt;
+私はそんなに辞書ファイルを持っていないので無料で十分でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。&lt;br /&gt;
+pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br /&gt;
+古すぎてネット上にある手順では出来なさそうなので諦めました。&lt;/p&gt;
+
+&lt;p&gt;また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…&lt;br /&gt;
+いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、&lt;br /&gt;
+今のところ唯一出来たGoogle Driveをビューワーとして使っています。&lt;br /&gt;
+(オフラインでも別アプリからPDFビューワーとして呼び出せる)&lt;/p&gt;
+
+&lt;p&gt;辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。&lt;br /&gt;
+これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Macのghcは改行コードがCRだと動かない</title>
+      <link>http://localhost:1313/blog/2015/01/07/mac-ghc-cr/</link>
+      <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/07/mac-ghc-cr/</guid>
+      <description>
+
+&lt;p&gt;Haskellでどう見ても文法的に間違っていないのに、&lt;br /&gt;
+何故かコンパイルエラーになっていましたが、&lt;br /&gt;
+改行コードが原因でした。&lt;/p&gt;
+
+&lt;p&gt;ちょうど始めたばかりで、実は文法ミスや、&lt;br /&gt;
+バージョン違いとの切り分けが大変でしたが、&lt;br /&gt;
+結果は残念な結果になりました…&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:b90c21fa6dd1b7c0a62d4119617037c8&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GHCではLF、CRLFは正しく動くがCRはダメ&lt;/li&gt;
+&lt;li&gt;PDFからサンプルコードをコピペしたらCRになっていた
+
+&lt;ul&gt;
+&lt;li&gt;Macのプレビューでいくつか試したが、現状全てCRになる&lt;/li&gt;
+&lt;li&gt;PDFが原因か、Preview.appがそういう仕様なのかは用検証&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;調査方法:b90c21fa6dd1b7c0a62d4119617037c8&#34;&gt;調査方法&lt;/h1&gt;
+
+&lt;p&gt;以下のファイルを改行コードLFで保存します。&lt;/p&gt;
+
+&lt;p&gt;lf.hs&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plus :: Integer -&amp;gt; Integer -&amp;gt; Integer
+plus a b = a + b
+
+main = print (plus 40 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;LFのまま実行します&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;file lf.hs
+# lf.hs: ASCII text
+runghc lf.hs
+# 42
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;CRLFに変換して実行します&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nkf -Lw lf.hs &amp;gt; crlf.hs
+file crlf.hs
+# crlf.hs: ASCII text, with CRLF line terminators
+runghc crlf.hs
+42
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;CRに変換して実行します&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nkf -Lm lf.hs &amp;gt; cr.hs
+file cr.hs
+# cr.hs: ASCII text, with CR line terminators
+runghc cr.hs
+# cr.hs:1:62: parse error on input ‘=’
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;失敗しますね(´・_・`)&lt;/p&gt;
+
+&lt;h1 id=&#34;何故crが紛れ込んだか:b90c21fa6dd1b7c0a62d4119617037c8&#34;&gt;何故CRが紛れ込んだか&lt;/h1&gt;
+
+&lt;p&gt;最近のmacは改行コードがLFですし、CRが混入するのは中々ありません。&lt;/p&gt;
+
+&lt;p&gt;今回は、ちょうどサンプルに使っているPDFからコードをコピペしたところ、&lt;br /&gt;
+改行コードがCRになっていたのが原因でした。&lt;/p&gt;
+
+&lt;p&gt;いくつかのPDFでやってみましたが、全てCRになっており、&lt;br /&gt;
+Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分けが必要です。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>インライン展開についての追加調査</title>
+      <link>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</link>
+      <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</guid>
+      <description>
+
+&lt;p&gt;昨日の記事で、インライン展開について調べましたが、&lt;br /&gt;
+よくよく考えると片手落ちだったので追加調査しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;調査内容:5658da961537009d14c2d83db44bc8e6&#34;&gt;調査内容&lt;/h1&gt;
+
+&lt;p&gt;昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、&lt;br /&gt;
+同じファイル内でどのようになるかは調べていませんでしたので、&lt;br /&gt;
+追加調査しました。&lt;/p&gt;
+
+&lt;p&gt;方法は昨日と同じく、-Sオプションをつけて結果を見ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;ソースコード:5658da961537009d14c2d83db44bc8e6&#34;&gt;ソースコード&lt;/h1&gt;
+
+&lt;p&gt;以下のようなファイルを使います&lt;/p&gt;
+
+&lt;p&gt;test.cpp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;quot;func.h&amp;quot;
+
+int main() {
+  TestA test;
+  int a = test.getDirect();
+  int b = test.getThrough();
+  printf(&amp;quot;%d %d\n&amp;quot;, a, b);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;func.h&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
+public:
+  int getDirect();
+  int getThrough();
+private:
+  int getPrivate();
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;func.cpp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
+
+int TestA::getDirect(){
+  return 42;
+}
+
+int TestA::getThrough(){
+  return getDirect() + getPrivate();
+}
+
+int TestA::getPrivate(){
+  return 73;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;func.cppのgetThrough関数に対して、インライン展開が行われる事が予想されますが、&lt;br /&gt;
+getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。&lt;br /&gt;
+getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。&lt;/p&gt;
+
+&lt;h1 id=&#34;最適化しない場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化しない場合&lt;/h1&gt;
+
+&lt;p&gt;3つの関数は全て普通にコンパイルされました。&lt;/p&gt;
+
+&lt;h1 id=&#34;最適化した場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化した場合&lt;/h1&gt;
+
+&lt;h2 id=&#34;同じファイル内のインライン展開:5658da961537009d14c2d83db44bc8e6&#34;&gt;同じファイル内のインライン展開&lt;/h2&gt;
+
+&lt;p&gt;getThrough関数は以下のようになりました。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;__ZN5TestA10getThroughEv:               ## @_ZN5TestA10getThroughEv
+pushq	%rbp
+movq	%rsp, %rbp
+movl	$115, %eax
+popq	%rbp
+retq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;42+73=115なので、インライン展開と最適化がされているのがわかります。&lt;br /&gt;
+そのため、同じファイル内なら、ヘッダに書いていなくても勝手にインライン展開されるみたいです。&lt;/p&gt;
+
+&lt;p&gt;よくよく考えると、includeが処理されるのはプリプロセスのタイミングで処理されます。&lt;br /&gt;
+そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。&lt;br /&gt;
+なので、どのファイルに関数が書かれているかは関係ないと思われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;インライン展開後の関数:5658da961537009d14c2d83db44bc8e6&#34;&gt;インライン展開後の関数&lt;/h2&gt;
+
+&lt;p&gt;getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、&lt;br /&gt;
+関数が出力されていました。&lt;/p&gt;
+
+&lt;p&gt;getDirect関数はpublic指定されているため、&lt;br /&gt;
+外部から参照される場合のために展開後も関数が残されるのは予想通りです。&lt;/p&gt;
+
+&lt;p&gt;getPrivate関数はprivate指定されているため継承先のクラスから呼ばれることはなく、&lt;br /&gt;
+かつこのクラスはfriend指定もされていないため、外部から呼び出されることはありません。&lt;br /&gt;
+そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、&lt;br /&gt;
+この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:5658da961537009d14c2d83db44bc8e6&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;同じファイル内でもインライン展開は行われる
+
+&lt;ul&gt;
+&lt;li&gt;O3ならinline宣言とか要らない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;インライン展開しても、展開元の関数は残る
+
+&lt;ul&gt;
+&lt;li&gt;ヘッダファイルに書いた関数は展開元が消えたので挙動が違う&lt;/li&gt;
+&lt;li&gt;publicはリンクされるまで呼ばれるかわからないので消せない&lt;/li&gt;
+&lt;li&gt;privateは呼ばれない事が確定するはずだが何故か消さない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>インライン展開がどう展開されるのかを調べた</title>
+      <link>http://localhost:1313/blog/2015/01/05/c-inline/</link>
+      <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/05/c-inline/</guid>
+      <description>
+
+&lt;p&gt;C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、&lt;br /&gt;
+関数呼び出しのオーバーヘッドを削減する、インライン展開をします。&lt;/p&gt;
+
+&lt;p&gt;インライン展開はコンパイル時にされるため、&lt;br /&gt;
+実際に行われたのか、どう行われているかは出力されません。&lt;/p&gt;
+
+&lt;p&gt;そのため、コンパイルたコードがどうなってるかを調べ、&lt;br /&gt;
+インライン展開がどう展開しているのかを調べました。&lt;/p&gt;
+
+&lt;p&gt;なお、アセンブラに関してはほとんど説明しません。&lt;br /&gt;
+「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。&lt;/p&gt;
+
+&lt;h1 id=&#34;ソースコード:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;ソースコード&lt;/h1&gt;
+
+&lt;p&gt;以下のソースコードを使います&lt;/p&gt;
+
+&lt;p&gt;test.cpp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;func.h&amp;quot;
+
+int main(){
+  TestA test;
+  int a = test.getNumInCpp();
+  int b = test.getNumInH();
+  int c = test.getNumInline();
+  int d = test.getNumCallCpp();
+  printf(&amp;quot;%d %d %d %d\n&amp;quot;, a, b, c, d);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;func.h&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
+  private:
+  int privateFunc();
+
+  public:
+  int getNumInCpp();
+
+  int getNumInH() {
+    return 42;
+  }
+
+  int getNumCallCpp(){
+    return privateFunc() + getNumInH();
+  }
+
+  int getNumInline();
+
+  //int getNumNormal();
+};
+
+inline int TestA::getNumInline(){return 321;}
+
+// そもそも定義できない
+// int TestA::getNumNormal(){return 111;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;func.cpp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
+
+int TestA::privateFunc(){
+  return 123;
+}
+
+int TestA::getNumInCpp() {
+  return 73 + getNumInH();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;内容としては、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;getNumInCpp()
+
+&lt;ul&gt;
+&lt;li&gt;cpp内に関数の中身が書かれている&lt;/li&gt;
+&lt;li&gt;cpp内のものはインライン展開されないはず&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;getNumInH()
+
+&lt;ul&gt;
+&lt;li&gt;ヘッダファイル内に関数の中身が置かれている&lt;/li&gt;
+&lt;li&gt;インライン展開される&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;getNumInline()
+
+&lt;ul&gt;
+&lt;li&gt;インライン不可能なprivateメソッドと、cpp内の関数を呼ぶ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;getNumCallCpp()
+
+&lt;ul&gt;
+&lt;li&gt;明示的にインライン展開指定をしたもの&lt;/li&gt;
+&lt;li&gt;インライン展開される&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;になります。&lt;/p&gt;
+
+&lt;h1 id=&#34;最適化しない場合:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;最適化しない場合&lt;/h1&gt;
+
+&lt;p&gt;まずは最適化オプションをつけずにコンパイルしました。&lt;br /&gt;
+&lt;code&gt;g++ -S test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;そのため、インライン展開はされません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;subq	$32, %rsp
+leaq	-8(%rbp), %rdi
+movl	$0, -4(%rbp)
+callq	__ZN5TestA11getNumInCppEv # (変数aの計算)
+leaq	-8(%rbp), %rdi
+movl	%eax, -12(%rbp)
+callq	__ZN5TestA9getNumInHEv # (変数bの計算)
+leaq	-8(%rbp), %rdi
+movl	%eax, -16(%rbp)
+callq	__ZN5TestA12getNumInlineEv # (変数cの計算)
+leaq	-8(%rbp), %rdi
+movl	%eax, -20(%rbp)
+callq	__ZN5TestA13getNumCallCppEv # (変数dの計算)
+leaq	L_.str(%rip), %rdi
+movl	%eax, -24(%rbp)
+movl	-12(%rbp), %esi
+movl	-16(%rbp), %edx
+movl	-20(%rbp), %ecx
+movl	-24(%rbp), %r8d
+movb	$0, %al
+callq	_printf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;callqで4種類の関数を全て呼び出しているのがわかります。&lt;br /&gt;
+インライン展開はされていないため、func.hやfunc.cppで直接書いている数値はどこにも出てきません。&lt;/p&gt;
+
+&lt;h1 id=&#34;最適化した場合:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;最適化した場合&lt;/h1&gt;
+
+&lt;p&gt;O3オプションをつけてインライン展開されるようにしました。&lt;br /&gt;
+&lt;code&gt;g++ -S -O3 test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;なお、#で注釈を入れています&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;leaq	-24(%rbp), %rbx
+movq	%rbx, %rdi
+
+# getNumInCppの呼び出し(変数aの計算)
+callq	__ZN5TestA11getNumInCppEv
+movl	%eax, %r14d
+movq	%rbx, %rdi
+# privateFuncの呼び出し(変数dの計算)
+callq	__ZN5TestA11privateFuncEv
+# getNumInHの結果が直接書かれている(変数dの計算)
+leal	42(%rax), %r8d
+leaq	L_.str(%rip), %rdi
+# getNumInHの結果が直接書かれている(変数bの計算)
+movl	$42, %edx
+# getNumInlineの結果が直接書かれている(変数cの計算)
+movl	$321, %ecx
+xorl	%eax, %eax
+movl	%r14d, %esi
+
+# printfの呼び出し
+callq	_printf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最適化した場合、関数呼び出しの量も内容もかなり変化しています。&lt;/p&gt;
+
+&lt;p&gt;一番初めのgetNumInCpp関数はcppに書かれており、インライン展開が出来ないため、&lt;br /&gt;
+最適化しない場合と同じく関数呼び出しをしています。&lt;/p&gt;
+
+&lt;p&gt;次にprivateFunc関数の呼び出しを行っていますが、&lt;br /&gt;
+これはgetNumCallCpp関数が展開され、それ以上展開できないprivateFunc関数と、&lt;br /&gt;
+42を返すだけのgetNumInH関数がさらにインライン展開されたものと思われます。&lt;br /&gt;
+privateFunc関数はprivateメソッドですが、アセンブラではアクセス指定子は無視されます。&lt;/p&gt;
+
+&lt;p&gt;また、321を返すgetNumInline関数もインライン展開されて直接数値が書かれているのがわかります。&lt;/p&gt;
+
+&lt;p&gt;なお、ソースコード上で変数bやcに代入している部分は、&lt;br /&gt;
+直接値を書いてある状態と同じになるようにインライン展開されるため、&lt;br /&gt;
+コンパイラの最適化によって処理順番を入れ替えられ、printfへの呼び出し直前に移動させられています。&lt;/p&gt;
+
+&lt;h1 id=&#34;インライン指定しない場合のエラー:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;インライン指定しない場合のエラー&lt;/h1&gt;
+
+&lt;p&gt;コメントアウトしてあるgetNumNormal関数は、ヘッダファイル内でインライン指定をせずに定義しています。&lt;br /&gt;
+このコメントアウトを戻すと、以下のエラーにより失敗します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;duplicate symbol __ZN5TestA12getNumNormalEv in:
+/var/folders/md/b8zf203j65b0qt_t4439fdvm0000gp/T/test-837e1d.o
+/var/folders/md/b8zf203j65b0qt_t4439fdvm0000gp/T/func-c8b605.o
+ld: 1 duplicate symbol for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;sファイルの作成には成功するため調べてみたところ、
+getNumNormal関数がfunc.sとtest.s両方に定義されていました。&lt;/p&gt;
+
+&lt;p&gt;この関数はインライン展開されないため、func.hを読み込むtest.cppとfunc.cpp両方で定義されてしまい、&lt;br /&gt;
+duplicate symbolになっています。&lt;/p&gt;
+
+&lt;p&gt;インライン展開されるgetNumInline関数は、関数自体はどこにも定義されないため二重定義にはならず、&lt;br /&gt;
+問題なく動いているようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最適化しないとインライン展開されない&lt;/li&gt;
+&lt;li&gt;hファイルの中に実装を書くとインライン展開される
+
+&lt;ul&gt;
+&lt;li&gt;そもそもインライン展開しないとduplicateになる&lt;/li&gt;
+&lt;li&gt;そのため、ヘッダに書いた関数は全てインライン展開されるはず?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;cppファイルに実装を書くとインライン展開されない
+
+&lt;ul&gt;
+&lt;li&gt;include対象に入ってないのだからあたりまえ&lt;/li&gt;
+&lt;li&gt;複数のcppファイルに書かれた内容を繋げるのはリンク時なのでコンパイル後&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>fork関数がどうやってプロセスを分割しているか</title>
+      <link>http://localhost:1313/blog/2015/01/03/unix-fork/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/03/unix-fork/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEOS%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-~UNIX-V6%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF-Software-Design/dp/4774154644&#34;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;br /&gt;
+という本を読んでいます。&lt;/p&gt;
+
+&lt;p&gt;この中で、fork関数がどうやって子プロセスを作り、&lt;br /&gt;
+親子かを識別して別の値を返しているのかが解説されており、&lt;br /&gt;
+とても興味深かったです。&lt;/p&gt;
+
+&lt;p&gt;以下にその概要をまとめました。&lt;/p&gt;
+
+&lt;h1 id=&#34;fork関数:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数&lt;/h1&gt;
+
+&lt;p&gt;Cではfork関数を利用することで、子プロセスを作成することが出来ます。&lt;br /&gt;
+コードとしてはこんな感じですね。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/wait.h&amp;gt;
+
+int main() {
+  pid_t pid = fork();
+  if (pid == 0) {
+    sleep(1);
+    printf(&amp;quot;child!\n&amp;quot;);
+    return 0;
+  }
+
+  printf(&amp;quot;parent!\n&amp;quot;);
+
+  int status;
+  waitpid(pid, &amp;amp;status, 0);
+
+  printf(&amp;quot;parent end\n&amp;quot;);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。&lt;br /&gt;
+ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、&lt;br /&gt;
+ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。&lt;/p&gt;
+
+&lt;p&gt;では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、&lt;br /&gt;
+別の値を返しているのでしょうか。&lt;/p&gt;
+
+&lt;p&gt;これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。&lt;/p&gt;
+
+&lt;h1 id=&#34;fork関数がプロセスの親子を区別する仕組み:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数がプロセスの親子を区別する仕組み&lt;/h1&gt;
+
+&lt;h2 id=&#34;親による子プロセスの作成:7960c44eb9f1312bad029939fcc3410e&#34;&gt;親による子プロセスの作成&lt;/h2&gt;
+
+&lt;p&gt;ライブラリのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/source/s4/fork.s&#34;&gt;source/s4/fork.s&lt;/a&gt;)を実行すると、&lt;br /&gt;
+システムコールによってカーネルのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/sys1.c&#34;&gt;sys/ken/sys1.c&lt;/a&gt;)が実行されます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;fork()
+{
+  register struct proc *p1, *p2;
+
+  p1 = u.u_procp;
+  for(p2 = &amp;amp;proc[0]; p2 &amp;lt; &amp;amp;proc[NPROC]; p2++)
+  if(p2-&amp;gt;p_stat == NULL)
+    goto found;
+  u.u_error = EAGAIN;
+  goto out;
+
+found:
+  if(newproc()) {
+    u.u_ar0[R0] = p1-&amp;gt;p_pid;
+    u.u_cstime[0] = 0;
+    u.u_cstime[1] = 0;
+    u.u_stime = 0;
+    u.u_cutime[0] = 0;
+    u.u_cutime[1] = 0;
+    u.u_utime = 0;
+    return;
+  }
+  u.u_ar0[R0] = p2-&amp;gt;p_pid;
+
+out:
+  u.u_ar0[R7] =+ 2;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このカーネルのfork関数内でnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)を呼び出し、子プロセスを作成しています。&lt;br /&gt;
+その後、newproc関数は0を返すため、カーネルのfork関数で0で帰ってきた場合に、&lt;br /&gt;
+作成した子プロセスのIDをレジスタに乗せ、ライブラリのfork関数で返すようにしています。&lt;/p&gt;
+
+&lt;h2 id=&#34;作成された子プロセス側の処理:7960c44eb9f1312bad029939fcc3410e&#34;&gt;作成された子プロセス側の処理&lt;/h2&gt;
+
+&lt;p&gt;子プロセスは作成された後、実行順番が回ってきたタイミングでswitch関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)により再開します。&lt;br /&gt;
+この関数内では保存されたデータを復元し、最後にsavu関数を実行した関数の呼び出し元に、return 1で戻ります。&lt;/p&gt;
+
+&lt;p&gt;カーネルのfork関数で呼び出しているnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)内では、&lt;br /&gt;
+savu関数が実行されてから子プロセスがコピーされるため、&lt;br /&gt;
+switch関数はnewprocの呼び出し元であるfork関数に1で戻ります。&lt;/p&gt;
+
+&lt;p&gt;これにより、カーネルのfork関数内で呼び出しているnewproc関数は、&lt;br /&gt;
+親プロセスの場合は0が、子プロセスの場合は1が返るようになり、&lt;br /&gt;
+その値を見て自身が親なのか子なのかを判断でき、別々の戻り値を返せるようになっています。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:7960c44eb9f1312bad029939fcc3410e&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;親プロセスはforkで子プロセスを作成してそのまま処理を継続&lt;/li&gt;
+&lt;li&gt;子プロセスは実行順番が回ってきたタイミングで処理を開始
+
+&lt;ul&gt;
+&lt;li&gt;switch関数で復帰した際に、通常とは別の戻り値が返るため親子を区別可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ASUS MeMO Pad 7 ME572CでLink2SDを動かす</title>
+      <link>http://localhost:1313/blog/2014/12/30/link2sd/</link>
+      <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/30/link2sd/</guid>
+      <description>
+
+&lt;p&gt;ME572CにはSDカードが挿せるため、&lt;br /&gt;
+本体の容量が足りなくなっても気軽に容量を追加できます。&lt;/p&gt;
+
+&lt;p&gt;ですが、対応しているアプリしかSDカードにデータが保存できず、&lt;br /&gt;
+対応しているアプリでも機種によっては、&lt;br /&gt;
+上手くSDカードに入らない場合があります。&lt;/p&gt;
+
+&lt;p&gt;実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、&lt;br /&gt;
+ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。&lt;/p&gt;
+
+&lt;p&gt;このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。&lt;br /&gt;
+ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。&lt;/p&gt;
+
+&lt;p&gt;なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。&lt;/p&gt;
+
+&lt;h1 id=&#34;link2sd:6514d702fff248069258ee7a3bdb31d4&#34;&gt;Link2SD&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.Link2SD&amp;amp;hl=ja&#34;&gt;Link2SD&lt;/a&gt;は、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。&lt;br /&gt;
+おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、&lt;br /&gt;
+アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。&lt;/p&gt;
+
+&lt;h1 id=&#34;sdカードの準備:6514d702fff248069258ee7a3bdb31d4&#34;&gt;SDカードの準備&lt;/h1&gt;
+
+&lt;p&gt;このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。&lt;/p&gt;
+
+&lt;p&gt;このうち1つめが普通のSDカード領域として認識され、&lt;br /&gt;
+2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。&lt;br /&gt;
+なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。&lt;/p&gt;
+
+&lt;p&gt;なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、&lt;br /&gt;
+&lt;a href=&#34;http://www.partitionwizard.com/download.html&#34;&gt;Mini Tool&lt;/a&gt;のような専用ソフトでパーティションを作る必要があります。&lt;br /&gt;
+このとき、どちらのパーティションもPrimaryに設定しておく必要があります。&lt;/p&gt;
+
+&lt;p&gt;パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。&lt;br /&gt;
+ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。&lt;br /&gt;
+fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、&lt;br /&gt;
+NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/p&gt;
+
+&lt;h1 id=&#34;アプリをsdカードに移す:6514d702fff248069258ee7a3bdb31d4&#34;&gt;アプリをSDカードに移す&lt;/h1&gt;
+
+&lt;p&gt;Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。&lt;br /&gt;
+ただし、データをSDカードに移動する場合は&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.link2sdplus&amp;amp;hl=ja&#34;&gt;有料アドオン&lt;/a&gt;が必要です。&lt;/p&gt;
+
+&lt;p&gt;Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。&lt;br /&gt;
+&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-12-30-link2sd.png&#34; alt=&#34;Link2SD&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。&lt;br /&gt;
+ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ASUS MeMO Pad 7 ME572CをRoot化した</title>
+      <link>http://localhost:1313/blog/2014/12/28/memopad-root/</link>
+      <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/28/memopad-root/</guid>
+      <description>
+
+&lt;p&gt;ASUS MeMO Pad 7 ME572Cを買いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/&#34;&gt;タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nexus 9とかと迷いましたが、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コストパフォーマンスがいい
+
+&lt;ul&gt;
+&lt;li&gt;安くてそこそこ高性能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SDカードが使える
+
+&lt;ul&gt;
+&lt;li&gt;気軽に容量増強出来る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった点から、これに決めました。&lt;/p&gt;
+
+&lt;p&gt;ですが実際に届いて起動してみたところ、&lt;br /&gt;
+余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。&lt;/p&gt;
+
+&lt;p&gt;特に「やることリスト」(&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.asus.task&amp;amp;hl=ja&#34;&gt;ASUS Do It Later&lt;/a&gt;)というアプリは、&lt;br /&gt;
+定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。&lt;/p&gt;
+
+&lt;p&gt;そのため、Rootを取って無効化することにしました。&lt;/p&gt;
+
+&lt;h1 id=&#34;root化手順:da1b4865caf34b84064437e98e031591&#34;&gt;Root化手順&lt;/h1&gt;
+
+&lt;p&gt;RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。&lt;br /&gt;
+(&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;/28の最新版は1.4.6.8r)&lt;/p&gt;
+
+&lt;p&gt;手順としては以下の通りになります。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RootZenFoneをインストール&lt;/li&gt;
+&lt;li&gt;Wifiと3Gを機内モードにして切る&lt;/li&gt;
+&lt;li&gt;RootZenFoneを起動&lt;/li&gt;
+&lt;li&gt;通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す&lt;/li&gt;
+&lt;li&gt;変化がなくなるまで待つ
+
+&lt;ul&gt;
+&lt;li&gt;色々ポップアップが出たりする&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
+
+&lt;ul&gt;
+&lt;li&gt;この時点でRoot化出来ています&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;AsusLiveDemoというアカウントが追加されているため削除&lt;/li&gt;
+&lt;li&gt;RootZenFonを消す&lt;/li&gt;
+&lt;li&gt;通信を有効か&lt;/li&gt;
+&lt;li&gt;SuperSuが自動でインストールされているので、最新版に更新&lt;/li&gt;
+&lt;li&gt;SuperSuを起動し、データ更新後に再起動を促されるので再起動&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。&lt;br /&gt;
+あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Graphvizを使うと、グラフ描画がとても楽になる</title>
+      <link>http://localhost:1313/blog/2014/12/22/graphviz/</link>
+      <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/22/graphviz/</guid>
+      <description>
+
+&lt;p&gt;こんな感じの画像を作る際に&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-12-22-grahviz.png&#34; alt=&#34;グラフ&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;これまではパワポの図形機能とかペイントで頑張って作っていましたが、&lt;br /&gt;
+Graphvizを使うと自動で出力できます。&lt;/p&gt;
+
+&lt;h2 id=&#34;graphvizとは:3a4615046c4807ddfa87121a5586dd26&#34;&gt;Graphvizとは&lt;/h2&gt;
+
+&lt;p&gt;AT&amp;amp;Tが作ったグラフ描画のツールパッケージです。&lt;br /&gt;
+&lt;a href=&#34;http://ja.wikipedia.org/wiki/Graphviz&#34;&gt;http://ja.wikipedia.org/wiki/Graphviz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;DOT言語というグラフ記述言語で記述されたグラフを、画像ファイル等に変換することができます。&lt;/p&gt;
+
+&lt;p&gt;グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、&lt;br /&gt;
+SVGで出力できるため、他のソフトで調整ができます。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:3a4615046c4807ddfa87121a5586dd26&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;h2 id=&#34;インストール:3a4615046c4807ddfa87121a5586dd26&#34;&gt;インストール&lt;/h2&gt;
+
+&lt;p&gt;brew gts graphviz&lt;/p&gt;
+
+&lt;h2 id=&#34;dotファイルの作成:3a4615046c4807ddfa87121a5586dd26&#34;&gt;dotファイルの作成&lt;/h2&gt;
+
+&lt;p&gt;最初に見せたグラフは以下のように作ります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;digraph G {
+  Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Koto[image=&amp;quot;th_koto.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Umi[image=&amp;quot;th_umi.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Maki[image=&amp;quot;th_maki.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Rin[image=&amp;quot;th_rin.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Pana[image=&amp;quot;th_pana.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Nico[image=&amp;quot;th_nico.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Nozo[image=&amp;quot;th_nozo.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Eli[image=&amp;quot;th_eli.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
+  Yuki[label=&amp;quot;雪穂&amp;quot;];
+
+  Nico -&amp;gt; Maki;
+  Koto -&amp;gt; Umi;
+  Rin -&amp;gt; Pana;
+  Rin -&amp;gt; Maki;
+  Nozo -&amp;gt; Eli;
+  Nozo -&amp;gt; Nico;
+  Koto -&amp;gt; Hono[dir = none];
+  Hono -&amp;gt; Umi;
+  Hono -&amp;gt; Nico;
+  Hono -&amp;gt; Maki;
+  Hono -&amp;gt; Yuki;
+  Hono -&amp;gt; Eli;
+  Hono -&amp;gt; Rin;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;初めにレイアウトに使うアルゴリズムを書きます。&lt;br /&gt;
+次に画像だけ、文字だけといったノードを定義し、その関係を記述します。&lt;/p&gt;
+
+&lt;h2 id=&#34;出力:3a4615046c4807ddfa87121a5586dd26&#34;&gt;出力&lt;/h2&gt;
+
+&lt;p&gt;上記のファイルをcp.dotという名前で保存し、以下のコマンドを実行するとSVGファイルに出力されます。&lt;br /&gt;
+&lt;code&gt;dot -Tsvg cp.dot -o cp.svg&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;SVG以外にもgifやpngへの出力が可能です。&lt;br /&gt;
+&lt;code&gt;dot -Tpng cp.dot -o cp.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;レイアウト詳細:3a4615046c4807ddfa87121a5586dd26&#34;&gt;レイアウト詳細&lt;/h1&gt;
+
+&lt;p&gt;配置アルゴリズム等はこちらの記事が参考になると思います。&lt;br /&gt;
+&lt;a href=&#34;http://melborne.github.io/2013/04/02/graphviz-layouts/&#34;&gt;Graphvizレイアウトサンプル&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GoのORマッパーGORMが便利</title>
+      <link>http://localhost:1313/blog/2014/12/19/gorm/</link>
+      <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/19/gorm/</guid>
+      <description>&lt;p&gt;golangではmysqldriverでmysqlにアクセスできますが、&lt;br /&gt;
+一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2014/10/04/go-mysql/&#34;&gt;goでmysqlを使う&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そこでいろいろ探していたところ、&lt;br /&gt;
+ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/jinzhu/gorm&#34;&gt;https://github.com/jinzhu/gorm&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。&lt;br /&gt;
+リレーションも勝手に貼ってくれるみたいです。&lt;br /&gt;
+ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、&lt;br /&gt;
+順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。&lt;br /&gt;
+(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;github.com/jinzhu/gorm&amp;quot;
+_ &amp;quot;github.com/lib/pq&amp;quot;
+_ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;
+)
+
+type User struct {
+  Id           int64
+  Name         string  `sql:&amp;quot;size:255&amp;quot;`
+  Emails            []Email         // One-To-Many relationship (has many)
+}
+
+type Email struct {
+  Id         int64
+  UserId     int64   // Foreign key for User (belongs to)
+  Email      string  `sql:&amp;quot;type:varchar(100);&amp;quot;` // Set field&#39;s type
+}
+
+func main(){
+  db, err := gorm.Open(&amp;quot;mysql&amp;quot;, &amp;quot;root@/testdb?charset=utf8&amp;amp;parseTime=True&amp;quot;)
+  fmt.Println(err)
+
+  db.DB()
+  db.AutoMigrate(&amp;amp;Email{})
+  db.AutoMigrate(&amp;amp;User{})
+
+  user := User{
+    Name:            &amp;quot;ota42y&amp;quot;,
+    Emails:          []Email{ {Email: &amp;quot;ota42y@example.com&amp;quot;}, {Email: &amp;quot;ota42y@example@example.com&amp;quot;} },
+  }
+  db.Create(&amp;amp;user)
+
+  var me User
+  db.Where(&amp;quot;name = ?&amp;quot;, &amp;quot;ota42y&amp;quot;).First(&amp;amp;me)
+  fmt.Println(me)
+
+  var emails []Email
+  db.Model(&amp;amp;me).Related(&amp;amp;emails)
+  fmt.Println(emails)
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

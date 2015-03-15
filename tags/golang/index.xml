@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on おおたの物置</title>
+    <link>http://localhost:1313/tags/golang/</link>
+    <description>Recent content in Golang on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 03 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Go言語で一次の最小二乗法を実装した</title>
+      <link>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</link>
+      <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</guid>
+      <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
+暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
+&lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GoのORマッパーGORMが便利</title>
+      <link>http://localhost:1313/blog/2014/12/19/gorm/</link>
+      <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/19/gorm/</guid>
+      <description>&lt;p&gt;golangではmysqldriverでmysqlにアクセスできますが、&lt;br /&gt;
+一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2014/10/04/go-mysql/&#34;&gt;goでmysqlを使う&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そこでいろいろ探していたところ、&lt;br /&gt;
+ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/jinzhu/gorm&#34;&gt;https://github.com/jinzhu/gorm&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。&lt;br /&gt;
+リレーションも勝手に貼ってくれるみたいです。&lt;br /&gt;
+ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、&lt;br /&gt;
+順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。&lt;br /&gt;
+(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;github.com/jinzhu/gorm&amp;quot;
+_ &amp;quot;github.com/lib/pq&amp;quot;
+_ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;
+)
+
+type User struct {
+  Id           int64
+  Name         string  `sql:&amp;quot;size:255&amp;quot;`
+  Emails            []Email         // One-To-Many relationship (has many)
+}
+
+type Email struct {
+  Id         int64
+  UserId     int64   // Foreign key for User (belongs to)
+  Email      string  `sql:&amp;quot;type:varchar(100);&amp;quot;` // Set field&#39;s type
+}
+
+func main(){
+  db, err := gorm.Open(&amp;quot;mysql&amp;quot;, &amp;quot;root@/testdb?charset=utf8&amp;amp;parseTime=True&amp;quot;)
+  fmt.Println(err)
+
+  db.DB()
+  db.AutoMigrate(&amp;amp;Email{})
+  db.AutoMigrate(&amp;amp;User{})
+
+  user := User{
+    Name:            &amp;quot;ota42y&amp;quot;,
+    Emails:          []Email{ {Email: &amp;quot;ota42y@example.com&amp;quot;}, {Email: &amp;quot;ota42y@example@example.com&amp;quot;} },
+  }
+  db.Create(&amp;amp;user)
+
+  var me User
+  db.Where(&amp;quot;name = ?&amp;quot;, &amp;quot;ota42y&amp;quot;).First(&amp;amp;me)
+  fmt.Println(me)
+
+  var emails []Email
+  db.Model(&amp;amp;me).Related(&amp;amp;emails)
+  fmt.Println(emails)
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golangでYAMLファイルを読み込んで構造体に入れる</title>
+      <link>http://localhost:1313/blog/2014/12/03/go-yaml-struct/</link>
+      <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/03/go-yaml-struct/</guid>
+      <description>
+
+&lt;p&gt;使い方がかなり特殊だったのでメモ&lt;br /&gt;
+(ドキュメントには書いてありますが…)&lt;/p&gt;
+
+&lt;p&gt;goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、&lt;br /&gt;
+データを構造体にセットした状態で読み込むことが出来ます。&lt;/p&gt;
+
+&lt;p&gt;特にGoでは構造体を使わない場合、&lt;a href=&#34;http://ota42y.com/blog/2014/11/13/go-yaml/&#34;&gt;interfaceへの変換を書きまくる事になる&lt;/a&gt;ので、&lt;br /&gt;
+できる限り構造体を利用した方がお勧めです。&lt;/p&gt;
+
+&lt;p&gt;以下のように、YAMLのキーとGoの構造体の名前を揃えることで、&lt;br /&gt;
+YAMLから構造体に直接データを代入できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Data struct {
+  UserId      int
+  UserName    string `yaml:&amp;quot;user_name&amp;quot;`
+  Follownum   int    `yaml:&amp;quot;followNum&amp;quot;`
+  MessageText string
+  invaliddata string
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;userid: 123
+user_name: name
+followNum: 42
+messageText: text
+invaliddata: data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;後述するコードでYAMLを読み込むと、出力は以下の通りになります、&lt;br /&gt;
+&lt;code&gt;=&amp;gt; {123 name 42  }&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;UserIdに123、UserNameにname、Follownumに42、&lt;br /&gt;
+MessageTextとinvaliddataは空になっています。&lt;/p&gt;
+
+&lt;h1 id=&#34;構造体とyamlの対応付け仕様:9c9f0a37dc8798df1ff5271f6b1be043&#34;&gt;構造体とYAMLの対応付け仕様&lt;/h1&gt;
+
+&lt;p&gt;特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。&lt;br /&gt;
+対応するキーは以下のような仕様になっているようです。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける
+
+&lt;ul&gt;
+&lt;li&gt;UserIdはuseridと対応付けられます&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます
+
+&lt;ul&gt;
+&lt;li&gt;messageTextはダメで、messagetextでないといけません&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;構造体のメンバは大文字から始まる
+
+&lt;ul&gt;
+&lt;li&gt;そのため、invaliddataにはデータ入っていません&lt;/li&gt;
+&lt;li&gt;大文字から始まれば、途中が大文字でも大丈夫です&lt;/li&gt;
+&lt;li&gt;UserIdはuseridと対応付けられます&lt;/li&gt;
+&lt;li&gt;途中を大文字にしても、全て小文字のキーを見に行きます&lt;/li&gt;
+&lt;li&gt;MessageTextはmessagetextと対応付けられます&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;明示的に対応を設定することもできる
+
+&lt;ul&gt;
+&lt;li&gt;UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない)&lt;/li&gt;
+&lt;li&gt;Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:9c9f0a37dc8798df1ff5271f6b1be043&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;gopkg.in/yaml.v2&amp;quot;
+  &amp;quot;io/ioutil&amp;quot;
+  &amp;quot;fmt&amp;quot;
+)
+
+type Data struct {
+  UserId      int
+  UserName    string `yaml:&amp;quot;user_name&amp;quot;`
+  Follownum   int     `yaml:&amp;quot;followNum&amp;quot;`
+  MessageText string
+  invaliddata string
+}
+
+func main() {
+  buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;)
+  if err != nil {
+    panic(err)
+  }
+
+  var d Data
+  err = yaml.Unmarshal(buf, &amp;amp;d)
+  fmt.Println(d)
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>参加記録 Go Conference 2014 autumn</title>
+      <link>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</link>
+      <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://gocon.connpass.com/event/9748/&#34;&gt;Go Conference 2014 autumn&lt;/a&gt;に参加しました。&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/751700&#34;&gt;togetterまとめ&lt;/a&gt;&lt;br /&gt;
+大体スライドが公開されているので、正確な内容はそちらをどうぞ。&lt;/p&gt;
+
+&lt;p&gt;#まとめ
+- Go言語のシンプルさへのこだわりが凄い
+- 開発陣の徳の高さが凄い
+  - 難しい部分は俺らに任せておけ！的な
+- 明日から使えるGo言語的な情報が盛りだくさん
+  - エラーを_で無視して済みません…(´･_･`)
+- 椅子が痛い
+  - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです…
+- 英語頑張ろう
+  - 日本語スライドありがたや…&lt;/p&gt;
+
+&lt;p&gt;#Keynote1: Rob Pike (@rob_pike) (45min)
+スライドは未公開？&lt;/p&gt;
+
+&lt;p&gt;Go言語の設計者&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%83%91%E3%82%A4%E3%82%AF&#34;&gt;ロブ・パイク&lt;/a&gt;さんのGo言語の思想とかについての話です。&lt;/p&gt;
+
+&lt;p&gt;Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。&lt;br /&gt;
+他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、&lt;br /&gt;
+Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。&lt;br /&gt;
+書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。&lt;/p&gt;
+
+&lt;p&gt;プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。&lt;br /&gt;
+言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、&lt;br /&gt;
+必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。&lt;br /&gt;
+おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。&lt;/p&gt;
+
+&lt;p&gt;簡潔な記述でも理解するのが大変な複雑な事ができるため、&lt;br /&gt;
+簡潔なコード≠単純なコードと言えるのかなと思いました。&lt;/p&gt;
+
+&lt;p&gt;また、Goではコード側ができる限り簡単になるように、&lt;br /&gt;
+複雑な事を可能な限り言語側で隠蔽しているとも言われていました。&lt;br /&gt;
+実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、&lt;br /&gt;
+使う側からはそれほど大変さを感じることなく使えます。&lt;/p&gt;
+
+&lt;p&gt;ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…&lt;/p&gt;
+
+&lt;p&gt;#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)
+&lt;a href=&#34;http://ukai-go-talks.appspot.com/2014/gocon.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。&lt;/p&gt;
+
+&lt;p&gt;Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、&lt;br /&gt;
+ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。&lt;/p&gt;
+
+&lt;p&gt;これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、&lt;br /&gt;
+是非ともスライドが公開されるといいなーと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;lt1:6598e8fa7f3b91e17df561d14461284a&#34;&gt;LT1&lt;/h1&gt;
+
+&lt;h2 id=&#34;gardener-go:6598e8fa7f3b91e17df561d14461284a&#34;&gt;Gardener &amp;amp; Go&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1cPtFXGVgWcjG7qpwNz7jLbMh9BUW13dM_n1-ls-2u0s/edit#slide=id.p&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。&lt;br /&gt;
+&lt;a href=&#34;http://ec-mail.freegufo.com/items/910014&#34;&gt;GoCon 2014 Autumn Tシャツ | FreeGufo メール便対&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;セッション:6598e8fa7f3b91e17df561d14461284a&#34;&gt;セッション&lt;/h1&gt;
+
+&lt;p&gt;##App Engine for Golang Performance
+&lt;a href=&#34;http://sinmetal-slide.appspot.com/2014/gocon1130/gaego.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@sinmetalさんのGAEとMVM上でのGoとJavaの速度比較です。&lt;br /&gt;
+Goは基本的に倍ぐらい速く、JavaはJavaらしくJVMの起動に時間がかかるといった結果みたいです。&lt;/p&gt;
+
+&lt;p&gt;##Golang @ISUCON
+&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-at-isucon&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@y_matsuwitterさんのISUCONでGo言語を使った話です。&lt;br /&gt;
+ISUCONでやった、Go言語の様々な効率化についてまとめられていました。&lt;/p&gt;
+
+&lt;p&gt;話を聞くとかなり複雑な事をしているようですが、スライドのコードだととても簡単そうで凄いです。&lt;/p&gt;
+
+&lt;p&gt;##mackerel-agent 徹底解説
+&lt;a href=&#34;http://songmu.github.io/slides/gocon2014-autumn/#0&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@Songmuさんによる、mackerel-agentのソースコード解説です。&lt;br /&gt;
+NewRelicっぽいサービスですが、OSSな分色々出来そうで夢が広がる感じです。&lt;/p&gt;
+
+&lt;p&gt;##Why my Go program is slow?
+&lt;a href=&#34;http://www.slideshare.net/InadaNaoki/gocon2014-pprof&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@methaneさんによるCPUプロファイリングについての発表です。&lt;br /&gt;
+アセンブラまで出してくれるpprofの凄さをひしひしと感じます…&lt;/p&gt;
+
+&lt;p&gt;また、Goでは他の関数呼び出しのない末端の関数をインライン展開してくれるので、&lt;br /&gt;
+関数に分けると早かったり、&lt;br /&gt;
+関数呼び出しで呼び出し側が使っているレジスタを全部待避するので、&lt;br /&gt;
+呼び出された側が使った分だけ待避する？Cよりも関数呼び出しは遅いなど、&lt;br /&gt;
+Goの速度についてしっかりと説明されています。&lt;/p&gt;
+
+&lt;p&gt;##Golang JP Community
+&lt;a href=&#34;https://docs.google.com/presentation/d/1UTi4uqt4sOrQ1dHJE0y8UB9BR9iqDK7dLP57QAfrOX4/pub?start=false&amp;amp;loop=false&amp;amp;delayms=3000&amp;amp;slide=id.g4f1d3881c_00&#34;&gt;資料&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=LJvEIjRBSDA&#34;&gt;資料２&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@qt_luigiさんの日本のGo言語コミュニティの話でした。&lt;br /&gt;
+いくつか知っているものもありましたが、思った以上に大量にあって驚きました…&lt;/p&gt;
+
+&lt;p&gt;##(タイトルメモり損ねました…GengoでGoの利用事例なお話)
+PHPのAPIをGoに置き換えていったら、500msが10msになったというお話です。&lt;br /&gt;
+クリティカルな所ではなく影響の少ないところから、&lt;br /&gt;
+一気にではなく少しずつ置き換えていくといいそうです。&lt;/p&gt;
+
+&lt;p&gt;Goで作られたデプロイツールが便利そうでした。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/gengo/goship&#34;&gt;https://github.com/gengo/goship&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;##NSQ-Centric Architecture
+&lt;a href=&#34;http://www.slideshare.net/guregu/nsqcentric-architecture-gocon-autumn-2014&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/guregu&#34;&gt;gureguさん&lt;/a&gt;のNSQの話です。&lt;/p&gt;
+
+&lt;p&gt;bit.lyが作ったGo製のメッセージキューである&lt;a href=&#34;https://github.com/bitly/nsq&#34;&gt;NSQ&lt;/a&gt;を使って、&lt;br /&gt;
+チャットアプリを作った発表でした。&lt;/p&gt;
+
+&lt;p&gt;##(Go言語のコンパイラをハックした話)
+&lt;a href=&#34;http://moriyoshi.hatenablog.com/entry/2014/06/03/121728&#34;&gt;参考資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@moriyoshitさんがGo言語で寿司関数を作りたいがために？w　Goのコンパイラをハックしたのと、&lt;br /&gt;
+コンパイラの中についてのお話でした。&lt;/p&gt;
+
+&lt;p&gt;教科書通りのコンパイラの作りしてるんだなーという印象でした。&lt;br /&gt;
+魔境と噂のGCCとかはどうなってるんだろう…と思いました。&lt;/p&gt;
+
+&lt;h1 id=&#34;lt:6598e8fa7f3b91e17df561d14461284a&#34;&gt;LT&lt;/h1&gt;
+
+&lt;h2 id=&#34;nginx-build:6598e8fa7f3b91e17df561d14461284a&#34;&gt;nginx-build&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/nginx-build&#34;&gt;https://speakerdeck.com/cubicdaiya/nginx-build&lt;/a&gt;&lt;br /&gt;
+NginxをビルドするためのツールのDLと、ビルドをやってくれるツールを書いたそうです。&lt;br /&gt;
+バイナリ単体で配布できますし、こういう用途には便利そうな感じ…&lt;/p&gt;
+
+&lt;h2 id=&#34;楽天でterraformを使てる話:6598e8fa7f3b91e17df561d14461284a&#34;&gt;(楽天でTerraformを使てる話)&lt;/h2&gt;
+
+&lt;p&gt;AWSとかのインスタンスをコードから立ち上げられるTerraformを利用して、&lt;br /&gt;
+楽天社内でinfrastructure as codeを進めている話です。&lt;/p&gt;
+
+&lt;p&gt;##ビルドパイプラインツールをGoで作った話
+&lt;a href=&#34;https://speakerdeck.com/ainoya/birudopaipurainturuwogodezuo-tutahua&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;個人的にはJenkinsでビルドパイプラインっぽいのを作るのには、&lt;br /&gt;
+いろんな点からうんざりしていたので、なんか凄い便利そうで気になります！　　
+似たようなのを作ろうと画策していたので、先を越された感はありますが…&lt;/p&gt;
+
+&lt;p&gt;##go/parser, go/astの話
+&lt;a href=&#34;http://yuroyoro.net/gocon_2014_autumn_lt/#/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Goの抽象構文木を生成する標準パッケージの紹介と、可視化するツールを作ったお話です。&lt;br /&gt;
+Goの&lt;a href=&#34;http://ja.wikipedia.org/wiki/Lint&#34;&gt;lint&lt;/a&gt;ではここで紹介した技術を使って実装しているらしいです。&lt;/p&gt;
+
+&lt;p&gt;##Unit-testing programs depend on I/O in Go
+&lt;a href=&#34;https://yuya-takeyama.github.io/presentations/2014/11/30/gocon_2014_autumn/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;表題の通り、I/Oに依存したテストについてのお話です。&lt;br /&gt;
+Keynote2の@fumitoshi_ukaiさんも言っていたように、&lt;br /&gt;
+データを読み書きするだけでファイルとしての挙動が不要な場合は、&lt;br /&gt;
+&lt;code&gt;os.File&lt;/code&gt;ではなく&lt;code&gt;io.Reader&lt;/code&gt;や&lt;code&gt;io.Writer&lt;/code&gt;を使うと、ファイル以外の引数も与えられるため、&lt;br /&gt;
+汎用性が上がり、テストもしやすいそうです。&lt;/p&gt;
+
+&lt;p&gt;##(consul.ioの話)
+&lt;a href=&#34;https://consul.io/&#34;&gt;https://consul.io/&lt;/a&gt;を使うと、色々はかどるらしいが…&lt;br /&gt;
+ごめんなさい理解できてないです(´･_･`)&lt;/p&gt;
+
+&lt;p&gt;##Togetterまとめ
+Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。&lt;br /&gt;
+振り返る際にとてもお世話になったので、感謝の限りです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golangでYAMLファイルを読み込む</title>
+      <link>http://localhost:1313/blog/2014/11/13/go-yaml/</link>
+      <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/11/13/go-yaml/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/go-yaml/yaml&#34;&gt;https://github.com/go-yaml/yaml&lt;/a&gt;を使う事で、
+goでYAMLを扱うことが出来ます。&lt;/p&gt;
+
+&lt;p&gt;サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、&lt;br /&gt;
+以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。&lt;/p&gt;
+
+&lt;p&gt;またExampleには型を決めて読み込む方法しか乗っていませんが、&lt;br /&gt;
+以下の例では、&lt;a href=&#34;http://qiita.com/yamasaki-masahide/items/d6e406c4c11d5870a1c6&#34;&gt;go で yaml 等を「map[interface{}]interface{}」型で読み込んだ際の動的型の参照方法&lt;/a&gt;&lt;br /&gt;
+を参考に型を決めずにMapで読み込んでいます。&lt;/p&gt;
+
+&lt;p&gt;かなり冗長な表現になっていますが…(´･_･`)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;a: Easy!
+b:
+  c: 2
+  d: [3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+  &amp;quot;io/ioutil&amp;quot;
+  &amp;quot;gopkg.in/yaml.v2&amp;quot;
+)
+
+func main() {
+  buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;)
+  if err != nil {
+    return
+  }
+
+  m := make(map[interface{}]interface{})
+  err = yaml.Unmarshal(buf, &amp;amp;m)
+  if err != nil {
+    panic(err)
+  }
+
+  fmt.Printf(&amp;quot;%s\n&amp;quot;, m[&amp;quot;a&amp;quot;])
+  fmt.Printf(&amp;quot;%d\n&amp;quot;, m[&amp;quot;b&amp;quot;].(map[interface {}]interface {})[&amp;quot;c&amp;quot;])
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;出力結果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Easy!
+2
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>goでtime.Timeをmysqlから読む</title>
+      <link>http://localhost:1313/blog/2014/10/08/go-mysql-time/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/08/go-mysql-time/</guid>
+      <description>&lt;p&gt;goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…&lt;br /&gt;
+&lt;code&gt;sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;どうやらDSNに&lt;code&gt;parseTime=true&lt;/code&gt;オプションをつける必要があるようです(何故かは不明)&lt;br /&gt;
+&lt;code&gt;db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;参考リンク&lt;br /&gt;
+&lt;a href=&#34;https://github.com/go-sql-driver/mysql#timetime-support&#34;&gt;https://github.com/go-sql-driver/mysql#timetime-support&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>goでmysqlを使う</title>
+      <link>http://localhost:1313/blog/2014/10/04/go-mysql/</link>
+      <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/04/go-mysql/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://github.com/go-sql-driver/mysql&#34;&gt;http://github.com/go-sql-driver/mysql&lt;/a&gt;&lt;br /&gt;
+がありましたので、それを使います。&lt;/p&gt;
+
+&lt;p&gt;以下のように読み込むことで、&lt;code&gt;sql.Open&lt;/code&gt;でmysqlを開くことが出来ます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+  _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;db設定:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;DB設定&lt;/h1&gt;
+
+&lt;p&gt;以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;user:password@/dbname&amp;quot;)
+if err != nil {
+  panic(err.Error())
+}
+defer db.Close()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;サーバやデータベース名などはDSN (Data Source Name)で指定するようです。&lt;br /&gt;
+あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;h2 id=&#34;前提条件:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;前提条件&lt;/h2&gt;
+
+&lt;p&gt;上記の方法でsql.Openの結果を変数のdbに保存済み、&lt;br /&gt;
+以下の構造体をDBに書き込むとします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Post struct {
+  RoomName string
+  Message string
+  MessageId string
+  IsSend bool
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、tableNameに書き込むテーブル名が保存されているとします。&lt;/p&gt;
+
+&lt;h2 id=&#34;insert:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;INSERT&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;post := getPost()　// 書き込むためのデータを取得する
+
+stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?, ?)&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error())
+}
+defer stmtIns.Close() // Close the statement when we leave main() / the program terminates
+
+_, err = stmtIns.Exec(post.RoomName, post.Message, post.MessageId, post.IsSend)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;db.PrepareでSQL文を用意し、Execの引数にプレースフォルダの数だけ書き込むデータを渡しています。&lt;br /&gt;
+テーブル名をプレースホルダにするなど、SQLの文法的におかしい場合は、db.Prepareの戻り値がエラーになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;update:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;UPDATE&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;UPDATE %s SET is_send = 1 WHERE ( message_id = ?)&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error())
+}
+defer stmtIns.Close()
+
+_, err = stmtIns.Exec(post.MessageId)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;INSERTとほぼ同じです。&lt;/p&gt;
+
+&lt;h2 id=&#34;select:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;SELECT&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;stmtOut, err := db.Prepare(fmt.Sprintf(&amp;quot;SELECT room_name, message, message_id, is_send FROM %s WHERE message_id = ? LIMIT 1&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error())
+}
+defer stmtOut.Close()
+
+var room_name string
+var message string
+var message_id string
+var is_send bool
+if err := stmtOut.QueryRow(searchMessageId).Scan(&amp;amp;room_name, &amp;amp;message, &amp;amp;message_id, &amp;amp;is_send); err != nil {
+  return nil
+}
+var postData Post
+postData.RoomName = room_name
+postData.Message = message
+postData.MessageId = message_id
+postData.IsSend = is_send
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ORマッパーではないので、一つ一つ取り出した値をオブジェクトにセットしていく必要があります。&lt;/p&gt;
+
+&lt;h2 id=&#34;複数select:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;複数SELECT&lt;/h2&gt;
+
+&lt;p&gt;上の例はLIMIT 1を設定して1件だけ取得していましたが、複数取得の場合はscanではうまきいきません。
+複数取り出す場合はこちらです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;rows, err := db.Query(fmt.Sprintf(&amp;quot;SELECT room_name, message, message_id, is_send FROM %s WHERE is_send = false LIMIT 100&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error()) // proper error handling instead of panic in your app
+}
+
+posts := make([]*Post, 0)
+
+for rows.Next() {
+  var room_name string
+  var message string
+  var message_id string
+  var is_send bool
+  if err := rows.Scan(&amp;amp;room_name, &amp;amp;message, &amp;amp;message_id, &amp;amp;is_send); err != nil {
+  }
+
+  var postData Post
+  postData.RoomName = room_name
+  postData.Message = message
+  postData.MessageId = message_id
+  postData.IsSend = is_send
+  posts = append(posts, postData)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nextを利用して一件ずつScanしています。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;p&gt;dp.Prepareでプレースホルダー付きのSQL文を作成。&lt;br /&gt;
+INSERTやUPDATEはExecで実行、SELECTはQueryやQueryRowで実行してScanでデータを取り出します。&lt;br /&gt;
+テーブル構造が変わると読み込み部分が変わったり、順番を間違えると悲惨なことになるため面倒です。&lt;br /&gt;
+ORマッパーは偉大ですね…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go runしても分割したファイルが認識されない</title>
+      <link>http://localhost:1313/blog/2014/09/10/golang-file-split/</link>
+      <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/10/golang-file-split/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://golang.jp/tag/go%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9&#34;&gt;Goコードの書き方&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;とのことなので、試しに以下のようにmainパッケージを分割してコンパイルしたところ、上手くいきませんでした(´･_･`)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// main.go
+package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+)
+
+func main() {
+  fmt.Println(&amp;quot;main file&amp;quot;)
+  OutputDiv()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// div.go
+package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+)
+
+func OutputDiv() {
+  fmt.Println(&amp;quot;div file&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;go runの結果、分割したファイルにある関数を見つけられないエラーになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go run main.go
+# command-line-arguments
+./main.go:9: undefined: OutputDiv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうやら、go runした場合は引数のファイルのみがコンパイル対象になるため、&lt;br /&gt;
+go run *.goか、必要なファイルを全てオプションとして渡す必要があるようです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go run main.go div.go
+main file
+div file
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golangでcronを使う</title>
+      <link>http://localhost:1313/blog/2014/09/09/golang-cron/</link>
+      <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/09/golang-cron/</guid>
+      <description>&lt;p&gt;cronというライブラリがあるので、それを使うととても簡単です。
+なお、終了すると当然ながら実行しないので、
+time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/ota42y/d8c0d2426bb5dc0cf9e9.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mgoのConsistencyについて</title>
+      <link>http://localhost:1313/blog/2014/09/03/mgo-consistency/</link>
+      <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/03/mgo-consistency/</guid>
+      <description>
+
+&lt;p&gt;mgoのサンプルにあった&lt;br /&gt;
+&lt;code&gt;session.SetMode(mgo.Monotonic, true)&lt;/code&gt;&lt;br /&gt;
+の意味がよくわからないので調べてみました。&lt;/p&gt;
+
+&lt;p&gt;結論から書きますと、これは複数DBを利用した際の、&lt;br /&gt;
+データの一貫性をどの程度保証するかの設定です。&lt;/p&gt;
+
+&lt;h1 id=&#34;一貫性制御:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;一貫性制御&lt;/h1&gt;
+
+&lt;p&gt;mgoには複数のDB間での一貫性を制御する３種類のモードがあります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;const (
+  Eventual  mode = 0
+  Monotonic mode = 1
+  Strong    mode = 2
+  )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SetModeにこれを渡すことで、モードを切り替えられます。&lt;/p&gt;
+
+&lt;p&gt;それぞれの内容は以下の通りです。&lt;br /&gt;
+おそらく一貫性がちゃんとしていくに従って、複雑化&amp;amp;遅くなっていきます。&lt;/p&gt;
+
+&lt;h2 id=&#34;eventual-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Eventual Consistency&lt;/h2&gt;
+
+&lt;p&gt;最終的に辻褄が合えばいいよね設定です。&lt;br /&gt;
+データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。&lt;/p&gt;
+
+&lt;p&gt;更新済みのノードと、そうでないノードが混在する可能性があるため、&lt;br /&gt;
+どのノードから読み込むのかが固定されない場合、&lt;br /&gt;
+新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…&lt;br /&gt;
+といったことが起きる可能性があるはずです。&lt;/p&gt;
+
+&lt;p&gt;同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。&lt;/p&gt;
+
+&lt;h2 id=&#34;monotonic-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Monotonic Consistency&lt;/h2&gt;
+
+&lt;p&gt;あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。&lt;br /&gt;
+おそらく、値を参照したタイミングで最新かどうかは保証されないが、&lt;br /&gt;
+少なくとも古い値が読み込まれることはない、という状態だと思われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;strong-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Strong Consistency&lt;/h2&gt;
+
+&lt;p&gt;常に必ず最新の値が読み込めるという状態です。&lt;br /&gt;
+一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、&lt;br /&gt;
+注意が必要です。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golangでmongodbを使う</title>
+      <link>http://localhost:1313/blog/2014/09/02/go-mongodb/</link>
+      <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/02/go-mongodb/</guid>
+      <description>&lt;p&gt;mgoというライブラリが便利そうです。&lt;br /&gt;
+&lt;a href=&#34;http://labix.org/mgo&#34;&gt;http://labix.org/mgo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以下はtwitterからツイートを取ってきて、&lt;br /&gt;
+未登録のツイートをmongodbに保存するスクリプトです。&lt;/p&gt;
+
+&lt;p&gt;今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、&lt;br /&gt;
+件数を数えてその結果をチェックしています。&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/ota42y/7e493449beec0fe73f62.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golangでtwitter APIを使う</title>
+      <link>http://localhost:1313/blog/2014/08/31/go-anaconda/</link>
+      <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/31/go-anaconda/</guid>
+      <description>&lt;p&gt;anacondaが良さそう(ただしストリーミングAPI非対応)&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go get github.com/ChimeraCoder/anaconda&lt;/code&gt;&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/ota42y/258616adf5087d2d2186.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

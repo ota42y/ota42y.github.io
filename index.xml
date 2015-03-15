@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>おおたの物置</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 09 Mar 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年10週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-10/</link>
+      <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-10/</guid>
+      <description>
+
+&lt;h1 id=&#34;hugoを実験中:e975d64a31c4cd5e9fd296d1cb8af56a&#34;&gt;Hugoを実験中&lt;/h1&gt;
+
+&lt;p&gt;今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。&lt;/p&gt;
+
+&lt;p&gt;ゼロから作ると、テンプレート作成の大変さが身にしみます…&lt;br /&gt;
+デザインを考える部分はもちろんのこと、CSSとの格闘や、&lt;br /&gt;
+フレームワークの使い方とかを調べる必要があり、中々大変です。&lt;/p&gt;
+
+&lt;p&gt;また、golangのテンプレート機能については情報が少ないので、&lt;br /&gt;
+やりたいことがあっても、普通に書くとうまくいかずに実現できない事が多々あったので、&lt;br /&gt;
+あとでちゃんと勉強し直した方がよさそうです。&lt;/p&gt;
+
+&lt;p&gt;最も、本来テンプレート層で複雑な操作はするべきではなく、コントローラー側で処理をし、&lt;br /&gt;
+テンプレートは渡されたデータを表示するだけにした方が望ましいです。&lt;br /&gt;
+ただ、今回はhugo側にはあまり手を加えるのは避けたいため、&lt;br /&gt;
+コントローラ側に処理を追加する事が出来ず、テンプレート部分で頑張る必要がでてしまいました。&lt;br /&gt;
+テンプレートとhugoの間に普通のgoで処理を追加できたらいいのですが…&lt;/p&gt;
+
+&lt;p&gt;また、hugo側で用意されている奴を上手く使えばできる事も、&lt;br /&gt;
+わざわざ自前でがんばって実装しようとしていたりしてて無駄が多いです…&lt;br /&gt;
+サンプル集みたいなのがもう少し整っていると良い気がします。&lt;/p&gt;
+
+&lt;p&gt;ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。&lt;br /&gt;
+テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年09週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-09/</link>
+      <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-09/</guid>
+      <description>
+
+&lt;p&gt;今年も15%が終わった…&lt;/p&gt;
+
+&lt;h1 id=&#34;goのcronにpr送った:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;GoのcronにPR送った&lt;/h1&gt;
+
+&lt;p&gt;Goのcronとして&lt;a href=&#34;https://github.com/robfig/cron&#34;&gt;https://github.com/robfig/cron&lt;/a&gt;を使ってますが、&lt;br /&gt;
+実行中か否かを取得できずに不便でした。&lt;br /&gt;
+内部では管理しているので、それに対するゲッターを追加したPRを送りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/robfig/cron/pull/21&#34;&gt;https://github.com/robfig/cron/pull/21&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoが良さそう:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;Hugoが良さそう&lt;/h1&gt;
+
+&lt;p&gt;このサイトはOctopressで運用しています。&lt;br /&gt;
+ですが、記事数が増えてきたためか、変更して作り直すのに5秒ぐらいかかってしまいます。&lt;br /&gt;
+ちょっとした変更でも若干時間がかるため、かなりストレスがたまる仕組みです…&lt;/p&gt;
+
+&lt;p&gt;同じく静的サイトを作成するソフトウェアで、Hugoというものがあるそうです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/spf13/hugo&#34;&gt;https://github.com/spf13/hugo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Goで書かれており、作成する速度がかなり早いらしいので、乗り換えを検討中です。&lt;br /&gt;
+残念ながら、良い感じのテンプレートがないので、まずはそこから作る必要がありそうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;テキストベースのtodoアプリを考えた:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;テキストベースのToDoアプリを考えた&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Todo.txtが行けてないので自分に合ったやつを考える&lt;/li&gt;
+&lt;li&gt;スペースと改行ででサブタスクを指定
+
+&lt;ul&gt;
+&lt;li&gt;箇条書きがそのままサブタスクになる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;タスク名とサブタスク以外は全てオプションとして提供
+
+&lt;ul&gt;
+&lt;li&gt;優先度とかをベースシステムとしては持たない&lt;/li&gt;
+&lt;li&gt;:due 2015-02-01とか、オプションとしてつける&lt;/li&gt;
+&lt;li&gt;ベースはサブタスクとタスク名だけ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;多分こんな感じになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;タスク１ :due 2015-02-01
+  サブタスク1 :due 2015-01-31
+  サブタスク2 :due 2015-01-01 :repeat 1 week
+    サブタスク3 :url http://example.com/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;テキストベースで編集するのとは別に、CLIも作らないとダメですね。&lt;br /&gt;
+フィルターとか、デフォルト値を入れて追加とかしにくいので…&lt;/p&gt;
+
+&lt;p&gt;リポジトリはこれになります。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;今やってるもの-これからやりたいこと:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;今やってるもの＆これからやりたいこと&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;今やってること&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Goによるtumblr apiライブラリ&lt;/li&gt;
+&lt;li&gt;進捗どうですか？時に画像もつけてほしくなった&lt;/li&gt;
+&lt;li&gt;tumblr apiからランダムで取ってくるために、tumblrライブラリを作る
+
+&lt;ul&gt;
+&lt;li&gt;ついでにリブログもする&lt;/li&gt;
+&lt;li&gt;node-tumblrがリブログしないので作った&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;goでやりたかっただけ&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;予定していた機能(投稿取得、リブログ)はだいたい完成&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;完全にカバーしてないけど、ほしい部分は出来た&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自分用自動化システム&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Goである程度の大きさのアプリを作るテスト&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;日々の作業を自動化&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;twitterの公式アカウントチェック&lt;/li&gt;
+&lt;li&gt;チャットのログ保存等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;hubotとhttp経由でやりとり出来るため、botのバックエンドとしても使える&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;いずれはhubotを全て置き換えるようにしたい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;結果通知部分はかなり良くない作りなので、そこは何とかしたい&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;そもそも設計もあまり良くない感じ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;進捗どうですか？の修正を入れたらしばらく放置&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;次にやろうとしているもの&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hugoのテンプレート作成&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;このサイトをベースに、色々不都合があるところを直す&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ToDoシステム(CLI)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;スペースを使った箇条書きがそのままサブタスクになる&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;テキストファイルを編集すると、そのままタスクに出来る&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;専用のCLIを使うことで、フィルターや繰り返しが出来る&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ToDoシステム(Android)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;普通にリストビューでタスク表示&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dropboxを使ってデータは共有&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Androidメインなのでないと辛い&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上記のCLIがある程度出来てから&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当面は下の3つを進めていく方向でいきます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JenkinsをHTTP経由で叩く</title>
+      <link>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</link>
+      <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JenkinsはWebベースのUI
+
+&lt;ul&gt;
+&lt;li&gt;操作の敷居が低い&lt;/li&gt;
+&lt;li&gt;使い込むと使いづらくなる&lt;/li&gt;
+&lt;li&gt;反応速度&lt;/li&gt;
+&lt;li&gt;複数のビルド実行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Remote access API
+
+&lt;ul&gt;
+&lt;li&gt;HTTP経由でJobを実行できる&lt;/li&gt;
+&lt;li&gt;ページ表示を待たなくていいため高速&lt;/li&gt;
+&lt;li&gt;プログラムから実行可能&lt;/li&gt;
+&lt;li&gt;ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;jenkinsのjob実行は大変:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
+
+&lt;p&gt;JenkinsはWebブラウザを使ってGUIで操作するため、&lt;br /&gt;
+操作の敷居が低く、簡単に扱えるようになっています。&lt;/p&gt;
+
+&lt;p&gt;ですが、ブラウザやJenkins本体の状態によってはとても遅くなってしまい、&lt;br /&gt;
+ページを切り替えるのに3，4秒待つといった状態まで遅くなると、&lt;br /&gt;
+ビルドをするのがとても辛くなります。&lt;/p&gt;
+
+&lt;p&gt;また、パラメータの組み合わせの分だけビルドしようとすると、&lt;br /&gt;
+さらに辛くなってしまいます。&lt;/p&gt;
+
+&lt;p&gt;このような場合に、Jenkinsに用意されているRemote access APIを使うことで、&lt;br /&gt;
+Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、&lt;br /&gt;
+パラメータの数だけクリックをする必要性から逃れられます。&lt;/p&gt;
+
+&lt;h1 id=&#34;remote-access-api:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;Remote access API&lt;/h1&gt;
+
+&lt;p&gt;詳しくはこちら&lt;br /&gt;
+&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;要するに、パラメータが無い場合は&lt;br /&gt;
+&lt;code&gt;http://HOST/job/JOB_NAME/build&lt;/code&gt;
+に、ある場合は&lt;br /&gt;
+&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters&lt;/code&gt;
+にPOSTで投げるとビルドできます。&lt;/p&gt;
+
+&lt;p&gt;パラメータの投げ方はフォームデータとしてでもいいですし、&lt;br /&gt;
+&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value&lt;/code&gt;
+のように、URLに直接入れても大丈夫のようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルスクリプト:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;サンプルスクリプト&lt;/h1&gt;
+
+&lt;p&gt;3*3=9種類のビルドを一気に実行するスクリプトです&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require &#39;open-uri&#39;
+require &#39;net/http&#39;
+
+platforms = [&amp;quot;ios&amp;quot;,  &amp;quot;android&amp;quot;, &amp;quot;windows&amp;quot;]
+settings =  [&amp;quot;debug&amp;quot;,&amp;quot;release&amp;quot;, &amp;quot;store&amp;quot;]
+
+platforms.product(settings).each do |platform, setting|
+  params = {:PLATFORM =&amp;gt; platform, :SETTING =&amp;gt; setting}
+  p params
+
+  url = URI.parse(&#39;http://HOST/job/JOB_NAME/buildWithParameters&#39;)
+  req = Net::HTTP::Post.new(url.path)
+  req.basic_auth &#39;NAME&#39;, &#39;PASSWORD&#39;
+  req.set_form_data(params)
+  res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
+  case res
+  when Net::HTTPSuccess, Net::HTTPRedirection
+    p &amp;quot;OK&amp;quot;
+  else
+    res.value
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;問題点:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;問題点&lt;/h1&gt;
+
+&lt;p&gt;Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。&lt;br /&gt;
+そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年08週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-08/</link>
+      <pubDate>Sun, 22 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-08/</guid>
+      <description>
+
+&lt;h1 id=&#34;todo-txtは思想は良いけど実際使うと微妙:a32b2cc8e9c86409bd3aff718e1a3967&#34;&gt;Todo.txtは思想は良いけど実際使うと微妙&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://todotxt.com/&#34;&gt;Todo.txt&lt;/a&gt;
+テキストオンリーでTodo管理ができる手法です。&lt;br /&gt;
+ファイルをDropboxに置くことで、&lt;br /&gt;
+どこでも同期してTodo管理ができるようになります。&lt;/p&gt;
+
+&lt;p&gt;本当に単なるテキストなので管理が簡単で、エディタで編集も容易です。&lt;br /&gt;
+コマンドラインから条件を指定して表示できるのも便利で良い感じでした。&lt;br /&gt;
+RTM CLIのオフライン版みたいな使い勝手です。&lt;/p&gt;
+
+&lt;p&gt;ただし、サブタスクが使えないという問題があります。
+一応プラグインとして用意されてはいますが、&lt;br /&gt;
+そうすると他のプラグインが使えなくなってしまうため、別の問題が発生してしまいます。&lt;/p&gt;
+
+&lt;p&gt;このテキストベースという考え方はすごく良く、かつ作るのもそんなに大変じゃなさそうなので、&lt;br /&gt;
+自分で作ってみた方が早そうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;windown-on-linuxで開発環境を整える:a32b2cc8e9c86409bd3aff718e1a3967&#34;&gt;Windown on Linuxで開発環境を整える&lt;/h1&gt;
+
+&lt;p&gt;Windowsで開発環境を整えるのは恐ろしく大変です。&lt;br /&gt;
+幸いなことに私のWindowsマシンは十分なスペックがあるため、&lt;br /&gt;
+VMware上にLinuxを立てて、SSHとファイル共有でしのぐことにしました。&lt;/p&gt;
+
+&lt;p&gt;IDEとかはWindows側で動かしているため、IDEの実行ボタンが使えなくなるのがかなりつらいですが、&lt;br /&gt;
+Windows上で開発するよりかは幾分マシになっていると思います。&lt;/p&gt;
+
+&lt;p&gt;ただし、IDEからデバッガが使えないため、そのあたりでつらい現実が待っている気がします。&lt;br /&gt;
+実行環境はリモートで、みたいなことができれば良いのですが…&lt;/p&gt;
+
+&lt;p&gt;普段ターミナルでしか作業をしないのであれば、ターミナルの中が変わるだけなので問題ないと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年07週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-07/</link>
+      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-07/</guid>
+      <description>
+
+&lt;p&gt;既に今年の1/8が終わっているという事実…&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkinsのworkflow-pluginがとても便利:199b01a6c63e246a45b954855c93d154&#34;&gt;JenkinsのWorkflow Pluginがとても便利&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/02/10/workflow-plugin/&#34;&gt;Jenkins Workflow Pluginで複数slaveを扱うのが楽になる&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://localhost:1313/blog/2015/02/11/jenkins-workflow/&#34;&gt;Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点 &lt;/a&gt;&lt;br /&gt;
+にまとめています。
+Build Flow Pluginを多用していたならば、こっちに乗り換えた方がいろいろ楽ですね。&lt;/p&gt;
+
+&lt;p&gt;ただし、まだ出たばかりでバグがあったり、所々かゆいところに手が届かなかったりするので、&lt;br /&gt;
+その辺の辛いところは結構あります…&lt;/p&gt;
+
+&lt;h1 id=&#34;remember-the-milkが使いにくく感じる:199b01a6c63e246a45b954855c93d154&#34;&gt;Remember The Milkが使いにくく感じる&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;良い点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;タスクの追加時に独自の記法で様々な条件をつけられる&lt;/li&gt;
+&lt;li&gt;オフラインでAndroid, iOSで見られる(有料)&lt;/li&gt;
+&lt;li&gt;繰り返し処理、期日等の設定が十分に豊富&lt;/li&gt;
+&lt;li&gt;Evernotのノートとタスクを関連づけれる&lt;/li&gt;
+&lt;li&gt;タスクと参考資料をくっつけられる&lt;/li&gt;
+&lt;li&gt;ただし、RTM側でつけられる細かい情報をつけられない&lt;/li&gt;
+&lt;li&gt;そのため設定はRTMでする必要があり、そこまで便利ではない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;悪い点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PC上で使いづらい&lt;/li&gt;
+&lt;li&gt;ブラウザアプリはURLをショートカットキーで使えない&lt;/li&gt;
+&lt;li&gt;送信済みリスト等、複数人での作業用機能がOFFにできない&lt;/li&gt;
+&lt;li&gt;別のリストに移動するショートカットキーがない&lt;/li&gt;
+&lt;li&gt;サブタスクが使えない&lt;/li&gt;
+&lt;li&gt;特定のタスクを細かく分割できない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;特にサブタスクが使えず、かつリスト操作が弱いのがものすごく不便で、&lt;br /&gt;
+特定の大タスクに対してやることをざっと書き出したときに、&lt;br /&gt;
+それを上手くまとめられず、タスクの優先順位等がわかり辛くなります。&lt;/p&gt;
+
+&lt;p&gt;もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、&lt;br /&gt;
+代わりのサービスを探すか作るかしようと思います…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
+      <link>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</link>
+      <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ブランチをパラメーターにするとスクリプトを読めない
+
+&lt;ul&gt;
+&lt;li&gt;中身ではなく変数名のブランチを探しに行く&lt;/li&gt;
+&lt;li&gt;多分バグ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ファイルから読み込むるスクリプトを書けば解決
+
+&lt;ul&gt;
+&lt;li&gt;公式のflow.groovyを参考に&lt;/li&gt;
+&lt;li&gt;変数を使おうとすると面倒&lt;/li&gt;
+&lt;li&gt;java.io.Serializableを実装する必要あり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
+
+&lt;p&gt;(以下に用意されているdocker上のJenkinsで確認しました)&lt;br /&gt;
+&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&#34;&gt;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込んで実行する機能があります。&lt;br /&gt;
+この機能を使うことで、リポジトリの内容とそれに対応するビルド手順を同時にバージョン管理出来るため、&lt;br /&gt;
+ビルド手順の変更がとてもやりやすくなります。&lt;/p&gt;
+
+&lt;p&gt;ですが残念ながら、パラメータで指定したブランチをチェックアウトして読み込むと、以下のエラーになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; git config remote.origin.url /var/lib/jenkins/workflow-plugin-pipeline-demo # timeout=10
+Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo
+&amp;gt; git --version # timeout=10
+&amp;gt; git -c core.askpass=true fetch --tags --progress /var/lib/jenkins/workflow-plugin-pipeline-demo
++refs/heads/*:refs/remotes/origin/*
+&amp;gt; git rev-parse origin/$BRANCH_NAME^{commit} # timeout=10
+&amp;gt; git rev-parse $BRANCH_NAME^{commit} # timeout=10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;パラメータの内容ではなく、パラメータの名前そのものを探しに行っており、おそらくバグと思われます。&lt;br /&gt;
+通常のJobでGit Pluginを使うと問題なくパラメータ指定が出来るため、Workflowのバグと思われます。&lt;/p&gt;
+
+&lt;p&gt;このバグは、Jenkinsでは事前に設定した特定ブランチしかビルドしない場合は問題ありません。&lt;br /&gt;
+ですが、様々なブランチで実行する可能性がある場合、JenkinsのJob設定にスクリプトを書かなければならず、&lt;br /&gt;
+ビルド手順自体の管理が大変になります。&lt;/p&gt;
+
+&lt;p&gt;このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、&lt;br /&gt;
+指定したブランチからスクリプトを読み込んで実行できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
+
+&lt;p&gt;(公式のdockerにも&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin-pipeline-demo/blob/master/flow.groovy&#34;&gt;スクリプト&lt;/a&gt;がありますが、より簡単化したもので説明します)&lt;/p&gt;
+
+&lt;p&gt;以下のようなスクリプトをリポジトリのルートに起きます&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;// build.groovy
+def build(){
+  node(&amp;quot;slave&amp;quot;) {
+    git url: ‘RIPOSITORY_URL&#39;, branch: “$BRANCH_NAME&amp;quot;
+    sh “rake build&amp;quot;
+  }
+}
+return this
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Jobには以下のスクリプトを書きます&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def flow
+node(&amp;quot;master&amp;quot;) {
+    git url: ‘RIPOSITORY_URL&#39;, branch: “$BRANCH_NAME&amp;quot;
+    flow = load &#39;flow.groovy&#39;
+}
+flow.build()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;loadは指定したパスのgroovyスクリプトを読み込み、returnしたオブジェクトを返します。&lt;br /&gt;
+そのため、これでリポジトリ内のファイルをロードして実行することが出来ます。&lt;br /&gt;
+また、buildメソッドをnodeの外側で実行することで、ビルド中はmasterのキューを開けておくことが出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
+
+&lt;p&gt;上記の方式の場合、masterにcloneしてその後にslave上に再度cloneしてビルドを始めています。&lt;br /&gt;
+slaveの選択を凝らない場合は問題ないですが、リリースビルド専用マシンがあったり、&lt;br /&gt;
+特定のミドルウェアを使うビルドの場合など、slaveの選択をパラメータによって切り替えたい場合があります。&lt;/p&gt;
+
+&lt;p&gt;パラメータだけで決定できる場合は問題ありませんが、リポジトリ内のファイルを読み込む必要がある場合、&lt;br /&gt;
+上記のスクリプトの場合でいうところの、node(&amp;ldquo;master&amp;rdquo;)内で処理しなければなりません。&lt;br /&gt;
+当然Job側にそれを書くとメンテが大変になるため、flow.groovy内に書く必要があります。&lt;/p&gt;
+
+&lt;p&gt;このような場合、groovyスクリプトの戻り値で独自クラスを返すことで解決できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
+
+&lt;p&gt;Jenkinsから以下のようなgroovyスクリプトを読み込むことで、slaveの選択も柔軟にできるようになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def buildSlave(slaveName){
+  slave(slaveName){
+    sh &amp;quot;echo ’slave&#39;&amp;quot;
+  }
+}
+
+class FlowStruct implements java.io.Serializable{
+  def slaveName
+  def flow
+  public void build(){
+    flow.buildSlave(slaveName)
+  }
+}
+
+f = new FlowStruct()
+f.slaveName = readFile(“settings/config_${SETTING}&amp;quot;).trim()
+f.flow = this
+
+return f;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;load関数では通常の文はすべて実行されるため、FlowStruct()以降が実行されてから関数が終了します。&lt;br /&gt;
+また、戻り値は固定ではないため、上記のように独自のクラスを作成して返すことができます。&lt;br /&gt;
+この際、戻り値はjava.io.Serializableを実装している必要がありますのでご注意ください。&lt;/p&gt;
+
+&lt;p&gt;これで、複雑な設定をしていたとしても、すべてリポジトリ内のスクリプトで処理することが出来ます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
+      <link>http://localhost:1313/blog/2015/02/10/workflow-plugin/</link>
+      <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/10/workflow-plugin/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jenkinsはjob単位でしかノードに割り振れない
+
+&lt;ul&gt;
+&lt;li&gt;複数ノードで分散ビルドするには設定を駆使する必要がある&lt;/li&gt;
+&lt;li&gt;結果としてjobの数が増えて管理コストが増大する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Workflow Pluginで大幅に改善する
+
+&lt;ul&gt;
+&lt;li&gt;スクリプトからノードを指定してコマンドを実行できる&lt;/li&gt;
+&lt;li&gt;複数のjobを組み合わせていたのが一つのスクリプトですむ&lt;/li&gt;
+&lt;li&gt;スクリプトをVCSに入れればビルド設定のバージョン管理も可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;複数ノードをコントロールするのは難しい:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;複数ノードをコントロールするのは難しい&lt;/h1&gt;
+
+&lt;p&gt;Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、&lt;br /&gt;
+複数のノードで、jobの一部の部分だけを別のノードで実行するなど、&lt;br /&gt;
+ある程度複雑な分散をやろうとすると、Jenkins本体の機能では不足してきます。&lt;/p&gt;
+
+&lt;p&gt;このような問題に対して、これまではBuild Flow Pluginを使う事で解決が可能でしたが、&lt;br /&gt;
+Workflow Pluginを使う事で、さらに簡単に解決することが出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;build-flow-pluginの問題点:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Build Flow Pluginの問題点&lt;/h1&gt;
+
+&lt;p&gt;Build Flow Pluginは基本的に複数の下流ビルドを管理するために作られているため、&lt;br /&gt;
+処理を分けようとするとjobの数が増加していきます。&lt;/p&gt;
+
+&lt;p&gt;例えばネイティブアプリのビルドのようなCPUパワーを使う処理と、パワーを使わないアップロード処理がある場合、&lt;br /&gt;
+一つのノードで全てやるよりも、非力なサーバを確保してアップロード処理をそちらで実行した方が、&lt;br /&gt;
+ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。&lt;br /&gt;
+(また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
+&lt;br /&gt;
+(上段のup#4はup#3の間違いです…)&lt;/p&gt;
+
+&lt;p&gt;ビルドが数十分、数時間かかるような巨大な処理の場合、&lt;br /&gt;
+処理を分散することで稼げる時間はかなりのものになります。&lt;/p&gt;
+
+&lt;p&gt;従来では分割する作業を別のjobにし、かつBuild Flow Plugin用のjobを作る必要があります。&lt;br /&gt;
+さらに、ファイルの受け渡しもできないため、成果物として保存して、&lt;br /&gt;
+次のjobは前のjobの特定のビルド番号の成果物を取り出す…といった風になります。&lt;/p&gt;
+
+&lt;p&gt;jobの数が増えると管理も大変ですし、使う方もどれを使えば良いのか解らなくなります。&lt;br /&gt;
+ここで、Workflow Pluginを使うことで大きく改善することが出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;workflow-pluginを使ったビルド:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Workflow Pluginを使ったビルド&lt;/h1&gt;
+
+&lt;p&gt;Workflow Pluginでは、slaveを選択してコマンドを実行、&lt;br /&gt;
+特定のファイルを別のslaveにコピーして処理を実行ということががスクリプトで書けます。&lt;/p&gt;
+
+&lt;p&gt;例えば以下のように書くことで、masterでファイルを生成してslaveで実行、&lt;br /&gt;
+その後結果をmasterにコピーしてアップロードみたいな事が出来ます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;node(&amp;quot;master&amp;quot;){
+  sh &amp;quot;rake config&amp;quot;
+  archive &amp;quot;config.yml&amp;quot;
+}
+
+node(&amp;quot;slave&amp;quot;){
+  unarchive mapping: [&#39;config.yml&#39; : &#39;./&#39;]
+  sh &amp;quot;rake build&amp;quot;
+  archive &amp;quot;result.zip&amp;quot;
+}
+
+node(&amp;quot;master&amp;quot;){
+  unarchive mapping: [&#39;result.zip&#39; : &#39;.&#39;]
+  sh &amp;quot;rake upload&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、複数平行してのビルド等も出来るため、Jenkinsで複数ノードを使って分散ビルドをしたい場合に、&lt;br /&gt;
+一つのスクリプトで全てをコントロールできるため、とても重宝します。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年06週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-06/</link>
+      <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-06/</guid>
+      <description>
+
+&lt;p&gt;ちゃんとその週に何をやったかをまとめると、&lt;br /&gt;
+今週はあんまり活動していない事がよくわかりますね…&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkins-workflow-pluginが素晴らしそう:d8557742a33269e75592dd05f8ca14f3&#34;&gt;Jenkins Workflow Pluginが素晴らしそう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/01/11/jenkins-conference/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;で知った、Workflow Pluginが思った以上に良さそうです。&lt;br /&gt;
+Jenkins本体の機能では出来ないmaster/slaveを選択してコマンドを実行するといったことが可能になり、&lt;br /&gt;
+効率の良い分散ビルドが出来るようになります。&lt;/p&gt;
+
+&lt;p&gt;そのうち詳しくまとめる予定…&lt;/p&gt;
+
+&lt;h1 id=&#34;思った以上にtwitterに時間を取られる:d8557742a33269e75592dd05f8ca14f3&#34;&gt;思った以上にTwitterに時間を取られる&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.binerx.aptrax&amp;amp;hl=ja&#34;&gt;Aptrax | App Usage Tracker&lt;/a&gt;というツールで、&lt;br /&gt;
+スマホの各アプリの使用時間を計測していますが、Twitterの使用率が凄い結果になっていました。&lt;/p&gt;
+
+&lt;p&gt;PC上で見ている時間も結構多く、かなりの時間を浪費している気がします…&lt;br /&gt;
+重要なことだけ抜き出してできる限り見ないみたいな事が必要ですね。&lt;/p&gt;
+
+&lt;h1 id=&#34;twieveでツイートをevernoteに保存:d8557742a33269e75592dd05f8ca14f3&#34;&gt;twieveでツイートをevernoteに保存&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://twieve.net/&#34;&gt;twieve&lt;/a&gt;を使って、ツイートをevernoteに保存するようにしました。&lt;br /&gt;
+これでやってることを呟いておけば、今週何をやったかを簡単に思い出せるようになるはずです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go言語で一次の最小二乗法を実装した</title>
+      <link>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</link>
+      <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</guid>
+      <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
+暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
+&lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年05週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-05/</link>
+      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-05/</guid>
+      <description>
+
+&lt;p&gt;今週は二日ほど有給を取っていました。&lt;br /&gt;
+家で引きこもっていましたが、かなり有効に引きこもれたと思います。&lt;/p&gt;
+
+&lt;p&gt;毎日色々していますが、やりたいことがどんどん増えてきます…&lt;br /&gt;
+効率をあげるにも限度がありますし、どうしたものですかね。&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkins-workflow-plugin便利そう:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Jenkins Workflow Plugin便利そう&lt;/h1&gt;
+
+&lt;p&gt;Jenkins ユーザ・カンファレンス 2015で聞いた&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin&#34;&gt;jenkinsci/workflow-plugin&lt;/a&gt;を試しています。&lt;br /&gt;
+スレーブを指定してタスクを実行できたり、ファイルをスレーブから取ってきて別のスレーブに渡す等、&lt;br /&gt;
+今までBuild Pipeline Pluginでやっていたことがだいたい実現できて凄く良いです。&lt;br /&gt;
+あとはプロパティ等をファイルから読み込む方法さえ解れば完璧なのですが…&lt;/p&gt;
+
+&lt;h1 id=&#34;evernoteリンクを開くchrome拡張の更新:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Evernoteリンクを開くChrome拡張の更新&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/31/evernote-opener-update/&#34;&gt;http://ota42y.com/blog/&lt;sup&gt;2015&lt;/sup&gt;&amp;frasl;&lt;sub&gt;01&lt;/sub&gt;/31/evernote-opener-update/&lt;/a&gt;&lt;br /&gt;
+便利なのですが、新しいPCに設定する際にとても不便だったので楽に修正できるように機能拡張しました。&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkinsのライブラリよさそう:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Jenkinsのライブラリよさそう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/yosida95/golang-jenkins&#34;&gt;https://github.com/yosida95/golang-jenkins&lt;/a&gt;&lt;br /&gt;
+Webの反応めちゃくちゃ遅いので、よく見る結果とかはチャットに流せないかと思って見ています。&lt;br /&gt;
+(こっちの方がいろいろそろってるかも &lt;a href=&#34;https://github.com/bndr/gojenkins&#34;&gt;https://github.com/bndr/gojenkins&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h1 id=&#34;remember-the-milkのcliを使ってみた:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Remember The MilkのCLIを使ってみた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.rememberthemilk.jp/2012/10/featured-app-rtm-cli/&#34;&gt;RTM-CLI&lt;/a&gt;なるものがあるらしいので使ってみました。&lt;br /&gt;
+Web版は微妙に使いにくいので反応が早いこいつを試してみましたが、微妙でした。&lt;br /&gt;
+キャッシュされないために毎回認証して取ってくるので反応が悪く、&lt;br /&gt;
+速度を求めた場合の乗り換え先としては良くありませんでした。&lt;br /&gt;
+これにキャッシュ機能がつけばおそらく完璧なのですが、現状のコマンドラインツールだと厳しそうですね…&lt;/p&gt;
+
+&lt;h1 id=&#34;ライブに参加していた:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;ライブに参加していた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.lovelive-anime.jp/sp_5thlive.html&#34;&gt;μ&amp;rsquo;s Go→Go! LoveLive! 2015 ～Dream Sensation!&lt;/a&gt;に参加してました。&lt;br /&gt;
+風邪やインフルエンザの可能性を減らすために、2日前から有給取って家に引きこもっていました。&lt;br /&gt;
+1日目はチケットが取れなかったのでLVで、2日目は開場でしかもアリーナAブロックでした。&lt;br /&gt;
+前回の映像は何回も見ていましたが、やっぱり映像よりもLVがいいですし、&lt;br /&gt;
+LVよりも会場の方が何十倍も凄かったです。&lt;br /&gt;
+文才が無いのでこれぐらいにとどめておきますが、次のライブは両日当たるまで応募券を買おうと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
+      <link>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-url-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote url opener&lt;/a&gt;を更新しました。&lt;/p&gt;
+
+&lt;p&gt;使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、&lt;br /&gt;
+ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。&lt;/p&gt;
+
+&lt;p&gt;Evernoteからコピーできる、&lt;br /&gt;
+&lt;code&gt;https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/&lt;/code&gt;&lt;br /&gt;
+といった形式のリンクを張ることで、USER_SHARDとUSER_IDを保存します。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
+      <link>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</link>
+      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</guid>
+      <description>
+
+&lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
+一回目のbundlerに対してbundleが実行されてしまい、&lt;br /&gt;
+別のbundleを呼び出せないという問題が起きました。&lt;br /&gt;
+これはbundlerが設定する環境変数が原因でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bundle exec中に、別のbundlerを実行するとおかしくなる
+
+&lt;ul&gt;
+&lt;li&gt;主にsystemやspawn等を使った場合&lt;/li&gt;
+&lt;li&gt;最初のbundle execと同じものであれば問題は起きない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;bundlerが設定をしている環境変数が問題
+
+&lt;ul&gt;
+&lt;li&gt;別のbundlerを呼ぼうとして元のbundlerが呼ばれている&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Bundler.with_clean_envで回避可能
+
+&lt;ul&gt;
+&lt;li&gt;Bundler.clean_systemでも可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;問題:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;問題&lt;/h1&gt;
+
+&lt;p&gt;以下のような構成かつtestフォルダにいる状態で、&lt;br /&gt;
+&lt;code&gt;bundle install --path vendor/bundle&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;bundle exec test.rb&lt;/code&gt;を実行すると、&lt;br /&gt;
+test2内でbundlerを呼んだ時にエラーになります&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.
+├─ test
+│  │  Gemfile (gemのhello_world_gemを使用)
+│  └─ test.rb
+|
+└─ test2
+   └─ Gemfile (gemのhello-worldを使用)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
+Dir.chdir(&amp;quot;../test2&amp;quot;) do
+  # error
+  system &#39;bundle install --path vendor/bundle&#39;
+  system &#39;bundle exec hello-world&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;エラー文言&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;oh hai thar
+Using hello_world_gem 0.0.3
+Using bundler 1.7.3
+Your bundle is complete!
+It was installed into ./vendor/bundle
+bundler: command not found: hello-world
+Install missing gem executables with `bundle install`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;原因:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;原因&lt;/h1&gt;
+
+&lt;p&gt;bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、&lt;br /&gt;
+そこで指定されているbundlerから実行されていると見なされるため、&lt;br /&gt;
+bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。&lt;br /&gt;
+実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。&lt;/p&gt;
+
+&lt;p&gt;この仕組みのおかげで同じbundleの場合はそのまま実行できるため、&lt;br /&gt;
+1行目のhello_world_gemの呼び出しにbundle execが不要になっています。&lt;br /&gt;
+このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。&lt;/p&gt;
+
+&lt;h1 id=&#34;解決策:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;解決策&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239&#34;&gt;Bundler.with_clean_env&lt;/a&gt;を利用することで、この問題を回避できます。&lt;br /&gt;
+このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。&lt;br /&gt;
+そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。&lt;br /&gt;
+また、コマンドが一つだけの場合は&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251&#34;&gt;Bundler.clean_system&lt;/a&gt;メソッドも使えます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
+Dir.chdir(&amp;quot;../test2&amp;quot;) do
+  Bundler.with_clean_env do
+    # ok
+    system &#39;bundle install --path vendor/bundle&#39;
+    system &#39;bundle exec hello-world&#39;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;補足:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;補足&lt;/h1&gt;
+
+&lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
+これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年04週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-04/</link>
+      <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-04/</guid>
+      <description>
+
+&lt;p&gt;先週やったことまとめ&lt;br /&gt;
+以外とあまりやってない。&lt;br /&gt;
+作りたいものは増えていくけど時間は無い。&lt;/p&gt;
+
+&lt;h1 id=&#34;tumblrクライアント作ってる:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;tumblrクライアント作ってる&lt;/h1&gt;
+
+&lt;p&gt;info APIだけはできた。Posts APIを作りたいけど、ちょっとめんどくさそう。&lt;br /&gt;
+複数の型を一つの配列で返して来るので、どうやって同じ配列に入れようか…&lt;br /&gt;
+たぶん全部入りのクラスで取り出して、個別のクラスに入れていく形になるかと。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://play.golang.org/p/tVLoIDVk--&#34;&gt;http://play.golang.org/p/tVLoIDVk&amp;ndash;&lt;/a&gt;
+この技を使えば違う型でも共通の配列に入れられるはず&lt;/p&gt;
+
+&lt;h1 id=&#34;情報科学若手の会冬の陣2015に参加した:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;情報科学若手の会冬の陣2015に参加した&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/25/wakate2015w/&#34;&gt;参加記録 情報科学若手の会冬の陣2015&lt;/a&gt;&lt;br /&gt;
+発表したい人生だった… _ (:3 」∠)_&lt;br /&gt;
+が、ここ半年間はずっと一日に使える時間が1〜2時間程度、かつ仕事は情報科学っぽい事をしてないので、&lt;br /&gt;
+発表ネタが全く作れないという…&lt;br /&gt;
+というか、特に技術的に成長してない気がするし、このままの生活を続けて大丈夫なのだろうか…&lt;/p&gt;
+
+&lt;h1 id=&#34;remember-the-milk使いやすいが使いにくい:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;Remember The Milk使いやすいが使いにくい&lt;/h1&gt;
+
+&lt;p&gt;わりといい線行ってるサービスだけど、Webクライアントが使いにくいのでちょっと残念。&lt;br /&gt;
+URLをショートカットから開けなかったり、ヘッダー画像が邪魔だったり…&lt;br /&gt;
+サブタスクが無いのもそれはそれで使いにくいですね。&lt;/p&gt;
+
+&lt;p&gt;ただ、オフラインでスマホで見られますし、繰り返し設定など様々な設定が凄く楽にできる等&lt;br /&gt;
+機能的にはいいですし、UIもいいのであともう一声って感じですね…&lt;br /&gt;
+コマンドラインから対話的に操作できれば解決できそうな気がします。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>参加記録 情報科学若手の会冬の陣2015</title>
+      <link>http://localhost:1313/blog/2015/01/25/wakate2015w/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/25/wakate2015w/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://atnd.org/events/61060&#34;&gt;情報科学若手の会冬の陣2015 #wakate2015w&lt;/a&gt;に参加しました&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/773792&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;br /&gt;
+会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:99d83bf71ce3610b971e31175555a6de&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;黒崎優太 (@kuro_m88)  ICTトラブルシューティングコンテストの紹介&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://icttoracon.net/&#34;&gt;http://icttoracon.net/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ネットワーク版CTFみたいなコンテスト&lt;/li&gt;
+&lt;li&gt;Ciscoがスポンサーについているので、高価な機材がいっぱい用意されるみたい&lt;/li&gt;
+&lt;li&gt;大きな規模のネットワークであれこれするのって普通じゃ出来ないし、面白そうです。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;浅野智之 (@asanon_s)  Webの世界に散らばるデータをつなぐ技術&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;semantic webやPDFの話&lt;/li&gt;
+&lt;li&gt;人間が読めれば良い形式から、構造化されて機械も読める形式を加えるみたい&lt;/li&gt;
+&lt;li&gt;なんとなく理解が深まった気がします&lt;/li&gt;
+&lt;li&gt;完全なsemantic webへの道のりはまだまだ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;門脇香子  証明プログラミング入門&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ussopyon/ss-43846794&#34;&gt;http://www.slideshare.net/ussopyon/ss-43846794&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lepidum.co.jp/blog/2014-06-05/CCS-Injection/&#34;&gt;OpenSSLの脆弱性をCoqで見つけた話&lt;/a&gt;を聞いてから、証明プログラミング凄そうだけどよくわからない状態だったので、
+理解が深まりました。&lt;/li&gt;
+&lt;li&gt;何を証明すれば良いかを補完してくれるのは便利そうでした&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;佐野岳人  コードを書けば複素数が分かる&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/taketo1024/ss-43853048&#34;&gt;http://www.slideshare.net/taketo1024/ss-43853048&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;初めて複素数が何なのかを感覚的に理解できた気がする…&lt;/li&gt;
+&lt;li&gt;デモで関数をインタラクティブに可視化しているのが本当に凄かった&lt;/li&gt;
+&lt;li&gt;ここから使える&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/taketo1024/SwiftComplex&#34;&gt;https://github.com/taketo1024/SwiftComplex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;辻順平 (@tsujimotter)    日曜数学のススメ&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/junpeitsuji/2015-43856733&#34;&gt;http://www.slideshare.net/junpeitsuji/2015-43856733&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;コンパスと定規で作図可能かどうかを判定するガウスの判定法凄い&lt;/li&gt;
+&lt;li&gt;折り紙だと四次方程式が解けるので、作図できなくても折れる場合があるとか凄い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;池尻良平  ニュースと類似した歴史を求めるアルゴリズムを考えてみた – 役に立つ歴史教育を目指して&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;現代のニュースと、それに類似する歴史上の出来事を提示するシステムを作っているそうです&lt;/li&gt;
+&lt;li&gt;過去にどんな解決策をとって、どういう結果になったかを考えるのにとても便利そうです&lt;/li&gt;
+&lt;li&gt;早く使ってみたいですね&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;後藤紳   モバイルデータを用いた行動予測&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;あんまり書いちゃいけなさそうなので割愛&lt;/li&gt;
+&lt;li&gt;GPSの行動ログを蓄積して、次に何をしそうか提示するみたいです&lt;/li&gt;
+&lt;li&gt;同じような日々を送っている人には効果的っぽいです&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;宮代理弘 (@3846masa)  Processin.ga – Webで書いてスマホで動かすサイト開発話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://processin.ga/&#34;&gt;http://processin.ga/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&#34;&gt;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Processingをブラウザ上で書いて動かし、かつスマホでもリアルタイムに動かせるサイトです&lt;/li&gt;
+&lt;li&gt;無ければ作る、あっても作る&lt;/li&gt;
+&lt;li&gt;デザインはパクるもの&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;湯村翼 (@yumu19) 野生の研究について&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://yumulog.hatenablog.com/entry/2015/01/25/020313&#34;&gt;http://yumulog.hatenablog.com/entry/2015/01/25/020313&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;そもそもアーカイブ形式が動画だと、後から調べるのがとても大変になる気がします&lt;/li&gt;
+&lt;li&gt;今は何とかなってるけど、数年、数十年と続いていくと辛いかと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;宮下芳明  明治大学宮下研究室の活動とABProの紹介&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linear vs Circular&lt;/li&gt;
+&lt;li&gt;この研究が凄かった&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=S1Roi2NOmx8&#34;&gt;https://www.youtube.com/watch?v=S1Roi2NOmx8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;懇親会:99d83bf71ce3610b971e31175555a6de&#34;&gt;懇親会&lt;/h1&gt;
+
+&lt;p&gt;一晩寝たらだいたい忘れるという…(´･_･`)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;courseraで英語勉強&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/&#34;&gt;https://www.coursera.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ちょうど機械学習とかやってみたかったのでよさそう(o゜▽゜)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自動作曲の話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;歌詞を入れると自動でお音をつけてくれる&lt;/li&gt;
+&lt;li&gt;日本語の音節？を見て色々やってるらしい？&lt;/li&gt;
+&lt;li&gt;ミクと組み合わせて、詩を書ければ曲が書けるとか良さそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;その他:99d83bf71ce3610b971e31175555a6de&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;何か発表したい人生だった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RAMディスクでiOSのビルド時間を短くする</title>
+      <link>http://localhost:1313/blog/2015/01/23/ram-disk/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/23/ram-disk/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RAMディスクを作ってビルドすると早くなる
+
+&lt;ul&gt;
+&lt;li&gt;SSD上でビルドすると9分&lt;/li&gt;
+&lt;li&gt;RAMディスクでビルドすると6分&lt;/li&gt;
+&lt;li&gt;Androidは未検証だが同じと思われる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Macだととても簡単にRAMディスクが作れる&lt;/li&gt;
+&lt;li&gt;Jenkins等、ビルドが主目的の場合に有効と思われる&lt;/li&gt;
+&lt;li&gt;メモリが余っているならやる価値はある&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mac-os-xでのramディスク作成:60a44556319ed47b4775982878e62460&#34;&gt;Mac OS XでのRAMディスク作成&lt;/h1&gt;
+
+&lt;p&gt;Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。&lt;br /&gt;
+メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。&lt;/p&gt;
+
+&lt;p&gt;また、rootでなくても作成できるため、非常に便利です&lt;/p&gt;
+
+&lt;h2 id=&#34;ディスク作成手順:60a44556319ed47b4775982878e62460&#34;&gt;ディスク作成手順&lt;/h2&gt;
+
+&lt;p&gt;2つコマンドを実行するだけです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hdid -nomount ram://4096000
+# 指定した容量でRAMディスクが作成されます。
+# /dev/disk2等作成された場所が返ります。
+# ファイルシステムがないためマウントは失敗します。
+# そのため、-nomuntをつけています。
+
+diskutil eraseDisk HFS+ RAM /dev/disk2
+# 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします
+# さらに、RAMという名前でマウントします。
+# これにより、/Volumes/RAMでアクセスできるようになります。
+
+hdiutil detach disk2
+# 作成したディスクをアンマウントして削除します
+# ディスクは消滅するのでご注意ください
+# diskutil unmountDisk
+# diskutil eject
+# の組み合わせと同じですが、コマンド一つになるため楽です
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;速度比較:60a44556319ed47b4775982878e62460&#34;&gt;速度比較&lt;/h2&gt;
+
+&lt;p&gt;Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。&lt;br /&gt;
+速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
+
+&lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
+&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
+ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。&lt;/p&gt;
+
+&lt;h1 id=&#34;ビルド時間比較:60a44556319ed47b4775982878e62460&#34;&gt;ビルド時間比較&lt;/h1&gt;
+
+&lt;p&gt;性能的には以上の通りですが、実際にビルド時間にはどれほど影響があるかを調べてみました。&lt;/p&gt;
+
+&lt;p&gt;比較には&lt;a href=&#34;https://github.com/cocos2d/cocos2d-x-samples&#34;&gt;cocos2d-x-sample&lt;/a&gt;を利用しました。&lt;br /&gt;
+ビルドには&lt;a href=&#34;https://github.com/nomad/shenzhen&#34;&gt;shenzhen&lt;/a&gt;を利用し、コマンドラインからiOSのクリーンビルドを行いました。&lt;/p&gt;
+
+&lt;p&gt;残念ながら証明書が無いためipaを作成することが出来ず、&lt;br /&gt;
+かつその場合にshenzhenが何故か終了せず、timeコマンド等で正確な時間計測が出来ませんでした。&lt;br /&gt;
+timeコマンドを使い手作業で計ったところ、SSD上では9分13秒、RAMディスク上では6分01秒とうい結果になりました。&lt;br /&gt;
+手計測による誤差はせいぜい数秒低度なため、3分以上早くなっているのは確実と言えます。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:60a44556319ed47b4775982878e62460&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;R/Wの性能は5倍〜10倍と凄く高速になっている&lt;/li&gt;
+&lt;li&gt;ビルド時間は30%ぐらい減った
+
+&lt;ul&gt;
+&lt;li&gt;ただし、プロジェクトによっては差異があると思われる&lt;/li&gt;
+&lt;li&gt;CPUやメモリの影響もあるため、R/Wの性能向上がそのまま反映されるわけではない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;電源を切ると消えるので使い道は慎重に
+
+&lt;ul&gt;
+&lt;li&gt;開発用よりもビルド専用に使った方が安心&lt;/li&gt;
+&lt;li&gt;Jenkinsのビルドをここで行うのは良い案と思われる&lt;/li&gt;
+&lt;li&gt;ログが残らないので、成果物の保存はよく考える必要あり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;当然ながら空きメモリ容量を消費するので、余っていない場合は注意&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

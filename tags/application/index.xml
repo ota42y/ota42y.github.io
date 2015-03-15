@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Application on おおたの物置</title>
+    <link>http://localhost:1313/tags/application/</link>
+    <description>Recent content in Application on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/application/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
+      <link>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-url-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote url opener&lt;/a&gt;を更新しました。&lt;/p&gt;
+
+&lt;p&gt;使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、&lt;br /&gt;
+ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。&lt;/p&gt;
+
+&lt;p&gt;Evernoteからコピーできる、&lt;br /&gt;
+&lt;code&gt;https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/&lt;/code&gt;&lt;br /&gt;
+といった形式のリンクを張ることで、USER_SHARDとUSER_IDを保存します。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>大晦日ハッカソン2014&amp;正月ハッカソン2015に参加した</title>
+      <link>http://localhost:1313/blog/2015/01/01/1231-hackathon/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/01/1231-hackathon/</guid>
+      <description>
+
+&lt;p&gt;&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;/31にオンラインで行われた、&lt;br /&gt;
+&lt;a href=&#34;https://atnd.org/events/59470&#34;&gt;大晦日ハッカソン2014&lt;/a&gt;に参加しました。&lt;/p&gt;
+
+&lt;p&gt;Evernoteのリンクをアプリで直接開くChrome拡張を作りました。&lt;br /&gt;
+&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-app-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote app opener - Chrome ウェブストア&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(なお、細かい修正やこの記事の執筆等を、&lt;br /&gt;
+&lt;a href=&#34;https://atnd.org/events/60889&#34;&gt;正月ハッカソン2015&lt;/a&gt;でやりました)&lt;/p&gt;
+
+&lt;h1 id=&#34;どんなchrome拡張か:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;どんなChrome拡張か&lt;/h1&gt;
+
+&lt;p&gt;現在、Evernoteのノート固有のリンクを取得すると、&lt;br /&gt;
+&lt;code&gt;https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/&lt;/code&gt;&lt;br /&gt;
+といった、httpsのリンクが使われます。&lt;/p&gt;
+
+&lt;p&gt;このリンクを開くと、EvernoteのWebアプリ上でノートを開くことが出来ますが、&lt;br /&gt;
+Evernoteはログインが最長で一週間しか保てず、また二段階認証をしている場合は、&lt;br /&gt;
+頻繁に面倒なログインを求められます。&lt;/p&gt;
+
+&lt;p&gt;ですが多くの場合、開こうとしているノートはオフラインのEvernoteアプリでも開くことが出来ます。&lt;br /&gt;
+そのため、Webではなくアプリで開く事が出来れば、わざわざログインせずともノートを開くことが出来ます。&lt;/p&gt;
+
+&lt;p&gt;そのため、上記のようなWebアプリでノートを開くようなリンクを、&lt;br /&gt;
+オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。&lt;br /&gt;
+Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、&lt;br /&gt;
+そのURLに含まれているユーザIDとshard名をオプションページで設定してください。&lt;/p&gt;
+
+&lt;p&gt;その状態で、Evernoteのノートリンクを開くと、ログイン/非ログインに関わらず、&lt;br /&gt;
+Evernoteアプリが立ち上がり、そのノートを開いてくれます。&lt;/p&gt;
+
+&lt;p&gt;これで、いちいちWebでログインすることなく、ノートリンクで指定したノートを表示することが出来ます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>スクフェス用パッケージの更新</title>
+      <link>http://localhost:1313/blog/2014/11/12/scfes-update/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/11/12/scfes-update/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/10/28/hubot-scfes/&#34;&gt;前に作った&lt;/a&gt;スクフェス用パッケージを更新しました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。&lt;br /&gt;
+真夜中にレベルアップが起きたりすると面倒なので、これを見て事前に石を使うなり、&lt;br /&gt;
+別の難易度をやって遅らせるなりして、レベルアップのタイミング調整をすることが簡単になります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;# 次のレベルアップまでexを何回プレイするか
+hubot scfes levelup count 830 ex
+=&amp;gt; 10
+
+# 次のレベルアップはいつか
+hubot scfes levelup time 830 ex
+=&amp;gt; next levelup is Sun Aug 3 2014 2:52:52 GMT+0900 (JST)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>スクフェス用の機能が詰まったHubotパッケージを作った</title>
+      <link>http://localhost:1313/blog/2014/10/28/hubot-scfes/</link>
+      <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/28/hubot-scfes/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://lovelive.bushimo.jp/&#34;&gt;スクフェス&lt;/a&gt;用の色々便利な機能が入ったHubotパッケージを作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今のところ主な機能は2つです。&lt;/p&gt;
+
+&lt;h2 id=&#34;スタミナがmaxになる時間になったら通知する:91b003f8885a14792b1f4b6d2095c657&#34;&gt;スタミナがMaxになる時間になったら通知する&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;hubot scfes remind stamina 10 50&lt;/code&gt;&lt;br /&gt;
+で、スタミナの現在値が10、最大値が50の場合に、Maxになる時刻に通知してくれます。&lt;br /&gt;
+それ以外の値の場合は調節してください。&lt;/p&gt;
+
+&lt;h2 id=&#34;スタミナがnの倍数になったときに通知する:91b003f8885a14792b1f4b6d2095c657&#34;&gt;スタミナがnの倍数になったときに通知する&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;hubot scfes remind stamina 10 50 25&lt;/code&gt;&lt;br /&gt;
+で、スタミナの現在値が10、最大値が50として、25の倍数の時に通知してくれます。&lt;br /&gt;
+EXでちょうど使い切れるタイミングで通知するといった使い方を想定しています。&lt;/p&gt;
+
+&lt;h2 id=&#34;未実装機能:91b003f8885a14792b1f4b6d2095c657&#34;&gt;未実装機能&lt;/h2&gt;
+
+&lt;p&gt;イベント終了までにどれくらいスタミナが回復するかとか、&lt;br /&gt;
+レベルアップするのはいつぐらいになるかとか、&lt;br /&gt;
+そういった頭の中で適当に計算してる奴を機能化していこうと思います。&lt;/p&gt;
+
+&lt;p&gt;ちなみにこいつは前に作った&lt;a href=&#34;https://github.com/ota42y/stamina-calculator&#34;&gt;stamina-calculator&lt;/a&gt;を内部で使用しています。&lt;br /&gt;
+node.jsで細かくパッケージに分けて開発ってどうやるんだろうなーと思って、実益と練習がてら作った感じです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>進捗どうですか？を訪ねるhubotスクリプトを作った</title>
+      <link>http://localhost:1313/blog/2014/10/05/shinchoku/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/05/shinchoku/</guid>
+      <description>
+
+&lt;p&gt;作りました。&lt;br /&gt;
+30分ごとに進捗どうですか？と聞いてきます。&lt;/p&gt;
+
+&lt;p&gt;何をやったかを計測するために定期的にログを残そうと思うのですが、&lt;br /&gt;
+大体忘れるので、こうやって適度に通知することで思いだそう！という試みです。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;進捗 start&lt;/code&gt;で30分ごとに進捗どうですか？と聞いてきます。&lt;br /&gt;
+&lt;code&gt;進捗 stop&lt;/code&gt;でストップします。&lt;/p&gt;
+
+&lt;h1 id=&#34;ホラー体験:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;ホラー体験&lt;/h1&gt;
+
+&lt;p&gt;setTimeoutが秒設定だと間違えて…(´･_･`)&lt;br /&gt;
+&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;コード:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;コード&lt;/h1&gt;
+
+&lt;script src=&#34;https://gist.github.com/ota42y/41fed7d94c23836f3440.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ソシャゲ用のスタミナ計算機を作った</title>
+      <link>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</link>
+      <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</guid>
+      <description>
+
+&lt;p&gt;作りました。&lt;/p&gt;
+
+&lt;p&gt;スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー&lt;br /&gt;
+みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;h2 id=&#34;初期化:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;初期化&lt;/h2&gt;
+
+&lt;p&gt;スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。&lt;br /&gt;
+なお、指定は秒で行います。&lt;br /&gt;
+&lt;code&gt;stamina_calculator = new StaminaCalculator 6*60&lt;/code&gt;&lt;br /&gt;
+この例ですと、6分で1スタミナ回復するゲームになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;指定した値までの回復時間-getnextmaxstaminatime:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;指定した値までの回復時間(getNextMaxStaminaTime)&lt;/h2&gt;
+
+&lt;p&gt;現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。&lt;br /&gt;
+Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。&lt;br /&gt;
+&lt;code&gt;stamina_calculator.getNextMaxStaminaTime(10, 60)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;指定した倍数の値まで回復する時間-getmultiplerecoverytime:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;指定した倍数の値まで回復する時間(getMultipleRecoveryTime)&lt;/h2&gt;
+
+&lt;p&gt;現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。&lt;br /&gt;
+今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。&lt;br /&gt;
+&lt;code&gt;next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;結果をdateオブジェクトにする:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;結果をDateオブジェクトにする&lt;/h2&gt;
+
+&lt;p&gt;メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。&lt;br /&gt;
+Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。&lt;br /&gt;
+&lt;code&gt;stamina_calculator.convertToDate(second)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;StaminaCalculator = require(&#39;stamina-calculator&#39;).StaminaCalculator;
+
+stamina_calculator = new StaminaCalculator 6*60
+
+second = stamina_calculator.getNextMaxStaminaTime(10, 60)
+
+console.log second
+# 今から何秒後にスタミナが５０回復するか
+
+console.log stamina_calculator.convertToDate(second)
+# 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った</title>
+      <link>http://localhost:1313/blog/2014/08/29/hubot-post-server/</link>
+      <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/29/hubot-post-server/</guid>
+      <description>&lt;p&gt;実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、&lt;br /&gt;
+Webサーバへのアクセスに対して反応することができます。&lt;br /&gt;
+例: &lt;a href=&#34;https://github.com/github/hubot/blob/master/src/scripts/httpd.coffee&#34;&gt;scripts/httpd.coffee&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回はその機能を利用し、&lt;br /&gt;
+/hubot/send_messageにPOSTされたデータをチャットに流すスクリプトを作りました。&lt;/p&gt;
+
+&lt;p&gt;Hubot以外のアプリからこのURLを叩くことで、hubotの接続しているチャットに対して簡単にデータを送信できます。&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/ota42y/5b4342b36ba845d40197.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
+      <link>http://localhost:1313/blog/2014/08/10/evernote-link/</link>
+      <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/10/evernote-link/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Evernoteのノートリンクの仕様が変わって使い物にならなくなった&lt;/li&gt;
+&lt;li&gt;前の仕様でも動くので変換スクリプトを書いた&lt;/li&gt;
+&lt;li&gt;ただし、Macではスクリプトの実行方法で問題あり&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
+
+&lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。&lt;br /&gt;
+そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。&lt;br /&gt;
+AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、&lt;br /&gt;
+同じようにアプリでノートを開いてくれるため、とても便利でした。&lt;/p&gt;
+
+&lt;p&gt;しかし、最近の変更により、&lt;a href=&#34;https://www.evernote.com/&#34;&gt;https://www.evernote.com/&lt;/a&gt; へのリンクに変わってしまい、&lt;br /&gt;
+ブラウザが起動してノートがEvernoteのサイト上で表示され、&lt;br /&gt;
+そこからさらにEvernoteのアプリが開くという挙動になりました。&lt;/p&gt;
+
+&lt;p&gt;これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、&lt;br /&gt;
+オフライン状態ではノートを開くことができなくなってしまいました。&lt;/p&gt;
+
+&lt;p&gt;正直使い物にならないレベルになってしまったのですが、&lt;br /&gt;
+幸いなことにevernote:///スキームは未だ有効です。&lt;br /&gt;
+また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。&lt;/p&gt;
+
+&lt;h1 id=&#34;リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
+
+&lt;h2 id=&#34;ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;以下は予想であり、正確なものではありません&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Evernoteのhttpsリンクは以下のようになっています。&lt;br /&gt;
+&lt;code&gt;https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/&lt;/code&gt;&lt;br /&gt;
+対して、evernote:///スキームは以下のようになっています。&lt;br /&gt;
+&lt;code&gt;evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;(ノート固有の文字列は二回とも同じ値になります)&lt;/code&gt;　　&lt;/p&gt;
+
+&lt;p&gt;どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。&lt;/p&gt;
+
+&lt;p&gt;Windowsならクリップボードの置換ソフトはたくさんあるのですが、&lt;br /&gt;
+Macでは残念ながらまともな物はありませんでした。&lt;/p&gt;
+
+&lt;p&gt;一応、&lt;a href=&#34;http://www.clipmenu.com/ja/&#34;&gt;ClipMenu&lt;/a&gt;は正規表現で置換ができますが、&lt;br /&gt;
+それを実行するまでにかなりキーストロークが必要なため、見送りました。&lt;br /&gt;
+理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。&lt;/p&gt;
+
+&lt;h2 id=&#34;リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
+
+&lt;p&gt;結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。&lt;br /&gt;
+事前にclipboard gemをインストールしておく必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+
+pushd $(dirname $0)
+
+bundle exec ruby -e &amp;quot;
+require &#39;clipboard&#39;
+
+url = Clipboard.paste
+r = Regexp.new(\&amp;quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&amp;quot;)
+result = r.match url
+if result
+  new_url = \&amp;quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&amp;quot;
+  p new_url
+  Clipboard.copy new_url
+end
+&amp;quot;
+
+popd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これをevernote.commandという名前で保存して、&lt;br /&gt;
+Alfredなどから実行すればいける！！と思ったのですが、&lt;br /&gt;
+実行すると新たなターミナルが起動してスクリプトが実行され、&lt;br /&gt;
+終了後にターミナルがそのまま残るという状態になってしまいました。&lt;/p&gt;
+
+&lt;p&gt;毎回ターミナルを消すのは面倒すぎるので、とりあえずこの手法の採用は見送ることにします。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

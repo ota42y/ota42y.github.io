@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on おおたの物置</title>
+    <link>http://localhost:1313/tags/windows/</link>
+    <description>Recent content in Windows on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Fri, 03 Oct 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HDDのパーティションテーブルが消えてからのデータ復旧</title>
+      <link>http://localhost:1313/blog/2014/10/03/hdd-post/</link>
+      <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/03/hdd-post/</guid>
+      <description>
+
+&lt;p&gt;先日デスクトップPCのデータ用HDDが吹っ飛びました。&lt;br /&gt;
+原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。&lt;br /&gt;
+復旧に成功したのでその手順をメモっておきます。&lt;/p&gt;
+
+&lt;h1 id=&#34;問題推定:c4d4d0e796061927a879969ee147cd5a&#34;&gt;問題推定&lt;/h1&gt;
+
+&lt;p&gt;初めは何故データが消えたのかわからなかったため、その調査から始めました。&lt;br /&gt;
+消えたのはデータ用HDDで、Windows本体は問題なく起動していたため、WindowsからHDDを見ると、&lt;br /&gt;
+未フォーマット状態のディスクとして認識され、パーティションスタイルの選択から始まっていました。&lt;/p&gt;
+
+&lt;p&gt;HDDは数ヶ月前に新調したものであり、異音やエラーなどの問題も無かったため、物理的な可能性は薄いと考えました。&lt;br /&gt;
+また、直前に大量にデータを書き込んでもいないため、データを削除した線も薄そうです。&lt;/p&gt;
+
+&lt;p&gt;さらに、一部のデータが読み込めなくなるのではなく、全データが一度に読み取り不能になったことから、&lt;br /&gt;
+何らかの要因でパーティションが消えてデータが読み取り不能になり、&lt;br /&gt;
+データ自体は残っているのではないかと考えました。&lt;/p&gt;
+
+&lt;h1 id=&#34;パーティションの確認:c4d4d0e796061927a879969ee147cd5a&#34;&gt;パーティションの確認&lt;/h1&gt;
+
+&lt;p&gt;運良く手元にLinuxの起動ディスクがあったため、とりあえずパーティションがどうなっているかを確認しました。&lt;/p&gt;
+
+&lt;p&gt;手順としては以下のようになります。&lt;br /&gt;
+なお、HDDがsdaにマウントされていると仮定します。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ddコマンドでHDDの先頭をコピーする&lt;br /&gt;
+ddコマンドはディスクからファイルやディスクにデータをコピーできるコマンドです。&lt;br /&gt;
+&lt;code&gt;sudo dd if=/dev/sda of=/tmp/hdd count=100&lt;/code&gt;&lt;br /&gt;
+のようにすることで、sdaの先頭から100ブロック分を/tmp/hddファイルにコピーします。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;hexdumpコマンドで中身を見る&lt;br /&gt;
+hexdumpコマンドはファイルの中身を16進数で出力します。&lt;br /&gt;
+&lt;code&gt;hexdump /tmp/hdd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;私の場合、hexdumpの出力が先頭50MBぐらい全て0だらけだったので、&lt;br /&gt;
+パーティションが全て0埋めされて消えていました。&lt;/p&gt;
+
+&lt;p&gt;そのため、次にパーティションの復活を試みます。&lt;/p&gt;
+
+&lt;h1 id=&#34;testdiskでパーティション復活:c4d4d0e796061927a879969ee147cd5a&#34;&gt;TestDiskでパーティション復活&lt;/h1&gt;
+
+&lt;p&gt;壊れたディスクはPBRにしていたため、MBRと比べて大変になる場合が多いらしいですが、&lt;br /&gt;
+TestDiskを使うと特に問題なく修復できました。&lt;/p&gt;
+
+&lt;p&gt;詳しい使い方はこちら。&lt;br /&gt;
+&lt;a href=&#34;http://uiuicy.cs.land.to/testdisk1.html&#34;&gt;【TestDisk】について&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;私の場合、これでNTFSのパーティションを修復できましたが、&lt;br /&gt;
+何故か書き込んでいないはずのWindowsディスクが壊れてしまい、&lt;br /&gt;
+データと引き替えにWindowsが消えてしまいました…&lt;/p&gt;
+
+&lt;p&gt;幸いWindowsディスクには特に重要なデータを入れていなかったのと、&lt;br /&gt;
+Macからデータを読み出すことができたために難を逃れました。&lt;/p&gt;
+
+&lt;p&gt;念のため、Windowsディスクは外して作業をした方がよさそうです。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

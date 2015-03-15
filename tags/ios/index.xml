@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ios on おおたの物置</title>
+    <link>http://localhost:1313/tags/ios/</link>
+    <description>Recent content in Ios on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>RAMディスクでiOSのビルド時間を短くする</title>
+      <link>http://localhost:1313/blog/2015/01/23/ram-disk/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/23/ram-disk/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RAMディスクを作ってビルドすると早くなる
+
+&lt;ul&gt;
+&lt;li&gt;SSD上でビルドすると9分&lt;/li&gt;
+&lt;li&gt;RAMディスクでビルドすると6分&lt;/li&gt;
+&lt;li&gt;Androidは未検証だが同じと思われる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Macだととても簡単にRAMディスクが作れる&lt;/li&gt;
+&lt;li&gt;Jenkins等、ビルドが主目的の場合に有効と思われる&lt;/li&gt;
+&lt;li&gt;メモリが余っているならやる価値はある&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mac-os-xでのramディスク作成:60a44556319ed47b4775982878e62460&#34;&gt;Mac OS XでのRAMディスク作成&lt;/h1&gt;
+
+&lt;p&gt;Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。&lt;br /&gt;
+メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。&lt;/p&gt;
+
+&lt;p&gt;また、rootでなくても作成できるため、非常に便利です&lt;/p&gt;
+
+&lt;h2 id=&#34;ディスク作成手順:60a44556319ed47b4775982878e62460&#34;&gt;ディスク作成手順&lt;/h2&gt;
+
+&lt;p&gt;2つコマンドを実行するだけです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hdid -nomount ram://4096000
+# 指定した容量でRAMディスクが作成されます。
+# /dev/disk2等作成された場所が返ります。
+# ファイルシステムがないためマウントは失敗します。
+# そのため、-nomuntをつけています。
+
+diskutil eraseDisk HFS+ RAM /dev/disk2
+# 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします
+# さらに、RAMという名前でマウントします。
+# これにより、/Volumes/RAMでアクセスできるようになります。
+
+hdiutil detach disk2
+# 作成したディスクをアンマウントして削除します
+# ディスクは消滅するのでご注意ください
+# diskutil unmountDisk
+# diskutil eject
+# の組み合わせと同じですが、コマンド一つになるため楽です
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;速度比較:60a44556319ed47b4775982878e62460&#34;&gt;速度比較&lt;/h2&gt;
+
+&lt;p&gt;Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。&lt;br /&gt;
+速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
+
+&lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
+&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
+ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。&lt;/p&gt;
+
+&lt;h1 id=&#34;ビルド時間比較:60a44556319ed47b4775982878e62460&#34;&gt;ビルド時間比較&lt;/h1&gt;
+
+&lt;p&gt;性能的には以上の通りですが、実際にビルド時間にはどれほど影響があるかを調べてみました。&lt;/p&gt;
+
+&lt;p&gt;比較には&lt;a href=&#34;https://github.com/cocos2d/cocos2d-x-samples&#34;&gt;cocos2d-x-sample&lt;/a&gt;を利用しました。&lt;br /&gt;
+ビルドには&lt;a href=&#34;https://github.com/nomad/shenzhen&#34;&gt;shenzhen&lt;/a&gt;を利用し、コマンドラインからiOSのクリーンビルドを行いました。&lt;/p&gt;
+
+&lt;p&gt;残念ながら証明書が無いためipaを作成することが出来ず、&lt;br /&gt;
+かつその場合にshenzhenが何故か終了せず、timeコマンド等で正確な時間計測が出来ませんでした。&lt;br /&gt;
+timeコマンドを使い手作業で計ったところ、SSD上では9分13秒、RAMディスク上では6分01秒とうい結果になりました。&lt;br /&gt;
+手計測による誤差はせいぜい数秒低度なため、3分以上早くなっているのは確実と言えます。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:60a44556319ed47b4775982878e62460&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;R/Wの性能は5倍〜10倍と凄く高速になっている&lt;/li&gt;
+&lt;li&gt;ビルド時間は30%ぐらい減った
+
+&lt;ul&gt;
+&lt;li&gt;ただし、プロジェクトによっては差異があると思われる&lt;/li&gt;
+&lt;li&gt;CPUやメモリの影響もあるため、R/Wの性能向上がそのまま反映されるわけではない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;電源を切ると消えるので使い道は慎重に
+
+&lt;ul&gt;
+&lt;li&gt;開発用よりもビルド専用に使った方が安心&lt;/li&gt;
+&lt;li&gt;Jenkinsのビルドをここで行うのは良い案と思われる&lt;/li&gt;
+&lt;li&gt;ログが残らないので、成果物の保存はよく考える必要あり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;当然ながら空きメモリ容量を消費するので、余っていない場合は注意&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>コマンドラインからiOSアプリをビルドする</title>
+      <link>http://localhost:1313/blog/2014/08/28/ios-build/</link>
+      <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/28/ios-build/</guid>
+      <description>
+
+&lt;p&gt;JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、&lt;br /&gt;
+普通にコマンドラインからビルドを実行していただけなので、
+使っているコマンドをまとめました。&lt;/p&gt;
+
+&lt;p&gt;なお、以下のサンプルプロジェクトを使って確認しました。&lt;br /&gt;
+&lt;a href=&#34;https://developer.apple.com/library/ios/samplecode/CustomHTTPProtocol/Introduction/Intro.html#//apple_ref/doc/uid/DTS40013653&#34;&gt;CustomHTTPProtocol&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;usr-bin-agvtool:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;/usr/bin/agvtool&lt;/h1&gt;
+
+&lt;h2 id=&#34;バージョンを設定する:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;バージョンを設定する&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/bin/agvtool new-version -all (VERSION_NUMBER)&lt;/code&gt;&lt;br /&gt;
+xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更できます。&lt;/p&gt;
+
+&lt;h2 id=&#34;バージョンを確認する:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;バージョンを確認する&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/bin/agvtool mvers -terse&lt;/code&gt;
+アプリのバージョン番号を確認出来ます。&lt;br /&gt;
+プロジェクト設定のVersionの部分ですね。&lt;br /&gt;
+(mversはmarketing-versionの略です)&lt;/p&gt;
+
+&lt;h1 id=&#34;使える証明書を確認する:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;使える証明書を確認する&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/bin/security find-identity -p codesigning -v
+  1) ABCDEFGHIJKLMNOPQRSTUVWXYZ(識別子) &amp;quot;iPhone Developer: ota42y (XXXXXXXX識別子)&amp;quot;
+     1 valid identities found
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このコンピュータで使えるcodesigningの一覧が取れます。&lt;/p&gt;
+
+&lt;h1 id=&#34;usr-bin-xcodebuild:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;/usr/bin/xcodebuild&lt;/h1&gt;
+
+&lt;h2 id=&#34;使えるsdkを確認する:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;使えるSDKを確認する&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/bin/xcodebuild -showsdks
+OS X SDKs:
+        OS X 10.8                       -sdk macosx10.8
+        OS X 10.9                       -sdk macosx10.9
+
+iOS SDKs:
+        iOS 7.1                         -sdk iphoneos7.1
+
+iOS Simulator SDKs:
+        Simulator - iOS 6.1             -sdk iphonesimulator6.1
+        Simulator - iOS 7.1             -sdk iphonesimulator7.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使えるSDK一覧が表示されます。&lt;/p&gt;
+
+&lt;h2 id=&#34;ビルド設定を表示する:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;ビルド設定を表示する&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/bin/xcodebuild -list&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;プロジェクトで使えるビルド設定一覧と
+デフォルトで何が有効になっているかを表示できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Information about project &amp;quot;CustomHTTPProtocol&amp;quot;:
+    Targets:
+        CustomHTTPProtocol
+
+    Build Configurations:
+        Debug
+        Release
+
+    If no build configuration is specified and -scheme is not passed then &amp;quot;Release&amp;quot; is used.
+
+    Schemes:
+        CustomHTTPProtocol
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ビルドする:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;ビルドする&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/bin/xcodebuild -target CustomHTTPProtocol -configuration Debug build CONFIGURATION_BUILD_DIR=./app&lt;/code&gt;&lt;br /&gt;
+でビルドを実行できます。&lt;br /&gt;
+target、configurationを指定し、appディレクトリにappファイルとdSYMファイルを作成します。&lt;/p&gt;
+
+&lt;h1 id=&#34;appを署名してipaファイルにする:bc0afc4cfa6f44ceb49a050ef4299a5f&#34;&gt;appを署名してipaファイルにする&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/bin/xcrun -sdk iphoneos PackageApplication -v (appファイルへのフルパス) -o (保存するipaファイルのフルパス)&lt;/code&gt;&lt;br /&gt;
+何故か相対パスだとうまくいきませんでした&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

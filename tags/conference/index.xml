@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Conference on おおたの物置</title>
+    <link>http://localhost:1313/tags/conference/</link>
+    <description>Recent content in Conference on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 25 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 情報科学若手の会冬の陣2015</title>
+      <link>http://localhost:1313/blog/2015/01/25/wakate2015w/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/25/wakate2015w/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://atnd.org/events/61060&#34;&gt;情報科学若手の会冬の陣2015 #wakate2015w&lt;/a&gt;に参加しました&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/773792&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;br /&gt;
+会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:99d83bf71ce3610b971e31175555a6de&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;黒崎優太 (@kuro_m88)  ICTトラブルシューティングコンテストの紹介&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://icttoracon.net/&#34;&gt;http://icttoracon.net/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ネットワーク版CTFみたいなコンテスト&lt;/li&gt;
+&lt;li&gt;Ciscoがスポンサーについているので、高価な機材がいっぱい用意されるみたい&lt;/li&gt;
+&lt;li&gt;大きな規模のネットワークであれこれするのって普通じゃ出来ないし、面白そうです。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;浅野智之 (@asanon_s)  Webの世界に散らばるデータをつなぐ技術&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;semantic webやPDFの話&lt;/li&gt;
+&lt;li&gt;人間が読めれば良い形式から、構造化されて機械も読める形式を加えるみたい&lt;/li&gt;
+&lt;li&gt;なんとなく理解が深まった気がします&lt;/li&gt;
+&lt;li&gt;完全なsemantic webへの道のりはまだまだ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;門脇香子  証明プログラミング入門&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ussopyon/ss-43846794&#34;&gt;http://www.slideshare.net/ussopyon/ss-43846794&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lepidum.co.jp/blog/2014-06-05/CCS-Injection/&#34;&gt;OpenSSLの脆弱性をCoqで見つけた話&lt;/a&gt;を聞いてから、証明プログラミング凄そうだけどよくわからない状態だったので、
+理解が深まりました。&lt;/li&gt;
+&lt;li&gt;何を証明すれば良いかを補完してくれるのは便利そうでした&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;佐野岳人  コードを書けば複素数が分かる&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/taketo1024/ss-43853048&#34;&gt;http://www.slideshare.net/taketo1024/ss-43853048&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;初めて複素数が何なのかを感覚的に理解できた気がする…&lt;/li&gt;
+&lt;li&gt;デモで関数をインタラクティブに可視化しているのが本当に凄かった&lt;/li&gt;
+&lt;li&gt;ここから使える&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/taketo1024/SwiftComplex&#34;&gt;https://github.com/taketo1024/SwiftComplex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;辻順平 (@tsujimotter)    日曜数学のススメ&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/junpeitsuji/2015-43856733&#34;&gt;http://www.slideshare.net/junpeitsuji/2015-43856733&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;コンパスと定規で作図可能かどうかを判定するガウスの判定法凄い&lt;/li&gt;
+&lt;li&gt;折り紙だと四次方程式が解けるので、作図できなくても折れる場合があるとか凄い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;池尻良平  ニュースと類似した歴史を求めるアルゴリズムを考えてみた – 役に立つ歴史教育を目指して&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;現代のニュースと、それに類似する歴史上の出来事を提示するシステムを作っているそうです&lt;/li&gt;
+&lt;li&gt;過去にどんな解決策をとって、どういう結果になったかを考えるのにとても便利そうです&lt;/li&gt;
+&lt;li&gt;早く使ってみたいですね&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;後藤紳   モバイルデータを用いた行動予測&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;あんまり書いちゃいけなさそうなので割愛&lt;/li&gt;
+&lt;li&gt;GPSの行動ログを蓄積して、次に何をしそうか提示するみたいです&lt;/li&gt;
+&lt;li&gt;同じような日々を送っている人には効果的っぽいです&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;宮代理弘 (@3846masa)  Processin.ga – Webで書いてスマホで動かすサイト開発話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://processin.ga/&#34;&gt;http://processin.ga/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&#34;&gt;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Processingをブラウザ上で書いて動かし、かつスマホでもリアルタイムに動かせるサイトです&lt;/li&gt;
+&lt;li&gt;無ければ作る、あっても作る&lt;/li&gt;
+&lt;li&gt;デザインはパクるもの&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;湯村翼 (@yumu19) 野生の研究について&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://yumulog.hatenablog.com/entry/2015/01/25/020313&#34;&gt;http://yumulog.hatenablog.com/entry/2015/01/25/020313&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;そもそもアーカイブ形式が動画だと、後から調べるのがとても大変になる気がします&lt;/li&gt;
+&lt;li&gt;今は何とかなってるけど、数年、数十年と続いていくと辛いかと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;宮下芳明  明治大学宮下研究室の活動とABProの紹介&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linear vs Circular&lt;/li&gt;
+&lt;li&gt;この研究が凄かった&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=S1Roi2NOmx8&#34;&gt;https://www.youtube.com/watch?v=S1Roi2NOmx8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;懇親会:99d83bf71ce3610b971e31175555a6de&#34;&gt;懇親会&lt;/h1&gt;
+
+&lt;p&gt;一晩寝たらだいたい忘れるという…(´･_･`)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;courseraで英語勉強&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/&#34;&gt;https://www.coursera.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ちょうど機械学習とかやってみたかったのでよさそう(o゜▽゜)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自動作曲の話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;歌詞を入れると自動でお音をつけてくれる&lt;/li&gt;
+&lt;li&gt;日本語の音節？を見て色々やってるらしい？&lt;/li&gt;
+&lt;li&gt;ミクと組み合わせて、詩を書ければ曲が書けるとか良さそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;その他:99d83bf71ce3610b971e31175555a6de&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;何か発表したい人生だった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
+      <link>http://localhost:1313/blog/2015/01/11/jenkins-conference/</link>
+      <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/11/jenkins-conference/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://build-shokunin.org/juc2015/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;に参加しました。&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/765735&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;発表まとめ:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;発表まとめ&lt;/h1&gt;
+
+&lt;h2 id=&#34;アンケート結果:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;アンケート結果&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参加申し込み時のアンケート結果&lt;/li&gt;
+&lt;li&gt;多くの人のjobの数が1〜数個程度&lt;/li&gt;
+&lt;li&gt;Jenkins無くても生きていける人が30％ぐらい&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;思ったよりもみんなJenkinsを使い込んでいない印象&lt;/li&gt;
+&lt;li&gt;アンケート結果は後日公開&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;jenkinsプロジェクトの現状とワークフロー:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;Jenkinsプロジェクトの現状とワークフロー&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DotCiが良さそう
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/groupon/DotCi&#34;&gt;https://github.com/groupon/DotCi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jenkinsを他のCIサービスみたいにする&lt;/li&gt;
+&lt;li&gt;Github限定&lt;/li&gt;
+&lt;li&gt;設定をYAMLファイルで管理出来たりする&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Workflow Pluginすごい
+
+&lt;ul&gt;
+&lt;li&gt;Build Flow Pluginをいっそう強化した版&lt;/li&gt;
+&lt;li&gt;ビルドが失敗しても途中から再開とかも出来る&lt;/li&gt;
+&lt;li&gt;乗り換えよう&lt;/li&gt;
+&lt;li&gt;ただ、DSLを覚えたりと学習コストが高くなるので秘伝のタレ化の危険が&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;jenkinsとseleniumの活用事例-試験自動化のプロジェクトへの導入:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;JenkinsとSeleniumの活用事例：試験自動化のプロジェクトへの導入&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;アジャイル開発だとイテレーション毎に試験項目は増えていくが、開発後半になるほど試験に割ける時間は減る
+
+&lt;ul&gt;
+&lt;li&gt;あるあるすぎる&lt;/li&gt;
+&lt;li&gt;試験自動化で試験項目の消化にかかるコストを下げる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;スクリーンショットを撮って画像比較して変更検知
+
+&lt;ul&gt;
+&lt;li&gt;静的な画面なら効果的っぽい&lt;/li&gt;
+&lt;li&gt;アニメーションする場合は撮るタイミングによりそうなので、目で比較かなぁ…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;テストケースの保守大変そう
+
+&lt;ul&gt;
+&lt;li&gt;ちょっと変わっただけで使えなくなるし&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;jenkinsを使ったコンシューマゲームでのデプロイとテスト:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;Jenkinsを使ったコンシューマゲームでのデプロイとテスト&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/swiftnest/jenkins-43394510&#34;&gt;http://www.slideshare.net/swiftnest/jenkins-43394510&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;圧縮して6GB、11万ファイルのプロジェクト
+
+&lt;ul&gt;
+&lt;li&gt;2プラットフォーム2言語にビルド&lt;/li&gt;
+&lt;li&gt;これで中規模ぐらいと凄い世界が…
+
+&lt;ul&gt;
+&lt;li&gt;FFとかどんだけなんだろう…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;フルビルドに14時間かかる
+
+&lt;ul&gt;
+&lt;li&gt;リソースの事前処理に時間がかかる
+
+&lt;ul&gt;
+&lt;li&gt;リソース内での分岐処理が遅いため、全条件分のリソースを作る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;データを実機上でビルドする必要がある
+
+&lt;ul&gt;
+&lt;li&gt;携帯機は貧弱なので差分ビルドでも4時間かかったりする&lt;/li&gt;
+&lt;li&gt;プラットフォームで互換性なし&lt;/li&gt;
+&lt;li&gt;PS3はビッグエンディアン&lt;/li&gt;
+&lt;li&gt;VITAはリトルエンディアン&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ファイルをパックするのでキャッシュが効かない
+
+&lt;ul&gt;
+&lt;li&gt;ファイルアクセス回数を減らすため必須&lt;/li&gt;
+&lt;li&gt;全データを実機でパックするため6時間ぐらい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;頑張って並列化して5〜9時間ぐらいまで減らす
+
+&lt;ul&gt;
+&lt;li&gt;データの処理を4台で並列化
+
+&lt;ul&gt;
+&lt;li&gt;一台4時間ぐらいに短縮&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;テスト
+
+&lt;ul&gt;
+&lt;li&gt;テストフレームワークなど無い&lt;/li&gt;
+&lt;li&gt;スモークテスト
+
+&lt;ul&gt;
+&lt;li&gt;特定ミッションに入れるかどうかをテスト&lt;/li&gt;
+&lt;li&gt;引数で専用のミッションを始められるように
+
+&lt;ul&gt;
+&lt;li&gt;一定時間たったら終了させる&lt;/li&gt;
+&lt;li&gt;正常終了しなかったらエラー&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;起動からスタート、終了までがちゃんと動くか&lt;/li&gt;
+&lt;li&gt;リソースに問題ないか&lt;/li&gt;
+&lt;li&gt;エフェクト再生チェック&lt;/li&gt;
+&lt;li&gt;一定時間内に終わるか&lt;/li&gt;
+&lt;li&gt;データが変換可能か&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;モンキーテスト
+
+&lt;ul&gt;
+&lt;li&gt;開始からエンディングまでの通しプレイAI&lt;/li&gt;
+&lt;li&gt;良い感じに攻撃する
+
+&lt;ul&gt;
+&lt;li&gt;適当にボタン連打&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;適当に移動&lt;/li&gt;
+&lt;li&gt;何回もゲームオーバーになったら無敵＆攻撃力１００倍&lt;/li&gt;
+&lt;li&gt;メニュー操作テスト&lt;/li&gt;
+&lt;li&gt;普通のUIテストっぽい&lt;/li&gt;
+&lt;li&gt;長時間テスト特有のバグ発見に繋がる&lt;/li&gt;
+&lt;li&gt;リソースの解放漏れ
+
+&lt;ul&gt;
+&lt;li&gt;携帯機はスリープできるので普通は電源を切らない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;問題点
+
+&lt;ul&gt;
+&lt;li&gt;作成やメンテナンスにコストがかかる&lt;/li&gt;
+&lt;li&gt;ゆとりがある時期にどれだけ作れるか勝負&lt;/li&gt;
+&lt;li&gt;チェックに時間かかる&lt;/li&gt;
+&lt;li&gt;一日じゃ終わらない&lt;/li&gt;
+&lt;li&gt;手動テストの置き換えにはならない&lt;/li&gt;
+&lt;li&gt;テストのパターンが固定化されるため、外れた部分のバグは検知不可&lt;/li&gt;
+&lt;li&gt;人の手のかかるテストを減らす効果&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;おばかxfdコンテスト:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;おばかXFDコンテスト&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;人は慣れる生き物
+
+&lt;ul&gt;
+&lt;li&gt;何度も通知してるとそのうち無視するようになる
+
+&lt;ul&gt;
+&lt;li&gt;エラーメールを迷惑フォルダに入れたり&lt;/li&gt;
+&lt;li&gt;パトランプの上に被せたり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;XFDによる通知で、慣れに逆らう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lt大会:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;LT大会&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jenkinsを使った継続的Webセキュリティテスト
+
+&lt;ul&gt;
+&lt;li&gt;継続的にセキュリティテストを実施するVAddyの話
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://vaddy.net/ja/&#34;&gt;http://vaddy.net/ja/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ちゃんと専門家が監修しているという噂がTLに流れた&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Jenkinsおじさん、お堅いメガバンクに就職
+
+&lt;ul&gt;
+&lt;li&gt;金融系企業でJenkinsが使われているだと(´･_･`)！！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ちゃんと聞きたかったけど、時間が足りなくて終了…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Jenkinsおじさんと楽しい連携ツールたち
+
+&lt;ul&gt;
+&lt;li&gt;Deploygate、Slack、Gitlabの連携話
+– だいたい似たようなことしてる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ゲーム業界の人がJenkinsさん3Dモデルで遊んでみた
+
+&lt;ul&gt;
+&lt;li&gt;Jenkinsの3Dモデルで遊んでる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CI”じゃない方”のJenkins
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/MiuraKatsu/ci-43396873&#34;&gt;http://www.slideshare.net/MiuraKatsu/ci-43396873&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CI以外の使い道&lt;/li&gt;
+&lt;li&gt;cronの置き換え&lt;/li&gt;
+&lt;li&gt;外部ツールの連携
+
+&lt;ul&gt;
+&lt;li&gt;ピタゴラジェンキンス&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;まとめ:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jenkins単体の話はなくって、Jenkinsと○○連携してこう使ってますが多かった
+
+&lt;ul&gt;
+&lt;li&gt;Jenkinsを使うのは普通な世界になってる気がする&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ちょこっとだけ設定を変えたJobが乱立するのはどこも同じっぽい
+
+&lt;ul&gt;
+&lt;li&gt;Workflow Pluginでそのあたりを吸収できそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;会場設備が凄く良い
+
+&lt;ul&gt;
+&lt;li&gt;ネット快適、教室は電源とLAN完備&lt;/li&gt;
+&lt;li&gt;法政大学凄すぎる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Tシャツがフリー配布されてた
+
+&lt;ul&gt;
+&lt;li&gt;太っ腹&lt;/li&gt;
+&lt;li&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;全てご自由にお持ちくださいらしい。 &lt;a href=&#34;https://twitter.com/hashtag/juc2015?src=hash&#34;&gt;#juc2015&lt;/a&gt; &lt;a href=&#34;http://t.co/0C4ZcEfHXg&#34;&gt;http://t.co/0C4ZcEfHXg&lt;/a&gt;&lt;/p&gt;&amp;mdash; おおた (@ota42y) &lt;a href=&#34;https://twitter.com/ota42y/status/554113306349539328&#34;&gt;2015, 1月 11&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>大晦日ハッカソン2014&amp;正月ハッカソン2015に参加した</title>
+      <link>http://localhost:1313/blog/2015/01/01/1231-hackathon/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/01/1231-hackathon/</guid>
+      <description>
+
+&lt;p&gt;&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;/31にオンラインで行われた、&lt;br /&gt;
+&lt;a href=&#34;https://atnd.org/events/59470&#34;&gt;大晦日ハッカソン2014&lt;/a&gt;に参加しました。&lt;/p&gt;
+
+&lt;p&gt;Evernoteのリンクをアプリで直接開くChrome拡張を作りました。&lt;br /&gt;
+&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-app-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote app opener - Chrome ウェブストア&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(なお、細かい修正やこの記事の執筆等を、&lt;br /&gt;
+&lt;a href=&#34;https://atnd.org/events/60889&#34;&gt;正月ハッカソン2015&lt;/a&gt;でやりました)&lt;/p&gt;
+
+&lt;h1 id=&#34;どんなchrome拡張か:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;どんなChrome拡張か&lt;/h1&gt;
+
+&lt;p&gt;現在、Evernoteのノート固有のリンクを取得すると、&lt;br /&gt;
+&lt;code&gt;https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/&lt;/code&gt;&lt;br /&gt;
+といった、httpsのリンクが使われます。&lt;/p&gt;
+
+&lt;p&gt;このリンクを開くと、EvernoteのWebアプリ上でノートを開くことが出来ますが、&lt;br /&gt;
+Evernoteはログインが最長で一週間しか保てず、また二段階認証をしている場合は、&lt;br /&gt;
+頻繁に面倒なログインを求められます。&lt;/p&gt;
+
+&lt;p&gt;ですが多くの場合、開こうとしているノートはオフラインのEvernoteアプリでも開くことが出来ます。&lt;br /&gt;
+そのため、Webではなくアプリで開く事が出来れば、わざわざログインせずともノートを開くことが出来ます。&lt;/p&gt;
+
+&lt;p&gt;そのため、上記のようなWebアプリでノートを開くようなリンクを、&lt;br /&gt;
+オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。&lt;br /&gt;
+Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、&lt;br /&gt;
+そのURLに含まれているユーザIDとshard名をオプションページで設定してください。&lt;/p&gt;
+
+&lt;p&gt;その状態で、Evernoteのノートリンクを開くと、ログイン/非ログインに関わらず、&lt;br /&gt;
+Evernoteアプリが立ち上がり、そのノートを開いてくれます。&lt;/p&gt;
+
+&lt;p&gt;これで、いちいちWebでログインすることなく、ノートリンクで指定したノートを表示することが出来ます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>参加記録 Android Bazaar and Conference 2014 Winter</title>
+      <link>http://localhost:1313/blog/2014/12/21/abc2014w/</link>
+      <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/21/abc2014w/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://abc.android-group.jp/2014w/&#34;&gt;Android Bazaar and Conference 2014 Winter&lt;/a&gt;に参加してきました。&lt;/p&gt;
+
+&lt;p&gt;なかなか興味深いお話を聞けたので、気になった部分を抜粋&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;携帯は９５％の人類が持ってる&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;インターネットを利用するのは４割&lt;/li&gt;
+&lt;li&gt;スマホ利用者は３２％&lt;/li&gt;
+&lt;li&gt;スマホは１０年前の携帯と同じ水準まで来てる
+-１０年後は世界の携帯がスマホに置き換わる&lt;/li&gt;
+&lt;li&gt;今後１０年間で７０億人がインターネットに繋がる&lt;/li&gt;
+&lt;li&gt;Androidは今のところ全世界で84.4%のシェア&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;各国のもの作り政策&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ドイツのINDUSTRIE 4.0&lt;/li&gt;
+&lt;li&gt;第四次産業革命&lt;/li&gt;
+&lt;li&gt;多数の企業を結んだバリューネットワーク&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;工場内の結合されたネットワーク　は出来てる&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;アメリカ&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;AMP立ち上げ&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;アメリカで発明し、アメリカで製造する&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Made in Americaの復活&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;中国&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;2008年以降世界の製造業売り上げTop&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;EU全体を合わせて、ようやく中国をちょっと上回る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第１２期５カ年計画&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;５年で１６８兆円使う&lt;/li&gt;
+&lt;li&gt;IoTを重視する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Googleが買収したNest&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://japan.cnet.com/news/commentary/35042541/&#34;&gt;http://japan.cnet.com/news/commentary/35042541/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ネットに繋がるサーモスタット&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Android Wear&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WearのNotificationはアプリの顔になる&lt;/li&gt;
+&lt;li&gt;ノイジーな通知をするとアンインストールされる&lt;/li&gt;
+&lt;li&gt;リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する&lt;/li&gt;
+&lt;li&gt;わざわざ起動するのは減っていく&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>参加記録 Go Conference 2014 autumn</title>
+      <link>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</link>
+      <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://gocon.connpass.com/event/9748/&#34;&gt;Go Conference 2014 autumn&lt;/a&gt;に参加しました。&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/751700&#34;&gt;togetterまとめ&lt;/a&gt;&lt;br /&gt;
+大体スライドが公開されているので、正確な内容はそちらをどうぞ。&lt;/p&gt;
+
+&lt;p&gt;#まとめ
+- Go言語のシンプルさへのこだわりが凄い
+- 開発陣の徳の高さが凄い
+  - 難しい部分は俺らに任せておけ！的な
+- 明日から使えるGo言語的な情報が盛りだくさん
+  - エラーを_で無視して済みません…(´･_･`)
+- 椅子が痛い
+  - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです…
+- 英語頑張ろう
+  - 日本語スライドありがたや…&lt;/p&gt;
+
+&lt;p&gt;#Keynote1: Rob Pike (@rob_pike) (45min)
+スライドは未公開？&lt;/p&gt;
+
+&lt;p&gt;Go言語の設計者&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%83%91%E3%82%A4%E3%82%AF&#34;&gt;ロブ・パイク&lt;/a&gt;さんのGo言語の思想とかについての話です。&lt;/p&gt;
+
+&lt;p&gt;Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。&lt;br /&gt;
+他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、&lt;br /&gt;
+Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。&lt;br /&gt;
+書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。&lt;/p&gt;
+
+&lt;p&gt;プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。&lt;br /&gt;
+言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、&lt;br /&gt;
+必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。&lt;br /&gt;
+おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。&lt;/p&gt;
+
+&lt;p&gt;簡潔な記述でも理解するのが大変な複雑な事ができるため、&lt;br /&gt;
+簡潔なコード≠単純なコードと言えるのかなと思いました。&lt;/p&gt;
+
+&lt;p&gt;また、Goではコード側ができる限り簡単になるように、&lt;br /&gt;
+複雑な事を可能な限り言語側で隠蔽しているとも言われていました。&lt;br /&gt;
+実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、&lt;br /&gt;
+使う側からはそれほど大変さを感じることなく使えます。&lt;/p&gt;
+
+&lt;p&gt;ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…&lt;/p&gt;
+
+&lt;p&gt;#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)
+&lt;a href=&#34;http://ukai-go-talks.appspot.com/2014/gocon.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。&lt;/p&gt;
+
+&lt;p&gt;Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、&lt;br /&gt;
+ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。&lt;/p&gt;
+
+&lt;p&gt;これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、&lt;br /&gt;
+是非ともスライドが公開されるといいなーと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;lt1:6598e8fa7f3b91e17df561d14461284a&#34;&gt;LT1&lt;/h1&gt;
+
+&lt;h2 id=&#34;gardener-go:6598e8fa7f3b91e17df561d14461284a&#34;&gt;Gardener &amp;amp; Go&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1cPtFXGVgWcjG7qpwNz7jLbMh9BUW13dM_n1-ls-2u0s/edit#slide=id.p&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。&lt;br /&gt;
+&lt;a href=&#34;http://ec-mail.freegufo.com/items/910014&#34;&gt;GoCon 2014 Autumn Tシャツ | FreeGufo メール便対&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;セッション:6598e8fa7f3b91e17df561d14461284a&#34;&gt;セッション&lt;/h1&gt;
+
+&lt;p&gt;##App Engine for Golang Performance
+&lt;a href=&#34;http://sinmetal-slide.appspot.com/2014/gocon1130/gaego.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@sinmetalさんのGAEとMVM上でのGoとJavaの速度比較です。&lt;br /&gt;
+Goは基本的に倍ぐらい速く、JavaはJavaらしくJVMの起動に時間がかかるといった結果みたいです。&lt;/p&gt;
+
+&lt;p&gt;##Golang @ISUCON
+&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-at-isucon&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@y_matsuwitterさんのISUCONでGo言語を使った話です。&lt;br /&gt;
+ISUCONでやった、Go言語の様々な効率化についてまとめられていました。&lt;/p&gt;
+
+&lt;p&gt;話を聞くとかなり複雑な事をしているようですが、スライドのコードだととても簡単そうで凄いです。&lt;/p&gt;
+
+&lt;p&gt;##mackerel-agent 徹底解説
+&lt;a href=&#34;http://songmu.github.io/slides/gocon2014-autumn/#0&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@Songmuさんによる、mackerel-agentのソースコード解説です。&lt;br /&gt;
+NewRelicっぽいサービスですが、OSSな分色々出来そうで夢が広がる感じです。&lt;/p&gt;
+
+&lt;p&gt;##Why my Go program is slow?
+&lt;a href=&#34;http://www.slideshare.net/InadaNaoki/gocon2014-pprof&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@methaneさんによるCPUプロファイリングについての発表です。&lt;br /&gt;
+アセンブラまで出してくれるpprofの凄さをひしひしと感じます…&lt;/p&gt;
+
+&lt;p&gt;また、Goでは他の関数呼び出しのない末端の関数をインライン展開してくれるので、&lt;br /&gt;
+関数に分けると早かったり、&lt;br /&gt;
+関数呼び出しで呼び出し側が使っているレジスタを全部待避するので、&lt;br /&gt;
+呼び出された側が使った分だけ待避する？Cよりも関数呼び出しは遅いなど、&lt;br /&gt;
+Goの速度についてしっかりと説明されています。&lt;/p&gt;
+
+&lt;p&gt;##Golang JP Community
+&lt;a href=&#34;https://docs.google.com/presentation/d/1UTi4uqt4sOrQ1dHJE0y8UB9BR9iqDK7dLP57QAfrOX4/pub?start=false&amp;amp;loop=false&amp;amp;delayms=3000&amp;amp;slide=id.g4f1d3881c_00&#34;&gt;資料&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=LJvEIjRBSDA&#34;&gt;資料２&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@qt_luigiさんの日本のGo言語コミュニティの話でした。&lt;br /&gt;
+いくつか知っているものもありましたが、思った以上に大量にあって驚きました…&lt;/p&gt;
+
+&lt;p&gt;##(タイトルメモり損ねました…GengoでGoの利用事例なお話)
+PHPのAPIをGoに置き換えていったら、500msが10msになったというお話です。&lt;br /&gt;
+クリティカルな所ではなく影響の少ないところから、&lt;br /&gt;
+一気にではなく少しずつ置き換えていくといいそうです。&lt;/p&gt;
+
+&lt;p&gt;Goで作られたデプロイツールが便利そうでした。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/gengo/goship&#34;&gt;https://github.com/gengo/goship&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;##NSQ-Centric Architecture
+&lt;a href=&#34;http://www.slideshare.net/guregu/nsqcentric-architecture-gocon-autumn-2014&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/guregu&#34;&gt;gureguさん&lt;/a&gt;のNSQの話です。&lt;/p&gt;
+
+&lt;p&gt;bit.lyが作ったGo製のメッセージキューである&lt;a href=&#34;https://github.com/bitly/nsq&#34;&gt;NSQ&lt;/a&gt;を使って、&lt;br /&gt;
+チャットアプリを作った発表でした。&lt;/p&gt;
+
+&lt;p&gt;##(Go言語のコンパイラをハックした話)
+&lt;a href=&#34;http://moriyoshi.hatenablog.com/entry/2014/06/03/121728&#34;&gt;参考資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@moriyoshitさんがGo言語で寿司関数を作りたいがために？w　Goのコンパイラをハックしたのと、&lt;br /&gt;
+コンパイラの中についてのお話でした。&lt;/p&gt;
+
+&lt;p&gt;教科書通りのコンパイラの作りしてるんだなーという印象でした。&lt;br /&gt;
+魔境と噂のGCCとかはどうなってるんだろう…と思いました。&lt;/p&gt;
+
+&lt;h1 id=&#34;lt:6598e8fa7f3b91e17df561d14461284a&#34;&gt;LT&lt;/h1&gt;
+
+&lt;h2 id=&#34;nginx-build:6598e8fa7f3b91e17df561d14461284a&#34;&gt;nginx-build&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/nginx-build&#34;&gt;https://speakerdeck.com/cubicdaiya/nginx-build&lt;/a&gt;&lt;br /&gt;
+NginxをビルドするためのツールのDLと、ビルドをやってくれるツールを書いたそうです。&lt;br /&gt;
+バイナリ単体で配布できますし、こういう用途には便利そうな感じ…&lt;/p&gt;
+
+&lt;h2 id=&#34;楽天でterraformを使てる話:6598e8fa7f3b91e17df561d14461284a&#34;&gt;(楽天でTerraformを使てる話)&lt;/h2&gt;
+
+&lt;p&gt;AWSとかのインスタンスをコードから立ち上げられるTerraformを利用して、&lt;br /&gt;
+楽天社内でinfrastructure as codeを進めている話です。&lt;/p&gt;
+
+&lt;p&gt;##ビルドパイプラインツールをGoで作った話
+&lt;a href=&#34;https://speakerdeck.com/ainoya/birudopaipurainturuwogodezuo-tutahua&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;個人的にはJenkinsでビルドパイプラインっぽいのを作るのには、&lt;br /&gt;
+いろんな点からうんざりしていたので、なんか凄い便利そうで気になります！　　
+似たようなのを作ろうと画策していたので、先を越された感はありますが…&lt;/p&gt;
+
+&lt;p&gt;##go/parser, go/astの話
+&lt;a href=&#34;http://yuroyoro.net/gocon_2014_autumn_lt/#/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Goの抽象構文木を生成する標準パッケージの紹介と、可視化するツールを作ったお話です。&lt;br /&gt;
+Goの&lt;a href=&#34;http://ja.wikipedia.org/wiki/Lint&#34;&gt;lint&lt;/a&gt;ではここで紹介した技術を使って実装しているらしいです。&lt;/p&gt;
+
+&lt;p&gt;##Unit-testing programs depend on I/O in Go
+&lt;a href=&#34;https://yuya-takeyama.github.io/presentations/2014/11/30/gocon_2014_autumn/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;表題の通り、I/Oに依存したテストについてのお話です。&lt;br /&gt;
+Keynote2の@fumitoshi_ukaiさんも言っていたように、&lt;br /&gt;
+データを読み書きするだけでファイルとしての挙動が不要な場合は、&lt;br /&gt;
+&lt;code&gt;os.File&lt;/code&gt;ではなく&lt;code&gt;io.Reader&lt;/code&gt;や&lt;code&gt;io.Writer&lt;/code&gt;を使うと、ファイル以外の引数も与えられるため、&lt;br /&gt;
+汎用性が上がり、テストもしやすいそうです。&lt;/p&gt;
+
+&lt;p&gt;##(consul.ioの話)
+&lt;a href=&#34;https://consul.io/&#34;&gt;https://consul.io/&lt;/a&gt;を使うと、色々はかどるらしいが…&lt;br /&gt;
+ごめんなさい理解できてないです(´･_･`)&lt;/p&gt;
+
+&lt;p&gt;##Togetterまとめ
+Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。&lt;br /&gt;
+振り返る際にとてもお世話になったので、感謝の限りです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>参加記録 BPStudy ♯87</title>
+      <link>http://localhost:1313/blog/2014/11/29/bpstudy-87/</link>
+      <pubDate>Sat, 29 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/11/29/bpstudy-87/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://bpstudy.connpass.com/event/9741/&#34;&gt;BPStudy#87&lt;/a&gt;に参加しました。&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/751302&#34;&gt;togetterまとめ&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;じっくりと把握する-ios8-iphone6-最前線-ユーザーにとって-開発者にとって何が変わったのか:67d601d79e13ed00541001f833c4d7ec&#34;&gt;じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6&#34;&gt;http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;iOS8とiPhone6の新機能まとめと、それによって生じる問題紹介でした。&lt;/p&gt;
+
+&lt;p&gt;スライド46ページ目の親指の可動範囲の図を見せられると一目瞭然ですが、&lt;br /&gt;
+画面サイズが大きくなったことによるタッチ領域の変化はとても激しく、&lt;br /&gt;
+iPhone6や6+では従来のUIはかなり使いづらいものになってしまいます。&lt;/p&gt;
+
+&lt;p&gt;あと、リモートで任意の端末をレンタルできるRemote TestKitが凄い便利そうでした。&lt;br /&gt;
+&lt;a href=&#34;http://appkitbox.com/testkit/&#34;&gt;Remote TestKit&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;iphone-6がリリースされて2ヶ月が過ぎました-iosの分断化時代を乗り切ろう:67d601d79e13ed00541001f833c4d7ec&#34;&gt;iPhone 6がリリースされて2ヶ月が過ぎました　〜iOSの分断化時代を乗り切ろう〜&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/masashiono1/bpstudy-87&#34;&gt;http://www.slideshare.net/masashiono1/bpstudy-87&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/akisute/AutoLayoutTest&#34;&gt;akisute/AutoLayoutTest&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;前半のスワイプUIのススメは、前の発表のiPhone6や6+向けのUIの回答として、&lt;br /&gt;
+かなり良い回答ではないかなと思いました。&lt;br /&gt;
+あと後半のSwiftのまとめが、Swiftの闇をひしひしと感じる内容で凄いです…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;lt:67d601d79e13ed00541001f833c4d7ec&#34;&gt;LT&lt;/h1&gt;
+
+&lt;p&gt;一件目はiOS7と8で遭遇したブラウザバグの紹介でした。&lt;br /&gt;
+&lt;a href=&#34;http://slides.com/monjudoh/ios_browser_bugs&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、&lt;br /&gt;
+同時接続数が2個になったが、レスポンスの受信時間がかぶるとクラッシュするので同時接続してはいけないとか、&lt;br /&gt;
+かなり辛い感じのバグが多かったです…&lt;/p&gt;
+
+&lt;p&gt;二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…&lt;br /&gt;
+恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Travis CI Meetup Tokyoに行ってきた</title>
+      <link>http://localhost:1313/blog/2014/09/18/travisci-meetup/</link>
+      <pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/18/travisci-meetup/</guid>
+      <description>
+
+&lt;p&gt;前半はTravis CIのデモ、真ん中てCEOのお話、最後にLTと三部構成でした。&lt;br /&gt;
+こちらに動画があるそうです。&lt;br /&gt;
+&lt;a href=&#34;http://www.ustream.tv/recorded/52769967&#34;&gt;http://www.ustream.tv/recorded/52769967&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;デモは一通りのTravis CIの使い方をデモしていただきました。&lt;br /&gt;
+何となくわかってるデフォルトの挙動などにちゃんと説明がはいり、&lt;br /&gt;
+基礎知識を固めるには凄く良かったです。&lt;br /&gt;
+また、いくつか知らない機能(sudo false)や、&lt;br /&gt;
+.travis.ymlの書式をオンラインで確認できる&lt;a href=&#34;http://lint.travis-ci.org/&#34;&gt;Travis WebLint&lt;/a&gt;等が紹介されていました。&lt;/p&gt;
+
+&lt;p&gt;なお、デモに使ったリポジトリは以下にあるようです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/BanzaiMan/travis-intro-tokyo&#34;&gt;https://github.com/BanzaiMan/travis-intro-tokyo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;CEOの話では、現在のjob数やVM数、サーバの数などを話していただきました。&lt;br /&gt;
+それと後半では環境によって良くはまる10個が紹介されていました。&lt;br /&gt;
+ファイルシステムのケースセンシティブや、GNUとBSDの違いだったり、aptから古いバージョンが消えたり、&lt;br /&gt;
+タイムゾーンやOSの違いによる環境構築や&lt;a href=&#34;https://github.com/travis-ci/travis-ci/issues/2755&#34;&gt;言語自体のバグ&lt;/a&gt;等々…&lt;br /&gt;
+ここ最近に当たった奴がいくつかあり頭が痛かったです…(´･_･`)&lt;/p&gt;
+
+&lt;p&gt;最後のLTではいろんな発表が行われました。&lt;br /&gt;
+見つけた分だけまとめておきます。&lt;/p&gt;
+
+&lt;h2 id=&#34;automated-releasing-ios-app-with-travis-ci:df0acc4cb2b4055628ad432a471de563&#34;&gt;Automated releasing iOS app with Travis CI&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci&#34;&gt;https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci&lt;/a&gt;&lt;br /&gt;
+私はJenkinsを使っていますが、似たような構成でやってるので参考になりました。&lt;br /&gt;
+ただ、ビルド時間が5倍ぐらい長いので、こちらのプロジェクトにそのまま導入は難しそうです…&lt;br /&gt;
+xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。&lt;br /&gt;
+(追記: 発表者様から指摘がありました)　　
+&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/ota42y&#34;&gt;@ota42y&lt;/a&gt; 僕の話し方が悪かったのですが、xcarchiveだから、というわけではなくて、AppStoreとAdHocのプロビジョニングは互換性があるので、xcarchiveからipaにするところでプロビジョニングをAdHocにしています。同じビルドで署名だけ変える方法です。&lt;/p&gt;&amp;mdash; kishikawa katsumi (@k_katsumi) &lt;a href=&#34;https://twitter.com/k_katsumi/status/512399910176432130&#34;&gt;2014, 9月 18&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;travis-ci-api-lt:df0acc4cb2b4055628ad432a471de563&#34;&gt;Travis CI API LT&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/pinzolo/travis-ci-api-lt&#34;&gt;https://speakerdeck.com/pinzolo/travis-ci-api-lt&lt;/a&gt;&lt;br /&gt;
+Travis CIのAPIと、gemの利用例です。&lt;br /&gt;
+パッと見た限り、必要最低限は揃ってそうなので、hubotから叩くみたいなことが出来そうです。&lt;/p&gt;
+
+&lt;h2 id=&#34;qunit-on-travis-ci-shigemk2:df0acc4cb2b4055628ad432a471de563&#34;&gt;QUnit on Travis CI @shigemk2&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://shigemk2.github.io/travisci_jp/#/step-1&#34;&gt;https://shigemk2.github.io/travisci_jp/#/step-1&lt;/a&gt;&lt;br /&gt;
+jsのライブラリを作った際の利用例でした。&lt;br /&gt;
+実際に作る際に参考に出来そうでした。&lt;/p&gt;
+
+&lt;h2 id=&#34;when-was-the-build-passing:df0acc4cb2b4055628ad432a471de563&#34;&gt;When was the build passing?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/&#34;&gt;http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/&lt;/a&gt;&lt;br /&gt;
+依存してるライブラリが更新すると、いつの間にかテストが落ちるようになってるけど、&lt;br /&gt;
+テストが実行されないとわからないので、活発でないプロジェクトだと大変だよね…って話です。&lt;/p&gt;
+
+&lt;p&gt;これに対して、定期的にPRを送る&lt;a href=&#34;http://tachikoma.io/&#34;&gt;Tachikoma.io - Interval Pull Request App&lt;/a&gt;というものを作ったそうです。&lt;br /&gt;
+bundle updateをしてPR送るみたいなこともやってくれるため、とりあえず仕掛けておいて損は無さそうです。&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-your-app-with-selenium-on-travis-ci-by-yusuke-ando:df0acc4cb2b4055628ad432a471de563&#34;&gt;Testing your app with Selenium on Travis CI by Yusuke Ando&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1&#34;&gt;https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1&lt;/a&gt;&lt;br /&gt;
+Travis CIでのSelenium導入の話です。&lt;br /&gt;
+FirefoxやX等ははじめから入っているため、立ち上げるだけでいいらしく、&lt;br /&gt;
+面倒なインストールをしなくていいためとても楽そうでした。&lt;/p&gt;
+
+&lt;h1 id=&#34;懇親会:df0acc4cb2b4055628ad432a471de563&#34;&gt;懇親会&lt;/h1&gt;
+
+&lt;p&gt;DeNAさんがお寿司を出してくれました！！！！！！！！
+&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;お寿司だヽ( ･∀･)ﾉ &lt;a href=&#34;https://twitter.com/hashtag/travisci_jp?src=hash&#34;&gt;#travisci_jp&lt;/a&gt; &lt;a href=&#34;http://t.co/zrmrhO6WMw&#34;&gt;pic.twitter.com/zrmrhO6WMw&lt;/a&gt;&lt;/p&gt;&amp;mdash; おおた (@ota42y) &lt;a href=&#34;https://twitter.com/ota42y/status/512210649699463168&#34;&gt;2014, 9月 17&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;懇親会で聞いたところ、大体の人がJenkinsは保守が死ねるよね…&lt;br /&gt;
+って言っていたので、やっぱりみんな大変なんだな…となりました(´･_･`)&lt;br /&gt;
+やはりYAMLで設定できるTravis CIの方が楽ですよね…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>第47回情報科学若手の会2014に参加してきた</title>
+      <link>http://localhost:1313/blog/2014/09/15/wakate2014/</link>
+      <pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/15/wakate2014/</guid>
+      <description>
+
+&lt;p&gt;2014年9月13日(土)〜15日(月)に静岡県伊東市の山喜旅館で開催された、&lt;br /&gt;
+第47回情報科学若手の会2014に参加してきました。&lt;br /&gt;
+二年ぶり三回目の参加です。&lt;br /&gt;
+今回はLTもやりました。&lt;/p&gt;
+
+&lt;p&gt;当日の様子はこちらのまとめをどうぞ&lt;br /&gt;
+&lt;a href=&#34;http://togetter.com/li/719110&#34;&gt;第47回情報科学若手の会2014 ツイートまとめ #wakate2014&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;旅館について:5448e46160544c3c78693ad97d653b2a&#34;&gt;旅館について&lt;/h1&gt;
+
+&lt;p&gt;山喜旅館さんのネットワークが超強化されていました。&lt;br /&gt;
+2年前とは雲泥の差でとても快適で、導入した旅館と幹事さんには頭が下がります…&lt;br /&gt;
+50人数位が普通に使っても回線部分はびくともしなかったため、
+開発合宿には最適ではないでしょうか(宣伝)&lt;/p&gt;
+
+&lt;h1 id=&#34;発表について:5448e46160544c3c78693ad97d653b2a&#34;&gt;発表について&lt;/h1&gt;
+
+&lt;p&gt;今年は大学の講義をこれにしてくれれば…みたいな、凄くわかりやすい発表が多かったです。&lt;br /&gt;
+私が把握した範囲で、公開されている資料をまとめました。&lt;/p&gt;
+
+&lt;h2 id=&#34;招待講演-サイバーセキュリティの世界に飛び込こもう:5448e46160544c3c78693ad97d653b2a&#34;&gt;招待講演: サイバーセキュリティの世界に飛び込こもう！&lt;/h2&gt;
+
+&lt;p&gt;招待講演の資料は公開されていないようですが、紹介されていたnicterとDAEDALUSはとても凄いシステムでした。&lt;br /&gt;
+従来なら、テキストベースのログとしてしか表現されていなかった悪意のある攻撃を、&lt;br /&gt;
+わかりやすくかつリアルタイムに(さらにかっこよく)可視化しており、まさに機能美を揃えたシステムでした。&lt;br /&gt;
+映像を見つけたので是非見ておくことをオススメします。&lt;br /&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=jLYs52OBh_A&#34;&gt;ネットワーク攻撃可視化・分析技術 - nicter #DigInfo&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=f44eum6Hz50&#34;&gt;サイバー攻撃をリアルタイムに可視化、警告を発する「DAEDALUS」 #DigInfo&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;若手特別講演-本当は楽しいインターネット:5448e46160544c3c78693ad97d653b2a&#34;&gt;若手特別講演: 本当は楽しいインターネット&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/yuyarin/ss-39061287&#34;&gt;http://www.slideshare.net/yuyarin/ss-39061287&lt;/a&gt;&lt;br /&gt;
+インターネットへの愛がある上に、基本的な事柄を凄くわかりやすく説明していただいてます。&lt;br /&gt;
+特にAS周りの話は名前を聞いたことがある…ぐらいの知識でしたので、&lt;br /&gt;
+この資料で凄く良く理解することが出来ました。&lt;/p&gt;
+
+&lt;h2 id=&#34;ないんたんの天気予報と画像処理アルゴリズム-2014年9月13日-情報科学若手の会:5448e46160544c3c78693ad97d653b2a&#34;&gt;ないんたんの天気予報と画像処理アルゴリズム（2014年9月13日 情報科学若手の会）&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1KSIVmHvBR57uzJUkDEIMgi7JpAW51KequMCuws5COdY/edit#slide=id.p&#34;&gt;https://docs.google.com/presentation/d/1KSIVmHvBR57uzJUkDEIMgi7JpAW51KequMCuws5COdY/edit#slide=id.p&lt;/a&gt;&lt;br /&gt;
+画像処理のオプティカルフローを使って、天気の画像からその先の状態を計算して予報しているらしいです。&lt;br /&gt;
+割と簡単で、計算量もさくらVPSで1秒ぐらいなのに、&lt;br /&gt;
+精度の高い結果がでていて凄いなーと思いました。はぴぴーん&lt;/p&gt;
+
+&lt;h2 id=&#34;シュワルツ超関数としての信号処理理論:5448e46160544c3c78693ad97d653b2a&#34;&gt;シュワルツ超関数としての信号処理理論&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://pel.es.hokudai.ac.jp/~akita/SignalAsDistribution.pdf&#34;&gt;http://pel.es.hokudai.ac.jp/~akita/SignalAsDistribution.pdf&lt;/a&gt;&lt;br /&gt;
+実際の発表資料とは違いますが参考資料として…&lt;br /&gt;
+フーリエ変換系のは種類が色々あって、どこに何を使うのかよくわからなかったのですが、&lt;br /&gt;
+とてもわかりやすく整理して話していただけました。&lt;/p&gt;
+
+&lt;p&gt;また、階段関数の微分はぱっと見意味不明だったのが、&lt;br /&gt;
+話を聞くとちゃんと理解できるようになっていて、おお！って思いました。&lt;/p&gt;
+
+&lt;h2 id=&#34;私の発表:5448e46160544c3c78693ad97d653b2a&#34;&gt;私の発表&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/09/14/wakate2014-presentation/&#34;&gt;http://ota42y.com/blog/&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;09&lt;/sub&gt;/14/wakate2014-presentation/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:5448e46160544c3c78693ad97d653b2a&#34;&gt;その他&lt;/h1&gt;
+
+&lt;h2 id=&#34;交流会:5448e46160544c3c78693ad97d653b2a&#34;&gt;交流会&lt;/h2&gt;
+
+&lt;p&gt;交流会では謎解きゲームが行われました。&lt;br /&gt;
+旅館の一階を全体的に使って謎探しから始まり、旅館やITに関係していそうな謎が用意されていました。&lt;br /&gt;
+謎をを説いたチームには景品もあり、かなり白熱していました。&lt;br /&gt;
+難易度やチーム編成も工夫されており、とても良かったです。&lt;/p&gt;
+
+&lt;h2 id=&#34;ナイトセッション:5448e46160544c3c78693ad97d653b2a&#34;&gt;ナイトセッション&lt;/h2&gt;
+
+&lt;p&gt;例年のごとく、中々濃い話や他では言えない話が繰り広げられていました。&lt;br /&gt;
+例によって４時や５時ぐらいまで行われていたみたいですが、&lt;br /&gt;
+さすがに体がついていかなく、２時３時でダウンしていました…&lt;/p&gt;
+
+&lt;p&gt;参加者の中に機械式計算機を持ってきてくださった方がいました。&lt;br /&gt;
+所々の機械式ならではの工夫が見られ、初めて見た私にとっては凄く新鮮でした。&lt;br /&gt;
+特にオーバーフロー、アンダーフローした時にベルがなるのは素晴らしかったです。&lt;br /&gt;
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/_CNy57aUazg&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:5448e46160544c3c78693ad97d653b2a&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;p&gt;帰りにkuro_m88さんと、「HCI系の人いないですよね−」と話していたんですが、&lt;br /&gt;
+いないなら多分HCI系の話をするのは凄い有用だろうし、&lt;br /&gt;
+来年はHCI系の話で一般かショート発表に申し込みたいと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;その後:5448e46160544c3c78693ad97d653b2a&#34;&gt;その後&lt;/h1&gt;
+
+&lt;p&gt;帰りは三島の桜屋でうな重を食べました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-09-15-wakate2014.jpg&#34; alt=&#34;うなぎ&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;うなぎを富士の雪解け水に数日間流しているらしく、その成果余計な油っぽさ等がなくなっています。&lt;br /&gt;
+しつこくないタレと相まって、凄いさっぱりとしてうなぎの味を直接堪能できました。&lt;br /&gt;
+「本当のうなぎってこういう味だったんだ…」と、タレにごまかされない美味しいうなぎでした。&lt;br /&gt;
+熱海から15分程度ととても近く、超オススメです(2時に行っても1時間待ちでしたが…)&lt;/p&gt;
+
+&lt;p&gt;本来は水がとても綺麗と噂の柿田川公園にも足を伸ばす予定でしたが、&lt;br /&gt;
+バスの時間が1時間に一本な上に、曇っている事を加味すると、今日行っても&lt;br /&gt;
+微妙そうでしたので、来年チャレンジします。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>情報科学若手の会2014で発表してきた</title>
+      <link>http://localhost:1313/blog/2014/09/14/wakate2014-presentation/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/14/wakate2014-presentation/</guid>
+      <description>&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;805e4bc01e29013299017e6feed6723a&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;LT発表してきました。&lt;/p&gt;
+
+&lt;p&gt;最近CIとか継続的デリバリーとか流行ってるけど、&lt;br /&gt;
+ネット上にあふれている事例は、テスト(ビルド)が頑張れば5分程度で出来たり、&lt;br /&gt;
+ユーザにすぐに提供できるWebサービスの話が多く、&lt;br /&gt;
+それ以外の事例に適応した話が全然無いなーと思っていました。&lt;/p&gt;
+
+&lt;p&gt;特にスマホアプリでは、一つのjobに時間がかかったり、&lt;br /&gt;
+ユーザに届けるのにもの凄く時間がかかるため、&lt;br /&gt;
+良くあるやり方をそのまま持って行っても、&lt;br /&gt;
+全然上手くいかないんですよね。&lt;/p&gt;
+
+&lt;p&gt;ただし、やり方をそっくり持ってくるんじゃなくって、&lt;br /&gt;
+その手法をやると何がうれしいの？を考えていくと、&lt;br /&gt;
+自ずとその環境に沿ったいい方法、というのが見つかる気がします。&lt;/p&gt;
+
+&lt;p&gt;より実践的なTipsになるので削った補足事項等&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コンパイルだけに出来ないのか
+
+&lt;ul&gt;
+&lt;li&gt;ビルドのほとんどがコンパイル時間なのでそれほど効果がありません…(´･_･`)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;キャッシュは使っていないのか
+
+&lt;ul&gt;
+&lt;li&gt;キャッシュが悪さをする可能性が考えられるため意図的に切っています。&lt;br /&gt;
+手元で開発する場合は活用しています。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ビルド自体の速度は速くしないのか
+
+&lt;ul&gt;
+&lt;li&gt;分散コンパイル等で早くできますが、Xcodeは対応していないのでAndroidのみになり、&lt;br /&gt;
+そんなに効果がありません。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;スライドで並列ビルドすればいいじゃん！と書いてますが、それも問題があります
+
+&lt;ul&gt;
+&lt;li&gt;アップロード先が並列で受け付けていないので、デプロイ時に失敗しまくります&lt;/li&gt;
+&lt;li&gt;排他制御しようとすると、Jenkinsの仕様とJob割り振りがよろしくないので&lt;br /&gt;
+もの凄く辛いことになります。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CEDEC2014 9月3日まとめ</title>
+      <link>http://localhost:1313/blog/2014/09/06/cedec2014-09-03/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/06/cedec2014-09-03/</guid>
+      <description>
+
+&lt;p&gt;この日だけ参加したのでまとめ&lt;/p&gt;
+
+&lt;h1 id=&#34;ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開:87dcdd3e1492e653f5cc968938cacd4d&#34;&gt;ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ウェアラブルの特徴&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コンピュータを服のように着る&lt;/li&gt;
+&lt;li&gt;常時ON&lt;/li&gt;
+&lt;li&gt;生活密着&lt;/li&gt;
+&lt;li&gt;ハンズフリー&lt;/li&gt;
+&lt;li&gt;Occlusは基本的にウェアラブルではない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ウェアラブルは実は難しい&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;装着して利用してみないと解らないことがたくさん&lt;/li&gt;
+&lt;li&gt;ウェアラブルは一日中身につける（≠持ち歩く）&lt;/li&gt;
+&lt;li&gt;モバイル機器とはまた別のノウハウが必要なのか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;汎用vs専用&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;汎用&lt;/li&gt;
+&lt;li&gt;SmartWatch&lt;/li&gt;
+&lt;li&gt;高性能高機能&lt;/li&gt;
+&lt;li&gt;まだ実用性低い&lt;/li&gt;
+&lt;li&gt;専用&lt;/li&gt;
+&lt;li&gt;アクションカメラとか　&lt;/li&gt;
+&lt;li&gt;デジカメ、音楽プレーヤー等と同じく、少しづつ汎用の性能が上がっていく&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ウェアラブルゲームではリアルの遊びが重要&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ちょっとした時間に暇つぶし&lt;/li&gt;
+&lt;li&gt;ジョギングなど、別のことをしながら&lt;/li&gt;
+&lt;li&gt;ファッション&lt;/li&gt;
+&lt;li&gt;コンピュータはバーチャル空間に伸びたので、それとは違う道&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;楽しさ-の設計と評価-我々はどこで失敗し-どこへ向かうのか:87dcdd3e1492e653f5cc968938cacd4d&#34;&gt;「楽しさ」の設計と評価～我々はどこで失敗し，どこへ向かうのか&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;楽しさの評価&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;完成するよりも前に、それが面白いものなのか、どうすれば面白くなるのか？&lt;/li&gt;
+&lt;li&gt;経験則やコンテンツに左右されない、一般的な評価手法を探すのが目的らしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;心理学的手法&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;アンケートとか&lt;/li&gt;
+&lt;li&gt;かなりあやふや&lt;/li&gt;
+&lt;li&gt;過去にやったゲームとか&lt;/li&gt;
+&lt;li&gt;調整しました！と言われると、変わって無くても変わったと感じる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;３つ以上のパラメータを同時に調整するのは困難&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;職人はベターは出せるがベストとは限らない&lt;/li&gt;
+&lt;li&gt;パラメータか困難なものはよりわからない&lt;/li&gt;
+&lt;li&gt;調整可能な項目をクリアして、調整困難な協会に時間をかけるのがベター&lt;/li&gt;
+&lt;li&gt;調整可能
+
+&lt;ul&gt;
+&lt;li&gt;ロード時間のストレス&lt;/li&gt;
+&lt;li&gt;ボタン反応の応答時間等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;調整困難&lt;/li&gt;
+&lt;li&gt;ユーザに書ける適切なストレスとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;人間らしいAIの自動獲得&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;見ていて機械的な不自然さを感じない&lt;/li&gt;
+&lt;li&gt;相手に合わせて強さを調整できるAI
+
+&lt;ul&gt;
+&lt;li&gt;人間の生物学的制約、人為的ミス・エラーの導入&lt;/li&gt;
+&lt;li&gt;揺らぎ、遅れ、使える、技術・知識の不足、錯誤・失念&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;人間らしさの評価&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主観的実験（チューリングテスト）&lt;/li&gt;
+&lt;li&gt;実験のインストラクションが異なると違ってくる&lt;/li&gt;
+&lt;li&gt;マリオの動きの人間らしさ&lt;/li&gt;
+&lt;li&gt;初心者にちょっとしたテクニックを教えると初心者に見えなくなる
+
+&lt;ul&gt;
+&lt;li&gt;人間らしさの評価が変化してしまう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;実際はAIでも、AIと伝えるか人間と伝えるかで反応が全然違う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;演奏家は時間進行に伴って視聴者の心理をコントロールする&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;場面場面での常道のコントロール&lt;/li&gt;
+&lt;li&gt;ゲームっぽい&lt;/li&gt;
+&lt;li&gt;単調増加する音楽はつまらない
+
+&lt;ul&gt;
+&lt;li&gt;下がったり上がったりしつつ全体として上がっていく&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;音楽評価の難しさ&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般性vs趣向に関する個人性&lt;/li&gt;
+&lt;li&gt;蓼食う虫も好き好き&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;脳センサについて&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;脳をはかっただけじゃ何もわかれない&lt;/li&gt;
+&lt;li&gt;しっかりと差が解る実験をしたからわかる&lt;/li&gt;
+&lt;li&gt;相関関係が解っても因果関係が解らない&lt;/li&gt;
+&lt;li&gt;ここが活性化したけど、それってゲームが面白いから？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;サーバとの通信が切れました-の無いゲームのために-インターネットと出来る事:87dcdd3e1492e653f5cc968938cacd4d&#34;&gt;「サーバとの通信が切れました」の無いゲームのために、インターネットと出来る事。&lt;/h1&gt;
+
+&lt;p&gt;口外禁止&lt;/p&gt;
+
+&lt;h1 id=&#34;ゲーム実況-時代のゲームプロモーション-niconicoの事例から:87dcdd3e1492e653f5cc968938cacd4d&#34;&gt;「ゲーム実況」時代のゲームプロモーション　niconicoの事例から&lt;/h1&gt;
+
+&lt;p&gt;口外禁止との会場アナウンスとOKのアナウンス両方流れてよくわからない。&lt;br /&gt;
+よって何も書かない。&lt;/p&gt;
+
+&lt;h1 id=&#34;cocos2d-x-ver-3-xで進む2dのリッチゲーム開発:87dcdd3e1492e653f5cc968938cacd4d&#34;&gt;Cocos2d-x ver.3.xで進む2Dのリッチゲーム開発&lt;/h1&gt;
+
+&lt;p&gt;Cocos2d-xは大体知ってるので省略&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;CRI ADX2&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;サウンド周りのシステム&lt;/li&gt;
+&lt;li&gt;フェードとかかなり頑張ってる&lt;/li&gt;
+&lt;li&gt;端末ごとの差異とかどれくらい吸収するんだろう？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CRI Sofdec2&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;映像をα合成できてて凄い&lt;/li&gt;
+&lt;li&gt;どれだけ軽いかが気になる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GitHub Kaigiに行ってきた</title>
+      <link>http://localhost:1313/blog/2014/06/03/github-kaigi/</link>
+      <pubDate>Tue, 03 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/06/03/github-kaigi/</guid>
+      <description>
+
+&lt;h1 id=&#34;スライドまとめ:c9ed42c0bcf78513677414202f1bb450&#34;&gt;スライドまとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://hiroki.jp/githubkaigi&#34;&gt;GitHub実践入門は活用するためのガイドブック&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/shibayu36/hatenaburogutimufalsekai-fa-hurotogithub&#34;&gt;はてなブログチームの開発フローとGitHub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/a_matsuda/oss-to-github&#34;&gt;OSS と GitHub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/cobyism/how-github-works-github-kaigi-tokyo-2014&#34;&gt;How GitHub Works (GitHub Kaigi, Tokyo, 2014)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/inao/githubkaigi&#34;&gt;GitHubで雑誌・書籍を作る&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.dropbox.com/s/utaud80bk5egse3/Atom%20%E2%80%93%20GitHub%20Kaigi_jp.pdf&#34;&gt;Atom, the Programmable Text Editor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/yuku/ru-men-shu-nihazai-tutenai-git-and-github-tips&#34;&gt;入門書には載ってない Git &amp;amp; GitHub Tips&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;LTは用事があって聞けませんでした…(´･_･`)&lt;/p&gt;
+
+&lt;h1 id=&#34;感想:c9ed42c0bcf78513677414202f1bb450&#34;&gt;感想&lt;/h1&gt;
+
+&lt;h2 id=&#34;全体的な感想:c9ed42c0bcf78513677414202f1bb450&#34;&gt;全体的な感想&lt;/h2&gt;
+
+&lt;p&gt;githubのハックや事例はもちろんですが、&lt;br /&gt;
+どちらかというとgithubを利用してのワークフローとか、&lt;br /&gt;
+エンジニアを含む環境がどう変化したか的なお話が多かったです。&lt;/p&gt;
+
+&lt;p&gt;一番はじめの、GitHub実践入門や、Gitのティップスに関しては、&lt;br /&gt;
+すぐに導入したいような内容ばかりでした。&lt;br /&gt;
+特に前者は凄くいい本っぽかったので(載せられてる)、会場で注文しましたw&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-06-03-github-kaigi.jpg&#34; alt=&#34;届いた&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;atomの発表が凄かった:c9ed42c0bcf78513677414202f1bb450&#34;&gt;Atomの発表が凄かった&lt;/h2&gt;
+
+&lt;p&gt;他にもいろいろ発表がありましたが、特に私にヒットしたのは、Atomのプレゼンでした。&lt;/p&gt;
+
+&lt;p&gt;AtomはChromiumベースで、エディタ部分をHTML5/CSSで作っているので、&lt;br /&gt;
+Developer Toolsを使ってWebサイトのように、Atomのデザインを変えられます。&lt;br /&gt;
+プレゼン中に変更している様子を見せてもらいましたが、&lt;br /&gt;
+本当に何でもリアルタイムで変更できて凄く未来を感じました。&lt;/p&gt;
+
+&lt;p&gt;また、DOM要素を直接いじることで、APIが提供されていなくても、&lt;br /&gt;
+画面上の全ての要素(Macのメニューバーに出てる部分ですら！）を&lt;br /&gt;
+自由に変更することが可能で、javascriptをコンソールに書いて、&lt;br /&gt;
+新しいメニューがついたのは本当に度肝を抜かれました。&lt;/p&gt;
+
+&lt;p&gt;スライドの資料には映像がないため、&lt;br /&gt;
+後日映像がアップロードされるのを待つしか無いのが凄く残念ですが、&lt;br /&gt;
+とにかく未来を感じるエディタでした。&lt;/p&gt;
+
+&lt;p&gt;もの凄くおもしろかったので、第二回開催はまだですかね。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coffee on おおたの物置</title>
+    <link>http://localhost:1313/tags/coffee/</link>
+    <description>Recent content in Coffee on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Fri, 29 Aug 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/coffee/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った</title>
+      <link>http://localhost:1313/blog/2014/08/29/hubot-post-server/</link>
+      <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/29/hubot-post-server/</guid>
+      <description>&lt;p&gt;実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、&lt;br /&gt;
+Webサーバへのアクセスに対して反応することができます。&lt;br /&gt;
+例: &lt;a href=&#34;https://github.com/github/hubot/blob/master/src/scripts/httpd.coffee&#34;&gt;scripts/httpd.coffee&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回はその機能を利用し、&lt;br /&gt;
+/hubot/send_messageにPOSTされたデータをチャットに流すスクリプトを作りました。&lt;/p&gt;
+
+&lt;p&gt;Hubot以外のアプリからこのURLを叩くことで、hubotの接続しているチャットに対して簡単にデータを送信できます。&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/ota42y/5b4342b36ba845d40197.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

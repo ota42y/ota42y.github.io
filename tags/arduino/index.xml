@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arduino on おおたの物置</title>
+    <link>http://localhost:1313/tags/arduino/</link>
+    <description>Recent content in Arduino on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 27 Aug 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ブラウザからArduinoを制御する</title>
+      <link>http://localhost:1313/blog/2014/08/27/arduino-browser/</link>
+      <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/27/arduino-browser/</guid>
+      <description>
+
+&lt;p&gt;Webブラウザから、接続されているArduinoの値を取りたいのですが、&lt;br /&gt;
+当然ながらブラウザ本体やJavascriptにはそんな機能はありません。&lt;/p&gt;
+
+&lt;p&gt;そこで、Arduinoの制御をやるWebサーバをローカルに立てて、&lt;br /&gt;
+そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？&lt;br /&gt;
+と考えたところ、既にそのようなものがありました。&lt;/p&gt;
+
+&lt;p&gt;試した結果をまとめます。&lt;/p&gt;
+
+&lt;h1 id=&#34;noduino:b54319c1aa56c9cb7b2ee92a8a3c9010&#34;&gt;noduino&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://semu.github.io/noduino/&#34;&gt;http://semu.github.io/noduino/&lt;/a&gt;&lt;br /&gt;
+Node.jsでArduinoを制御できます。
+&lt;a href=&#34;https://github.com/ecto/duino&#34;&gt;duino&lt;/a&gt;というNode.jsからArduinoに接続するライブラリを利用し、&lt;br /&gt;
+Webサーバとして扱えるようにしているものみたいです。&lt;/p&gt;
+
+&lt;p&gt;かなりいろいろな事ができ、使いやすいように作られていますが、&lt;br /&gt;
+ブラウザから制御するのはかなり苦労します。
+ですが、Node.jsで実行する前提ならば、&lt;br /&gt;
+簡単でいろいろなことができるため最適だと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;serialport-server:b54319c1aa56c9cb7b2ee92a8a3c9010&#34;&gt;Serialport-server&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://shokai.github.io/serialport-server/&#34;&gt;http://shokai.github.io/serialport-server/&lt;/a&gt;&lt;br /&gt;
+RubyからArduinoにアクセスし、その結果を返すサーバです。&lt;br /&gt;
+noduinoに比べるとできることは少ないですが、&lt;br /&gt;
+サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+というわけで、ブラウザからArduinoを制御する場合は、&lt;br /&gt;
+Serialport-serverが良さそうです。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

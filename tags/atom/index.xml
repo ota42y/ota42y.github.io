@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atom on おおたの物置</title>
+    <link>http://localhost:1313/tags/atom/</link>
+    <description>Recent content in Atom on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 08 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/atom/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Atomのプラグイン作の作り方その１</title>
+      <link>http://localhost:1313/blog/2014/04/08/atom-plugin1/</link>
+      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/04/08/atom-plugin1/</guid>
+      <description>&lt;p&gt;Github製のエディタAtomの招待が来ました。&lt;br /&gt;
+簡単なプラグインの作り方が公開されていましたので、
+自分でも作ってみました。&lt;/p&gt;
+
+&lt;p&gt;[Create Your First Package]&lt;a href=&#34;https://atom.io/docs/latest/your-first-package)&#34;&gt;https://atom.io/docs/latest/your-first-package)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;#テンプレート作成
+Atomはプラグインのテンプレートを作る仕組みが入っています。
+コマンドパレットから&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Generate Package
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;を選択して実行します。&lt;/p&gt;
+
+&lt;p&gt;するとパッケージ名を聞かれます。&lt;br /&gt;
+適当に入力すると(ここではデフォルトのmy-package)、
+ひな形がエディタで開きます。&lt;/p&gt;
+
+&lt;p&gt;#コマンドを作る
+コマンドパレットに表示されて実行可能なコマンドを作ります。&lt;/p&gt;
+
+&lt;p&gt;Atomの処理はCoffeeScriptで書きます。&lt;br /&gt;
+メイン部分はlib/my-package.coffeeなので、
+このファイルを編集します。&lt;/p&gt;
+
+&lt;p&gt;基本的に、module.exports =以降を書き換えればいいみたいです。&lt;br /&gt;
+この中にはテンプレートを作った段階でいろいろ書いてありますが、&lt;br /&gt;
+基本的に全部削除して大丈夫です。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module.exports =
+  activate: -&amp;gt;
+    # コマンドと実行する関数を登録する
+    atom.workspaceView.command &amp;quot;my-package:hello&amp;quot;, =&amp;gt; @hello()
+
+  hello: -&amp;gt;
+    # 今いるパネルを得る
+    editor = atom.workspace.activePaneItem
+	# 文字の挿入
+    editor.insertText(&#39;Hello, World!&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;package jsonに
+&amp;ldquo;activationEvents&amp;rdquo;が存在するので、&lt;br /&gt;
+その値をさっき登録したコマンドを入れた配列
+&lt;code&gt;[&amp;quot;my-package:hello&amp;quot;]&lt;/code&gt;
+に変更します。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;チュートリアルにはこれをしないと、&lt;br /&gt;
+ コマンドパレットに出ないと書いてありますが、&lt;br /&gt;
+ &lt;code&gt;atom.workspaceView.command &amp;quot;test-pkg:test&amp;quot;, =&amp;gt; @test()&lt;/code&gt;&lt;br /&gt;
+ を実行するだけで出てくるので、必ずしも必要ではなさそうです&lt;br /&gt;
+ (ただし、書いてあった方が安心できそう)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;変更を反映するために、コマンドパレットから&lt;br /&gt;
+&lt;code&gt;Window:Reload&lt;/code&gt;
+を実行します。&lt;/p&gt;
+
+&lt;p&gt;そうすると、コマンドパレットにmy-package:helloが出てくるので、&lt;br /&gt;
+実行すると、今のカーソルの部分にHello, World!が挿入されます。&lt;/p&gt;
+
+&lt;p&gt;#キーバインディング
+さっきのコマンドにキーバインドをつけます&lt;br /&gt;
+&lt;code&gt;keymaps/my-package.cson&lt;/code&gt;
+にキーバインドを記述すると使えるようになります。&lt;/p&gt;
+
+&lt;p&gt;ここはチュートリアルにあるのをそのまま…&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;.editor&#39;:
+  &#39;ctrl-alt-a&#39;: &#39;my-package:hello&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;CSSっぽいやり方でキーバインドを記述できるようです。&lt;br /&gt;
+基本的に&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;有効にする条件:
+ キーバインド : ひも付けるactivationEvents
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;になります。&lt;/p&gt;
+
+&lt;p&gt;とりあえずここまで。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="MessagePack って何？">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>MessagePack って何？ | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>MessagePack って何？</h1>
+                    
+
+<time datetime="2014-08-05" class="post_data">
+2014-08-05
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/study">study</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#messagepackとは:2b6eb61cc702492464e1c57eb2dbd5d5">MessagePackとは</a></li>
+<li><a href="#他のバイナリシリアライズフォーマットとの差:2b6eb61cc702492464e1c57eb2dbd5d5">他のバイナリシリアライズフォーマットとの差</a></li>
+<li><a href="#使い方:2b6eb61cc702492464e1c57eb2dbd5d5">使い方</a></li>
+<li><a href="#コード:2b6eb61cc702492464e1c57eb2dbd5d5">コード</a>
+<ul>
+<li><a href="#c:2b6eb61cc702492464e1c57eb2dbd5d5">C++</a></li>
+<li><a href="#ruby:2b6eb61cc702492464e1c57eb2dbd5d5">ruby</a></li>
+</ul></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>最近よく聞くMessagePackとは何かを調べたのでメモ。</p>
+
+<h1 id="messagepackとは:2b6eb61cc702492464e1c57eb2dbd5d5">MessagePackとは</h1>
+
+<p>バイナリでデータを保存するフォーマットです。<br />
+JSONと比べると、保存した状態の可読性を犠牲にする代わりに、<br />
+より早くて小さいフォーマットになっています。</p>
+
+<p>また、汎用的なフォーマットのため、<br />
+いろんな言語(nodeとかrubyとかcppとか)
+で相互にデータを使えます。</p>
+
+<h1 id="他のバイナリシリアライズフォーマットとの差:2b6eb61cc702492464e1c57eb2dbd5d5">他のバイナリシリアライズフォーマットとの差</h1>
+
+<p>MessagePackはバッファをうまく使って早かったり、
+読み込み途中でもデシリアライズできるとか、<br />
+結構いろいろと高速化のための工夫がされています。<br />
+(ただし、実装によって若干違いがあるようです)</p>
+
+<h1 id="使い方:2b6eb61cc702492464e1c57eb2dbd5d5">使い方</h1>
+
+<p>rubyなら<code>gem install msgpack</code>で、
+MacのC++なら<code>brew install msgpack</code>で使えるようになります。</p>
+
+<p>なお、C++はgccに以下のオプションをつける必要があります。<br />
+<code>g++ test.cpp -lmsgpack -o test</code></p>
+
+<p>また、基本型は全てシリアライズ可能で、保存したいクラスのメンバ変数を、<br />
+MSGPACK_DEFINEマクロに入れると、<br />
+自動でシリアライズ/デシリアライズできるみたいです。</p>
+
+<h1 id="コード:2b6eb61cc702492464e1c57eb2dbd5d5">コード</h1>
+
+<h2 id="c:2b6eb61cc702492464e1c57eb2dbd5d5">C++</h2>
+
+<pre><code class="language-c++">#include &lt;msgpack.hpp&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+struct User {
+  User(std::string name, int id, std::vector&lt;int&gt; follower)
+    : name(name)
+    , id(id)
+    , follower_id(follower)
+  {}
+
+  // 引数なしのコンストラクタは必須
+  User()
+    : id(0)
+  {}
+
+  MSGPACK_DEFINE(name, id, follower_id);
+  std::string name;
+  int id;
+  std::vector&lt;int&gt; follower_id;
+
+  string toString(){
+    string ret = &quot;name: &quot;;
+    ret += name;
+    ret += &quot;  id: &quot;;
+    ret += std::to_string(id);
+    ret += &quot;  follower: &quot;;
+    for(int i=0; i&lt;follower_id.size(); ++i){
+      ret += std::to_string(follower_id[i]);
+      ret += &quot; &quot;;
+    }
+    return ret;
+  }
+};
+
+int main(void) {
+  // データを作って書き込む
+  std::vector&lt;int&gt; follower_1;
+  follower_1.push_back(1);
+  follower_1.push_back(2);
+
+  std::vector&lt;int&gt; follower_2;
+  follower_2.push_back(2);
+
+  std::vector&lt;User&gt; users;
+  users.push_back(User(&quot;user1&quot;, 1, follower_1));
+  users.push_back(User(&quot;user2&quot;, 2, follower_2));
+
+  msgpack::sbuffer sbuf;
+  msgpack::pack(sbuf, users);
+
+  ofstream myFile (&quot;cpp_data.bin&quot;, ios::out | ios::binary);
+  myFile.write(sbuf.data(), sbuf.size());
+  myFile.close();
+
+
+  // ファイルからデータを読み込む
+  char buffer[1000];
+  ifstream inFile (&quot;ruby_data.bin&quot;, ios::in | ios::binary);
+  inFile.read (buffer, 1000);
+  inFile.close();
+
+  msgpack::unpacked msg;
+  msgpack::unpack(&amp;msg, buffer, 1000);
+
+  msgpack::object obj = msg.get();
+  std::vector&lt;User&gt; load_users;
+  obj.convert(&amp;load_users);
+  for(int i=0; i&lt;load_users.size(); ++i){
+    cout &lt;&lt; load_users[i].toString() &lt;&lt; endl;
+  }
+
+  return 0;
+}
+</code></pre>
+
+<h2 id="ruby:2b6eb61cc702492464e1c57eb2dbd5d5">ruby</h2>
+
+<pre><code class="language-ruby">require 'msgpack'
+
+# load data and deserialize
+users = MessagePack.unpack( File.open(&quot;cpp_data.bin&quot;) )
+p users
+
+
+
+# serialize and output data
+users[0][0] = &quot;100user&quot;
+users[0][1] = 100
+users[0][2] = [100, 101]
+
+users[0][0] = &quot;101user&quot;
+users[0][1] = 101
+users[0][2] = [101]
+
+File.open('ruby_data.bin','w') do |f|
+  f.print users.to_msgpack
+end
+</code></pre>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/08/05/msgpack/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+

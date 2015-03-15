@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on おおたの物置</title>
+    <link>http://localhost:1313/tags/git/</link>
+    <description>Recent content in Git on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 07 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gitで現在のブランチ名をクリップボードにコピーする</title>
+      <link>http://localhost:1313/blog/2014/09/07/git-copy-current-branch/</link>
+      <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/07/git-copy-current-branch/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# copy current branch
+ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Jenkinsでブランチ○○をビルドしたいような場合に、&lt;br /&gt;
+jenkinsに渡すために現在のブランチを調べるのが面倒だったので、&lt;br /&gt;
+簡単にコピペできるようにしました。&lt;/p&gt;
+
+&lt;p&gt;なお、Mac限定です。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>スマホアプリ開発でgit-new-workdirがとても便利だった</title>
+      <link>http://localhost:1313/blog/2014/08/25/git-new-workdir/</link>
+      <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/25/git-new-workdir/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ビルドに時間がかかる環境下では、ビルドのキャッシュが重要&lt;/li&gt;
+&lt;li&gt;ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる&lt;/li&gt;
+&lt;li&gt;別ブランチでちょっとした修正を行おうとすると、移動と戻りとで二回ビルドし直しが起きる&lt;/li&gt;
+&lt;li&gt;リポジトリを複数cloneすると、管理が面倒&lt;/li&gt;
+&lt;li&gt;git-new-workdirなら、.gitを共用しつつ、別々のフォルダで作業できる&lt;/li&gt;
+&lt;li&gt;そのため、ビルドのキャッシュを最大限活用できる&lt;/li&gt;
+&lt;li&gt;スマホアプリじゃなくても便利&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;ビルドのキャッシュ:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;ビルドのキャッシュ&lt;/h1&gt;
+
+&lt;p&gt;Objective-cやJava、C++でスマホアプリを作成する場合、&lt;br /&gt;
+どの言語もコンパイルが必要になります。&lt;br /&gt;
+このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。&lt;/p&gt;
+
+&lt;p&gt;ただし、多くの場合はキャッシュ機能が有効になっており、&lt;br /&gt;
+変更したファイルのみがコンパイルされるため、&lt;br /&gt;
+フルビルドをしなければ気にならないはずです。&lt;/p&gt;
+
+&lt;h1 id=&#34;gitのチェックアウトによるファイル変更問題:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;gitのチェックアウトによるファイル変更問題&lt;/h1&gt;
+
+&lt;p&gt;gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。&lt;br /&gt;
+これにより、ブランチ間の差分が全てビルド対象になってしまいます。&lt;/p&gt;
+
+&lt;p&gt;当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、&lt;br /&gt;
+別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。&lt;br /&gt;
+ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…&lt;br /&gt;
+なんてこともあり、時間が勿体ないです。&lt;/p&gt;
+
+&lt;p&gt;かといって、リポジトリを二つ別々のフォルダにcloneすると、&lt;br /&gt;
+別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々&lt;br /&gt;
+いろいろと問題が起きます。&lt;/p&gt;
+
+&lt;p&gt;こういった場合、git-new-workdirを使うことで、
+だいぶ楽に解決することができます。&lt;/p&gt;
+
+&lt;h1 id=&#34;git-new-workdirとは:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;git-new-workdirとは&lt;/h1&gt;
+
+&lt;p&gt;これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。&lt;br /&gt;
+これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、&lt;br /&gt;
+片方で作成したコミットや、ローカルブランチ、git stashなどをもう片方で参照することができます。&lt;/p&gt;
+
+&lt;p&gt;また、gitのワーキングディレクトリやステージングエリアは共用されないため、&lt;br /&gt;
+コミットしていない変更が別のディレクトリに影響をあたることはありません。　&lt;/p&gt;
+
+&lt;h2 id=&#34;インストール:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;インストール&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;git/contrib/workdir/git-new-workdir&lt;/code&gt;に入っていたので、&lt;br /&gt;
+&lt;code&gt;export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH&lt;/code&gt;
+でパスを通しました。&lt;/p&gt;
+
+&lt;h2 id=&#34;使い方:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;使い方&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;git-new-workdir repository_folder new_workdir branch_name(オプション)&lt;/code&gt;です。&lt;br /&gt;
+後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、&lt;br /&gt;
+ほぼcheckout時間しかかかりません。&lt;/p&gt;
+
+&lt;p&gt;新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。&lt;/p&gt;
+
+&lt;h1 id=&#34;注意点:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;注意点&lt;/h1&gt;
+
+&lt;p&gt;同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。&lt;br /&gt;
+なお、片方からもう片方が何をチェックアウトしているかはわからないため、&lt;br /&gt;
+main/subといった使い方や、develop/releaseといった風に分けたり、&lt;br /&gt;
+必要な時だけ作るといった方が事故らないと思います。&lt;/p&gt;
+
+&lt;p&gt;また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、&lt;br /&gt;
+残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。&lt;br /&gt;
+そのため、高速に新しいworkdirを作れますが、&lt;br /&gt;
+元のリポジトリを消すとworkdirの方もおかしくなると思われます。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

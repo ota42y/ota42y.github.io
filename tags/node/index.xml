@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node on おおたの物置</title>
+    <link>http://localhost:1313/tags/node/</link>
+    <description>Recent content in Node on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 29 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/node/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>npmにパッケージを公開する手順</title>
+      <link>http://localhost:1313/blog/2014/09/29/npm-publish/</link>
+      <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/29/npm-publish/</guid>
+      <description>
+
+&lt;p&gt;とても簡単でしたがつい忘れるのでメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;公開手順:9b9b8c7d435dd710d7718e3412443ac0&#34;&gt;公開手順&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;npmjsに開発者登録をします。&lt;br /&gt;
+&lt;a href=&#34;https://www.npmjs.org/&#34;&gt;https://www.npmjs.org/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;npm adduser&lt;/code&gt;で~/.npmrcにnpmへのログイントークンを保存します。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;package.jsonに必要事項を書きます。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/stamina-calculator/blob/master/package.json&#34;&gt;こんな感じ&lt;/a&gt;ですね。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;npm publish&lt;/code&gt;で公開&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;アップグレード版の配布も&lt;code&gt;npm publish&lt;/code&gt;で可能です。&lt;br /&gt;
+(ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;非公開手順:9b9b8c7d435dd710d7718e3412443ac0&#34;&gt;非公開手順&lt;/h1&gt;
+
+&lt;p&gt;間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、&lt;br /&gt;
+&lt;code&gt;npm unpublish パッケージ名前@バージョン&lt;/code&gt;で削除出来ます。&lt;br /&gt;
+何も指定しない場合全てのバージョンが対象になりますが、&lt;code&gt;--force&lt;/code&gt;をつける必要があります。&lt;/p&gt;
+
+&lt;p&gt;ただし、削除してしまうので、そのパッケージに依存しているパッケージが悲惨なことになります。&lt;br /&gt;
+そのため、&lt;code&gt;npm deprecate&lt;/code&gt;の方がアップグレードを促せるし推奨すると&lt;a href=&#34;https://www.npmjs.org/doc/cli/npm-unpublish.html&#34;&gt;公式サイト&lt;/a&gt;には書いてあります。&lt;br /&gt;
+unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
+
+&lt;p&gt;なお、全てのバージョンを削除するとnpmからパッケージの情報も削除されます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
+      <link>http://localhost:1313/blog/2014/08/22/mocha-test/</link>
+      <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/22/mocha-test/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mochaではrspecっぽい感じにテストが書ける&lt;/li&gt;
+&lt;li&gt;ただし、done()を呼ぶ必要がある等、細かい部分に差異がある&lt;/li&gt;
+&lt;li&gt;sinonにはいろいろ便利機能がある&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mochaの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;Mochaの使い方&lt;/h1&gt;
+
+&lt;p&gt;coffeescriptを前提にしています。&lt;/p&gt;
+
+&lt;h2 id=&#34;テストの書き方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;テストの書き方&lt;/h2&gt;
+
+&lt;p&gt;Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、&lt;br /&gt;
+そのitを呼び出す関数をdescribeに渡すしようです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;describe &amp;quot;test root&amp;quot;, -&amp;gt;
+      it &amp;quot;name&amp;quot;, (done) -&amp;gt;
+        assert.equal getUserName, &amp;quot;user&amp;quot;
+        done()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ただし、it関数では必ずdone()を呼び出す必要があります。&lt;br /&gt;
+これを呼ばない場合は終了を待ち続け、&lt;br /&gt;
+一定時間後にタイムアウトしてテストが失敗した扱いになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;beforeの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;beforeの使い方&lt;/h2&gt;
+
+&lt;p&gt;rspecのbeforeにあたるものは、beforeEachになります。&lt;br /&gt;
+ なお、変数を他のブロックに渡したい場合、&lt;br /&gt;
+ 以下のようにdescribeの中に変数名を書いておいて、&lt;br /&gt;
+ beforeEachのなかで設定する必要があるみたいです。&lt;br /&gt;
+&lt;a href=&#34;http://stackoverflow.com/questions/20584233/mocha-pass-variable-to-the-next-test&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;describe &amp;quot;test&amp;quot;, -&amp;gt;
+  room_name = undefined
+
+
+  beforeEach (done) -&amp;gt;
+    room_name = &amp;quot;test_room&amp;quot;
+
+    done()
+
+  describe &amp;quot;functions&amp;quot;, -&amp;gt;
+      it &amp;quot;executeNoteShow&amp;quot;, (done) -&amp;gt;
+        assert.equal getRoomName(room_name), room_name
+        done()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pendingテストの作り方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;pendingテストの作り方&lt;/h2&gt;
+
+&lt;p&gt;テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;  describe &amp;quot;functions&amp;quot;, -&amp;gt;
+      it &amp;quot;pending test&amp;quot; // 関数を渡さない場合
+
+
+      // it.skipの場合、引数を渡しても実行されずにスキップする
+      it.skip &amp;quot;pending test 2&amp;quot;, -&amp;gt;
+          done()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;外部ファイル読み込み:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;外部ファイル読み込み&lt;/h2&gt;
+
+&lt;p&gt;test.coffeeで&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;class Test
+  なんかいろいろ
+module.exports.Test = Test
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;と、クラスを宣言し、module.exportsに代入します。
+その後、使いたいファイル側で&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;Test = require(&#39;../src/test.coffee&#39;).Test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;と書くと、以降Testでそのクラスが呼び出せます。&lt;/p&gt;
+
+&lt;p&gt;#chaiの使い方&lt;/p&gt;
+
+&lt;h2 id=&#34;assertを使う:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;assertを使う&lt;/h2&gt;
+
+&lt;p&gt;前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、&lt;br /&gt;
+別ライブラリのchaiを読み込む必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;global.assert = require(&amp;quot;chai&amp;quot;).assert
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これで、 assert.equalや assert.notEqualが使えます。&lt;/p&gt;
+
+&lt;h1 id=&#34;sinonの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;sinonの使い方&lt;/h1&gt;
+
+&lt;h2 id=&#34;mockやstubを使う:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;mockやstubを使う&lt;/h2&gt;
+
+&lt;p&gt;Mochaにはmockやstubの為の物は含まれていないので、&lt;br /&gt;
+今度はsinonを読み込む必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;global.sinon = require(&#39;simon&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使い方は以下の通りです&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;    // robot.brainがstubになる
+    robot = new Object()
+    robot.brain = sinon.stub()
+
+
+    // hubot_note.executeNoteShowを置き換え、
+    // hubot_note.executeMessage実行時に、
+    // &amp;quot;test&amp;quot;, null, nullの引数で一回だけ実行されたかをチェックする
+
+    spy = sinon.spy(hubot_note, &amp;quot;executeNoteShow&amp;quot;)
+    spy.withArgs(&amp;quot;test&amp;quot;, null, null)
+    response = hubot_note.executeMessage(room_name, &amp;quot;hubot note show&amp;quot;)
+    assert.ok spy.withArgs(&amp;quot;test&amp;quot;, null, null).calledOnce
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;時間変更の仕方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;時間変更の仕方&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;new Date()&lt;/code&gt;などによって日付がちゃんと設定されたかどうかを確認したい場合、&lt;br /&gt;
+グローバルなDate()部分を置き換える必要があります。&lt;/p&gt;
+
+&lt;p&gt;…というのはよくあることなので、sinon側で既に用意されています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;@clock = sinon.useFakeTimers(0,
+  &amp;quot;setTimeout&amp;quot;, &amp;quot;clearTimeout&amp;quot;,
+  &amp;quot;setInterval&amp;quot;, &amp;quot;clearInterval&amp;quot;, &amp;quot;Date&amp;quot;)`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これで、以降のDateコマンドは第一引数で指定した0(1970年1月1日0時0分0秒)を必ず返すようになるため、&lt;br /&gt;
+この時間かどうかをチェックすれば大丈夫です。&lt;br /&gt;
+また、以下のように戻り値のオブジェクトのtickメソッドにより、&lt;br /&gt;
+指定したミリ秒だけ時間を進めることもできます。&lt;br /&gt;
+&lt;code&gt;@clock.tick(3600000)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;sinonのその他の機能:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;sinonのその他の機能&lt;/h2&gt;
+
+&lt;p&gt;sinonに関しては他にもいろいろ有用なものがあります。&lt;br /&gt;
+ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://alpha.mixi.co.jp/2011/10798/&#34;&gt;http://alpha.mixi.co.jp/&lt;sup&gt;2011&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10798&lt;/sub&gt;/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
+      <link>http://localhost:1313/blog/2014/08/21/intellij-node/</link>
+      <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/21/intellij-node/</guid>
+      <description>
+
+&lt;p&gt;node.js+mocha+coffeescriptな環境で開発をしていたところ、&lt;br /&gt;
+IntelliJ IDEAの設定方法が調べても無かったのでメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;node-jsプラグインのインストール:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;Node.jsプラグインのインストール&lt;/h1&gt;
+
+&lt;p&gt;Node.jsプラグインは公式から提供されています。&lt;br /&gt;
+そのため、IntelliJ のPreferences からPluginsを選び、&lt;br /&gt;
+NodeJSプラグインを選択するだけでインストール出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;ビルド設定:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;ビルド設定&lt;/h1&gt;
+
+&lt;p&gt;以下の画像の通りです。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-21-intellij-node.png&#34; alt=&#34;設定画像&#34; /&gt;
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Node interpreter&lt;br /&gt;
+node.jsの実行ファイルの位置を設定します。&lt;/li&gt;
+&lt;li&gt;working directory&lt;br /&gt;
+対象のディレクトリ&lt;/li&gt;
+&lt;li&gt;Mocha package&lt;br /&gt;
+Mochaの実行ファイルの位置&lt;/li&gt;
+&lt;li&gt;Extra Mocha options&lt;br /&gt;
+Mochaの設定を指定します
+詳しくは後述&lt;/li&gt;
+&lt;li&gt;Test Directory&lt;br /&gt;
+Mochaのテストが入っている場所&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mochaのオプション:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;Mochaのオプション&lt;/h1&gt;
+
+&lt;p&gt;私の環境では主に次のような設定をしています、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;coffeescriptを利用している&lt;/li&gt;
+&lt;li&gt;spec形式で出力&lt;/li&gt;
+&lt;li&gt;共通で読み込むファイルがある&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これは、以下のオプションを入れることで実現できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--compilers
+coffee:coffee-script/register
+--reporter
+spec
+--require
+coffee-script
+--require
+test/test_helper.coffee
+--colors
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;問題点:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;問題点&lt;/h1&gt;
+
+&lt;p&gt;以上で設定は終わりですが、いくつか問題点があります。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;デバッガが動かない&lt;br /&gt;
+coffeescriptから変換してるので、&lt;br /&gt;
+ブレークポイントがうまく動きません&lt;/li&gt;
+&lt;li&gt;エラーになったテストに飛べない&lt;br /&gt;
+テストがエラーになったとしても、そのテストの位置に飛ぶ機能がありません。&lt;br /&gt;
+最も、IDEを使わずに開発している時と同じく、&lt;br /&gt;
+テストメッセージを頼りにテストファイルに移動すればいいので、&lt;br /&gt;
+大きな問題ではありませんが。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

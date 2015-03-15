@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on おおたの物置</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 03 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>fork関数がどうやってプロセスを分割しているか</title>
+      <link>http://localhost:1313/blog/2015/01/03/unix-fork/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015/01/03/unix-fork/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEOS%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-~UNIX-V6%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF-Software-Design/dp/4774154644&#34;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;br /&gt;
+という本を読んでいます。&lt;/p&gt;
+
+&lt;p&gt;この中で、fork関数がどうやって子プロセスを作り、&lt;br /&gt;
+親子かを識別して別の値を返しているのかが解説されており、&lt;br /&gt;
+とても興味深かったです。&lt;/p&gt;
+
+&lt;p&gt;以下にその概要をまとめました。&lt;/p&gt;
+
+&lt;h1 id=&#34;fork関数:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数&lt;/h1&gt;
+
+&lt;p&gt;Cではfork関数を利用することで、子プロセスを作成することが出来ます。&lt;br /&gt;
+コードとしてはこんな感じですね。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/wait.h&amp;gt;
+
+int main() {
+  pid_t pid = fork();
+  if (pid == 0) {
+    sleep(1);
+    printf(&amp;quot;child!\n&amp;quot;);
+    return 0;
+  }
+
+  printf(&amp;quot;parent!\n&amp;quot;);
+
+  int status;
+  waitpid(pid, &amp;amp;status, 0);
+
+  printf(&amp;quot;parent end\n&amp;quot;);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。&lt;br /&gt;
+ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、&lt;br /&gt;
+ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。&lt;/p&gt;
+
+&lt;p&gt;では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、&lt;br /&gt;
+別の値を返しているのでしょうか。&lt;/p&gt;
+
+&lt;p&gt;これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。&lt;/p&gt;
+
+&lt;h1 id=&#34;fork関数がプロセスの親子を区別する仕組み:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数がプロセスの親子を区別する仕組み&lt;/h1&gt;
+
+&lt;h2 id=&#34;親による子プロセスの作成:7960c44eb9f1312bad029939fcc3410e&#34;&gt;親による子プロセスの作成&lt;/h2&gt;
+
+&lt;p&gt;ライブラリのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/source/s4/fork.s&#34;&gt;source/s4/fork.s&lt;/a&gt;)を実行すると、&lt;br /&gt;
+システムコールによってカーネルのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/sys1.c&#34;&gt;sys/ken/sys1.c&lt;/a&gt;)が実行されます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;fork()
+{
+  register struct proc *p1, *p2;
+
+  p1 = u.u_procp;
+  for(p2 = &amp;amp;proc[0]; p2 &amp;lt; &amp;amp;proc[NPROC]; p2++)
+  if(p2-&amp;gt;p_stat == NULL)
+    goto found;
+  u.u_error = EAGAIN;
+  goto out;
+
+found:
+  if(newproc()) {
+    u.u_ar0[R0] = p1-&amp;gt;p_pid;
+    u.u_cstime[0] = 0;
+    u.u_cstime[1] = 0;
+    u.u_stime = 0;
+    u.u_cutime[0] = 0;
+    u.u_cutime[1] = 0;
+    u.u_utime = 0;
+    return;
+  }
+  u.u_ar0[R0] = p2-&amp;gt;p_pid;
+
+out:
+  u.u_ar0[R7] =+ 2;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このカーネルのfork関数内でnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)を呼び出し、子プロセスを作成しています。&lt;br /&gt;
+その後、newproc関数は0を返すため、カーネルのfork関数で0で帰ってきた場合に、&lt;br /&gt;
+作成した子プロセスのIDをレジスタに乗せ、ライブラリのfork関数で返すようにしています。&lt;/p&gt;
+
+&lt;h2 id=&#34;作成された子プロセス側の処理:7960c44eb9f1312bad029939fcc3410e&#34;&gt;作成された子プロセス側の処理&lt;/h2&gt;
+
+&lt;p&gt;子プロセスは作成された後、実行順番が回ってきたタイミングでswitch関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)により再開します。&lt;br /&gt;
+この関数内では保存されたデータを復元し、最後にsavu関数を実行した関数の呼び出し元に、return 1で戻ります。&lt;/p&gt;
+
+&lt;p&gt;カーネルのfork関数で呼び出しているnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)内では、&lt;br /&gt;
+savu関数が実行されてから子プロセスがコピーされるため、&lt;br /&gt;
+switch関数はnewprocの呼び出し元であるfork関数に1で戻ります。&lt;/p&gt;
+
+&lt;p&gt;これにより、カーネルのfork関数内で呼び出しているnewproc関数は、&lt;br /&gt;
+親プロセスの場合は0が、子プロセスの場合は1が返るようになり、&lt;br /&gt;
+その値を見て自身が親なのか子なのかを判断でき、別々の戻り値を返せるようになっています。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:7960c44eb9f1312bad029939fcc3410e&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;親プロセスはforkで子プロセスを作成してそのまま処理を継続&lt;/li&gt;
+&lt;li&gt;子プロセスは実行順番が回ってきたタイミングで処理を開始
+
+&lt;ul&gt;
+&lt;li&gt;switch関数で復帰した際に、通常とは別の戻り値が返るため親子を区別可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Debian squeezeでShellShock対策</title>
+      <link>http://localhost:1313/blog/2014/09/26/shell-shock/</link>
+      <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/26/shell-shock/</guid>
+      <description>
+
+&lt;p&gt;Debianは探しても見つからなかったので…(´･_･`)&lt;/p&gt;
+
+&lt;h1 id=&#34;shellshock-cve-2014-6271:377013f15561b7f0d7c8de02112ec895&#34;&gt;ShellShock(CVE-2014-6271)&lt;/h1&gt;
+
+&lt;p&gt;CVE-2014-6271(とCVE-2014-7169)として、bashに第三者から任意のコードが実行される脆弱性が見つかりました。&lt;br /&gt;
+&lt;a href=&#34;https://www.jpcert.or.jp/at/2014/at140037.html&#34;&gt;GNU bash の脆弱性に関する注意喚起&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://d.hatena.ne.jp/Kango/20140925/1411612246&#34;&gt;bashの脆弱性(CVE-2014-6271) #ShellShock の関連リンクをまとめてみた&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://x86-64.jp/blog/CVE-2014-6271&#34;&gt;Blog: bashの脆弱性がヤバすぎる件 – x86-64.jp - くりす研&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;bashで以下のスクリプトを実行し、出力文字列に&lt;code&gt;vulnerable&lt;/code&gt;が出てきたらまずい状態です。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;env x=&#39;() { :;}; echo vulnerable&#39; bash -c &#39;echo hello&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;修正パッチ状況:377013f15561b7f0d7c8de02112ec895&#34;&gt;修正パッチ状況&lt;/h1&gt;
+
+&lt;p&gt;この問題に対しては(まだ不十分ですが)修正パッチが公開されており、また各ディストリビューションでも修正したbashが配布されています。&lt;/p&gt;
+
+&lt;p&gt;Redhad系の対策はこちら&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/richmikan@github/items/5f54114a46e64178133d&#34;&gt;&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;09&lt;/sub&gt;/24に発表されたBash脆弱性と解決法(RedHat系)&lt;/a&gt;&lt;br /&gt;
+Mac OS X系の対策はこちら&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/syui/items/809c1cd8ed57c8cdb055&#34;&gt;CVE-2014-6271のbashの脆弱性に対応する方法&lt;/a&gt;　　&lt;/p&gt;
+
+&lt;p&gt;私の使っているDebian(squeeze)でも、パッチが適応されたbashを配布しています。&lt;br /&gt;
+&lt;a href=&#34;https://security-tracker.debian.org/tracker/CVE-2014-6271&#34;&gt;https://security-tracker.debian.org/tracker/CVE-2014-6271&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;修正版へのアップデート:377013f15561b7f0d7c8de02112ec895&#34;&gt;修正版へのアップデート&lt;/h1&gt;
+
+&lt;p&gt;修正されたbashはsqueezeの通常のリポジトリには修正版は公開されておらず、&lt;br /&gt;
+ltsリポジトリを参照する必要があります。(&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;09&lt;/sub&gt;/26 7:00現在)&lt;br /&gt;
+&lt;a href=&#34;https://wiki.debian.org/LTS/Using#Add_squeeze-lts_to_your_sources.list&#34;&gt;LTS/Using - Debian Wiki&lt;/a&gt;にリポジトリが書いてあるので、それをapt-getの参照先に追加します。&lt;/p&gt;
+
+&lt;p&gt;/etc/apt/sources.list.d`に、lts.listを作り、以下のように書き込みます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://http.debian.net/debian/ squeeze-lts main contrib non-free
+deb-src http://http.debian.net/debian/ squeeze-lts main contrib non-free
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(手元に環境がないので確認できませんが、おそらくWheezyでは以下のリポジトリで行けると思います)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://security.debian.org/ wheezy/updates main
+deb-src http://security.debian.org/ wheezy/updates main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;この状態で&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get update
+sudo apt-get install bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;をすることで、新しくできます。&lt;/p&gt;
+
+&lt;p&gt;ただし、この修正だけでは不十分という指摘があり、今後さらなる修正パッチが出てくる可能性があります。&lt;br /&gt;
+おそらく同じリポジトリに更新が来ると思うので、上記の手順を実行したならば、&lt;br /&gt;
+apt-getの&lt;code&gt;update&lt;/code&gt;と&lt;code&gt;install bash&lt;/code&gt;だけですむと思われます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>cronやinit.dでsudoを実行するとエラーになって実行できない</title>
+      <link>http://localhost:1313/blog/2014/09/13/sudo-error/</link>
+      <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/13/sudo-error/</guid>
+      <description>&lt;p&gt;cronやinit.d以下に置いたスクリプトで、&lt;br /&gt;
+別の以外のユーザで作業しようと思い、sudoを実行したところ、&lt;br /&gt;
+以下のようなエラーが出て実行できませんでした。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo: sorry, you must have a tty to run sudo&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;どうやら、ttyを使わない場合、sudoは権限に関係なく実行できないようです。&lt;/p&gt;
+
+&lt;p&gt;sudoersにある&lt;br /&gt;
+&lt;code&gt;Defaults    requiretty&lt;/code&gt;&lt;br /&gt;
+をコメントアウトすることで解決しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.idimmu.net/2013/09/27/sudo-sorry-must-tty-run-sudo/&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux起動時に特定のシェルスクリプトを実行する</title>
+      <link>http://localhost:1313/blog/2014/09/12/init-d/</link>
+      <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/09/12/init-d/</guid>
+      <description>&lt;p&gt;hubotを自動で実行してほしいなーと思ったので、&lt;br /&gt;
+OSの起動時にスクリプトを自動実行する方法を調べました。&lt;/p&gt;
+
+&lt;p&gt;まず、&lt;code&gt;/etc/init.d/&lt;/code&gt;
+に実行可能なスクリプトを置きます。&lt;/p&gt;
+
+&lt;p&gt;次に、スクリプトの二行目に、起動設定を書きます。&lt;br /&gt;
+&lt;code&gt;# chkconfig: 345 99 01&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;一つ目がランレベル、二つ目が起動順番、三つ目が終了順番になります。&lt;br /&gt;
+起動・終了は小さい数値から行われるため、&lt;br /&gt;
+前述の例ですと一番最後に起動し、一番最初に終了します。&lt;/p&gt;
+
+&lt;p&gt;ランレベルについては
+&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%AC%E3%83%99%E3%83%AB&#34;&gt;Wikipediaの記事&lt;/a&gt;
+を参考にしてください&lt;/p&gt;
+
+&lt;p&gt;最後に、&lt;code&gt;chkconfig --add (init.dに置いたスクリプト名)&lt;/code&gt;を実行して登録を行います。&lt;/p&gt;
+
+&lt;p&gt;これで、起動時にスクリプトが実行されます。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

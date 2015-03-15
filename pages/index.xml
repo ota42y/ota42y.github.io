@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on おおたの物置</title>
+    <link>http://localhost:1313/pages/</link>
+    <description>Recent content in Pages on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 09 Mar 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年10週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-10/</link>
+      <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-10/</guid>
+      <description>
+
+&lt;h1 id=&#34;hugoを実験中:e975d64a31c4cd5e9fd296d1cb8af56a&#34;&gt;Hugoを実験中&lt;/h1&gt;
+
+&lt;p&gt;今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。&lt;/p&gt;
+
+&lt;p&gt;ゼロから作ると、テンプレート作成の大変さが身にしみます…&lt;br /&gt;
+デザインを考える部分はもちろんのこと、CSSとの格闘や、&lt;br /&gt;
+フレームワークの使い方とかを調べる必要があり、中々大変です。&lt;/p&gt;
+
+&lt;p&gt;また、golangのテンプレート機能については情報が少ないので、&lt;br /&gt;
+やりたいことがあっても、普通に書くとうまくいかずに実現できない事が多々あったので、&lt;br /&gt;
+あとでちゃんと勉強し直した方がよさそうです。&lt;/p&gt;
+
+&lt;p&gt;最も、本来テンプレート層で複雑な操作はするべきではなく、コントローラー側で処理をし、&lt;br /&gt;
+テンプレートは渡されたデータを表示するだけにした方が望ましいです。&lt;br /&gt;
+ただ、今回はhugo側にはあまり手を加えるのは避けたいため、&lt;br /&gt;
+コントローラ側に処理を追加する事が出来ず、テンプレート部分で頑張る必要がでてしまいました。&lt;br /&gt;
+テンプレートとhugoの間に普通のgoで処理を追加できたらいいのですが…&lt;/p&gt;
+
+&lt;p&gt;また、hugo側で用意されている奴を上手く使えばできる事も、&lt;br /&gt;
+わざわざ自前でがんばって実装しようとしていたりしてて無駄が多いです…&lt;br /&gt;
+サンプル集みたいなのがもう少し整っていると良い気がします。&lt;/p&gt;
+
+&lt;p&gt;ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。&lt;br /&gt;
+テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年09週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-09/</link>
+      <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-09/</guid>
+      <description>
+
+&lt;p&gt;今年も15%が終わった…&lt;/p&gt;
+
+&lt;h1 id=&#34;goのcronにpr送った:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;GoのcronにPR送った&lt;/h1&gt;
+
+&lt;p&gt;Goのcronとして&lt;a href=&#34;https://github.com/robfig/cron&#34;&gt;https://github.com/robfig/cron&lt;/a&gt;を使ってますが、&lt;br /&gt;
+実行中か否かを取得できずに不便でした。&lt;br /&gt;
+内部では管理しているので、それに対するゲッターを追加したPRを送りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/robfig/cron/pull/21&#34;&gt;https://github.com/robfig/cron/pull/21&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoが良さそう:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;Hugoが良さそう&lt;/h1&gt;
+
+&lt;p&gt;このサイトはOctopressで運用しています。&lt;br /&gt;
+ですが、記事数が増えてきたためか、変更して作り直すのに5秒ぐらいかかってしまいます。&lt;br /&gt;
+ちょっとした変更でも若干時間がかるため、かなりストレスがたまる仕組みです…&lt;/p&gt;
+
+&lt;p&gt;同じく静的サイトを作成するソフトウェアで、Hugoというものがあるそうです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/spf13/hugo&#34;&gt;https://github.com/spf13/hugo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Goで書かれており、作成する速度がかなり早いらしいので、乗り換えを検討中です。&lt;br /&gt;
+残念ながら、良い感じのテンプレートがないので、まずはそこから作る必要がありそうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;テキストベースのtodoアプリを考えた:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;テキストベースのToDoアプリを考えた&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Todo.txtが行けてないので自分に合ったやつを考える&lt;/li&gt;
+&lt;li&gt;スペースと改行ででサブタスクを指定
+
+&lt;ul&gt;
+&lt;li&gt;箇条書きがそのままサブタスクになる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;タスク名とサブタスク以外は全てオプションとして提供
+
+&lt;ul&gt;
+&lt;li&gt;優先度とかをベースシステムとしては持たない&lt;/li&gt;
+&lt;li&gt;:due 2015-02-01とか、オプションとしてつける&lt;/li&gt;
+&lt;li&gt;ベースはサブタスクとタスク名だけ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;多分こんな感じになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;タスク１ :due 2015-02-01
+  サブタスク1 :due 2015-01-31
+  サブタスク2 :due 2015-01-01 :repeat 1 week
+    サブタスク3 :url http://example.com/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;テキストベースで編集するのとは別に、CLIも作らないとダメですね。&lt;br /&gt;
+フィルターとか、デフォルト値を入れて追加とかしにくいので…&lt;/p&gt;
+
+&lt;p&gt;リポジトリはこれになります。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;今やってるもの-これからやりたいこと:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;今やってるもの＆これからやりたいこと&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;今やってること&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Goによるtumblr apiライブラリ&lt;/li&gt;
+&lt;li&gt;進捗どうですか？時に画像もつけてほしくなった&lt;/li&gt;
+&lt;li&gt;tumblr apiからランダムで取ってくるために、tumblrライブラリを作る
+
+&lt;ul&gt;
+&lt;li&gt;ついでにリブログもする&lt;/li&gt;
+&lt;li&gt;node-tumblrがリブログしないので作った&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;goでやりたかっただけ&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;予定していた機能(投稿取得、リブログ)はだいたい完成&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;完全にカバーしてないけど、ほしい部分は出来た&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自分用自動化システム&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Goである程度の大きさのアプリを作るテスト&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;日々の作業を自動化&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;twitterの公式アカウントチェック&lt;/li&gt;
+&lt;li&gt;チャットのログ保存等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;hubotとhttp経由でやりとり出来るため、botのバックエンドとしても使える&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;いずれはhubotを全て置き換えるようにしたい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;結果通知部分はかなり良くない作りなので、そこは何とかしたい&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;そもそも設計もあまり良くない感じ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;進捗どうですか？の修正を入れたらしばらく放置&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;次にやろうとしているもの&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hugoのテンプレート作成&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;このサイトをベースに、色々不都合があるところを直す&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ToDoシステム(CLI)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;スペースを使った箇条書きがそのままサブタスクになる&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;テキストファイルを編集すると、そのままタスクに出来る&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;専用のCLIを使うことで、フィルターや繰り返しが出来る&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ToDoシステム(Android)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;普通にリストビューでタスク表示&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dropboxを使ってデータは共有&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Androidメインなのでないと辛い&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上記のCLIがある程度出来てから&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当面は下の3つを進めていく方向でいきます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年08週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-08/</link>
+      <pubDate>Sun, 22 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-08/</guid>
+      <description>
+
+&lt;h1 id=&#34;todo-txtは思想は良いけど実際使うと微妙:a32b2cc8e9c86409bd3aff718e1a3967&#34;&gt;Todo.txtは思想は良いけど実際使うと微妙&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://todotxt.com/&#34;&gt;Todo.txt&lt;/a&gt;
+テキストオンリーでTodo管理ができる手法です。&lt;br /&gt;
+ファイルをDropboxに置くことで、&lt;br /&gt;
+どこでも同期してTodo管理ができるようになります。&lt;/p&gt;
+
+&lt;p&gt;本当に単なるテキストなので管理が簡単で、エディタで編集も容易です。&lt;br /&gt;
+コマンドラインから条件を指定して表示できるのも便利で良い感じでした。&lt;br /&gt;
+RTM CLIのオフライン版みたいな使い勝手です。&lt;/p&gt;
+
+&lt;p&gt;ただし、サブタスクが使えないという問題があります。
+一応プラグインとして用意されてはいますが、&lt;br /&gt;
+そうすると他のプラグインが使えなくなってしまうため、別の問題が発生してしまいます。&lt;/p&gt;
+
+&lt;p&gt;このテキストベースという考え方はすごく良く、かつ作るのもそんなに大変じゃなさそうなので、&lt;br /&gt;
+自分で作ってみた方が早そうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;windown-on-linuxで開発環境を整える:a32b2cc8e9c86409bd3aff718e1a3967&#34;&gt;Windown on Linuxで開発環境を整える&lt;/h1&gt;
+
+&lt;p&gt;Windowsで開発環境を整えるのは恐ろしく大変です。&lt;br /&gt;
+幸いなことに私のWindowsマシンは十分なスペックがあるため、&lt;br /&gt;
+VMware上にLinuxを立てて、SSHとファイル共有でしのぐことにしました。&lt;/p&gt;
+
+&lt;p&gt;IDEとかはWindows側で動かしているため、IDEの実行ボタンが使えなくなるのがかなりつらいですが、&lt;br /&gt;
+Windows上で開発するよりかは幾分マシになっていると思います。&lt;/p&gt;
+
+&lt;p&gt;ただし、IDEからデバッガが使えないため、そのあたりでつらい現実が待っている気がします。&lt;br /&gt;
+実行環境はリモートで、みたいなことができれば良いのですが…&lt;/p&gt;
+
+&lt;p&gt;普段ターミナルでしか作業をしないのであれば、ターミナルの中が変わるだけなので問題ないと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年07週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-07/</link>
+      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-07/</guid>
+      <description>
+
+&lt;p&gt;既に今年の1/8が終わっているという事実…&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkinsのworkflow-pluginがとても便利:199b01a6c63e246a45b954855c93d154&#34;&gt;JenkinsのWorkflow Pluginがとても便利&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/02/10/workflow-plugin/&#34;&gt;Jenkins Workflow Pluginで複数slaveを扱うのが楽になる&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://localhost:1313/blog/2015/02/11/jenkins-workflow/&#34;&gt;Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点 &lt;/a&gt;&lt;br /&gt;
+にまとめています。
+Build Flow Pluginを多用していたならば、こっちに乗り換えた方がいろいろ楽ですね。&lt;/p&gt;
+
+&lt;p&gt;ただし、まだ出たばかりでバグがあったり、所々かゆいところに手が届かなかったりするので、&lt;br /&gt;
+その辺の辛いところは結構あります…&lt;/p&gt;
+
+&lt;h1 id=&#34;remember-the-milkが使いにくく感じる:199b01a6c63e246a45b954855c93d154&#34;&gt;Remember The Milkが使いにくく感じる&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;良い点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;タスクの追加時に独自の記法で様々な条件をつけられる&lt;/li&gt;
+&lt;li&gt;オフラインでAndroid, iOSで見られる(有料)&lt;/li&gt;
+&lt;li&gt;繰り返し処理、期日等の設定が十分に豊富&lt;/li&gt;
+&lt;li&gt;Evernotのノートとタスクを関連づけれる&lt;/li&gt;
+&lt;li&gt;タスクと参考資料をくっつけられる&lt;/li&gt;
+&lt;li&gt;ただし、RTM側でつけられる細かい情報をつけられない&lt;/li&gt;
+&lt;li&gt;そのため設定はRTMでする必要があり、そこまで便利ではない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;悪い点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PC上で使いづらい&lt;/li&gt;
+&lt;li&gt;ブラウザアプリはURLをショートカットキーで使えない&lt;/li&gt;
+&lt;li&gt;送信済みリスト等、複数人での作業用機能がOFFにできない&lt;/li&gt;
+&lt;li&gt;別のリストに移動するショートカットキーがない&lt;/li&gt;
+&lt;li&gt;サブタスクが使えない&lt;/li&gt;
+&lt;li&gt;特定のタスクを細かく分割できない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;特にサブタスクが使えず、かつリスト操作が弱いのがものすごく不便で、&lt;br /&gt;
+特定の大タスクに対してやることをざっと書き出したときに、&lt;br /&gt;
+それを上手くまとめられず、タスクの優先順位等がわかり辛くなります。&lt;/p&gt;
+
+&lt;p&gt;もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、&lt;br /&gt;
+代わりのサービスを探すか作るかしようと思います…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年06週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-06/</link>
+      <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-06/</guid>
+      <description>
+
+&lt;p&gt;ちゃんとその週に何をやったかをまとめると、&lt;br /&gt;
+今週はあんまり活動していない事がよくわかりますね…&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkins-workflow-pluginが素晴らしそう:d8557742a33269e75592dd05f8ca14f3&#34;&gt;Jenkins Workflow Pluginが素晴らしそう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/01/11/jenkins-conference/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;で知った、Workflow Pluginが思った以上に良さそうです。&lt;br /&gt;
+Jenkins本体の機能では出来ないmaster/slaveを選択してコマンドを実行するといったことが可能になり、&lt;br /&gt;
+効率の良い分散ビルドが出来るようになります。&lt;/p&gt;
+
+&lt;p&gt;そのうち詳しくまとめる予定…&lt;/p&gt;
+
+&lt;h1 id=&#34;思った以上にtwitterに時間を取られる:d8557742a33269e75592dd05f8ca14f3&#34;&gt;思った以上にTwitterに時間を取られる&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.binerx.aptrax&amp;amp;hl=ja&#34;&gt;Aptrax | App Usage Tracker&lt;/a&gt;というツールで、&lt;br /&gt;
+スマホの各アプリの使用時間を計測していますが、Twitterの使用率が凄い結果になっていました。&lt;/p&gt;
+
+&lt;p&gt;PC上で見ている時間も結構多く、かなりの時間を浪費している気がします…&lt;br /&gt;
+重要なことだけ抜き出してできる限り見ないみたいな事が必要ですね。&lt;/p&gt;
+
+&lt;h1 id=&#34;twieveでツイートをevernoteに保存:d8557742a33269e75592dd05f8ca14f3&#34;&gt;twieveでツイートをevernoteに保存&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://twieve.net/&#34;&gt;twieve&lt;/a&gt;を使って、ツイートをevernoteに保存するようにしました。&lt;br /&gt;
+これでやってることを呟いておけば、今週何をやったかを簡単に思い出せるようになるはずです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年05週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-05/</link>
+      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-05/</guid>
+      <description>
+
+&lt;p&gt;今週は二日ほど有給を取っていました。&lt;br /&gt;
+家で引きこもっていましたが、かなり有効に引きこもれたと思います。&lt;/p&gt;
+
+&lt;p&gt;毎日色々していますが、やりたいことがどんどん増えてきます…&lt;br /&gt;
+効率をあげるにも限度がありますし、どうしたものですかね。&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkins-workflow-plugin便利そう:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Jenkins Workflow Plugin便利そう&lt;/h1&gt;
+
+&lt;p&gt;Jenkins ユーザ・カンファレンス 2015で聞いた&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin&#34;&gt;jenkinsci/workflow-plugin&lt;/a&gt;を試しています。&lt;br /&gt;
+スレーブを指定してタスクを実行できたり、ファイルをスレーブから取ってきて別のスレーブに渡す等、&lt;br /&gt;
+今までBuild Pipeline Pluginでやっていたことがだいたい実現できて凄く良いです。&lt;br /&gt;
+あとはプロパティ等をファイルから読み込む方法さえ解れば完璧なのですが…&lt;/p&gt;
+
+&lt;h1 id=&#34;evernoteリンクを開くchrome拡張の更新:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Evernoteリンクを開くChrome拡張の更新&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/31/evernote-opener-update/&#34;&gt;http://ota42y.com/blog/&lt;sup&gt;2015&lt;/sup&gt;&amp;frasl;&lt;sub&gt;01&lt;/sub&gt;/31/evernote-opener-update/&lt;/a&gt;&lt;br /&gt;
+便利なのですが、新しいPCに設定する際にとても不便だったので楽に修正できるように機能拡張しました。&lt;/p&gt;
+
+&lt;h1 id=&#34;jenkinsのライブラリよさそう:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Jenkinsのライブラリよさそう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/yosida95/golang-jenkins&#34;&gt;https://github.com/yosida95/golang-jenkins&lt;/a&gt;&lt;br /&gt;
+Webの反応めちゃくちゃ遅いので、よく見る結果とかはチャットに流せないかと思って見ています。&lt;br /&gt;
+(こっちの方がいろいろそろってるかも &lt;a href=&#34;https://github.com/bndr/gojenkins&#34;&gt;https://github.com/bndr/gojenkins&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h1 id=&#34;remember-the-milkのcliを使ってみた:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Remember The MilkのCLIを使ってみた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.rememberthemilk.jp/2012/10/featured-app-rtm-cli/&#34;&gt;RTM-CLI&lt;/a&gt;なるものがあるらしいので使ってみました。&lt;br /&gt;
+Web版は微妙に使いにくいので反応が早いこいつを試してみましたが、微妙でした。&lt;br /&gt;
+キャッシュされないために毎回認証して取ってくるので反応が悪く、&lt;br /&gt;
+速度を求めた場合の乗り換え先としては良くありませんでした。&lt;br /&gt;
+これにキャッシュ機能がつけばおそらく完璧なのですが、現状のコマンドラインツールだと厳しそうですね…&lt;/p&gt;
+
+&lt;h1 id=&#34;ライブに参加していた:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;ライブに参加していた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.lovelive-anime.jp/sp_5thlive.html&#34;&gt;μ&amp;rsquo;s Go→Go! LoveLive! 2015 ～Dream Sensation!&lt;/a&gt;に参加してました。&lt;br /&gt;
+風邪やインフルエンザの可能性を減らすために、2日前から有給取って家に引きこもっていました。&lt;br /&gt;
+1日目はチケットが取れなかったのでLVで、2日目は開場でしかもアリーナAブロックでした。&lt;br /&gt;
+前回の映像は何回も見ていましたが、やっぱり映像よりもLVがいいですし、&lt;br /&gt;
+LVよりも会場の方が何十倍も凄かったです。&lt;br /&gt;
+文才が無いのでこれぐらいにとどめておきますが、次のライブは両日当たるまで応募券を買おうと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年04週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-04/</link>
+      <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-04/</guid>
+      <description>
+
+&lt;p&gt;先週やったことまとめ&lt;br /&gt;
+以外とあまりやってない。&lt;br /&gt;
+作りたいものは増えていくけど時間は無い。&lt;/p&gt;
+
+&lt;h1 id=&#34;tumblrクライアント作ってる:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;tumblrクライアント作ってる&lt;/h1&gt;
+
+&lt;p&gt;info APIだけはできた。Posts APIを作りたいけど、ちょっとめんどくさそう。&lt;br /&gt;
+複数の型を一つの配列で返して来るので、どうやって同じ配列に入れようか…&lt;br /&gt;
+たぶん全部入りのクラスで取り出して、個別のクラスに入れていく形になるかと。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://play.golang.org/p/tVLoIDVk--&#34;&gt;http://play.golang.org/p/tVLoIDVk&amp;ndash;&lt;/a&gt;
+この技を使えば違う型でも共通の配列に入れられるはず&lt;/p&gt;
+
+&lt;h1 id=&#34;情報科学若手の会冬の陣2015に参加した:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;情報科学若手の会冬の陣2015に参加した&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/25/wakate2015w/&#34;&gt;参加記録 情報科学若手の会冬の陣2015&lt;/a&gt;&lt;br /&gt;
+発表したい人生だった… _ (:3 」∠)_&lt;br /&gt;
+が、ここ半年間はずっと一日に使える時間が1〜2時間程度、かつ仕事は情報科学っぽい事をしてないので、&lt;br /&gt;
+発表ネタが全く作れないという…&lt;br /&gt;
+というか、特に技術的に成長してない気がするし、このままの生活を続けて大丈夫なのだろうか…&lt;/p&gt;
+
+&lt;h1 id=&#34;remember-the-milk使いやすいが使いにくい:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;Remember The Milk使いやすいが使いにくい&lt;/h1&gt;
+
+&lt;p&gt;わりといい線行ってるサービスだけど、Webクライアントが使いにくいのでちょっと残念。&lt;br /&gt;
+URLをショートカットから開けなかったり、ヘッダー画像が邪魔だったり…&lt;br /&gt;
+サブタスクが無いのもそれはそれで使いにくいですね。&lt;/p&gt;
+
+&lt;p&gt;ただ、オフラインでスマホで見られますし、繰り返し設定など様々な設定が凄く楽にできる等&lt;br /&gt;
+機能的にはいいですし、UIもいいのであともう一声って感じですね…&lt;br /&gt;
+コマンドラインから対話的に操作できれば解決できそうな気がします。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年03週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-03/</link>
+      <pubDate>Sat, 17 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-03/</guid>
+      <description>
+
+&lt;h1 id=&#34;jenkins-ユーザ-カンファレンス-2015-東京:0282d24ace517fed681b3eee41dbf8dc&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/01/11/jenkins-conference/&#34;&gt;参加しました&lt;/a&gt;&lt;br /&gt;
+Workflow Plugin等を導入したいのですが、&lt;br /&gt;
+現在クリティカルパス上の作業をしているために手が回りません…&lt;br /&gt;
+運用コストを下げられるので是非入れたいのですが、&lt;br /&gt;
+どうしても優先度は下がってしまいますね…&lt;/p&gt;
+
+&lt;h1 id=&#34;tumblrのgolang用ライブラリ:0282d24ace517fed681b3eee41dbf8dc&#34;&gt;Tumblrのgolang用ライブラリ&lt;/h1&gt;
+
+&lt;p&gt;見当たらなかったので作成中(まだ何も動きません)&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/go-tumblr&#34;&gt;https://github.com/ota42y/go-tumblr&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;goのテストは特殊なフレームワークとか作らずに、普通にコードとして書くのを推奨しているそうです。&lt;br /&gt;
+rspecとかで専用のフレームワークにそって作るのとは大違い。&lt;br /&gt;
+書くのは面倒だけど、フレームワークの知識が無くても大丈夫というのは良いかもしれません。&lt;/p&gt;
+
+&lt;p&gt;フレームワークの学習コストとそれによって得る効率化と、使わないことによる効率の低下とどっちが得なのでしょうか。
+あと外部APIなので秘密情報をどうやってテストの時に設定するかが課題です。&lt;br /&gt;
+毎回書いては消すのはとても面倒なので…&lt;/p&gt;
+
+&lt;h1 id=&#34;uiと強結合しているテスト:0282d24ace517fed681b3eee41dbf8dc&#34;&gt;UIと強結合しているテスト&lt;/h1&gt;
+
+&lt;p&gt;cocos2d-xを使ってiPhoneアプリを作成していると、ゲームUIでTDDとかするのは実質不可能ではないかなと思います。
+これはおそらくUI層の正しさが、状態に強く依存するのが原因です。&lt;/p&gt;
+
+&lt;p&gt;ボタンを配置してタッチで特定のメソッドを呼び出すような場合、&lt;br /&gt;
+ボタンが画面上に表示されるかは、他のよりZ座標が大きいオブジェクトと被さっていないかをチェックする必要や、&lt;br /&gt;
+より優先度の高いタッチオブジェクトが存在しないかといったことをチェックする必要があります。&lt;br /&gt;
+さらに、演出中は表示されるけどタッチは出来ないなど、その部分以外の所の状態によって結果を変える必要があります。&lt;/p&gt;
+
+&lt;p&gt;つまり、新しいボタンを配置するためには様々な状態のテストを作成し、&lt;br /&gt;
+かつほかのオブジェクトに対して新しい状態を追加することになるため、テストの変更がとても大きくなります。&lt;br /&gt;
+そのため、UI層でテストをする場合、作成・維持ともにとても大きくなっていくため、&lt;br /&gt;
+完全に不可能ではないですがコストか高く、現実的に出来るものではありません。&lt;/p&gt;
+
+&lt;p&gt;ただし、UIコンポーネントについて個別にテストするのは有効だと思います。&lt;br /&gt;
+例えばボタンクラスであればタッチした時に、コールバックが呼ばれるか、範囲外の時に呼ばれないか等です。&lt;br /&gt;
+ただし、UIを作る際に個別にクラスを作ることはそんなに多くなく、&lt;br /&gt;
+多くがコンポーネントの配置と、その画面専用ロジックとのつなぎになるため、大きな効果は見込めなさそうです。&lt;/p&gt;
+
+&lt;p&gt;なお、ゲームはそもそも共通で使う部分が少なく、画面内の状態がとても多いという前提があります。&lt;br /&gt;
+例えば通販サイトではヘッダーやサイドバーは共通で使い、メインの部分とは独立していますし、&lt;br /&gt;
+メインの部分も商品データが違うだけでテンプレートは同じといったように、共通で使う部分が多いので、&lt;br /&gt;
+そのような部分のテストは有効ではないかと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年02週目まとめ</title>
+      <link>http://localhost:1313/pages/summary/2015/week-02/</link>
+      <pubDate>Sat, 10 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/summary/2015/week-02/</guid>
+      <description>
+
+&lt;p&gt;毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。&lt;br /&gt;
+主に1記事にするには難しいものや、失敗してダメだったものをまとめていく予定です。&lt;/p&gt;
+
+&lt;p&gt;思った以上に面倒なので、来週はしないかもしれません…&lt;/p&gt;
+
+&lt;h1 id=&#34;なんでブログに書くのか:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;なんでブログに書くのか&lt;/h1&gt;
+
+&lt;p&gt;テキストでローカルに持っていても良いんですが、そうするとファイル管理が面倒になります。&lt;br /&gt;
+こうやってブログに書いておけば検索エンジンからたどれますし、個々のファイルの管理をしなくて良くなります。&lt;/p&gt;
+
+&lt;p&gt;また、&lt;a href=&#34;http://localhost:1313/blog/2014/12/31/150-output/&#34;&gt;GithubのContributionsを使ってアウトプットを150日続ける&lt;/a&gt;でも書いたように、振り返りで1コミット稼げるので、振り返りをしっかりするようになるという狙いもあります。&lt;/p&gt;
+
+&lt;h1 id=&#34;node-tumblrのテストが動かせなかった:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;node-tumblrのテストが動かせなかった&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/meritt/node-tumblr&#34;&gt;node-tumblr&lt;/a&gt;でリブログする機能が欲しかったので追加しようかと思いましたが、
+そもそも今の状態のテストができなくて諦めました。&lt;/p&gt;
+
+&lt;p&gt;例えばtwitterであれば、自分のfav一覧を正常に取れるかをテストするためには、
+テストするアカウントでfavしておかなければなりません。
+同じようなことがnode-tumblrのテストでも起きているのですが、
+その準備に必要なものが何なのかがわからないため、テストできませんでした。&lt;/p&gt;
+
+&lt;p&gt;テストを書くことも大事ですが、テストを実行するための手順を整えておくのも大事ですね…&lt;/p&gt;
+
+&lt;h1 id=&#34;node-ircへのprが取り込まれた:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;node-ircへのPRが取り込まれた&lt;/h1&gt;
+
+&lt;p&gt;7月ぐらいに出した&lt;a href=&#34;https://github.com/martynsmith/node-irc&#34;&gt;node-irc&lt;/a&gt;のPRが取り込まれました。内容としては&lt;a href=&#34;http://localhost:1313/blog/2014/08/09/irc/&#34;&gt;IRCはCL-LFでメッセージを区切る&lt;/a&gt;に書いたように、古いサーバーは別の改行コードを送ってくるため、両方に対応できるようにする修正です。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/martynsmith/node-irc/pull/280&#34;&gt;https://github.com/martynsmith/node-irc/pull/280&lt;/a&gt;&lt;br /&gt;
+ブランチ戦略が変わったらしく、出し直したためコミットは新しくなっています。&lt;/p&gt;
+
+&lt;p&gt;PRにたいしてツッコミが来たり、出された反論コードがおかしいので、ちゃんと修正すれば動くよと返したりと大変でした。
+英語でのコミュニケーションは言いたいことをどう書けばいいか解らないので大変です…ボギャブラリー不足ですね。&lt;/p&gt;
+
+&lt;h1 id=&#34;インターステラーとベイマックスを観た:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;インターステラーとベイマックスを観た&lt;/h1&gt;
+
+&lt;p&gt;ベイマックスは本国ではBig Hero 6というタイトルで公開されていて、
+そのタイトル通り、ベイマックスのみが主人公ではなく、彼？を含む6人がアメコミヒーローになるという話だった。
+また、映画の舞台が日本の風景をピクサー風に仕上げた街であり、主人公も日本人風の名前や顔立ちだったりと、
+随所に日本リスペクトが見られました。&lt;/p&gt;
+
+&lt;p&gt;インターステラーは近年には珍しい本気で作られたSF映画で、これSF詳しくない人には辛いんじゃないかな？
+と心配になるぐらい、しっかりとSFしています。
+私は大好物ですが、興行収入が良いのかどうかは謎ですね。&lt;/p&gt;
+
+&lt;p&gt;映像としては専門家の監修の元でしっかりとした映像が作られており、
+また、おそらく随所に2001年宇宙の旅のリスペクトっぽい部分があったのが面白かったです。&lt;/p&gt;
+
+&lt;p&gt;特に好きなシーンは、物語の中盤で主人公が仲間の感情的な意見をバッサリと切り捨てて合理的な判断をしたのと、
+最後の方のシーンですね。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on おおたの物置</title>
+    <link>http://localhost:1313/tags/mysql/</link>
+    <description>Recent content in Mysql on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 08 Oct 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>goでtime.Timeをmysqlから読む</title>
+      <link>http://localhost:1313/blog/2014/10/08/go-mysql-time/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/08/go-mysql-time/</guid>
+      <description>&lt;p&gt;goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…&lt;br /&gt;
+&lt;code&gt;sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;どうやらDSNに&lt;code&gt;parseTime=true&lt;/code&gt;オプションをつける必要があるようです(何故かは不明)&lt;br /&gt;
+&lt;code&gt;db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;参考リンク&lt;br /&gt;
+&lt;a href=&#34;https://github.com/go-sql-driver/mysql#timetime-support&#34;&gt;https://github.com/go-sql-driver/mysql#timetime-support&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>goでmysqlを使う</title>
+      <link>http://localhost:1313/blog/2014/10/04/go-mysql/</link>
+      <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/10/04/go-mysql/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://github.com/go-sql-driver/mysql&#34;&gt;http://github.com/go-sql-driver/mysql&lt;/a&gt;&lt;br /&gt;
+がありましたので、それを使います。&lt;/p&gt;
+
+&lt;p&gt;以下のように読み込むことで、&lt;code&gt;sql.Open&lt;/code&gt;でmysqlを開くことが出来ます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+  _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;db設定:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;DB設定&lt;/h1&gt;
+
+&lt;p&gt;以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;user:password@/dbname&amp;quot;)
+if err != nil {
+  panic(err.Error())
+}
+defer db.Close()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;サーバやデータベース名などはDSN (Data Source Name)で指定するようです。&lt;br /&gt;
+あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;h2 id=&#34;前提条件:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;前提条件&lt;/h2&gt;
+
+&lt;p&gt;上記の方法でsql.Openの結果を変数のdbに保存済み、&lt;br /&gt;
+以下の構造体をDBに書き込むとします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Post struct {
+  RoomName string
+  Message string
+  MessageId string
+  IsSend bool
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、tableNameに書き込むテーブル名が保存されているとします。&lt;/p&gt;
+
+&lt;h2 id=&#34;insert:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;INSERT&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;post := getPost()　// 書き込むためのデータを取得する
+
+stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?, ?)&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error())
+}
+defer stmtIns.Close() // Close the statement when we leave main() / the program terminates
+
+_, err = stmtIns.Exec(post.RoomName, post.Message, post.MessageId, post.IsSend)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;db.PrepareでSQL文を用意し、Execの引数にプレースフォルダの数だけ書き込むデータを渡しています。&lt;br /&gt;
+テーブル名をプレースホルダにするなど、SQLの文法的におかしい場合は、db.Prepareの戻り値がエラーになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;update:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;UPDATE&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;UPDATE %s SET is_send = 1 WHERE ( message_id = ?)&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error())
+}
+defer stmtIns.Close()
+
+_, err = stmtIns.Exec(post.MessageId)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;INSERTとほぼ同じです。&lt;/p&gt;
+
+&lt;h2 id=&#34;select:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;SELECT&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;stmtOut, err := db.Prepare(fmt.Sprintf(&amp;quot;SELECT room_name, message, message_id, is_send FROM %s WHERE message_id = ? LIMIT 1&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error())
+}
+defer stmtOut.Close()
+
+var room_name string
+var message string
+var message_id string
+var is_send bool
+if err := stmtOut.QueryRow(searchMessageId).Scan(&amp;amp;room_name, &amp;amp;message, &amp;amp;message_id, &amp;amp;is_send); err != nil {
+  return nil
+}
+var postData Post
+postData.RoomName = room_name
+postData.Message = message
+postData.MessageId = message_id
+postData.IsSend = is_send
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ORマッパーではないので、一つ一つ取り出した値をオブジェクトにセットしていく必要があります。&lt;/p&gt;
+
+&lt;h2 id=&#34;複数select:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;複数SELECT&lt;/h2&gt;
+
+&lt;p&gt;上の例はLIMIT 1を設定して1件だけ取得していましたが、複数取得の場合はscanではうまきいきません。
+複数取り出す場合はこちらです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;rows, err := db.Query(fmt.Sprintf(&amp;quot;SELECT room_name, message, message_id, is_send FROM %s WHERE is_send = false LIMIT 100&amp;quot;, tableName))
+if err != nil {
+  panic(err.Error()) // proper error handling instead of panic in your app
+}
+
+posts := make([]*Post, 0)
+
+for rows.Next() {
+  var room_name string
+  var message string
+  var message_id string
+  var is_send bool
+  if err := rows.Scan(&amp;amp;room_name, &amp;amp;message, &amp;amp;message_id, &amp;amp;is_send); err != nil {
+  }
+
+  var postData Post
+  postData.RoomName = room_name
+  postData.Message = message
+  postData.MessageId = message_id
+  postData.IsSend = is_send
+  posts = append(posts, postData)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nextを利用して一件ずつScanしています。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:c1b91fdc3f7e9d2301bbbb8b7cc11063&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;p&gt;dp.Prepareでプレースホルダー付きのSQL文を作成。&lt;br /&gt;
+INSERTやUPDATEはExecで実行、SELECTはQueryやQueryRowで実行してScanでデータを取り出します。&lt;br /&gt;
+テーブル構造が変わると読み込み部分が変わったり、順番を間違えると悲惨なことになるため面倒です。&lt;br /&gt;
+ORマッパーは偉大ですね…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sending authentication information</title>
+      <link>http://localhost:1313/blog/2014/08/30/sending-authentication-information/</link>
+      <pubDate>Sat, 30 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/30/sending-authentication-information/</guid>
+      <description>&lt;p&gt;Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、&lt;br /&gt;
+&lt;code&gt;&#39;sending authentication information&#39;, system error: 32&amp;quot;.&lt;/code&gt;&lt;br /&gt;
+といったエラーが出て、mysqlへのログインすら不可能になってしまいました。&lt;/p&gt;
+
+&lt;p&gt;どうやら、MySQL5.6から&lt;br /&gt;
+&lt;code&gt;innodb_file_per_table&lt;/code&gt;のデフォルト値が変わったのが原因みたいです。&lt;/p&gt;
+
+&lt;p&gt;my.cnfに&lt;br /&gt;
+&lt;code&gt;innodb_file_per_table = OFF&lt;/code&gt;&lt;br /&gt;
+を書くことでで解決します。&lt;br /&gt;
+&lt;a href=&#34;http://bugs.mysql.com/bug.php?id=71960&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

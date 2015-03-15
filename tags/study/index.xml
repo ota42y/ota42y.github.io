@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Study on おおたの物置</title>
+    <link>http://localhost:1313/tags/study/</link>
+    <description>Recent content in Study on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/study/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Dockerとは何か</title>
+      <link>http://localhost:1313/blog/2014/11/26/docker/</link>
+      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/11/26/docker/</guid>
+      <description>
+
+&lt;p&gt;Dockerについて調べたので概要と簡単な使い方のメモ&lt;/p&gt;
+
+&lt;h1 id=&#34;dockerとは何か:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerとは何か&lt;/h1&gt;
+
+&lt;p&gt;いわゆるコンテナ型仮想化ツールの1つです。&lt;br /&gt;
+VMwareやKVMのような完全仮想化と違い、&lt;br /&gt;
+ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。&lt;/p&gt;
+
+&lt;p&gt;あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、&lt;br /&gt;
+手元の数年前のmac book airでもかなり快適に動いています。&lt;/p&gt;
+
+&lt;p&gt;あくまでゲストOSを隔離環境に置いただけのため 、&lt;br /&gt;
+ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。&lt;br /&gt;
+(ゲストからはホストの中身は当然見えない)&lt;/p&gt;
+
+&lt;p&gt;また、DockerではDockerfileというファイルに設定を書くことで、&lt;br /&gt;
+その設定を反映した状態のコンテナを作成することが出来ます。&lt;br /&gt;
+そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。&lt;/p&gt;
+
+&lt;h1 id=&#34;docker上のcent-osにjenkinsを立てる:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Docker上のCent OSにJenkinsを立てる&lt;/h1&gt;
+
+&lt;h2 id=&#34;dockerの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerの起動&lt;/h2&gt;
+
+&lt;p&gt;Dockerコマンドを実行するためには、Macだとboot2dockerを&lt;br /&gt;
+&lt;code&gt;boot2docker start&lt;/code&gt;で起動し、そのとき提示された環境変数を設定する必要があります。&lt;/p&gt;
+
+&lt;p&gt;また、&lt;br /&gt;
+&lt;code&gt;boot2docker ip&lt;/code&gt;&lt;br /&gt;
+を実行し、コンテナに対してアクセスできるようにする必要があります。&lt;br /&gt;
+なお、この時出たURLは後で使います。&lt;/p&gt;
+
+&lt;h2 id=&#34;cent-osの構築:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Cent OSの構築&lt;/h2&gt;
+
+&lt;h3 id=&#34;dockerfileの準備:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerfileの準備&lt;/h3&gt;
+
+&lt;p&gt;以下のファイルをDockerfileという名前で適当なディレクトリに保存します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM centos:centos6
+
+RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+RUN yum -y install java-1.7.0-openjdk jenkins
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。&lt;/p&gt;
+
+&lt;h3 id=&#34;コンテナの作成:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;コンテナの作成&lt;/h3&gt;
+
+&lt;p&gt;次に、Dockerfileを保存したディレクトリで&lt;br /&gt;
+&lt;code&gt;docker build -t jenkins .&lt;/code&gt;
+を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。&lt;/p&gt;
+
+&lt;h3 id=&#34;コンテナの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;コンテナの起動&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;docker run -p 8080:8080 -i -t jenkins bash&lt;/code&gt;&lt;br /&gt;
+を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、&lt;br /&gt;
+&lt;code&gt;service jenkins start&lt;/code&gt;&lt;br /&gt;
+を実行するとjenkinsが起動します。&lt;/p&gt;
+
+&lt;p&gt;この状態で、&lt;code&gt;boot2docker ip&lt;/code&gt;で出てきたURLの8080ポートにブラウザでアクセスすると、&lt;br /&gt;
+いつものJenkins画面が表示されます。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、&lt;br /&gt;
+それを他のセットアップの下地にするといったことも出来るそうです。&lt;/p&gt;
+
+&lt;p&gt;また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、&lt;br /&gt;
+Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。&lt;br /&gt;
+今回はとりあえずさわりだけなので、手で起動してログインしっぱなしにしています。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sortやfind_ifの条件指定はどういう動きをしているのか</title>
+      <link>http://localhost:1313/blog/2014/08/11/find-if/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/11/find-if/</guid>
+      <description>
+
+&lt;p&gt;C++でsortやfind_ifでは、イテレータのbeginとendに加えて、&lt;br /&gt;
+関数orオブジェクトを渡すことで条件を自由に設定できます。&lt;br /&gt;
+&lt;a href=&#34;http://www.cplusplus.com/reference/algorithm/sort/&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;このとき内部がどういう処理をして渡した関数を呼び出しているのかが気になったので調べました。&lt;br /&gt;
+特に、第三引数にクラスを渡す場合、何故()オペレータに条件を書く必要があるのかが気になりました。&lt;/p&gt;
+
+&lt;p&gt;結論としては、実装を見れば簡単に解決しました。&lt;/p&gt;
+
+&lt;h1 id=&#34;内部実装:1d9ac05339414913fb473655d52b315e&#34;&gt;内部実装&lt;/h1&gt;
+
+&lt;h2 id=&#34;find-ifの場合:1d9ac05339414913fb473655d52b315e&#34;&gt;find_ifの場合&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;template &amp;lt;class _InputIter, class _Predicate&amp;gt;
+inline _InputIter find_if(_InputIter __first, _InputIter __last,
+                          _Predicate __pred,
+                          input_iterator_tag)
+{
+  while (__first != __last &amp;amp;&amp;amp; !__pred(*__first))
+    ++__first;
+  return __first;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ソートの場合:1d9ac05339414913fb473655d52b315e&#34;&gt;ソートの場合&lt;/h2&gt;
+
+&lt;p&gt;ソートは少々複雑なので、該当部分だけ抜き出します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt;
+void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val,
+                               _Compare __comp) {
+  _RandomAccessIter __next = __last;
+  --__next;
+  while (__comp(__val, *__next)) {
+    *__last = *__next;
+    __last = __next;
+    --__next;
+  }
+  *__last = __val;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;まとめ:1d9ac05339414913fb473655d52b315e&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。&lt;/p&gt;
+
+&lt;p&gt;おそらく、テンプレートの展開時に第三期引数の()を呼び出すように展開されるため、&lt;br /&gt;
+関数の場合はそのまま関数呼び出しに、クラスの場合は()オペレーターの実行になるようです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.sgi.com/tech/stl/download.html&#34;&gt;参考ソース&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MessagePack って何？</title>
+      <link>http://localhost:1313/blog/2014/08/05/msgpack/</link>
+      <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/05/msgpack/</guid>
+      <description>
+
+&lt;p&gt;最近よく聞くMessagePackとは何かを調べたのでメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;messagepackとは:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;MessagePackとは&lt;/h1&gt;
+
+&lt;p&gt;バイナリでデータを保存するフォーマットです。&lt;br /&gt;
+JSONと比べると、保存した状態の可読性を犠牲にする代わりに、&lt;br /&gt;
+より早くて小さいフォーマットになっています。&lt;/p&gt;
+
+&lt;p&gt;また、汎用的なフォーマットのため、&lt;br /&gt;
+いろんな言語(nodeとかrubyとかcppとか)
+で相互にデータを使えます。&lt;/p&gt;
+
+&lt;h1 id=&#34;他のバイナリシリアライズフォーマットとの差:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;他のバイナリシリアライズフォーマットとの差&lt;/h1&gt;
+
+&lt;p&gt;MessagePackはバッファをうまく使って早かったり、
+読み込み途中でもデシリアライズできるとか、&lt;br /&gt;
+結構いろいろと高速化のための工夫がされています。&lt;br /&gt;
+(ただし、実装によって若干違いがあるようです)&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;rubyなら&lt;code&gt;gem install msgpack&lt;/code&gt;で、
+MacのC++なら&lt;code&gt;brew install msgpack&lt;/code&gt;で使えるようになります。&lt;/p&gt;
+
+&lt;p&gt;なお、C++はgccに以下のオプションをつける必要があります。&lt;br /&gt;
+&lt;code&gt;g++ test.cpp -lmsgpack -o test&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;また、基本型は全てシリアライズ可能で、保存したいクラスのメンバ変数を、&lt;br /&gt;
+MSGPACK_DEFINEマクロに入れると、&lt;br /&gt;
+自動でシリアライズ/デシリアライズできるみたいです。&lt;/p&gt;
+
+&lt;h1 id=&#34;コード:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;コード&lt;/h1&gt;
+
+&lt;h2 id=&#34;c:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;C++&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;msgpack.hpp&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;string&amp;gt;
+#include &amp;lt;fstream&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+struct User {
+  User(std::string name, int id, std::vector&amp;lt;int&amp;gt; follower)
+    : name(name)
+    , id(id)
+    , follower_id(follower)
+  {}
+
+  // 引数なしのコンストラクタは必須
+  User()
+    : id(0)
+  {}
+
+  MSGPACK_DEFINE(name, id, follower_id);
+  std::string name;
+  int id;
+  std::vector&amp;lt;int&amp;gt; follower_id;
+
+  string toString(){
+    string ret = &amp;quot;name: &amp;quot;;
+    ret += name;
+    ret += &amp;quot;  id: &amp;quot;;
+    ret += std::to_string(id);
+    ret += &amp;quot;  follower: &amp;quot;;
+    for(int i=0; i&amp;lt;follower_id.size(); ++i){
+      ret += std::to_string(follower_id[i]);
+      ret += &amp;quot; &amp;quot;;
+    }
+    return ret;
+  }
+};
+
+int main(void) {
+  // データを作って書き込む
+  std::vector&amp;lt;int&amp;gt; follower_1;
+  follower_1.push_back(1);
+  follower_1.push_back(2);
+
+  std::vector&amp;lt;int&amp;gt; follower_2;
+  follower_2.push_back(2);
+
+  std::vector&amp;lt;User&amp;gt; users;
+  users.push_back(User(&amp;quot;user1&amp;quot;, 1, follower_1));
+  users.push_back(User(&amp;quot;user2&amp;quot;, 2, follower_2));
+
+  msgpack::sbuffer sbuf;
+  msgpack::pack(sbuf, users);
+
+  ofstream myFile (&amp;quot;cpp_data.bin&amp;quot;, ios::out | ios::binary);
+  myFile.write(sbuf.data(), sbuf.size());
+  myFile.close();
+
+
+  // ファイルからデータを読み込む
+  char buffer[1000];
+  ifstream inFile (&amp;quot;ruby_data.bin&amp;quot;, ios::in | ios::binary);
+  inFile.read (buffer, 1000);
+  inFile.close();
+
+  msgpack::unpacked msg;
+  msgpack::unpack(&amp;amp;msg, buffer, 1000);
+
+  msgpack::object obj = msg.get();
+  std::vector&amp;lt;User&amp;gt; load_users;
+  obj.convert(&amp;amp;load_users);
+  for(int i=0; i&amp;lt;load_users.size(); ++i){
+    cout &amp;lt;&amp;lt; load_users[i].toString() &amp;lt;&amp;lt; endl;
+  }
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ruby:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;ruby&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;msgpack&#39;
+
+# load data and deserialize
+users = MessagePack.unpack( File.open(&amp;quot;cpp_data.bin&amp;quot;) )
+p users
+
+
+
+# serialize and output data
+users[0][0] = &amp;quot;100user&amp;quot;
+users[0][1] = 100
+users[0][2] = [100, 101]
+
+users[0][0] = &amp;quot;101user&amp;quot;
+users[0][1] = 101
+users[0][2] = [101]
+
+File.open(&#39;ruby_data.bin&#39;,&#39;w&#39;) do |f|
+  f.print users.to_msgpack
+end
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
