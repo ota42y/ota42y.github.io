@@ -1,321 +1,233 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="void型のポインタとint型を相互変換するなという話">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>void型のポインタとint型を相互変換するなという話 | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>void型のポインタとint型を相互変換するなという話 - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="void型のポインタとint型を相互変換するなという話 Contents 1 intからvoid型のポインタへの変換
-2 ポインタ型をint型に代入している場合 int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、 &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>void型のポインタとint型を相互変換するなという話</h1>
+                    
+
+<time datetime="2014-11-07" class="post_data">
+2014-11-07
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">void型のポインタとint型を相互変換するなという話</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/cpp">cpp</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">intからvoid型のポインタへの変換</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">ポインタ型をint型に代入している場合</span></a></li>
+<li><a href="#intからvoid型のポインタへの変換:732d3cc7e129dde003d75bf89bebcc11">intからvoid型のポインタへの変換</a></li>
+<li><a href="#ポインタ型をint型に代入している場合:732d3cc7e129dde003d75bf89bebcc11">ポインタ型をint型に代入している場合</a></li>
 </ul>
-</td></tr></tbody></table></div>
-<p>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、<br>
-コンパイラもエラーにしない場合が多いです。<br>
-ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、<br>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、<br />
+コンパイラもエラーにしない場合が多いです。<br />
+ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、<br />
 突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)</p>
 
-<h1 id="tocAnchor-1-1">intからvoid型のポインタへの変換</h1>
+<h1 id="intからvoid型のポインタへの変換:732d3cc7e129dde003d75bf89bebcc11">intからvoid型のポインタへの変換</h1>
 
-<p>int型の値をvoid *を利用して保持したい場合、<a href="http://ota42y.com/blog/2014/11/06/cpp-void-pointer/">前の例</a>のように、int型を保持するオブジェクトを作り、<br>
+<p>int型の値をvoid *を利用して保持したい場合、<a href="http://ota42y.com/blog/2014/11/06/cpp-void-pointer/">前の例</a>のように、int型を保持するオブジェクトを作り、<br />
 その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td>
-<td class="code"><pre><code class="cpp"><span class="line"><span class="k">struct</span> <span class="n">Container</span><span class="p">{</span>
-</span><span class="line">  <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="k">struct</span> <span class="n">Num</span><span class="p">{</span>
-</span><span class="line">  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// int型を保存する</span>
-</span><span class="line"><span class="n">Num</span><span class="o">*</span> <span class="n">numPointer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Num</span><span class="p">();</span>
-</span><span class="line"><span class="n">numPointer</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class="line"><span class="n">Container</span> <span class="n">con</span><span class="p">;</span>
-</span><span class="line"><span class="n">con</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">numPointer</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line">
-</span><span class="line"><span class="c1">// 42を取り出す</span>
-</span><span class="line"><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="p">((</span><span class="n">Num</span><span class="o">*</span><span class="p">)</span><span class="n">con</span><span class="p">.</span><span class="n">data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// newしたので必ず破棄する</span>
-</span><span class="line"><span class="k">delete</span> <span class="n">con</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
-</span><span class="line"><span class="n">con</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-cpp">struct Container{
+  void* data;
+};
 
+struct Num{
+  int n;
+};
+
+// int型を保存する
+Num* numPointer = new Num();
+numPointer-&gt;n = 42;
+Container con;
+con.data = (void *)numPointer;
+
+
+// 42を取り出す
+int number = ((Num*)con.data)-&gt;n;
+
+// newしたので必ず破棄する
+delete con.data;
+con.data = NULL;
+</code></pre>
 
 <p>ですが、世の中にはたまにvoid *にint型（やその他のプリミティブ型）を代入する不届き者がいます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="cpp"><span class="line"><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">Container</span> <span class="n">con</span><span class="p">;</span>
-</span><span class="line"><span class="n">con</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">num</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// 42を取り出す</span>
-</span><span class="line"><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">con</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-cpp">int num = 42;
 
+Container con;
+con.data = (void*)num;
 
-<p>void <em>はポインタのため、32bit環境ではvoid</em>は32bitであり、intも基本的には32bitで同じサイズのため、<br>
-32bit環境に限れば問題なくコンパイル、実行が出来ます。<br>
+// 42を取り出す
+int number = (int)con.data;
+</code></pre>
+
+<p>void *はポインタのため、32bit環境ではvoid*は32bitであり、intも基本的には32bitで同じサイズのため、<br />
+32bit環境に限れば問題なくコンパイル、実行が出来ます。<br />
 (エラーになる場合は、g++ test.cpp -m32で32bitのみのコンパイルが出来ます)</p>
 
-<p>ですが、当然ながら64bit環境ではvoid *は64bitのため、intが32bitの場合は足りない分が消滅します。<br>
-多くのコンパイラでは64bitでコンパイルしようとしたときに、このキャストが行われるとエラーを出してくれますが、<br>
-32bitのみコンパイルした場合は出してくれない場合があるため、<br>
+<p>ですが、当然ながら64bit環境ではvoid *は64bitのため、intが32bitの場合は足りない分が消滅します。<br />
+多くのコンパイラでは64bitでコンパイルしようとしたときに、このキャストが行われるとエラーを出してくれますが、<br />
+32bitのみコンパイルした場合は出してくれない場合があるため、<br />
 対応しようとした時に大量のエラーに悩まされることになります…</p>
 
 <p>このような場合は最初に述べたとおり、オブジェクトを作ってそのポインタを利用しましょう。</p>
 
-<h1 id="tocAnchor-1-2">ポインタ型をint型に代入している場合</h1>
+<h1 id="ポインタ型をint型に代入している場合:732d3cc7e129dde003d75bf89bebcc11">ポインタ型をint型に代入している場合</h1>
 
-<p>上記の例は32bitを64bitにしてから32bitに戻すため、キャストの仕様によっては問題なく動きます。<br>
-ですが、以下のようにポインタをintにキャストした場合、64bit環境かつintが32bitの場合、<br>
+<p>上記の例は32bitを64bitにしてから32bitに戻すため、キャストの仕様によっては問題なく動きます。<br />
+ですが、以下のようにポインタをintにキャストした場合、64bit環境かつintが32bitの場合、<br />
 intに入りきらない部分が消滅してしまうため、ポインタに戻しても正しく戻すことができません。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td>
-<td class="code"><pre><code class="cpp"><span class="line">  <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">"test"</span><span class="p">;</span>
-</span><span class="line">  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">str</span><span class="p">;</span>
-</span><span class="line">  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// ここで不正なアドレスになる</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">string</span><span class="p">);</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-cpp">  char *str = &quot;test&quot;;
+  int a = (int)str;
+  const char *string = (char *)(a); // ここで不正なアドレスになる
 
+  printf(&quot;%s\n&quot;, string);
+</code></pre>
 
-<p>この場合、メモリ破壊などといった特定しにくいエラーを引き起こすため、注意が必要です。<br>
-ただし、例によってポインタとintサイズが同一の環境では問題なく動くため、<br>
+<p>この場合、メモリ破壊などといった特定しにくいエラーを引き起こすため、注意が必要です。<br />
+ただし、例によってポインタとintサイズが同一の環境では問題なく動くため、<br />
 そうでない環境に対応しようとした場合に悩まされる事になります。</p>
 
-<p>一見するとあまり使わなそうな書き方ですが、フレームワークで用意されているクラスとかでvoid *が無い場合、<br>
-クラスのポインタを持たせたいが為に、適当なint型に持たせる…みたいな事をやらかす輩がいますので、<br>
+<p>一見するとあまり使わなそうな書き方ですが、フレームワークで用意されているクラスとかでvoid *が無い場合、<br />
+クラスのポインタを持たせたいが為に、適当なint型に持たせる…みたいな事をやらかす輩がいますので、<br />
 注意が必要です。</p>
 
-<p>またそれ以外にも、ポインタに対して演算を行いたい場合に、int型に変換して計算をする場合があります。<br>
-このような場合は、intptr_tかuintptr_tというポインタを扱う整数型が用意されており、<br>
+<p>またそれ以外にも、ポインタに対して演算を行いたい場合に、int型に変換して計算をする場合があります。<br />
+このような場合は、intptr_tかuintptr_tというポインタを扱う整数型が用意されており、<br />
 こちらを使うことで32bitや64bitに適したサイズに変換されて扱うことができます。</p>
-</div>
 
-  <footer>
-    <p class="meta">
+                </div>
 
-      
+            </div>
 
-      
-      <time datetime="2014-11-07 07:42:43 +0900" pubdate></time>
-      
+            
 
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/11/07/cpp-64bit-cast/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/11/07/cpp-64bit-cast/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

@@ -1,202 +1,154 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="golangでmongodbを使う">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>golangでmongodbを使う | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>golangでmongodbを使う - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="golangでmongodbを使う mgoというライブラリが便利そうです。
-http://labix.org/mgo 以下はtwitterからツイートを取ってきて、
-未登録のツイートをmongodbに保存するスクリプトです。 今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/09/02/go-mongodb">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>golangでmongodbを使う</h1>
+                    
+
+<time datetime="2014-09-02" class="post_data">
+2014-09-02
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">golangでmongodbを使う</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/golang">golang</a>
+    </div>
+    
+    <div class="post_data">
+        <a href="/tags/mongodb">mongodb</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><p>mgoというライブラリが便利そうです。<br/>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+
+                    <p>mgoというライブラリが便利そうです。<br />
 <a href="http://labix.org/mgo">http://labix.org/mgo</a></p>
 
-<p>以下はtwitterからツイートを取ってきて、<br/>
+<p>以下はtwitterからツイートを取ってきて、<br />
 未登録のツイートをmongodbに保存するスクリプトです。</p>
 
-<p>今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、<br/>
+<p>今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、<br />
 件数を数えてその結果をチェックしています。</p>
 
 <script src="https://gist.github.com/ota42y/7e493449beec0fe73f62.js"></script>
 
-</div>
+                </div>
 
-  <footer>
-    <p class="meta">
+            </div>
 
-      
+            
 
-      
-      <time datetime="2014-09-02 07:40:29 +0900" pubdate></time>
-      
-
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/09/02/go-mongodb/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/09/02/go-mongodb/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/09/02/go-mongodb/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/09/02/go-mongodb/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

@@ -1,249 +1,190 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="CentOS7でAndroid SDKとNDKを使う">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>CentOS7でAndroid SDKとNDKを使う | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>CentOS7でAndroid SDKとNDKを使う - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="CentOS7でAndroid SDKとNDKを使う Contents 1 環境設定
-2 Android SDKとNDKのダウンロード
-3 SDK Platformのインストール
-4 注意点 環境設定 1
-2 sudo yum install java-1.7.0-openjdk-devel &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/09/04/centos7-android-build">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>CentOS7でAndroid SDKとNDKを使う</h1>
+                    
+
+<time datetime="2014-09-04" class="post_data">
+2014-09-04
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">CentOS7でAndroid SDKとNDKを使う</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/android">android</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">環境設定</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">Android SDKとNDKのダウンロード</span></a></li>
-<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">SDK Platformのインストール</span></a></li>
-<li class="toc_level-1 toc_section-4"><a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">注意点</span></a></li>
+<li><a href="#環境設定:aa9f8b8e81983399e477301661d08262">環境設定</a></li>
+<li><a href="#android-sdkとndkのダウンロード:aa9f8b8e81983399e477301661d08262">Android SDKとNDKのダウンロード</a></li>
+<li><a href="#sdk-platformのインストール:aa9f8b8e81983399e477301661d08262">SDK Platformのインストール</a></li>
+<li><a href="#注意点:aa9f8b8e81983399e477301661d08262">注意点</a></li>
 </ul>
-</td></tr></tbody></table></div>
-<h1 id="tocAnchor-1-1">環境設定</h1>
+</nav>
+                        </div>
+                    </div>
+                    
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="bash"><span class="line">sudo yum install  java-1.7.0-openjdk-devel  java-1.7.0-openjdk ant zip
-</span><span class="line">sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+                    
 
+<h1 id="環境設定:aa9f8b8e81983399e477301661d08262">環境設定</h1>
 
-<p>他にもいくつかあった気がしますが、<br>
+<pre><code class="language-bash">sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip
+sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
+</code></pre>
+
+<p>他にもいくつかあった気がしますが、<br />
 後はエラーとして出たコマンドをインストールするだけなので都度入れてください</p>
 
-<h1 id="tocAnchor-1-2">Android SDKとNDKのダウンロード</h1>
+<h1 id="android-sdkとndkのダウンロード:aa9f8b8e81983399e477301661d08262">Android SDKとNDKのダウンロード</h1>
 
-<p><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a><br>
-<a href="https://developer.android.com/tools/sdk/ndk/index.html">https://developer.android.com/tools/sdk/ndk/index.html</a><br>
-からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。<br>
+<p><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a><br />
+<a href="https://developer.android.com/tools/sdk/ndk/index.html">https://developer.android.com/tools/sdk/ndk/index.html</a><br />
+からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。<br />
 その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。</p>
 
-<h1 id="tocAnchor-1-3">SDK Platformのインストール</h1>
+<h1 id="sdk-platformのインストール:aa9f8b8e81983399e477301661d08262">SDK Platformのインストール</h1>
 
-<p>Eclipseが使えないためSDK Managerは使えませんが、<br>
+<p>Eclipseが使えないためSDK Managerは使えませんが、<br />
 代わりにコマンドラインからインストールすることができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="bash"><span class="line">android update sdk -u -a -t tools,platform-tools
-</span><span class="line">android update sdk -u -a -t android-19
-</span><span class="line">android update sdk -u -a -t extra-google-google_play_services
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
+<pre><code class="language-bash">android update sdk -u -a -t tools,platform-tools
+android update sdk -u -a -t android-19
+android update sdk -u -a -t extra-google-google_play_services
+</code></pre>
 
 <p>後は通常のコマンドラインからビルドする方法でビルド可能です。</p>
 
-<h1 id="tocAnchor-1-4">注意点</h1>
+<h1 id="注意点:aa9f8b8e81983399e477301661d08262">注意点</h1>
 
-<p>なお、MacやWindowsだとファイル名はcase insensitiveですが、<br>
-CentOSだと普通はcase sensitiveなので注意です。<br>
-特にCのincludeは大文字小文字を区別せずに動くため、<br>
+<p>なお、MacやWindowsだとファイル名はcase insensitiveですが、<br />
+CentOSだと普通はcase sensitiveなので注意です。<br />
+特にCのincludeは大文字小文字を区別せずに動くため、<br />
 case sensitiveな環境に持って行った場合に特に死にやすいです…(´・_・`)</p>
-</div>
 
-  <footer>
-    <p class="meta">
+                </div>
 
-      
+            </div>
 
-      
-      <time datetime="2014-09-04 07:46:28 +0900" pubdate></time>
-      
+            
 
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/09/04/centos7-android-build/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/09/04/centos7-android-build/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/09/04/centos7-android-build/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/09/04/centos7-android-build/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

@@ -1,136 +1,136 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Jenkinsで複雑な処理をするときのjob構成について">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>Jenkinsで複雑な処理をするときのjob構成について | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>Jenkinsで複雑な処理をするときのjob構成について - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="Jenkinsで複雑な処理をするときのjob構成について Contents 1 まとめ
-2 前提条件
-3 問題点 4 解決案
-4.1 1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする
-4.2 2.ワークスペース共有を使ってうまくやる
-4.3 3. &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/07/21/jenkins-architecture">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>Jenkinsで複雑な処理をするときのjob構成について</h1>
+                    
+
+<time datetime="2014-07-21" class="post_data">
+2014-07-21
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">Jenkinsで複雑な処理をするときのjob構成について</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/jenkins">jenkins</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">まとめ</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">前提条件</span></a></li>
-<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">問題点</span></a></li>
-<li class="toc_level-1 toc_section-4">
-<a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">解決案</span></a><ul>
-<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-4-1"><span class="tocnumber">4.1</span> <span class="toctext">1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする</span></a></li>
-<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-4-2"><span class="tocnumber">4.2</span> <span class="toctext">2.ワークスペース共有を使ってうまくやる</span></a></li>
-<li class="toc_level-2 toc_section-7"><a href="#tocAnchor-1-4-3"><span class="tocnumber">4.3</span> <span class="toctext">3.jobを疎結合にして成果物を使ってうまくやる</span></a></li>
-<li class="toc_level-2 toc_section-8"><a href="#tocAnchor-1-4-4"><span class="tocnumber">4.4</span> <span class="toctext">4.master-slaveにして、masterからslaveのjobを呼び出すようにする</span></a></li>
+<li><a href="#まとめ:1454c4e5d7cb83f9989cba8b03537b99">まとめ</a></li>
+<li><a href="#前提条件:1454c4e5d7cb83f9989cba8b03537b99">前提条件</a></li>
+<li><a href="#問題点:1454c4e5d7cb83f9989cba8b03537b99">問題点</a></li>
+<li><a href="#解決案:1454c4e5d7cb83f9989cba8b03537b99">解決案</a>
+<ul>
+<li><a href="#1-ビルド手順や通知を全てをシェルスクリプトにし-jenkinsはシェルを叩くだけにする:1454c4e5d7cb83f9989cba8b03537b99">1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする</a></li>
+<li><a href="#2-ワークスペース共有を使ってうまくやる:1454c4e5d7cb83f9989cba8b03537b99">2.ワークスペース共有を使ってうまくやる</a></li>
+<li><a href="#3-jobを疎結合にして成果物を使ってうまくやる:1454c4e5d7cb83f9989cba8b03537b99">3.jobを疎結合にして成果物を使ってうまくやる</a></li>
+<li><a href="#4-master-slaveにして-masterからslaveのjobを呼び出すようにする:1454c4e5d7cb83f9989cba8b03537b99">4.master-slaveにして、masterからslaveのjobを呼び出すようにする</a></li>
+</ul></li>
+<li><a href="#おわりに:1454c4e5d7cb83f9989cba8b03537b99">おわりに</a></li>
 </ul>
-</li>
-<li class="toc_level-1 toc_section-9"><a href="#tocAnchor-1-9"><span class="tocnumber">5</span> <span class="toctext">おわりに</span></a></li>
-</ul>
-</td></tr></tbody></table></div>
-<p>変数やビルド後の通知設定等が違うために、<br>
-ほぼ同じ内容のjobを15個ぐらい使っていたら、<br>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>変数やビルド後の通知設定等が違うために、<br />
+ほぼ同じ内容のjobを15個ぐらい使っていたら、<br />
 だんだんと運用が死んできたのでメモ。</p>
 
-<h1 id="tocAnchor-1-1">まとめ</h1>
+<h1 id="まとめ:1454c4e5d7cb83f9989cba8b03537b99">まとめ</h1>
 
-<p>Jenkinsはプラグインの挙動を変えるのが難しいため、<br>
-ほぼ同じだけれど若干違う手順を行う必要がある場合、<br>
-似たようなjobが大量に並び、<br>
+<p>Jenkinsはプラグインの挙動を変えるのが難しいため、<br />
+ほぼ同じだけれど若干違う手順を行う必要がある場合、<br />
+似たようなjobが大量に並び、<br />
 手順の変更時などに全てのjobを変えきるのが辛くなります。</p>
 
-<p>そこで、可能な限りビルド手順はスクリプトにするのと、<br>
-jobを種類別に細かく分け、<br>
-最上位のjobにはどの下流jobを実行するかだけを管理させることで、<br>
+<p>そこで、可能な限りビルド手順はスクリプトにするのと、<br />
+jobを種類別に細かく分け、<br />
+最上位のjobにはどの下流jobを実行するかだけを管理させることで、<br />
 複雑なjobでも変更に強くすることができるようになります。</p>
 
-<h1 id="tocAnchor-1-2">前提条件</h1>
+<h1 id="前提条件:1454c4e5d7cb83f9989cba8b03537b99">前提条件</h1>
 
 <ul>
 <li>設定が全部で7種類ぐらいある</li>
@@ -141,197 +141,150 @@ jobを種類別に細かく分け、<br>
 <li>ビルド手順はバージョン/デプロイ先によって変化する</li>
 </ul>
 
+<h1 id="問題点:1454c4e5d7cb83f9989cba8b03537b99">問題点</h1>
 
-<h1 id="tocAnchor-1-3">問題点</h1>
-
-<p>大きな問題として、<br>
+<p>大きな問題として、<br />
 Jenkins pulginで提供されている機能を切り替えるのが難しいという問題があります。</p>
 
-<p>たとえば、Jenkinsの拡張メールプラグインでは、<br>
-そのjobの結果によって通知先や通知内容等を変更することができます。<br>
-ですが、その定義自体を切り替えることが難しく、<br>
-この場合は成功時にメールしないけど、<br>
+<p>たとえば、Jenkinsの拡張メールプラグインでは、<br />
+そのjobの結果によって通知先や通知内容等を変更することができます。<br />
+ですが、その定義自体を切り替えることが難しく、<br />
+この場合は成功時にメールしないけど、<br />
 この場合は成功時にメールするといった切り替えができませんでした。</p>
 
-<p>また、定期的に変更チェックするブランチや、チェックする間隔が設定毎に異なりますが、<br>
+<p>また、定期的に変更チェックするブランチや、チェックする間隔が設定毎に異なりますが、<br />
 JenkinsのGit プラグインではそのあたりをうまく設定することが難しいようです。</p>
 
-<p>他にもdeploy先によって使うプラグインが微妙に違うなどの問題があり、<br>
+<p>他にもdeploy先によって使うプラグインが微妙に違うなどの問題があり、<br />
 ほぼ同じだけれど若干違うjobを15個並べるといった運用をしていました。</p>
 
-<p>こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。<br>
-<img src="/images/posts/2014-07-21-jenkins-1.png" alt="こんな感じ"></p>
-
-<p>結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、<br>
-古い手順のバージョンのマイクロアップデートと、<br>
-新しい手順のメジャーアップデートが重なったときに、<br>
-ビルド前にJenkinsの設定を必ず変更する必要がある等、<br>
-運用がかなり辛くなってきました。</p>
-
-<p>これに対する対策を考えましたが、あまり良いのが無い感じですが、<br>
-とりあえずまとまったのでメモをしておきます。</p>
-
-<h1 id="tocAnchor-1-4">解決案</h1>
-
-<h2 id="tocAnchor-1-4-1">1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする</h2>
-
-<p> Jenkinsのプラグインをほぼ使用せず、全てスクリプトで解決する手法です。<br>
- ビルド手順や通知がSCMに保存されるため、ビルド手順とバージョンが完全に紐付き、<br>
- 常に正しい手順で実行できるという利点があります。</p>
-
-<p> だだし、Jenkinsプラグインの恩恵を得られないため、<br>
- 今プラグインでやっている処理を全て置き換える必要があります。<br>
- また、新たな手順の追加が大変と言った問題もあります。</p>
-
-<h2 id="tocAnchor-1-4-2">2.ワークスペース共有を使ってうまくやる</h2>
-
-<p>  チェックアウトとビルドジョブを切り離し、<br>
-  SCMのポーリング&amp;チェックアウトだけを行うjobから、<br>
-  ビルドジョブを下流ビルドとして呼び出す方式です。</p>
-
-<p>  こんな感じですね。<br>
-  <img src="/images/posts/2014-07-21-jenkins-2.png" alt="ワークスペース共有"></p>
-
-<p>  ワークスペース共有を使い、<br>
-  下流ビルドは上流のワークスペース上でビルド作業を行うようにすることで、<br>
-  ビルドjobの数を大幅に減らすことができます。</p>
-
-<p>  だだし、下流が実行中は上流ビルドが動かない事を保証しなければなりません。<br>
-  (ビルド途中に次のキューによってワークスペースが書き換えられる可能性がある)
-  Parameterize pluginで下流が終わるまで終了を待つ事ができますが、<br>
-  複数のビルドが同時に走った場合にデッドロックに陥る可能性があります。
-  - A-Cとビルドするjobと、B-Cとビルドするjobがあり、jenkinsの同時実行が2の場合、<br>
-   2つのビルドを同時に実行するとCが2つともキューに積まれて進まない場合がある</p>
-
-<h2 id="tocAnchor-1-4-3">3.jobを疎結合にして成果物を使ってうまくやる</h2>
-
-<p>  2のデッドロックを回避するために、疎結合にした版になります。<br>
-  この方式ではワークスペースを共有せず、<br>
-  コミットのSHA1を渡してビルドジョブ側でcheckout, buildします。<br>
-  また、Remote APIを利用することで、シェルスクリプトから次に実行するビルドの指定もできます。</p>
-
-<p>  2の利点をそのまま受け継ぎ、ワークスペース共有しないのでブロックしなくなります。<br>
-  ビルド結果などは成果物の保存と、Copy Artifact Pluginを利用して受け渡します。<br>
-  そのため、後続のjobの実行前にワークスペースが変更されても問題なく進められます。</p>
-
-<p>  ただし、ポーリング用とビルド用とで二重にSCMをチェックアウトする必要があるのと、<br>
-  ビルドログが完全に細切れになるため追いにくく、<br>
-  またいつ何が正常に終了したかを把握しにくいという問題があります。</p>
-
-<h2 id="tocAnchor-1-4-4">4.master-slaveにして、masterからslaveのjobを呼び出すようにする</h2>
-
-<p> 3のやりかたを踏まえつつ、個別のjobでは無く下流のjobとして運用する方法です。<br>
- そのために、2で問題となっていたキューが埋まる問題への解決策を入れました。</p>
-
-<p> 具体的には、ポーリング等を実行する最上流のjobをJenkinsのmasterでのみ実行し、<br>
- ビルドや通知を下流jobとしてslaveでビルドするようにします。<br>
- このように設定することで、masterが全て上流jobで埋まったとしても、<br>
- slaveで下流jobが実行されるため、デッドロックが発生しません。</p>
-
-<p> これにより、上流jobはビルドが完全に終了するまで終了を待つことができ、<br>
- 終了タイミングを把握しやすくなります。</p>
-
-<p> だたし、問題点としてmaster-slave構成にするため、稼働するマシンが増える、<br>
- jobをmasterとslaveどっちでやるかを考えないといけない、<br>
- 下流jobとして紐付けはされるが、ログはまだ細切れになっているといった問題があります。</p>
-
-<h1 id="tocAnchor-1-9">おわりに</h1>
-
-<p>とりあえず今のところは、4番が一番いい方法ではないかと考えています。<br>
-そのためしばらくこれで運用し、また問題が起きた場合、<br>
-次なる手を考えるとして、今のところは4番で行く予定です。</p>
-</div>
-
-  <footer>
-    <p class="meta">
-
-      
-
-      
-      <time datetime="2014-07-21 21:12:36 +0900" pubdate></time>
-      
-
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
-
-    
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/07/21/jenkins-architecture/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/07/21/jenkins-architecture/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/07/21/jenkins-architecture/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
-        </a>
-        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
-        </script>
-      </span>
-    </div>
-    
-
-    
-
-  </footer>
-
-</div>
-
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+<p>こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。<br />
+<img src="/images/blog/2014/2014-07-21-jenkins-1.png" alt="こんな感じ" />
 </p>
 
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
+<p>結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、<br />
+古い手順のバージョンのマイクロアップデートと、<br />
+新しい手順のメジャーアップデートが重なったときに、<br />
+ビルド前にJenkinsの設定を必ず変更する必要がある等、<br />
+運用がかなり辛くなってきました。</p>
 
+<p>これに対する対策を考えましたが、あまり良いのが無い感じですが、<br />
+とりあえずまとまったのでメモをしておきます。</p>
 
+<h1 id="解決案:1454c4e5d7cb83f9989cba8b03537b99">解決案</h1>
 
+<h2 id="1-ビルド手順や通知を全てをシェルスクリプトにし-jenkinsはシェルを叩くだけにする:1454c4e5d7cb83f9989cba8b03537b99">1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする</h2>
 
+<p>Jenkinsのプラグインをほぼ使用せず、全てスクリプトで解決する手法です。<br />
+ ビルド手順や通知がSCMに保存されるため、ビルド手順とバージョンが完全に紐付き、<br />
+ 常に正しい手順で実行できるという利点があります。</p>
 
+<p>だだし、Jenkinsプラグインの恩恵を得られないため、<br />
+ 今プラグインでやっている処理を全て置き換える必要があります。<br />
+ また、新たな手順の追加が大変と言った問題もあります。</p>
 
+<h2 id="2-ワークスペース共有を使ってうまくやる:1454c4e5d7cb83f9989cba8b03537b99">2.ワークスペース共有を使ってうまくやる</h2>
 
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
+<p>チェックアウトとビルドジョブを切り離し、<br />
+  SCMのポーリング&amp;チェックアウトだけを行うjobから、<br />
+  ビルドジョブを下流ビルドとして呼び出す方式です。</p>
 
+<p>こんな感じですね。<br />
+  <img src="/images/blog/2014/2014-07-21-jenkins-2.png" alt="ワークスペース共有" />
+</p>
 
+<p>ワークスペース共有を使い、<br />
+  下流ビルドは上流のワークスペース上でビルド作業を行うようにすることで、<br />
+  ビルドjobの数を大幅に減らすことができます。</p>
 
-      <!-- /include -->
+<p>だだし、下流が実行中は上流ビルドが動かない事を保証しなければなりません。<br />
+  (ビルド途中に次のキューによってワークスペースが書き換えられる可能性がある)
+  Parameterize pluginで下流が終わるまで終了を待つ事ができますが、<br />
+  複数のビルドが同時に走った場合にデッドロックに陥る可能性があります。
+  - A-Cとビルドするjobと、B-Cとビルドするjobがあり、jenkinsの同時実行が2の場合、<br />
+   2つのビルドを同時に実行するとCが2つともキューに積まれて進まない場合がある</p>
 
+<h2 id="3-jobを疎結合にして成果物を使ってうまくやる:1454c4e5d7cb83f9989cba8b03537b99">3.jobを疎結合にして成果物を使ってうまくやる</h2>
+
+<p>2のデッドロックを回避するために、疎結合にした版になります。<br />
+  この方式ではワークスペースを共有せず、<br />
+  コミットのSHA1を渡してビルドジョブ側でcheckout, buildします。<br />
+  また、Remote APIを利用することで、シェルスクリプトから次に実行するビルドの指定もできます。</p>
+
+<p>2の利点をそのまま受け継ぎ、ワークスペース共有しないのでブロックしなくなります。<br />
+  ビルド結果などは成果物の保存と、Copy Artifact Pluginを利用して受け渡します。<br />
+  そのため、後続のjobの実行前にワークスペースが変更されても問題なく進められます。</p>
+
+<p>ただし、ポーリング用とビルド用とで二重にSCMをチェックアウトする必要があるのと、<br />
+  ビルドログが完全に細切れになるため追いにくく、<br />
+  またいつ何が正常に終了したかを把握しにくいという問題があります。</p>
+
+<h2 id="4-master-slaveにして-masterからslaveのjobを呼び出すようにする:1454c4e5d7cb83f9989cba8b03537b99">4.master-slaveにして、masterからslaveのjobを呼び出すようにする</h2>
+
+<p>3のやりかたを踏まえつつ、個別のjobでは無く下流のjobとして運用する方法です。<br />
+ そのために、2で問題となっていたキューが埋まる問題への解決策を入れました。</p>
+
+<p>具体的には、ポーリング等を実行する最上流のjobをJenkinsのmasterでのみ実行し、<br />
+ ビルドや通知を下流jobとしてslaveでビルドするようにします。<br />
+ このように設定することで、masterが全て上流jobで埋まったとしても、<br />
+ slaveで下流jobが実行されるため、デッドロックが発生しません。</p>
+
+<p>これにより、上流jobはビルドが完全に終了するまで終了を待つことができ、<br />
+ 終了タイミングを把握しやすくなります。</p>
+
+<p>だたし、問題点としてmaster-slave構成にするため、稼働するマシンが増える、<br />
+ jobをmasterとslaveどっちでやるかを考えないといけない、<br />
+ 下流jobとして紐付けはされるが、ログはまだ細切れになっているといった問題があります。</p>
+
+<h1 id="おわりに:1454c4e5d7cb83f9989cba8b03537b99">おわりに</h1>
+
+<p>とりあえず今のところは、4番が一番いい方法ではないかと考えています。<br />
+そのためしばらくこれで運用し、また問題が起きた場合、<br />
+次なる手を考えるとして、今のところは4番で行く予定です。</p>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/07/21/jenkins-architecture/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

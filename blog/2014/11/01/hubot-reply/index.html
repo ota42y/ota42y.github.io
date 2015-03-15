@@ -1,542 +1,359 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="hubot-ircではmsg.replyのリプライ先が変わるので注意">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>hubot-ircではmsg.replyのリプライ先が変わるので注意 | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>hubot-ircではmsg.replyのリプライ先が変わるので注意 - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="hubot-ircではmsg.replyのリプライ先が変わるので注意 Contents 1 原因となるコードを捜す
-1.1 hubot-irc.reply
-1.2 hubot-irc.send 2 hubt-irc._getTargetFromEnvelope
-2.1 &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/11/01/hubot-reply">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>hubot-ircではmsg.replyのリプライ先が変わるので注意</h1>
+                    
+
+<time datetime="2014-11-01" class="post_data">
+2014-11-01
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">hubot-ircではmsg.replyのリプライ先が変わるので注意</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/hubot">hubot</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1">
-<a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">原因となるコードを捜す</span></a><ul>
-<li class="toc_level-2 toc_section-2"><a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">hubot-irc.reply</span></a></li>
-<li class="toc_level-2 toc_section-3"><a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">hubot-irc.send</span></a></li>
+<li><a href="#原因となるコードを捜す:43f580fa1d5683a492ce120b5a384ffc">原因となるコードを捜す</a>
+<ul>
+<li><a href="#hubot-irc-reply:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.reply</a></li>
+<li><a href="#hubot-irc-send:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.send</a></li>
+</ul></li>
+<li><a href="#hubt-irc-gettargetfromenvelope:43f580fa1d5683a492ce120b5a384ffc">hubt-irc._getTargetFromEnvelope</a>
+<ul>
+<li><a href="#replyメソッドの呼ばれ方:43f580fa1d5683a492ce120b5a384ffc">replyメソッドの呼ばれ方</a></li>
+<li><a href="#hubot-irc-createuser:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.createUser</a></li>
+<li><a href="#hubot-getuserfromid:43f580fa1d5683a492ce120b5a384ffc">hubot.getUserFromId</a></li>
+</ul></li>
 </ul>
-</li>
-<li class="toc_level-1 toc_section-4">
-<a href="#tocAnchor-1-4"><span class="tocnumber">2</span> <span class="toctext">hubt-irc._getTargetFromEnvelope</span></a><ul>
-<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-4-1"><span class="tocnumber">2.1</span> <span class="toctext">replyメソッドの呼ばれ方</span></a></li>
-<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-4-2"><span class="tocnumber">2.2</span> <span class="toctext">hubot-irc.createUser</span></a></li>
-<li class="toc_level-2 toc_section-7"><a href="#tocAnchor-1-4-3"><span class="tocnumber">2.3</span> <span class="toctext">hubot.getUserFromId</span></a></li>
-</ul>
-</li>
-</ul>
-</td></tr></tbody></table></div>
-<p>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、<br>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、<br />
 replyしてるのに発言元とは別のチャットに送信してしまうという問題が起きました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/進捗 start/i</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
-</span><span class="line">  <span class="nx">setTimeout</span><span class="p">(</span><span class="nf">-&gt;</span>
-</span><span class="line">    <span class="nx">msg</span><span class="p">.</span><span class="nx">reply</span> <span class="s">"進捗どうですか？"</span>
-</span><span class="line">    <span class="k">return</span>
-</span><span class="line">  <span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">"進捗 start"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript">robot.respond /進捗 start/i, (msg) -&gt;
+  setTimeout(-&gt;
+    msg.reply &quot;進捗どうですか？&quot;
+    return
+  , 30 * 60 * 1000)
 
+  msg.send &quot;進捗 start&quot;
+</code></pre>
 
-<p>何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、<br>
-そのユーザがreplyする時に最後に発言したチャットに対して行われるらしく、<br>
+<p>何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、<br />
+そのユーザがreplyする時に最後に発言したチャットに対して行われるらしく、<br />
 メッセージが作られた後に別のチャットに発言した場合、そちらに送られてしまうようです。</p>
 
 <p>そのため、以下のように送信先を待避することで回避できます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/進捗 start/i</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
-</span><span class="line">  <span class="nv">user = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span>
-</span><span class="line">  <span class="nv">room = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">room</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">setTimeout</span><span class="p">(</span><span class="nf">-&gt;</span>
-</span><span class="line">    <span class="nx">robot</span><span class="p">.</span><span class="nx">send</span> <span class="p">{</span><span class="nv">room: </span><span class="nx">room</span><span class="p">},</span> <span class="s">"</span><span class="si">#{</span><span class="nx">user</span><span class="si">}</span><span class="s"> 進捗どうですか？"</span>
-</span><span class="line">    <span class="k">return</span>
-</span><span class="line">  <span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">"進捗 start"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript">robot.respond /進捗 start/i, (msg) -&gt;
+  user = msg.message.user.name
+  room = msg.message.user.room
 
+  setTimeout(-&gt;
+    robot.send {room: room}, &quot;#{user} 進捗どうですか？&quot;
+    return
+  , 30 * 60 * 1000)
 
-<h1 id="tocAnchor-1-1">原因となるコードを捜す</h1>
+  msg.send &quot;進捗 start&quot;
+</code></pre>
+
+<h1 id="原因となるコードを捜す:43f580fa1d5683a492ce120b5a384ffc">原因となるコードを捜す</h1>
 
 <p>というのは振る舞いから推測したものなので、実際にコードを追ってみます。</p>
 
-<h2 id="tocAnchor-1-1-1">hubot-irc.reply</h2>
+<h2 id="hubot-irc-reply:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.reply</h2>
 
-<p>まずはhubot-ircのmsg.replyの中を見ます。<br>
+<p>まずはhubot-ircのmsg.replyの中を見ます。<br />
 <a href="https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78">https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78</a></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">reply: </span><span class="nf">(envelope, strings...) -&gt;</span>
-</span><span class="line">  <span class="k">for</span> <span class="nx">str</span> <span class="k">in</span> <span class="nx">strings</span>
-</span><span class="line">    <span class="nx">@send</span> <span class="nx">envelope</span><span class="p">.</span><span class="nx">user</span><span class="p">,</span> <span class="s">"</span><span class="si">#{</span><span class="nx">envelope</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">str</span><span class="si">}</span><span class="s">"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
+<pre><code class="language-coffeescript">reply: (envelope, strings...) -&gt;
+  for str in strings
+    @send envelope.user, &quot;#{envelope.user.name}: #{str}&quot;
+</code></pre>
 
 <p>メッセージをユーザ宛に変換し、sendメソッドにenvelope.userと一緒に渡しています。</p>
 
-<h2 id="tocAnchor-1-1-2">hubot-irc.send</h2>
+<h2 id="hubot-irc-send:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.send</h2>
 
-<p>次にsendメソッドの中身を見ます。<br>
+<p>次にsendメソッドの中身を見ます。<br />
 <a href="https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L16">https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L16</a></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">send: </span><span class="nf">(envelope, strings...) -&gt;</span>
-</span><span class="line">  <span class="c1"># Use @notice if SEND_NOTICE_MODE is set</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">@notice</span> <span class="nx">envelope</span><span class="p">,</span> <span class="nx">strings</span> <span class="k">if</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">HUBOT_IRC_SEND_NOTICE_MODE</span><span class="o">?</span>
-</span><span class="line">
-</span><span class="line">  <span class="nv">target = </span><span class="nx">@_getTargetFromEnvelope</span> <span class="nx">envelope</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">unless</span> <span class="nx">target</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">logger</span><span class="p">.</span><span class="nx">error</span> <span class="s">"ERROR: Not sure who to send to. envelope="</span><span class="p">,</span> <span class="nx">envelope</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">for</span> <span class="nx">str</span> <span class="k">in</span> <span class="nx">strings</span>
-</span><span class="line">    <span class="nx">@bot</span><span class="p">.</span><span class="nx">say</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">str</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript">send: (envelope, strings...) -&gt;
+  # Use @notice if SEND_NOTICE_MODE is set
+  return @notice envelope, strings if process.env.HUBOT_IRC_SEND_NOTICE_MODE?
 
+  target = @_getTargetFromEnvelope envelope
 
-<p><code>envelope</code>（replyメソッドのenvelope.user）から<code>_getTargetFromEnvelope</code>でターゲットを取り出し、<br>
+  unless target
+    return logger.error &quot;ERROR: Not sure who to send to. envelope=&quot;, envelope
+
+  for str in strings
+    @bot.say target, str
+</code></pre>
+
+<p><code>envelope</code>（replyメソッドのenvelope.user）から<code>_getTargetFromEnvelope</code>でターゲットを取り出し、<br />
 <code>@bot.say</code>で発言をしています。</p>
 
-<p>このとき、@botはnodeのircパッケージのオブジェクトで、<br>
-sayメソッドはtargetに対してメッセージを送るようになっています。<br>
+<p>このとき、@botはnodeのircパッケージのオブジェクトで、<br />
+sayメソッドはtargetに対してメッセージを送るようになっています。<br />
 そのため、このtargetに設定される返信先が変更される可能性が高そうです。</p>
 
-<h1 id="tocAnchor-1-4">hubt-irc._getTargetFromEnvelope</h1>
+<h1 id="hubt-irc-gettargetfromenvelope:43f580fa1d5683a492ce120b5a384ffc">hubt-irc._getTargetFromEnvelope</h1>
 
 <p><a href="https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L336">https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L336</a></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">_getTargetFromEnvelope: </span><span class="nf">(envelope) -&gt;</span>
-</span><span class="line">  <span class="nv">user = </span><span class="kc">null</span>
-</span><span class="line">  <span class="nv">room = </span><span class="kc">null</span>
-</span><span class="line">  <span class="nv">target = </span><span class="kc">null</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1"># as of hubot 2.4.2, the first param to send() is an object with 'user'</span>
-</span><span class="line">  <span class="c1"># and 'room' data inside. detect the old style here.</span>
-</span><span class="line">  <span class="k">if</span> <span class="nx">envelope</span><span class="p">.</span><span class="nx">reply_to</span>
-</span><span class="line">    <span class="nv">user = </span><span class="nx">envelope</span>
-</span><span class="line">  <span class="k">else</span>
-</span><span class="line">    <span class="c1"># expand envelope</span>
-</span><span class="line">    <span class="nv">user = </span><span class="nx">envelope</span><span class="p">.</span><span class="nx">user</span>
-</span><span class="line">    <span class="nv">room = </span><span class="nx">envelope</span><span class="p">.</span><span class="nx">room</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">if</span> <span class="nx">user</span>
-</span><span class="line">    <span class="c1"># most common case - we're replying to a user in a room</span>
-</span><span class="line">    <span class="k">if</span> <span class="nx">user</span><span class="p">.</span><span class="nx">room</span>
-</span><span class="line">      <span class="nv">target = </span><span class="nx">user</span><span class="p">.</span><span class="nx">room</span>
-</span><span class="line">    <span class="c1"># reply directly</span>
-</span><span class="line">    <span class="k">else</span> <span class="k">if</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span>
-</span><span class="line">      <span class="nv">target = </span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span>
-</span><span class="line">    <span class="c1"># replying to pm</span>
-</span><span class="line">    <span class="k">else</span> <span class="k">if</span> <span class="nx">user</span><span class="p">.</span><span class="nx">reply_to</span>
-</span><span class="line">      <span class="nv">target = </span><span class="nx">user</span><span class="p">.</span><span class="nx">reply_to</span>
-</span><span class="line">    <span class="c1"># allows user to be an id string</span>
-</span><span class="line">    <span class="k">else</span> <span class="k">if</span> <span class="nx">user</span><span class="p">.</span><span class="nx">search</span><span class="o">?</span><span class="p">(</span><span class="sr">/@/</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
-</span><span class="line">      <span class="nv">target = </span><span class="nx">user</span>
-</span><span class="line">  <span class="k">else</span> <span class="k">if</span> <span class="nx">room</span>
-</span><span class="line">    <span class="c1"># this will happen if someone uses robot.messageRoom(jid, ...)</span>
-</span><span class="line">    <span class="nv">target = </span><span class="nx">room</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">target</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript">_getTargetFromEnvelope: (envelope) -&gt;
+  user = null
+  room = null
+  target = null
 
+  # as of hubot 2.4.2, the first param to send() is an object with 'user'
+  # and 'room' data inside. detect the old style here.
+  if envelope.reply_to
+    user = envelope
+  else
+    # expand envelope
+    user = envelope.user
+    room = envelope.room
 
-<p>ユーザの情報を使ってリプライ先を決定しているようです。<br>
-この中で、envelope.roomが存在すれば、それをtargetとして設定するようになっています。<br>
+  if user
+    # most common case - we're replying to a user in a room
+    if user.room
+      target = user.room
+    # reply directly
+    else if user.name
+      target = user.name
+    # replying to pm
+    else if user.reply_to
+      target = user.reply_to
+    # allows user to be an id string
+    else if user.search?(/@/) != -1
+      target = user
+  else if room
+    # this will happen if someone uses robot.messageRoom(jid, ...)
+    target = room
+
+  target
+</code></pre>
+
+<p>ユーザの情報を使ってリプライ先を決定しているようです。<br />
+この中で、envelope.roomが存在すれば、それをtargetとして設定するようになっています。<br />
 なお、このメソッド内のenvelopeは、replyメソッドのenvelope.userを差しています。</p>
 
 <p>そのため、次はreplyメソッドのenvelope.user.roomが書き換わるかどうかを調べていきます。</p>
 
-<h2 id="tocAnchor-1-4-1">replyメソッドの呼ばれ方</h2>
+<h2 id="replyメソッドの呼ばれ方:43f580fa1d5683a492ce120b5a384ffc">replyメソッドの呼ばれ方</h2>
 
-<p>コールスタックをさかのぼっていくと、以下のメソッドが順に呼ばれていました。<br>
-<a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22</a><br>
-<a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/robot.coffee#L192">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/robot.coffee#L192</a><br>
-<a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/adapter.coffee#L65">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/adapter.coffee#L65</a><br>
+<p>コールスタックをさかのぼっていくと、以下のメソッドが順に呼ばれていました。<br />
+<a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22</a><br />
+<a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/robot.coffee#L192">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/robot.coffee#L192</a><br />
+<a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/adapter.coffee#L65">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/adapter.coffee#L65</a><br />
 <a href="https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L237">https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L237</a></p>
 
-<p>この中で、最後のhubt-ircの以下の部分で、nodeのircがメッセージを受信した場合に、<br>
+<p>この中で、最後のhubt-ircの以下の部分で、nodeのircがメッセージを受信した場合に、<br />
 メッセージから特定されたuserオブジェクトが、replyメソッドのenvelope.userになっていました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nx">bot</span><span class="p">.</span><span class="nx">addListener</span> <span class="s">'message'</span><span class="p">,</span> <span class="nf">(from, to, message) -&gt;</span>
-</span><span class="line">  <span class="k">if</span> <span class="nx">options</span><span class="p">.</span><span class="nx">nick</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="nx">to</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span>
-</span><span class="line">    <span class="c1"># this is a private message, let the 'pm' listener handle it</span>
-</span><span class="line">    <span class="k">return</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">if</span> <span class="nx">from</span> <span class="k">in</span> <span class="nx">options</span><span class="p">.</span><span class="nx">ignoreUsers</span>
-</span><span class="line">    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s">'Ignoring user: %s'</span><span class="p">,</span> <span class="nx">from</span><span class="p">)</span>
-</span><span class="line">    <span class="c1"># we'll ignore this message if it's from someone we want to ignore</span>
-</span><span class="line">    <span class="k">return</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span> <span class="s">"From </span><span class="si">#{</span><span class="nx">from</span><span class="si">}</span><span class="s"> to </span><span class="si">#{</span><span class="nx">to</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">"</span>
-</span><span class="line">
-</span><span class="line">  <span class="nv">user = </span><span class="nx">self</span><span class="p">.</span><span class="nx">createUser</span> <span class="nx">to</span><span class="p">,</span> <span class="nx">from</span>
-</span><span class="line">  <span class="k">if</span> <span class="nx">user</span><span class="p">.</span><span class="nx">room</span>
-</span><span class="line">    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span> <span class="s">"</span><span class="si">#{</span><span class="nx">to</span><span class="si">}</span><span class="s"> &lt;</span><span class="si">#{</span><span class="nx">from</span><span class="si">}</span><span class="s">&gt; </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">"</span>
-</span><span class="line">  <span class="k">else</span>
-</span><span class="line">    <span class="k">unless</span> <span class="nx">message</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">to</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class="line">      <span class="nv">message = </span><span class="s">"</span><span class="si">#{</span><span class="nx">to</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">"</span>
-</span><span class="line">    <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span> <span class="s">"msg &lt;</span><span class="si">#{</span><span class="nx">from</span><span class="si">}</span><span class="s">&gt; </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">"</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">self</span><span class="p">.</span><span class="nx">receive</span> <span class="k">new</span> <span class="nx">TextMessage</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript">bot.addListener 'message', (from, to, message) -&gt;
+  if options.nick.toLowerCase() == to.toLowerCase()
+    # this is a private message, let the 'pm' listener handle it
+    return
 
+  if from in options.ignoreUsers
+    logger.info('Ignoring user: %s', from)
+    # we'll ignore this message if it's from someone we want to ignore
+    return
+
+  logger.debug &quot;From #{from} to #{to}: #{message}&quot;
+
+  user = self.createUser to, from
+  if user.room
+    logger.info &quot;#{to} &lt;#{from}&gt; #{message}&quot;
+  else
+    unless message.indexOf(to) == 0
+      message = &quot;#{to}: #{message}&quot;
+    logger.debug &quot;msg &lt;#{from}&gt; #{message}&quot;
+
+  self.receive new TextMessage(user, message)
+</code></pre>
 
 <p>userオブジェクトは、受け取ったメッセージからcreateUserを使って求めているようです</p>
 
-<h2 id="tocAnchor-1-4-2">hubot-irc.createUser</h2>
+<h2 id="hubot-irc-createuser:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.createUser</h2>
 
 <p><a href="https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L111">https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L111</a></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line">  <span class="nv">createUser: </span><span class="nf">(channel, from) -&gt;</span>
-</span><span class="line">    <span class="nv">user = </span><span class="nx">@getUserFromId</span> <span class="nx">from</span>
-</span><span class="line">    <span class="nv">user.name = </span><span class="nx">from</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">if</span> <span class="nx">channel</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^[&amp;#]/</span><span class="p">)</span>
-</span><span class="line">      <span class="nv">user.room = </span><span class="nx">channel</span>
-</span><span class="line">    <span class="k">else</span>
-</span><span class="line">      <span class="nv">user.room = </span><span class="kc">null</span>
-</span><span class="line">    <span class="nx">user</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript">  createUser: (channel, from) -&gt;
+    user = @getUserFromId from
+    user.name = from
 
+    if channel.match(/^[&amp;#]/)
+      user.room = channel
+    else
+      user.room = null
+    user
+</code></pre>
 
-<p>ここで、user.roomに最新のメッセージが送られたchannelをセットしています。<br>
-そのため、getUserFromIdが返すuserオブジェクトがメッセージごとに共通なら、<br>
+<p>ここで、user.roomに最新のメッセージが送られたchannelをセットしています。<br />
+そのため、getUserFromIdが返すuserオブジェクトがメッセージごとに共通なら、<br />
 replyメソッドに渡された後に別のメッセージによって書き換わる可能性があると言えます。</p>
 
-<h2 id="tocAnchor-1-4-3">hubot.getUserFromId</h2>
+<h2 id="hubot-getuserfromid:43f580fa1d5683a492ce120b5a384ffc">hubot.getUserFromId</h2>
 
-<p>getUserFromIdはhubot.getUserFromIdを呼び出しているだけでした。<br>
+<p>getUserFromIdはhubot.getUserFromIdを呼び出しているだけでした。<br />
 （HubotのAPIが変わったため、一手間挟んでいる）</p>
 
 <p><a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/brain.coffee#L103">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/brain.coffee#L103</a></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="coffeescript"><span class="line"> <span class="nv">userForId: </span><span class="nf">(id, options) -&gt;</span>
-</span><span class="line">    <span class="nv">user = </span><span class="nx">@data</span><span class="p">.</span><span class="nx">users</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span>
-</span><span class="line">    <span class="k">unless</span> <span class="nx">user</span>
-</span><span class="line">      <span class="nv">user = </span><span class="k">new</span> <span class="nx">User</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">options</span>
-</span><span class="line">      <span class="nx">@data</span><span class="p">.</span><span class="nx">users</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">user</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">if</span> <span class="nx">options</span> <span class="o">and</span> <span class="nx">options</span><span class="p">.</span><span class="nx">room</span> <span class="o">and</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">.</span><span class="nx">room</span> <span class="o">or</span> <span class="nx">user</span><span class="p">.</span><span class="nx">room</span> <span class="o">isnt</span> <span class="nx">options</span><span class="p">.</span><span class="nx">room</span><span class="p">)</span>
-</span><span class="line">      <span class="nv">user = </span><span class="k">new</span> <span class="nx">User</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">options</span>
-</span><span class="line">      <span class="nx">@data</span><span class="p">.</span><span class="nx">users</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">user</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">user</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-coffeescript"> userForId: (id, options) -&gt;
+    user = @data.users[id]
+    unless user
+      user = new User id, options
+      @data.users[id] = user
 
+    if options and options.room and (!user.room or user.room isnt options.room)
+      user = new User id, options
+      @data.users[id] = user
 
-<p>@data内に保存されているユーザを帰しています。<br>
+    user
+</code></pre>
+
+<p>@data内に保存されているユーザを帰しています。<br />
 そのため、各メッセージ毎に共通のuserオブジェクトが返されます。</p>
 
-<p>hubot-irc.createUser内でこのオブジェクトのroomを書き換えているため、<br>
-ユーザが発言を行うと、robot.replyの時に使用するuserオブジェクトが変更され、<br>
+<p>hubot-irc.createUser内でこのオブジェクトのroomを書き換えているため、<br />
+ユーザが発言を行うと、robot.replyの時に使用するuserオブジェクトが変更され、<br />
 慈顔をおいて発言しようとすると別のチャットに発言していたようです。</p>
-</div>
 
-  <footer>
-    <p class="meta">
+                </div>
 
-      
+            </div>
 
-      
-      <time datetime="2014-11-01 21:02:11 +0900" pubdate></time>
-      
+            
 
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/11/01/hubot-reply/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/11/01/hubot-reply/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/11/01/hubot-reply/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/11/01/hubot-reply/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

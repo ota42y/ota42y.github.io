@@ -1,190 +1,190 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="pixivのタグから読み解くラブライブイラスト投稿者分析">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>pixivのタグから読み解くラブライブイラスト投稿者分析 | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>pixivのタグから読み解くラブライブイラスト投稿者分析 - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="pixivのタグから読み解くラブライブイラスト投稿者分析 Contents 1 投稿者の性別傾向
-1.1 集計方法
-1.2 各キャラ毎の性別傾向
-1.3 カップリング毎の性別傾向 2 ラブライブ投稿者の年齢層
-2.1 集計方法
-2.2 集計結果 3 まとめ 昨日、 &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/12/27/lovelive-age">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>pixivのタグから読み解くラブライブイラスト投稿者分析</h1>
+                    
+
+<time datetime="2014-12-27" class="post_data">
+2014-12-27
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/text">text</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">pixivのタグから読み解くラブライブイラスト投稿者分析</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/memo">memo</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1">
-<a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">投稿者の性別傾向</span></a><ul>
-<li class="toc_level-2 toc_section-2"><a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">集計方法</span></a></li>
-<li class="toc_level-2 toc_section-3"><a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">各キャラ毎の性別傾向</span></a></li>
-<li class="toc_level-2 toc_section-4"><a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">カップリング毎の性別傾向</span></a></li>
+<li><a href="#投稿者の性別傾向:d1f9c2f485eb67b24429b06a3a5181b5">投稿者の性別傾向</a>
+<ul>
+<li><a href="#集計方法:d1f9c2f485eb67b24429b06a3a5181b5">集計方法</a></li>
+<li><a href="#各キャラ毎の性別傾向:d1f9c2f485eb67b24429b06a3a5181b5">各キャラ毎の性別傾向</a></li>
+<li><a href="#カップリング毎の性別傾向:d1f9c2f485eb67b24429b06a3a5181b5">カップリング毎の性別傾向</a></li>
+</ul></li>
+<li><a href="#ラブライブ投稿者の年齢層:d1f9c2f485eb67b24429b06a3a5181b5">ラブライブ投稿者の年齢層</a>
+<ul>
+<li><a href="#集計方法-1:d1f9c2f485eb67b24429b06a3a5181b5">集計方法</a></li>
+<li><a href="#集計結果:d1f9c2f485eb67b24429b06a3a5181b5">集計結果</a></li>
+</ul></li>
+<li><a href="#まとめ:d1f9c2f485eb67b24429b06a3a5181b5">まとめ</a></li>
 </ul>
-</li>
-<li class="toc_level-1 toc_section-5">
-<a href="#tocAnchor-1-5"><span class="tocnumber">2</span> <span class="toctext">ラブライブ投稿者の年齢層</span></a><ul>
-<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-5-1"><span class="tocnumber">2.1</span> <span class="toctext">集計方法</span></a></li>
-<li class="toc_level-2 toc_section-7"><a href="#tocAnchor-1-5-2"><span class="tocnumber">2.2</span> <span class="toctext">集計結果</span></a></li>
-</ul>
-</li>
-<li class="toc_level-1 toc_section-8"><a href="#tocAnchor-1-8"><span class="tocnumber">3</span> <span class="toctext">まとめ</span></a></li>
-</ul>
-</td></tr></tbody></table></div>
-<p><a href="/blog/2014/12/26/lovelive-cp/">昨日</a>、<a href="/blog/2014/12/25/lovelive/">一昨日</a>とラブライブイラストについて見ていきましたが、<br>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p><a href="/blog/2014/12/26/lovelive-cp/">昨日</a>、<a href="/blog/2014/12/25/lovelive/">一昨日</a>とラブライブイラストについて見ていきましたが、<br />
 最後にイラストを投稿している投稿者さんについて見ていきます。</p>
 
-<h1 id="tocAnchor-1-1">投稿者の性別傾向</h1>
+<h1 id="投稿者の性別傾向:d1f9c2f485eb67b24429b06a3a5181b5">投稿者の性別傾向</h1>
 
-<h2 id="tocAnchor-1-1-1">集計方法</h2>
+<h2 id="集計方法:d1f9c2f485eb67b24429b06a3a5181b5">集計方法</h2>
 
-<p>キャラのイラストと、ラブライブ関連イラストを投稿した人全員に対して、性別と年齢を調べてまとめました。<br>
-なお、各データはユーザページで公開されているものを利用したため、<br>
+<p>キャラのイラストと、ラブライブ関連イラストを投稿した人全員に対して、性別と年齢を調べてまとめました。<br />
+なお、各データはユーザページで公開されているものを利用したため、<br />
 全体に情報を公開している人のみの集計になります。</p>
 
-<h2 id="tocAnchor-1-1-2">各キャラ毎の性別傾向</h2>
+<h2 id="各キャラ毎の性別傾向:d1f9c2f485eb67b24429b06a3a5181b5">各キャラ毎の性別傾向</h2>
 
-<p>各キャラ毎に、男性と女生徒でどれくらいの割合で投稿しているかを集計しました。<br>
-なお、キャラ毎に投稿数ユーザ数がそもそも違うため、<br>
+<p>各キャラ毎に、男性と女生徒でどれくらいの割合で投稿しているかを集計しました。<br />
+なお、キャラ毎に投稿数ユーザ数がそもそも違うため、<br />
 そのキャラに投稿した人のうち性別が判別できるユーザがどれくらいの割合なのかを集計しています。</p>
 
-<p><img src="/images/posts/2014-12-27-lovelive_chara_user.png" height="100" alt="キャラ毎の性別傾向"></p>
+<p><a href="/images/blog/2014/2014-12-27-lovelive_chara_user.png"><img src="/images/blog/2014/2014-12-27-lovelive_chara_user.png"  width="100%" /></a></p>
 
 <p>ラブライブタグ全体では女性投稿者の方が多い結果になりました。</p>
 
-<p>キャラ毎では、男性投稿者が多いキャラが５人に、女性投稿者が多いキャラ人気が４人と、<br>
-μ&#8217;sメンバーの中でも男女のユーザ数が半分に別れています。</p>
+<p>キャラ毎では、男性投稿者が多いキャラが５人に、女性投稿者が多いキャラ人気が４人と、<br />
+μ&rsquo;sメンバーの中でも男女のユーザ数が半分に別れています。</p>
 
-<p>特に男性からの投稿が多いのは高坂穂乃果、園田海未の二名です。<br>
-女性からの投稿が特に多いのは、南ことり、矢澤にこの二名になります。<br>
+<p>特に男性からの投稿が多いのは高坂穂乃果、園田海未の二名です。<br />
+女性からの投稿が特に多いのは、南ことり、矢澤にこの二名になります。<br />
 また、星空凛は男女共にほぼ同数の投稿人数になります。</p>
 
-<p>なお、昨日の記事でも紹介した、閲覧数の多いカップリングである、<br>
-「にこまき」「のぞえり」「ことうみ」「りんぱな」ですが、<br>
-カップリングの片方ずつで男性投稿者と女性投稿者の投稿数が割れています。<br>
+<p>なお、昨日の記事でも紹介した、閲覧数の多いカップリングである、<br />
+「にこまき」「のぞえり」「ことうみ」「りんぱな」ですが、<br />
+カップリングの片方ずつで男性投稿者と女性投稿者の投稿数が割れています。<br />
 男性女性、それぞれから支持を得るキャラ同士のカップリングだから人気だったりするのでしょうか？</p>
 
-<h2 id="tocAnchor-1-1-3">カップリング毎の性別傾向</h2>
+<h2 id="カップリング毎の性別傾向:d1f9c2f485eb67b24429b06a3a5181b5">カップリング毎の性別傾向</h2>
 
-<p>前回の記事で集計した総閲覧数1,000,000以上のカップリングに対して、<br>
+<p>前回の記事で集計した総閲覧数1,000,000以上のカップリングに対して、<br />
 性別ごとに投稿者の割合を集計しました。</p>
 
-<p><img src="/images/posts/2014-12-27-lovelive_cp_user.png" height="100" alt="カップリング毎の性別傾向"></p>
+<p><a href="/images/blog/2014/2014-12-27-lovelive_cp_user.png"><img src="/images/blog/2014/2014-12-27-lovelive_cp_user.png"  width="100%" /></a></p>
 
-<p>人気のカップリングでは女性投稿者が多いことがわかります。<br>
-また、キャラごとの傾向では片方が6割を超えることはありませんでしたが、<br>
+<p>人気のカップリングでは女性投稿者が多いことがわかります。<br />
+また、キャラごとの傾向では片方が6割を超えることはありませんでしたが、<br />
 カップリングごとでは6割超えが多く見られ、かなり偏りがあります。</p>
 
-<p>なお、キャラ別に比べて有効なユーザ数が少ないため、<br>
+<p>なお、キャラ別に比べて有効なユーザ数が少ないため、<br />
 必ずしも正確な調査ではない部分にご注意ください。</p>
 
-<h1 id="tocAnchor-1-5">ラブライブ投稿者の年齢層</h1>
+<h1 id="ラブライブ投稿者の年齢層:d1f9c2f485eb67b24429b06a3a5181b5">ラブライブ投稿者の年齢層</h1>
 
-<h2 id="tocAnchor-1-5-1">集計方法</h2>
+<h2 id="集計方法-1:d1f9c2f485eb67b24429b06a3a5181b5">集計方法</h2>
 
-<p>ラブライブのイラストを投稿した全ユーザから、年齢を公開しているユーザを集計しました。<br>
-各キャラ毎に年齢別にユーザ数を出していましたが、<br>
+<p>ラブライブのイラストを投稿した全ユーザから、年齢を公開しているユーザを集計しました。<br />
+各キャラ毎に年齢別にユーザ数を出していましたが、<br />
 ほぼ全キャラ同じ傾向になったため、ラブライブイラスト全体で出すことにします。</p>
 
-<h2 id="tocAnchor-1-5-2">集計結果</h2>
+<h2 id="集計結果:d1f9c2f485eb67b24429b06a3a5181b5">集計結果</h2>
 
-<p>有効なデータ数は男性3665、女性2771、性別不明765の7201件でした。<br>
+<p>有効なデータ数は男性3665、女性2771、性別不明765の7201件でした。<br />
 なお、10才から5才区切りで集計しています。</p>
 
-<p><img src="/images/posts/2014-12-27-lovelive_user_age.png" alt="ラブライブイラストの年齢傾向"></p>
+<p><img src="/images/blog/2014/2014-12-27-lovelive_user_age.png" alt="ラブライブイラストの年齢傾向" />
+</p>
 
 <p>20〜25才未満が最も投稿している結果になりました。</p>
 
-<p>そこから+-5才が二番目に多いすが、25才以上は男性がほとんどなのに対し、<br>
-20才未満は女性が多くを占めています。<br>
+<p>そこから+-5才が二番目に多いすが、25才以上は男性がほとんどなのに対し、<br />
+20才未満は女性が多くを占めています。<br />
 そのため、20代男性と、15〜25才の女性投稿者が多いようです。</p>
 
-<h1 id="tocAnchor-1-8">まとめ</h1>
+<h1 id="まとめ:d1f9c2f485eb67b24429b06a3a5181b5">まとめ</h1>
 
 <ul>
 <li>ラブライブイラスト全体では女性投稿者の方が多い
@@ -192,120 +192,67 @@ type="text/css">
 <ul>
 <li>キャラ毎では、男性の投稿者に人気、女性の投稿者に人気がわかれている</li>
 <li>人気の4カップリングは、男性人気+女性人気の組み合わせキャラだった</li>
-</ul>
-</li>
+</ul></li>
 <li>カップリングイラスト投稿者は女性投稿者の方が多い
 
 <ul>
 <li>投稿者の男女別人気も、キャラのそれよりも偏りが大きい</li>
-</ul>
-</li>
+</ul></li>
 <li>投稿者は男女で若干世代が違う
 
 <ul>
 <li>女性は15〜25才、男性は20〜30才</li>
-</ul>
-</li>
+</ul></li>
 <li>最も投稿が多いユーザは一人で250件以上投稿していた
 
 <ul>
 <li>そのほぼ半分に西木野真姫タグがついており、同キャラの最多投稿ユーザ</li>
+</ul></li>
 </ul>
-</li>
-</ul>
 
-</div>
+                </div>
 
-  <footer>
-    <p class="meta">
+            </div>
 
-      
+            
 
-      
-      <time datetime="2014-12-27 12:11:29 +0900" pubdate></time>
-      
-
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/12/27/lovelive-age/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/12/27/lovelive-age/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/12/27/lovelive-age/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/12/27/lovelive-age/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

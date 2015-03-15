@@ -1,117 +1,118 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="スマホアプリ開発でgit-new-workdirがとても便利だった">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>スマホアプリ開発でgit-new-workdirがとても便利だった | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>スマホアプリ開発でgit-new-workdirがとても便利だった - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="スマホアプリ開発でgit-new-workdirがとても便利だった Contents 1 まとめ
-2 ビルドのキャッシュ
-3 gitのチェックアウトによるファイル変更問題 4 git-new-workdirとは
-4.1 インストール
-4.2 使い方 5 注意点 まとめ &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/08/25/git-new-workdir">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>スマホアプリ開発でgit-new-workdirがとても便利だった</h1>
+                    
+
+<time datetime="2014-08-25" class="post_data">
+2014-08-25
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">スマホアプリ開発でgit-new-workdirがとても便利だった</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/git">git</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">まとめ</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">ビルドのキャッシュ</span></a></li>
-<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">gitのチェックアウトによるファイル変更問題</span></a></li>
-<li class="toc_level-1 toc_section-4">
-<a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">git-new-workdirとは</span></a><ul>
-<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-4-1"><span class="tocnumber">4.1</span> <span class="toctext">インストール</span></a></li>
-<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-4-2"><span class="tocnumber">4.2</span> <span class="toctext">使い方</span></a></li>
+<li><a href="#まとめ:bab02fce294c55cfdd08d2d994439ea8">まとめ</a></li>
+<li><a href="#ビルドのキャッシュ:bab02fce294c55cfdd08d2d994439ea8">ビルドのキャッシュ</a></li>
+<li><a href="#gitのチェックアウトによるファイル変更問題:bab02fce294c55cfdd08d2d994439ea8">gitのチェックアウトによるファイル変更問題</a></li>
+<li><a href="#git-new-workdirとは:bab02fce294c55cfdd08d2d994439ea8">git-new-workdirとは</a>
+<ul>
+<li><a href="#インストール:bab02fce294c55cfdd08d2d994439ea8">インストール</a></li>
+<li><a href="#使い方:bab02fce294c55cfdd08d2d994439ea8">使い方</a></li>
+</ul></li>
+<li><a href="#注意点:bab02fce294c55cfdd08d2d994439ea8">注意点</a></li>
 </ul>
-</li>
-<li class="toc_level-1 toc_section-7"><a href="#tocAnchor-1-7"><span class="tocnumber">5</span> <span class="toctext">注意点</span></a></li>
-</ul>
-</td></tr></tbody></table></div>
-<h1 id="tocAnchor-1-1">まとめ</h1>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<h1 id="まとめ:bab02fce294c55cfdd08d2d994439ea8">まとめ</h1>
 
 <ul>
 <li>ビルドに時間がかかる環境下では、ビルドのキャッシュが重要</li>
@@ -123,160 +124,111 @@ type="text/css">
 <li>スマホアプリじゃなくても便利</li>
 </ul>
 
+<h1 id="ビルドのキャッシュ:bab02fce294c55cfdd08d2d994439ea8">ビルドのキャッシュ</h1>
 
-<h1 id="tocAnchor-1-2">ビルドのキャッシュ</h1>
-
-<p>Objective-cやJava、C++でスマホアプリを作成する場合、<br>
-どの言語もコンパイルが必要になります。<br>
+<p>Objective-cやJava、C++でスマホアプリを作成する場合、<br />
+どの言語もコンパイルが必要になります。<br />
 このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。</p>
 
-<p>ただし、多くの場合はキャッシュ機能が有効になっており、<br>
-変更したファイルのみがコンパイルされるため、<br>
+<p>ただし、多くの場合はキャッシュ機能が有効になっており、<br />
+変更したファイルのみがコンパイルされるため、<br />
 フルビルドをしなければ気にならないはずです。</p>
 
-<h1 id="tocAnchor-1-3">gitのチェックアウトによるファイル変更問題</h1>
+<h1 id="gitのチェックアウトによるファイル変更問題:bab02fce294c55cfdd08d2d994439ea8">gitのチェックアウトによるファイル変更問題</h1>
 
-<p>gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。<br>
+<p>gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。<br />
 これにより、ブランチ間の差分が全てビルド対象になってしまいます。</p>
 
-<p>当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、<br>
-別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。<br>
-ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…<br>
+<p>当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、<br />
+別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。<br />
+ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…<br />
 なんてこともあり、時間が勿体ないです。</p>
 
-<p>かといって、リポジトリを二つ別々のフォルダにcloneすると、<br>
-別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々<br>
+<p>かといって、リポジトリを二つ別々のフォルダにcloneすると、<br />
+別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々<br />
 いろいろと問題が起きます。</p>
 
 <p>こういった場合、git-new-workdirを使うことで、
 だいぶ楽に解決することができます。</p>
 
-<h1 id="tocAnchor-1-4">git-new-workdirとは</h1>
+<h1 id="git-new-workdirとは:bab02fce294c55cfdd08d2d994439ea8">git-new-workdirとは</h1>
 
-<p>これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。<br>
-これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、<br>
+<p>これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。<br />
+これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、<br />
 片方で作成したコミットや、ローカルブランチ、git stashなどをもう片方で参照することができます。</p>
 
-<p>また、gitのワーキングディレクトリやステージングエリアは共用されないため、<br>
+<p>また、gitのワーキングディレクトリやステージングエリアは共用されないため、<br />
 コミットしていない変更が別のディレクトリに影響をあたることはありません。　</p>
 
-<h2 id="tocAnchor-1-4-1">インストール</h2>
+<h2 id="インストール:bab02fce294c55cfdd08d2d994439ea8">インストール</h2>
 
-<p><code>git/contrib/workdir/git-new-workdir</code>に入っていたので、<br>
+<p><code>git/contrib/workdir/git-new-workdir</code>に入っていたので、<br />
 <code>export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH</code>
 でパスを通しました。</p>
 
-<h2 id="tocAnchor-1-4-2">使い方</h2>
+<h2 id="使い方:bab02fce294c55cfdd08d2d994439ea8">使い方</h2>
 
-<p><code>git-new-workdir repository_folder new_workdir branch_name(オプション)</code>です。<br>
-後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、<br>
+<p><code>git-new-workdir repository_folder new_workdir branch_name(オプション)</code>です。<br />
+後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、<br />
 ほぼcheckout時間しかかかりません。</p>
 
 <p>新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。</p>
 
-<h1 id="tocAnchor-1-7">注意点</h1>
+<h1 id="注意点:bab02fce294c55cfdd08d2d994439ea8">注意点</h1>
 
-<p>同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。<br>
-なお、片方からもう片方が何をチェックアウトしているかはわからないため、<br>
-main/subといった使い方や、develop/releaseといった風に分けたり、<br>
+<p>同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。<br />
+なお、片方からもう片方が何をチェックアウトしているかはわからないため、<br />
+main/subといった使い方や、develop/releaseといった風に分けたり、<br />
 必要な時だけ作るといった方が事故らないと思います。</p>
 
-<p>また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、<br>
-残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。<br>
-そのため、高速に新しいworkdirを作れますが、<br>
+<p>また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、<br />
+残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。<br />
+そのため、高速に新しいworkdirを作れますが、<br />
 元のリポジトリを消すとworkdirの方もおかしくなると思われます。</p>
-</div>
 
-  <footer>
-    <p class="meta">
+                </div>
 
-      
+            </div>
 
-      
-      <time datetime="2014-08-25 07:42:04 +0900" pubdate></time>
-      
+            
 
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/08/25/git-new-workdir/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/08/25/git-new-workdir/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/08/25/git-new-workdir/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/08/25/git-new-workdir/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

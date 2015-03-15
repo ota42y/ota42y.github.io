@@ -1,114 +1,128 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした Contents 1 まとめ
-2 Evernoteのノートリンク仕様の変更 3 リンク置換スクリプトの作成
-3.1 ノートリンクの仕様
-3.2 リンク置換スクリプト まとめ &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/08/10/evernote-link">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</h1>
+                    
+
+<time datetime="2014-08-10" class="post_data">
+2014-08-10
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/text">text</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/evernote">evernote</a>
+    </div>
+    
+    <div class="post_data">
+        <a href="/tags/mac">mac</a>
+    </div>
+    
+    <div class="post_data">
+        <a href="/tags/ruby">ruby</a>
+    </div>
+    
+    <div class="post_data">
+        <a href="/tags/application">application</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">まとめ</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">Evernoteのノートリンク仕様の変更</span></a></li>
-<li class="toc_level-1 toc_section-3">
-<a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">リンク置換スクリプトの作成</span></a><ul>
-<li class="toc_level-2 toc_section-4"><a href="#tocAnchor-1-3-1"><span class="tocnumber">3.1</span> <span class="toctext">ノートリンクの仕様</span></a></li>
-<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-3-2"><span class="tocnumber">3.2</span> <span class="toctext">リンク置換スクリプト</span></a></li>
+<li><a href="#まとめ:de6a822f66102a3442c0efa1148b97be">まとめ</a></li>
+<li><a href="#evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be">Evernoteのノートリンク仕様の変更</a></li>
+<li><a href="#リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be">リンク置換スクリプトの作成</a>
+<ul>
+<li><a href="#ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be">ノートリンクの仕様</a></li>
+<li><a href="#リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be">リンク置換スクリプト</a></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</td></tr></tbody></table></div>
-<h1 id="tocAnchor-1-1">まとめ</h1>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<h1 id="まとめ:de6a822f66102a3442c0efa1148b97be">まとめ</h1>
 
 <ul>
 <li>Evernoteのノートリンクの仕様が変わって使い物にならなくなった</li>
@@ -116,195 +130,125 @@ type="text/css">
 <li>ただし、Macではスクリプトの実行方法で問題あり</li>
 </ul>
 
-
-<h1 id="tocAnchor-1-2">Evernoteのノートリンク仕様の変更</h1>
+<h1 id="evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be">Evernoteのノートリンク仕様の変更</h1>
 
 <p>Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。</p>
 
-<p><img src="/images/posts/2014-08-10-evernote-link.jpg" alt="Evernote link"></p>
+<p><img src="/images/blog/2014/2014-08-10-evernote-link.jpg" alt="Evernote link" />
+</p>
 
-<p>この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。<br>
-そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。<br>
-AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、<br>
+<p>この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。<br />
+そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。<br />
+AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、<br />
 同じようにアプリでノートを開いてくれるため、とても便利でした。</p>
 
-<p>しかし、最近の変更により、<a href="https://www.evernote.com/">https://www.evernote.com/</a> へのリンクに変わってしまい、<br>
-ブラウザが起動してノートがEvernoteのサイト上で表示され、<br>
+<p>しかし、最近の変更により、<a href="https://www.evernote.com/">https://www.evernote.com/</a> へのリンクに変わってしまい、<br />
+ブラウザが起動してノートがEvernoteのサイト上で表示され、<br />
 そこからさらにEvernoteのアプリが開くという挙動になりました。</p>
 
-<p>これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、<br>
+<p>これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、<br />
 オフライン状態ではノートを開くことができなくなってしまいました。</p>
 
-<p>正直使い物にならないレベルになってしまったのですが、<br>
-幸いなことにevernote:///スキームは未だ有効です。<br>
+<p>正直使い物にならないレベルになってしまったのですが、<br />
+幸いなことにevernote:///スキームは未だ有効です。<br />
 また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。</p>
 
-<h1 id="tocAnchor-1-3">リンク置換スクリプトの作成</h1>
+<h1 id="リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be">リンク置換スクリプトの作成</h1>
 
-<h2 id="tocAnchor-1-3-1">ノートリンクの仕様</h2>
+<h2 id="ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be">ノートリンクの仕様</h2>
 
 <p><strong><em>以下は予想であり、正確なものではありません</em></strong></p>
 
-<p>Evernoteのhttpsリンクは以下のようになっています。<br>
-<code>https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/</code><br>
-対して、evernote:///スキームは以下のようになっています。<br>
-<code>evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/</code><br>
+<p>Evernoteのhttpsリンクは以下のようになっています。<br />
+<code>https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/</code><br />
+対して、evernote:///スキームは以下のようになっています。<br />
+<code>evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/</code><br />
 <code>(ノート固有の文字列は二回とも同じ値になります)</code>　　</p>
 
 <p>どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。</p>
 
-<p>Windowsならクリップボードの置換ソフトはたくさんあるのですが、<br>
+<p>Windowsならクリップボードの置換ソフトはたくさんあるのですが、<br />
 Macでは残念ながらまともな物はありませんでした。</p>
 
-<p>一応、<a href="http://www.clipmenu.com/ja/">ClipMenu</a>は正規表現で置換ができますが、<br>
-それを実行するまでにかなりキーストロークが必要なため、見送りました。<br>
+<p>一応、<a href="http://www.clipmenu.com/ja/">ClipMenu</a>は正規表現で置換ができますが、<br />
+それを実行するまでにかなりキーストロークが必要なため、見送りました。<br />
 理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。</p>
 
-<h2 id="tocAnchor-1-3-2">リンク置換スクリプト</h2>
+<h2 id="リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be">リンク置換スクリプト</h2>
 
-<p>結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。<br>
+<p>結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。<br />
 事前にclipboard gemをインストールしておく必要があります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td>
-<td class="code"><pre><code class="bash"><span class="line"><span class="c">#!/bin/bash</span>
-</span><span class="line">
-</span><span class="line"><span class="nb">pushd</span> <span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span>
-</span><span class="line">
-</span><span class="line">bundle <span class="nb">exec </span>ruby -e <span class="s2">"</span>
-</span><span class="line"><span class="s2">require 'clipboard'</span>
-</span><span class="line">
-</span><span class="line"><span class="s2">url = Clipboard.paste</span>
-</span><span class="line"><span class="s2">r = Regexp.new(\"https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\")</span>
-</span><span class="line"><span class="s2">result = r.match url</span>
-</span><span class="line"><span class="s2">if result</span>
-</span><span class="line"><span class="s2">  new_url = \"evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\"</span>
-</span><span class="line"><span class="s2">  p new_url</span>
-</span><span class="line"><span class="s2">  Clipboard.copy new_url</span>
-</span><span class="line"><span class="s2">end</span>
-</span><span class="line"><span class="s2">"</span>
-</span><span class="line">
-</span><span class="line"><span class="nb">popd</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+<pre><code class="language-bash">#!/bin/bash
 
+pushd $(dirname $0)
 
-<p>これをevernote.commandという名前で保存して、<br>
-Alfredなどから実行すればいける！！と思ったのですが、<br>
-実行すると新たなターミナルが起動してスクリプトが実行され、<br>
+bundle exec ruby -e &quot;
+require 'clipboard'
+
+url = Clipboard.paste
+r = Regexp.new(\&quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&quot;)
+result = r.match url
+if result
+  new_url = \&quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&quot;
+  p new_url
+  Clipboard.copy new_url
+end
+&quot;
+
+popd
+</code></pre>
+
+<p>これをevernote.commandという名前で保存して、<br />
+Alfredなどから実行すればいける！！と思ったのですが、<br />
+実行すると新たなターミナルが起動してスクリプトが実行され、<br />
 終了後にターミナルがそのまま残るという状態になってしまいました。</p>
 
 <p>毎回ターミナルを消すのは面倒すぎるので、とりあえずこの手法の採用は見送ることにします。</p>
-</div>
 
-  <footer>
-    <p class="meta">
+                </div>
 
-      
+            </div>
 
-      
-      <time datetime="2014-08-10 18:03:43 +0900" pubdate></time>
-      
+            
 
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/08/10/evernote-link/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/08/10/evernote-link/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/08/10/evernote-link/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/08/10/evernote-link/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

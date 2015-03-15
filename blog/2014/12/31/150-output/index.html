@@ -1,364 +1,320 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="GithubのContributionsを使ってアウトプットを150日続ける">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>GithubのContributionsを使ってアウトプットを150日続ける | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>GithubのContributionsを使ってアウトプットを150日続ける - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="GithubのContributionsを使ってアウトプットを150日続ける Contents 1 何故こんな事をしたのか
-2 継続的なアウトプットをどう実現するか 3 ルール設定
-3.1 1. アウトプットは外部に公開
-3.2 2. １日１コミット以上Githubにpush
-3.3 3. &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/12/31/150-output">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>GithubのContributionsを使ってアウトプットを150日続ける</h1>
+                    
+
+<time datetime="2014-12-31" class="post_data">
+2014-12-31
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/text">text</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">GithubのContributionsを使ってアウトプットを150日続ける</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/memo">memo</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">何故こんな事をしたのか</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">継続的なアウトプットをどう実現するか</span></a></li>
-<li class="toc_level-1 toc_section-3">
-<a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">ルール設定</span></a><ul>
-<li class="toc_level-2 toc_section-4"><a href="#tocAnchor-1-3-1"><span class="tocnumber">3.1</span> <span class="toctext">1. アウトプットは外部に公開</span></a></li>
-<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-3-2"><span class="tocnumber">3.2</span> <span class="toctext">2. １日１コミット以上Githubにpush</span></a></li>
-<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-3-3"><span class="tocnumber">3.3</span> <span class="toctext">3. コミットを溜めるのは可</span></a></li>
-<li class="toc_level-2 toc_section-7"><a href="#tocAnchor-1-3-4"><span class="tocnumber">3.4</span> <span class="toctext">4. 意味のあるコミットだけカウント</span></a></li>
+<li><a href="#何故こんな事をしたのか:799e34746e5b8882c14c5cfa98f7df38">何故こんな事をしたのか</a></li>
+<li><a href="#継続的なアウトプットをどう実現するか:799e34746e5b8882c14c5cfa98f7df38">継続的なアウトプットをどう実現するか</a></li>
+<li><a href="#ルール設定:799e34746e5b8882c14c5cfa98f7df38">ルール設定</a>
+<ul>
+<li><a href="#1-アウトプットは外部に公開:799e34746e5b8882c14c5cfa98f7df38">1. アウトプットは外部に公開</a></li>
+<li><a href="#2-１日１コミット以上githubにpush:799e34746e5b8882c14c5cfa98f7df38">2. １日１コミット以上Githubにpush</a></li>
+<li><a href="#3-コミットを溜めるのは可:799e34746e5b8882c14c5cfa98f7df38">3. コミットを溜めるのは可</a></li>
+<li><a href="#4-意味のあるコミットだけカウント:799e34746e5b8882c14c5cfa98f7df38">4. 意味のあるコミットだけカウント</a></li>
+</ul></li>
+<li><a href="#150日続けた結果:799e34746e5b8882c14c5cfa98f7df38">150日続けた結果</a>
+<ul>
+<li><a href="#利点:799e34746e5b8882c14c5cfa98f7df38">利点</a></li>
+<li><a href="#問題点:799e34746e5b8882c14c5cfa98f7df38">問題点</a>
+<ul>
+<li><a href="#外に出せない作業をやらなくなる:799e34746e5b8882c14c5cfa98f7df38">外に出せない作業をやらなくなる</a></li>
+<li><a href="#細かく終わる作業ばかり選ぶようになる:799e34746e5b8882c14c5cfa98f7df38">細かく終わる作業ばかり選ぶようになる</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#まとめ:799e34746e5b8882c14c5cfa98f7df38">まとめ</a></li>
 </ul>
-</li>
-<li class="toc_level-1 toc_section-8">
-<a href="#tocAnchor-1-8"><span class="tocnumber">4</span> <span class="toctext">150日続けた結果</span></a><ul>
-<li class="toc_level-2 toc_section-9"><a href="#tocAnchor-1-8-1"><span class="tocnumber">4.1</span> <span class="toctext">利点</span></a></li>
-<li class="toc_level-2 toc_section-10"><a href="#tocAnchor-1-8-2"><span class="tocnumber">4.2</span> <span class="toctext">問題点</span></a></li>
-</ul>
-</li>
-<li class="toc_level-1 toc_section-11"><a href="#tocAnchor-1-11"><span class="tocnumber">5</span> <span class="toctext">まとめ</span></a></li>
-</ul>
-</td></tr></tbody></table></div>
-<p><img src="/images/posts/2014-12-31-150-output.png" height="200" alt="github"></p>
+</nav>
+                        </div>
+                    </div>
+                    
 
-<p>というわけで、GithubのContributionsを利用して、<br>
+                    
+
+<p><a href="/images/blog/2014/2014-12-31-150-output.png"><img src="/images/blog/2014/2014-12-31-150-output.png"  width="100%" /></a></p>
+
+<p>というわけで、GithubのContributionsを利用して、<br />
 毎日何かしらのアウトプットを150日続けるということをやりました。</p>
 
-<h1 id="tocAnchor-1-1">何故こんな事をしたのか</h1>
+<h1 id="何故こんな事をしたのか:799e34746e5b8882c14c5cfa98f7df38">何故こんな事をしたのか</h1>
 
-<p>私はまじめ系クズな上に意志薄弱なので、やった方がいいようなことでも、<br>
+<p>私はまじめ系クズな上に意志薄弱なので、やった方がいいようなことでも、<br />
 いろんな理由をつけてやらないのがいつものことでした。</p>
 
-<p>特にインプットに重きを置く性質のため、いろいろなことを調べたりしますが、<br>
-アウトプットは何かしらの理由をつけて避けてしまう傾向があります。<br>
-実際、このブログにしたのは2013年9月ですが、そこから半年で1エントリのみ、<br>
+<p>特にインプットに重きを置く性質のため、いろいろなことを調べたりしますが、<br />
+アウトプットは何かしらの理由をつけて避けてしまう傾向があります。<br />
+実際、このブログにしたのは2013年9月ですが、そこから半年で1エントリのみ、<br />
 その後の3ヶ月も月に1回程度とほとんど書いてないに等しいです。</p>
 
-<p>別にそのままでも問題は無かったのですが、せっかく色々インプットしているのに、<br>
+<p>別にそのままでも問題は無かったのですが、せっかく色々インプットしているのに、<br />
 定着させないのはもったいないと思い、継続的にアウトプットする方法を模索しました。</p>
 
-<h1 id="tocAnchor-1-2">継続的なアウトプットをどう実現するか</h1>
+<h1 id="継続的なアウトプットをどう実現するか:799e34746e5b8882c14c5cfa98f7df38">継続的なアウトプットをどう実現するか</h1>
 
-<p>毎日継続的アウトプットを頑張る！と奮起しても、それが継続しないのが今回の問題です。<br>
-そのため、頑張る/頑張らないといった意思に関係なく続けられる、<br>
-もしくは歯磨きをせずに寝ようとした時のように、<br>
+<p>毎日継続的アウトプットを頑張る！と奮起しても、それが継続しないのが今回の問題です。<br />
+そのため、頑張る/頑張らないといった意思に関係なく続けられる、<br />
+もしくは歯磨きをせずに寝ようとした時のように、<br />
 継続してアウトプットしないと落ち着かないといった状態を目指します。</p>
 
-<p>幸いにも、私の性格には続けたことを辞めるのを凄くもったいなく感じるというものがありました。<br>
-大学時代には、一日一冊づつ本を読んでいて、たまたま数十日続けたところで辞めるのがもったいなくなり、<br>
-結局1000日ぐらい毎日本を読み続ける、みたいな事をするぐらいには、<br>
+<p>幸いにも、私の性格には続けたことを辞めるのを凄くもったいなく感じるというものがありました。<br />
+大学時代には、一日一冊づつ本を読んでいて、たまたま数十日続けたところで辞めるのがもったいなくなり、<br />
+結局1000日ぐらい毎日本を読み続ける、みたいな事をするぐらいには、<br />
 ある程度続いたものを途中で辞めるのを嫌う性格です。</p>
 
-<p>この性質を利用し、最初のアウトプットを頑張って続けている状態から、<br>
-低いコストで継続してアウトプットを続けられれば、以降はそれを途中でやめるのがもったいなくなり、<br>
+<p>この性質を利用し、最初のアウトプットを頑張って続けている状態から、<br />
+低いコストで継続してアウトプットを続けられれば、以降はそれを途中でやめるのがもったいなくなり、<br />
 継続的なアウトプットが出来るのではないか？と考えました。</p>
 
-<p>おそらくは数日かけてじっくり練ったアウトプットよりかは質が落ちますが、<br>
-ほとんど出ない質のいいアウトプットより、継続的に低い質のアウトプットをした方が、<br>
+<p>おそらくは数日かけてじっくり練ったアウトプットよりかは質が落ちますが、<br />
+ほとんど出ない質のいいアウトプットより、継続的に低い質のアウトプットをした方が、<br />
 私にとっては良い影響になると考えました。</p>
 
-<h1 id="tocAnchor-1-3">ルール設定</h1>
+<h1 id="ルール設定:799e34746e5b8882c14c5cfa98f7df38">ルール設定</h1>
 
-<p>数日程度なら意思の力で何とかなるため、それを低コストで継続的に行いやすく、<br>
+<p>数日程度なら意思の力で何とかなるため、それを低コストで継続的に行いやすく、<br />
 かつ続けるうちに辞めるのが勿体ないようなルール設定を作ります。</p>
 
-<h2 id="tocAnchor-1-3-1">1. アウトプットは外部に公開</h2>
+<h2 id="1-アウトプットは外部に公開:799e34746e5b8882c14c5cfa98f7df38">1. アウトプットは外部に公開</h2>
 
-<p>自分だけにしか見えないところにアウトプットすると、<br>
-結局なんだかんだでやらない未来が容易に想像できるため、必ず外部公開します。<br>
-今回みたいに定期的に続けてますエントリを書くことで、万が一検証されたら嘘がばれる…という力が働き、<br>
-サボったのをごまかすことがなくなると考えました。<br>
+<p>自分だけにしか見えないところにアウトプットすると、<br />
+結局なんだかんだでやらない未来が容易に想像できるため、必ず外部公開します。<br />
+今回みたいに定期的に続けてますエントリを書くことで、万が一検証されたら嘘がばれる…という力が働き、<br />
+サボったのをごまかすことがなくなると考えました。<br />
 (検証されるかは重要ではなく、検証される可能性があるだけでサボり抑止には十分)</p>
 
-<h2 id="tocAnchor-1-3-2">2. １日１コミット以上Githubにpush</h2>
+<h2 id="2-１日１コミット以上githubにpush:799e34746e5b8882c14c5cfa98f7df38">2. １日１コミット以上Githubにpush</h2>
 
-<p>毎日続けた事を記録するのはとてもとても面倒です。<br>
-ですが、Githubなら最初の画像のように、コミットがあった場合にそれを可視化して表示してくれます。<br>
-そのため、アウトプットをコミットすることでGithubにpushするだけで良くなり、<br>
-前述の外部公開するという条件も同時に満たせるためかなり敷居が下がります。<br>
-特に、プログラミング関係の作業がそのまま記録できたり、ブログをOctopressにしているため、<br>
+<p>毎日続けた事を記録するのはとてもとても面倒です。<br />
+ですが、Githubなら最初の画像のように、コミットがあった場合にそれを可視化して表示してくれます。<br />
+そのため、アウトプットをコミットすることでGithubにpushするだけで良くなり、<br />
+前述の外部公開するという条件も同時に満たせるためかなり敷居が下がります。<br />
+特に、プログラミング関係の作業がそのまま記録できたり、ブログをOctopressにしているため、<br />
 新しいエントリを書くのもコミットになっているという所も大きいです。</p>
 
-<h2 id="tocAnchor-1-3-3">3. コミットを溜めるのは可</h2>
+<h2 id="3-コミットを溜めるのは可:799e34746e5b8882c14c5cfa98f7df38">3. コミットを溜めるのは可</h2>
 
-<p>風邪を引いたり、仕事が忙しいときなどはどうしても何も出来ない場合があります。<br>
-そんな場合に、事前にブログの記事やコミット等を溜めておき、当日は公開するだけというのもありとしました。<br>
-今回の最大の目的は継続的なアウトプットであり、<br>
+<p>風邪を引いたり、仕事が忙しいときなどはどうしても何も出来ない場合があります。<br />
+そんな場合に、事前にブログの記事やコミット等を溜めておき、当日は公開するだけというのもありとしました。<br />
+今回の最大の目的は継続的なアウトプットであり、<br />
 毎日アウトプットするのは私の性格を利用して継続的アウトプットを成し遂げるための手段に過ぎません。</p>
 
-<p>そのため、継続的なアウトプットが実現するならば、事前にそれを溜めておくのは良しとしました。<br>
-特にこの方法は途中で辞めるのがもったいないと感じるという所を利用して、継続的アウトプットを実現しているため、<br>
+<p>そのため、継続的なアウトプットが実現するならば、事前にそれを溜めておくのは良しとしました。<br />
+特にこの方法は途中で辞めるのがもったいないと感じるという所を利用して、継続的アウトプットを実現しているため、<br />
 一度でもそれが崩れると挽回は不可能であるためです。</p>
 
-<p>また、私はゲームでもHPやアイテム、リソースを十分すぎるほどため込むのが好きな正確なため、<br>
-何日分の溜めがあると可視化されると、十分な量の溜めを確保しようと動くだろうという予想もしていました。<br>
-gitだと別の日のコミットも、git rebase –ignore-dateでそのときのコミットに書き換えられるため、<br>
+<p>また、私はゲームでもHPやアイテム、リソースを十分すぎるほどため込むのが好きな正確なため、<br />
+何日分の溜めがあると可視化されると、十分な量の溜めを確保しようと動くだろうという予想もしていました。<br />
+gitだと別の日のコミットも、git rebase &ndash;ignore-dateでそのときのコミットに書き換えられるため、<br />
 溜めを作りやすい状態でもあります。</p>
 
-<h2 id="tocAnchor-1-3-4">4. 意味のあるコミットだけカウント</h2>
+<h2 id="4-意味のあるコミットだけカウント:799e34746e5b8882c14c5cfa98f7df38">4. 意味のあるコミットだけカウント</h2>
 
-<p>Githubだとpull-requestをマージするだけで1コミットが作られるため、ボタンを押すだけで1日分稼げてしまいます。<br>
-ですが、これは当初の継続的なアウトプットには繋がらないため、<br>
+<p>Githubだとpull-requestをマージするだけで1コミットが作られるため、ボタンを押すだけで1日分稼げてしまいます。<br />
+ですが、これは当初の継続的なアウトプットには繋がらないため、<br />
 最低限意味のあるコミットを行うのをルールとしました。</p>
 
-<p>ただし、今回の目的は定期的なアウトプットであるため、アウトプットの質自体は考慮せず、<br>
-どんなに小さくてもバグ修正や、関数単位では出来ているものは1コミットとして考えるようにしました。<br>
+<p>ただし、今回の目的は定期的なアウトプットであるため、アウトプットの質自体は考慮せず、<br />
+どんなに小さくてもバグ修正や、関数単位では出来ているものは1コミットとして考えるようにしました。<br />
 無意味なコミットは禁止するが、あまり価値のないコミットでも許可するといった具合です。</p>
 
-<h1 id="tocAnchor-1-8">150日続けた結果</h1>
+<h1 id="150日続けた結果:799e34746e5b8882c14c5cfa98f7df38">150日続けた結果</h1>
 
-<h2 id="tocAnchor-1-8-1">利点</h2>
+<h2 id="利点:799e34746e5b8882c14c5cfa98f7df38">利点</h2>
 
-<p>誰かが「何かをやめる最良の方法は、別の何かを始めることだ」と言っていましたが、まさにそれを感じでいます。<br>
-一日の時間は限られているため、この継続的にアウトプットすることより優先度が低いものは後回しになり、<br>
-惰性で続けていただけの事は自然と後回し、辞めていきました。<br>
-どうしても続けたいような事の場合、その作業にかかる時間を削ろうと、<br>
+<p>誰かが「何かをやめる最良の方法は、別の何かを始めることだ」と言っていましたが、まさにそれを感じでいます。<br />
+一日の時間は限られているため、この継続的にアウトプットすることより優先度が低いものは後回しになり、<br />
+惰性で続けていただけの事は自然と後回し、辞めていきました。<br />
+どうしても続けたいような事の場合、その作業にかかる時間を削ろうと、<br />
 作業の補助をするプログラムを作ったりするようにもなりました。</p>
 
-<p>また、溜めはあればあるほど安心できるため、暇なときはすぐに何かまとめられるネタが無いか、<br>
-新しいパッケージにするようなことが無いかを考えるようになり、いろいろな技術などに手を出すようになりました。<br>
-特に、何となく理解しているが検証していないことに対して検証するようになり、<br>
+<p>また、溜めはあればあるほど安心できるため、暇なときはすぐに何かまとめられるネタが無いか、<br />
+新しいパッケージにするようなことが無いかを考えるようになり、いろいろな技術などに手を出すようになりました。<br />
+特に、何となく理解しているが検証していないことに対して検証するようになり、<br />
 正確な知識を作れている…きがします。</p>
 
-<h2 id="tocAnchor-1-8-2">問題点</h2>
+<h2 id="問題点:799e34746e5b8882c14c5cfa98f7df38">問題点</h2>
 
-<h3>外に出せない作業をやらなくなる</h3>
+<h3 id="外に出せない作業をやらなくなる:799e34746e5b8882c14c5cfa98f7df38">外に出せない作業をやらなくなる</h3>
 
-<p>部屋の片付けや不要なものの整理、サイトのクローリングなど、公開出来ない作業をしにくくなります。<br>
-前者に関しては生活に支障がでるとさすがにやらざるを得ないため問題がありませんが、<br>
+<p>部屋の片付けや不要なものの整理、サイトのクローリングなど、公開出来ない作業をしにくくなります。<br />
+前者に関しては生活に支障がでるとさすがにやらざるを得ないため問題がありませんが、<br />
 後者は毎日やってるのを自動化したら楽になるが、公開できないので手をつけ辛いといった問題があります。</p>
 
-<p>これに関しては溜めを作ることである程度時間のコントロールが可能になり、<br>
-「自動化すれば日々の作業量が減って毎日楽になるし、溜めを数日分使ってでもやる」<br>
+<p>これに関しては溜めを作ることである程度時間のコントロールが可能になり、<br />
+「自動化すれば日々の作業量が減って毎日楽になるし、溜めを数日分使ってでもやる」<br />
 という事が出来るようになったため、だいぶ解決しました。</p>
 
-<h3>細かく終わる作業ばかり選ぶようになる</h3>
+<h3 id="細かく終わる作業ばかり選ぶようになる:799e34746e5b8882c14c5cfa98f7df38">細かく終わる作業ばかり選ぶようになる</h3>
 
-<p>数日かけてやる作業や、まとめにくい作業（コードリーディングとか）が出来なくなってしまいます。<br>
-これは、時間をかけてもせいぜい1コミット程度にしかならず、<br>
-細かい作業でコミット量を増やした方が溜をたくさん作れるため、<br>
+<p>数日かけてやる作業や、まとめにくい作業（コードリーディングとか）が出来なくなってしまいます。<br />
+これは、時間をかけてもせいぜい1コミット程度にしかならず、<br />
+細かい作業でコミット量を増やした方が溜をたくさん作れるため、<br />
 このルール下ではそちらの方が合理的な選択になってしまうのが原因です。</p>
 
-<p>実際、アドベントカレンダーで書いたラブライブ関連の記事は2ヶ月ぐらい少しずつ作っていましたが、<br>
-最終的には3日分のコミットにしかなっていません。<br>
+<p>実際、アドベントカレンダーで書いたラブライブ関連の記事は2ヶ月ぐらい少しずつ作っていましたが、<br />
+最終的には3日分のコミットにしかなっていません。<br />
 作業を選べばおそらく同じ時間で10倍ぐらいのコミットが稼げてしまうため、費用対効果がかなり薄いです。</p>
 
-<p>今回の目的は定期的にアウトプットすることであり、たくさんの小粒のコミットを生み出すこと自体は問題ありません。<br>
-ですが、同じ状態を維持できるなら、アウトプットの質は上げたほうが望ましいです。<br>
-一応溜めがあれば、それを消費して数日かかる長い作業も出来ますが、<br>
-費用対効果が悪いために手を出しにくいという問題は解決していません。<br>
+<p>今回の目的は定期的にアウトプットすることであり、たくさんの小粒のコミットを生み出すこと自体は問題ありません。<br />
+ですが、同じ状態を維持できるなら、アウトプットの質は上げたほうが望ましいです。<br />
+一応溜めがあれば、それを消費して数日かかる長い作業も出来ますが、<br />
+費用対効果が悪いために手を出しにくいという問題は解決していません。<br />
 ここについては今後、ブログに途中作業を書くのは良しとするなどのルールを加えて解決していこうかと思います。</p>
 
-<h1 id="tocAnchor-1-11">まとめ</h1>
+<h1 id="まとめ:799e34746e5b8882c14c5cfa98f7df38">まとめ</h1>
 
-<p>世の中にはこんな面倒な決め事をしなくても、価値のある行動を延々と続けられる凄い人もいますが、<br>
-私みたいなまじめ系クズ＋意志薄弱でも、その性格を分析して適切なルールを敷いて行動することで、<br>
+<p>世の中にはこんな面倒な決め事をしなくても、価値のある行動を延々と続けられる凄い人もいますが、<br />
+私みたいなまじめ系クズ＋意志薄弱でも、その性格を分析して適切なルールを敷いて行動することで、<br />
 少なくとも三日坊主にならずに物事を続けられるぐらいには持って行くことが出来ます。</p>
 
-<p>このルールは、継続している状態を辞めてしまうのは勿体ないという、<br>
+<p>このルールは、継続している状態を辞めてしまうのは勿体ないという、<br />
 私の性格や思考に完全に合うように作っているため、他の人の場合は全く違うルールが必要です。</p>
 
-<p>そのため、はてなブックマークのブックマーク数が増えることや、テキストファイルのバイト数が増えること、<br>
-自分の友人の反応など、そういったことがいいと感じる人は、<br>
+<p>そのため、はてなブックマークのブックマーク数が増えることや、テキストファイルのバイト数が増えること、<br />
+自分の友人の反応など、そういったことがいいと感じる人は、<br />
 それを継続のベースにしたルールを作る必要があります。</p>
 
-<p>ルールの作成は大変ですが、その人にあったルールを作ることで、<br>
+<p>ルールの作成は大変ですが、その人にあったルールを作ることで、<br />
 同じように何かを継続したり、もっと凄いことも出来るようになる…と思います。</p>
 
-<p>ただ、私の感覚として、できる限り頑張るといった意思の力に頼る事は避けた方がいいと思います。<br>
-やる気は容易に無くなるため、やる気が無い状態でもいかに継続するかについては、<br>
+<p>ただ、私の感覚として、できる限り頑張るといった意思の力に頼る事は避けた方がいいと思います。<br />
+やる気は容易に無くなるため、やる気が無い状態でもいかに継続するかについては、<br />
 ルールに上手く含めておいた方がいいと思います。</p>
-</div>
 
-  <footer>
-    <p class="meta">
+                </div>
 
-      
+            </div>
 
-      
-      <time datetime="2014-12-31 12:00:16 +0900" pubdate></time>
-      
+            
 
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/12/31/150-output/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/12/31/150-output/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/12/31/150-output/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/12/31/150-output/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+

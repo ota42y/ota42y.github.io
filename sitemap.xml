@@ -1,520 +1,524 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/03/09/summary/</loc>
-    <lastmod>2015-03-09T21:32:03+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2015-03-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/03/02/summary/</loc>
-    <lastmod>2015-03-02T07:38:05+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-10/</loc>
+    <lastmod>2015-03-09T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</loc>
-    <lastmod>2015-02-27T07:45:57+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-09/</loc>
+    <lastmod>2015-03-02T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/22/summary/</loc>
-    <lastmod>2015-02-22T11:22:44+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</loc>
+    <lastmod>2015-02-27T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/15/summary/</loc>
-    <lastmod>2015-02-15T14:42:50+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-08/</loc>
+    <lastmod>2015-02-22T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</loc>
-    <lastmod>2015-02-11T18:54:24+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-07/</loc>
+    <lastmod>2015-02-15T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/10/workflow-plugin/</loc>
-    <lastmod>2015-02-10T07:51:32+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</loc>
+    <lastmod>2015-02-11T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/09/summary/</loc>
-    <lastmod>2015-02-09T07:37:10+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/02/10/workflow-plugin/</loc>
+    <lastmod>2015-02-10T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</loc>
-    <lastmod>2015-02-03T07:56:01+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-06/</loc>
+    <lastmod>2015-02-09T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/02/02/summary/</loc>
-    <lastmod>2015-02-02T22:14:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</loc>
+    <lastmod>2015-02-03T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</loc>
-    <lastmod>2015-01-31T14:39:49+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-05/</loc>
+    <lastmod>2015-02-02T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</loc>
-    <lastmod>2015-01-28T07:46:54+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</loc>
+    <lastmod>2015-01-31T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/26/summary/</loc>
-    <lastmod>2015-01-26T22:11:46+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</loc>
+    <lastmod>2015-01-28T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/25/wakate2015w/</loc>
-    <lastmod>2015-01-25T07:51:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-04/</loc>
+    <lastmod>2015-01-26T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/23/ram-disk/</loc>
-    <lastmod>2015-01-23T07:47:36+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/25/wakate2015w/</loc>
+    <lastmod>2015-01-25T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/21/android-dict/</loc>
-    <lastmod>2015-01-21T07:37:19+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/23/ram-disk/</loc>
+    <lastmod>2015-01-23T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/17/summary/</loc>
-    <lastmod>2015-01-17T13:38:07+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/21/android-dict/</loc>
+    <lastmod>2015-01-21T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/11/jenkins-conference/</loc>
-    <lastmod>2015-01-11T18:26:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-03/</loc>
+    <lastmod>2015-01-17T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/10/summary/</loc>
-    <lastmod>2015-01-10T20:44:25+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/11/jenkins-conference/</loc>
+    <lastmod>2015-01-11T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/07/mac-ghc-cr/</loc>
-    <lastmod>2015-01-07T07:55:16+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/pages/summary/2015/week-02/</loc>
+    <lastmod>2015-01-10T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</loc>
-    <lastmod>2015-01-06T07:37:34+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/07/mac-ghc-cr/</loc>
+    <lastmod>2015-01-07T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/05/c-inline/</loc>
-    <lastmod>2015-01-05T07:51:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</loc>
+    <lastmod>2015-01-06T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/04/unix-boox/</loc>
-    <lastmod>2015-01-04T11:22:27+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/05/c-inline/</loc>
+    <lastmod>2015-01-05T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/03/unix-fork/</loc>
-    <lastmod>2015-01-03T20:15:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/04/unix-boox/</loc>
+    <lastmod>2015-01-04T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2015/01/01/1231-hackathon/</loc>
-    <lastmod>2015-01-01T13:01:08+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/03/unix-fork/</loc>
+    <lastmod>2015-01-03T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/31/150-output/</loc>
-    <lastmod>2014-12-31T12:00:16+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2015/01/01/1231-hackathon/</loc>
+    <lastmod>2015-01-01T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/30/link2sd/</loc>
-    <lastmod>2014-12-30T10:24:27+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/31/150-output/</loc>
+    <lastmod>2014-12-31T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/28/memopad-root/</loc>
-    <lastmod>2014-12-28T12:50:49+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/30/link2sd/</loc>
+    <lastmod>2014-12-30T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/27/lovelive-age/</loc>
-    <lastmod>2014-12-27T12:11:29+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/28/memopad-root/</loc>
+    <lastmod>2014-12-28T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/26/lovelive-cp/</loc>
-    <lastmod>2014-12-26T07:41:49+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/27/lovelive-age/</loc>
+    <lastmod>2014-12-27T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/25/lovelive/</loc>
-    <lastmod>2014-12-25T07:00:00+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/26/lovelive-cp/</loc>
+    <lastmod>2014-12-26T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/22/graphviz/</loc>
-    <lastmod>2014-12-22T07:42:27+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/25/lovelive/</loc>
+    <lastmod>2014-12-25T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/21/abc2014w/</loc>
-    <lastmod>2014-12-21T20:57:45+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/22/graphviz/</loc>
+    <lastmod>2014-12-22T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/19/gorm/</loc>
-    <lastmod>2014-12-19T07:40:11+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/21/abc2014w/</loc>
+    <lastmod>2014-12-21T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/03/go-yaml-struct/</loc>
-    <lastmod>2014-12-03T07:46:50+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/19/gorm/</loc>
+    <lastmod>2014-12-19T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</loc>
-    <lastmod>2014-12-01T07:42:00+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/03/go-yaml-struct/</loc>
+    <lastmod>2014-12-03T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/30/octopress-update/</loc>
-    <lastmod>2014-11-30T07:50:22+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</loc>
+    <lastmod>2014-12-01T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/29/bpstudy-87/</loc>
-    <lastmod>2014-11-29T17:17:19+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/30/octopress-update/</loc>
+    <lastmod>2014-11-30T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</loc>
-    <lastmod>2014-11-27T07:44:41+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/29/bpstudy-87/</loc>
+    <lastmod>2014-11-29T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/26/docker/</loc>
-    <lastmod>2014-11-26T07:33:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/27/jenkins-build-flow-plugin/</loc>
+    <lastmod>2014-11-27T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/25/ruby-hash/</loc>
-    <lastmod>2014-11-25T07:55:14+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/26/docker/</loc>
+    <lastmod>2014-11-26T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/20/github-pages-new-ip/</loc>
-    <lastmod>2014-11-20T07:54:24+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/25/ruby-hash/</loc>
+    <lastmod>2014-11-25T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/13/go-yaml/</loc>
-    <lastmod>2014-11-13T07:31:35+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/20/github-pages-new-ip/</loc>
+    <lastmod>2014-11-20T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/12/scfes-update/</loc>
-    <lastmod>2014-11-12T11:28:23+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/13/go-yaml/</loc>
+    <lastmod>2014-11-13T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/10/hubot-test/</loc>
-    <lastmod>2014-11-10T07:54:39+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/12/scfes-update/</loc>
+    <lastmod>2014-11-12T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/08/size-t/</loc>
-    <lastmod>2014-11-08T13:39:51+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/10/hubot-test/</loc>
+    <lastmod>2014-11-10T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</loc>
-    <lastmod>2014-11-07T07:42:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/08/size-t/</loc>
+    <lastmod>2014-11-08T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</loc>
-    <lastmod>2014-11-06T07:24:31+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/07/cpp-64bit-cast/</loc>
+    <lastmod>2014-11-07T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/11/01/hubot-reply/</loc>
-    <lastmod>2014-11-01T21:02:11+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/06/cpp-void-pointer/</loc>
+    <lastmod>2014-11-06T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/28/hubot-scfes/</loc>
-    <lastmod>2014-10-28T07:34:32+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/11/01/hubot-reply/</loc>
+    <lastmod>2014-11-01T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/26/pty-ieo-error/</loc>
-    <lastmod>2014-10-26T14:06:39+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/28/hubot-scfes/</loc>
+    <lastmod>2014-10-28T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/23/javascript-callback/</loc>
-    <lastmod>2014-10-23T07:41:23+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/26/pty-ieo-error/</loc>
+    <lastmod>2014-10-26T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/08/go-mysql-time/</loc>
-    <lastmod>2014-10-08T07:44:37+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/23/javascript-callback/</loc>
+    <lastmod>2014-10-23T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/05/shinchoku/</loc>
-    <lastmod>2014-10-05T11:07:10+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/08/go-mysql-time/</loc>
+    <lastmod>2014-10-08T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/04/go-mysql/</loc>
-    <lastmod>2014-10-04T18:18:22+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/05/shinchoku/</loc>
+    <lastmod>2014-10-05T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/03/hdd-post/</loc>
-    <lastmod>2014-10-03T07:36:29+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/04/go-mysql/</loc>
+    <lastmod>2014-10-04T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</loc>
-    <lastmod>2014-10-02T07:35:04+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/03/hdd-post/</loc>
+    <lastmod>2014-10-03T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/29/npm-publish/</loc>
-    <lastmod>2014-09-29T07:49:16+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</loc>
+    <lastmod>2014-10-02T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/26/shell-shock/</loc>
-    <lastmod>2014-09-26T07:35:47+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/29/npm-publish/</loc>
+    <lastmod>2014-09-29T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/23/cpp-build/</loc>
-    <lastmod>2014-09-23T09:15:48+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/26/shell-shock/</loc>
+    <lastmod>2014-09-26T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/22/cpp-include/</loc>
-    <lastmod>2014-09-22T07:50:08+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/23/cpp-build/</loc>
+    <lastmod>2014-09-23T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/19/twitter-callback/</loc>
-    <lastmod>2014-09-19T07:49:01+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/22/cpp-include/</loc>
+    <lastmod>2014-09-22T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/18/travisci-meetup/</loc>
-    <lastmod>2014-09-18T08:09:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/19/twitter-callback/</loc>
+    <lastmod>2014-09-19T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/16/stack-heap/</loc>
-    <lastmod>2014-09-16T07:46:07+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/18/travisci-meetup/</loc>
+    <lastmod>2014-09-18T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/15/wakate2014/</loc>
-    <lastmod>2014-09-15T21:14:50+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/16/stack-heap/</loc>
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</loc>
-    <lastmod>2014-09-14T13:41:49+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/15/wakate2014/</loc>
+    <lastmod>2014-09-15T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/13/sudo-error/</loc>
-    <lastmod>2014-09-13T13:21:06+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/14/wakate2014-presentation/</loc>
+    <lastmod>2014-09-14T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/12/init-d/</loc>
-    <lastmod>2014-09-12T07:40:38+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/13/sudo-error/</loc>
+    <lastmod>2014-09-13T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/11/strncpy-bug/</loc>
-    <lastmod>2014-09-11T07:45:25+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/12/init-d/</loc>
+    <lastmod>2014-09-12T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/10/golang-file-split/</loc>
-    <lastmod>2014-09-10T07:48:24+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/11/strncpy-bug/</loc>
+    <lastmod>2014-09-11T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/09/golang-cron/</loc>
-    <lastmod>2014-09-09T07:32:37+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/10/golang-file-split/</loc>
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/08/password-word/</loc>
-    <lastmod>2014-09-08T07:44:40+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/09/golang-cron/</loc>
+    <lastmod>2014-09-09T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</loc>
-    <lastmod>2014-09-07T09:19:58+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/08/password-word/</loc>
+    <lastmod>2014-09-08T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/06/cedec2014-09-03/</loc>
-    <lastmod>2014-09-06T10:20:41+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/07/git-copy-current-branch/</loc>
+    <lastmod>2014-09-07T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/04/centos7-android-build/</loc>
-    <lastmod>2014-09-04T07:46:28+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/06/cedec2014-09-03/</loc>
+    <lastmod>2014-09-06T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/03/mgo-consistency/</loc>
-    <lastmod>2014-09-03T07:12:45+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/04/centos7-android-build/</loc>
+    <lastmod>2014-09-04T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/02/go-mongodb/</loc>
-    <lastmod>2014-09-02T07:40:29+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/03/mgo-consistency/</loc>
+    <lastmod>2014-09-03T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/09/01/mongodb-explain/</loc>
-    <lastmod>2014-09-01T08:01:51+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/02/go-mongodb/</loc>
+    <lastmod>2014-09-02T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/31/go-anaconda/</loc>
-    <lastmod>2014-08-31T10:55:48+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/09/01/mongodb-explain/</loc>
+    <lastmod>2014-09-01T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/30/sending-authentication-information/</loc>
-    <lastmod>2014-08-30T10:07:58+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/31/go-anaconda/</loc>
+    <lastmod>2014-08-31T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/29/hubot-post-server/</loc>
-    <lastmod>2014-08-29T07:42:48+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/30/sending-authentication-information/</loc>
+    <lastmod>2014-08-30T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/28/ios-build/</loc>
-    <lastmod>2014-08-28T07:42:55+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/29/hubot-post-server/</loc>
+    <lastmod>2014-08-29T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/27/arduino-browser/</loc>
-    <lastmod>2014-08-27T07:52:09+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/28/ios-build/</loc>
+    <lastmod>2014-08-28T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/26/optparse/</loc>
-    <lastmod>2014-08-26T07:49:10+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/27/arduino-browser/</loc>
+    <lastmod>2014-08-27T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/25/git-new-workdir/</loc>
-    <lastmod>2014-08-25T07:42:04+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/26/optparse/</loc>
+    <lastmod>2014-08-26T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/24/selenium/</loc>
-    <lastmod>2014-08-24T18:53:52+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/25/git-new-workdir/</loc>
+    <lastmod>2014-08-25T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/22/mocha-test/</loc>
-    <lastmod>2014-08-22T07:52:16+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/24/selenium/</loc>
+    <lastmod>2014-08-24T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/21/intellij-node/</loc>
-    <lastmod>2014-08-21T07:40:33+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/22/mocha-test/</loc>
+    <lastmod>2014-08-22T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</loc>
-    <lastmod>2014-08-20T07:52:49+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/21/intellij-node/</loc>
+    <lastmod>2014-08-21T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/17/local-storage/</loc>
-    <lastmod>2014-08-17T10:56:58+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/20/pixiv-follow-filter/</loc>
+    <lastmod>2014-08-20T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/16/evernote-url/</loc>
-    <lastmod>2014-08-16T09:46:56+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/17/local-storage/</loc>
+    <lastmod>2014-08-17T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/11/find-if/</loc>
-    <lastmod>2014-08-11T07:17:02+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/16/evernote-url/</loc>
+    <lastmod>2014-08-16T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/10/evernote-link/</loc>
-    <lastmod>2014-08-10T18:03:43+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/11/find-if/</loc>
+    <lastmod>2014-08-11T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/08/09/irc/</loc>
-    <lastmod>2014-08-09T22:14:32+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/10/evernote-link/</loc>
+    <lastmod>2014-08-10T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</loc>
-    <lastmod>2014-07-21T21:12:36+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/09/irc/</loc>
+    <lastmod>2014-08-09T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/</loc>
-    <lastmod>2014-07-18T00:00:00+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/08/05/msgpack/</loc>
+    <lastmod>2014-08-05T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/06/03/github-kaigi/</loc>
-    <lastmod>2014-06-03T22:49:12+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/07/21/jenkins-architecture/</loc>
+    <lastmod>2014-07-21T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/05/13/browser-networking/</loc>
-    <lastmod>2014-05-13T22:30:54+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/</loc>
+    <lastmod>2014-07-18T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2014/04/08/atom-plugin1/</loc>
-    <lastmod>2014-04-08T22:33:14+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/06/03/github-kaigi/</loc>
+    <lastmod>2014-06-03T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2013/11/10/rails-trace-1/</loc>
-    <lastmod>2013-11-10T22:23:00+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/05/13/browser-networking/</loc>
+    <lastmod>2014-05-13T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/2013/09/25/octopress/</loc>
-    <lastmod>2013-09-25T07:49:00+09:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://localhost:1313/blog/2014/04/08/atom-plugin1/</loc>
+    <lastmod>2014-04-08T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/blog/archives/</loc>
-    <lastmod>2015-03-09T21:44:32+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>http://localhost:1313/blog/2013/11/10/rails-trace-1/</loc>
+    <lastmod>2013-11-10T00:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://ota42y.com/</loc>
-    <lastmod>2015-03-09T21:44:32+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>http://localhost:1313/blog/2013/09/25/octopress/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
   </url>
+  
+  <url>
+    <loc>http://localhost:1313/about/</loc>
+  </url>
+  
 </urlset>

@@ -1,230 +1,194 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <!-- include head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="CEDEC2014 9月3日まとめ">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>CEDEC2014 9月3日まとめ | おおたの物置</title>
     
 
-<meta charset="utf-8">
-<title>CEDEC2014 9月3日まとめ - おおたの物置</title>
-<meta name="author" content="ota42y">
-<meta name="description"
-      content="CEDEC2014 9月3日まとめ Contents 1 ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開
-2 「楽しさ」の設計と評価～我々はどこで失敗し，どこへ向かうのか
-3 「サーバとの通信が切れました」の無いゲームのために、インターネットと出来る事。
-4 「ゲーム実況」 &hellip;">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
 
-<link rel="canonical" href="http://ota42y.com/blog/2014/09/06/cedec2014-09-03">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/stylesheets/toc.css"
-media="screen, projection"
-rel="stylesheet"
-type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="おおたの物置"
-      type="application/atom+xml">
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>CEDEC2014 9月3日まとめ</h1>
+                    
+
+<time datetime="2014-09-06" class="post_data">
+2014-09-06
+</time>
 
 
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
 
 
 
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
-	
-<hgroup>
-  <h1><a href="/">おおたの物置</a></h1>
-  
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-<div id="social-links">
-  <ul>
-    
-    <li id="social-links-github">
-      <a title="GitHub" href="https://github.com/ota42y">github</a>
-    </li>
-    
-    
-    <li id="social-links-twitter">
-      <a title="twitter" href="http://twitter.com/ota42y">twitter</a>
-    </li>
-    
-    
-    <li id="social-links-feed">
-      <a title="feed" href="http://ota42y.com/atom.xml">feed</a>
-    </li>
-  </ul>
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/text">text</a>
 </div>
 
 
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	
-
-  
 
 
-<article class="entry" role="article">
+<div class="tags">
+    <div class="separator">|</div>
 
-  <header>
-    <h1 class="entry_title">CEDEC2014 9月3日まとめ</h2>
+    <div class="post_data">tags: [</div>
+
     
-  </header>
+    <div class="post_data">
+        <a href="/tags/conference">conference</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
 
-  <div class="entry_content"><div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
-<div id="toctitle"><h2>Contents</h2></div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
 <ul>
-<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開</span></a></li>
-<li class="toc_level-1 toc_section-2"><a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">「楽しさ」の設計と評価～我々はどこで失敗し，どこへ向かうのか</span></a></li>
-<li class="toc_level-1 toc_section-3"><a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">「サーバとの通信が切れました」の無いゲームのために、インターネットと出来る事。</span></a></li>
-<li class="toc_level-1 toc_section-4"><a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">「ゲーム実況」時代のゲームプロモーション　niconicoの事例から</span></a></li>
-<li class="toc_level-1 toc_section-5"><a href="#tocAnchor-1-5"><span class="tocnumber">5</span> <span class="toctext">Cocos2d-x ver.3.xで進む2Dのリッチゲーム開発</span></a></li>
+<li><a href="#ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開:87dcdd3e1492e653f5cc968938cacd4d">ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開</a></li>
+<li><a href="#楽しさ-の設計と評価-我々はどこで失敗し-どこへ向かうのか:87dcdd3e1492e653f5cc968938cacd4d">「楽しさ」の設計と評価～我々はどこで失敗し，どこへ向かうのか</a></li>
+<li><a href="#サーバとの通信が切れました-の無いゲームのために-インターネットと出来る事:87dcdd3e1492e653f5cc968938cacd4d">「サーバとの通信が切れました」の無いゲームのために、インターネットと出来る事。</a></li>
+<li><a href="#ゲーム実況-時代のゲームプロモーション-niconicoの事例から:87dcdd3e1492e653f5cc968938cacd4d">「ゲーム実況」時代のゲームプロモーション　niconicoの事例から</a></li>
+<li><a href="#cocos2d-x-ver-3-xで進む2dのリッチゲーム開発:87dcdd3e1492e653f5cc968938cacd4d">Cocos2d-x ver.3.xで進む2Dのリッチゲーム開発</a></li>
 </ul>
-</td></tr></tbody></table></div>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
 <p>この日だけ参加したのでまとめ</p>
 
-<h1 id="tocAnchor-1-1">ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開</h1>
+<h1 id="ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開:87dcdd3e1492e653f5cc968938cacd4d">ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開</h1>
 
 <ul>
-<li>
-<p>ウェアラブルの特徴</p>
+<li><p>ウェアラブルの特徴</p>
 
 <ul>
-<li>コンピュータを服のように着る
-
-<ul>
+<li>コンピュータを服のように着る</li>
 <li>常時ON</li>
 <li>生活密着</li>
 <li>ハンズフリー</li>
-</ul>
-</li>
 <li>Occlusは基本的にウェアラブルではない</li>
-</ul>
-</li>
-<li>
-<p>ウェアラブルは実は難しい</p>
+</ul></li>
+
+<li><p>ウェアラブルは実は難しい</p>
 
 <ul>
 <li>装着して利用してみないと解らないことがたくさん</li>
-<li>ウェアラブルは一日中身につける（≠持ち歩く）
-
-<ul>
+<li>ウェアラブルは一日中身につける（≠持ち歩く）</li>
 <li>モバイル機器とはまた別のノウハウが必要なのか。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>汎用vs専用</p>
+</ul></li>
+
+<li><p>汎用vs専用</p>
 
 <ul>
-<li>汎用
-
-<ul>
+<li>汎用</li>
 <li>SmartWatch</li>
 <li>高性能高機能</li>
 <li>まだ実用性低い</li>
-</ul>
-</li>
-<li>専用
-
-<ul>
+<li>専用</li>
 <li>アクションカメラとか　</li>
-</ul>
-</li>
 <li>デジカメ、音楽プレーヤー等と同じく、少しづつ汎用の性能が上がっていく</li>
-</ul>
-</li>
-<li>
-<p>ウェアラブルゲームではリアルの遊びが重要</p>
+</ul></li>
+
+<li><p>ウェアラブルゲームではリアルの遊びが重要</p>
 
 <ul>
 <li>ちょっとした時間に暇つぶし</li>
 <li>ジョギングなど、別のことをしながら</li>
 <li>ファッション</li>
 <li>コンピュータはバーチャル空間に伸びたので、それとは違う道</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
-
-<h1 id="tocAnchor-1-2">「楽しさ」の設計と評価～我々はどこで失敗し，どこへ向かうのか</h1>
+<h1 id="楽しさ-の設計と評価-我々はどこで失敗し-どこへ向かうのか:87dcdd3e1492e653f5cc968938cacd4d">「楽しさ」の設計と評価～我々はどこで失敗し，どこへ向かうのか</h1>
 
 <ul>
-<li>
-<p>楽しさの評価</p>
+<li><p>楽しさの評価</p>
 
 <ul>
 <li>完成するよりも前に、それが面白いものなのか、どうすれば面白くなるのか？</li>
 <li>経験則やコンテンツに左右されない、一般的な評価手法を探すのが目的らしい</li>
-</ul>
-</li>
-<li>
-<p>心理学的手法</p>
+</ul></li>
+
+<li><p>心理学的手法</p>
 
 <ul>
 <li>アンケートとか</li>
-<li>かなりあやふや
-
-<ul>
+<li>かなりあやふや</li>
 <li>過去にやったゲームとか</li>
 <li>調整しました！と言われると、変わって無くても変わったと感じる</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>３つ以上のパラメータを同時に調整するのは困難</p>
+</ul></li>
+
+<li><p>３つ以上のパラメータを同時に調整するのは困難</p>
 
 <ul>
 <li>職人はベターは出せるがベストとは限らない</li>
 <li>パラメータか困難なものはよりわからない</li>
-<li>調整可能な項目をクリアして、調整困難な協会に時間をかけるのがベター
-
-<ul>
+<li>調整可能な項目をクリアして、調整困難な協会に時間をかけるのがベター</li>
 <li>調整可能
 
 <ul>
 <li>ロード時間のストレス</li>
 <li>ボタン反応の応答時間等</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>調整困難
-
-<ul>
+</ul></li>
+<li>調整困難</li>
 <li>ユーザに書ける適切なストレスとか</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>人間らしいAIの自動獲得</p>
+</ul></li>
+
+<li><p>人間らしいAIの自動獲得</p>
 
 <ul>
 <li>見ていて機械的な不自然さを感じない</li>
@@ -233,202 +197,125 @@ type="text/css">
 <ul>
 <li>人間の生物学的制約、人為的ミス・エラーの導入</li>
 <li>揺らぎ、遅れ、使える、技術・知識の不足、錯誤・失念</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>人間らしさの評価</p>
+</ul></li>
+</ul></li>
+
+<li><p>人間らしさの評価</p>
 
 <ul>
 <li>主観的実験（チューリングテスト）</li>
 <li>実験のインストラクションが異なると違ってくる</li>
-<li>マリオの動きの人間らしさ
-
-<ul>
+<li>マリオの動きの人間らしさ</li>
 <li>初心者にちょっとしたテクニックを教えると初心者に見えなくなる
 
 <ul>
 <li>人間らしさの評価が変化してしまう</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
 <li>実際はAIでも、AIと伝えるか人間と伝えるかで反応が全然違う</li>
-</ul>
-</li>
-<li>
-<p>演奏家は時間進行に伴って視聴者の心理をコントロールする</p>
+</ul></li>
+
+<li><p>演奏家は時間進行に伴って視聴者の心理をコントロールする</p>
 
 <ul>
-<li>場面場面での常道のコントロール
-
-<ul>
+<li>場面場面での常道のコントロール</li>
 <li>ゲームっぽい</li>
 <li>単調増加する音楽はつまらない
 
 <ul>
 <li>下がったり上がったりしつつ全体として上がっていく</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>音楽評価の難しさ</p>
+</ul></li>
+</ul></li>
+
+<li><p>音楽評価の難しさ</p>
 
 <ul>
 <li>一般性vs趣向に関する個人性</li>
 <li>蓼食う虫も好き好き</li>
-</ul>
-</li>
-<li>
-<p>脳センサについて</p>
+</ul></li>
+
+<li><p>脳センサについて</p>
 
 <ul>
-<li>脳をはかっただけじゃ何もわかれない
-
-<ul>
+<li>脳をはかっただけじゃ何もわかれない</li>
 <li>しっかりと差が解る実験をしたからわかる</li>
-</ul>
-</li>
-<li>相関関係が解っても因果関係が解らない
-
-<ul>
+<li>相関関係が解っても因果関係が解らない</li>
 <li>ここが活性化したけど、それってゲームが面白いから？</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
-
-<h1 id="tocAnchor-1-3">「サーバとの通信が切れました」の無いゲームのために、インターネットと出来る事。</h1>
+<h1 id="サーバとの通信が切れました-の無いゲームのために-インターネットと出来る事:87dcdd3e1492e653f5cc968938cacd4d">「サーバとの通信が切れました」の無いゲームのために、インターネットと出来る事。</h1>
 
 <p>口外禁止</p>
 
-<h1 id="tocAnchor-1-4">「ゲーム実況」時代のゲームプロモーション　niconicoの事例から</h1>
+<h1 id="ゲーム実況-時代のゲームプロモーション-niconicoの事例から:87dcdd3e1492e653f5cc968938cacd4d">「ゲーム実況」時代のゲームプロモーション　niconicoの事例から</h1>
 
-<p>口外禁止との会場アナウンスとOKのアナウンス両方流れてよくわからない。<br>
+<p>口外禁止との会場アナウンスとOKのアナウンス両方流れてよくわからない。<br />
 よって何も書かない。</p>
 
-<h1 id="tocAnchor-1-5">Cocos2d-x ver.3.xで進む2Dのリッチゲーム開発</h1>
+<h1 id="cocos2d-x-ver-3-xで進む2dのリッチゲーム開発:87dcdd3e1492e653f5cc968938cacd4d">Cocos2d-x ver.3.xで進む2Dのリッチゲーム開発</h1>
 
 <p>Cocos2d-xは大体知ってるので省略</p>
 
 <ul>
-<li>
-<p>CRI ADX2</p>
+<li><p>CRI ADX2</p>
 
 <ul>
 <li>サウンド周りのシステム</li>
 <li>フェードとかかなり頑張ってる</li>
 <li>端末ごとの差異とかどれくらい吸収するんだろう？</li>
-</ul>
-</li>
-<li>
-<p>CRI Sofdec2</p>
+</ul></li>
+
+<li><p>CRI Sofdec2</p>
 
 <ul>
 <li>映像をα合成できてて凄い</li>
 <li>どれだけ軽いかが気になる</li>
+</ul></li>
 </ul>
-</li>
-</ul>
 
-</div>
+                </div>
 
-  <footer>
-    <p class="meta">
+            </div>
 
-      
+            
 
-      
-      <time datetime="2014-09-06 10:20:41 +0900" pubdate></time>
-      
-
-      
-      <span class="categories">
-	
-      </span>
-      
-
-    </p>
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
 
     
-    <div class="sharing">
-
-      
-      <span class="twitter">
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://ota42y.com/blog/2014/09/06/cedec2014-09-03/"
-	 data-via="ota42y"
-	 data-counturl="http://ota42y.com/blog/2014/09/06/cedec2014-09-03/" >Tweet</a>
- </span>
-      
-
-      
-
-      
-
-      <span class="hatena">
-        <a href="/blog/2014/09/06/cedec2014-09-03/" class="hatena-bookmark-button"
-         data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
-         title="このエントリーをはてなブックマークに追加">
-          <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-           alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+    <span class="hatena">
+        <a href="http://localhost:1313/blog/2014/09/06/cedec2014-09-03/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
         </a>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
-         charset="utf-8" async="async">
+                charset="utf-8" async="async">
         </script>
-      </span>
-    </div>
+    </span>
     
-
-    
-
-  </footer>
-
 </div>
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ota42y -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-      <!-- /include -->
-
+        </div>
     </div>
-  </body>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
+
