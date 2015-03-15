@@ -87,6 +87,9 @@
 かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
 そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
 
+&lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
+&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
+
 &lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
 
 &lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
