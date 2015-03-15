@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on おおたの物置</title>
-    <link>http://localhost:1313/tags/security/</link>
+    <link>http://ota42y.com/tags/security/</link>
     <description>Recent content in Security on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>パスワードの文字として避けた方がいい文字</title>
-      <link>http://localhost:1313/blog/2014/09/08/password-word/</link>
+      <link>http://ota42y.com/blog/2014/09/08/password-word/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/08/password-word/</guid>
+      <guid>http://ota42y.com/blog/2014/09/08/password-word/</guid>
       <description>&lt;p&gt;ニンテンドー3DSのプリペイドカード入力画面を見て、&lt;br /&gt;
 見間違えやすい文字は使わないようにしてるんだーと気づいたので、&lt;br /&gt;
 他にもそういうのが無いかまとめました。&lt;/p&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Study on おおたの物置</title>
-    <link>http://localhost:1313/tags/study/</link>
+    <link>http://ota42y.com/tags/study/</link>
     <description>Recent content in Study on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/study/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/study/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Dockerとは何か</title>
-      <link>http://localhost:1313/blog/2014/11/26/docker/</link>
+      <link>http://ota42y.com/blog/2014/11/26/docker/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/26/docker/</guid>
+      <guid>http://ota42y.com/blog/2014/11/26/docker/</guid>
       <description>
 
 &lt;p&gt;Dockerについて調べたので概要と簡単な使い方のメモ&lt;/p&gt;
@@ -92,10 +92,10 @@ Jenkinsの用にサービスとして動かすものは、ログインして起�
     
     <item>
       <title>sortやfind_ifの条件指定はどういう動きをしているのか</title>
-      <link>http://localhost:1313/blog/2014/08/11/find-if/</link>
+      <link>http://ota42y.com/blog/2014/08/11/find-if/</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/11/find-if/</guid>
+      <guid>http://ota42y.com/blog/2014/08/11/find-if/</guid>
       <description>
 
 &lt;p&gt;C++でsortやfind_ifでは、イテレータのbeginとendに加えて、&lt;br /&gt;
@@ -153,10 +153,10 @@ void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val,
     
     <item>
       <title>MessagePack って何？</title>
-      <link>http://localhost:1313/blog/2014/08/05/msgpack/</link>
+      <link>http://ota42y.com/blog/2014/08/05/msgpack/</link>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/05/msgpack/</guid>
+      <guid>http://ota42y.com/blog/2014/08/05/msgpack/</guid>
       <description>
 
 &lt;p&gt;最近よく聞くMessagePackとは何かを調べたのでメモ。&lt;/p&gt;

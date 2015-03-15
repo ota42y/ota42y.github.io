@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mongodb on おおたの物置</title>
-    <link>http://localhost:1313/tags/mongodb/</link>
+    <link>http://ota42y.com/tags/mongodb/</link>
     <description>Recent content in Mongodb on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 03 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>http://localhost:1313/blog/2014/09/03/mgo-consistency/</link>
+      <link>http://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>http://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
       <description>
 
 &lt;p&gt;mgoのサンプルにあった&lt;br /&gt;
@@ -68,10 +68,10 @@
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>http://localhost:1313/blog/2014/09/02/go-mongodb/</link>
+      <link>http://ota42y.com/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/02/go-mongodb/</guid>
+      <guid>http://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
       <description>&lt;p&gt;mgoというライブラリが便利そうです。&lt;br /&gt;
 &lt;a href=&#34;http://labix.org/mgo&#34;&gt;http://labix.org/mgo&lt;/a&gt;&lt;/p&gt;
 
@@ -87,10 +87,10 @@
     
     <item>
       <title>MongoDBでインデックスとexplainを使う</title>
-      <link>http://localhost:1313/blog/2014/09/01/mongodb-explain/</link>
+      <link>http://ota42y.com/blog/2014/09/01/mongodb-explain/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/01/mongodb-explain/</guid>
+      <guid>http://ota42y.com/blog/2014/09/01/mongodb-explain/</guid>
       <description>
 
 &lt;h1 id=&#34;事前データ準備:7c69230a45f10ec129d1ee4fa0ab55a3&#34;&gt;事前データ準備&lt;/h1&gt;

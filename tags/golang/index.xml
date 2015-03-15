@@ -2,19 +2,132 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on おおたの物置</title>
-    <link>http://localhost:1313/tags/golang/</link>
+    <link>http://ota42y.com/tags/golang/</link>
     <description>Recent content in Golang on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 03 Feb 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Mar 2015 07:40:11 +0900</lastBuildDate>
+    <atom:link href="http://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OctopressからHugoに乗り換えた</title>
+      <link>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
+      <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
+      <description>
+
+&lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
+サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Octopress
+
+&lt;ul&gt;
+&lt;li&gt;Ruby制の静的サイト作成ツール&lt;/li&gt;
+&lt;li&gt;大量の記事を扱うと遅くなっていく
+
+&lt;ul&gt;
+&lt;li&gt;100記事で新しい記事のHTML出力まで10秒ぐらいかかる&lt;/li&gt;
+&lt;li&gt;見た目を確認したいときなどにとても不便&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Hugo
+
+&lt;ul&gt;
+&lt;li&gt;Golang制の静的サイト作成ツール&lt;/li&gt;
+&lt;li&gt;利点&lt;/li&gt;
+&lt;li&gt;早い
+
+&lt;ul&gt;
+&lt;li&gt;100記事で200msぐらい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;環境構築いらず
+
+&lt;ul&gt;
+&lt;li&gt;公式がバイナリ配布&lt;/li&gt;
+&lt;li&gt;手を加えないならそのまま使える&lt;/li&gt;
+&lt;li&gt;Win-Mac両方使う人にはとても楽&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;欠点
+
+&lt;ul&gt;
+&lt;li&gt;テーマが少ない
+
+&lt;ul&gt;
+&lt;li&gt;このサイトも自作&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;手を加えにくい
+
+&lt;ul&gt;
+&lt;li&gt;手を加えると環境構築いらずの利点が失われる&lt;/li&gt;
+&lt;li&gt;クロスコンパイルは楽なのでそれほどでもない？
+
+&lt;ul&gt;
+&lt;li&gt;手を加える必要が無いのでそのとき考える&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Octopressの問題点&lt;/h1&gt;
+
+&lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
+
+&lt;p&gt;Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。&lt;br /&gt;
+この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、&lt;br /&gt;
+表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。&lt;/p&gt;
+
+&lt;p&gt;現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。&lt;br /&gt;
+ちょっとした修正ごとに10秒待つのはなかなかにつらく、&lt;br /&gt;
+かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
+そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
+
+&lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
+
+&lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
+ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
+ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
+特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;環境構築いらず&lt;/h2&gt;
+
+&lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
+環境構築でがんばる必要がありません。&lt;br /&gt;
+私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
+Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの問題点&lt;/h1&gt;
+
+&lt;h2 id=&#34;テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;テーマがない&lt;/h2&gt;
+
+&lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
+実際このサイトも自分でテーマを作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;手を入れにくい&lt;/h2&gt;
+
+&lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
+Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
+これは環境構築の手間とのトレードオフなので仕方ないことなのですが…&lt;/p&gt;
+
+&lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
+一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Go言語で一次の最小二乗法を実装した</title>
-      <link>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</link>
+      <link>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</link>
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</guid>
+      <guid>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</guid>
       <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
 暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
 &lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
@@ -23,10 +136,10 @@
     
     <item>
       <title>GoのORマッパーGORMが便利</title>
-      <link>http://localhost:1313/blog/2014/12/19/gorm/</link>
+      <link>http://ota42y.com/blog/2014/12/19/gorm/</link>
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/12/19/gorm/</guid>
+      <guid>http://ota42y.com/blog/2014/12/19/gorm/</guid>
       <description>&lt;p&gt;golangではmysqldriverでmysqlにアクセスできますが、&lt;br /&gt;
 一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。&lt;br /&gt;
 &lt;a href=&#34;http://ota42y.com/blog/2014/10/04/go-mysql/&#34;&gt;goでmysqlを使う&lt;/a&gt;&lt;/p&gt;
@@ -90,10 +203,10 @@ func main(){
     
     <item>
       <title>golangでYAMLファイルを読み込んで構造体に入れる</title>
-      <link>http://localhost:1313/blog/2014/12/03/go-yaml-struct/</link>
+      <link>http://ota42y.com/blog/2014/12/03/go-yaml-struct/</link>
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/12/03/go-yaml-struct/</guid>
+      <guid>http://ota42y.com/blog/2014/12/03/go-yaml-struct/</guid>
       <description>
 
 &lt;p&gt;使い方がかなり特殊だったのでメモ&lt;br /&gt;
@@ -199,10 +312,10 @@ func main() {
     
     <item>
       <title>参加記録 Go Conference 2014 autumn</title>
-      <link>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</link>
+      <link>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</link>
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/12/01/gocon-2014-autumn/</guid>
+      <guid>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://gocon.connpass.com/event/9748/&#34;&gt;Go Conference 2014 autumn&lt;/a&gt;に参加しました。&lt;br /&gt;
@@ -378,10 +491,10 @@ Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれ�
     
     <item>
       <title>golangでYAMLファイルを読み込む</title>
-      <link>http://localhost:1313/blog/2014/11/13/go-yaml/</link>
+      <link>http://ota42y.com/blog/2014/11/13/go-yaml/</link>
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/13/go-yaml/</guid>
+      <guid>http://ota42y.com/blog/2014/11/13/go-yaml/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/go-yaml/yaml&#34;&gt;https://github.com/go-yaml/yaml&lt;/a&gt;を使う事で、
 goでYAMLを扱うことが出来ます。&lt;/p&gt;
 
@@ -435,10 +548,10 @@ func main() {
     
     <item>
       <title>goでtime.Timeをmysqlから読む</title>
-      <link>http://localhost:1313/blog/2014/10/08/go-mysql-time/</link>
+      <link>http://ota42y.com/blog/2014/10/08/go-mysql-time/</link>
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/08/go-mysql-time/</guid>
+      <guid>http://ota42y.com/blog/2014/10/08/go-mysql-time/</guid>
       <description>&lt;p&gt;goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…&lt;br /&gt;
 &lt;code&gt;sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time&lt;/code&gt;&lt;/p&gt;
 
@@ -452,10 +565,10 @@ func main() {
     
     <item>
       <title>goでmysqlを使う</title>
-      <link>http://localhost:1313/blog/2014/10/04/go-mysql/</link>
+      <link>http://ota42y.com/blog/2014/10/04/go-mysql/</link>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/04/go-mysql/</guid>
+      <guid>http://ota42y.com/blog/2014/10/04/go-mysql/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://github.com/go-sql-driver/mysql&#34;&gt;http://github.com/go-sql-driver/mysql&lt;/a&gt;&lt;br /&gt;
@@ -595,10 +708,10 @@ ORマッパーは偉大ですね…&lt;/p&gt;
     
     <item>
       <title>go runしても分割したファイルが認識されない</title>
-      <link>http://localhost:1313/blog/2014/09/10/golang-file-split/</link>
+      <link>http://ota42y.com/blog/2014/09/10/golang-file-split/</link>
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/10/golang-file-split/</guid>
+      <guid>http://ota42y.com/blog/2014/09/10/golang-file-split/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -651,10 +764,10 @@ div file
     
     <item>
       <title>golangでcronを使う</title>
-      <link>http://localhost:1313/blog/2014/09/09/golang-cron/</link>
+      <link>http://ota42y.com/blog/2014/09/09/golang-cron/</link>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/09/golang-cron/</guid>
+      <guid>http://ota42y.com/blog/2014/09/09/golang-cron/</guid>
       <description>&lt;p&gt;cronというライブラリがあるので、それを使うととても簡単です。
 なお、終了すると当然ながら実行しないので、
 time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
@@ -665,10 +778,10 @@ time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>http://localhost:1313/blog/2014/09/03/mgo-consistency/</link>
+      <link>http://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>http://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
       <description>
 
 &lt;p&gt;mgoのサンプルにあった&lt;br /&gt;
@@ -722,10 +835,10 @@ time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>http://localhost:1313/blog/2014/09/02/go-mongodb/</link>
+      <link>http://ota42y.com/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/02/go-mongodb/</guid>
+      <guid>http://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
       <description>&lt;p&gt;mgoというライブラリが便利そうです。&lt;br /&gt;
 &lt;a href=&#34;http://labix.org/mgo&#34;&gt;http://labix.org/mgo&lt;/a&gt;&lt;/p&gt;
 
@@ -741,10 +854,10 @@ time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
     
     <item>
       <title>golangでtwitter APIを使う</title>
-      <link>http://localhost:1313/blog/2014/08/31/go-anaconda/</link>
+      <link>http://ota42y.com/blog/2014/08/31/go-anaconda/</link>
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/31/go-anaconda/</guid>
+      <guid>http://ota42y.com/blog/2014/08/31/go-anaconda/</guid>
       <description>&lt;p&gt;anacondaが良さそう(ただしストリーミングAPI非対応)&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;go get github.com/ChimeraCoder/anaconda&lt;/code&gt;&lt;/p&gt;

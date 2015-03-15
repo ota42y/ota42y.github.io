@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Node on おおたの物置</title>
-    <link>http://localhost:1313/tags/node/</link>
+    <link>http://ota42y.com/tags/node/</link>
     <description>Recent content in Node on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 29 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/node/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>npmにパッケージを公開する手順</title>
-      <link>http://localhost:1313/blog/2014/09/29/npm-publish/</link>
+      <link>http://ota42y.com/blog/2014/09/29/npm-publish/</link>
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/29/npm-publish/</guid>
+      <guid>http://ota42y.com/blog/2014/09/29/npm-publish/</guid>
       <description>
 
 &lt;p&gt;とても簡単でしたがつい忘れるのでメモ。&lt;/p&gt;
@@ -52,10 +52,10 @@ unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>http://localhost:1313/blog/2014/08/22/mocha-test/</link>
+      <link>http://ota42y.com/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/22/mocha-test/</guid>
+      <guid>http://ota42y.com/blog/2014/08/22/mocha-test/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;まとめ&lt;/h1&gt;
@@ -208,10 +208,10 @@ module.exports.Test = Test
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>http://localhost:1313/blog/2014/08/21/intellij-node/</link>
+      <link>http://ota42y.com/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/21/intellij-node/</guid>
+      <guid>http://ota42y.com/blog/2014/08/21/intellij-node/</guid>
       <description>
 
 &lt;p&gt;node.js+mocha+coffeescriptな環境で開発をしていたところ、&lt;br /&gt;
@@ -227,7 +227,7 @@ NodeJSプラグインを選択するだけでインストール出来ます。&l
 
 &lt;p&gt;以下の画像の通りです。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-21-intellij-node.png&#34; alt=&#34;設定画像&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-08-21-intellij-node.png&#34; alt=&#34;設定画像&#34; /&gt;
 &lt;/p&gt;
 
 &lt;ul&gt;

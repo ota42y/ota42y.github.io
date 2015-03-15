@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jenkins on おおたの物置</title>
-    <link>http://localhost:1313/tags/jenkins/</link>
+    <link>http://ota42y.com/tags/jenkins/</link>
     <description>Recent content in Jenkins on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 27 Feb 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>JenkinsをHTTP経由で叩く</title>
-      <link>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</link>
+      <link>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</guid>
+      <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
@@ -107,10 +107,10 @@ end
     
     <item>
       <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</link>
+      <link>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</guid>
+      <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
@@ -238,10 +238,10 @@ return f;
     
     <item>
       <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
-      <link>http://localhost:1313/blog/2015/02/10/workflow-plugin/</link>
+      <link>http://ota42y.com/blog/2015/02/10/workflow-plugin/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/10/workflow-plugin/</guid>
+      <guid>http://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;まとめ&lt;/h1&gt;
@@ -281,7 +281,7 @@ Workflow Pluginを使う事で、さらに簡単に解決することが出来�
 ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。&lt;br /&gt;
 (また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
 &lt;br /&gt;
 (上段のup#4はup#3の間違いです…)&lt;/p&gt;
 
@@ -327,10 +327,10 @@ node(&amp;quot;master&amp;quot;){
     
     <item>
       <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
-      <link>http://localhost:1313/blog/2015/01/11/jenkins-conference/</link>
+      <link>http://ota42y.com/blog/2015/01/11/jenkins-conference/</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/11/jenkins-conference/</guid>
+      <guid>http://ota42y.com/blog/2015/01/11/jenkins-conference/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://build-shokunin.org/juc2015/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;に参加しました。&lt;br /&gt;
@@ -583,10 +583,10 @@ node(&amp;quot;master&amp;quot;){
     
     <item>
       <title>Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる</title>
-      <link>http://localhost:1313/blog/2014/11/27/jenkins-build-flow-plugin/</link>
+      <link>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</link>
       <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
+      <guid>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:e43210b67d1ef6ec3aec4d3b4c38c191&#34;&gt;まとめ&lt;/h1&gt;
@@ -683,10 +683,10 @@ job間のデータの受け渡しが面倒になるという問題が生じま�
     
     <item>
       <title>Jenkinsで複雑な処理をするときのjob構成について</title>
-      <link>http://localhost:1313/blog/2014/07/21/jenkins-architecture/</link>
+      <link>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</link>
       <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/07/21/jenkins-architecture/</guid>
+      <guid>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</guid>
       <description>
 
 &lt;p&gt;変数やビルド後の通知設定等が違うために、&lt;br /&gt;
@@ -734,7 +734,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 ほぼ同じだけれど若干違うjobを15個並べるといった運用をしていました。&lt;/p&gt;
 
 &lt;p&gt;こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。&lt;br /&gt;
-&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-07-21-jenkins-1.png&#34; alt=&#34;こんな感じ&#34; /&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-07-21-jenkins-1.png&#34; alt=&#34;こんな感じ&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、&lt;br /&gt;
@@ -765,7 +765,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   ビルドジョブを下流ビルドとして呼び出す方式です。&lt;/p&gt;
 
 &lt;p&gt;こんな感じですね。&lt;br /&gt;
-  &lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-07-21-jenkins-2.png&#34; alt=&#34;ワークスペース共有&#34; /&gt;
+  &lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-07-21-jenkins-2.png&#34; alt=&#34;ワークスペース共有&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;ワークスペース共有を使い、&lt;br /&gt;

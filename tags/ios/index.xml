@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ios on おおたの物置</title>
-    <link>http://localhost:1313/tags/ios/</link>
+    <link>http://ota42y.com/tags/ios/</link>
     <description>Recent content in Ios on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>http://localhost:1313/blog/2015/01/23/ram-disk/</link>
+      <link>http://ota42y.com/blog/2015/01/23/ram-disk/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/23/ram-disk/</guid>
+      <guid>http://ota42y.com/blog/2015/01/23/ram-disk/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
@@ -68,7 +68,7 @@ hdiutil detach disk2
 速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
 
 &lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
-&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
@@ -110,10 +110,10 @@ timeコマンドを使い手作業で計ったところ、SSD上では9分13秒�
     
     <item>
       <title>コマンドラインからiOSアプリをビルドする</title>
-      <link>http://localhost:1313/blog/2014/08/28/ios-build/</link>
+      <link>http://ota42y.com/blog/2014/08/28/ios-build/</link>
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/28/ios-build/</guid>
+      <guid>http://ota42y.com/blog/2014/08/28/ios-build/</guid>
       <description>
 
 &lt;p&gt;JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、&lt;br /&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Application on おおたの物置</title>
-    <link>http://localhost:1313/tags/application/</link>
+    <link>http://ota42y.com/tags/application/</link>
     <description>Recent content in Application on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/application/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/application/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</link>
+      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-url-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote url opener&lt;/a&gt;を更新しました。&lt;/p&gt;
 
 &lt;p&gt;使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、&lt;br /&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>大晦日ハッカソン2014&amp;正月ハッカソン2015に参加した</title>
-      <link>http://localhost:1313/blog/2015/01/01/1231-hackathon/</link>
+      <link>http://ota42y.com/blog/2015/01/01/1231-hackathon/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/01/1231-hackathon/</guid>
+      <guid>http://ota42y.com/blog/2015/01/01/1231-hackathon/</guid>
       <description>
 
 &lt;p&gt;&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;/31にオンラインで行われた、&lt;br /&gt;
@@ -74,10 +74,10 @@ Evernoteアプリが立ち上がり、そのノートを開いてくれます。
     
     <item>
       <title>スクフェス用パッケージの更新</title>
-      <link>http://localhost:1313/blog/2014/11/12/scfes-update/</link>
+      <link>http://ota42y.com/blog/2014/11/12/scfes-update/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/12/scfes-update/</guid>
+      <guid>http://ota42y.com/blog/2014/11/12/scfes-update/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/10/28/hubot-scfes/&#34;&gt;前に作った&lt;/a&gt;スクフェス用パッケージを更新しました。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
 
@@ -100,10 +100,10 @@ hubot scfes levelup time 830 ex
     
     <item>
       <title>スクフェス用の機能が詰まったHubotパッケージを作った</title>
-      <link>http://localhost:1313/blog/2014/10/28/hubot-scfes/</link>
+      <link>http://ota42y.com/blog/2014/10/28/hubot-scfes/</link>
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/28/hubot-scfes/</guid>
+      <guid>http://ota42y.com/blog/2014/10/28/hubot-scfes/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lovelive.bushimo.jp/&#34;&gt;スクフェス&lt;/a&gt;用の色々便利な機能が入ったHubotパッケージを作りました。&lt;br /&gt;
@@ -136,10 +136,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>進捗どうですか？を訪ねるhubotスクリプトを作った</title>
-      <link>http://localhost:1313/blog/2014/10/05/shinchoku/</link>
+      <link>http://ota42y.com/blog/2014/10/05/shinchoku/</link>
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/05/shinchoku/</guid>
+      <guid>http://ota42y.com/blog/2014/10/05/shinchoku/</guid>
       <description>
 
 &lt;p&gt;作りました。&lt;br /&gt;
@@ -156,7 +156,7 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 &lt;h1 id=&#34;ホラー体験:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;ホラー体験&lt;/h1&gt;
 
 &lt;p&gt;setTimeoutが秒設定だと間違えて…(´･_･`)&lt;br /&gt;
-&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h1 id=&#34;コード:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;コード&lt;/h1&gt;
@@ -167,10 +167,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>ソシャゲ用のスタミナ計算機を作った</title>
-      <link>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</link>
+      <link>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</link>
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</guid>
+      <guid>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</guid>
       <description>
 
 &lt;p&gt;作りました。&lt;/p&gt;
@@ -224,10 +224,10 @@ console.log stamina_calculator.convertToDate(second)
     
     <item>
       <title>受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った</title>
-      <link>http://localhost:1313/blog/2014/08/29/hubot-post-server/</link>
+      <link>http://ota42y.com/blog/2014/08/29/hubot-post-server/</link>
       <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/29/hubot-post-server/</guid>
+      <guid>http://ota42y.com/blog/2014/08/29/hubot-post-server/</guid>
       <description>&lt;p&gt;実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、&lt;br /&gt;
 Webサーバへのアクセスに対して反応することができます。&lt;br /&gt;
 例: &lt;a href=&#34;https://github.com/github/hubot/blob/master/src/scripts/httpd.coffee&#34;&gt;scripts/httpd.coffee&lt;/a&gt;&lt;/p&gt;
@@ -243,10 +243,10 @@ Webサーバへのアクセスに対して反応することができます。&l
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://localhost:1313/blog/2014/08/10/evernote-link/</link>
+      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/10/evernote-link/</guid>
+      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
@@ -261,7 +261,7 @@ Webサーバへのアクセスに対して反応することができます。&l
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。&lt;br /&gt;

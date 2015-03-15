@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Api on おおたの物置</title>
-    <link>http://localhost:1313/tags/api/</link>
+    <link>http://ota42y.com/tags/api/</link>
     <description>Recent content in Api on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 19 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Twitterのoath_callbackは設定していないと上書きできない</title>
-      <link>http://localhost:1313/blog/2014/09/19/twitter-callback/</link>
+      <link>http://ota42y.com/blog/2014/09/19/twitter-callback/</link>
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/19/twitter-callback/</guid>
+      <guid>http://ota42y.com/blog/2014/09/19/twitter-callback/</guid>
       <description>&lt;p&gt;Twitterは&lt;a href=&#34;https://dev.twitter.com/oauth/reference/post/oauth/request_token&#34;&gt;oauth/request_token&lt;/a&gt;へのアクセス時に、&lt;br /&gt;
 認証後のコールバック先をoauth_callbackパラメータで上書きできます。&lt;/p&gt;
 

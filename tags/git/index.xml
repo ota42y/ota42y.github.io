@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on おおたの物置</title>
-    <link>http://localhost:1313/tags/git/</link>
+    <link>http://ota42y.com/tags/git/</link>
     <description>Recent content in Git on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 07 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>gitで現在のブランチ名をクリップボードにコピーする</title>
-      <link>http://localhost:1313/blog/2014/09/07/git-copy-current-branch/</link>
+      <link>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</link>
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/07/git-copy-current-branch/</guid>
+      <guid>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# copy current branch
 ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
@@ -29,10 +29,10 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
     
     <item>
       <title>スマホアプリ開発でgit-new-workdirがとても便利だった</title>
-      <link>http://localhost:1313/blog/2014/08/25/git-new-workdir/</link>
+      <link>http://ota42y.com/blog/2014/08/25/git-new-workdir/</link>
       <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/25/git-new-workdir/</guid>
+      <guid>http://ota42y.com/blog/2014/08/25/git-new-workdir/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;まとめ&lt;/h1&gt;

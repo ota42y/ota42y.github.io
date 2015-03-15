@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hubot on おおたの物置</title>
-    <link>http://localhost:1313/tags/hubot/</link>
+    <link>http://ota42y.com/tags/hubot/</link>
     <description>Recent content in Hubot on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 12 Nov 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>スクフェス用パッケージの更新</title>
-      <link>http://localhost:1313/blog/2014/11/12/scfes-update/</link>
+      <link>http://ota42y.com/blog/2014/11/12/scfes-update/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/12/scfes-update/</guid>
+      <guid>http://ota42y.com/blog/2014/11/12/scfes-update/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/10/28/hubot-scfes/&#34;&gt;前に作った&lt;/a&gt;スクフェス用パッケージを更新しました。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
 
@@ -37,10 +37,10 @@ hubot scfes levelup time 830 ex
     
     <item>
       <title>Hubotの追加機能作成をテストで楽にする</title>
-      <link>http://localhost:1313/blog/2014/11/10/hubot-test/</link>
+      <link>http://ota42y.com/blog/2014/11/10/hubot-test/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/10/hubot-test/</guid>
+      <guid>http://ota42y.com/blog/2014/11/10/hubot-test/</guid>
       <description>
 
 &lt;p&gt;Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。&lt;br /&gt;
@@ -103,10 +103,10 @@ Hubot固有の部分を最小限に減らし、通常のnpmパッケージのよ
     
     <item>
       <title>hubot-ircではmsg.replyのリプライ先が変わるので注意</title>
-      <link>http://localhost:1313/blog/2014/11/01/hubot-reply/</link>
+      <link>http://ota42y.com/blog/2014/11/01/hubot-reply/</link>
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/01/hubot-reply/</guid>
+      <guid>http://ota42y.com/blog/2014/11/01/hubot-reply/</guid>
       <description>
 
 &lt;p&gt;hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、&lt;br /&gt;
@@ -310,10 +310,10 @@ replyメソッドに渡された後に別のメッセージによって書き換
     
     <item>
       <title>スクフェス用の機能が詰まったHubotパッケージを作った</title>
-      <link>http://localhost:1313/blog/2014/10/28/hubot-scfes/</link>
+      <link>http://ota42y.com/blog/2014/10/28/hubot-scfes/</link>
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/28/hubot-scfes/</guid>
+      <guid>http://ota42y.com/blog/2014/10/28/hubot-scfes/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lovelive.bushimo.jp/&#34;&gt;スクフェス&lt;/a&gt;用の色々便利な機能が入ったHubotパッケージを作りました。&lt;br /&gt;
@@ -346,10 +346,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>進捗どうですか？を訪ねるhubotスクリプトを作った</title>
-      <link>http://localhost:1313/blog/2014/10/05/shinchoku/</link>
+      <link>http://ota42y.com/blog/2014/10/05/shinchoku/</link>
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/05/shinchoku/</guid>
+      <guid>http://ota42y.com/blog/2014/10/05/shinchoku/</guid>
       <description>
 
 &lt;p&gt;作りました。&lt;br /&gt;
@@ -366,7 +366,7 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 &lt;h1 id=&#34;ホラー体験:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;ホラー体験&lt;/h1&gt;
 
 &lt;p&gt;setTimeoutが秒設定だと間違えて…(´･_･`)&lt;br /&gt;
-&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h1 id=&#34;コード:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;コード&lt;/h1&gt;
@@ -377,10 +377,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>ソシャゲ用のスタミナ計算機を作った</title>
-      <link>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</link>
+      <link>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</link>
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/02/social-game-stamina-calc/</guid>
+      <guid>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</guid>
       <description>
 
 &lt;p&gt;作りました。&lt;/p&gt;

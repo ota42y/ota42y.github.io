@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Book on おおたの物置</title>
-    <link>http://localhost:1313/tags/book/</link>
+    <link>http://ota42y.com/tags/book/</link>
     <description>Recent content in Book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 04 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>UNIXという考え方という本を読んだ</title>
-      <link>http://localhost:1313/blog/2015/01/04/unix-boox/</link>
+      <link>http://ota42y.com/blog/2015/01/04/unix-boox/</link>
       <pubDate>Sun, 04 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/04/unix-boox/</guid>
+      <guid>http://ota42y.com/blog/2015/01/04/unix-boox/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/UNIX%E3%81%A8%E3%81%84%E3%81%86%E8%80%83%E3%81%88%E6%96%B9%E2%80%95%E3%81%9D%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3%E3%81%A8%E5%93%B2%E5%AD%A6-Mike-Gancarz/dp/4274064069&#34;&gt;UNIXという考え方&lt;/a&gt;という本を読みました。&lt;br /&gt;
 原著は1994年に書かれている本で、
 &lt;a href=&#34;http://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6&#34;&gt;UNIXの哲学&lt;/a&gt;を一つ一つ、その意味と利点について解説しています。&lt;/p&gt;
@@ -38,10 +38,10 @@
     
     <item>
       <title>Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング</title>
-      <link>http://localhost:1313/blog/2014/05/13/browser-networking/</link>
+      <link>http://ota42y.com/blog/2014/05/13/browser-networking/</link>
       <pubDate>Tue, 13 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/05/13/browser-networking/</guid>
+      <guid>http://ota42y.com/blog/2014/05/13/browser-networking/</guid>
       <description>&lt;p&gt;丸一日かけて読んだので書評っぽいのを。&lt;/p&gt;
 
 &lt;p&gt;Webで何かしようとする人はどのレイヤの人も必読だと思います。&lt;br /&gt;

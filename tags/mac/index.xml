@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on おおたの物置</title>
-    <link>http://localhost:1313/tags/mac/</link>
+    <link>http://ota42y.com/tags/mac/</link>
     <description>Recent content in Mac on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 16 Aug 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AutomatorでEvernoteのノートリンクを置き換える</title>
-      <link>http://localhost:1313/blog/2014/08/16/evernote-url/</link>
+      <link>http://ota42y.com/blog/2014/08/16/evernote-url/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/16/evernote-url/</guid>
+      <guid>http://ota42y.com/blog/2014/08/16/evernote-url/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;まとめ&lt;/h1&gt;
@@ -114,10 +114,10 @@ Mac上ではアプリケーションとして扱われます。&lt;/p&gt;
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://localhost:1313/blog/2014/08/10/evernote-link/</link>
+      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/10/evernote-link/</guid>
+      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
@@ -132,7 +132,7 @@ Mac上ではアプリケーションとして扱われます。&lt;/p&gt;
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。&lt;br /&gt;

@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cpp on おおたの物置</title>
-    <link>http://localhost:1313/tags/cpp/</link>
+    <link>http://ota42y.com/tags/cpp/</link>
     <description>Recent content in Cpp on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 06 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>インライン展開についての追加調査</title>
-      <link>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</link>
+      <link>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</guid>
+      <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
       <description>
 
 &lt;p&gt;昨日の記事で、インライン展開について調べましたが、&lt;br /&gt;
 よくよく考えると片手落ちだったので追加調査しました。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;調査内容:5658da961537009d14c2d83db44bc8e6&#34;&gt;調査内容&lt;/h1&gt;
 
@@ -139,10 +139,10 @@ retq
     
     <item>
       <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>http://localhost:1313/blog/2015/01/05/c-inline/</link>
+      <link>http://ota42y.com/blog/2015/01/05/c-inline/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/05/c-inline/</guid>
+      <guid>http://ota42y.com/blog/2015/01/05/c-inline/</guid>
       <description>
 
 &lt;p&gt;C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、&lt;br /&gt;
@@ -371,10 +371,10 @@ duplicate symbolになっています。&lt;/p&gt;
     
     <item>
       <title>size_tは環境によって定義が変わるという話</title>
-      <link>http://localhost:1313/blog/2014/11/08/size-t/</link>
+      <link>http://ota42y.com/blog/2014/11/08/size-t/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/08/size-t/</guid>
+      <guid>http://ota42y.com/blog/2014/11/08/size-t/</guid>
       <description>&lt;p&gt;size_tが何bitになるかは環境によって定義が異なります。&lt;br /&gt;
 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。&lt;/p&gt;
 
@@ -423,10 +423,10 @@ size_tがunsigned intの場合、両者は同じ大きさのため特に意識�
     
     <item>
       <title>void型のポインタとint型を相互変換するなという話</title>
-      <link>http://localhost:1313/blog/2014/11/07/cpp-64bit-cast/</link>
+      <link>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</link>
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/07/cpp-64bit-cast/</guid>
+      <guid>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</guid>
       <description>
 
 &lt;p&gt;int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、&lt;br /&gt;
@@ -513,10 +513,10 @@ intに入りきらない部分が消滅してしまうため、ポインタに�
     
     <item>
       <title>汎用ポインタを使う</title>
-      <link>http://localhost:1313/blog/2014/11/06/cpp-void-pointer/</link>
+      <link>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</link>
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/06/cpp-void-pointer/</guid>
+      <guid>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</guid>
       <description>
 
 &lt;p&gt;int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。&lt;br /&gt;
@@ -583,10 +583,10 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
     
     <item>
       <title>C&#43;&#43;で少しでもビルド速度を速くする方法</title>
-      <link>http://localhost:1313/blog/2014/09/23/cpp-build/</link>
+      <link>http://ota42y.com/blog/2014/09/23/cpp-build/</link>
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/23/cpp-build/</guid>
+      <guid>http://ota42y.com/blog/2014/09/23/cpp-build/</guid>
       <description>
 
 &lt;h1 id=&#34;結論:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;結論&lt;/h1&gt;
@@ -648,10 +648,10 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
     
     <item>
       <title>C&#43;&#43;で不要なincludeを減らす</title>
-      <link>http://localhost:1313/blog/2014/09/22/cpp-include/</link>
+      <link>http://ota42y.com/blog/2014/09/22/cpp-include/</link>
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/22/cpp-include/</guid>
+      <guid>http://ota42y.com/blog/2014/09/22/cpp-include/</guid>
       <description>
 
 &lt;h1 id=&#34;不要なinclude削除:0e527f0ffbbaaeb51ab52f1aa3a84d5a&#34;&gt;不要なinclude削除&lt;/h1&gt;
@@ -852,10 +852,10 @@ int TestA::getWeight(int density){
     
     <item>
       <title>スタックに確保した変数の有効範囲に気をつける</title>
-      <link>http://localhost:1313/blog/2014/09/16/stack-heap/</link>
+      <link>http://ota42y.com/blog/2014/09/16/stack-heap/</link>
       <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/16/stack-heap/</guid>
+      <guid>http://ota42y.com/blog/2014/09/16/stack-heap/</guid>
       <description>
 
 &lt;p&gt;C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。&lt;br /&gt;
@@ -993,10 +993,10 @@ int main(void){
     
     <item>
       <title>strncpyははまりやすい</title>
-      <link>http://localhost:1313/blog/2014/09/11/strncpy-bug/</link>
+      <link>http://ota42y.com/blog/2014/09/11/strncpy-bug/</link>
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/11/strncpy-bug/</guid>
+      <guid>http://ota42y.com/blog/2014/09/11/strncpy-bug/</guid>
       <description>&lt;p&gt;strncpyは結構はまりどころがあります。&lt;/p&gt;
 
 &lt;p&gt;たとえば以下のコードは正しく動作しません。&lt;/p&gt;

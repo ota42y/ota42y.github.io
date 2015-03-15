@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="OctopressからHugoに乗り換えた">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>OctopressからHugoに乗り換えた | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>OctopressからHugoに乗り換えた</h1>
+                    
+
+<time datetime="2015-03-16" class="post_data">
+2015-03-16
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/golang">golang</a>
+    </div>
+    
+    <div class="post_data">
+        <a href="/tags/hugo">hugo</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ:fdc6cdc059d5bbb297f2d7b38c26691e">まとめ</a></li>
+<li><a href="#octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e">Octopressの問題点</a></li>
+<li><a href="#hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e">Hugoの利点</a>
+<ul>
+<li><a href="#htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e">HTMLのレンダリングが早い</a></li>
+<li><a href="#環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e">環境構築いらず</a></li>
+</ul></li>
+<li><a href="#hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e">Hugoの問題点</a>
+<ul>
+<li><a href="#テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e">テーマがない</a></li>
+<li><a href="#手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e">手を入れにくい</a></li>
+</ul></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、<br />
+サイト作成ツールの部分をGolangで作られたHugoに置き換えました。</p>
+
+<h1 id="まとめ:fdc6cdc059d5bbb297f2d7b38c26691e">まとめ</h1>
+
+<ul>
+<li>Octopress
+
+<ul>
+<li>Ruby制の静的サイト作成ツール</li>
+<li>大量の記事を扱うと遅くなっていく
+
+<ul>
+<li>100記事で新しい記事のHTML出力まで10秒ぐらいかかる</li>
+<li>見た目を確認したいときなどにとても不便</li>
+</ul></li>
+</ul></li>
+<li>Hugo
+
+<ul>
+<li>Golang制の静的サイト作成ツール</li>
+<li>利点</li>
+<li>早い
+
+<ul>
+<li>100記事で200msぐらい</li>
+</ul></li>
+<li>環境構築いらず
+
+<ul>
+<li>公式がバイナリ配布</li>
+<li>手を加えないならそのまま使える</li>
+<li>Win-Mac両方使う人にはとても楽</li>
+</ul></li>
+<li>欠点
+
+<ul>
+<li>テーマが少ない
+
+<ul>
+<li>このサイトも自作</li>
+<li><a href="https://github.com/ota42y/orange42">https://github.com/ota42y/orange42</a></li>
+</ul></li>
+</ul></li>
+<li>手を加えにくい
+
+<ul>
+<li>手を加えると環境構築いらずの利点が失われる</li>
+<li>クロスコンパイルは楽なのでそれほどでもない？
+
+<ul>
+<li>手を加える必要が無いのでそのとき考える</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e">Octopressの問題点</h1>
+
+<p>HTMLのレンダリングが遅いです。</p>
+
+<p>Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。<br />
+この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、<br />
+表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。</p>
+
+<p>現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。<br />
+ちょっとした修正ごとに10秒待つのはなかなかにつらく、<br />
+かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。<br />
+そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました</p>
+
+<h1 id="hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e">Hugoの利点</h1>
+
+<h2 id="htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e">HTMLのレンダリングが早い</h2>
+
+<p>Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、<br />
+ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、<br />
+ほとんど待ち時間が感じられないレベルになりました。<br />
+特にチューニングとかを考えずにこの速度なので、とても助かります。</p>
+
+<h2 id="環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e">環境構築いらず</h2>
+
+<p>Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、<br />
+環境構築でがんばる必要がありません。<br />
+私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、<br />
+Windows向けのバイナリをダウンロードするだけですむのは大変便利です。</p>
+
+<h1 id="hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e">Hugoの問題点</h1>
+
+<h2 id="テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e">テーマがない</h2>
+
+<p>テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。<br />
+実際このサイトも自分でテーマを作りました。<br />
+<a href="https://github.com/ota42y/orange42">https://github.com/ota42y/orange42</a></p>
+
+<h2 id="手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e">手を入れにくい</h2>
+
+<p>公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。<br />
+Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。<br />
+これは環境構築の手間とのトレードオフなので仕方ないことなのですが…</p>
+
+<p>最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。<br />
+一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。</p>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/03/16/octopress_to_hugo/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+

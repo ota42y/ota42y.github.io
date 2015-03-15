@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chrome on おおたの物置</title>
-    <link>http://localhost:1313/tags/chrome/</link>
+    <link>http://ota42y.com/tags/chrome/</link>
     <description>Recent content in Chrome on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</link>
+      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-url-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote url opener&lt;/a&gt;を更新しました。&lt;/p&gt;
 
 &lt;p&gt;使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、&lt;br /&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>http://localhost:1313/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>
 
 &lt;p&gt;まとめ&lt;/p&gt;
@@ -75,10 +75,10 @@
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>http://localhost:1313/blog/2014/08/17/local-storage/</link>
+      <link>http://ota42y.com/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/17/local-storage/</guid>
+      <guid>http://ota42y.com/blog/2014/08/17/local-storage/</guid>
       <description>
 
 &lt;p&gt;Chrome拡張でデータを保存しようとした場合に、&lt;br /&gt;

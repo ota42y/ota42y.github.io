@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on おおたの物置</title>
-    <link>http://localhost:1313/tags/linux/</link>
+    <link>http://ota42y.com/tags/linux/</link>
     <description>Recent content in Linux on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 03 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>fork関数がどうやってプロセスを分割しているか</title>
-      <link>http://localhost:1313/blog/2015/01/03/unix-fork/</link>
+      <link>http://ota42y.com/blog/2015/01/03/unix-fork/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/03/unix-fork/</guid>
+      <guid>http://ota42y.com/blog/2015/01/03/unix-fork/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEOS%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-~UNIX-V6%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF-Software-Design/dp/4774154644&#34;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;br /&gt;
@@ -130,10 +130,10 @@ switch関数はnewprocの呼び出し元であるfork関数に1で戻ります�
     
     <item>
       <title>Debian squeezeでShellShock対策</title>
-      <link>http://localhost:1313/blog/2014/09/26/shell-shock/</link>
+      <link>http://ota42y.com/blog/2014/09/26/shell-shock/</link>
       <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/26/shell-shock/</guid>
+      <guid>http://ota42y.com/blog/2014/09/26/shell-shock/</guid>
       <description>
 
 &lt;p&gt;Debianは探しても見つからなかったので…(´･_･`)&lt;/p&gt;
@@ -196,10 +196,10 @@ apt-getの&lt;code&gt;update&lt;/code&gt;と&lt;code&gt;install bash&lt;/code&gt
     
     <item>
       <title>cronやinit.dでsudoを実行するとエラーになって実行できない</title>
-      <link>http://localhost:1313/blog/2014/09/13/sudo-error/</link>
+      <link>http://ota42y.com/blog/2014/09/13/sudo-error/</link>
       <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/13/sudo-error/</guid>
+      <guid>http://ota42y.com/blog/2014/09/13/sudo-error/</guid>
       <description>&lt;p&gt;cronやinit.d以下に置いたスクリプトで、&lt;br /&gt;
 別の以外のユーザで作業しようと思い、sudoを実行したところ、&lt;br /&gt;
 以下のようなエラーが出て実行できませんでした。&lt;/p&gt;
@@ -218,10 +218,10 @@ apt-getの&lt;code&gt;update&lt;/code&gt;と&lt;code&gt;install bash&lt;/code&gt
     
     <item>
       <title>Linux起動時に特定のシェルスクリプトを実行する</title>
-      <link>http://localhost:1313/blog/2014/09/12/init-d/</link>
+      <link>http://ota42y.com/blog/2014/09/12/init-d/</link>
       <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/09/12/init-d/</guid>
+      <guid>http://ota42y.com/blog/2014/09/12/init-d/</guid>
       <description>&lt;p&gt;hubotを自動で実行してほしいなーと思ったので、&lt;br /&gt;
 OSの起動時にスクリプトを自動実行する方法を調べました。&lt;/p&gt;
 

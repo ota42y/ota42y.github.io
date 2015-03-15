@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mysql on おおたの物置</title>
-    <link>http://localhost:1313/tags/mysql/</link>
+    <link>http://ota42y.com/tags/mysql/</link>
     <description>Recent content in Mysql on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 08 Oct 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>goでtime.Timeをmysqlから読む</title>
-      <link>http://localhost:1313/blog/2014/10/08/go-mysql-time/</link>
+      <link>http://ota42y.com/blog/2014/10/08/go-mysql-time/</link>
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/08/go-mysql-time/</guid>
+      <guid>http://ota42y.com/blog/2014/10/08/go-mysql-time/</guid>
       <description>&lt;p&gt;goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…&lt;br /&gt;
 &lt;code&gt;sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time&lt;/code&gt;&lt;/p&gt;
 
@@ -28,10 +28,10 @@
     
     <item>
       <title>goでmysqlを使う</title>
-      <link>http://localhost:1313/blog/2014/10/04/go-mysql/</link>
+      <link>http://ota42y.com/blog/2014/10/04/go-mysql/</link>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/10/04/go-mysql/</guid>
+      <guid>http://ota42y.com/blog/2014/10/04/go-mysql/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://github.com/go-sql-driver/mysql&#34;&gt;http://github.com/go-sql-driver/mysql&lt;/a&gt;&lt;br /&gt;
@@ -171,10 +171,10 @@ ORマッパーは偉大ですね…&lt;/p&gt;
     
     <item>
       <title>sending authentication information</title>
-      <link>http://localhost:1313/blog/2014/08/30/sending-authentication-information/</link>
+      <link>http://ota42y.com/blog/2014/08/30/sending-authentication-information/</link>
       <pubDate>Sat, 30 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/30/sending-authentication-information/</guid>
+      <guid>http://ota42y.com/blog/2014/08/30/sending-authentication-information/</guid>
       <description>&lt;p&gt;Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、&lt;br /&gt;
 &lt;code&gt;&#39;sending authentication information&#39;, system error: 32&amp;quot;.&lt;/code&gt;&lt;br /&gt;
 といったエラーが出て、mysqlへのログインすら不可能になってしまいました。&lt;/p&gt;

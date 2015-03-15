@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Evernote on おおたの物置</title>
-    <link>http://localhost:1313/tags/evernote/</link>
+    <link>http://ota42y.com/tags/evernote/</link>
     <description>Recent content in Evernote on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ota42y.com/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</link>
+      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-url-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote url opener&lt;/a&gt;を更新しました。&lt;/p&gt;
 
 &lt;p&gt;使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、&lt;br /&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://localhost:1313/blog/2014/08/10/evernote-link/</link>
+      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/10/evernote-link/</guid>
+      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
@@ -46,7 +46,7 @@
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。&lt;br /&gt;

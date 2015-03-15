@@ -2,19 +2,132 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on おおたの物置</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>http://ota42y.com/blog/</link>
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 27 Feb 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Mar 2015 07:40:11 +0900</lastBuildDate>
+    <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OctopressからHugoに乗り換えた</title>
+      <link>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
+      <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
+      <description>
+
+&lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
+サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Octopress
+
+&lt;ul&gt;
+&lt;li&gt;Ruby制の静的サイト作成ツール&lt;/li&gt;
+&lt;li&gt;大量の記事を扱うと遅くなっていく
+
+&lt;ul&gt;
+&lt;li&gt;100記事で新しい記事のHTML出力まで10秒ぐらいかかる&lt;/li&gt;
+&lt;li&gt;見た目を確認したいときなどにとても不便&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Hugo
+
+&lt;ul&gt;
+&lt;li&gt;Golang制の静的サイト作成ツール&lt;/li&gt;
+&lt;li&gt;利点&lt;/li&gt;
+&lt;li&gt;早い
+
+&lt;ul&gt;
+&lt;li&gt;100記事で200msぐらい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;環境構築いらず
+
+&lt;ul&gt;
+&lt;li&gt;公式がバイナリ配布&lt;/li&gt;
+&lt;li&gt;手を加えないならそのまま使える&lt;/li&gt;
+&lt;li&gt;Win-Mac両方使う人にはとても楽&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;欠点
+
+&lt;ul&gt;
+&lt;li&gt;テーマが少ない
+
+&lt;ul&gt;
+&lt;li&gt;このサイトも自作&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;手を加えにくい
+
+&lt;ul&gt;
+&lt;li&gt;手を加えると環境構築いらずの利点が失われる&lt;/li&gt;
+&lt;li&gt;クロスコンパイルは楽なのでそれほどでもない？
+
+&lt;ul&gt;
+&lt;li&gt;手を加える必要が無いのでそのとき考える&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Octopressの問題点&lt;/h1&gt;
+
+&lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
+
+&lt;p&gt;Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。&lt;br /&gt;
+この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、&lt;br /&gt;
+表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。&lt;/p&gt;
+
+&lt;p&gt;現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。&lt;br /&gt;
+ちょっとした修正ごとに10秒待つのはなかなかにつらく、&lt;br /&gt;
+かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
+そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
+
+&lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
+
+&lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
+ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
+ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
+特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;環境構築いらず&lt;/h2&gt;
+
+&lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
+環境構築でがんばる必要がありません。&lt;br /&gt;
+私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
+Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの問題点&lt;/h1&gt;
+
+&lt;h2 id=&#34;テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;テーマがない&lt;/h2&gt;
+
+&lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
+実際このサイトも自分でテーマを作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;手を入れにくい&lt;/h2&gt;
+
+&lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
+Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
+これは環境構築の手間とのトレードオフなので仕方ないことなのですが…&lt;/p&gt;
+
+&lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
+一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>JenkinsをHTTP経由で叩く</title>
-      <link>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</link>
+      <link>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/27/jenkins-remote-api/</guid>
+      <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
@@ -107,10 +220,10 @@ end
     
     <item>
       <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</link>
+      <link>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/11/jenkins-workflow/</guid>
+      <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
@@ -238,10 +351,10 @@ return f;
     
     <item>
       <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
-      <link>http://localhost:1313/blog/2015/02/10/workflow-plugin/</link>
+      <link>http://ota42y.com/blog/2015/02/10/workflow-plugin/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/10/workflow-plugin/</guid>
+      <guid>http://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;まとめ&lt;/h1&gt;
@@ -281,7 +394,7 @@ Workflow Pluginを使う事で、さらに簡単に解決することが出来�
 ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。&lt;br /&gt;
 (また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
 &lt;br /&gt;
 (上段のup#4はup#3の間違いです…)&lt;/p&gt;
 
@@ -327,10 +440,10 @@ node(&amp;quot;master&amp;quot;){
     
     <item>
       <title>Go言語で一次の最小二乗法を実装した</title>
-      <link>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</link>
+      <link>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</link>
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/02/03/leastsquaresmethod/</guid>
+      <guid>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</guid>
       <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
 暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
 &lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
@@ -339,10 +452,10 @@ node(&amp;quot;master&amp;quot;){
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</link>
+      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-url-opener/pjkgaadffbojkgoocbobikkklpajjbgo&#34;&gt;evernote url opener&lt;/a&gt;を更新しました。&lt;/p&gt;
 
 &lt;p&gt;使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、&lt;br /&gt;
@@ -356,10 +469,10 @@ node(&amp;quot;master&amp;quot;){
     
     <item>
       <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</link>
+      <link>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/28/bundle-in-bundle/</guid>
+      <guid>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
       <description>
 
 &lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
@@ -461,10 +574,10 @@ end
     
     <item>
       <title>参加記録 情報科学若手の会冬の陣2015</title>
-      <link>http://localhost:1313/blog/2015/01/25/wakate2015w/</link>
+      <link>http://ota42y.com/blog/2015/01/25/wakate2015w/</link>
       <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/25/wakate2015w/</guid>
+      <guid>http://ota42y.com/blog/2015/01/25/wakate2015w/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://atnd.org/events/61060&#34;&gt;情報科学若手の会冬の陣2015 #wakate2015w&lt;/a&gt;に参加しました&lt;br /&gt;
@@ -591,10 +704,10 @@ end
     
     <item>
       <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>http://localhost:1313/blog/2015/01/23/ram-disk/</link>
+      <link>http://ota42y.com/blog/2015/01/23/ram-disk/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/23/ram-disk/</guid>
+      <guid>http://ota42y.com/blog/2015/01/23/ram-disk/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
@@ -648,7 +761,7 @@ hdiutil detach disk2
 速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
 
 &lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
-&lt;img src=&#34;http://localhost:1313/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
@@ -690,10 +803,10 @@ timeコマンドを使い手作業で計ったところ、SSD上では9分13秒�
     
     <item>
       <title>Androidでクリップボードの中身を自動で辞書検索</title>
-      <link>http://localhost:1313/blog/2015/01/21/android-dict/</link>
+      <link>http://ota42y.com/blog/2015/01/21/android-dict/</link>
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/21/android-dict/</guid>
+      <guid>http://ota42y.com/blog/2015/01/21/android-dict/</guid>
       <description>
 
 &lt;h1 id=&#34;まとめ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;まとめ&lt;/h1&gt;
@@ -761,10 +874,10 @@ pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br 
     
     <item>
       <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
-      <link>http://localhost:1313/blog/2015/01/11/jenkins-conference/</link>
+      <link>http://ota42y.com/blog/2015/01/11/jenkins-conference/</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/11/jenkins-conference/</guid>
+      <guid>http://ota42y.com/blog/2015/01/11/jenkins-conference/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://build-shokunin.org/juc2015/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;に参加しました。&lt;br /&gt;
@@ -1017,10 +1130,10 @@ pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br 
     
     <item>
       <title>Macのghcは改行コードがCRだと動かない</title>
-      <link>http://localhost:1313/blog/2015/01/07/mac-ghc-cr/</link>
+      <link>http://ota42y.com/blog/2015/01/07/mac-ghc-cr/</link>
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/07/mac-ghc-cr/</guid>
+      <guid>http://ota42y.com/blog/2015/01/07/mac-ghc-cr/</guid>
       <description>
 
 &lt;p&gt;Haskellでどう見ても文法的に間違っていないのに、&lt;br /&gt;
@@ -1097,16 +1210,16 @@ Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分�
     
     <item>
       <title>インライン展開についての追加調査</title>
-      <link>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</link>
+      <link>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/06/c-inline-postscript/</guid>
+      <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
       <description>
 
 &lt;p&gt;昨日の記事で、インライン展開について調べましたが、&lt;br /&gt;
 よくよく考えると片手落ちだったので追加調査しました。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;調査内容:5658da961537009d14c2d83db44bc8e6&#34;&gt;調査内容&lt;/h1&gt;
 
@@ -1225,10 +1338,10 @@ retq
     
     <item>
       <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>http://localhost:1313/blog/2015/01/05/c-inline/</link>
+      <link>http://ota42y.com/blog/2015/01/05/c-inline/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/05/c-inline/</guid>
+      <guid>http://ota42y.com/blog/2015/01/05/c-inline/</guid>
       <description>
 
 &lt;p&gt;C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、&lt;br /&gt;
@@ -1457,10 +1570,10 @@ duplicate symbolになっています。&lt;/p&gt;
     
     <item>
       <title>UNIXという考え方という本を読んだ</title>
-      <link>http://localhost:1313/blog/2015/01/04/unix-boox/</link>
+      <link>http://ota42y.com/blog/2015/01/04/unix-boox/</link>
       <pubDate>Sun, 04 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2015/01/04/unix-boox/</guid>
+      <guid>http://ota42y.com/blog/2015/01/04/unix-boox/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/UNIX%E3%81%A8%E3%81%84%E3%81%86%E8%80%83%E3%81%88%E6%96%B9%E2%80%95%E3%81%9D%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3%E3%81%A8%E5%93%B2%E5%AD%A6-Mike-Gancarz/dp/4274064069&#34;&gt;UNIXという考え方&lt;/a&gt;という本を読みました。&lt;br /&gt;
 原著は1994年に書かれている本で、
 &lt;a href=&#34;http://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6&#34;&gt;UNIXの哲学&lt;/a&gt;を一つ一つ、その意味と利点について解説しています。&lt;/p&gt;
@@ -1479,125 +1592,6 @@ duplicate symbolになっています。&lt;/p&gt;
 今ですと、スクリプト言語かクロスコンパイルが簡単にできるGo言語が良い選択肢でしょうか。&lt;/p&gt;
 
 &lt;p&gt;そういった具体的な部分に関しては時代の変化で合わなくなっている部分もありますが、その哲学自体は普遍的なもので、今読んでも、おそらくは10年後に読んでも得るものが多い本だと思います。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>fork関数がどうやってプロセスを分割しているか</title>
-      <link>http://localhost:1313/blog/2015/01/03/unix-fork/</link>
-      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/blog/2015/01/03/unix-fork/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEOS%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-~UNIX-V6%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF-Software-Design/dp/4774154644&#34;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;br /&gt;
-という本を読んでいます。&lt;/p&gt;
-
-&lt;p&gt;この中で、fork関数がどうやって子プロセスを作り、&lt;br /&gt;
-親子かを識別して別の値を返しているのかが解説されており、&lt;br /&gt;
-とても興味深かったです。&lt;/p&gt;
-
-&lt;p&gt;以下にその概要をまとめました。&lt;/p&gt;
-
-&lt;h1 id=&#34;fork関数:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数&lt;/h1&gt;
-
-&lt;p&gt;Cではfork関数を利用することで、子プロセスを作成することが出来ます。&lt;br /&gt;
-コードとしてはこんな感じですね。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-#include &amp;lt;sys/wait.h&amp;gt;
-
-int main() {
-  pid_t pid = fork();
-  if (pid == 0) {
-    sleep(1);
-    printf(&amp;quot;child!\n&amp;quot;);
-    return 0;
-  }
-
-  printf(&amp;quot;parent!\n&amp;quot;);
-
-  int status;
-  waitpid(pid, &amp;amp;status, 0);
-
-  printf(&amp;quot;parent end\n&amp;quot;);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。&lt;br /&gt;
-ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、&lt;br /&gt;
-ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。&lt;/p&gt;
-
-&lt;p&gt;では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、&lt;br /&gt;
-別の値を返しているのでしょうか。&lt;/p&gt;
-
-&lt;p&gt;これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。&lt;/p&gt;
-
-&lt;h1 id=&#34;fork関数がプロセスの親子を区別する仕組み:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数がプロセスの親子を区別する仕組み&lt;/h1&gt;
-
-&lt;h2 id=&#34;親による子プロセスの作成:7960c44eb9f1312bad029939fcc3410e&#34;&gt;親による子プロセスの作成&lt;/h2&gt;
-
-&lt;p&gt;ライブラリのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/source/s4/fork.s&#34;&gt;source/s4/fork.s&lt;/a&gt;)を実行すると、&lt;br /&gt;
-システムコールによってカーネルのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/sys1.c&#34;&gt;sys/ken/sys1.c&lt;/a&gt;)が実行されます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;fork()
-{
-  register struct proc *p1, *p2;
-
-  p1 = u.u_procp;
-  for(p2 = &amp;amp;proc[0]; p2 &amp;lt; &amp;amp;proc[NPROC]; p2++)
-  if(p2-&amp;gt;p_stat == NULL)
-    goto found;
-  u.u_error = EAGAIN;
-  goto out;
-
-found:
-  if(newproc()) {
-    u.u_ar0[R0] = p1-&amp;gt;p_pid;
-    u.u_cstime[0] = 0;
-    u.u_cstime[1] = 0;
-    u.u_stime = 0;
-    u.u_cutime[0] = 0;
-    u.u_cutime[1] = 0;
-    u.u_utime = 0;
-    return;
-  }
-  u.u_ar0[R0] = p2-&amp;gt;p_pid;
-
-out:
-  u.u_ar0[R7] =+ 2;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このカーネルのfork関数内でnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)を呼び出し、子プロセスを作成しています。&lt;br /&gt;
-その後、newproc関数は0を返すため、カーネルのfork関数で0で帰ってきた場合に、&lt;br /&gt;
-作成した子プロセスのIDをレジスタに乗せ、ライブラリのfork関数で返すようにしています。&lt;/p&gt;
-
-&lt;h2 id=&#34;作成された子プロセス側の処理:7960c44eb9f1312bad029939fcc3410e&#34;&gt;作成された子プロセス側の処理&lt;/h2&gt;
-
-&lt;p&gt;子プロセスは作成された後、実行順番が回ってきたタイミングでswitch関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)により再開します。&lt;br /&gt;
-この関数内では保存されたデータを復元し、最後にsavu関数を実行した関数の呼び出し元に、return 1で戻ります。&lt;/p&gt;
-
-&lt;p&gt;カーネルのfork関数で呼び出しているnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)内では、&lt;br /&gt;
-savu関数が実行されてから子プロセスがコピーされるため、&lt;br /&gt;
-switch関数はnewprocの呼び出し元であるfork関数に1で戻ります。&lt;/p&gt;
-
-&lt;p&gt;これにより、カーネルのfork関数内で呼び出しているnewproc関数は、&lt;br /&gt;
-親プロセスの場合は0が、子プロセスの場合は1が返るようになり、&lt;br /&gt;
-その値を見て自身が親なのか子なのかを判断でき、別々の戻り値を返せるようになっています。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:7960c44eb9f1312bad029939fcc3410e&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;親プロセスはforkで子プロセスを作成してそのまま処理を継続&lt;/li&gt;
-&lt;li&gt;子プロセスは実行順番が回ってきたタイミングで処理を開始
-
-&lt;ul&gt;
-&lt;li&gt;switch関数で復帰した際に、通常とは別の戻り値が返るため親子を区別可能&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
