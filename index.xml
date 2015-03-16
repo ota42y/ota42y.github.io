@@ -6,8 +6,41 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Mar 2015 07:40:11 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2015 23:03:05 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年11週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-11/</link>
+      <pubDate>Mon, 16 Mar 2015 23:03:05 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-11/</guid>
+      <description>
+
+&lt;h1 id=&#34;hugoに移行した:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;Hugoに移行した&lt;/h1&gt;
+
+&lt;p&gt;このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2015/03/16/octopress_to_hugo/&#34;&gt;OctopressからHugoに乗り換えた&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;goのwindows開発環境を整えた:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;GoのWindows開発環境を整えた&lt;/h1&gt;
+
+&lt;p&gt;IntelliJを使うとWindowsでも問題なく扱えます。&lt;br /&gt;
+ただし、テストを実行するときはexeファイルを作ってから実行します。&lt;br /&gt;
+そのため、テストのたびにウィルスソフトのスキャンが挟まるため、テストが無駄に遅いです…&lt;/p&gt;
+
+&lt;h1 id=&#34;google-breakpad:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;google breakpad&lt;/h1&gt;
+
+&lt;p&gt;マルチプラットフォームなクラッシュレポートみたいです。&lt;br /&gt;
+iOS,Android,Mac,Windows等かなりのプラットフォームに対応しているのでよさそうです。&lt;br /&gt;
+&lt;a href=&#34;https://code.google.com/p/google-breakpad/&#34;&gt;https://code.google.com/p/google-breakpad/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ちなみにMac OS10.9では以下のコマンドでビルドする必要があります。&lt;br /&gt;
+(引用元は忘れました…stackoverflowだったはず）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
@@ -973,136 +1006,6 @@ URLをショートカットから開けなかったり、ヘッダー画像が�
 &lt;p&gt;ただ、オフラインでスマホで見られますし、繰り返し設定など様々な設定が凄く楽にできる等&lt;br /&gt;
 機能的にはいいですし、UIもいいのであともう一声って感じですね…&lt;br /&gt;
 コマンドラインから対話的に操作できれば解決できそうな気がします。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 情報科学若手の会冬の陣2015</title>
-      <link>http://ota42y.com/blog/2015/01/25/wakate2015w/</link>
-      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/25/wakate2015w/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://atnd.org/events/61060&#34;&gt;情報科学若手の会冬の陣2015 #wakate2015w&lt;/a&gt;に参加しました&lt;br /&gt;
-&lt;a href=&#34;http://togetter.com/li/773792&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;br /&gt;
-会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:99d83bf71ce3610b971e31175555a6de&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;黒崎優太 (@kuro_m88)  ICTトラブルシューティングコンテストの紹介&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://icttoracon.net/&#34;&gt;http://icttoracon.net/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ネットワーク版CTFみたいなコンテスト&lt;/li&gt;
-&lt;li&gt;Ciscoがスポンサーについているので、高価な機材がいっぱい用意されるみたい&lt;/li&gt;
-&lt;li&gt;大きな規模のネットワークであれこれするのって普通じゃ出来ないし、面白そうです。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;浅野智之 (@asanon_s)  Webの世界に散らばるデータをつなぐ技術&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;semantic webやPDFの話&lt;/li&gt;
-&lt;li&gt;人間が読めれば良い形式から、構造化されて機械も読める形式を加えるみたい&lt;/li&gt;
-&lt;li&gt;なんとなく理解が深まった気がします&lt;/li&gt;
-&lt;li&gt;完全なsemantic webへの道のりはまだまだ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;門脇香子  証明プログラミング入門&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ussopyon/ss-43846794&#34;&gt;http://www.slideshare.net/ussopyon/ss-43846794&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://lepidum.co.jp/blog/2014-06-05/CCS-Injection/&#34;&gt;OpenSSLの脆弱性をCoqで見つけた話&lt;/a&gt;を聞いてから、証明プログラミング凄そうだけどよくわからない状態だったので、
-理解が深まりました。&lt;/li&gt;
-&lt;li&gt;何を証明すれば良いかを補完してくれるのは便利そうでした&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;佐野岳人  コードを書けば複素数が分かる&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/taketo1024/ss-43853048&#34;&gt;http://www.slideshare.net/taketo1024/ss-43853048&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;初めて複素数が何なのかを感覚的に理解できた気がする…&lt;/li&gt;
-&lt;li&gt;デモで関数をインタラクティブに可視化しているのが本当に凄かった&lt;/li&gt;
-&lt;li&gt;ここから使える&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/taketo1024/SwiftComplex&#34;&gt;https://github.com/taketo1024/SwiftComplex&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;辻順平 (@tsujimotter)    日曜数学のススメ&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/junpeitsuji/2015-43856733&#34;&gt;http://www.slideshare.net/junpeitsuji/2015-43856733&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;コンパスと定規で作図可能かどうかを判定するガウスの判定法凄い&lt;/li&gt;
-&lt;li&gt;折り紙だと四次方程式が解けるので、作図できなくても折れる場合があるとか凄い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;池尻良平  ニュースと類似した歴史を求めるアルゴリズムを考えてみた – 役に立つ歴史教育を目指して&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;現代のニュースと、それに類似する歴史上の出来事を提示するシステムを作っているそうです&lt;/li&gt;
-&lt;li&gt;過去にどんな解決策をとって、どういう結果になったかを考えるのにとても便利そうです&lt;/li&gt;
-&lt;li&gt;早く使ってみたいですね&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;後藤紳   モバイルデータを用いた行動予測&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;あんまり書いちゃいけなさそうなので割愛&lt;/li&gt;
-&lt;li&gt;GPSの行動ログを蓄積して、次に何をしそうか提示するみたいです&lt;/li&gt;
-&lt;li&gt;同じような日々を送っている人には効果的っぽいです&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;宮代理弘 (@3846masa)  Processin.ga – Webで書いてスマホで動かすサイト開発話&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://processin.ga/&#34;&gt;http://processin.ga/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&#34;&gt;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Processingをブラウザ上で書いて動かし、かつスマホでもリアルタイムに動かせるサイトです&lt;/li&gt;
-&lt;li&gt;無ければ作る、あっても作る&lt;/li&gt;
-&lt;li&gt;デザインはパクるもの&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;湯村翼 (@yumu19) 野生の研究について&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://yumulog.hatenablog.com/entry/2015/01/25/020313&#34;&gt;http://yumulog.hatenablog.com/entry/2015/01/25/020313&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;そもそもアーカイブ形式が動画だと、後から調べるのがとても大変になる気がします&lt;/li&gt;
-&lt;li&gt;今は何とかなってるけど、数年、数十年と続いていくと辛いかと&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;宮下芳明  明治大学宮下研究室の活動とABProの紹介&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Linear vs Circular&lt;/li&gt;
-&lt;li&gt;この研究が凄かった&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=S1Roi2NOmx8&#34;&gt;https://www.youtube.com/watch?v=S1Roi2NOmx8&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;懇親会:99d83bf71ce3610b971e31175555a6de&#34;&gt;懇親会&lt;/h1&gt;
-
-&lt;p&gt;一晩寝たらだいたい忘れるという…(´･_･`)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;courseraで英語勉強&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/&#34;&gt;https://www.coursera.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ちょうど機械学習とかやってみたかったのでよさそう(o゜▽゜)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自動作曲の話&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;歌詞を入れると自動でお音をつけてくれる&lt;/li&gt;
-&lt;li&gt;日本語の音節？を見て色々やってるらしい？&lt;/li&gt;
-&lt;li&gt;ミクと組み合わせて、詩を書ければ曲が書けるとか良さそう&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;その他:99d83bf71ce3610b971e31175555a6de&#34;&gt;その他&lt;/h1&gt;
-
-&lt;p&gt;何か発表したい人生だった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
