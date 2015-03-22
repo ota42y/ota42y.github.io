@@ -6,8 +6,40 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 22 Mar 2015 10:27:54 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2015 07:34:46 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年12週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-12/</link>
+      <pubDate>Mon, 23 Mar 2015 07:34:46 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-12/</guid>
+      <description>
+
+&lt;h1 id=&#34;gxuiを触ってた:bbdc5216c1ff2ebffa850fb8e4bd1537&#34;&gt;gxuiを触ってた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;https://github.com/google/gxui&lt;/a&gt;&lt;br /&gt;
+GoogleによるGolang制のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
+クロスコンパイルは難しそうだけど、同じソースでビルドは普通にできそうです。&lt;br /&gt;
+ざっと見た限り、必要最低限しか整ってない感じなので、これからに期待です。&lt;/p&gt;
+
+&lt;h1 id=&#34;todoアプリ作成中:bbdc5216c1ff2ebffa850fb8e4bd1537&#34;&gt;Todoアプリ作成中&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/pages/summary/2015/week-09/&#34;&gt;http://ota42y.com/pages/summary/2015/week-09/&lt;/a&gt;でやろうとしていたTodoアプリを作成中です。&lt;br /&gt;
+今月中にはできるかと思っていましたが、このサイトの作成に思った以上に時間をとられてしまい、あんまり進んでいないです…&lt;/p&gt;
+
+&lt;p&gt;ただし、おおよその仕様はまとまりましたし、機能を大幅に削った最低ラインを決めました。&lt;br /&gt;
+最低限使い物になるまで半分ぐらいなので、後2週間ぐらいで作り上げたいと思います。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoからの出力をgithub-pagesにアップロードする:bbdc5216c1ff2ebffa850fb8e4bd1537&#34;&gt;Hugoからの出力をGithub Pagesにアップロードする&lt;/h1&gt;
+
+&lt;p&gt;Octopressの場合はGithub Pagesにアップロードしてくれるコマンドがありましたが、&lt;br /&gt;
+Hugoの場合、特にそんなコマンドはないようです。&lt;br /&gt;
+そのため、HugoがHTMLを出力するフォルダに、Github Pagesをcloneしておく必要があります。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Windowsにgxuiをインストールする</title>
@@ -171,6 +203,40 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
 
 &lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
 一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年11週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-11/</link>
+      <pubDate>Mon, 16 Mar 2015 07:34:46 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-11/</guid>
+      <description>
+
+&lt;h1 id=&#34;hugoに移行した:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;Hugoに移行した&lt;/h1&gt;
+
+&lt;p&gt;このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2015/03/16/octopress_to_hugo/&#34;&gt;OctopressからHugoに乗り換えた&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;goのwindows開発環境を整えた:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;GoのWindows開発環境を整えた&lt;/h1&gt;
+
+&lt;p&gt;IntelliJを使うとWindowsでも問題なく扱えます。&lt;br /&gt;
+ただし、テストを実行するときはexeファイルを作ってから実行します。&lt;br /&gt;
+そのため、テストのたびにウィルスソフトのスキャンが挟まるため、テストが無駄に遅いです…&lt;br /&gt;
+特定のフォルダにexeファイルがはかれるため、そこだけ除外設定をしようかと検討中です。&lt;/p&gt;
+
+&lt;h1 id=&#34;google-breakpad:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;google breakpad&lt;/h1&gt;
+
+&lt;p&gt;マルチプラットフォームなクラッシュレポートみたいです。&lt;br /&gt;
+iOS,Android,Mac,Windows等かなりのプラットフォームに対応しているのでよさそうです。&lt;br /&gt;
+&lt;a href=&#34;https://code.google.com/p/google-breakpad/&#34;&gt;https://code.google.com/p/google-breakpad&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ちなみにMac OS10.9では以下のコマンドでビルドする必要があります。&lt;br /&gt;
+(引用元は忘れました…stackoverflowだったはず）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -876,152 +942,6 @@ LVよりも会場の方が何十倍も凄かったです。&lt;br /&gt;
 &lt;p&gt;Evernoteからコピーできる、&lt;br /&gt;
 &lt;code&gt;https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/&lt;/code&gt;&lt;br /&gt;
 といった形式のリンクを張ることで、USER_SHARDとUSER_IDを保存します。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
-      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
-      <description>
-
-&lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
-一回目のbundlerに対してbundleが実行されてしまい、&lt;br /&gt;
-別のbundleを呼び出せないという問題が起きました。&lt;br /&gt;
-これはbundlerが設定する環境変数が原因でした。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;bundle exec中に、別のbundlerを実行するとおかしくなる
-
-&lt;ul&gt;
-&lt;li&gt;主にsystemやspawn等を使った場合&lt;/li&gt;
-&lt;li&gt;最初のbundle execと同じものであれば問題は起きない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;bundlerが設定をしている環境変数が問題
-
-&lt;ul&gt;
-&lt;li&gt;別のbundlerを呼ぼうとして元のbundlerが呼ばれている&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Bundler.with_clean_envで回避可能
-
-&lt;ul&gt;
-&lt;li&gt;Bundler.clean_systemでも可&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;問題:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;問題&lt;/h1&gt;
-
-&lt;p&gt;以下のような構成かつtestフォルダにいる状態で、&lt;br /&gt;
-&lt;code&gt;bundle install --path vendor/bundle&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;bundle exec test.rb&lt;/code&gt;を実行すると、&lt;br /&gt;
-test2内でbundlerを呼んだ時にエラーになります&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
-├─ test
-│  │  Gemfile (gemのhello_world_gemを使用)
-│  └─ test.rb
-|
-└─ test2
-   └─ Gemfile (gemのhello-worldを使用)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
-Dir.chdir(&amp;quot;../test2&amp;quot;) do
-  # error
-  system &#39;bundle install --path vendor/bundle&#39;
-  system &#39;bundle exec hello-world&#39;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;エラー文言&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;oh hai thar
-Using hello_world_gem 0.0.3
-Using bundler 1.7.3
-Your bundle is complete!
-It was installed into ./vendor/bundle
-bundler: command not found: hello-world
-Install missing gem executables with `bundle install`
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;原因:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;原因&lt;/h1&gt;
-
-&lt;p&gt;bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、&lt;br /&gt;
-そこで指定されているbundlerから実行されていると見なされるため、&lt;br /&gt;
-bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。&lt;br /&gt;
-実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。&lt;/p&gt;
-
-&lt;p&gt;この仕組みのおかげで同じbundleの場合はそのまま実行できるため、&lt;br /&gt;
-1行目のhello_world_gemの呼び出しにbundle execが不要になっています。&lt;br /&gt;
-このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。&lt;/p&gt;
-
-&lt;h1 id=&#34;解決策:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;解決策&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239&#34;&gt;Bundler.with_clean_env&lt;/a&gt;を利用することで、この問題を回避できます。&lt;br /&gt;
-このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。&lt;br /&gt;
-そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。&lt;br /&gt;
-また、コマンドが一つだけの場合は&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251&#34;&gt;Bundler.clean_system&lt;/a&gt;メソッドも使えます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
-Dir.chdir(&amp;quot;../test2&amp;quot;) do
-  Bundler.with_clean_env do
-    # ok
-    system &#39;bundle install --path vendor/bundle&#39;
-    system &#39;bundle exec hello-world&#39;
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;補足:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;補足&lt;/h1&gt;
-
-&lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
-これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年04週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-04/</link>
-      <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-04/</guid>
-      <description>
-
-&lt;p&gt;先週やったことまとめ&lt;br /&gt;
-以外とあまりやってない。&lt;br /&gt;
-作りたいものは増えていくけど時間は無い。&lt;/p&gt;
-
-&lt;h1 id=&#34;tumblrクライアント作ってる:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;tumblrクライアント作ってる&lt;/h1&gt;
-
-&lt;p&gt;info APIだけはできた。Posts APIを作りたいけど、ちょっとめんどくさそう。&lt;br /&gt;
-複数の型を一つの配列で返して来るので、どうやって同じ配列に入れようか…&lt;br /&gt;
-たぶん全部入りのクラスで取り出して、個別のクラスに入れていく形になるかと。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://play.golang.org/p/tVLoIDVk--&#34;&gt;http://play.golang.org/p/tVLoIDVk&amp;ndash;&lt;/a&gt;
-この技を使えば違う型でも共通の配列に入れられるはず&lt;/p&gt;
-
-&lt;h1 id=&#34;情報科学若手の会冬の陣2015に参加した:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;情報科学若手の会冬の陣2015に参加した&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/25/wakate2015w/&#34;&gt;参加記録 情報科学若手の会冬の陣2015&lt;/a&gt;&lt;br /&gt;
-発表したい人生だった… _ (:3 」∠)_&lt;br /&gt;
-が、ここ半年間はずっと一日に使える時間が1〜2時間程度、かつ仕事は情報科学っぽい事をしてないので、&lt;br /&gt;
-発表ネタが全く作れないという…&lt;br /&gt;
-というか、特に技術的に成長してない気がするし、このままの生活を続けて大丈夫なのだろうか…&lt;/p&gt;
-
-&lt;h1 id=&#34;remember-the-milk使いやすいが使いにくい:20917bd895e9b9e9889f0b97011e9e96&#34;&gt;Remember The Milk使いやすいが使いにくい&lt;/h1&gt;
-
-&lt;p&gt;わりといい線行ってるサービスだけど、Webクライアントが使いにくいのでちょっと残念。&lt;br /&gt;
-URLをショートカットから開けなかったり、ヘッダー画像が邪魔だったり…&lt;br /&gt;
-サブタスクが無いのもそれはそれで使いにくいですね。&lt;/p&gt;
-
-&lt;p&gt;ただ、オフラインでスマホで見られますし、繰り返し設定など様々な設定が凄く楽にできる等&lt;br /&gt;
-機能的にはいいですし、UIもいいのであともう一声って感じですね…&lt;br /&gt;
-コマンドラインから対話的に操作できれば解決できそうな気がします。&lt;/p&gt;
 </description>
     </item>
     

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="2015年11週目まとめ">
+    <meta name="description" content="2015年12週目まとめ">
     <meta name="author" content="ota42y">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,7 +11,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     
-    <title>2015年11週目まとめ | おおたの物置</title>
+    <title>2015年12週目まとめ | おおたの物置</title>
     
 
     <link rel="stylesheet" href="/css/base.css">
@@ -51,11 +51,11 @@
             <div class="article">
 
                 <div class="post_title">
-                    <h1>2015年11週目まとめ</h1>
+                    <h1>2015年12週目まとめ</h1>
                     
 
-<time datetime="2015-03-16" class="post_data">
-2015-03-16
+<time datetime="2015-03-23" class="post_data">
+2015-03-23
 </time>
 
 
@@ -75,9 +75,9 @@
                             <div id="toc_index">目次</div>
                             <nav id="TableOfContents">
 <ul>
-<li><a href="#hugoに移行した:6bd09a8a6f76d3dafa276f77f1aaa1d8">Hugoに移行した</a></li>
-<li><a href="#goのwindows開発環境を整えた:6bd09a8a6f76d3dafa276f77f1aaa1d8">GoのWindows開発環境を整えた</a></li>
-<li><a href="#google-breakpad:6bd09a8a6f76d3dafa276f77f1aaa1d8">google breakpad</a></li>
+<li><a href="#gxuiを触ってた:bbdc5216c1ff2ebffa850fb8e4bd1537">gxuiを触ってた</a></li>
+<li><a href="#todoアプリ作成中:bbdc5216c1ff2ebffa850fb8e4bd1537">Todoアプリ作成中</a></li>
+<li><a href="#hugoからの出力をgithub-pagesにアップロードする:bbdc5216c1ff2ebffa850fb8e4bd1537">Hugoからの出力をGithub Pagesにアップロードする</a></li>
 </ul>
 </nav>
                         </div>
@@ -86,29 +86,27 @@
 
                     
 
-<h1 id="hugoに移行した:6bd09a8a6f76d3dafa276f77f1aaa1d8">Hugoに移行した</h1>
+<h1 id="gxuiを触ってた:bbdc5216c1ff2ebffa850fb8e4bd1537">gxuiを触ってた</h1>
 
-<p>このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。<br />
-<a href="http://ota42y.com/blog/2015/03/16/octopress_to_hugo/">OctopressからHugoに乗り換えた</a></p>
+<p><a href="https://github.com/google/gxui">https://github.com/google/gxui</a><br />
+GoogleによるGolang制のクロスプラットフォームなGUIライブラリです。<br />
+クロスコンパイルは難しそうだけど、同じソースでビルドは普通にできそうです。<br />
+ざっと見た限り、必要最低限しか整ってない感じなので、これからに期待です。</p>
 
-<h1 id="goのwindows開発環境を整えた:6bd09a8a6f76d3dafa276f77f1aaa1d8">GoのWindows開発環境を整えた</h1>
+<h1 id="todoアプリ作成中:bbdc5216c1ff2ebffa850fb8e4bd1537">Todoアプリ作成中</h1>
 
-<p>IntelliJを使うとWindowsでも問題なく扱えます。<br />
-ただし、テストを実行するときはexeファイルを作ってから実行します。<br />
-そのため、テストのたびにウィルスソフトのスキャンが挟まるため、テストが無駄に遅いです…<br />
-特定のフォルダにexeファイルがはかれるため、そこだけ除外設定をしようかと検討中です。</p>
+<p><a href="http://ota42y.com/pages/summary/2015/week-09/">http://ota42y.com/pages/summary/2015/week-09/</a>でやろうとしていたTodoアプリを作成中です。<br />
+今月中にはできるかと思っていましたが、このサイトの作成に思った以上に時間をとられてしまい、あんまり進んでいないです…</p>
 
-<h1 id="google-breakpad:6bd09a8a6f76d3dafa276f77f1aaa1d8">google breakpad</h1>
+<p>ただし、おおよその仕様はまとまりましたし、機能を大幅に削った最低ラインを決めました。<br />
+最低限使い物になるまで半分ぐらいなので、後2週間ぐらいで作り上げたいと思います。<br />
+<a href="https://github.com/ota42y/plaintodo">https://github.com/ota42y/plaintodo</a></p>
 
-<p>マルチプラットフォームなクラッシュレポートみたいです。<br />
-iOS,Android,Mac,Windows等かなりのプラットフォームに対応しているのでよさそうです。<br />
-<a href="https://code.google.com/p/google-breakpad/">https://code.google.com/p/google-breakpad</a></p>
+<h1 id="hugoからの出力をgithub-pagesにアップロードする:bbdc5216c1ff2ebffa850fb8e4bd1537">Hugoからの出力をGithub Pagesにアップロードする</h1>
 
-<p>ちなみにMac OS10.9では以下のコマンドでビルドする必要があります。<br />
-(引用元は忘れました…stackoverflowだったはず）</p>
-
-<pre><code>xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
-</code></pre>
+<p>Octopressの場合はGithub Pagesにアップロードしてくれるコマンドがありましたが、<br />
+Hugoの場合、特にそんなコマンドはないようです。<br />
+そのため、HugoがHTMLを出力するフォルダに、Github Pagesをcloneしておく必要があります。</p>
 
                 </div>
 
@@ -126,7 +124,7 @@ iOS,Android,Mac,Windows等かなりのプラットフォームに対応してい
 
     
     <span class="hatena">
-        <a href="http://ota42y.com/pages/summary/2015/week-11/" class="hatena-bookmark-button"
+        <a href="http://ota42y.com/pages/summary/2015/week-12/" class="hatena-bookmark-button"
            data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
            title="このエントリーをはてなブックマークに追加">
             <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"

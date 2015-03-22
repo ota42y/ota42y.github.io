@@ -6,8 +6,74 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 09 Mar 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2015 07:34:46 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年12週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-12/</link>
+      <pubDate>Mon, 23 Mar 2015 07:34:46 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-12/</guid>
+      <description>
+
+&lt;h1 id=&#34;gxuiを触ってた:bbdc5216c1ff2ebffa850fb8e4bd1537&#34;&gt;gxuiを触ってた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;https://github.com/google/gxui&lt;/a&gt;&lt;br /&gt;
+GoogleによるGolang制のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
+クロスコンパイルは難しそうだけど、同じソースでビルドは普通にできそうです。&lt;br /&gt;
+ざっと見た限り、必要最低限しか整ってない感じなので、これからに期待です。&lt;/p&gt;
+
+&lt;h1 id=&#34;todoアプリ作成中:bbdc5216c1ff2ebffa850fb8e4bd1537&#34;&gt;Todoアプリ作成中&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/pages/summary/2015/week-09/&#34;&gt;http://ota42y.com/pages/summary/2015/week-09/&lt;/a&gt;でやろうとしていたTodoアプリを作成中です。&lt;br /&gt;
+今月中にはできるかと思っていましたが、このサイトの作成に思った以上に時間をとられてしまい、あんまり進んでいないです…&lt;/p&gt;
+
+&lt;p&gt;ただし、おおよその仕様はまとまりましたし、機能を大幅に削った最低ラインを決めました。&lt;br /&gt;
+最低限使い物になるまで半分ぐらいなので、後2週間ぐらいで作り上げたいと思います。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;hugoからの出力をgithub-pagesにアップロードする:bbdc5216c1ff2ebffa850fb8e4bd1537&#34;&gt;Hugoからの出力をGithub Pagesにアップロードする&lt;/h1&gt;
+
+&lt;p&gt;Octopressの場合はGithub Pagesにアップロードしてくれるコマンドがありましたが、&lt;br /&gt;
+Hugoの場合、特にそんなコマンドはないようです。&lt;br /&gt;
+そのため、HugoがHTMLを出力するフォルダに、Github Pagesをcloneしておく必要があります。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015年11週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-11/</link>
+      <pubDate>Mon, 16 Mar 2015 07:34:46 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-11/</guid>
+      <description>
+
+&lt;h1 id=&#34;hugoに移行した:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;Hugoに移行した&lt;/h1&gt;
+
+&lt;p&gt;このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2015/03/16/octopress_to_hugo/&#34;&gt;OctopressからHugoに乗り換えた&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;goのwindows開発環境を整えた:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;GoのWindows開発環境を整えた&lt;/h1&gt;
+
+&lt;p&gt;IntelliJを使うとWindowsでも問題なく扱えます。&lt;br /&gt;
+ただし、テストを実行するときはexeファイルを作ってから実行します。&lt;br /&gt;
+そのため、テストのたびにウィルスソフトのスキャンが挟まるため、テストが無駄に遅いです…&lt;br /&gt;
+特定のフォルダにexeファイルがはかれるため、そこだけ除外設定をしようかと検討中です。&lt;/p&gt;
+
+&lt;h1 id=&#34;google-breakpad:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;google breakpad&lt;/h1&gt;
+
+&lt;p&gt;マルチプラットフォームなクラッシュレポートみたいです。&lt;br /&gt;
+iOS,Android,Mac,Windows等かなりのプラットフォームに対応しているのでよさそうです。&lt;br /&gt;
+&lt;a href=&#34;https://code.google.com/p/google-breakpad/&#34;&gt;https://code.google.com/p/google-breakpad&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ちなみにMac OS10.9では以下のコマンドでビルドする必要があります。&lt;br /&gt;
+(引用元は忘れました…stackoverflowだったはず）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年10週目まとめ</title>
