@@ -6,8 +6,57 @@
     <description>Recent content in Golang on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Mar 2015 07:40:11 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2015 10:27:54 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windowsにgxuiをインストールする</title>
+      <link>http://ota42y.com/blog/2015/03/22/gxui-install/</link>
+      <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/22/gxui-install/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;gxui&lt;/a&gt;は、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
+WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。&lt;br /&gt;
+なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。&lt;/p&gt;
+
+&lt;h1 id=&#34;go言語の環境構築:e3f779623d1fe78142ffab511be6be70&#34;&gt;Go言語の環境構築&lt;/h1&gt;
+
+&lt;p&gt;Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。&lt;br /&gt;
+元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、&lt;br /&gt;
+mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。&lt;/p&gt;
+
+&lt;h2 id=&#34;vcsのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;VCSのインストール&lt;/h2&gt;
+
+&lt;p&gt;git(&lt;a href=&#34;http://git-scm.com/&#34;&gt;http://git-scm.com/&lt;/a&gt;)とmercurial(&lt;a href=&#34;http://mercurial.selenic.com/&#34;&gt;http://mercurial.selenic.com/&lt;/a&gt;)をインストールします。&lt;br /&gt;
+gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください&lt;/p&gt;
+
+&lt;h2 id=&#34;mingwのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;mingwのインストール&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sourceforge.net/projects/mingw/&#34;&gt;http://sourceforge.net/projects/mingw/&lt;/a&gt;からmingwを入れ、&lt;br /&gt;
+mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。&lt;/p&gt;
+
+&lt;p&gt;なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。&lt;br /&gt;
+これは両方とも32bitに揃えることで回避できました。&lt;/p&gt;
+
+&lt;p&gt;コマンドラインからgccが使えるようになっていれば大丈夫です。&lt;/p&gt;
+
+&lt;h1 id=&#34;gxuiのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;gxuiのインストール&lt;/h1&gt;
+
+&lt;p&gt;gxuiと4つの依存するパッケージをインストールします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get http://github.com/google/gxui
+go get http://code.google.com/p/freetype-go/freetype/raster
+go get http://code.google.com/p/freetype-go/freetype/truetype
+go get http://github.com/go-gl/gl/v3.2-core/gl
+go get http://github.com/go-gl/glfw/v3.1/glfw
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これだけでインストールはおしまいです。
+gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>

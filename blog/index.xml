@@ -6,8 +6,57 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Mar 2015 07:40:11 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2015 10:27:54 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windowsにgxuiをインストールする</title>
+      <link>http://ota42y.com/blog/2015/03/22/gxui-install/</link>
+      <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/22/gxui-install/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;gxui&lt;/a&gt;は、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
+WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。&lt;br /&gt;
+なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。&lt;/p&gt;
+
+&lt;h1 id=&#34;go言語の環境構築:e3f779623d1fe78142ffab511be6be70&#34;&gt;Go言語の環境構築&lt;/h1&gt;
+
+&lt;p&gt;Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。&lt;br /&gt;
+元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、&lt;br /&gt;
+mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。&lt;/p&gt;
+
+&lt;h2 id=&#34;vcsのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;VCSのインストール&lt;/h2&gt;
+
+&lt;p&gt;git(&lt;a href=&#34;http://git-scm.com/&#34;&gt;http://git-scm.com/&lt;/a&gt;)とmercurial(&lt;a href=&#34;http://mercurial.selenic.com/&#34;&gt;http://mercurial.selenic.com/&lt;/a&gt;)をインストールします。&lt;br /&gt;
+gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください&lt;/p&gt;
+
+&lt;h2 id=&#34;mingwのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;mingwのインストール&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sourceforge.net/projects/mingw/&#34;&gt;http://sourceforge.net/projects/mingw/&lt;/a&gt;からmingwを入れ、&lt;br /&gt;
+mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。&lt;/p&gt;
+
+&lt;p&gt;なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。&lt;br /&gt;
+これは両方とも32bitに揃えることで回避できました。&lt;/p&gt;
+
+&lt;p&gt;コマンドラインからgccが使えるようになっていれば大丈夫です。&lt;/p&gt;
+
+&lt;h1 id=&#34;gxuiのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;gxuiのインストール&lt;/h1&gt;
+
+&lt;p&gt;gxuiと4つの依存するパッケージをインストールします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get http://github.com/google/gxui
+go get http://code.google.com/p/freetype-go/freetype/raster
+go get http://code.google.com/p/freetype-go/freetype/truetype
+go get http://github.com/go-gl/gl/v3.2-core/gl
+go get http://github.com/go-gl/glfw/v3.1/glfw
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これだけでインストールはおしまいです。
+gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
@@ -1568,33 +1617,6 @@ duplicate symbolになっています。&lt;/p&gt;
 &lt;li&gt;複数のcppファイルに書かれた内容を繋げるのはリンク時なのでコンパイル後&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>UNIXという考え方という本を読んだ</title>
-      <link>http://ota42y.com/blog/2015/01/04/unix-boox/</link>
-      <pubDate>Sun, 04 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/04/unix-boox/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/UNIX%E3%81%A8%E3%81%84%E3%81%86%E8%80%83%E3%81%88%E6%96%B9%E2%80%95%E3%81%9D%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3%E3%81%A8%E5%93%B2%E5%AD%A6-Mike-Gancarz/dp/4274064069&#34;&gt;UNIXという考え方&lt;/a&gt;という本を読みました。&lt;br /&gt;
-原著は1994年に書かれている本で、
-&lt;a href=&#34;http://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6&#34;&gt;UNIXの哲学&lt;/a&gt;を一つ一つ、その意味と利点について解説しています。&lt;/p&gt;
-
-&lt;p&gt;「一つのことを、うまくやれ」や「小さいものは美しい」等、ある程度ハッカー文化に詳しい人ならばどれかは聞いたことがあるぐらい有名な哲学です。&lt;/p&gt;
-
-&lt;p&gt;面白いのは、例えば「できるだけ早く試作を作成する」という項目では、設計を完璧にしてから取りかかるのではなく、
-プロトタイプを作り、それをユーザに見せてフィードバックをもらい、良い設計にしていくべきと述べられています。&lt;br /&gt;
-これはアジャイル開発のイテレーションを回していく手法ととても似ており、開発手法の歴史を感じます。&lt;/p&gt;
-
-&lt;p&gt;また、「一つのことを、うまくやれ」は色々やる巨大な関数より、ちゃんと機能毎に分割しろと解釈できますし、「ソフトウェアの挺子（てこ）を有効に活用する」は他のいいプログラムからコードを借りてきたり、gemやnpmで既にあるソフトウェアを利用するといった、コードの再利用性の話だと解釈できます。&lt;/p&gt;
-
-&lt;p&gt;原著は1994年に書かれたにもかかわらず、今日でも普通に通用する哲学がちりばめられており、UNIX哲学の現代のプログラミング文化への強い影響と、その普遍性をかんじます。&lt;/p&gt;
-
-&lt;p&gt;ただ、本書の中でシェルスクリプトが移植性もいいし簡潔に書けるしと礼賛されていますが、デバッグしにくい上に、コマンドがGNUかBSDかで結果が変わる場合があるので実は移植性がそんなに無いですし、現代ではちょっとどうなのかな…みたいな部分もあります。&lt;br /&gt;
-今ですと、スクリプト言語かクロスコンパイルが簡単にできるGo言語が良い選択肢でしょうか。&lt;/p&gt;
-
-&lt;p&gt;そういった具体的な部分に関しては時代の変化で合わなくなっている部分もありますが、その哲学自体は普遍的なもので、今読んでも、おそらくは10年後に読んでも得るものが多い本だと思います。&lt;/p&gt;
 </description>
     </item>
     

@@ -6,8 +6,57 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Mar 2015 07:40:11 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2015 10:27:54 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windowsにgxuiをインストールする</title>
+      <link>http://ota42y.com/blog/2015/03/22/gxui-install/</link>
+      <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/22/gxui-install/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;gxui&lt;/a&gt;は、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
+WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。&lt;br /&gt;
+なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。&lt;/p&gt;
+
+&lt;h1 id=&#34;go言語の環境構築:e3f779623d1fe78142ffab511be6be70&#34;&gt;Go言語の環境構築&lt;/h1&gt;
+
+&lt;p&gt;Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。&lt;br /&gt;
+元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、&lt;br /&gt;
+mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。&lt;/p&gt;
+
+&lt;h2 id=&#34;vcsのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;VCSのインストール&lt;/h2&gt;
+
+&lt;p&gt;git(&lt;a href=&#34;http://git-scm.com/&#34;&gt;http://git-scm.com/&lt;/a&gt;)とmercurial(&lt;a href=&#34;http://mercurial.selenic.com/&#34;&gt;http://mercurial.selenic.com/&lt;/a&gt;)をインストールします。&lt;br /&gt;
+gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください&lt;/p&gt;
+
+&lt;h2 id=&#34;mingwのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;mingwのインストール&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sourceforge.net/projects/mingw/&#34;&gt;http://sourceforge.net/projects/mingw/&lt;/a&gt;からmingwを入れ、&lt;br /&gt;
+mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。&lt;/p&gt;
+
+&lt;p&gt;なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。&lt;br /&gt;
+これは両方とも32bitに揃えることで回避できました。&lt;/p&gt;
+
+&lt;p&gt;コマンドラインからgccが使えるようになっていれば大丈夫です。&lt;/p&gt;
+
+&lt;h1 id=&#34;gxuiのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;gxuiのインストール&lt;/h1&gt;
+
+&lt;p&gt;gxuiと4つの依存するパッケージをインストールします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get http://github.com/google/gxui
+go get http://code.google.com/p/freetype-go/freetype/raster
+go get http://code.google.com/p/freetype-go/freetype/truetype
+go get http://github.com/go-gl/gl/v3.2-core/gl
+go get http://github.com/go-gl/glfw/v3.1/glfw
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これだけでインストールはおしまいです。
+gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
@@ -1415,88 +1464,6 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
 
 &lt;p&gt;Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。&lt;br /&gt;
 あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Graphvizを使うと、グラフ描画がとても楽になる</title>
-      <link>http://ota42y.com/blog/2014/12/22/graphviz/</link>
-      <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/12/22/graphviz/</guid>
-      <description>
-
-&lt;p&gt;こんな感じの画像を作る際に&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-12-22-grahviz.png&#34; alt=&#34;グラフ&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;これまではパワポの図形機能とかペイントで頑張って作っていましたが、&lt;br /&gt;
-Graphvizを使うと自動で出力できます。&lt;/p&gt;
-
-&lt;h2 id=&#34;graphvizとは:3a4615046c4807ddfa87121a5586dd26&#34;&gt;Graphvizとは&lt;/h2&gt;
-
-&lt;p&gt;AT&amp;amp;Tが作ったグラフ描画のツールパッケージです。&lt;br /&gt;
-&lt;a href=&#34;http://ja.wikipedia.org/wiki/Graphviz&#34;&gt;http://ja.wikipedia.org/wiki/Graphviz&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;DOT言語というグラフ記述言語で記述されたグラフを、画像ファイル等に変換することができます。&lt;/p&gt;
-
-&lt;p&gt;グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、&lt;br /&gt;
-SVGで出力できるため、他のソフトで調整ができます。&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方:3a4615046c4807ddfa87121a5586dd26&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;h2 id=&#34;インストール:3a4615046c4807ddfa87121a5586dd26&#34;&gt;インストール&lt;/h2&gt;
-
-&lt;p&gt;brew gts graphviz&lt;/p&gt;
-
-&lt;h2 id=&#34;dotファイルの作成:3a4615046c4807ddfa87121a5586dd26&#34;&gt;dotファイルの作成&lt;/h2&gt;
-
-&lt;p&gt;最初に見せたグラフは以下のように作ります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;digraph G {
-  Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Koto[image=&amp;quot;th_koto.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Umi[image=&amp;quot;th_umi.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Maki[image=&amp;quot;th_maki.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Rin[image=&amp;quot;th_rin.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Pana[image=&amp;quot;th_pana.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Nico[image=&amp;quot;th_nico.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Nozo[image=&amp;quot;th_nozo.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Eli[image=&amp;quot;th_eli.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext];
-  Yuki[label=&amp;quot;雪穂&amp;quot;];
-
-  Nico -&amp;gt; Maki;
-  Koto -&amp;gt; Umi;
-  Rin -&amp;gt; Pana;
-  Rin -&amp;gt; Maki;
-  Nozo -&amp;gt; Eli;
-  Nozo -&amp;gt; Nico;
-  Koto -&amp;gt; Hono[dir = none];
-  Hono -&amp;gt; Umi;
-  Hono -&amp;gt; Nico;
-  Hono -&amp;gt; Maki;
-  Hono -&amp;gt; Yuki;
-  Hono -&amp;gt; Eli;
-  Hono -&amp;gt; Rin;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;初めにレイアウトに使うアルゴリズムを書きます。&lt;br /&gt;
-次に画像だけ、文字だけといったノードを定義し、その関係を記述します。&lt;/p&gt;
-
-&lt;h2 id=&#34;出力:3a4615046c4807ddfa87121a5586dd26&#34;&gt;出力&lt;/h2&gt;
-
-&lt;p&gt;上記のファイルをcp.dotという名前で保存し、以下のコマンドを実行するとSVGファイルに出力されます。&lt;br /&gt;
-&lt;code&gt;dot -Tsvg cp.dot -o cp.svg&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;SVG以外にもgifやpngへの出力が可能です。&lt;br /&gt;
-&lt;code&gt;dot -Tpng cp.dot -o cp.png&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;レイアウト詳細:3a4615046c4807ddfa87121a5586dd26&#34;&gt;レイアウト詳細&lt;/h1&gt;
-
-&lt;p&gt;配置アルゴリズム等はこちらの記事が参考になると思います。&lt;br /&gt;
-&lt;a href=&#34;http://melborne.github.io/2013/04/02/graphviz-layouts/&#34;&gt;Graphvizレイアウトサンプル&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
