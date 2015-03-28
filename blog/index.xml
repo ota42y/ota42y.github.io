@@ -6,8 +6,114 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 22 Mar 2015 10:27:54 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2015 21:26:40 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
+      <link>http://ota42y.com/blog/2015/03/28/go_interface/</link>
+      <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/28/go_interface/</guid>
+      <description>
+
+&lt;p&gt;C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;goでインターフェースを実装したクラスのポインタを扱う:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;Goでインターフェースを実装したクラスのポインタを扱う&lt;/h1&gt;
+
+&lt;p&gt;Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Node interface{
+  ToString() string
+}
+
+func Output(l Node) {
+  fmt.Println(l.ToString())
+}
+
+type NodeTest struct{
+}
+
+func (n NodeTest) ToString() string{
+  return &amp;quot;test&amp;quot;
+}
+
+func main(){
+  n := NodeTest{}
+  Output(n)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、
+インターフェースのポインタを渡すように変更します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l *Node) {
+  fmt.Println((*l).ToString())
+}
+
+func (n *NodeTest) ToString() string{
+  return &amp;quot;test&amp;quot;
+}
+
+func main(){
+  n := &amp;amp;NodeTest{}
+  Output(n)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、
+関数の引数として渡すことができず、コンパイルが通りません。&lt;/p&gt;
+
+&lt;p&gt;そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、
+ちゃんとこのような場合も解決方法は存在します。&lt;/p&gt;
+
+&lt;h1 id=&#34;ポインタにインターフェースを実装する:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;ポインタにインターフェースを実装する&lt;/h1&gt;
+
+&lt;p&gt;上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。&lt;br /&gt;
+そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l Node) {
+  fmt.Println(l.ToString())
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これにより、Output関数にNodeインタフェースを実装したNodeTestのポインタがコピーして渡され、&lt;br /&gt;
+NodeTestオブジェクト自体はコピーされずに渡されます。&lt;/p&gt;
+
+&lt;p&gt;ここがC++とはだいぶ違う考え方が必要なので戸惑いました。&lt;br /&gt;
+C++では構造体にメソッドを実装し、ポインタからその構造体のメソッドを呼び出します。&lt;br /&gt;
+そのため、あくまでポインタの指しているオブジェクトのメソッド呼び出しであり、&lt;br /&gt;
+クラスのポインタそのものにメソッドが定義されている訳ではありません。&lt;/p&gt;
+
+&lt;p&gt;ですがGoのインターフェースを使った場合、前述の通り上手く動きません。&lt;br /&gt;
+そのため、型のポインタにメソッドを定義し、それをインターフェースとして扱う必要があります。&lt;/p&gt;
+
+&lt;p&gt;C++ではポインタに対して別名をつけることはできますが、メソッドの実装はできませんでした。&lt;br /&gt;
+ですがGoではポインタやint型といったほぼすべての型に対してメソッドを実装できます。&lt;/p&gt;
+
+&lt;p&gt;たとえば、以下のようにint型に対しても好きなメソッドを定義できます。&lt;br /&gt;
+(一応名前は変える必要があります)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+import (
+    &amp;quot;fmt&amp;quot;
+)
+
+type MyInt int
+
+func (i *MyInt) Out() {
+     fmt.Println(*i)
+}
+
+func main() {
+     var i MyInt = 1
+     (&amp;amp;i).Out()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あらゆる型に関数をつけられるというのが、C++に染まった頭からだと理解できなくて手間取りました。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Windowsにgxuiをインストールする</title>
@@ -1383,238 +1489,6 @@ retq
 &lt;li&gt;ヘッダファイルに書いた関数は展開元が消えたので挙動が違う&lt;/li&gt;
 &lt;li&gt;publicはリンクされるまで呼ばれるかわからないので消せない&lt;/li&gt;
 &lt;li&gt;privateは呼ばれない事が確定するはずだが何故か消さない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>http://ota42y.com/blog/2015/01/05/c-inline/</link>
-      <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/05/c-inline/</guid>
-      <description>
-
-&lt;p&gt;C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、&lt;br /&gt;
-関数呼び出しのオーバーヘッドを削減する、インライン展開をします。&lt;/p&gt;
-
-&lt;p&gt;インライン展開はコンパイル時にされるため、&lt;br /&gt;
-実際に行われたのか、どう行われているかは出力されません。&lt;/p&gt;
-
-&lt;p&gt;そのため、コンパイルたコードがどうなってるかを調べ、&lt;br /&gt;
-インライン展開がどう展開しているのかを調べました。&lt;/p&gt;
-
-&lt;p&gt;なお、アセンブラに関してはほとんど説明しません。&lt;br /&gt;
-「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。&lt;/p&gt;
-
-&lt;h1 id=&#34;ソースコード:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;ソースコード&lt;/h1&gt;
-
-&lt;p&gt;以下のソースコードを使います&lt;/p&gt;
-
-&lt;p&gt;test.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
-#include &amp;quot;func.h&amp;quot;
-
-int main(){
-  TestA test;
-  int a = test.getNumInCpp();
-  int b = test.getNumInH();
-  int c = test.getNumInline();
-  int d = test.getNumCallCpp();
-  printf(&amp;quot;%d %d %d %d\n&amp;quot;, a, b, c, d);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.h&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
-  private:
-  int privateFunc();
-
-  public:
-  int getNumInCpp();
-
-  int getNumInH() {
-    return 42;
-  }
-
-  int getNumCallCpp(){
-    return privateFunc() + getNumInH();
-  }
-
-  int getNumInline();
-
-  //int getNumNormal();
-};
-
-inline int TestA::getNumInline(){return 321;}
-
-// そもそも定義できない
-// int TestA::getNumNormal(){return 111;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
-
-int TestA::privateFunc(){
-  return 123;
-}
-
-int TestA::getNumInCpp() {
-  return 73 + getNumInH();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;内容としては、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;getNumInCpp()
-
-&lt;ul&gt;
-&lt;li&gt;cpp内に関数の中身が書かれている&lt;/li&gt;
-&lt;li&gt;cpp内のものはインライン展開されないはず&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;getNumInH()
-
-&lt;ul&gt;
-&lt;li&gt;ヘッダファイル内に関数の中身が置かれている&lt;/li&gt;
-&lt;li&gt;インライン展開される&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;getNumInline()
-
-&lt;ul&gt;
-&lt;li&gt;インライン不可能なprivateメソッドと、cpp内の関数を呼ぶ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;getNumCallCpp()
-
-&lt;ul&gt;
-&lt;li&gt;明示的にインライン展開指定をしたもの&lt;/li&gt;
-&lt;li&gt;インライン展開される&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;になります。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化しない場合:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;最適化しない場合&lt;/h1&gt;
-
-&lt;p&gt;まずは最適化オプションをつけずにコンパイルしました。&lt;br /&gt;
-&lt;code&gt;g++ -S test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;そのため、インライン展開はされません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;subq	$32, %rsp
-leaq	-8(%rbp), %rdi
-movl	$0, -4(%rbp)
-callq	__ZN5TestA11getNumInCppEv # (変数aの計算)
-leaq	-8(%rbp), %rdi
-movl	%eax, -12(%rbp)
-callq	__ZN5TestA9getNumInHEv # (変数bの計算)
-leaq	-8(%rbp), %rdi
-movl	%eax, -16(%rbp)
-callq	__ZN5TestA12getNumInlineEv # (変数cの計算)
-leaq	-8(%rbp), %rdi
-movl	%eax, -20(%rbp)
-callq	__ZN5TestA13getNumCallCppEv # (変数dの計算)
-leaq	L_.str(%rip), %rdi
-movl	%eax, -24(%rbp)
-movl	-12(%rbp), %esi
-movl	-16(%rbp), %edx
-movl	-20(%rbp), %ecx
-movl	-24(%rbp), %r8d
-movb	$0, %al
-callq	_printf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;callqで4種類の関数を全て呼び出しているのがわかります。&lt;br /&gt;
-インライン展開はされていないため、func.hやfunc.cppで直接書いている数値はどこにも出てきません。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化した場合:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;最適化した場合&lt;/h1&gt;
-
-&lt;p&gt;O3オプションをつけてインライン展開されるようにしました。&lt;br /&gt;
-&lt;code&gt;g++ -S -O3 test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;なお、#で注釈を入れています&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;leaq	-24(%rbp), %rbx
-movq	%rbx, %rdi
-
-# getNumInCppの呼び出し(変数aの計算)
-callq	__ZN5TestA11getNumInCppEv
-movl	%eax, %r14d
-movq	%rbx, %rdi
-# privateFuncの呼び出し(変数dの計算)
-callq	__ZN5TestA11privateFuncEv
-# getNumInHの結果が直接書かれている(変数dの計算)
-leal	42(%rax), %r8d
-leaq	L_.str(%rip), %rdi
-# getNumInHの結果が直接書かれている(変数bの計算)
-movl	$42, %edx
-# getNumInlineの結果が直接書かれている(変数cの計算)
-movl	$321, %ecx
-xorl	%eax, %eax
-movl	%r14d, %esi
-
-# printfの呼び出し
-callq	_printf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;最適化した場合、関数呼び出しの量も内容もかなり変化しています。&lt;/p&gt;
-
-&lt;p&gt;一番初めのgetNumInCpp関数はcppに書かれており、インライン展開が出来ないため、&lt;br /&gt;
-最適化しない場合と同じく関数呼び出しをしています。&lt;/p&gt;
-
-&lt;p&gt;次にprivateFunc関数の呼び出しを行っていますが、&lt;br /&gt;
-これはgetNumCallCpp関数が展開され、それ以上展開できないprivateFunc関数と、&lt;br /&gt;
-42を返すだけのgetNumInH関数がさらにインライン展開されたものと思われます。&lt;br /&gt;
-privateFunc関数はprivateメソッドですが、アセンブラではアクセス指定子は無視されます。&lt;/p&gt;
-
-&lt;p&gt;また、321を返すgetNumInline関数もインライン展開されて直接数値が書かれているのがわかります。&lt;/p&gt;
-
-&lt;p&gt;なお、ソースコード上で変数bやcに代入している部分は、&lt;br /&gt;
-直接値を書いてある状態と同じになるようにインライン展開されるため、&lt;br /&gt;
-コンパイラの最適化によって処理順番を入れ替えられ、printfへの呼び出し直前に移動させられています。&lt;/p&gt;
-
-&lt;h1 id=&#34;インライン指定しない場合のエラー:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;インライン指定しない場合のエラー&lt;/h1&gt;
-
-&lt;p&gt;コメントアウトしてあるgetNumNormal関数は、ヘッダファイル内でインライン指定をせずに定義しています。&lt;br /&gt;
-このコメントアウトを戻すと、以下のエラーにより失敗します。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;duplicate symbol __ZN5TestA12getNumNormalEv in:
-/var/folders/md/b8zf203j65b0qt_t4439fdvm0000gp/T/test-837e1d.o
-/var/folders/md/b8zf203j65b0qt_t4439fdvm0000gp/T/func-c8b605.o
-ld: 1 duplicate symbol for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;sファイルの作成には成功するため調べてみたところ、
-getNumNormal関数がfunc.sとtest.s両方に定義されていました。&lt;/p&gt;
-
-&lt;p&gt;この関数はインライン展開されないため、func.hを読み込むtest.cppとfunc.cpp両方で定義されてしまい、&lt;br /&gt;
-duplicate symbolになっています。&lt;/p&gt;
-
-&lt;p&gt;インライン展開されるgetNumInline関数は、関数自体はどこにも定義されないため二重定義にはならず、&lt;br /&gt;
-問題なく動いているようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;最適化しないとインライン展開されない&lt;/li&gt;
-&lt;li&gt;hファイルの中に実装を書くとインライン展開される
-
-&lt;ul&gt;
-&lt;li&gt;そもそもインライン展開しないとduplicateになる&lt;/li&gt;
-&lt;li&gt;そのため、ヘッダに書いた関数は全てインライン展開されるはず?&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;cppファイルに実装を書くとインライン展開されない
-
-&lt;ul&gt;
-&lt;li&gt;include対象に入ってないのだからあたりまえ&lt;/li&gt;
-&lt;li&gt;複数のcppファイルに書かれた内容を繋げるのはリンク時なのでコンパイル後&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

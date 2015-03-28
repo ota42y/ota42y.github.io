@@ -6,8 +6,114 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 22 Mar 2015 10:27:54 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2015 21:26:40 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
+      <link>http://ota42y.com/blog/2015/03/28/go_interface/</link>
+      <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/03/28/go_interface/</guid>
+      <description>
+
+&lt;p&gt;C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;goでインターフェースを実装したクラスのポインタを扱う:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;Goでインターフェースを実装したクラスのポインタを扱う&lt;/h1&gt;
+
+&lt;p&gt;Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Node interface{
+  ToString() string
+}
+
+func Output(l Node) {
+  fmt.Println(l.ToString())
+}
+
+type NodeTest struct{
+}
+
+func (n NodeTest) ToString() string{
+  return &amp;quot;test&amp;quot;
+}
+
+func main(){
+  n := NodeTest{}
+  Output(n)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、
+インターフェースのポインタを渡すように変更します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l *Node) {
+  fmt.Println((*l).ToString())
+}
+
+func (n *NodeTest) ToString() string{
+  return &amp;quot;test&amp;quot;
+}
+
+func main(){
+  n := &amp;amp;NodeTest{}
+  Output(n)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、
+関数の引数として渡すことができず、コンパイルが通りません。&lt;/p&gt;
+
+&lt;p&gt;そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、
+ちゃんとこのような場合も解決方法は存在します。&lt;/p&gt;
+
+&lt;h1 id=&#34;ポインタにインターフェースを実装する:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;ポインタにインターフェースを実装する&lt;/h1&gt;
+
+&lt;p&gt;上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。&lt;br /&gt;
+そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l Node) {
+  fmt.Println(l.ToString())
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これにより、Output関数にNodeインタフェースを実装したNodeTestのポインタがコピーして渡され、&lt;br /&gt;
+NodeTestオブジェクト自体はコピーされずに渡されます。&lt;/p&gt;
+
+&lt;p&gt;ここがC++とはだいぶ違う考え方が必要なので戸惑いました。&lt;br /&gt;
+C++では構造体にメソッドを実装し、ポインタからその構造体のメソッドを呼び出します。&lt;br /&gt;
+そのため、あくまでポインタの指しているオブジェクトのメソッド呼び出しであり、&lt;br /&gt;
+クラスのポインタそのものにメソッドが定義されている訳ではありません。&lt;/p&gt;
+
+&lt;p&gt;ですがGoのインターフェースを使った場合、前述の通り上手く動きません。&lt;br /&gt;
+そのため、型のポインタにメソッドを定義し、それをインターフェースとして扱う必要があります。&lt;/p&gt;
+
+&lt;p&gt;C++ではポインタに対して別名をつけることはできますが、メソッドの実装はできませんでした。&lt;br /&gt;
+ですがGoではポインタやint型といったほぼすべての型に対してメソッドを実装できます。&lt;/p&gt;
+
+&lt;p&gt;たとえば、以下のようにint型に対しても好きなメソッドを定義できます。&lt;br /&gt;
+(一応名前は変える必要があります)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+import (
+    &amp;quot;fmt&amp;quot;
+)
+
+type MyInt int
+
+func (i *MyInt) Out() {
+     fmt.Println(*i)
+}
+
+func main() {
+     var i MyInt = 1
+     (&amp;amp;i).Out()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あらゆる型に関数をつけられるというのが、C++に染まった頭からだと理解できなくて手間取りました。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Windowsにgxuiをインストールする</title>
@@ -1393,77 +1499,6 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
 
 &lt;p&gt;EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。&lt;br /&gt;
 ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ASUS MeMO Pad 7 ME572CをRoot化した</title>
-      <link>http://ota42y.com/blog/2014/12/28/memopad-root/</link>
-      <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/12/28/memopad-root/</guid>
-      <description>
-
-&lt;p&gt;ASUS MeMO Pad 7 ME572Cを買いました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/&#34;&gt;タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Nexus 9とかと迷いましたが、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;コストパフォーマンスがいい
-
-&lt;ul&gt;
-&lt;li&gt;安くてそこそこ高性能&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;SDカードが使える
-
-&lt;ul&gt;
-&lt;li&gt;気軽に容量増強出来る&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といった点から、これに決めました。&lt;/p&gt;
-
-&lt;p&gt;ですが実際に届いて起動してみたところ、&lt;br /&gt;
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。&lt;/p&gt;
-
-&lt;p&gt;特に「やることリスト」(&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.asus.task&amp;amp;hl=ja&#34;&gt;ASUS Do It Later&lt;/a&gt;)というアプリは、&lt;br /&gt;
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。&lt;/p&gt;
-
-&lt;p&gt;そのため、Rootを取って無効化することにしました。&lt;/p&gt;
-
-&lt;h1 id=&#34;root化手順:da1b4865caf34b84064437e98e031591&#34;&gt;Root化手順&lt;/h1&gt;
-
-&lt;p&gt;RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。&lt;br /&gt;
-(&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;/28の最新版は1.4.6.8r)&lt;/p&gt;
-
-&lt;p&gt;手順としては以下の通りになります。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;RootZenFoneをインストール&lt;/li&gt;
-&lt;li&gt;Wifiと3Gを機内モードにして切る&lt;/li&gt;
-&lt;li&gt;RootZenFoneを起動&lt;/li&gt;
-&lt;li&gt;通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す&lt;/li&gt;
-&lt;li&gt;変化がなくなるまで待つ
-
-&lt;ul&gt;
-&lt;li&gt;色々ポップアップが出たりする&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
-
-&lt;ul&gt;
-&lt;li&gt;この時点でRoot化出来ています&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;AsusLiveDemoというアカウントが追加されているため削除&lt;/li&gt;
-&lt;li&gt;RootZenFonを消す&lt;/li&gt;
-&lt;li&gt;通信を有効か&lt;/li&gt;
-&lt;li&gt;SuperSuが自動でインストールされているので、最新版に更新&lt;/li&gt;
-&lt;li&gt;SuperSuを起動し、データ更新後に再起動を促されるので再起動&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。&lt;br /&gt;
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。&lt;/p&gt;
 </description>
     </item>
     
