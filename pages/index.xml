@@ -6,8 +6,38 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 23 Mar 2015 07:34:46 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2015 10:37:34 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年13週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-13/</link>
+      <pubDate>Sun, 29 Mar 2015 10:37:34 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-13/</guid>
+      <description>
+
+&lt;h1 id=&#34;プロトタイプ展に行きました:c970b2167d590a8651f22cb3848b6111&#34;&gt;プロトタイプ展に行きました&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.design-lab.iis.u-tokyo.ac.jp/exhibition/proto2015/&#34;&gt;東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;&lt;/a&gt;に行きました。&lt;br /&gt;
+全く同じ素材でも構造を変えることで、握ったり持ったりしたときの感触が全く違うのはおもしろかったです。&lt;br /&gt;
+現代アートっぽいやつはよくわからなかったですが…&lt;/p&gt;
+
+&lt;h1 id=&#34;goについて理解が深まった:c970b2167d590a8651f22cb3848b6111&#34;&gt;Goについて理解が深まった&lt;/h1&gt;
+
+&lt;p&gt;Golangを多く触った一週間でした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/03/28/go_interface/&#34;&gt;GoのポインタはC++ポインタとは違う&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;gxuiで簡単なGUIアプリを作りました
+
+&lt;ul&gt;
+&lt;li&gt;gorutineのすばらしさを改めて感じる&lt;/li&gt;
+&lt;li&gt;描画処理とは別に平行して処理をしたい場合にgorutineで簡単に書ける&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年12週目まとめ</title>

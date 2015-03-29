@@ -6,8 +6,38 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Mar 2015 21:26:40 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2015 10:37:34 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年13週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-13/</link>
+      <pubDate>Sun, 29 Mar 2015 10:37:34 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-13/</guid>
+      <description>
+
+&lt;h1 id=&#34;プロトタイプ展に行きました:c970b2167d590a8651f22cb3848b6111&#34;&gt;プロトタイプ展に行きました&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.design-lab.iis.u-tokyo.ac.jp/exhibition/proto2015/&#34;&gt;東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;&lt;/a&gt;に行きました。&lt;br /&gt;
+全く同じ素材でも構造を変えることで、握ったり持ったりしたときの感触が全く違うのはおもしろかったです。&lt;br /&gt;
+現代アートっぽいやつはよくわからなかったですが…&lt;/p&gt;
+
+&lt;h1 id=&#34;goについて理解が深まった:c970b2167d590a8651f22cb3848b6111&#34;&gt;Goについて理解が深まった&lt;/h1&gt;
+
+&lt;p&gt;Golangを多く触った一週間でした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/03/28/go_interface/&#34;&gt;GoのポインタはC++ポインタとは違う&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;gxuiで簡単なGUIアプリを作りました
+
+&lt;ul&gt;
+&lt;li&gt;gorutineのすばらしさを改めて感じる&lt;/li&gt;
+&lt;li&gt;描画処理とは別に平行して処理をしたい場合にgorutineで簡単に書ける&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
@@ -980,57 +1010,6 @@ Jenkins本体の機能では出来ないmaster/slaveを選択してコマンド�
       <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
 暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
 &lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年05週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-05/</link>
-      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-05/</guid>
-      <description>
-
-&lt;p&gt;今週は二日ほど有給を取っていました。&lt;br /&gt;
-家で引きこもっていましたが、かなり有効に引きこもれたと思います。&lt;/p&gt;
-
-&lt;p&gt;毎日色々していますが、やりたいことがどんどん増えてきます…&lt;br /&gt;
-効率をあげるにも限度がありますし、どうしたものですかね。&lt;/p&gt;
-
-&lt;h1 id=&#34;jenkins-workflow-plugin便利そう:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Jenkins Workflow Plugin便利そう&lt;/h1&gt;
-
-&lt;p&gt;Jenkins ユーザ・カンファレンス 2015で聞いた&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin&#34;&gt;jenkinsci/workflow-plugin&lt;/a&gt;を試しています。&lt;br /&gt;
-スレーブを指定してタスクを実行できたり、ファイルをスレーブから取ってきて別のスレーブに渡す等、&lt;br /&gt;
-今までBuild Pipeline Pluginでやっていたことがだいたい実現できて凄く良いです。&lt;br /&gt;
-あとはプロパティ等をファイルから読み込む方法さえ解れば完璧なのですが…&lt;/p&gt;
-
-&lt;h1 id=&#34;evernoteリンクを開くchrome拡張の更新:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Evernoteリンクを開くChrome拡張の更新&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/31/evernote-opener-update/&#34;&gt;http://ota42y.com/blog/&lt;sup&gt;2015&lt;/sup&gt;&amp;frasl;&lt;sub&gt;01&lt;/sub&gt;/31/evernote-opener-update/&lt;/a&gt;&lt;br /&gt;
-便利なのですが、新しいPCに設定する際にとても不便だったので楽に修正できるように機能拡張しました。&lt;/p&gt;
-
-&lt;h1 id=&#34;jenkinsのライブラリよさそう:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Jenkinsのライブラリよさそう&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/yosida95/golang-jenkins&#34;&gt;https://github.com/yosida95/golang-jenkins&lt;/a&gt;&lt;br /&gt;
-Webの反応めちゃくちゃ遅いので、よく見る結果とかはチャットに流せないかと思って見ています。&lt;br /&gt;
-(こっちの方がいろいろそろってるかも &lt;a href=&#34;https://github.com/bndr/gojenkins&#34;&gt;https://github.com/bndr/gojenkins&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h1 id=&#34;remember-the-milkのcliを使ってみた:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;Remember The MilkのCLIを使ってみた&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.rememberthemilk.jp/2012/10/featured-app-rtm-cli/&#34;&gt;RTM-CLI&lt;/a&gt;なるものがあるらしいので使ってみました。&lt;br /&gt;
-Web版は微妙に使いにくいので反応が早いこいつを試してみましたが、微妙でした。&lt;br /&gt;
-キャッシュされないために毎回認証して取ってくるので反応が悪く、&lt;br /&gt;
-速度を求めた場合の乗り換え先としては良くありませんでした。&lt;br /&gt;
-これにキャッシュ機能がつけばおそらく完璧なのですが、現状のコマンドラインツールだと厳しそうですね…&lt;/p&gt;
-
-&lt;h1 id=&#34;ライブに参加していた:0a9f63ef88aa5725c211cf9c12af5010&#34;&gt;ライブに参加していた&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.lovelive-anime.jp/sp_5thlive.html&#34;&gt;μ&amp;rsquo;s Go→Go! LoveLive! 2015 ～Dream Sensation!&lt;/a&gt;に参加してました。&lt;br /&gt;
-風邪やインフルエンザの可能性を減らすために、2日前から有給取って家に引きこもっていました。&lt;br /&gt;
-1日目はチケットが取れなかったのでLVで、2日目は開場でしかもアリーナAブロックでした。&lt;br /&gt;
-前回の映像は何回も見ていましたが、やっぱり映像よりもLVがいいですし、&lt;br /&gt;
-LVよりも会場の方が何十倍も凄かったです。&lt;br /&gt;
-文才が無いのでこれぐらいにとどめておきますが、次のライブは両日当たるまで応募券を買おうと思います。&lt;/p&gt;
 </description>
     </item>
     
