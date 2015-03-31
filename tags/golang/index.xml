@@ -6,8 +6,106 @@
     <description>Recent content in Golang on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Mar 2015 21:26:40 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2015 07:06:38 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangでIOへのテストを行う</title>
+      <link>http://ota42y.com/blog/2015/04/01/go-io-test/</link>
+      <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fmt.Print等にちゃんと出力されるかテストしたい
+
+&lt;ul&gt;
+&lt;li&gt;結論としては直接は無理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;io.Writerを利用するように変えることで簡単にテスト可能
+
+&lt;ul&gt;
+&lt;li&gt;渡されたio.Writerに書き込むようにする&lt;/li&gt;
+&lt;li&gt;通常はos.Stdout、テストの時はbytes.Bufferを渡す&lt;/li&gt;
+&lt;li&gt;どちらもio.Writerを実装している&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
+
+&lt;p&gt;fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。&lt;br /&gt;
+ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。&lt;/p&gt;
+
+&lt;p&gt;このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、&lt;br /&gt;
+テストの時は書き込み先を切り替えることで簡単にテストができるようになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
+
+&lt;p&gt;golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。&lt;br /&gt;
+この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。&lt;br /&gt;
+&lt;a href=&#34;https://golang.org/pkg/fmt/#Fprint&#34;&gt;https://golang.org/pkg/fmt/#Fprint&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;io.Writerは&lt;code&gt;Write(p []byte) (n int, err error)&lt;/code&gt;関数だけを持ったインターフェースです。&lt;br /&gt;
+そのため、これを実装していればfmt.Fprintの書き込み先として使えます。&lt;br /&gt;
+&lt;a href=&#34;http://golang.org/pkg/io/#Writer&#34;&gt;http://golang.org/pkg/io/#Writer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。&lt;br /&gt;
+そのため、os.Stdoutにfmt.Fprintで書き込むことにより、&lt;br /&gt;
+出力先を変更可能な状態で標準出力に出力できます。&lt;/p&gt;
+
+&lt;h2 id=&#34;メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;メモリ上に出力する&lt;/h2&gt;
+
+&lt;p&gt;golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。&lt;br /&gt;
+そして、String()関数により、書き込まれた文字列をstringとして取得できます。&lt;br /&gt;
+&lt;a href=&#34;http://golang.org/pkg/bytes/#Buffer&#34;&gt;http://golang.org/pkg/bytes/#Buffer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、&lt;br /&gt;
+標準出力に出力されたかどうかをテストすることができるようになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;p&gt;print.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-golang&#34;&gt;import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;io&amp;quot;
+    &amp;quot;os&amp;quot;
+)
+
+func testPrint(w io.Writer) {
+    fmt.Fprint(w, &amp;quot;write test\n&amp;quot;)
+}
+
+func main() {
+    testPrint(os.Stdout)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;print_test.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+import (
+    &amp;quot;bytes&amp;quot;
+    &amp;quot;testing&amp;quot;
+)
+
+func TestPrint(t *testing.T) {
+    buf := &amp;amp;bytes.Buffer{}
+    testPrint(buf)
+    outputString := buf.String()
+    
+    correctString := &amp;quot;write test\n&amp;quot;
+    if correctString != outputString {
+        t.Errorf(&amp;quot;output string shud be %s but %s&amp;quot;, correctString, outputString)
+        t.FailNow()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
@@ -1007,20 +1105,6 @@ time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
 件数を数えてその結果をチェックしています。&lt;/p&gt;
 
 &lt;script src=&#34;https://gist.github.com/ota42y/7e493449beec0fe73f62.js&#34;&gt;&lt;/script&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>golangでtwitter APIを使う</title>
-      <link>http://ota42y.com/blog/2014/08/31/go-anaconda/</link>
-      <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/08/31/go-anaconda/</guid>
-      <description>&lt;p&gt;anacondaが良さそう(ただしストリーミングAPI非対応)&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;go get github.com/ChimeraCoder/anaconda&lt;/code&gt;&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/ota42y/258616adf5087d2d2186.js&#34;&gt;&lt;/script&gt;
 </description>
     </item>
     

@@ -6,8 +6,106 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Mar 2015 21:26:40 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2015 07:06:38 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangでIOへのテストを行う</title>
+      <link>http://ota42y.com/blog/2015/04/01/go-io-test/</link>
+      <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fmt.Print等にちゃんと出力されるかテストしたい
+
+&lt;ul&gt;
+&lt;li&gt;結論としては直接は無理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;io.Writerを利用するように変えることで簡単にテスト可能
+
+&lt;ul&gt;
+&lt;li&gt;渡されたio.Writerに書き込むようにする&lt;/li&gt;
+&lt;li&gt;通常はos.Stdout、テストの時はbytes.Bufferを渡す&lt;/li&gt;
+&lt;li&gt;どちらもio.Writerを実装している&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
+
+&lt;p&gt;fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。&lt;br /&gt;
+ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。&lt;/p&gt;
+
+&lt;p&gt;このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、&lt;br /&gt;
+テストの時は書き込み先を切り替えることで簡単にテストができるようになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
+
+&lt;p&gt;golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。&lt;br /&gt;
+この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。&lt;br /&gt;
+&lt;a href=&#34;https://golang.org/pkg/fmt/#Fprint&#34;&gt;https://golang.org/pkg/fmt/#Fprint&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;io.Writerは&lt;code&gt;Write(p []byte) (n int, err error)&lt;/code&gt;関数だけを持ったインターフェースです。&lt;br /&gt;
+そのため、これを実装していればfmt.Fprintの書き込み先として使えます。&lt;br /&gt;
+&lt;a href=&#34;http://golang.org/pkg/io/#Writer&#34;&gt;http://golang.org/pkg/io/#Writer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。&lt;br /&gt;
+そのため、os.Stdoutにfmt.Fprintで書き込むことにより、&lt;br /&gt;
+出力先を変更可能な状態で標準出力に出力できます。&lt;/p&gt;
+
+&lt;h2 id=&#34;メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;メモリ上に出力する&lt;/h2&gt;
+
+&lt;p&gt;golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。&lt;br /&gt;
+そして、String()関数により、書き込まれた文字列をstringとして取得できます。&lt;br /&gt;
+&lt;a href=&#34;http://golang.org/pkg/bytes/#Buffer&#34;&gt;http://golang.org/pkg/bytes/#Buffer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、&lt;br /&gt;
+標準出力に出力されたかどうかをテストすることができるようになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;p&gt;print.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-golang&#34;&gt;import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;io&amp;quot;
+    &amp;quot;os&amp;quot;
+)
+
+func testPrint(w io.Writer) {
+    fmt.Fprint(w, &amp;quot;write test\n&amp;quot;)
+}
+
+func main() {
+    testPrint(os.Stdout)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;print_test.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+import (
+    &amp;quot;bytes&amp;quot;
+    &amp;quot;testing&amp;quot;
+)
+
+func TestPrint(t *testing.T) {
+    buf := &amp;amp;bytes.Buffer{}
+    testPrint(buf)
+    outputString := buf.String()
+    
+    correctString := &amp;quot;write test\n&amp;quot;
+    if correctString != outputString {
+        t.Errorf(&amp;quot;output string shud be %s but %s&amp;quot;, correctString, outputString)
+        t.FailNow()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
@@ -1439,66 +1537,6 @@ switch関数はnewprocの呼び出し元であるfork関数に1で戻ります�
 &lt;li&gt;switch関数で復帰した際に、通常とは別の戻り値が返るため親子を区別可能&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ASUS MeMO Pad 7 ME572CでLink2SDを動かす</title>
-      <link>http://ota42y.com/blog/2014/12/30/link2sd/</link>
-      <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/12/30/link2sd/</guid>
-      <description>
-
-&lt;p&gt;ME572CにはSDカードが挿せるため、&lt;br /&gt;
-本体の容量が足りなくなっても気軽に容量を追加できます。&lt;/p&gt;
-
-&lt;p&gt;ですが、対応しているアプリしかSDカードにデータが保存できず、&lt;br /&gt;
-対応しているアプリでも機種によっては、&lt;br /&gt;
-上手くSDカードに入らない場合があります。&lt;/p&gt;
-
-&lt;p&gt;実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、&lt;br /&gt;
-ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。&lt;/p&gt;
-
-&lt;p&gt;このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。&lt;br /&gt;
-ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。&lt;/p&gt;
-
-&lt;p&gt;なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。&lt;/p&gt;
-
-&lt;h1 id=&#34;link2sd:6514d702fff248069258ee7a3bdb31d4&#34;&gt;Link2SD&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.Link2SD&amp;amp;hl=ja&#34;&gt;Link2SD&lt;/a&gt;は、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。&lt;br /&gt;
-おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、&lt;br /&gt;
-アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。&lt;/p&gt;
-
-&lt;h1 id=&#34;sdカードの準備:6514d702fff248069258ee7a3bdb31d4&#34;&gt;SDカードの準備&lt;/h1&gt;
-
-&lt;p&gt;このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。&lt;/p&gt;
-
-&lt;p&gt;このうち1つめが普通のSDカード領域として認識され、&lt;br /&gt;
-2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。&lt;br /&gt;
-なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。&lt;/p&gt;
-
-&lt;p&gt;なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、&lt;br /&gt;
-&lt;a href=&#34;http://www.partitionwizard.com/download.html&#34;&gt;Mini Tool&lt;/a&gt;のような専用ソフトでパーティションを作る必要があります。&lt;br /&gt;
-このとき、どちらのパーティションもPrimaryに設定しておく必要があります。&lt;/p&gt;
-
-&lt;p&gt;パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。&lt;br /&gt;
-ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。&lt;br /&gt;
-fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、&lt;br /&gt;
-NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/p&gt;
-
-&lt;h1 id=&#34;アプリをsdカードに移す:6514d702fff248069258ee7a3bdb31d4&#34;&gt;アプリをSDカードに移す&lt;/h1&gt;
-
-&lt;p&gt;Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。&lt;br /&gt;
-ただし、データをSDカードに移動する場合は&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.link2sdplus&amp;amp;hl=ja&#34;&gt;有料アドオン&lt;/a&gt;が必要です。&lt;/p&gt;
-
-&lt;p&gt;Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-12-30-link2sd.png&#34; alt=&#34;Link2SD&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。&lt;br /&gt;
-ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。&lt;/p&gt;
 </description>
     </item>
     

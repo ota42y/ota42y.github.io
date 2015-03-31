@@ -6,8 +6,106 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Mar 2015 21:26:40 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2015 07:06:38 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangでIOへのテストを行う</title>
+      <link>http://ota42y.com/blog/2015/04/01/go-io-test/</link>
+      <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fmt.Print等にちゃんと出力されるかテストしたい
+
+&lt;ul&gt;
+&lt;li&gt;結論としては直接は無理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;io.Writerを利用するように変えることで簡単にテスト可能
+
+&lt;ul&gt;
+&lt;li&gt;渡されたio.Writerに書き込むようにする&lt;/li&gt;
+&lt;li&gt;通常はos.Stdout、テストの時はbytes.Bufferを渡す&lt;/li&gt;
+&lt;li&gt;どちらもio.Writerを実装している&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
+
+&lt;p&gt;fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。&lt;br /&gt;
+ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。&lt;/p&gt;
+
+&lt;p&gt;このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、&lt;br /&gt;
+テストの時は書き込み先を切り替えることで簡単にテストができるようになります。&lt;/p&gt;
+
+&lt;h2 id=&#34;fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
+
+&lt;p&gt;golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。&lt;br /&gt;
+この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。&lt;br /&gt;
+&lt;a href=&#34;https://golang.org/pkg/fmt/#Fprint&#34;&gt;https://golang.org/pkg/fmt/#Fprint&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;io.Writerは&lt;code&gt;Write(p []byte) (n int, err error)&lt;/code&gt;関数だけを持ったインターフェースです。&lt;br /&gt;
+そのため、これを実装していればfmt.Fprintの書き込み先として使えます。&lt;br /&gt;
+&lt;a href=&#34;http://golang.org/pkg/io/#Writer&#34;&gt;http://golang.org/pkg/io/#Writer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。&lt;br /&gt;
+そのため、os.Stdoutにfmt.Fprintで書き込むことにより、&lt;br /&gt;
+出力先を変更可能な状態で標準出力に出力できます。&lt;/p&gt;
+
+&lt;h2 id=&#34;メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;メモリ上に出力する&lt;/h2&gt;
+
+&lt;p&gt;golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。&lt;br /&gt;
+そして、String()関数により、書き込まれた文字列をstringとして取得できます。&lt;br /&gt;
+&lt;a href=&#34;http://golang.org/pkg/bytes/#Buffer&#34;&gt;http://golang.org/pkg/bytes/#Buffer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、&lt;br /&gt;
+標準出力に出力されたかどうかをテストすることができるようになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;p&gt;print.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-golang&#34;&gt;import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;io&amp;quot;
+    &amp;quot;os&amp;quot;
+)
+
+func testPrint(w io.Writer) {
+    fmt.Fprint(w, &amp;quot;write test\n&amp;quot;)
+}
+
+func main() {
+    testPrint(os.Stdout)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;print_test.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+import (
+    &amp;quot;bytes&amp;quot;
+    &amp;quot;testing&amp;quot;
+)
+
+func TestPrint(t *testing.T) {
+    buf := &amp;amp;bytes.Buffer{}
+    testPrint(buf)
+    outputString := buf.String()
+    
+    correctString := &amp;quot;write test\n&amp;quot;
+    if correctString != outputString {
+        t.Errorf(&amp;quot;output string shud be %s but %s&amp;quot;, correctString, outputString)
+        t.FailNow()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
@@ -1363,134 +1461,6 @@ runghc cr.hs
 
 &lt;p&gt;いくつかのPDFでやってみましたが、全てCRになっており、&lt;br /&gt;
 Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分けが必要です。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>インライン展開についての追加調査</title>
-      <link>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
-      <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
-      <description>
-
-&lt;p&gt;昨日の記事で、インライン展開について調べましたが、&lt;br /&gt;
-よくよく考えると片手落ちだったので追加調査しました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;調査内容:5658da961537009d14c2d83db44bc8e6&#34;&gt;調査内容&lt;/h1&gt;
-
-&lt;p&gt;昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、&lt;br /&gt;
-同じファイル内でどのようになるかは調べていませんでしたので、&lt;br /&gt;
-追加調査しました。&lt;/p&gt;
-
-&lt;p&gt;方法は昨日と同じく、-Sオプションをつけて結果を見ます。&lt;/p&gt;
-
-&lt;h1 id=&#34;ソースコード:5658da961537009d14c2d83db44bc8e6&#34;&gt;ソースコード&lt;/h1&gt;
-
-&lt;p&gt;以下のようなファイルを使います&lt;/p&gt;
-
-&lt;p&gt;test.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;quot;func.h&amp;quot;
-
-int main() {
-  TestA test;
-  int a = test.getDirect();
-  int b = test.getThrough();
-  printf(&amp;quot;%d %d\n&amp;quot;, a, b);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.h&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
-public:
-  int getDirect();
-  int getThrough();
-private:
-  int getPrivate();
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
-
-int TestA::getDirect(){
-  return 42;
-}
-
-int TestA::getThrough(){
-  return getDirect() + getPrivate();
-}
-
-int TestA::getPrivate(){
-  return 73;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cppのgetThrough関数に対して、インライン展開が行われる事が予想されますが、&lt;br /&gt;
-getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。&lt;br /&gt;
-getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化しない場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化しない場合&lt;/h1&gt;
-
-&lt;p&gt;3つの関数は全て普通にコンパイルされました。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化した場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化した場合&lt;/h1&gt;
-
-&lt;h2 id=&#34;同じファイル内のインライン展開:5658da961537009d14c2d83db44bc8e6&#34;&gt;同じファイル内のインライン展開&lt;/h2&gt;
-
-&lt;p&gt;getThrough関数は以下のようになりました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;__ZN5TestA10getThroughEv:               ## @_ZN5TestA10getThroughEv
-pushq	%rbp
-movq	%rsp, %rbp
-movl	$115, %eax
-popq	%rbp
-retq
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;42+73=115なので、インライン展開と最適化がされているのがわかります。&lt;br /&gt;
-そのため、同じファイル内なら、ヘッダに書いていなくても勝手にインライン展開されるみたいです。&lt;/p&gt;
-
-&lt;p&gt;よくよく考えると、includeが処理されるのはプリプロセスのタイミングで処理されます。&lt;br /&gt;
-そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。&lt;br /&gt;
-なので、どのファイルに関数が書かれているかは関係ないと思われます。&lt;/p&gt;
-
-&lt;h2 id=&#34;インライン展開後の関数:5658da961537009d14c2d83db44bc8e6&#34;&gt;インライン展開後の関数&lt;/h2&gt;
-
-&lt;p&gt;getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、&lt;br /&gt;
-関数が出力されていました。&lt;/p&gt;
-
-&lt;p&gt;getDirect関数はpublic指定されているため、&lt;br /&gt;
-外部から参照される場合のために展開後も関数が残されるのは予想通りです。&lt;/p&gt;
-
-&lt;p&gt;getPrivate関数はprivate指定されているため継承先のクラスから呼ばれることはなく、&lt;br /&gt;
-かつこのクラスはfriend指定もされていないため、外部から呼び出されることはありません。&lt;br /&gt;
-そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、&lt;br /&gt;
-この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:5658da961537009d14c2d83db44bc8e6&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;同じファイル内でもインライン展開は行われる
-
-&lt;ul&gt;
-&lt;li&gt;O3ならinline宣言とか要らない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;インライン展開しても、展開元の関数は残る
-
-&lt;ul&gt;
-&lt;li&gt;ヘッダファイルに書いた関数は展開元が消えたので挙動が違う&lt;/li&gt;
-&lt;li&gt;publicはリンクされるまで呼ばれるかわからないので消せない&lt;/li&gt;
-&lt;li&gt;privateは呼ばれない事が確定するはずだが何故か消さない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="golangでIOへのテストを行う">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <title>golangでIOへのテストを行う | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>golangでIOへのテストを行う</h1>
+                    
+
+<time datetime="2015-04-01" class="post_data">
+2015-04-01
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/golang">golang</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ:45434d41f1f2e75f0b6bd5a92c14794f">まとめ</a></li>
+<li><a href="#標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f">標準出力への書き込みをテストしたい</a>
+<ul>
+<li><a href="#fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f">fmt.Fprintで出力先を指定する</a></li>
+<li><a href="#メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f">メモリ上に出力する</a></li>
+</ul></li>
+<li><a href="#サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f">サンプルコード</a></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<h1 id="まとめ:45434d41f1f2e75f0b6bd5a92c14794f">まとめ</h1>
+
+<ul>
+<li>fmt.Print等にちゃんと出力されるかテストしたい
+
+<ul>
+<li>結論としては直接は無理</li>
+</ul></li>
+<li>io.Writerを利用するように変えることで簡単にテスト可能
+
+<ul>
+<li>渡されたio.Writerに書き込むようにする</li>
+<li>通常はos.Stdout、テストの時はbytes.Bufferを渡す</li>
+<li>どちらもio.Writerを実装している</li>
+</ul></li>
+</ul>
+
+<h1 id="標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f">標準出力への書き込みをテストしたい</h1>
+
+<p>fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。<br />
+ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。</p>
+
+<p>このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、<br />
+テストの時は書き込み先を切り替えることで簡単にテストができるようになります。</p>
+
+<h2 id="fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f">fmt.Fprintで出力先を指定する</h2>
+
+<p>golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。<br />
+この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。<br />
+<a href="https://golang.org/pkg/fmt/#Fprint">https://golang.org/pkg/fmt/#Fprint</a></p>
+
+<p>io.Writerは<code>Write(p []byte) (n int, err error)</code>関数だけを持ったインターフェースです。<br />
+そのため、これを実装していればfmt.Fprintの書き込み先として使えます。<br />
+<a href="http://golang.org/pkg/io/#Writer">http://golang.org/pkg/io/#Writer</a></p>
+
+<p>golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。<br />
+そのため、os.Stdoutにfmt.Fprintで書き込むことにより、<br />
+出力先を変更可能な状態で標準出力に出力できます。</p>
+
+<h2 id="メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f">メモリ上に出力する</h2>
+
+<p>golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。<br />
+そして、String()関数により、書き込まれた文字列をstringとして取得できます。<br />
+<a href="http://golang.org/pkg/bytes/#Buffer">http://golang.org/pkg/bytes/#Buffer</a></p>
+
+<p>これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、<br />
+標準出力に出力されたかどうかをテストすることができるようになります。</p>
+
+<h1 id="サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f">サンプルコード</h1>
+
+<p>print.go</p>
+
+<pre><code class="language-golang">import (
+    &quot;fmt&quot;
+    &quot;io&quot;
+    &quot;os&quot;
+)
+
+func testPrint(w io.Writer) {
+    fmt.Fprint(w, &quot;write test\n&quot;)
+}
+
+func main() {
+    testPrint(os.Stdout)
+}
+</code></pre>
+
+<p>print_test.go</p>
+
+<pre><code>package main
+import (
+    &quot;bytes&quot;
+    &quot;testing&quot;
+)
+
+func TestPrint(t *testing.T) {
+    buf := &amp;bytes.Buffer{}
+    testPrint(buf)
+    outputString := buf.String()
+    
+    correctString := &quot;write test\n&quot;
+    if correctString != outputString {
+        t.Errorf(&quot;output string shud be %s but %s&quot;, correctString, outputString)
+        t.FailNow()
+    }
+}
+</code></pre>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/04/01/go-io-test/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
