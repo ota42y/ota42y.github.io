@@ -6,8 +6,43 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 01 Apr 2015 07:06:38 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2015 07:37:34 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年14週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-14/</link>
+      <pubDate>Mon, 06 Apr 2015 07:37:34 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-14/</guid>
+      <description>
+
+&lt;h1 id=&#34;pitが便利:694b6c6ee0002c07e107ab179febb18f&#34;&gt;pitが便利&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/cho45/pit&#34;&gt;cho45/pit&lt;/a&gt;&lt;br /&gt;
+ユーザ名やキー等が必要な場合に、pitからロードするコードを書くことで、&lt;br /&gt;
+保存されていればそれをロード、保存されていなければエディタを立ち上げて入力を促し、&lt;br /&gt;
+結果をpitのディレクトリに保存してくれるものです。&lt;/p&gt;
+
+&lt;p&gt;これにより、アプリにパスワードを埋め込んだり、自分でいちいちファイルから読み込む必要がなくなり、&lt;br /&gt;
+秘密情報の管理がとても楽になります。&lt;/p&gt;
+
+&lt;p&gt;golangにもpitがあるらしく、便利なのでgoで使ったやつにも入れようと思います。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/typester/go-pit&#34;&gt;https://github.com/typester/go-pit&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;changelogアプリに良いのがない:694b6c6ee0002c07e107ab179febb18f&#34;&gt;changelogアプリに良いのがない&lt;/h1&gt;
+
+&lt;p&gt;githubの情報からchangelogを作ってくれるのはいくつかあります。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives&#34;&gt;https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ですが、どれも帯に短したすきに長しといった感じで、なかなか私が想定している使い方に合致した物がありません。&lt;br /&gt;
+やっていることはそんなに難しくないはずなので、やはり自作するしか無いのでしょうか…&lt;br /&gt;
+その場合、ある程度出力形式を変えられる形のがほしいですね。&lt;/p&gt;
+
+&lt;p&gt;一応golangでgithubのapiラッパーはあるようです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/google/go-github&#34;&gt;google/go-github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>golangでIOへのテストを行う</title>
@@ -1062,40 +1097,6 @@ node(&amp;quot;master&amp;quot;){
 
 &lt;p&gt;また、複数平行してのビルド等も出来るため、Jenkinsで複数ノードを使って分散ビルドをしたい場合に、&lt;br /&gt;
 一つのスクリプトで全てをコントロールできるため、とても重宝します。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年06週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-06/</link>
-      <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-06/</guid>
-      <description>
-
-&lt;p&gt;ちゃんとその週に何をやったかをまとめると、&lt;br /&gt;
-今週はあんまり活動していない事がよくわかりますね…&lt;/p&gt;
-
-&lt;h1 id=&#34;jenkins-workflow-pluginが素晴らしそう:d8557742a33269e75592dd05f8ca14f3&#34;&gt;Jenkins Workflow Pluginが素晴らしそう&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/11/jenkins-conference/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;で知った、Workflow Pluginが思った以上に良さそうです。&lt;br /&gt;
-Jenkins本体の機能では出来ないmaster/slaveを選択してコマンドを実行するといったことが可能になり、&lt;br /&gt;
-効率の良い分散ビルドが出来るようになります。&lt;/p&gt;
-
-&lt;p&gt;そのうち詳しくまとめる予定…&lt;/p&gt;
-
-&lt;h1 id=&#34;思った以上にtwitterに時間を取られる:d8557742a33269e75592dd05f8ca14f3&#34;&gt;思った以上にTwitterに時間を取られる&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.binerx.aptrax&amp;amp;hl=ja&#34;&gt;Aptrax | App Usage Tracker&lt;/a&gt;というツールで、&lt;br /&gt;
-スマホの各アプリの使用時間を計測していますが、Twitterの使用率が凄い結果になっていました。&lt;/p&gt;
-
-&lt;p&gt;PC上で見ている時間も結構多く、かなりの時間を浪費している気がします…&lt;br /&gt;
-重要なことだけ抜き出してできる限り見ないみたいな事が必要ですね。&lt;/p&gt;
-
-&lt;h1 id=&#34;twieveでツイートをevernoteに保存:d8557742a33269e75592dd05f8ca14f3&#34;&gt;twieveでツイートをevernoteに保存&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://twieve.net/&#34;&gt;twieve&lt;/a&gt;を使って、ツイートをevernoteに保存するようにしました。&lt;br /&gt;
-これでやってることを呟いておけば、今週何をやったかを簡単に思い出せるようになるはずです。&lt;/p&gt;
 </description>
     </item>
     
