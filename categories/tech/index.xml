@@ -6,8 +6,172 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 01 Apr 2015 07:06:38 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2015 14:05:04 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangのラインエディタはlinerが便利</title>
+      <link>http://ota42y.com/blog/2015/04/11/go-liner/</link>
+      <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/11/go-liner/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterh/liner&#34;&gt;peterh/liner&lt;/a&gt;&lt;br /&gt;
+golangでCLIを作る際に活用できるラインエディタです。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;liner.NewLinerで作成し、Prompt関数で入力を待機します。&lt;br /&gt;
+入力があると関数が入力を返してくるため、それによって処理を分岐します。&lt;/p&gt;
+
+&lt;p&gt;なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、&lt;br /&gt;
+エラー時に終了するようにしておくことでCtrl+dで終了できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;github.com/peterh/liner&amp;quot;
+)
+
+func main() {
+	line := liner.NewLiner()
+	defer line.Close()
+
+	for {
+		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
+		if err != nil {
+			fmt.Println(&amp;quot;error: &amp;quot;, err)
+		} else {
+			fmt.Println(&amp;quot;get: &amp;quot;, l)
+
+			if l == &amp;quot;exit&amp;quot; {
+				break
+			}
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;入力履歴を使う:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;入力履歴を使う&lt;/h1&gt;
+
+&lt;p&gt;AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。&lt;br /&gt;
+&lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.AppendHistory&#34;&gt;State.AppendHistory&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;github.com/peterh/liner&amp;quot;
+	&amp;quot;os&amp;quot;
+)
+
+func main() {
+	line := liner.NewLiner()
+	defer line.Close()
+
+	f, err := os.Open(&amp;quot;inputs.log&amp;quot;)
+	if err == nil {
+		n, _ := line.ReadHistory(f)
+		fmt.Println(&amp;quot;load&amp;quot;, n, &amp;quot;history&amp;quot;)
+		f.Close()
+	}
+
+	for {
+		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
+		if err != nil {
+			fmt.Println(&amp;quot;error: &amp;quot;, err)
+		} else {
+			fmt.Println(&amp;quot;get: &amp;quot;, l)
+			line.AppendHistory(l)
+
+			if l == &amp;quot;exit&amp;quot; {
+				break
+			}
+		}
+	}
+
+	f, err = os.Create(&amp;quot;inputs.log&amp;quot;)
+	if err == nil {
+		fmt.Println(&amp;quot;write history&amp;quot;)
+
+		line.WriteHistory(f)
+		f.Close()
+	} else {
+		fmt.Println(&amp;quot;write history error: &amp;quot;, err)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;タブ補完を使う:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;タブ補完を使う&lt;/h1&gt;
+
+&lt;p&gt;SetCompleter関数に補完用の関数を登録することで、タブ補完も使えます。&lt;br /&gt;
+&lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.SetCompleter&#34;&gt;State.SetCompleter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;引数として、現在入力中のstringを受け取り、tab候補をstringの配列で返す関数を渡します。&lt;br /&gt;
+入力中の文字が配列のはじめの要素で置き換えられ、以降tabを押すごとに次の要素と置き換えられます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;github.com/peterh/liner&amp;quot;
+	&amp;quot;strings&amp;quot;
+)
+
+func main() {
+	inputs := make([]string, 0)
+
+	line := liner.NewLiner()
+	defer line.Close()
+
+	line.SetCompleter(func(line string) (c []string) {
+		for _, n := range inputs {
+			if strings.HasPrefix(n, strings.ToLower(line)) {
+				c = append(c, n)
+			}
+		}
+		return
+	})
+
+	for {
+		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
+		if err != nil {
+			fmt.Println(&amp;quot;error: &amp;quot;, err)
+		} else {
+			fmt.Println(&amp;quot;get: &amp;quot;, l)
+			inputs = append(inputs, l)
+
+			if l == &amp;quot;exit&amp;quot; {
+				break
+			}
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;まとめ:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ラインエディタに必要な物は大体揃っている
+
+&lt;ul&gt;
+&lt;li&gt;入力中の左右移動&lt;/li&gt;
+&lt;li&gt;履歴&lt;/li&gt;
+&lt;li&gt;補完&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;日本語入力はちょっとおかしい
+
+&lt;ul&gt;
+&lt;li&gt;日本語を入れて左右移動すると表示がおかしい&lt;/li&gt;
+&lt;li&gt;ターミナルの問題の可能性も&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>golangでIOへのテストを行う</title>
@@ -1416,125 +1580,6 @@ duplicate symbolになっています。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;include対象に入ってないのだからあたりまえ&lt;/li&gt;
 &lt;li&gt;複数のcppファイルに書かれた内容を繋げるのはリンク時なのでコンパイル後&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>fork関数がどうやってプロセスを分割しているか</title>
-      <link>http://ota42y.com/blog/2015/01/03/unix-fork/</link>
-      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/03/unix-fork/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEOS%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-~UNIX-V6%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF-Software-Design/dp/4774154644&#34;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;br /&gt;
-という本を読んでいます。&lt;/p&gt;
-
-&lt;p&gt;この中で、fork関数がどうやって子プロセスを作り、&lt;br /&gt;
-親子かを識別して別の値を返しているのかが解説されており、&lt;br /&gt;
-とても興味深かったです。&lt;/p&gt;
-
-&lt;p&gt;以下にその概要をまとめました。&lt;/p&gt;
-
-&lt;h1 id=&#34;fork関数:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数&lt;/h1&gt;
-
-&lt;p&gt;Cではfork関数を利用することで、子プロセスを作成することが出来ます。&lt;br /&gt;
-コードとしてはこんな感じですね。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-#include &amp;lt;sys/wait.h&amp;gt;
-
-int main() {
-  pid_t pid = fork();
-  if (pid == 0) {
-    sleep(1);
-    printf(&amp;quot;child!\n&amp;quot;);
-    return 0;
-  }
-
-  printf(&amp;quot;parent!\n&amp;quot;);
-
-  int status;
-  waitpid(pid, &amp;amp;status, 0);
-
-  printf(&amp;quot;parent end\n&amp;quot;);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。&lt;br /&gt;
-ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、&lt;br /&gt;
-ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。&lt;/p&gt;
-
-&lt;p&gt;では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、&lt;br /&gt;
-別の値を返しているのでしょうか。&lt;/p&gt;
-
-&lt;p&gt;これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。&lt;/p&gt;
-
-&lt;h1 id=&#34;fork関数がプロセスの親子を区別する仕組み:7960c44eb9f1312bad029939fcc3410e&#34;&gt;fork関数がプロセスの親子を区別する仕組み&lt;/h1&gt;
-
-&lt;h2 id=&#34;親による子プロセスの作成:7960c44eb9f1312bad029939fcc3410e&#34;&gt;親による子プロセスの作成&lt;/h2&gt;
-
-&lt;p&gt;ライブラリのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/source/s4/fork.s&#34;&gt;source/s4/fork.s&lt;/a&gt;)を実行すると、&lt;br /&gt;
-システムコールによってカーネルのfork関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/sys1.c&#34;&gt;sys/ken/sys1.c&lt;/a&gt;)が実行されます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;fork()
-{
-  register struct proc *p1, *p2;
-
-  p1 = u.u_procp;
-  for(p2 = &amp;amp;proc[0]; p2 &amp;lt; &amp;amp;proc[NPROC]; p2++)
-  if(p2-&amp;gt;p_stat == NULL)
-    goto found;
-  u.u_error = EAGAIN;
-  goto out;
-
-found:
-  if(newproc()) {
-    u.u_ar0[R0] = p1-&amp;gt;p_pid;
-    u.u_cstime[0] = 0;
-    u.u_cstime[1] = 0;
-    u.u_stime = 0;
-    u.u_cutime[0] = 0;
-    u.u_cutime[1] = 0;
-    u.u_utime = 0;
-    return;
-  }
-  u.u_ar0[R0] = p2-&amp;gt;p_pid;
-
-out:
-  u.u_ar0[R7] =+ 2;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このカーネルのfork関数内でnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)を呼び出し、子プロセスを作成しています。&lt;br /&gt;
-その後、newproc関数は0を返すため、カーネルのfork関数で0で帰ってきた場合に、&lt;br /&gt;
-作成した子プロセスのIDをレジスタに乗せ、ライブラリのfork関数で返すようにしています。&lt;/p&gt;
-
-&lt;h2 id=&#34;作成された子プロセス側の処理:7960c44eb9f1312bad029939fcc3410e&#34;&gt;作成された子プロセス側の処理&lt;/h2&gt;
-
-&lt;p&gt;子プロセスは作成された後、実行順番が回ってきたタイミングでswitch関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)により再開します。&lt;br /&gt;
-この関数内では保存されたデータを復元し、最後にsavu関数を実行した関数の呼び出し元に、return 1で戻ります。&lt;/p&gt;
-
-&lt;p&gt;カーネルのfork関数で呼び出しているnewproc関数(&lt;a href=&#34;http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c&#34;&gt;sys/ken/slp.c&lt;/a&gt;)内では、&lt;br /&gt;
-savu関数が実行されてから子プロセスがコピーされるため、&lt;br /&gt;
-switch関数はnewprocの呼び出し元であるfork関数に1で戻ります。&lt;/p&gt;
-
-&lt;p&gt;これにより、カーネルのfork関数内で呼び出しているnewproc関数は、&lt;br /&gt;
-親プロセスの場合は0が、子プロセスの場合は1が返るようになり、&lt;br /&gt;
-その値を見て自身が親なのか子なのかを判断でき、別々の戻り値を返せるようになっています。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:7960c44eb9f1312bad029939fcc3410e&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;親プロセスはforkで子プロセスを作成してそのまま処理を継続&lt;/li&gt;
-&lt;li&gt;子プロセスは実行順番が回ってきたタイミングで処理を開始
-
-&lt;ul&gt;
-&lt;li&gt;switch関数で復帰した際に、通常とは別の戻り値が返るため親子を区別可能&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
