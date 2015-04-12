@@ -6,8 +6,262 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 11 Apr 2015 14:05:04 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2015 21:03:35 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 第6回ニコニコ学会β　データ研究会</title>
+      <link>http://ota42y.com/blog/2015/04/12/niconico_data_6/</link>
+      <pubDate>Sun, 12 Apr 2015 21:03:35 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/12/niconico_data_6/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://niconicodatasig6.peatix.com/&#34;&gt;第6回ニコニコ学会β　データ研究会&lt;/a&gt;に参加しました。&lt;/p&gt;
+
+&lt;h1 id=&#34;基調講演:77062b116e53641aa03fb4a662d518a8&#34;&gt;基調講演&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;日立のH
+
+&lt;ul&gt;
+&lt;li&gt;スペシャリストのデータに基づいた施策より、超詳細なデータから計算した施策の方が有効
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://web-tan.forum.impressrd.jp/e/2015/03/06/19423&#34;&gt;http://web-tan.forum.impressrd.jp/e/2015/03/06/19423&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;人間では見つけられない要因を特定できる
+
+&lt;ul&gt;
+&lt;li&gt;スキルより休憩中の雑談の盛り上がりが重要だったり&lt;/li&gt;
+&lt;li&gt;膨大なデータの因果関係を調べ上げるのは人間には無理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ウェアラブルハピネスメーター
+
+&lt;ul&gt;
+&lt;li&gt;人は動き続けているほど止まらなくなる
+
+&lt;ul&gt;
+&lt;li&gt;T時間動き続けると、止まる確率が1/T&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;実際のデータと1/Tとの乖離が高くなると、集団の幸福度が低下する
+
+&lt;ul&gt;
+&lt;li&gt;1/Tに近いほど集団が幸福度が高くなる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;幸福度と業務の生産性は直結する
+
+&lt;ul&gt;
+&lt;li&gt;1/Tを上げることが生産性を上げることになる&lt;/li&gt;
+&lt;li&gt;生産性や幸福度に関連するデータを短いスパンで計測することができる
+
+&lt;ul&gt;
+&lt;li&gt;日々のKPIとして利用できそうなところが革新的っぽい&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pc.watch.impress.co.jp/docs/news/20150209_687505.html&#34;&gt;日立、集団の幸福感を測定する技術を開発 - PC Watch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;参考
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%A6%8B%E3%81%88%E3%81%96%E3%82%8B%E6%89%8B-%E3%82%A6%E3%82%A8%E3%82%A2%E3%83%A9%E3%83%96%E3%83%AB%E3%82%BB%E3%83%B3%E3%82%B5%E3%81%8C%E6%98%8E%E3%81%8B%E3%81%99%E4%BA%BA%E9%96%93%E3%83%BB%E7%B5%84%E7%B9%94%E3%83%BB%E7%A4%BE%E4%BC%9A%E3%81%AE%E6%B3%95%E5%89%87-%E7%9F%A2%E9%87%8E%E5%92%8C%E7%94%B7/dp/4794220685/&#34;&gt;データの見えざる手: ウエアラブルセンサが明かす人間・組織・社会の法則&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;後で買う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;人狼知能:77062b116e53641aa03fb4a662d518a8&#34;&gt;人狼知能&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;脱初心者！経験は人狼力を向上させるのか？～データから見るベテランの実力～
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/toritorix/ss-46899953&#34;&gt;http://www.slideshare.net/toritorix/ss-46899953&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;人狼BBSの分析&lt;/li&gt;
+&lt;li&gt;陣営ごとの平均プレイ回数が多い方が勝率が高い
+
+&lt;ul&gt;
+&lt;li&gt;運ゲーじゃなかった&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;経験によるスキル向上
+
+&lt;ul&gt;
+&lt;li&gt;占い師
+
+&lt;ul&gt;
+&lt;li&gt;的中率は変化なし&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;狩人
+
+&lt;ul&gt;
+&lt;li&gt;上級者ほど護衛成功しやすい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;人狼への投票率
+
+&lt;ul&gt;
+&lt;li&gt;ちょっとだけ高い&lt;/li&gt;
+&lt;li&gt;上級者が複数人の陣営はわりと高くなる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;個人の経験より集団の経験の方が強い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;人狼知能プロジェクト
+
+&lt;ul&gt;
+&lt;li&gt;人狼BBSのデータセットとか公開するらしい&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aiwolf.org/&#34;&gt;http://www.aiwolf.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;能力者はどれくらい勝利に貢献するのか？の話
+
+&lt;ul&gt;
+&lt;li&gt;同じ人数で特定の能力者がいる/いない場合の勝率を計算
+
+&lt;ul&gt;
+&lt;li&gt;その能力者による勝利への貢献度合いが相対的にわかる&lt;/li&gt;
+&lt;li&gt;ロジスティック回帰分析で解析&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;結果
+
+&lt;ul&gt;
+&lt;li&gt;占い師&amp;gt;人狼&amp;gt;狩人&amp;gt;共有者&amp;gt;狂人&amp;gt;霊能者&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;村人
+
+&lt;ul&gt;
+&lt;li&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;結果。占い師最強。村人はゴミ &lt;a href=&#34;https://twitter.com/hashtag/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E5%AD%A6%E4%BC%9A?src=hash&#34;&gt;#ニコニコ学会&lt;/a&gt; &lt;a href=&#34;http://t.co/gmVrLtS3Qb&#34;&gt;pic.twitter.com/gmVrLtS3Qb&lt;/a&gt;&lt;/p&gt;&amp;mdash; myrmecoleon (@myrmecoleon) &lt;a href=&#34;https://twitter.com/myrmecoleon/status/587138559770935298&#34;&gt;2015, 4月 12&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+&lt;li&gt;占い師は人狼より強い&lt;/li&gt;
+&lt;li&gt;霊能力者は使えない&lt;/li&gt;
+&lt;li&gt;村人はゴミ（いないよりマシ）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;結果から状況に応じた行動指針
+
+&lt;ul&gt;
+&lt;li&gt;複数COした場合、占い師2人の時以外は総吊り
+
+&lt;ul&gt;
+&lt;li&gt;占い師三人＝真占い、人狼、狂人（または人狼）&lt;/li&gt;
+&lt;li&gt;占い師＜人狼＋狂人（または人狼）なので、全員吊った方がよい&lt;/li&gt;
+&lt;li&gt;霊能力者の場合も同じく&lt;/li&gt;
+&lt;li&gt;占い師＞人狼なので、占い師2人の場合は手を出さないのが吉&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;人狼側で占い2人COの場合
+
+&lt;ul&gt;
+&lt;li&gt;相手を襲撃するのが良い&lt;/li&gt;
+&lt;li&gt;占い師＞人狼なので、道連れにした方が得&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;狂人は占い師を騙るべき
+
+&lt;ul&gt;
+&lt;li&gt;霊能力者はダメ、村人は論外&lt;/li&gt;
+&lt;li&gt;狩人も占い師を騙るべき&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;役職なしの人狼の勝率計算
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://arxiv.org/abs/1009.1031&#34;&gt;http://arxiv.org/abs/1009.1031&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;この結果が対面戦でも有効なのか気になる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;人狼でわかるコミュ力の正体
+
+&lt;ul&gt;
+&lt;li&gt;人狼はコミュニケーションの中で相手の嘘を見抜くのと、相手を説得するのを両方やるゲーム&lt;/li&gt;
+&lt;li&gt;人狼での必要な行動を論理的に記述できる言語を作ったらしい
+
+&lt;ul&gt;
+&lt;li&gt;AI人狼と対戦できる
+
+&lt;ul&gt;
+&lt;li&gt;つよい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;初音ミクに人狼をやらせてみた
+
+&lt;ul&gt;
+&lt;li&gt;AI人狼
+
+&lt;ul&gt;
+&lt;li&gt;一瞬で決着がついておもしろくない&lt;/li&gt;
+&lt;li&gt;対面だとおもしろいのに&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;人狼をミクがプレイするようにした
+
+&lt;ul&gt;
+&lt;li&gt;モーション等もつけられるようになってる&lt;/li&gt;
+&lt;li&gt;動画は限定公開中らしい…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;lt:77062b116e53641aa03fb4a662d518a8&#34;&gt;LT&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;初心者向け「凛ちゃん」
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/__john_smith__/rin-chan-46900896&#34;&gt;http://www.slideshare.net/__john_smith__/rin-chan-46900896&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;イ゛エ゛ロ゛ー゛タ゛ヨ゛ォ゛ォ゛ォ゛&lt;/li&gt;
+&lt;li&gt;2chのスレで同名キャラの誰について話しているかを分類する
+
+&lt;ul&gt;
+&lt;li&gt;SVMで解析
+
+&lt;ul&gt;
+&lt;li&gt;68%の正解率&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DeepLearning
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://h2o.ai/&#34;&gt;http://h2o.ai/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;62%の正解率…&lt;/li&gt;
+&lt;li&gt;まだ収束してないのでもっと上がるかもとのこと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;「さくら」で分析したらもっとやばそう…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;E2D3の話
+
+&lt;ul&gt;
+&lt;li&gt;Excel上でD3.jsが動く
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://e2d3.org/?lang=ja&#34;&gt;http://e2d3.org/?lang=ja&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;便利そう(o゜▽゜)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;商業ボーイズラブの集計〜男性向けエロマンガを添えて〜
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B2uGN8G1iUFiOFh0czVabGFzVXM&#34;&gt;https://docs.google.com/file/d/0B2uGN8G1iUFiOFh0czVabGFzVXM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;男性向けよりも肉体的な関係より、精神的な関係を好むらしい
+
+&lt;ul&gt;
+&lt;li&gt;これは百合マンガと比較した場合もBLに特徴的なのか気になる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ありらいおん deviantARTを調べてみた
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.deviantart.com/&#34;&gt;http://www.deviantart.com/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;北米のすごいpixiv&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;規模的にはpixivの倍ぐらいらしい&lt;/li&gt;
+&lt;li&gt;300万人で3億投稿&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>golangのラインエディタはlinerが便利</title>
@@ -1041,137 +1295,6 @@ Build Flow Pluginを多用していたならば、こっちに乗り換えた方
 
 &lt;p&gt;もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、&lt;br /&gt;
 代わりのサービスを探すか作るかしようと思います…&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
-      <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ブランチをパラメーターにするとスクリプトを読めない
-
-&lt;ul&gt;
-&lt;li&gt;中身ではなく変数名のブランチを探しに行く&lt;/li&gt;
-&lt;li&gt;多分バグ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ファイルから読み込むるスクリプトを書けば解決
-
-&lt;ul&gt;
-&lt;li&gt;公式のflow.groovyを参考に&lt;/li&gt;
-&lt;li&gt;変数を使おうとすると面倒&lt;/li&gt;
-&lt;li&gt;java.io.Serializableを実装する必要あり&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
-
-&lt;p&gt;(以下に用意されているdocker上のJenkinsで確認しました)&lt;br /&gt;
-&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&#34;&gt;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込んで実行する機能があります。&lt;br /&gt;
-この機能を使うことで、リポジトリの内容とそれに対応するビルド手順を同時にバージョン管理出来るため、&lt;br /&gt;
-ビルド手順の変更がとてもやりやすくなります。&lt;/p&gt;
-
-&lt;p&gt;ですが残念ながら、パラメータで指定したブランチをチェックアウトして読み込むと、以下のエラーになります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt; git config remote.origin.url /var/lib/jenkins/workflow-plugin-pipeline-demo # timeout=10
-Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo
-&amp;gt; git --version # timeout=10
-&amp;gt; git -c core.askpass=true fetch --tags --progress /var/lib/jenkins/workflow-plugin-pipeline-demo
-+refs/heads/*:refs/remotes/origin/*
-&amp;gt; git rev-parse origin/$BRANCH_NAME^{commit} # timeout=10
-&amp;gt; git rev-parse $BRANCH_NAME^{commit} # timeout=10
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;パラメータの内容ではなく、パラメータの名前そのものを探しに行っており、おそらくバグと思われます。&lt;br /&gt;
-通常のJobでGit Pluginを使うと問題なくパラメータ指定が出来るため、Workflowのバグと思われます。&lt;/p&gt;
-
-&lt;p&gt;このバグは、Jenkinsでは事前に設定した特定ブランチしかビルドしない場合は問題ありません。&lt;br /&gt;
-ですが、様々なブランチで実行する可能性がある場合、JenkinsのJob設定にスクリプトを書かなければならず、&lt;br /&gt;
-ビルド手順自体の管理が大変になります。&lt;/p&gt;
-
-&lt;p&gt;このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、&lt;br /&gt;
-指定したブランチからスクリプトを読み込んで実行できます。&lt;/p&gt;
-
-&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
-
-&lt;p&gt;(公式のdockerにも&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin-pipeline-demo/blob/master/flow.groovy&#34;&gt;スクリプト&lt;/a&gt;がありますが、より簡単化したもので説明します)&lt;/p&gt;
-
-&lt;p&gt;以下のようなスクリプトをリポジトリのルートに起きます&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;// build.groovy
-def build(){
-  node(&amp;quot;slave&amp;quot;) {
-    git url: ‘RIPOSITORY_URL&#39;, branch: “$BRANCH_NAME&amp;quot;
-    sh “rake build&amp;quot;
-  }
-}
-return this
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Jobには以下のスクリプトを書きます&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def flow
-node(&amp;quot;master&amp;quot;) {
-    git url: ‘RIPOSITORY_URL&#39;, branch: “$BRANCH_NAME&amp;quot;
-    flow = load &#39;flow.groovy&#39;
-}
-flow.build()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;loadは指定したパスのgroovyスクリプトを読み込み、returnしたオブジェクトを返します。&lt;br /&gt;
-そのため、これでリポジトリ内のファイルをロードして実行することが出来ます。&lt;br /&gt;
-また、buildメソッドをnodeの外側で実行することで、ビルド中はmasterのキューを開けておくことが出来ます。&lt;/p&gt;
-
-&lt;h1 id=&#34;ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
-
-&lt;p&gt;上記の方式の場合、masterにcloneしてその後にslave上に再度cloneしてビルドを始めています。&lt;br /&gt;
-slaveの選択を凝らない場合は問題ないですが、リリースビルド専用マシンがあったり、&lt;br /&gt;
-特定のミドルウェアを使うビルドの場合など、slaveの選択をパラメータによって切り替えたい場合があります。&lt;/p&gt;
-
-&lt;p&gt;パラメータだけで決定できる場合は問題ありませんが、リポジトリ内のファイルを読み込む必要がある場合、&lt;br /&gt;
-上記のスクリプトの場合でいうところの、node(&amp;ldquo;master&amp;rdquo;)内で処理しなければなりません。&lt;br /&gt;
-当然Job側にそれを書くとメンテが大変になるため、flow.groovy内に書く必要があります。&lt;/p&gt;
-
-&lt;p&gt;このような場合、groovyスクリプトの戻り値で独自クラスを返すことで解決できます。&lt;/p&gt;
-
-&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
-
-&lt;p&gt;Jenkinsから以下のようなgroovyスクリプトを読み込むことで、slaveの選択も柔軟にできるようになります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def buildSlave(slaveName){
-  slave(slaveName){
-    sh &amp;quot;echo ’slave&#39;&amp;quot;
-  }
-}
-
-class FlowStruct implements java.io.Serializable{
-  def slaveName
-  def flow
-  public void build(){
-    flow.buildSlave(slaveName)
-  }
-}
-
-f = new FlowStruct()
-f.slaveName = readFile(“settings/config_${SETTING}&amp;quot;).trim()
-f.flow = this
-
-return f;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;load関数では通常の文はすべて実行されるため、FlowStruct()以降が実行されてから関数が終了します。&lt;br /&gt;
-また、戻り値は固定ではないため、上記のように独自のクラスを作成して返すことができます。&lt;br /&gt;
-この際、戻り値はjava.io.Serializableを実装している必要がありますのでご注意ください。&lt;/p&gt;
-
-&lt;p&gt;これで、複雑な設定をしていたとしても、すべてリポジトリ内のスクリプトで処理することが出来ます。&lt;/p&gt;
 </description>
     </item>
     
