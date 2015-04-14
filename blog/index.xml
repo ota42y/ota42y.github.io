@@ -6,8 +6,205 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 12 Apr 2015 21:03:35 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2015 22:39:40 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
+      <link>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</link>
+      <pubDate>Tue, 14 Apr 2015 22:39:40 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://gunosygo.connpass.com/event/13139/&#34;&gt;GolangNotHttpNight（Gunosy.go#12）&lt;/a&gt;&lt;br /&gt;
+に参加しました。&lt;/p&gt;
+
+&lt;p&gt;ほぼ周りにgolangを使っている人がほとんどおらず、&lt;br /&gt;
+情報がほぼ入ってこない環境にいるため、&lt;br /&gt;
+ためになる話ばかりで、とても有意義な時間でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;gomaについて:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;gomaについて&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kyokomi/gomanituite&#34;&gt;https://speakerdeck.com/kyokomi/gomanituite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kyokomi/goma&#34;&gt;https://github.com/kyokomi/goma&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://doma.seasar.org/tutorial/&#34;&gt;Doma&lt;/a&gt;インスパイア&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DBのテーブルから対応する構造体とCRUD用の関数を作ってくれるみたい&lt;/li&gt;
+&lt;li&gt;DBへのアクセスは書き出されたSQLファイルを使う
+
+&lt;ul&gt;
+&lt;li&gt;SQLはgo-bindataでバイナリに入れ込む&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;いくつかライブラリを利用するが、作成されるコードには含まれないらしい
+
+&lt;ul&gt;
+&lt;li&gt;テーブル情報を取得するために&lt;a href=&#34;https://github.com/go-xorm/xorm&#34;&gt;xorm&lt;/a&gt;を利用&lt;/li&gt;
+&lt;li&gt;SQLファイル書き出しのために&lt;a href=&#34;https://github.com/benbjohnson/ego&#34;&gt;ego&lt;/a&gt;を利用&lt;/li&gt;
+&lt;li&gt;CLI用に&lt;a href=&#34;https://github.com/codegangsta/cli&#34;&gt;cli&lt;/a&gt;を利用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;golintを使おう:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;golintを使おう&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;いろいろ細かい所までチェックしてくれるgolintの話&lt;/li&gt;
+&lt;li&gt;pre-commitで実行するといい&lt;/li&gt;
+&lt;li&gt;よくわかってなかったのでちゃんと使おう&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;go-timeout-もしくはunixツールをgolangで書く話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;go-timeout、もしくはUnixツールをgolangで書く話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://songmu.github.io/slides/gunosygo-12/#0&#34;&gt;http://songmu.github.io/slides/gunosygo-12/#0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;mackerel-agentはgo製
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mackerelio/mackerel-agent&#34;&gt;https://github.com/mackerelio/mackerel-agent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;サーバ監視用の情報をmackarelに送る
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mackerel.io/&#34;&gt;https://mackerel.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;pluginで拡張できる
+
+&lt;ul&gt;
+&lt;li&gt;外部コマンドとして呼んでるだけ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;pluginが無限ループしたりするとブロックしてしまう
+
+&lt;ul&gt;
+&lt;li&gt;一定時間後にKILLするようにした
+
+&lt;ul&gt;
+&lt;li&gt;timeoutコマンドのようなものをgoで実装&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;golang-raspiで趣味的iot入門的な話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Golang+Raspiで趣味的IoT入門的な話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua&#34;&gt;https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Raspberry PiでIoT
+
+&lt;ul&gt;
+&lt;li&gt;armなのでgoでクロスコンパイル可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Gobot
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gobot.io/&#34;&gt;http://gobot.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;いろんなデバイスをかなり抽象化された形で利用できる&lt;/li&gt;
+&lt;li&gt;ロボットにパーツをつけていくメタファ&lt;/li&gt;
+&lt;li&gt;対応していないと使えないけど、対応しているととても便利っぽい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;embed
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kidoman/embd&#34;&gt;https://github.com/kidoman/embd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;低レベルなライブラリ&lt;/li&gt;
+&lt;li&gt;GPIOを直接触れるみたい&lt;/li&gt;
+&lt;li&gt;Arduinoプログラミングに近い印象&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;プログラムよりもデータシートとの格闘が大変…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;goでのステート管理の仕方:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goでのステート管理の仕方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ssuser939b6b/state-managementingo20150413&#34;&gt;http://www.slideshare.net/ssuser939b6b/state-managementingo20150413&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GoでFSMを実装
+
+&lt;ul&gt;
+&lt;li&gt;いくつか書き方がある&lt;/li&gt;
+&lt;li&gt;末尾最適化しない影響でうまくいかなかったり
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ymotongpoo.hatenablog.com/entry/2015/02/23/165341&#34;&gt;http://ymotongpoo.hatenablog.com/entry/2015/02/23/165341&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;goと設定ファイル:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goと設定ファイル&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/gototoml&#34;&gt;https://speakerdeck.com/cubicdaiya/gototoml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;TOMLの話&lt;/li&gt;
+&lt;li&gt;advanced-ini&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/BurntSushi/toml&#34;&gt;https://github.com/BurntSushi/toml&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goのTOML実装&lt;/li&gt;
+&lt;li&gt;構造体に直接変換したり、その逆も出来る&lt;/li&gt;
+&lt;li&gt;ライセンスが下品
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/WTFPL&#34;&gt;http://ja.wikipedia.org/wiki/WTFPL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;goでゲームを作る:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goでゲームを作る&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1&#34;&gt;http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ajhager/engi&#34;&gt;https://github.com/ajhager/engi&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goのゲームライブラリ&lt;/li&gt;
+&lt;li&gt;描画とゲームループは提供してるみたい&lt;/li&gt;
+&lt;li&gt;音は出せないけど、別のを使うらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;夏コミで頒布予定&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;dbじゃないoracleの話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;DBじゃないoracleの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/damemekam/dboracle-gunosygo12&#34;&gt;http://www.slideshare.net/damemekam/dboracle-gunosygo12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ソースコード解析をしてくれるツール、oracle
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/golang.org/x/tools/oracle&#34;&gt;https://godoc.org/golang.org/x/tools/oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;IDE並の機能があるみたい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;いろんなエディタに対応可能
+
+&lt;ul&gt;
+&lt;li&gt;atom用&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://atom.io/packages/go-oracle&#34;&gt;https://atom.io/packages/go-oracle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;こういうツールが整っている環境すばらしい
+
+&lt;ul&gt;
+&lt;li&gt;go fmtとかも凄くいいと思う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;gocon2015-summer:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;GoCon2015 Summer&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/takuyaueda967/goconsummer&#34;&gt;http://www.slideshare.net/takuyaueda967/goconsummer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;とりあえず日程が出た&lt;/li&gt;
+&lt;li&gt;会場探し中らしい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;その他:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GojiなるWebフレームワークが良いらしい
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/zenazn/goji&#34;&gt;https://github.com/zenazn/goji&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 第6回ニコニコ学会β　データ研究会</title>
@@ -1472,77 +1669,6 @@ timeコマンドを使い手作業で計ったところ、SSD上では9分13秒�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;当然ながら空きメモリ容量を消費するので、余っていない場合は注意&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Androidでクリップボードの中身を自動で辞書検索</title>
-      <link>http://ota42y.com/blog/2015/01/21/android-dict/</link>
-      <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/21/android-dict/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;clip2dicを使うとクリップボード内を自動で辞書検索する&lt;/li&gt;
-&lt;li&gt;オフラインの別アプリからも検索可能&lt;/li&gt;
-&lt;li&gt;ColorDictとGolden Dictが連携先として優秀&lt;/li&gt;
-&lt;li&gt;英辞郎は形式が違うため辛い&lt;/li&gt;
-&lt;li&gt;Google Driveをビューワーとして使うといい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;ポップアップ辞書アプリ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;ポップアップ辞書アプリ&lt;/h1&gt;
-
-&lt;p&gt;iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。&lt;/p&gt;
-
-&lt;p&gt;Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、&lt;br /&gt;
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.jp.readers.clip2dic.lite&amp;amp;hl=ja&#34;&gt;clip2dic&lt;/a&gt;というアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。&lt;/p&gt;
-
-&lt;p&gt;私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、&lt;br /&gt;
-他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;clip2dictから使えるオフライン辞書アプリ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;clip2dictから使えるオフライン辞書アプリ&lt;/h1&gt;
-
-&lt;h2 id=&#34;colordict:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;ColorDict&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&#34;&gt;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;無料の辞書ソフトです。&lt;br /&gt;
-初期状態では日英、英日辞書は入っていませんが、&lt;br /&gt;
-別アプリとして配布されている辞書アプリをインストールすることで、
-対応辞書を増やすことができます。
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict&#34;&gt;https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict&lt;/a&gt;&lt;br /&gt;
-(おそらく&lt;a href=&#34;https://code.google.com/p/stardict-3/&#34;&gt;こちらの辞書&lt;/a&gt;を使用しています)&lt;br /&gt;
-StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。&lt;/p&gt;
-
-&lt;h2 id=&#34;goldendict:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;GoldenDict&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&#34;&gt;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android.free&amp;amp;hl=ja&#34;&gt;Free版&lt;/a&gt;&lt;br /&gt;
-こちらもColorDictと同じく、辞書ファイルが必要になります。&lt;br /&gt;
-ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、&lt;br /&gt;
-より導入が簡単です（辞書としてはおそらく同じだと思います)。&lt;/p&gt;
-
-&lt;p&gt;このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）&lt;/p&gt;
-
-&lt;p&gt;複数の辞書ファイルを持っている場合は便利ですが、&lt;br /&gt;
-私はそんなに辞書ファイルを持っていないので無料で十分でした。&lt;/p&gt;
-
-&lt;h1 id=&#34;その他:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;その他&lt;/h1&gt;
-
-&lt;p&gt;手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。&lt;br /&gt;
-pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br /&gt;
-古すぎてネット上にある手順では出来なさそうなので諦めました。&lt;/p&gt;
-
-&lt;p&gt;また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…&lt;br /&gt;
-いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、&lt;br /&gt;
-今のところ唯一出来たGoogle Driveをビューワーとして使っています。&lt;br /&gt;
-(オフラインでも別アプリからPDFビューワーとして呼び出せる)&lt;/p&gt;
-
-&lt;p&gt;辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。&lt;br /&gt;
-これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。&lt;/p&gt;
 </description>
     </item>
     

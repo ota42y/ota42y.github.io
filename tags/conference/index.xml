@@ -6,8 +6,205 @@
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 12 Apr 2015 21:03:35 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2015 22:39:40 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
+      <link>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</link>
+      <pubDate>Tue, 14 Apr 2015 22:39:40 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://gunosygo.connpass.com/event/13139/&#34;&gt;GolangNotHttpNight（Gunosy.go#12）&lt;/a&gt;&lt;br /&gt;
+に参加しました。&lt;/p&gt;
+
+&lt;p&gt;ほぼ周りにgolangを使っている人がほとんどおらず、&lt;br /&gt;
+情報がほぼ入ってこない環境にいるため、&lt;br /&gt;
+ためになる話ばかりで、とても有意義な時間でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;gomaについて:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;gomaについて&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kyokomi/gomanituite&#34;&gt;https://speakerdeck.com/kyokomi/gomanituite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kyokomi/goma&#34;&gt;https://github.com/kyokomi/goma&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://doma.seasar.org/tutorial/&#34;&gt;Doma&lt;/a&gt;インスパイア&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DBのテーブルから対応する構造体とCRUD用の関数を作ってくれるみたい&lt;/li&gt;
+&lt;li&gt;DBへのアクセスは書き出されたSQLファイルを使う
+
+&lt;ul&gt;
+&lt;li&gt;SQLはgo-bindataでバイナリに入れ込む&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;いくつかライブラリを利用するが、作成されるコードには含まれないらしい
+
+&lt;ul&gt;
+&lt;li&gt;テーブル情報を取得するために&lt;a href=&#34;https://github.com/go-xorm/xorm&#34;&gt;xorm&lt;/a&gt;を利用&lt;/li&gt;
+&lt;li&gt;SQLファイル書き出しのために&lt;a href=&#34;https://github.com/benbjohnson/ego&#34;&gt;ego&lt;/a&gt;を利用&lt;/li&gt;
+&lt;li&gt;CLI用に&lt;a href=&#34;https://github.com/codegangsta/cli&#34;&gt;cli&lt;/a&gt;を利用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;golintを使おう:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;golintを使おう&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;いろいろ細かい所までチェックしてくれるgolintの話&lt;/li&gt;
+&lt;li&gt;pre-commitで実行するといい&lt;/li&gt;
+&lt;li&gt;よくわかってなかったのでちゃんと使おう&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;go-timeout-もしくはunixツールをgolangで書く話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;go-timeout、もしくはUnixツールをgolangで書く話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://songmu.github.io/slides/gunosygo-12/#0&#34;&gt;http://songmu.github.io/slides/gunosygo-12/#0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;mackerel-agentはgo製
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mackerelio/mackerel-agent&#34;&gt;https://github.com/mackerelio/mackerel-agent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;サーバ監視用の情報をmackarelに送る
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mackerel.io/&#34;&gt;https://mackerel.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;pluginで拡張できる
+
+&lt;ul&gt;
+&lt;li&gt;外部コマンドとして呼んでるだけ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;pluginが無限ループしたりするとブロックしてしまう
+
+&lt;ul&gt;
+&lt;li&gt;一定時間後にKILLするようにした
+
+&lt;ul&gt;
+&lt;li&gt;timeoutコマンドのようなものをgoで実装&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;golang-raspiで趣味的iot入門的な話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Golang+Raspiで趣味的IoT入門的な話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua&#34;&gt;https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Raspberry PiでIoT
+
+&lt;ul&gt;
+&lt;li&gt;armなのでgoでクロスコンパイル可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Gobot
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gobot.io/&#34;&gt;http://gobot.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;いろんなデバイスをかなり抽象化された形で利用できる&lt;/li&gt;
+&lt;li&gt;ロボットにパーツをつけていくメタファ&lt;/li&gt;
+&lt;li&gt;対応していないと使えないけど、対応しているととても便利っぽい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;embed
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kidoman/embd&#34;&gt;https://github.com/kidoman/embd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;低レベルなライブラリ&lt;/li&gt;
+&lt;li&gt;GPIOを直接触れるみたい&lt;/li&gt;
+&lt;li&gt;Arduinoプログラミングに近い印象&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;プログラムよりもデータシートとの格闘が大変…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;goでのステート管理の仕方:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goでのステート管理の仕方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ssuser939b6b/state-managementingo20150413&#34;&gt;http://www.slideshare.net/ssuser939b6b/state-managementingo20150413&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GoでFSMを実装
+
+&lt;ul&gt;
+&lt;li&gt;いくつか書き方がある&lt;/li&gt;
+&lt;li&gt;末尾最適化しない影響でうまくいかなかったり
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ymotongpoo.hatenablog.com/entry/2015/02/23/165341&#34;&gt;http://ymotongpoo.hatenablog.com/entry/2015/02/23/165341&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;goと設定ファイル:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goと設定ファイル&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/gototoml&#34;&gt;https://speakerdeck.com/cubicdaiya/gototoml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;TOMLの話&lt;/li&gt;
+&lt;li&gt;advanced-ini&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/BurntSushi/toml&#34;&gt;https://github.com/BurntSushi/toml&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goのTOML実装&lt;/li&gt;
+&lt;li&gt;構造体に直接変換したり、その逆も出来る&lt;/li&gt;
+&lt;li&gt;ライセンスが下品
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/WTFPL&#34;&gt;http://ja.wikipedia.org/wiki/WTFPL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;goでゲームを作る:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goでゲームを作る&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1&#34;&gt;http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ajhager/engi&#34;&gt;https://github.com/ajhager/engi&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goのゲームライブラリ&lt;/li&gt;
+&lt;li&gt;描画とゲームループは提供してるみたい&lt;/li&gt;
+&lt;li&gt;音は出せないけど、別のを使うらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;夏コミで頒布予定&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;dbじゃないoracleの話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;DBじゃないoracleの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/damemekam/dboracle-gunosygo12&#34;&gt;http://www.slideshare.net/damemekam/dboracle-gunosygo12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ソースコード解析をしてくれるツール、oracle
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/golang.org/x/tools/oracle&#34;&gt;https://godoc.org/golang.org/x/tools/oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;IDE並の機能があるみたい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;いろんなエディタに対応可能
+
+&lt;ul&gt;
+&lt;li&gt;atom用&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://atom.io/packages/go-oracle&#34;&gt;https://atom.io/packages/go-oracle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;こういうツールが整っている環境すばらしい
+
+&lt;ul&gt;
+&lt;li&gt;go fmtとかも凄くいいと思う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;gocon2015-summer:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;GoCon2015 Summer&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/takuyaueda967/goconsummer&#34;&gt;http://www.slideshare.net/takuyaueda967/goconsummer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;とりあえず日程が出た&lt;/li&gt;
+&lt;li&gt;会場探し中らしい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;その他:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GojiなるWebフレームワークが良いらしい
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/zenazn/goji&#34;&gt;https://github.com/zenazn/goji&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 第6回ニコニコ学会β　データ研究会</title>
