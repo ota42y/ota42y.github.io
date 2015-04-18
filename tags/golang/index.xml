@@ -6,8 +6,81 @@
     <description>Recent content in Golang on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 11 Apr 2015 14:05:04 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2015 10:55:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangのパッケージ管理</title>
+      <link>http://ota42y.com/blog/2015/04/18/go-package-management/</link>
+      <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/18/go-package-management/</guid>
+      <description>
+
+&lt;p&gt;goでは標準でいろいろなツールが揃っていますが、&lt;br /&gt;
+npmやbundlerのようなパッケージの依存管理をするツールはありません。&lt;/p&gt;
+
+&lt;p&gt;これは、goでは公開されている物は後方互換性を守り、&lt;br /&gt;
+それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.
+&lt;a href=&#34;http://golang.org/doc/faq#get_version&#34;&gt;http://golang.org/doc/faq#get_version&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;そうはいっても、これに従うかどうかはパッケージの開発者の裁量によるため、&lt;br /&gt;
+自分が管理していないパッケージを利用する場合はどうしても管理が必要になります。&lt;/p&gt;
+
+&lt;p&gt;調べたところ、同じような問題に直面している人は多いらしく、いくつかツールがありました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/golang/go/wiki/PackageManagementTools&#34;&gt;PackageManagementTools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一応、go公式でもパッケージ管理ソフトを作るという噂を聞きましたが、1.5には入る気配がないので、&lt;br /&gt;
+とりあえずはこれらの中のどれかを使う必要があります。&lt;/p&gt;
+
+&lt;p&gt;そこで、この中で特にスターが多かったgodep、gom、goopについて調べました。&lt;/p&gt;
+
+&lt;h1 id=&#34;パッケージ管理ツール:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
+
+&lt;p&gt;この3つに共通する物として、importしている物をリストアップし、ファイルに書き出す機能があるようです。&lt;br /&gt;
+また、gomとgoopはほぼ同じ機能を提供し、管理用のファイルの形式が違うようです。&lt;/p&gt;
+
+&lt;h2 id=&#34;godep:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;godep&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tools/godep&#34;&gt;https://github.com/tools/godep&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;こちらはかなりgoの思想に沿った作りをしているツールになります。&lt;/p&gt;
+
+&lt;p&gt;このツールはパッケージのインポート情報を保存しますが、バージョンまでは保存しません。&lt;br /&gt;
+そのため、依存しているパッケージを入れる際は、go getにより最新版をとってきます。&lt;/p&gt;
+
+&lt;p&gt;go getでとれないようなリポジトリ用に、プロジェクト内にワークスペースを作ってソースごと保存し、&lt;br /&gt;
+GOPATHでそこを見るようにしてコマンド実行することもできます。&lt;/p&gt;
+
+&lt;p&gt;つまり、常に最新のmasterを使うか、自分の手元で管理するかの二択です。&lt;br /&gt;
+基本的に全部管理下に置いてある前提の作りっぽいです。&lt;/p&gt;
+
+&lt;h2 id=&#34;gom-goop:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gom/goop&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;https://github.com/mattn/gom&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/nitrous-io/goop&#34;&gt;https://github.com/nitrous-io/goop&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;gomとgoopはほぼnpmのような使い勝手になるパッケージ管理ツールです。&lt;br /&gt;
+すなわち、使っているパッケージのバージョンまでも保存します。&lt;/p&gt;
+
+&lt;p&gt;依存するパッケージはローカルにフォルダを作ってそこに保存され、&lt;br /&gt;
+GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&gt;
+
+&lt;p&gt;gomはRakefileのような書式、goopは普通のテキストにちょっと書式が加わったようなものになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;gomが良さそう:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gomが良さそう&lt;/h1&gt;
+
+&lt;p&gt;godepはそういう環境やメンテナンスフローから作る必要があり、気軽に導入は難しそうです。&lt;br /&gt;
+そのため、npmやbundlerに似ているgomやgoopを使った方が楽そうです。&lt;/p&gt;
+
+&lt;p&gt;また、gomはRakefileっぽい書式のため、独自？のgoopよりかは使い勝手がよさそうなので、&lt;br /&gt;
+とりあえずはgomでやろうと思います。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>golangのラインエディタはlinerが便利</title>
@@ -1193,63 +1266,6 @@ div file
 time.Sleep等で処理を止めておく必要があります。&lt;/p&gt;
 
 &lt;script src=&#34;https://gist.github.com/ota42y/d8c0d2426bb5dc0cf9e9.js&#34;&gt;&lt;/script&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>mgoのConsistencyについて</title>
-      <link>http://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
-      <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
-      <description>
-
-&lt;p&gt;mgoのサンプルにあった&lt;br /&gt;
-&lt;code&gt;session.SetMode(mgo.Monotonic, true)&lt;/code&gt;&lt;br /&gt;
-の意味がよくわからないので調べてみました。&lt;/p&gt;
-
-&lt;p&gt;結論から書きますと、これは複数DBを利用した際の、&lt;br /&gt;
-データの一貫性をどの程度保証するかの設定です。&lt;/p&gt;
-
-&lt;h1 id=&#34;一貫性制御:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;一貫性制御&lt;/h1&gt;
-
-&lt;p&gt;mgoには複数のDB間での一貫性を制御する３種類のモードがあります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;const (
-  Eventual  mode = 0
-  Monotonic mode = 1
-  Strong    mode = 2
-  )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;SetModeにこれを渡すことで、モードを切り替えられます。&lt;/p&gt;
-
-&lt;p&gt;それぞれの内容は以下の通りです。&lt;br /&gt;
-おそらく一貫性がちゃんとしていくに従って、複雑化&amp;amp;遅くなっていきます。&lt;/p&gt;
-
-&lt;h2 id=&#34;eventual-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Eventual Consistency&lt;/h2&gt;
-
-&lt;p&gt;最終的に辻褄が合えばいいよね設定です。&lt;br /&gt;
-データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。&lt;/p&gt;
-
-&lt;p&gt;更新済みのノードと、そうでないノードが混在する可能性があるため、&lt;br /&gt;
-どのノードから読み込むのかが固定されない場合、&lt;br /&gt;
-新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…&lt;br /&gt;
-といったことが起きる可能性があるはずです。&lt;/p&gt;
-
-&lt;p&gt;同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;monotonic-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Monotonic Consistency&lt;/h2&gt;
-
-&lt;p&gt;あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。&lt;br /&gt;
-おそらく、値を参照したタイミングで最新かどうかは保証されないが、&lt;br /&gt;
-少なくとも古い値が読み込まれることはない、という状態だと思われます。&lt;/p&gt;
-
-&lt;h2 id=&#34;strong-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Strong Consistency&lt;/h2&gt;
-
-&lt;p&gt;常に必ず最新の値が読み込めるという状態です。&lt;br /&gt;
-一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、&lt;br /&gt;
-注意が必要です。&lt;/p&gt;
 </description>
     </item>
     

@@ -6,8 +6,81 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 14 Apr 2015 22:39:40 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2015 10:55:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangのパッケージ管理</title>
+      <link>http://ota42y.com/blog/2015/04/18/go-package-management/</link>
+      <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/18/go-package-management/</guid>
+      <description>
+
+&lt;p&gt;goでは標準でいろいろなツールが揃っていますが、&lt;br /&gt;
+npmやbundlerのようなパッケージの依存管理をするツールはありません。&lt;/p&gt;
+
+&lt;p&gt;これは、goでは公開されている物は後方互換性を守り、&lt;br /&gt;
+それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.
+&lt;a href=&#34;http://golang.org/doc/faq#get_version&#34;&gt;http://golang.org/doc/faq#get_version&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;そうはいっても、これに従うかどうかはパッケージの開発者の裁量によるため、&lt;br /&gt;
+自分が管理していないパッケージを利用する場合はどうしても管理が必要になります。&lt;/p&gt;
+
+&lt;p&gt;調べたところ、同じような問題に直面している人は多いらしく、いくつかツールがありました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/golang/go/wiki/PackageManagementTools&#34;&gt;PackageManagementTools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一応、go公式でもパッケージ管理ソフトを作るという噂を聞きましたが、1.5には入る気配がないので、&lt;br /&gt;
+とりあえずはこれらの中のどれかを使う必要があります。&lt;/p&gt;
+
+&lt;p&gt;そこで、この中で特にスターが多かったgodep、gom、goopについて調べました。&lt;/p&gt;
+
+&lt;h1 id=&#34;パッケージ管理ツール:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
+
+&lt;p&gt;この3つに共通する物として、importしている物をリストアップし、ファイルに書き出す機能があるようです。&lt;br /&gt;
+また、gomとgoopはほぼ同じ機能を提供し、管理用のファイルの形式が違うようです。&lt;/p&gt;
+
+&lt;h2 id=&#34;godep:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;godep&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tools/godep&#34;&gt;https://github.com/tools/godep&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;こちらはかなりgoの思想に沿った作りをしているツールになります。&lt;/p&gt;
+
+&lt;p&gt;このツールはパッケージのインポート情報を保存しますが、バージョンまでは保存しません。&lt;br /&gt;
+そのため、依存しているパッケージを入れる際は、go getにより最新版をとってきます。&lt;/p&gt;
+
+&lt;p&gt;go getでとれないようなリポジトリ用に、プロジェクト内にワークスペースを作ってソースごと保存し、&lt;br /&gt;
+GOPATHでそこを見るようにしてコマンド実行することもできます。&lt;/p&gt;
+
+&lt;p&gt;つまり、常に最新のmasterを使うか、自分の手元で管理するかの二択です。&lt;br /&gt;
+基本的に全部管理下に置いてある前提の作りっぽいです。&lt;/p&gt;
+
+&lt;h2 id=&#34;gom-goop:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gom/goop&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;https://github.com/mattn/gom&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/nitrous-io/goop&#34;&gt;https://github.com/nitrous-io/goop&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;gomとgoopはほぼnpmのような使い勝手になるパッケージ管理ツールです。&lt;br /&gt;
+すなわち、使っているパッケージのバージョンまでも保存します。&lt;/p&gt;
+
+&lt;p&gt;依存するパッケージはローカルにフォルダを作ってそこに保存され、&lt;br /&gt;
+GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&gt;
+
+&lt;p&gt;gomはRakefileのような書式、goopは普通のテキストにちょっと書式が加わったようなものになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;gomが良さそう:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gomが良さそう&lt;/h1&gt;
+
+&lt;p&gt;godepはそういう環境やメンテナンスフローから作る必要があり、気軽に導入は難しそうです。&lt;br /&gt;
+そのため、npmやbundlerに似ているgomやgoopを使った方が楽そうです。&lt;/p&gt;
+
+&lt;p&gt;また、gomはRakefileっぽい書式のため、独自？のgoopよりかは使い勝手がよさそうなので、&lt;br /&gt;
+とりあえずはgomでやろうと思います。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
@@ -1341,102 +1414,6 @@ iOS,Android,Mac,Windows等かなりのプラットフォームに対応してい
 &lt;/ul&gt;
 
 &lt;p&gt;当面は下の3つを進めていく方向でいきます。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>JenkinsをHTTP経由で叩く</title>
-      <link>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
-      <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JenkinsはWebベースのUI
-
-&lt;ul&gt;
-&lt;li&gt;操作の敷居が低い&lt;/li&gt;
-&lt;li&gt;使い込むと使いづらくなる&lt;/li&gt;
-&lt;li&gt;反応速度&lt;/li&gt;
-&lt;li&gt;複数のビルド実行&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Remote access API
-
-&lt;ul&gt;
-&lt;li&gt;HTTP経由でJobを実行できる&lt;/li&gt;
-&lt;li&gt;ページ表示を待たなくていいため高速&lt;/li&gt;
-&lt;li&gt;プログラムから実行可能&lt;/li&gt;
-&lt;li&gt;ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;jenkinsのjob実行は大変:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
-
-&lt;p&gt;JenkinsはWebブラウザを使ってGUIで操作するため、&lt;br /&gt;
-操作の敷居が低く、簡単に扱えるようになっています。&lt;/p&gt;
-
-&lt;p&gt;ですが、ブラウザやJenkins本体の状態によってはとても遅くなってしまい、&lt;br /&gt;
-ページを切り替えるのに3，4秒待つといった状態まで遅くなると、&lt;br /&gt;
-ビルドをするのがとても辛くなります。&lt;/p&gt;
-
-&lt;p&gt;また、パラメータの組み合わせの分だけビルドしようとすると、&lt;br /&gt;
-さらに辛くなってしまいます。&lt;/p&gt;
-
-&lt;p&gt;このような場合に、Jenkinsに用意されているRemote access APIを使うことで、&lt;br /&gt;
-Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、&lt;br /&gt;
-パラメータの数だけクリックをする必要性から逃れられます。&lt;/p&gt;
-
-&lt;h1 id=&#34;remote-access-api:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;Remote access API&lt;/h1&gt;
-
-&lt;p&gt;詳しくはこちら&lt;br /&gt;
-&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;要するに、パラメータが無い場合は&lt;br /&gt;
-&lt;code&gt;http://HOST/job/JOB_NAME/build&lt;/code&gt;
-に、ある場合は&lt;br /&gt;
-&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters&lt;/code&gt;
-にPOSTで投げるとビルドできます。&lt;/p&gt;
-
-&lt;p&gt;パラメータの投げ方はフォームデータとしてでもいいですし、&lt;br /&gt;
-&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value&lt;/code&gt;
-のように、URLに直接入れても大丈夫のようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルスクリプト:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;サンプルスクリプト&lt;/h1&gt;
-
-&lt;p&gt;3*3=9種類のビルドを一気に実行するスクリプトです&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require &#39;open-uri&#39;
-require &#39;net/http&#39;
-
-platforms = [&amp;quot;ios&amp;quot;,  &amp;quot;android&amp;quot;, &amp;quot;windows&amp;quot;]
-settings =  [&amp;quot;debug&amp;quot;,&amp;quot;release&amp;quot;, &amp;quot;store&amp;quot;]
-
-platforms.product(settings).each do |platform, setting|
-  params = {:PLATFORM =&amp;gt; platform, :SETTING =&amp;gt; setting}
-  p params
-
-  url = URI.parse(&#39;http://HOST/job/JOB_NAME/buildWithParameters&#39;)
-  req = Net::HTTP::Post.new(url.path)
-  req.basic_auth &#39;NAME&#39;, &#39;PASSWORD&#39;
-  req.set_form_data(params)
-  res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
-  case res
-  when Net::HTTPSuccess, Net::HTTPRedirection
-    p &amp;quot;OK&amp;quot;
-  else
-    res.value
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;問題点:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;問題点&lt;/h1&gt;
-
-&lt;p&gt;Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。&lt;br /&gt;
-そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss&lt;/p&gt;
 </description>
     </item>
     

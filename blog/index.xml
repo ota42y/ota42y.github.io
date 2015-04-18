@@ -6,8 +6,81 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 14 Apr 2015 22:39:40 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2015 10:55:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golangのパッケージ管理</title>
+      <link>http://ota42y.com/blog/2015/04/18/go-package-management/</link>
+      <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/18/go-package-management/</guid>
+      <description>
+
+&lt;p&gt;goでは標準でいろいろなツールが揃っていますが、&lt;br /&gt;
+npmやbundlerのようなパッケージの依存管理をするツールはありません。&lt;/p&gt;
+
+&lt;p&gt;これは、goでは公開されている物は後方互換性を守り、&lt;br /&gt;
+それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.
+&lt;a href=&#34;http://golang.org/doc/faq#get_version&#34;&gt;http://golang.org/doc/faq#get_version&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;そうはいっても、これに従うかどうかはパッケージの開発者の裁量によるため、&lt;br /&gt;
+自分が管理していないパッケージを利用する場合はどうしても管理が必要になります。&lt;/p&gt;
+
+&lt;p&gt;調べたところ、同じような問題に直面している人は多いらしく、いくつかツールがありました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/golang/go/wiki/PackageManagementTools&#34;&gt;PackageManagementTools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一応、go公式でもパッケージ管理ソフトを作るという噂を聞きましたが、1.5には入る気配がないので、&lt;br /&gt;
+とりあえずはこれらの中のどれかを使う必要があります。&lt;/p&gt;
+
+&lt;p&gt;そこで、この中で特にスターが多かったgodep、gom、goopについて調べました。&lt;/p&gt;
+
+&lt;h1 id=&#34;パッケージ管理ツール:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
+
+&lt;p&gt;この3つに共通する物として、importしている物をリストアップし、ファイルに書き出す機能があるようです。&lt;br /&gt;
+また、gomとgoopはほぼ同じ機能を提供し、管理用のファイルの形式が違うようです。&lt;/p&gt;
+
+&lt;h2 id=&#34;godep:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;godep&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tools/godep&#34;&gt;https://github.com/tools/godep&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;こちらはかなりgoの思想に沿った作りをしているツールになります。&lt;/p&gt;
+
+&lt;p&gt;このツールはパッケージのインポート情報を保存しますが、バージョンまでは保存しません。&lt;br /&gt;
+そのため、依存しているパッケージを入れる際は、go getにより最新版をとってきます。&lt;/p&gt;
+
+&lt;p&gt;go getでとれないようなリポジトリ用に、プロジェクト内にワークスペースを作ってソースごと保存し、&lt;br /&gt;
+GOPATHでそこを見るようにしてコマンド実行することもできます。&lt;/p&gt;
+
+&lt;p&gt;つまり、常に最新のmasterを使うか、自分の手元で管理するかの二択です。&lt;br /&gt;
+基本的に全部管理下に置いてある前提の作りっぽいです。&lt;/p&gt;
+
+&lt;h2 id=&#34;gom-goop:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gom/goop&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;https://github.com/mattn/gom&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/nitrous-io/goop&#34;&gt;https://github.com/nitrous-io/goop&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;gomとgoopはほぼnpmのような使い勝手になるパッケージ管理ツールです。&lt;br /&gt;
+すなわち、使っているパッケージのバージョンまでも保存します。&lt;/p&gt;
+
+&lt;p&gt;依存するパッケージはローカルにフォルダを作ってそこに保存され、&lt;br /&gt;
+GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&gt;
+
+&lt;p&gt;gomはRakefileのような書式、goopは普通のテキストにちょっと書式が加わったようなものになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;gomが良さそう:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gomが良さそう&lt;/h1&gt;
+
+&lt;p&gt;godepはそういう環境やメンテナンスフローから作る必要があり、気軽に導入は難しそうです。&lt;br /&gt;
+そのため、npmやbundlerに似ているgomやgoopを使った方が楽そうです。&lt;/p&gt;
+
+&lt;p&gt;また、gomはRakefileっぽい書式のため、独自？のgoopよりかは使い勝手がよさそうなので、&lt;br /&gt;
+とりあえずはgomでやろうと思います。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
@@ -1570,105 +1643,6 @@ end
 &lt;h1 id=&#34;その他:99d83bf71ce3610b971e31175555a6de&#34;&gt;その他&lt;/h1&gt;
 
 &lt;p&gt;何か発表したい人生だった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>http://ota42y.com/blog/2015/01/23/ram-disk/</link>
-      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/23/ram-disk/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;RAMディスクを作ってビルドすると早くなる
-
-&lt;ul&gt;
-&lt;li&gt;SSD上でビルドすると9分&lt;/li&gt;
-&lt;li&gt;RAMディスクでビルドすると6分&lt;/li&gt;
-&lt;li&gt;Androidは未検証だが同じと思われる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Macだととても簡単にRAMディスクが作れる&lt;/li&gt;
-&lt;li&gt;Jenkins等、ビルドが主目的の場合に有効と思われる&lt;/li&gt;
-&lt;li&gt;メモリが余っているならやる価値はある&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;mac-os-xでのramディスク作成:60a44556319ed47b4775982878e62460&#34;&gt;Mac OS XでのRAMディスク作成&lt;/h1&gt;
-
-&lt;p&gt;Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。&lt;br /&gt;
-メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。&lt;/p&gt;
-
-&lt;p&gt;また、rootでなくても作成できるため、非常に便利です&lt;/p&gt;
-
-&lt;h2 id=&#34;ディスク作成手順:60a44556319ed47b4775982878e62460&#34;&gt;ディスク作成手順&lt;/h2&gt;
-
-&lt;p&gt;2つコマンドを実行するだけです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hdid -nomount ram://4096000
-# 指定した容量でRAMディスクが作成されます。
-# /dev/disk2等作成された場所が返ります。
-# ファイルシステムがないためマウントは失敗します。
-# そのため、-nomuntをつけています。
-
-diskutil eraseDisk HFS+ RAM /dev/disk2
-# 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします
-# さらに、RAMという名前でマウントします。
-# これにより、/Volumes/RAMでアクセスできるようになります。
-
-hdiutil detach disk2
-# 作成したディスクをアンマウントして削除します
-# ディスクは消滅するのでご注意ください
-# diskutil unmountDisk
-# diskutil eject
-# の組み合わせと同じですが、コマンド一つになるため楽です
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;速度比較:60a44556319ed47b4775982878e62460&#34;&gt;速度比較&lt;/h2&gt;
-
-&lt;p&gt;Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。&lt;br /&gt;
-速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
-
-&lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
-ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。&lt;/p&gt;
-
-&lt;h1 id=&#34;ビルド時間比較:60a44556319ed47b4775982878e62460&#34;&gt;ビルド時間比較&lt;/h1&gt;
-
-&lt;p&gt;性能的には以上の通りですが、実際にビルド時間にはどれほど影響があるかを調べてみました。&lt;/p&gt;
-
-&lt;p&gt;比較には&lt;a href=&#34;https://github.com/cocos2d/cocos2d-x-samples&#34;&gt;cocos2d-x-sample&lt;/a&gt;を利用しました。&lt;br /&gt;
-ビルドには&lt;a href=&#34;https://github.com/nomad/shenzhen&#34;&gt;shenzhen&lt;/a&gt;を利用し、コマンドラインからiOSのクリーンビルドを行いました。&lt;/p&gt;
-
-&lt;p&gt;残念ながら証明書が無いためipaを作成することが出来ず、&lt;br /&gt;
-かつその場合にshenzhenが何故か終了せず、timeコマンド等で正確な時間計測が出来ませんでした。&lt;br /&gt;
-timeコマンドを使い手作業で計ったところ、SSD上では9分13秒、RAMディスク上では6分01秒とうい結果になりました。&lt;br /&gt;
-手計測による誤差はせいぜい数秒低度なため、3分以上早くなっているのは確実と言えます。&lt;/p&gt;
-
-&lt;h1 id=&#34;その他:60a44556319ed47b4775982878e62460&#34;&gt;その他&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;R/Wの性能は5倍〜10倍と凄く高速になっている&lt;/li&gt;
-&lt;li&gt;ビルド時間は30%ぐらい減った
-
-&lt;ul&gt;
-&lt;li&gt;ただし、プロジェクトによっては差異があると思われる&lt;/li&gt;
-&lt;li&gt;CPUやメモリの影響もあるため、R/Wの性能向上がそのまま反映されるわけではない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;電源を切ると消えるので使い道は慎重に
-
-&lt;ul&gt;
-&lt;li&gt;開発用よりもビルド専用に使った方が安心&lt;/li&gt;
-&lt;li&gt;Jenkinsのビルドをここで行うのは良い案と思われる&lt;/li&gt;
-&lt;li&gt;ログが残らないので、成果物の保存はよく考える必要あり&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;当然ながら空きメモリ容量を消費するので、余っていない場合は注意&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
