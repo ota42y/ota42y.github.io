@@ -6,8 +6,80 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2015 07:36:53 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年16週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-16/</link>
+      <pubDate>Mon, 20 Apr 2015 07:36:53 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-16/</guid>
+      <description>
+
+&lt;h1 id=&#34;goの開発環境充実中:bf182f6030fd736d27d619234da1a3e4&#34;&gt;goの開発環境充実中&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go fmt
+
+&lt;ul&gt;
+&lt;li&gt;goのフォーマットをぱぱっと修正してくれます。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;golint
+
+&lt;ul&gt;
+&lt;li&gt;動作に影響ないが推奨されないような部分を指摘し、何をすべきかを教えてくれます。&lt;/li&gt;
+&lt;li&gt;goのコーディング規約に沿っていないチェックが主です&lt;/li&gt;
+&lt;li&gt;IntelliJから使えれば最高なんですが…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;また、goの公式ではないですが、以下のテスティングツールが便利そうです。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goconvey
+
+&lt;ul&gt;
+&lt;li&gt;テストの自動実行&lt;/li&gt;
+&lt;li&gt;go testの結果をブラウザで見やすくしてくれる&lt;/li&gt;
+&lt;li&gt;標準のテストを拡張したテストライブラリとしての機能もある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;IntelliJ IDEA
+
+&lt;ul&gt;
+&lt;li&gt;go pluginを入れると凄い便利&lt;/li&gt;
+&lt;li&gt;Windowsの場合はVM上のLinuxに立てて、ネットワークドライブでアクセスするといい
+
+&lt;ul&gt;
+&lt;li&gt;goconveyをLinuxで動かしてブラウザで見る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;勉強会参加:bf182f6030fd736d27d619234da1a3e4&#34;&gt;勉強会参加&lt;/h1&gt;
+
+&lt;p&gt;家にこもると良いことないので、わりと勉強会に出てました。&lt;br /&gt;
+だいたい行く前はめんどくさいなーとか、行っても意味ないんじゃ…みたいになるけど、&lt;br /&gt;
+いざ行くとかなり満足するし、有用な情報が手に入るので難しいです…&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;blog/2015/04/14/golang-no-http-night/&#34;&gt;参加記録 GolangNotHttpNight（Gunosy.go#12&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;blog/2015/04/19/game-server-4/&#34;&gt;参加記録 第四回　ゲームサーバ勉強会&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;タスク管理アプリ作ってる:bf182f6030fd736d27d619234da1a3e4&#34;&gt;タスク管理アプリ作ってる&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;v0.0.1出した
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/plaintodo/releases/tag/v0.0.1&#34;&gt;https://github.com/ota42y/plaintodo/releases/tag/v0.0.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;タスク閲覧機能のみ&lt;/li&gt;
+&lt;li&gt;次はタスク追加機能とかつける&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 第四回　ゲームサーバ勉強会</title>
@@ -1396,41 +1468,6 @@ iOS,Android,Mac,Windows等かなりのプラットフォームに対応してい
 
 &lt;pre&gt;&lt;code&gt;xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年10週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-10/</link>
-      <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-10/</guid>
-      <description>
-
-&lt;h1 id=&#34;hugoを実験中:e975d64a31c4cd5e9fd296d1cb8af56a&#34;&gt;Hugoを実験中&lt;/h1&gt;
-
-&lt;p&gt;今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。&lt;/p&gt;
-
-&lt;p&gt;ゼロから作ると、テンプレート作成の大変さが身にしみます…&lt;br /&gt;
-デザインを考える部分はもちろんのこと、CSSとの格闘や、&lt;br /&gt;
-フレームワークの使い方とかを調べる必要があり、中々大変です。&lt;/p&gt;
-
-&lt;p&gt;また、golangのテンプレート機能については情報が少ないので、&lt;br /&gt;
-やりたいことがあっても、普通に書くとうまくいかずに実現できない事が多々あったので、&lt;br /&gt;
-あとでちゃんと勉強し直した方がよさそうです。&lt;/p&gt;
-
-&lt;p&gt;最も、本来テンプレート層で複雑な操作はするべきではなく、コントローラー側で処理をし、&lt;br /&gt;
-テンプレートは渡されたデータを表示するだけにした方が望ましいです。&lt;br /&gt;
-ただ、今回はhugo側にはあまり手を加えるのは避けたいため、&lt;br /&gt;
-コントローラ側に処理を追加する事が出来ず、テンプレート部分で頑張る必要がでてしまいました。&lt;br /&gt;
-テンプレートとhugoの間に普通のgoで処理を追加できたらいいのですが…&lt;/p&gt;
-
-&lt;p&gt;また、hugo側で用意されている奴を上手く使えばできる事も、&lt;br /&gt;
-わざわざ自前でがんばって実装しようとしていたりしてて無駄が多いです…&lt;br /&gt;
-サンプル集みたいなのがもう少し整っていると良い気がします。&lt;/p&gt;
-
-&lt;p&gt;ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。&lt;br /&gt;
-テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。&lt;/p&gt;
 </description>
     </item>
     
