@@ -6,8 +6,167 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 18 Apr 2015 10:55:37 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 第四回　ゲームサーバ勉強会</title>
+      <link>http://ota42y.com/blog/2015/04/19/game-server-4/</link>
+      <pubDate>Sun, 19 Apr 2015 11:03:24 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/19/game-server-4/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://peatix.com/event/81553&#34;&gt;第四回　ゲームサーバ勉強会&lt;/a&gt;に参加しました。&lt;br /&gt;
+サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。&lt;br /&gt;
+特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。&lt;/p&gt;
+
+&lt;h1 id=&#34;idc-frontierさんの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;IDC Frontierさんの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;IDCクラウドの話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.idcf.jp/cloud/&#34;&gt;http://www.idcf.jp/cloud/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;最小プランが500円からとのこと…安い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ゲームでも採用事例あり。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&#34;&gt;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ascii.jp/elem/000/000/952/952870/&#34;&gt;http://ascii.jp/elem/000/000/952/952870/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;ゲームサーバの作り方:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;ゲームサーバの作り方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/honyax/ss-47136625&#34;&gt;http://www.slideshare.net/honyax/ss-47136625&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;簡単なチャットサーバの作り方&lt;/li&gt;
+&lt;li&gt;ゲームサーバも基本的なメッセージやりとり部分はチャットサーバみたいな物。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;fluentdとembulkの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;fluentdとembulkの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&#34;&gt;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;外部からはjsonで入力するが、内部はMessagePackらしい&lt;/li&gt;
+&lt;li&gt;tg-agentはfluentdにRubyインタプリタやプラグインをまとめてセットアップしやすくしたもの&lt;/li&gt;
+&lt;li&gt;とりあえずfluentdに送って、そこから適切な場所に割り振る使い方みたい&lt;/li&gt;
+&lt;li&gt;組み込み環境向け
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluent-bit&#34;&gt;https://github.com/fluent/fluent-bit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows環境で動くやつ
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;https://github.com/fluent/fluentd-forwarder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;名前の通り、ログをfluentdに転送するものっぽい？&lt;/li&gt;
+&lt;li&gt;これ本体で分類とかはせず、転送先のfluentdで転送する用途？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;embulk
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/embulk/embulk&#34;&gt;https://github.com/embulk/embulk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ファイルから一気にデータを入れる用&lt;/li&gt;
+&lt;li&gt;失敗時に必要なファイルだけ再処理できる&lt;/li&gt;
+&lt;li&gt;データから形式を推測する機能もある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;fluentd-ui
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-ui&#34;&gt;https://github.com/fluent/fluentd-ui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fluentdのWebUI&lt;/li&gt;
+&lt;li&gt;データ処理のための正規表現をテストできる機能がある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;データ欠損
+
+&lt;ul&gt;
+&lt;li&gt;ストリーム処理はデータ欠損が出てしまうもの&lt;/li&gt;
+&lt;li&gt;欠損が許されないものに使うのは危険
+
+&lt;ul&gt;
+&lt;li&gt;課金ログとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;欠損率0%の人もいるらしい
+
+&lt;ul&gt;
+&lt;li&gt;構成による？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通信失敗とかはfluentdが検知するのでそれで欠損はしない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;負荷がたかいいんだから-仮:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;負荷がたかいいんだから～♪（仮）&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ゲームの負荷対策と負荷試験の話&lt;/li&gt;
+&lt;li&gt;memcached
+
+&lt;ul&gt;
+&lt;li&gt;全部メモリに乗ってるKVS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;レプリケーション遅延
+
+&lt;ul&gt;
+&lt;li&gt;(たぶん)masterへの変更がslaveに変更される前に読み込んでデータがおかしくなった&lt;/li&gt;
+&lt;li&gt;水平分割して対処
+
+&lt;ul&gt;
+&lt;li&gt;特定のIDは特定のDBに書き込むようにする&lt;/li&gt;
+&lt;li&gt;1台あたりのリクエスト数を減らす？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;NoSQL
+
+&lt;ul&gt;
+&lt;li&gt;Cassandra
+
+&lt;ul&gt;
+&lt;li&gt;リング型ノードになるため単一障害点がなくなるらしい&lt;/li&gt;
+&lt;li&gt;DHT？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;トランザクション処理は基本弱い
+
+&lt;ul&gt;
+&lt;li&gt;そういうところはMySQLで&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;負荷試験
+
+&lt;ul&gt;
+&lt;li&gt;リリース前に想定人数をちゃんと裁けるかのテスト
+
+&lt;ul&gt;
+&lt;li&gt;リリースしてから落ちにくい&lt;/li&gt;
+&lt;li&gt;チューニングしやすい
+
+&lt;ul&gt;
+&lt;li&gt;テーブル構造の変更とかしやすい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JMeter
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jmeter.apache.org/&#34;&gt;http://jmeter.apache.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;サーバに負荷をかけるツール&lt;/li&gt;
+&lt;li&gt;アクセスをプロクシして、テストケースを作る機能があるらしい&lt;/li&gt;
+&lt;li&gt;プログラムで負荷をかけると、プログラムが悪いのかサーバが悪いのかわからない&lt;/li&gt;
+&lt;li&gt;プログラムがロックして遅かったりとか&lt;/li&gt;
+&lt;li&gt;Socket.IOは対応していない
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/maciejzaleski/JMeter-WebSocketSampler&#34;&gt;https://github.com/maciejzaleski/JMeter-WebSocketSampler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;これを使うと動かせる&lt;/li&gt;
+&lt;li&gt;プロトコルが若干違うのでその辺が大変らしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>golangのパッケージ管理</title>
@@ -1513,136 +1672,6 @@ end
 &lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
 これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 情報科学若手の会冬の陣2015</title>
-      <link>http://ota42y.com/blog/2015/01/25/wakate2015w/</link>
-      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/25/wakate2015w/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://atnd.org/events/61060&#34;&gt;情報科学若手の会冬の陣2015 #wakate2015w&lt;/a&gt;に参加しました&lt;br /&gt;
-&lt;a href=&#34;http://togetter.com/li/773792&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;br /&gt;
-会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:99d83bf71ce3610b971e31175555a6de&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;黒崎優太 (@kuro_m88)  ICTトラブルシューティングコンテストの紹介&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://icttoracon.net/&#34;&gt;http://icttoracon.net/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ネットワーク版CTFみたいなコンテスト&lt;/li&gt;
-&lt;li&gt;Ciscoがスポンサーについているので、高価な機材がいっぱい用意されるみたい&lt;/li&gt;
-&lt;li&gt;大きな規模のネットワークであれこれするのって普通じゃ出来ないし、面白そうです。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;浅野智之 (@asanon_s)  Webの世界に散らばるデータをつなぐ技術&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;semantic webやPDFの話&lt;/li&gt;
-&lt;li&gt;人間が読めれば良い形式から、構造化されて機械も読める形式を加えるみたい&lt;/li&gt;
-&lt;li&gt;なんとなく理解が深まった気がします&lt;/li&gt;
-&lt;li&gt;完全なsemantic webへの道のりはまだまだ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;門脇香子  証明プログラミング入門&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ussopyon/ss-43846794&#34;&gt;http://www.slideshare.net/ussopyon/ss-43846794&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://lepidum.co.jp/blog/2014-06-05/CCS-Injection/&#34;&gt;OpenSSLの脆弱性をCoqで見つけた話&lt;/a&gt;を聞いてから、証明プログラミング凄そうだけどよくわからない状態だったので、
-理解が深まりました。&lt;/li&gt;
-&lt;li&gt;何を証明すれば良いかを補完してくれるのは便利そうでした&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;佐野岳人  コードを書けば複素数が分かる&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/taketo1024/ss-43853048&#34;&gt;http://www.slideshare.net/taketo1024/ss-43853048&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;初めて複素数が何なのかを感覚的に理解できた気がする…&lt;/li&gt;
-&lt;li&gt;デモで関数をインタラクティブに可視化しているのが本当に凄かった&lt;/li&gt;
-&lt;li&gt;ここから使える&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/taketo1024/SwiftComplex&#34;&gt;https://github.com/taketo1024/SwiftComplex&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;辻順平 (@tsujimotter)    日曜数学のススメ&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/junpeitsuji/2015-43856733&#34;&gt;http://www.slideshare.net/junpeitsuji/2015-43856733&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;コンパスと定規で作図可能かどうかを判定するガウスの判定法凄い&lt;/li&gt;
-&lt;li&gt;折り紙だと四次方程式が解けるので、作図できなくても折れる場合があるとか凄い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;池尻良平  ニュースと類似した歴史を求めるアルゴリズムを考えてみた – 役に立つ歴史教育を目指して&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;現代のニュースと、それに類似する歴史上の出来事を提示するシステムを作っているそうです&lt;/li&gt;
-&lt;li&gt;過去にどんな解決策をとって、どういう結果になったかを考えるのにとても便利そうです&lt;/li&gt;
-&lt;li&gt;早く使ってみたいですね&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;後藤紳   モバイルデータを用いた行動予測&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;あんまり書いちゃいけなさそうなので割愛&lt;/li&gt;
-&lt;li&gt;GPSの行動ログを蓄積して、次に何をしそうか提示するみたいです&lt;/li&gt;
-&lt;li&gt;同じような日々を送っている人には効果的っぽいです&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;宮代理弘 (@3846masa)  Processin.ga – Webで書いてスマホで動かすサイト開発話&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://processin.ga/&#34;&gt;http://processin.ga/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&#34;&gt;http://3846masa.hatenablog.jp/entry/2015/01/25/011802&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Processingをブラウザ上で書いて動かし、かつスマホでもリアルタイムに動かせるサイトです&lt;/li&gt;
-&lt;li&gt;無ければ作る、あっても作る&lt;/li&gt;
-&lt;li&gt;デザインはパクるもの&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;湯村翼 (@yumu19) 野生の研究について&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://yumulog.hatenablog.com/entry/2015/01/25/020313&#34;&gt;http://yumulog.hatenablog.com/entry/2015/01/25/020313&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;そもそもアーカイブ形式が動画だと、後から調べるのがとても大変になる気がします&lt;/li&gt;
-&lt;li&gt;今は何とかなってるけど、数年、数十年と続いていくと辛いかと&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;宮下芳明  明治大学宮下研究室の活動とABProの紹介&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Linear vs Circular&lt;/li&gt;
-&lt;li&gt;この研究が凄かった&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=S1Roi2NOmx8&#34;&gt;https://www.youtube.com/watch?v=S1Roi2NOmx8&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;懇親会:99d83bf71ce3610b971e31175555a6de&#34;&gt;懇親会&lt;/h1&gt;
-
-&lt;p&gt;一晩寝たらだいたい忘れるという…(´･_･`)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;courseraで英語勉強&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/&#34;&gt;https://www.coursera.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ちょうど機械学習とかやってみたかったのでよさそう(o゜▽゜)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自動作曲の話&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;歌詞を入れると自動でお音をつけてくれる&lt;/li&gt;
-&lt;li&gt;日本語の音節？を見て色々やってるらしい？&lt;/li&gt;
-&lt;li&gt;ミクと組み合わせて、詩を書ければ曲が書けるとか良さそう&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;その他:99d83bf71ce3610b971e31175555a6de&#34;&gt;その他&lt;/h1&gt;
-
-&lt;p&gt;何か発表したい人生だった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     

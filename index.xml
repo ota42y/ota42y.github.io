@@ -6,8 +6,167 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 18 Apr 2015 10:55:37 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 第四回　ゲームサーバ勉強会</title>
+      <link>http://ota42y.com/blog/2015/04/19/game-server-4/</link>
+      <pubDate>Sun, 19 Apr 2015 11:03:24 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/19/game-server-4/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://peatix.com/event/81553&#34;&gt;第四回　ゲームサーバ勉強会&lt;/a&gt;に参加しました。&lt;br /&gt;
+サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。&lt;br /&gt;
+特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。&lt;/p&gt;
+
+&lt;h1 id=&#34;idc-frontierさんの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;IDC Frontierさんの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;IDCクラウドの話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.idcf.jp/cloud/&#34;&gt;http://www.idcf.jp/cloud/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;最小プランが500円からとのこと…安い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ゲームでも採用事例あり。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&#34;&gt;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ascii.jp/elem/000/000/952/952870/&#34;&gt;http://ascii.jp/elem/000/000/952/952870/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;ゲームサーバの作り方:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;ゲームサーバの作り方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/honyax/ss-47136625&#34;&gt;http://www.slideshare.net/honyax/ss-47136625&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;簡単なチャットサーバの作り方&lt;/li&gt;
+&lt;li&gt;ゲームサーバも基本的なメッセージやりとり部分はチャットサーバみたいな物。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;fluentdとembulkの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;fluentdとembulkの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&#34;&gt;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;外部からはjsonで入力するが、内部はMessagePackらしい&lt;/li&gt;
+&lt;li&gt;tg-agentはfluentdにRubyインタプリタやプラグインをまとめてセットアップしやすくしたもの&lt;/li&gt;
+&lt;li&gt;とりあえずfluentdに送って、そこから適切な場所に割り振る使い方みたい&lt;/li&gt;
+&lt;li&gt;組み込み環境向け
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluent-bit&#34;&gt;https://github.com/fluent/fluent-bit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows環境で動くやつ
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;https://github.com/fluent/fluentd-forwarder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;名前の通り、ログをfluentdに転送するものっぽい？&lt;/li&gt;
+&lt;li&gt;これ本体で分類とかはせず、転送先のfluentdで転送する用途？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;embulk
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/embulk/embulk&#34;&gt;https://github.com/embulk/embulk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ファイルから一気にデータを入れる用&lt;/li&gt;
+&lt;li&gt;失敗時に必要なファイルだけ再処理できる&lt;/li&gt;
+&lt;li&gt;データから形式を推測する機能もある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;fluentd-ui
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-ui&#34;&gt;https://github.com/fluent/fluentd-ui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fluentdのWebUI&lt;/li&gt;
+&lt;li&gt;データ処理のための正規表現をテストできる機能がある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;データ欠損
+
+&lt;ul&gt;
+&lt;li&gt;ストリーム処理はデータ欠損が出てしまうもの&lt;/li&gt;
+&lt;li&gt;欠損が許されないものに使うのは危険
+
+&lt;ul&gt;
+&lt;li&gt;課金ログとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;欠損率0%の人もいるらしい
+
+&lt;ul&gt;
+&lt;li&gt;構成による？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通信失敗とかはfluentdが検知するのでそれで欠損はしない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;負荷がたかいいんだから-仮:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;負荷がたかいいんだから～♪（仮）&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ゲームの負荷対策と負荷試験の話&lt;/li&gt;
+&lt;li&gt;memcached
+
+&lt;ul&gt;
+&lt;li&gt;全部メモリに乗ってるKVS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;レプリケーション遅延
+
+&lt;ul&gt;
+&lt;li&gt;(たぶん)masterへの変更がslaveに変更される前に読み込んでデータがおかしくなった&lt;/li&gt;
+&lt;li&gt;水平分割して対処
+
+&lt;ul&gt;
+&lt;li&gt;特定のIDは特定のDBに書き込むようにする&lt;/li&gt;
+&lt;li&gt;1台あたりのリクエスト数を減らす？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;NoSQL
+
+&lt;ul&gt;
+&lt;li&gt;Cassandra
+
+&lt;ul&gt;
+&lt;li&gt;リング型ノードになるため単一障害点がなくなるらしい&lt;/li&gt;
+&lt;li&gt;DHT？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;トランザクション処理は基本弱い
+
+&lt;ul&gt;
+&lt;li&gt;そういうところはMySQLで&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;負荷試験
+
+&lt;ul&gt;
+&lt;li&gt;リリース前に想定人数をちゃんと裁けるかのテスト
+
+&lt;ul&gt;
+&lt;li&gt;リリースしてから落ちにくい&lt;/li&gt;
+&lt;li&gt;チューニングしやすい
+
+&lt;ul&gt;
+&lt;li&gt;テーブル構造の変更とかしやすい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JMeter
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jmeter.apache.org/&#34;&gt;http://jmeter.apache.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;サーバに負荷をかけるツール&lt;/li&gt;
+&lt;li&gt;アクセスをプロクシして、テストケースを作る機能があるらしい&lt;/li&gt;
+&lt;li&gt;プログラムで負荷をかけると、プログラムが悪いのかサーバが悪いのかわからない&lt;/li&gt;
+&lt;li&gt;プログラムがロックして遅かったりとか&lt;/li&gt;
+&lt;li&gt;Socket.IOは対応していない
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/maciejzaleski/JMeter-WebSocketSampler&#34;&gt;https://github.com/maciejzaleski/JMeter-WebSocketSampler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;これを使うと動かせる&lt;/li&gt;
+&lt;li&gt;プロトコルが若干違うのでその辺が大変らしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>golangのパッケージ管理</title>
@@ -1272,148 +1431,6 @@ iOS,Android,Mac,Windows等かなりのプラットフォームに対応してい
 
 &lt;p&gt;ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。&lt;br /&gt;
 テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年09週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-09/</link>
-      <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-09/</guid>
-      <description>
-
-&lt;p&gt;今年も15%が終わった…&lt;/p&gt;
-
-&lt;h1 id=&#34;goのcronにpr送った:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;GoのcronにPR送った&lt;/h1&gt;
-
-&lt;p&gt;Goのcronとして&lt;a href=&#34;https://github.com/robfig/cron&#34;&gt;https://github.com/robfig/cron&lt;/a&gt;を使ってますが、&lt;br /&gt;
-実行中か否かを取得できずに不便でした。&lt;br /&gt;
-内部では管理しているので、それに対するゲッターを追加したPRを送りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/robfig/cron/pull/21&#34;&gt;https://github.com/robfig/cron/pull/21&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoが良さそう:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;Hugoが良さそう&lt;/h1&gt;
-
-&lt;p&gt;このサイトはOctopressで運用しています。&lt;br /&gt;
-ですが、記事数が増えてきたためか、変更して作り直すのに5秒ぐらいかかってしまいます。&lt;br /&gt;
-ちょっとした変更でも若干時間がかるため、かなりストレスがたまる仕組みです…&lt;/p&gt;
-
-&lt;p&gt;同じく静的サイトを作成するソフトウェアで、Hugoというものがあるそうです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/spf13/hugo&#34;&gt;https://github.com/spf13/hugo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Goで書かれており、作成する速度がかなり早いらしいので、乗り換えを検討中です。&lt;br /&gt;
-残念ながら、良い感じのテンプレートがないので、まずはそこから作る必要がありそうです。&lt;/p&gt;
-
-&lt;h1 id=&#34;テキストベースのtodoアプリを考えた:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;テキストベースのToDoアプリを考えた&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Todo.txtが行けてないので自分に合ったやつを考える&lt;/li&gt;
-&lt;li&gt;スペースと改行ででサブタスクを指定
-
-&lt;ul&gt;
-&lt;li&gt;箇条書きがそのままサブタスクになる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;タスク名とサブタスク以外は全てオプションとして提供
-
-&lt;ul&gt;
-&lt;li&gt;優先度とかをベースシステムとしては持たない&lt;/li&gt;
-&lt;li&gt;:due 2015-02-01とか、オプションとしてつける&lt;/li&gt;
-&lt;li&gt;ベースはサブタスクとタスク名だけ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;多分こんな感じになります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;タスク１ :due 2015-02-01
-  サブタスク1 :due 2015-01-31
-  サブタスク2 :due 2015-01-01 :repeat 1 week
-    サブタスク3 :url http://example.com/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;テキストベースで編集するのとは別に、CLIも作らないとダメですね。&lt;br /&gt;
-フィルターとか、デフォルト値を入れて追加とかしにくいので…&lt;/p&gt;
-
-&lt;p&gt;リポジトリはこれになります。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;今やってるもの-これからやりたいこと:a2bb1f14b5d42b66ef310d7ad0a0c1ac&#34;&gt;今やってるもの＆これからやりたいこと&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;今やってること&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Goによるtumblr apiライブラリ&lt;/li&gt;
-&lt;li&gt;進捗どうですか？時に画像もつけてほしくなった&lt;/li&gt;
-&lt;li&gt;tumblr apiからランダムで取ってくるために、tumblrライブラリを作る
-
-&lt;ul&gt;
-&lt;li&gt;ついでにリブログもする&lt;/li&gt;
-&lt;li&gt;node-tumblrがリブログしないので作った&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;goでやりたかっただけ&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;予定していた機能(投稿取得、リブログ)はだいたい完成&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;完全にカバーしてないけど、ほしい部分は出来た&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自分用自動化システム&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Goである程度の大きさのアプリを作るテスト&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;日々の作業を自動化&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;twitterの公式アカウントチェック&lt;/li&gt;
-&lt;li&gt;チャットのログ保存等&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;hubotとhttp経由でやりとり出来るため、botのバックエンドとしても使える&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;いずれはhubotを全て置き換えるようにしたい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;結果通知部分はかなり良くない作りなので、そこは何とかしたい&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;そもそも設計もあまり良くない感じ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;進捗どうですか？の修正を入れたらしばらく放置&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;次にやろうとしているもの&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hugoのテンプレート作成&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;このサイトをベースに、色々不都合があるところを直す&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ToDoシステム(CLI)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;スペースを使った箇条書きがそのままサブタスクになる&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;テキストファイルを編集すると、そのままタスクに出来る&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;専用のCLIを使うことで、フィルターや繰り返しが出来る&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ToDoシステム(Android)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;普通にリストビューでタスク表示&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Dropboxを使ってデータは共有&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Androidメインなのでないと辛い&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;上記のCLIがある程度出来てから&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;当面は下の3つを進めていく方向でいきます。&lt;/p&gt;
 </description>
     </item>
     

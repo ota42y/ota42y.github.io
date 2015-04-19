@@ -6,8 +6,167 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 14 Apr 2015 22:39:40 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/text/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 第四回　ゲームサーバ勉強会</title>
+      <link>http://ota42y.com/blog/2015/04/19/game-server-4/</link>
+      <pubDate>Sun, 19 Apr 2015 11:03:24 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/19/game-server-4/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://peatix.com/event/81553&#34;&gt;第四回　ゲームサーバ勉強会&lt;/a&gt;に参加しました。&lt;br /&gt;
+サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。&lt;br /&gt;
+特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。&lt;/p&gt;
+
+&lt;h1 id=&#34;idc-frontierさんの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;IDC Frontierさんの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;IDCクラウドの話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.idcf.jp/cloud/&#34;&gt;http://www.idcf.jp/cloud/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;最小プランが500円からとのこと…安い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ゲームでも採用事例あり。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&#34;&gt;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ascii.jp/elem/000/000/952/952870/&#34;&gt;http://ascii.jp/elem/000/000/952/952870/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;ゲームサーバの作り方:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;ゲームサーバの作り方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/honyax/ss-47136625&#34;&gt;http://www.slideshare.net/honyax/ss-47136625&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;簡単なチャットサーバの作り方&lt;/li&gt;
+&lt;li&gt;ゲームサーバも基本的なメッセージやりとり部分はチャットサーバみたいな物。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;fluentdとembulkの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;fluentdとembulkの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&#34;&gt;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;外部からはjsonで入力するが、内部はMessagePackらしい&lt;/li&gt;
+&lt;li&gt;tg-agentはfluentdにRubyインタプリタやプラグインをまとめてセットアップしやすくしたもの&lt;/li&gt;
+&lt;li&gt;とりあえずfluentdに送って、そこから適切な場所に割り振る使い方みたい&lt;/li&gt;
+&lt;li&gt;組み込み環境向け
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluent-bit&#34;&gt;https://github.com/fluent/fluent-bit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows環境で動くやつ
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;https://github.com/fluent/fluentd-forwarder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;名前の通り、ログをfluentdに転送するものっぽい？&lt;/li&gt;
+&lt;li&gt;これ本体で分類とかはせず、転送先のfluentdで転送する用途？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;embulk
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/embulk/embulk&#34;&gt;https://github.com/embulk/embulk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ファイルから一気にデータを入れる用&lt;/li&gt;
+&lt;li&gt;失敗時に必要なファイルだけ再処理できる&lt;/li&gt;
+&lt;li&gt;データから形式を推測する機能もある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;fluentd-ui
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-ui&#34;&gt;https://github.com/fluent/fluentd-ui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fluentdのWebUI&lt;/li&gt;
+&lt;li&gt;データ処理のための正規表現をテストできる機能がある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;データ欠損
+
+&lt;ul&gt;
+&lt;li&gt;ストリーム処理はデータ欠損が出てしまうもの&lt;/li&gt;
+&lt;li&gt;欠損が許されないものに使うのは危険
+
+&lt;ul&gt;
+&lt;li&gt;課金ログとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;欠損率0%の人もいるらしい
+
+&lt;ul&gt;
+&lt;li&gt;構成による？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通信失敗とかはfluentdが検知するのでそれで欠損はしない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;負荷がたかいいんだから-仮:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;負荷がたかいいんだから～♪（仮）&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ゲームの負荷対策と負荷試験の話&lt;/li&gt;
+&lt;li&gt;memcached
+
+&lt;ul&gt;
+&lt;li&gt;全部メモリに乗ってるKVS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;レプリケーション遅延
+
+&lt;ul&gt;
+&lt;li&gt;(たぶん)masterへの変更がslaveに変更される前に読み込んでデータがおかしくなった&lt;/li&gt;
+&lt;li&gt;水平分割して対処
+
+&lt;ul&gt;
+&lt;li&gt;特定のIDは特定のDBに書き込むようにする&lt;/li&gt;
+&lt;li&gt;1台あたりのリクエスト数を減らす？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;NoSQL
+
+&lt;ul&gt;
+&lt;li&gt;Cassandra
+
+&lt;ul&gt;
+&lt;li&gt;リング型ノードになるため単一障害点がなくなるらしい&lt;/li&gt;
+&lt;li&gt;DHT？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;トランザクション処理は基本弱い
+
+&lt;ul&gt;
+&lt;li&gt;そういうところはMySQLで&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;負荷試験
+
+&lt;ul&gt;
+&lt;li&gt;リリース前に想定人数をちゃんと裁けるかのテスト
+
+&lt;ul&gt;
+&lt;li&gt;リリースしてから落ちにくい&lt;/li&gt;
+&lt;li&gt;チューニングしやすい
+
+&lt;ul&gt;
+&lt;li&gt;テーブル構造の変更とかしやすい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JMeter
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jmeter.apache.org/&#34;&gt;http://jmeter.apache.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;サーバに負荷をかけるツール&lt;/li&gt;
+&lt;li&gt;アクセスをプロクシして、テストケースを作る機能があるらしい&lt;/li&gt;
+&lt;li&gt;プログラムで負荷をかけると、プログラムが悪いのかサーバが悪いのかわからない&lt;/li&gt;
+&lt;li&gt;プログラムがロックして遅かったりとか&lt;/li&gt;
+&lt;li&gt;Socket.IOは対応していない
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/maciejzaleski/JMeter-WebSocketSampler&#34;&gt;https://github.com/maciejzaleski/JMeter-WebSocketSampler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;これを使うと動かせる&lt;/li&gt;
+&lt;li&gt;プロトコルが若干違うのでその辺が大変らしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
@@ -1881,87 +2040,6 @@ iPhone6や6+では従来のUIはかなり使いづらいものになってしま
 
 &lt;p&gt;二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…&lt;br /&gt;
 恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Dockerとは何か</title>
-      <link>http://ota42y.com/blog/2014/11/26/docker/</link>
-      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/11/26/docker/</guid>
-      <description>
-
-&lt;p&gt;Dockerについて調べたので概要と簡単な使い方のメモ&lt;/p&gt;
-
-&lt;h1 id=&#34;dockerとは何か:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerとは何か&lt;/h1&gt;
-
-&lt;p&gt;いわゆるコンテナ型仮想化ツールの1つです。&lt;br /&gt;
-VMwareやKVMのような完全仮想化と違い、&lt;br /&gt;
-ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。&lt;/p&gt;
-
-&lt;p&gt;あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、&lt;br /&gt;
-手元の数年前のmac book airでもかなり快適に動いています。&lt;/p&gt;
-
-&lt;p&gt;あくまでゲストOSを隔離環境に置いただけのため 、&lt;br /&gt;
-ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。&lt;br /&gt;
-(ゲストからはホストの中身は当然見えない)&lt;/p&gt;
-
-&lt;p&gt;また、DockerではDockerfileというファイルに設定を書くことで、&lt;br /&gt;
-その設定を反映した状態のコンテナを作成することが出来ます。&lt;br /&gt;
-そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。&lt;/p&gt;
-
-&lt;h1 id=&#34;docker上のcent-osにjenkinsを立てる:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Docker上のCent OSにJenkinsを立てる&lt;/h1&gt;
-
-&lt;h2 id=&#34;dockerの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerの起動&lt;/h2&gt;
-
-&lt;p&gt;Dockerコマンドを実行するためには、Macだとboot2dockerを&lt;br /&gt;
-&lt;code&gt;boot2docker start&lt;/code&gt;で起動し、そのとき提示された環境変数を設定する必要があります。&lt;/p&gt;
-
-&lt;p&gt;また、&lt;br /&gt;
-&lt;code&gt;boot2docker ip&lt;/code&gt;&lt;br /&gt;
-を実行し、コンテナに対してアクセスできるようにする必要があります。&lt;br /&gt;
-なお、この時出たURLは後で使います。&lt;/p&gt;
-
-&lt;h2 id=&#34;cent-osの構築:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Cent OSの構築&lt;/h2&gt;
-
-&lt;h3 id=&#34;dockerfileの準備:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerfileの準備&lt;/h3&gt;
-
-&lt;p&gt;以下のファイルをDockerfileという名前で適当なディレクトリに保存します。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FROM centos:centos6
-
-RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
-RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-RUN yum -y install java-1.7.0-openjdk jenkins
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。&lt;/p&gt;
-
-&lt;h3 id=&#34;コンテナの作成:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;コンテナの作成&lt;/h3&gt;
-
-&lt;p&gt;次に、Dockerfileを保存したディレクトリで&lt;br /&gt;
-&lt;code&gt;docker build -t jenkins .&lt;/code&gt;
-を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。&lt;/p&gt;
-
-&lt;h3 id=&#34;コンテナの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;コンテナの起動&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;docker run -p 8080:8080 -i -t jenkins bash&lt;/code&gt;&lt;br /&gt;
-を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、&lt;br /&gt;
-&lt;code&gt;service jenkins start&lt;/code&gt;&lt;br /&gt;
-を実行するとjenkinsが起動します。&lt;/p&gt;
-
-&lt;p&gt;この状態で、&lt;code&gt;boot2docker ip&lt;/code&gt;で出てきたURLの8080ポートにブラウザでアクセスすると、&lt;br /&gt;
-いつものJenkins画面が表示されます。&lt;/p&gt;
-
-&lt;h1 id=&#34;その他:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;その他&lt;/h1&gt;
-
-&lt;p&gt;Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、&lt;br /&gt;
-それを他のセットアップの下地にするといったことも出来るそうです。&lt;/p&gt;
-
-&lt;p&gt;また、Dockerはフォアグラウンドのプロセスがないと自動的に終了するため、&lt;br /&gt;
-Jenkinsの用にサービスとして動かすものは、ログインして起動するか特別な方法で落とさない工夫が要るみたいです。&lt;br /&gt;
-今回はとりあえずさわりだけなので、手で起動してログインしっぱなしにしています。&lt;/p&gt;
 </description>
     </item>
     

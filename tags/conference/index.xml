@@ -6,8 +6,167 @@
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 14 Apr 2015 22:39:40 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 第四回　ゲームサーバ勉強会</title>
+      <link>http://ota42y.com/blog/2015/04/19/game-server-4/</link>
+      <pubDate>Sun, 19 Apr 2015 11:03:24 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/19/game-server-4/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://peatix.com/event/81553&#34;&gt;第四回　ゲームサーバ勉強会&lt;/a&gt;に参加しました。&lt;br /&gt;
+サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。&lt;br /&gt;
+特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。&lt;/p&gt;
+
+&lt;h1 id=&#34;idc-frontierさんの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;IDC Frontierさんの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;IDCクラウドの話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.idcf.jp/cloud/&#34;&gt;http://www.idcf.jp/cloud/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;最小プランが500円からとのこと…安い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ゲームでも採用事例あり。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&#34;&gt;http://gihyo.jp/admin/column/01/vm/2014/nanohain02&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ascii.jp/elem/000/000/952/952870/&#34;&gt;http://ascii.jp/elem/000/000/952/952870/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;ゲームサーバの作り方:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;ゲームサーバの作り方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/honyax/ss-47136625&#34;&gt;http://www.slideshare.net/honyax/ss-47136625&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;簡単なチャットサーバの作り方&lt;/li&gt;
+&lt;li&gt;ゲームサーバも基本的なメッセージやりとり部分はチャットサーバみたいな物。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;fluentdとembulkの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;fluentdとembulkの話&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&#34;&gt;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;外部からはjsonで入力するが、内部はMessagePackらしい&lt;/li&gt;
+&lt;li&gt;tg-agentはfluentdにRubyインタプリタやプラグインをまとめてセットアップしやすくしたもの&lt;/li&gt;
+&lt;li&gt;とりあえずfluentdに送って、そこから適切な場所に割り振る使い方みたい&lt;/li&gt;
+&lt;li&gt;組み込み環境向け
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluent-bit&#34;&gt;https://github.com/fluent/fluent-bit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows環境で動くやつ
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;https://github.com/fluent/fluentd-forwarder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;名前の通り、ログをfluentdに転送するものっぽい？&lt;/li&gt;
+&lt;li&gt;これ本体で分類とかはせず、転送先のfluentdで転送する用途？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;embulk
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/embulk/embulk&#34;&gt;https://github.com/embulk/embulk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ファイルから一気にデータを入れる用&lt;/li&gt;
+&lt;li&gt;失敗時に必要なファイルだけ再処理できる&lt;/li&gt;
+&lt;li&gt;データから形式を推測する機能もある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;fluentd-ui
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-ui&#34;&gt;https://github.com/fluent/fluentd-ui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fluentdのWebUI&lt;/li&gt;
+&lt;li&gt;データ処理のための正規表現をテストできる機能がある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;データ欠損
+
+&lt;ul&gt;
+&lt;li&gt;ストリーム処理はデータ欠損が出てしまうもの&lt;/li&gt;
+&lt;li&gt;欠損が許されないものに使うのは危険
+
+&lt;ul&gt;
+&lt;li&gt;課金ログとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;欠損率0%の人もいるらしい
+
+&lt;ul&gt;
+&lt;li&gt;構成による？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通信失敗とかはfluentdが検知するのでそれで欠損はしない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;負荷がたかいいんだから-仮:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;負荷がたかいいんだから～♪（仮）&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ゲームの負荷対策と負荷試験の話&lt;/li&gt;
+&lt;li&gt;memcached
+
+&lt;ul&gt;
+&lt;li&gt;全部メモリに乗ってるKVS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;レプリケーション遅延
+
+&lt;ul&gt;
+&lt;li&gt;(たぶん)masterへの変更がslaveに変更される前に読み込んでデータがおかしくなった&lt;/li&gt;
+&lt;li&gt;水平分割して対処
+
+&lt;ul&gt;
+&lt;li&gt;特定のIDは特定のDBに書き込むようにする&lt;/li&gt;
+&lt;li&gt;1台あたりのリクエスト数を減らす？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;NoSQL
+
+&lt;ul&gt;
+&lt;li&gt;Cassandra
+
+&lt;ul&gt;
+&lt;li&gt;リング型ノードになるため単一障害点がなくなるらしい&lt;/li&gt;
+&lt;li&gt;DHT？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;トランザクション処理は基本弱い
+
+&lt;ul&gt;
+&lt;li&gt;そういうところはMySQLで&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;負荷試験
+
+&lt;ul&gt;
+&lt;li&gt;リリース前に想定人数をちゃんと裁けるかのテスト
+
+&lt;ul&gt;
+&lt;li&gt;リリースしてから落ちにくい&lt;/li&gt;
+&lt;li&gt;チューニングしやすい
+
+&lt;ul&gt;
+&lt;li&gt;テーブル構造の変更とかしやすい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JMeter
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jmeter.apache.org/&#34;&gt;http://jmeter.apache.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;サーバに負荷をかけるツール&lt;/li&gt;
+&lt;li&gt;アクセスをプロクシして、テストケースを作る機能があるらしい&lt;/li&gt;
+&lt;li&gt;プログラムで負荷をかけると、プログラムが悪いのかサーバが悪いのかわからない&lt;/li&gt;
+&lt;li&gt;プログラムがロックして遅かったりとか&lt;/li&gt;
+&lt;li&gt;Socket.IOは対応していない
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/maciejzaleski/JMeter-WebSocketSampler&#34;&gt;https://github.com/maciejzaleski/JMeter-WebSocketSampler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;これを使うと動かせる&lt;/li&gt;
+&lt;li&gt;プロトコルが若干違うのでその辺が大変らしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
