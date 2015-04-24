@@ -6,8 +6,141 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 18 Apr 2015 10:55:37 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2015 10:00:26 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
+      <link>http://ota42y.com/blog/2015/04/24/go-windows-development/</link>
+      <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
+      <description>
+
+&lt;p&gt;取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WindowsのGolang開発
+
+&lt;ul&gt;
+&lt;li&gt;IntelliJ便利
+
+&lt;ul&gt;
+&lt;li&gt;機能がとても豊富&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows上ではつらい
+
+&lt;ul&gt;
+&lt;li&gt;開発ツールが少ない&lt;/li&gt;
+&lt;li&gt;LinuxはGUI使いづらい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;LinuxのファイルをWindowsから変更する
+
+&lt;ul&gt;
+&lt;li&gt;良いところ取り
+
+&lt;ul&gt;
+&lt;li&gt;開発はWindows&lt;/li&gt;
+&lt;li&gt;実行はLinux&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ファイルはSambaで共有
+
+&lt;ul&gt;
+&lt;li&gt;ネットワークドライブをマウント&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;IDEデバッグは使えなくなる
+
+&lt;ul&gt;
+&lt;li&gt;そのときだけWindowsで動かすとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;golang開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
+
+&lt;h2 id=&#34;intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
+
+&lt;p&gt;IntelliJ IDEAとGolang pluginはとてもよく動くため、&lt;br /&gt;
+Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/kaiinui/items/433eb86c022ffcad0bea&#34;&gt;Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
+
+&lt;p&gt;IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。&lt;br /&gt;
+ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、&lt;br /&gt;
+Windows上で開発するのは細かいところで面倒になることが多いです。&lt;br /&gt;
+そのため、仮想マシンや別サーバにLinuxマシンを1台作り、&lt;br /&gt;
+その中で開発をした方が何かと便利です。&lt;/p&gt;
+
+&lt;p&gt;ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、&lt;br /&gt;
+開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。&lt;br /&gt;
+そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、&lt;br /&gt;
+それらをssh経由のCLIから操作するのが最も良い案になっています。&lt;/p&gt;
+
+&lt;p&gt;このような構成にすることで、Unixで動く便利なツールを利用しつつ、&lt;br /&gt;
+Windowsの快適なGUI環境を利用することができます。&lt;br /&gt;
+また、ファイルや実行環境と手元の環境とが切り離されるため、&lt;br /&gt;
+複数の実行環境を切り替えたり、&lt;br /&gt;
+マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。&lt;/p&gt;
+
+&lt;p&gt;なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。&lt;/p&gt;
+
+&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
+
+&lt;p&gt;残念ながらIntelliJはこのような用途を想定していないため、
+別マシンの環境下で作業できません。&lt;/p&gt;
+
+&lt;p&gt;幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、&lt;br /&gt;
+IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。&lt;/p&gt;
+
+&lt;p&gt;そこで、サーバ上の開発ディレクトリをSambaで共有し、&lt;br /&gt;
+Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、&lt;br /&gt;
+IntelliJで開発を行うことができます。&lt;/p&gt;
+
+&lt;p&gt;私の環境では、以下のような設定をsmb.confに追加しています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[global]
+map archive = no
+
+～中略～
+
+[workspace]
+   path = /home/username/workspace
+   writable = yes
+   guest ok = no
+   guest only = no
+   create mode = 0755
+   directory mode = 0755
+   share modes = yes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;map archiveについてはこちらを参照&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/haoling/items/b306b23c41c7110e9e35&#34;&gt;sambaでファイルを上書きすると実行属性が付いてしまう場合の対処&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
+
+&lt;p&gt;補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。&lt;br /&gt;
+ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、&lt;br /&gt;
+依存ライブラリ等に関しては意図的にそろえる必要があります。&lt;/p&gt;
+
+&lt;p&gt;幸いにも、私はgolangのパッケージ管理に&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;gom&lt;/a&gt;を利用しています。&lt;br /&gt;
+このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。&lt;/p&gt;
+
+&lt;p&gt;そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、&lt;br /&gt;
+依存パッケージの補完や、定義元ジャンプが効くようになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;問題点:2107e1477c09702be9950e3792aa06c4&#34;&gt;問題点&lt;/h1&gt;
+
+&lt;p&gt;この手法ではIDEから実行することを想定していないため、&lt;br /&gt;
+IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。&lt;br /&gt;
+このような場合は常に同じ実行環境を維持しておき、&lt;br /&gt;
+必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…&lt;/p&gt;
+
+&lt;p&gt;ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、&lt;br /&gt;
+大きな問題にはなっていません。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>golangのパッケージ管理</title>
@@ -1295,134 +1428,6 @@ runghc cr.hs
 
 &lt;p&gt;いくつかのPDFでやってみましたが、全てCRになっており、&lt;br /&gt;
 Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分けが必要です。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>インライン展開についての追加調査</title>
-      <link>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
-      <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
-      <description>
-
-&lt;p&gt;昨日の記事で、インライン展開について調べましたが、&lt;br /&gt;
-よくよく考えると片手落ちだったので追加調査しました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;調査内容:5658da961537009d14c2d83db44bc8e6&#34;&gt;調査内容&lt;/h1&gt;
-
-&lt;p&gt;昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、&lt;br /&gt;
-同じファイル内でどのようになるかは調べていませんでしたので、&lt;br /&gt;
-追加調査しました。&lt;/p&gt;
-
-&lt;p&gt;方法は昨日と同じく、-Sオプションをつけて結果を見ます。&lt;/p&gt;
-
-&lt;h1 id=&#34;ソースコード:5658da961537009d14c2d83db44bc8e6&#34;&gt;ソースコード&lt;/h1&gt;
-
-&lt;p&gt;以下のようなファイルを使います&lt;/p&gt;
-
-&lt;p&gt;test.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;quot;func.h&amp;quot;
-
-int main() {
-  TestA test;
-  int a = test.getDirect();
-  int b = test.getThrough();
-  printf(&amp;quot;%d %d\n&amp;quot;, a, b);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.h&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
-public:
-  int getDirect();
-  int getThrough();
-private:
-  int getPrivate();
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
-
-int TestA::getDirect(){
-  return 42;
-}
-
-int TestA::getThrough(){
-  return getDirect() + getPrivate();
-}
-
-int TestA::getPrivate(){
-  return 73;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cppのgetThrough関数に対して、インライン展開が行われる事が予想されますが、&lt;br /&gt;
-getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。&lt;br /&gt;
-getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化しない場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化しない場合&lt;/h1&gt;
-
-&lt;p&gt;3つの関数は全て普通にコンパイルされました。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化した場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化した場合&lt;/h1&gt;
-
-&lt;h2 id=&#34;同じファイル内のインライン展開:5658da961537009d14c2d83db44bc8e6&#34;&gt;同じファイル内のインライン展開&lt;/h2&gt;
-
-&lt;p&gt;getThrough関数は以下のようになりました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;__ZN5TestA10getThroughEv:               ## @_ZN5TestA10getThroughEv
-pushq	%rbp
-movq	%rsp, %rbp
-movl	$115, %eax
-popq	%rbp
-retq
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;42+73=115なので、インライン展開と最適化がされているのがわかります。&lt;br /&gt;
-そのため、同じファイル内なら、ヘッダに書いていなくても勝手にインライン展開されるみたいです。&lt;/p&gt;
-
-&lt;p&gt;よくよく考えると、includeが処理されるのはプリプロセスのタイミングで処理されます。&lt;br /&gt;
-そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。&lt;br /&gt;
-なので、どのファイルに関数が書かれているかは関係ないと思われます。&lt;/p&gt;
-
-&lt;h2 id=&#34;インライン展開後の関数:5658da961537009d14c2d83db44bc8e6&#34;&gt;インライン展開後の関数&lt;/h2&gt;
-
-&lt;p&gt;getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、&lt;br /&gt;
-関数が出力されていました。&lt;/p&gt;
-
-&lt;p&gt;getDirect関数はpublic指定されているため、&lt;br /&gt;
-外部から参照される場合のために展開後も関数が残されるのは予想通りです。&lt;/p&gt;
-
-&lt;p&gt;getPrivate関数はprivate指定されているため継承先のクラスから呼ばれることはなく、&lt;br /&gt;
-かつこのクラスはfriend指定もされていないため、外部から呼び出されることはありません。&lt;br /&gt;
-そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、&lt;br /&gt;
-この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:5658da961537009d14c2d83db44bc8e6&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;同じファイル内でもインライン展開は行われる
-
-&lt;ul&gt;
-&lt;li&gt;O3ならinline宣言とか要らない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;インライン展開しても、展開元の関数は残る
-
-&lt;ul&gt;
-&lt;li&gt;ヘッダファイルに書いた関数は展開元が消えたので挙動が違う&lt;/li&gt;
-&lt;li&gt;publicはリンクされるまで呼ばれるかわからないので消せない&lt;/li&gt;
-&lt;li&gt;privateは呼ばれない事が確定するはずだが何故か消さない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

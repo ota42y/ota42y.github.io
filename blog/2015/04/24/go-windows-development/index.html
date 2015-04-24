@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="LinuxとIntelliJを使ったWindowsでのプログラミング環境">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+      hljs.configure({tabReplace: '    '}); 
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境 | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>LinuxとIntelliJを使ったWindowsでのプログラミング環境</h1>
+                    
+
+<time datetime="2015-04-24" class="post_data">
+2015-04-24
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/golang">golang</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#golang開発環境を整える:2107e1477c09702be9950e3792aa06c4">Golang開発環境を整える</a>
+<ul>
+<li><a href="#intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4">IntelliJでのGo開発環境</a></li>
+<li><a href="#vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4">VMwareに開発環境を整える</a></li>
+<li><a href="#intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4">IntelliJで別サーバのファイルにアクセスする</a></li>
+<li><a href="#サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4">サーバと手元の環境を合わせる</a></li>
+</ul></li>
+<li><a href="#問題点:2107e1477c09702be9950e3792aa06c4">問題点</a></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。</p>
+
+<ul>
+<li>WindowsのGolang開発
+
+<ul>
+<li>IntelliJ便利
+
+<ul>
+<li>機能がとても豊富</li>
+</ul></li>
+<li>Windows上ではつらい
+
+<ul>
+<li>開発ツールが少ない</li>
+<li>LinuxはGUI使いづらい</li>
+</ul></li>
+<li>LinuxのファイルをWindowsから変更する
+
+<ul>
+<li>良いところ取り
+
+<ul>
+<li>開発はWindows</li>
+<li>実行はLinux</li>
+</ul></li>
+<li>ファイルはSambaで共有
+
+<ul>
+<li>ネットワークドライブをマウント</li>
+</ul></li>
+<li>IDEデバッグは使えなくなる
+
+<ul>
+<li>そのときだけWindowsで動かすとか</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="golang開発環境を整える:2107e1477c09702be9950e3792aa06c4">Golang開発環境を整える</h1>
+
+<h2 id="intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4">IntelliJでのGo開発環境</h2>
+
+<p>IntelliJ IDEAとGolang pluginはとてもよく動くため、<br />
+Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。<br />
+<a href="http://qiita.com/kaiinui/items/433eb86c022ffcad0bea">Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった</a></p>
+
+<h2 id="vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4">VMwareに開発環境を整える</h2>
+
+<p>IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。<br />
+ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、<br />
+Windows上で開発するのは細かいところで面倒になることが多いです。<br />
+そのため、仮想マシンや別サーバにLinuxマシンを1台作り、<br />
+その中で開発をした方が何かと便利です。</p>
+
+<p>ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、<br />
+開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。<br />
+そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、<br />
+それらをssh経由のCLIから操作するのが最も良い案になっています。</p>
+
+<p>このような構成にすることで、Unixで動く便利なツールを利用しつつ、<br />
+Windowsの快適なGUI環境を利用することができます。<br />
+また、ファイルや実行環境と手元の環境とが切り離されるため、<br />
+複数の実行環境を切り替えたり、<br />
+マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。</p>
+
+<p>なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。</p>
+
+<h2 id="intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4">IntelliJで別サーバのファイルにアクセスする</h2>
+
+<p>残念ながらIntelliJはこのような用途を想定していないため、
+別マシンの環境下で作業できません。</p>
+
+<p>幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、<br />
+IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。</p>
+
+<p>そこで、サーバ上の開発ディレクトリをSambaで共有し、<br />
+Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、<br />
+IntelliJで開発を行うことができます。</p>
+
+<p>私の環境では、以下のような設定をsmb.confに追加しています。</p>
+
+<pre><code>[global]
+map archive = no
+
+～中略～
+
+[workspace]
+   path = /home/username/workspace
+   writable = yes
+   guest ok = no
+   guest only = no
+   create mode = 0755
+   directory mode = 0755
+   share modes = yes
+</code></pre>
+
+<p>map archiveについてはこちらを参照<br />
+<a href="http://qiita.com/haoling/items/b306b23c41c7110e9e35">sambaでファイルを上書きすると実行属性が付いてしまう場合の対処</a></p>
+
+<h2 id="サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4">サーバと手元の環境を合わせる</h2>
+
+<p>補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。<br />
+ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、<br />
+依存ライブラリ等に関しては意図的にそろえる必要があります。</p>
+
+<p>幸いにも、私はgolangのパッケージ管理に<a href="https://github.com/mattn/gom">gom</a>を利用しています。<br />
+このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。</p>
+
+<p>そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、<br />
+依存パッケージの補完や、定義元ジャンプが効くようになります。</p>
+
+<h1 id="問題点:2107e1477c09702be9950e3792aa06c4">問題点</h1>
+
+<p>この手法ではIDEから実行することを想定していないため、<br />
+IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。<br />
+このような場合は常に同じ実行環境を維持しておき、<br />
+必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…</p>
+
+<p>ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、<br />
+大きな問題にはなっていません。</p>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/04/24/go-windows-development/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+

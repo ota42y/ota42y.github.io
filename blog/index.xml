@@ -6,8 +6,141 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2015 10:00:26 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
+      <link>http://ota42y.com/blog/2015/04/24/go-windows-development/</link>
+      <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
+      <description>
+
+&lt;p&gt;取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WindowsのGolang開発
+
+&lt;ul&gt;
+&lt;li&gt;IntelliJ便利
+
+&lt;ul&gt;
+&lt;li&gt;機能がとても豊富&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows上ではつらい
+
+&lt;ul&gt;
+&lt;li&gt;開発ツールが少ない&lt;/li&gt;
+&lt;li&gt;LinuxはGUI使いづらい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;LinuxのファイルをWindowsから変更する
+
+&lt;ul&gt;
+&lt;li&gt;良いところ取り
+
+&lt;ul&gt;
+&lt;li&gt;開発はWindows&lt;/li&gt;
+&lt;li&gt;実行はLinux&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ファイルはSambaで共有
+
+&lt;ul&gt;
+&lt;li&gt;ネットワークドライブをマウント&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;IDEデバッグは使えなくなる
+
+&lt;ul&gt;
+&lt;li&gt;そのときだけWindowsで動かすとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;golang開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
+
+&lt;h2 id=&#34;intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
+
+&lt;p&gt;IntelliJ IDEAとGolang pluginはとてもよく動くため、&lt;br /&gt;
+Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/kaiinui/items/433eb86c022ffcad0bea&#34;&gt;Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
+
+&lt;p&gt;IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。&lt;br /&gt;
+ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、&lt;br /&gt;
+Windows上で開発するのは細かいところで面倒になることが多いです。&lt;br /&gt;
+そのため、仮想マシンや別サーバにLinuxマシンを1台作り、&lt;br /&gt;
+その中で開発をした方が何かと便利です。&lt;/p&gt;
+
+&lt;p&gt;ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、&lt;br /&gt;
+開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。&lt;br /&gt;
+そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、&lt;br /&gt;
+それらをssh経由のCLIから操作するのが最も良い案になっています。&lt;/p&gt;
+
+&lt;p&gt;このような構成にすることで、Unixで動く便利なツールを利用しつつ、&lt;br /&gt;
+Windowsの快適なGUI環境を利用することができます。&lt;br /&gt;
+また、ファイルや実行環境と手元の環境とが切り離されるため、&lt;br /&gt;
+複数の実行環境を切り替えたり、&lt;br /&gt;
+マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。&lt;/p&gt;
+
+&lt;p&gt;なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。&lt;/p&gt;
+
+&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
+
+&lt;p&gt;残念ながらIntelliJはこのような用途を想定していないため、
+別マシンの環境下で作業できません。&lt;/p&gt;
+
+&lt;p&gt;幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、&lt;br /&gt;
+IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。&lt;/p&gt;
+
+&lt;p&gt;そこで、サーバ上の開発ディレクトリをSambaで共有し、&lt;br /&gt;
+Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、&lt;br /&gt;
+IntelliJで開発を行うことができます。&lt;/p&gt;
+
+&lt;p&gt;私の環境では、以下のような設定をsmb.confに追加しています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[global]
+map archive = no
+
+～中略～
+
+[workspace]
+   path = /home/username/workspace
+   writable = yes
+   guest ok = no
+   guest only = no
+   create mode = 0755
+   directory mode = 0755
+   share modes = yes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;map archiveについてはこちらを参照&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/haoling/items/b306b23c41c7110e9e35&#34;&gt;sambaでファイルを上書きすると実行属性が付いてしまう場合の対処&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
+
+&lt;p&gt;補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。&lt;br /&gt;
+ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、&lt;br /&gt;
+依存ライブラリ等に関しては意図的にそろえる必要があります。&lt;/p&gt;
+
+&lt;p&gt;幸いにも、私はgolangのパッケージ管理に&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;gom&lt;/a&gt;を利用しています。&lt;br /&gt;
+このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。&lt;/p&gt;
+
+&lt;p&gt;そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、&lt;br /&gt;
+依存パッケージの補完や、定義元ジャンプが効くようになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;問題点:2107e1477c09702be9950e3792aa06c4&#34;&gt;問題点&lt;/h1&gt;
+
+&lt;p&gt;この手法ではIDEから実行することを想定していないため、&lt;br /&gt;
+IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。&lt;br /&gt;
+このような場合は常に同じ実行環境を維持しておき、&lt;br /&gt;
+必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…&lt;/p&gt;
+
+&lt;p&gt;ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、&lt;br /&gt;
+大きな問題にはなっていません。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 第四回　ゲームサーバ勉強会</title>
@@ -1567,111 +1700,6 @@ node(&amp;quot;master&amp;quot;){
 &lt;p&gt;Evernoteからコピーできる、&lt;br /&gt;
 &lt;code&gt;https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/&lt;/code&gt;&lt;br /&gt;
 といった形式のリンクを張ることで、USER_SHARDとUSER_IDを保存します。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
-      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
-      <description>
-
-&lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
-一回目のbundlerに対してbundleが実行されてしまい、&lt;br /&gt;
-別のbundleを呼び出せないという問題が起きました。&lt;br /&gt;
-これはbundlerが設定する環境変数が原因でした。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;bundle exec中に、別のbundlerを実行するとおかしくなる
-
-&lt;ul&gt;
-&lt;li&gt;主にsystemやspawn等を使った場合&lt;/li&gt;
-&lt;li&gt;最初のbundle execと同じものであれば問題は起きない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;bundlerが設定をしている環境変数が問題
-
-&lt;ul&gt;
-&lt;li&gt;別のbundlerを呼ぼうとして元のbundlerが呼ばれている&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Bundler.with_clean_envで回避可能
-
-&lt;ul&gt;
-&lt;li&gt;Bundler.clean_systemでも可&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;問題:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;問題&lt;/h1&gt;
-
-&lt;p&gt;以下のような構成かつtestフォルダにいる状態で、&lt;br /&gt;
-&lt;code&gt;bundle install --path vendor/bundle&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;bundle exec test.rb&lt;/code&gt;を実行すると、&lt;br /&gt;
-test2内でbundlerを呼んだ時にエラーになります&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
-├─ test
-│  │  Gemfile (gemのhello_world_gemを使用)
-│  └─ test.rb
-|
-└─ test2
-   └─ Gemfile (gemのhello-worldを使用)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
-Dir.chdir(&amp;quot;../test2&amp;quot;) do
-  # error
-  system &#39;bundle install --path vendor/bundle&#39;
-  system &#39;bundle exec hello-world&#39;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;エラー文言&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;oh hai thar
-Using hello_world_gem 0.0.3
-Using bundler 1.7.3
-Your bundle is complete!
-It was installed into ./vendor/bundle
-bundler: command not found: hello-world
-Install missing gem executables with `bundle install`
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;原因:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;原因&lt;/h1&gt;
-
-&lt;p&gt;bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、&lt;br /&gt;
-そこで指定されているbundlerから実行されていると見なされるため、&lt;br /&gt;
-bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。&lt;br /&gt;
-実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。&lt;/p&gt;
-
-&lt;p&gt;この仕組みのおかげで同じbundleの場合はそのまま実行できるため、&lt;br /&gt;
-1行目のhello_world_gemの呼び出しにbundle execが不要になっています。&lt;br /&gt;
-このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。&lt;/p&gt;
-
-&lt;h1 id=&#34;解決策:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;解決策&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239&#34;&gt;Bundler.with_clean_env&lt;/a&gt;を利用することで、この問題を回避できます。&lt;br /&gt;
-このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。&lt;br /&gt;
-そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。&lt;br /&gt;
-また、コマンドが一つだけの場合は&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251&#34;&gt;Bundler.clean_system&lt;/a&gt;メソッドも使えます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
-Dir.chdir(&amp;quot;../test2&amp;quot;) do
-  Bundler.with_clean_env do
-    # ok
-    system &#39;bundle install --path vendor/bundle&#39;
-    system &#39;bundle exec hello-world&#39;
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;補足:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;補足&lt;/h1&gt;
-
-&lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
-これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
