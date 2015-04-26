@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="参加記録 DroidKaigi">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+      hljs.configure({tabReplace: '    '}); 
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>参加記録 DroidKaigi | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>参加記録 DroidKaigi</h1>
+                    
+
+<time datetime="2015-04-26" class="post_data">
+2015-04-26
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/text">text</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/conference">conference</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+
+                    <p><a href="http://droidkaigi.connpass.com/event/13216/">DroidKaigi</a>に参加してきたのでメモ。</p>
+
+<p>Twitterで流れてくる情報によると、あっちのセッションもおもしろそう…<br />
+みたいなのがあったので、ちゃんとセッションの概要も読んで天秤にかけるべきでした。<br />
+（エクセルシートから該当のセッションを探すのが大変だったので挫折した）</p>
+
+<ul>
+<li><p>Activity, Fragment, CustomView の使い分け - マッチョなActivityにさよならする方法 -</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm">http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm</a></li>
+<li>ActivityはFragmentのブセット的な印象。</li>
+<li>Fat Activityになりやすい場合はViewとか他の部分にコードを分割しましょうというお話っぽい。
+
+<ul>
+<li>RailsのFat Controller問題?</li>
+</ul></li>
+<li>Fragmentにできる事はそっちにどんどん任せて、ActivityはActivityにしか出来ない部分に集中しようってこと？</li>
+<li>Activityにしか出来ないことが多すぎるからFat Activity問題になってたので、
+似たようなことが出来るけどライフサイクルをコントロールできるクラスの登場によって、
+処理の分割ができるようになった感じ？</li>
+</ul></li>
+
+<li><p>開発を効率的に進めるられるまでの道程</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/TakaoSumitomo/ss-47393000">http://www.slideshare.net/TakaoSumitomo/ss-47393000</a></li>
+<li>コードを書くのとテストを書くのが一番開発で大変なところ</li>
+<li>どんな風にテストしているかの事例紹介
+
+<ul>
+<li>ダミーを作ってがんばる感じ</li>
+<li>複数の間を取り持つクラスは疎通確認のみ</li>
+</ul></li>
+</ul></li>
+
+<li><p>あるゲームアプリケーションの構成とアップデートサイクル</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/kentaroiizuka/droidkaigi">http://www.slideshare.net/kentaroiizuka/droidkaigi</a></li>
+<li>様々なリソースから、バイナリやアップデータを作るまでをすべてJenkinsがやっている
+
+<ul>
+<li>専用のパイプラインエンジニアがいるらしい</li>
+</ul></li>
+<li><a href="https://github.com/KLab/PlaygroundOSS/">Playground</a>つよい
+
+<ul>
+<li>Cocosはお察しなできなので… (´・ω・｀)</li>
+</ul></li>
+<li>Luaでゲーム部分を書く
+
+<ul>
+<li>ゲーム部分以外はフレームワークが吸収</li>
+</ul></li>
+<li>リソースの追加ダウンロードとかもフレームワーク側が持っているらしい
+
+<ul>
+<li>ゲーム側はゲームとしての実装に専念できるっぽい<br /></li>
+</ul></li>
+</ul></li>
+
+<li><p>Android学ぶを君へ。生き抜くためのナレッジ共有</p>
+
+<ul>
+<li><a href="https://github.com/operando/DroidKaigi">https://github.com/operando/DroidKaigi</a></li>
+<li>有用な情報がたくさん</li>
+<li>adbが思っていた以上に優秀だった
+
+<ul>
+<li>任意のアプリのViewTreeが見られるらしい</li>
+</ul></li>
+<li>テスト書こう</li>
+<li>発表と関連する資料が全部まとまっているの凄い便利</li>
+</ul></li>
+
+<li><p>Kotlin</p>
+
+<ul>
+<li><a href="https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu">https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu</a></li>
+<li>Better Java凄い</li>
+<li>Javaで面倒なところを一通りつぶしてくれてる感じ</li>
+<li>Android Studioのプラグインもしっかり対応している様子</li>
+<li>静的型付けだけどちゃんと型推論してくれるので便利</li>
+</ul></li>
+
+<li><p>モバイルにおける電力最適化のための1プラクティス</p>
+
+<ul>
+<li>アプリの電力測定をする
+
+<ul>
+<li><a href="http://www.brilliantservice.co.jp/works/power_kit.html">http://www.brilliantservice.co.jp/works/power_kit.html</a></li>
+<li>こんな感じのを作る</li>
+</ul></li>
+<li>満充電状態なら、電源ケーブルを通る電力は大体アプリのために使われる仮定
+
+<ul>
+<li><a href="https://strawberry-linux.com/catalog/items?code=12031">https://strawberry-linux.com/catalog/items?code=12031</a></li>
+<li>どれくらいの電気が使われたかを測定する</li>
+</ul></li>
+<li>通信や描画が何度も起きるアプリは消費量も多め</li>
+<li>何をしているかで消費量はだいぶ違う</li>
+<li>全体の平均値より、スポットごとの値を比較した方が良い</li>
+</ul></li>
+
+<li><p>アプリを公開する前に、最低限知っておきたいセキュリティ事項</p>
+
+<ul>
+<li><a href="http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html">http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html</a></li>
+<li>セキュリティ学習ツールAnCoLe
+
+<ul>
+<li><a href="https://www.ipa.go.jp/security/vuln/ancole/">https://www.ipa.go.jp/security/vuln/ancole/</a></li>
+</ul></li>
+<li>権限管理をしっかりとする</li>
+<li>デバッグコードやライブラリが変な挙動をしないか精査する
+
+<ul>
+<li>広告SDKは信頼できる物一覧がある</li>
+<li><a href="http://blog.androider.jp/dev/archives/3087">http://blog.androider.jp/dev/archives/3087</a></li>
+</ul></li>
+</ul></li>
+
+<li><p>その他</p>
+
+<ul>
+<li>複数セッションなのでもう片方も見たいのばかり…
+
+<ul>
+<li>特にARTとXMLの話は聞きたかった…<em>(:3 」∠)</em></li>
+</ul></li>
+<li><a href="http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle">http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle</a></li>
+<li><a href="http://www.slideshare.net/kmt-t/art-47396171">http://www.slideshare.net/kmt-t/art-47396171</a></li>
+<li><a href="http://www.slideshare.net/sola1980/androidse-linux">http://www.slideshare.net/sola1980/androidse-linux</a></li>
+<li><a href="http://www.slideshare.net/yuki930/ss-47398513">http://www.slideshare.net/yuki930/ss-47398513</a></li>
+<li><a href="https://speakerdeck.com/chocomelonchan/droidkaigi">https://speakerdeck.com/chocomelonchan/droidkaigi</a></li>
+<li><a href="https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro">https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro</a></li>
+<li><a href="https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue">https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue</a></li>
+</ul></li>
+</ul>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/04/26/droidkaigi/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
