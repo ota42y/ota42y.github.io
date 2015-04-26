@@ -6,8 +6,158 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 19 Apr 2015 11:03:24 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2015 12:49:12 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/text/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 DroidKaigi</title>
+      <link>http://ota42y.com/blog/2015/04/26/droidkaigi/</link>
+      <pubDate>Sun, 26 Apr 2015 12:49:12 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/26/droidkaigi/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://droidkaigi.connpass.com/event/13216/&#34;&gt;DroidKaigi&lt;/a&gt;に参加してきたのでメモ。&lt;/p&gt;
+
+&lt;p&gt;Twitterで流れてくる情報によると、あっちのセッションもおもしろそう…&lt;br /&gt;
+みたいなのがあったので、ちゃんとセッションの概要も読んで天秤にかけるべきでした。&lt;br /&gt;
+（エクセルシートから該当のセッションを探すのが大変だったので挫折した）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Activity, Fragment, CustomView の使い分け - マッチョなActivityにさよならする方法 -&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm&#34;&gt;http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ActivityはFragmentのブセット的な印象。&lt;/li&gt;
+&lt;li&gt;Fat Activityになりやすい場合はViewとか他の部分にコードを分割しましょうというお話っぽい。
+
+&lt;ul&gt;
+&lt;li&gt;RailsのFat Controller問題?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fragmentにできる事はそっちにどんどん任せて、ActivityはActivityにしか出来ない部分に集中しようってこと？&lt;/li&gt;
+&lt;li&gt;Activityにしか出来ないことが多すぎるからFat Activity問題になってたので、
+似たようなことが出来るけどライフサイクルをコントロールできるクラスの登場によって、
+処理の分割ができるようになった感じ？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;開発を効率的に進めるられるまでの道程&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/TakaoSumitomo/ss-47393000&#34;&gt;http://www.slideshare.net/TakaoSumitomo/ss-47393000&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;コードを書くのとテストを書くのが一番開発で大変なところ&lt;/li&gt;
+&lt;li&gt;どんな風にテストしているかの事例紹介
+
+&lt;ul&gt;
+&lt;li&gt;ダミーを作ってがんばる感じ&lt;/li&gt;
+&lt;li&gt;複数の間を取り持つクラスは疎通確認のみ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;あるゲームアプリケーションの構成とアップデートサイクル&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/kentaroiizuka/droidkaigi&#34;&gt;http://www.slideshare.net/kentaroiizuka/droidkaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;様々なリソースから、バイナリやアップデータを作るまでをすべてJenkinsがやっている
+
+&lt;ul&gt;
+&lt;li&gt;専用のパイプラインエンジニアがいるらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KLab/PlaygroundOSS/&#34;&gt;Playground&lt;/a&gt;つよい
+
+&lt;ul&gt;
+&lt;li&gt;Cocosはお察しなできなので… (´・ω・｀)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Luaでゲーム部分を書く
+
+&lt;ul&gt;
+&lt;li&gt;ゲーム部分以外はフレームワークが吸収&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;リソースの追加ダウンロードとかもフレームワーク側が持っているらしい
+
+&lt;ul&gt;
+&lt;li&gt;ゲーム側はゲームとしての実装に専念できるっぽい&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Android学ぶを君へ。生き抜くためのナレッジ共有&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/operando/DroidKaigi&#34;&gt;https://github.com/operando/DroidKaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;有用な情報がたくさん&lt;/li&gt;
+&lt;li&gt;adbが思っていた以上に優秀だった
+
+&lt;ul&gt;
+&lt;li&gt;任意のアプリのViewTreeが見られるらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;テスト書こう&lt;/li&gt;
+&lt;li&gt;発表と関連する資料が全部まとまっているの凄い便利&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Kotlin&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu&#34;&gt;https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Better Java凄い&lt;/li&gt;
+&lt;li&gt;Javaで面倒なところを一通りつぶしてくれてる感じ&lt;/li&gt;
+&lt;li&gt;Android Studioのプラグインもしっかり対応している様子&lt;/li&gt;
+&lt;li&gt;静的型付けだけどちゃんと型推論してくれるので便利&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;モバイルにおける電力最適化のための1プラクティス&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;アプリの電力測定をする
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brilliantservice.co.jp/works/power_kit.html&#34;&gt;http://www.brilliantservice.co.jp/works/power_kit.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;こんな感じのを作る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;満充電状態なら、電源ケーブルを通る電力は大体アプリのために使われる仮定
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://strawberry-linux.com/catalog/items?code=12031&#34;&gt;https://strawberry-linux.com/catalog/items?code=12031&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;どれくらいの電気が使われたかを測定する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通信や描画が何度も起きるアプリは消費量も多め&lt;/li&gt;
+&lt;li&gt;何をしているかで消費量はだいぶ違う&lt;/li&gt;
+&lt;li&gt;全体の平均値より、スポットごとの値を比較した方が良い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;アプリを公開する前に、最低限知っておきたいセキュリティ事項&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html&#34;&gt;http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;セキュリティ学習ツールAnCoLe
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ipa.go.jp/security/vuln/ancole/&#34;&gt;https://www.ipa.go.jp/security/vuln/ancole/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;権限管理をしっかりとする&lt;/li&gt;
+&lt;li&gt;デバッグコードやライブラリが変な挙動をしないか精査する
+
+&lt;ul&gt;
+&lt;li&gt;広告SDKは信頼できる物一覧がある&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.androider.jp/dev/archives/3087&#34;&gt;http://blog.androider.jp/dev/archives/3087&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;その他&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;複数セッションなのでもう片方も見たいのばかり…
+
+&lt;ul&gt;
+&lt;li&gt;特にARTとXMLの話は聞きたかった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle&#34;&gt;http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/kmt-t/art-47396171&#34;&gt;http://www.slideshare.net/kmt-t/art-47396171&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/sola1980/androidse-linux&#34;&gt;http://www.slideshare.net/sola1980/androidse-linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/yuki930/ss-47398513&#34;&gt;http://www.slideshare.net/yuki930/ss-47398513&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/chocomelonchan/droidkaigi&#34;&gt;https://speakerdeck.com/chocomelonchan/droidkaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro&#34;&gt;https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&#34;&gt;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 第四回　ゲームサーバ勉強会</title>
@@ -1993,53 +2143,6 @@ Keynote2の@fumitoshi_ukaiさんも言っていたように、&lt;br /&gt;
 &lt;p&gt;##Togetterまとめ
 Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。&lt;br /&gt;
 振り返る際にとてもお世話になったので、感謝の限りです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 BPStudy ♯87</title>
-      <link>http://ota42y.com/blog/2014/11/29/bpstudy-87/</link>
-      <pubDate>Sat, 29 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/11/29/bpstudy-87/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://bpstudy.connpass.com/event/9741/&#34;&gt;BPStudy#87&lt;/a&gt;に参加しました。&lt;br /&gt;
-&lt;a href=&#34;http://togetter.com/li/751302&#34;&gt;togetterまとめ&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;じっくりと把握する-ios8-iphone6-最前線-ユーザーにとって-開発者にとって何が変わったのか:67d601d79e13ed00541001f833c4d7ec&#34;&gt;じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6&#34;&gt;http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;iOS8とiPhone6の新機能まとめと、それによって生じる問題紹介でした。&lt;/p&gt;
-
-&lt;p&gt;スライド46ページ目の親指の可動範囲の図を見せられると一目瞭然ですが、&lt;br /&gt;
-画面サイズが大きくなったことによるタッチ領域の変化はとても激しく、&lt;br /&gt;
-iPhone6や6+では従来のUIはかなり使いづらいものになってしまいます。&lt;/p&gt;
-
-&lt;p&gt;あと、リモートで任意の端末をレンタルできるRemote TestKitが凄い便利そうでした。&lt;br /&gt;
-&lt;a href=&#34;http://appkitbox.com/testkit/&#34;&gt;Remote TestKit&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;iphone-6がリリースされて2ヶ月が過ぎました-iosの分断化時代を乗り切ろう:67d601d79e13ed00541001f833c4d7ec&#34;&gt;iPhone 6がリリースされて2ヶ月が過ぎました　〜iOSの分断化時代を乗り切ろう〜&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/masashiono1/bpstudy-87&#34;&gt;http://www.slideshare.net/masashiono1/bpstudy-87&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/akisute/AutoLayoutTest&#34;&gt;akisute/AutoLayoutTest&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;前半のスワイプUIのススメは、前の発表のiPhone6や6+向けのUIの回答として、&lt;br /&gt;
-かなり良い回答ではないかなと思いました。&lt;br /&gt;
-あと後半のSwiftのまとめが、Swiftの闇をひしひしと感じる内容で凄いです…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;lt:67d601d79e13ed00541001f833c4d7ec&#34;&gt;LT&lt;/h1&gt;
-
-&lt;p&gt;一件目はiOS7と8で遭遇したブラウザバグの紹介でした。&lt;br /&gt;
-&lt;a href=&#34;http://slides.com/monjudoh/ios_browser_bugs&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、&lt;br /&gt;
-同時接続数が2個になったが、レスポンスの受信時間がかぶるとクラッシュするので同時接続してはいけないとか、&lt;br /&gt;
-かなり辛い感じのバグが多かったです…&lt;/p&gt;
-
-&lt;p&gt;二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…&lt;br /&gt;
-恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ&lt;/p&gt;
 </description>
     </item>
     

@@ -6,8 +6,158 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 24 Apr 2015 10:00:26 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2015 12:49:12 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 DroidKaigi</title>
+      <link>http://ota42y.com/blog/2015/04/26/droidkaigi/</link>
+      <pubDate>Sun, 26 Apr 2015 12:49:12 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/04/26/droidkaigi/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://droidkaigi.connpass.com/event/13216/&#34;&gt;DroidKaigi&lt;/a&gt;に参加してきたのでメモ。&lt;/p&gt;
+
+&lt;p&gt;Twitterで流れてくる情報によると、あっちのセッションもおもしろそう…&lt;br /&gt;
+みたいなのがあったので、ちゃんとセッションの概要も読んで天秤にかけるべきでした。&lt;br /&gt;
+（エクセルシートから該当のセッションを探すのが大変だったので挫折した）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Activity, Fragment, CustomView の使い分け - マッチョなActivityにさよならする方法 -&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm&#34;&gt;http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ActivityはFragmentのブセット的な印象。&lt;/li&gt;
+&lt;li&gt;Fat Activityになりやすい場合はViewとか他の部分にコードを分割しましょうというお話っぽい。
+
+&lt;ul&gt;
+&lt;li&gt;RailsのFat Controller問題?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fragmentにできる事はそっちにどんどん任せて、ActivityはActivityにしか出来ない部分に集中しようってこと？&lt;/li&gt;
+&lt;li&gt;Activityにしか出来ないことが多すぎるからFat Activity問題になってたので、
+似たようなことが出来るけどライフサイクルをコントロールできるクラスの登場によって、
+処理の分割ができるようになった感じ？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;開発を効率的に進めるられるまでの道程&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/TakaoSumitomo/ss-47393000&#34;&gt;http://www.slideshare.net/TakaoSumitomo/ss-47393000&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;コードを書くのとテストを書くのが一番開発で大変なところ&lt;/li&gt;
+&lt;li&gt;どんな風にテストしているかの事例紹介
+
+&lt;ul&gt;
+&lt;li&gt;ダミーを作ってがんばる感じ&lt;/li&gt;
+&lt;li&gt;複数の間を取り持つクラスは疎通確認のみ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;あるゲームアプリケーションの構成とアップデートサイクル&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/kentaroiizuka/droidkaigi&#34;&gt;http://www.slideshare.net/kentaroiizuka/droidkaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;様々なリソースから、バイナリやアップデータを作るまでをすべてJenkinsがやっている
+
+&lt;ul&gt;
+&lt;li&gt;専用のパイプラインエンジニアがいるらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KLab/PlaygroundOSS/&#34;&gt;Playground&lt;/a&gt;つよい
+
+&lt;ul&gt;
+&lt;li&gt;Cocosはお察しなできなので… (´・ω・｀)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Luaでゲーム部分を書く
+
+&lt;ul&gt;
+&lt;li&gt;ゲーム部分以外はフレームワークが吸収&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;リソースの追加ダウンロードとかもフレームワーク側が持っているらしい
+
+&lt;ul&gt;
+&lt;li&gt;ゲーム側はゲームとしての実装に専念できるっぽい&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Android学ぶを君へ。生き抜くためのナレッジ共有&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/operando/DroidKaigi&#34;&gt;https://github.com/operando/DroidKaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;有用な情報がたくさん&lt;/li&gt;
+&lt;li&gt;adbが思っていた以上に優秀だった
+
+&lt;ul&gt;
+&lt;li&gt;任意のアプリのViewTreeが見られるらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;テスト書こう&lt;/li&gt;
+&lt;li&gt;発表と関連する資料が全部まとまっているの凄い便利&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Kotlin&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu&#34;&gt;https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Better Java凄い&lt;/li&gt;
+&lt;li&gt;Javaで面倒なところを一通りつぶしてくれてる感じ&lt;/li&gt;
+&lt;li&gt;Android Studioのプラグインもしっかり対応している様子&lt;/li&gt;
+&lt;li&gt;静的型付けだけどちゃんと型推論してくれるので便利&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;モバイルにおける電力最適化のための1プラクティス&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;アプリの電力測定をする
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brilliantservice.co.jp/works/power_kit.html&#34;&gt;http://www.brilliantservice.co.jp/works/power_kit.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;こんな感じのを作る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;満充電状態なら、電源ケーブルを通る電力は大体アプリのために使われる仮定
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://strawberry-linux.com/catalog/items?code=12031&#34;&gt;https://strawberry-linux.com/catalog/items?code=12031&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;どれくらいの電気が使われたかを測定する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通信や描画が何度も起きるアプリは消費量も多め&lt;/li&gt;
+&lt;li&gt;何をしているかで消費量はだいぶ違う&lt;/li&gt;
+&lt;li&gt;全体の平均値より、スポットごとの値を比較した方が良い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;アプリを公開する前に、最低限知っておきたいセキュリティ事項&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html&#34;&gt;http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;セキュリティ学習ツールAnCoLe
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ipa.go.jp/security/vuln/ancole/&#34;&gt;https://www.ipa.go.jp/security/vuln/ancole/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;権限管理をしっかりとする&lt;/li&gt;
+&lt;li&gt;デバッグコードやライブラリが変な挙動をしないか精査する
+
+&lt;ul&gt;
+&lt;li&gt;広告SDKは信頼できる物一覧がある&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.androider.jp/dev/archives/3087&#34;&gt;http://blog.androider.jp/dev/archives/3087&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;その他&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;複数セッションなのでもう片方も見たいのばかり…
+
+&lt;ul&gt;
+&lt;li&gt;特にARTとXMLの話は聞きたかった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle&#34;&gt;http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/kmt-t/art-47396171&#34;&gt;http://www.slideshare.net/kmt-t/art-47396171&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/sola1980/androidse-linux&#34;&gt;http://www.slideshare.net/sola1980/androidse-linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/yuki930/ss-47398513&#34;&gt;http://www.slideshare.net/yuki930/ss-47398513&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/chocomelonchan/droidkaigi&#34;&gt;https://speakerdeck.com/chocomelonchan/droidkaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro&#34;&gt;https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&#34;&gt;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
@@ -1451,122 +1601,6 @@ go get http://github.com/go-gl/glfw/v3.1/glfw
 
 &lt;p&gt;これだけでインストールはおしまいです。
 gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>OctopressからHugoに乗り換えた</title>
-      <link>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
-      <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
-      <description>
-
-&lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
-サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Octopress
-
-&lt;ul&gt;
-&lt;li&gt;Ruby制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;大量の記事を扱うと遅くなっていく
-
-&lt;ul&gt;
-&lt;li&gt;100記事で新しい記事のHTML出力まで10秒ぐらいかかる&lt;/li&gt;
-&lt;li&gt;見た目を確認したいときなどにとても不便&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Hugo
-
-&lt;ul&gt;
-&lt;li&gt;Golang制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;利点&lt;/li&gt;
-&lt;li&gt;早い
-
-&lt;ul&gt;
-&lt;li&gt;100記事で200msぐらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;環境構築いらず
-
-&lt;ul&gt;
-&lt;li&gt;公式がバイナリ配布&lt;/li&gt;
-&lt;li&gt;手を加えないならそのまま使える&lt;/li&gt;
-&lt;li&gt;Win-Mac両方使う人にはとても楽&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;欠点
-
-&lt;ul&gt;
-&lt;li&gt;テーマが少ない
-
-&lt;ul&gt;
-&lt;li&gt;このサイトも自作&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;手を加えにくい
-
-&lt;ul&gt;
-&lt;li&gt;手を加えると環境構築いらずの利点が失われる&lt;/li&gt;
-&lt;li&gt;クロスコンパイルは楽なのでそれほどでもない？
-
-&lt;ul&gt;
-&lt;li&gt;手を加える必要が無いのでそのとき考える&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Octopressの問題点&lt;/h1&gt;
-
-&lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
-
-&lt;p&gt;Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。&lt;br /&gt;
-この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、&lt;br /&gt;
-表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。&lt;/p&gt;
-
-&lt;p&gt;現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。&lt;br /&gt;
-ちょっとした修正ごとに10秒待つのはなかなかにつらく、&lt;br /&gt;
-かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
-そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
-
-&lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
-&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
-
-&lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
-
-&lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
-ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
-ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
-特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
-
-&lt;h2 id=&#34;環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;環境構築いらず&lt;/h2&gt;
-
-&lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
-環境構築でがんばる必要がありません。&lt;br /&gt;
-私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
-Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの問題点&lt;/h1&gt;
-
-&lt;h2 id=&#34;テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;テーマがない&lt;/h2&gt;
-
-&lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
-実際このサイトも自分でテーマを作りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;手を入れにくい&lt;/h2&gt;
-
-&lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
-Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
-これは環境構築の手間とのトレードオフなので仕方ないことなのですが…&lt;/p&gt;
-
-&lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
-一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
 </description>
     </item>
     
