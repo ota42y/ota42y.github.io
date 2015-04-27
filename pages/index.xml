@@ -6,8 +6,42 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 20 Apr 2015 07:36:53 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 27 Apr 2015 11:58:59 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年17週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-17/</link>
+      <pubDate>Mon, 27 Apr 2015 11:58:59 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-17/</guid>
+      <description>
+
+&lt;h1 id=&#34;cpplintが便利そう:4d6f6f3ae9acaa6b2b7ea721f3040303&#34;&gt;cpplintが便利そう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/AtomLinter/linter-cpplint&#34;&gt;AtomLinter/linter-cpplint&lt;/a&gt;&lt;br /&gt;
+Google Style Guideに沿っているかをチェックしてくれるcpplintを、&lt;br /&gt;
+Atom.ioから使えるようにしているPluginです。&lt;/p&gt;
+
+&lt;p&gt;めっちゃ便利なのですが、標準だとcpplintのフィルターしか設定できず、&lt;br /&gt;
+他のオプションを設定できないため、PRを送りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/AtomLinter/linter-cpplint/pull/12&#34;&gt;https://github.com/AtomLinter/linter-cpplint/pull/12&lt;/a&gt;&lt;br /&gt;
+レビュー待ちです(o゜▽゜)&lt;/p&gt;
+
+&lt;h1 id=&#34;apple-watch買った:4d6f6f3ae9acaa6b2b7ea721f3040303&#34;&gt;Apple Watch買った&lt;/h1&gt;
+
+&lt;p&gt;たまたま発売日に秋葉原を歩いていたら売っていたのでつい買ってしまいました。&lt;br /&gt;
+が、iPhoneをメインで使っているわけではないので、いまいち使い道が良くわからないです。&lt;br /&gt;
+しばらくは見せるようですかね…&lt;/p&gt;
+
+&lt;h1 id=&#34;fluentd-forwarderを触ってた:4d6f6f3ae9acaa6b2b7ea721f3040303&#34;&gt;fluentd-forwarderを触ってた&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;fluent/fluentd-forwarder&lt;/a&gt;&lt;br /&gt;
+Windowsのサーバで動かしているやつのログをとってくるの面倒だなー&lt;br /&gt;
+と思っていたので、便利そうです(o゜▽゜)&lt;br /&gt;
+とりあえず動かし方はわかったので、実際に入れてみようかと…&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年16週目まとめ</title>
@@ -709,66 +743,6 @@ rspecとかで専用のフレームワークにそって作るのとは大違い
 例えば通販サイトではヘッダーやサイドバーは共通で使い、メインの部分とは独立していますし、&lt;br /&gt;
 メインの部分も商品データが違うだけでテンプレートは同じといったように、共通で使う部分が多いので、&lt;br /&gt;
 そのような部分のテストは有効ではないかと思います。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年02週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-02/</link>
-      <pubDate>Sat, 10 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-02/</guid>
-      <description>
-
-&lt;p&gt;毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。&lt;br /&gt;
-主に1記事にするには難しいものや、失敗してダメだったものをまとめていく予定です。&lt;/p&gt;
-
-&lt;p&gt;思った以上に面倒なので、来週はしないかもしれません…&lt;/p&gt;
-
-&lt;h1 id=&#34;なんでブログに書くのか:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;なんでブログに書くのか&lt;/h1&gt;
-
-&lt;p&gt;テキストでローカルに持っていても良いんですが、そうするとファイル管理が面倒になります。&lt;br /&gt;
-こうやってブログに書いておけば検索エンジンからたどれますし、個々のファイルの管理をしなくて良くなります。&lt;/p&gt;
-
-&lt;p&gt;また、&lt;a href=&#34;http://ota42y.com/blog/2014/12/31/150-output/&#34;&gt;GithubのContributionsを使ってアウトプットを150日続ける&lt;/a&gt;でも書いたように、振り返りで1コミット稼げるので、振り返りをしっかりするようになるという狙いもあります。&lt;/p&gt;
-
-&lt;h1 id=&#34;node-tumblrのテストが動かせなかった:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;node-tumblrのテストが動かせなかった&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/meritt/node-tumblr&#34;&gt;node-tumblr&lt;/a&gt;でリブログする機能が欲しかったので追加しようかと思いましたが、
-そもそも今の状態のテストができなくて諦めました。&lt;/p&gt;
-
-&lt;p&gt;例えばtwitterであれば、自分のfav一覧を正常に取れるかをテストするためには、
-テストするアカウントでfavしておかなければなりません。
-同じようなことがnode-tumblrのテストでも起きているのですが、
-その準備に必要なものが何なのかがわからないため、テストできませんでした。&lt;/p&gt;
-
-&lt;p&gt;テストを書くことも大事ですが、テストを実行するための手順を整えておくのも大事ですね…&lt;/p&gt;
-
-&lt;h1 id=&#34;node-ircへのprが取り込まれた:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;node-ircへのPRが取り込まれた&lt;/h1&gt;
-
-&lt;p&gt;7月ぐらいに出した&lt;a href=&#34;https://github.com/martynsmith/node-irc&#34;&gt;node-irc&lt;/a&gt;のPRが取り込まれました。内容としては&lt;a href=&#34;http://ota42y.com/blog/2014/08/09/irc/&#34;&gt;IRCはCL-LFでメッセージを区切る&lt;/a&gt;に書いたように、古いサーバーは別の改行コードを送ってくるため、両方に対応できるようにする修正です。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/martynsmith/node-irc/pull/280&#34;&gt;https://github.com/martynsmith/node-irc/pull/280&lt;/a&gt;&lt;br /&gt;
-ブランチ戦略が変わったらしく、出し直したためコミットは新しくなっています。&lt;/p&gt;
-
-&lt;p&gt;PRにたいしてツッコミが来たり、出された反論コードがおかしいので、ちゃんと修正すれば動くよと返したりと大変でした。
-英語でのコミュニケーションは言いたいことをどう書けばいいか解らないので大変です…ボギャブラリー不足ですね。&lt;/p&gt;
-
-&lt;h1 id=&#34;インターステラーとベイマックスを観た:f1cd743a5738965ad0ddbc6c0ca44287&#34;&gt;インターステラーとベイマックスを観た&lt;/h1&gt;
-
-&lt;p&gt;ベイマックスは本国ではBig Hero 6というタイトルで公開されていて、
-そのタイトル通り、ベイマックスのみが主人公ではなく、彼？を含む6人がアメコミヒーローになるという話だった。
-また、映画の舞台が日本の風景をピクサー風に仕上げた街であり、主人公も日本人風の名前や顔立ちだったりと、
-随所に日本リスペクトが見られました。&lt;/p&gt;
-
-&lt;p&gt;インターステラーは近年には珍しい本気で作られたSF映画で、これSF詳しくない人には辛いんじゃないかな？
-と心配になるぐらい、しっかりとSFしています。
-私は大好物ですが、興行収入が良いのかどうかは謎ですね。&lt;/p&gt;
-
-&lt;p&gt;映像としては専門家の監修の元でしっかりとした映像が作られており、
-また、おそらく随所に2001年宇宙の旅のリスペクトっぽい部分があったのが面白かったです。&lt;/p&gt;
-
-&lt;p&gt;特に好きなシーンは、物語の中盤で主人公が仲間の感情的な意見をバッサリと切り捨てて合理的な判断をしたのと、
-最後の方のシーンですね。&lt;/p&gt;
 </description>
     </item>
     
