@@ -6,8 +6,248 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 04 May 2015 11:27:52 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2015 20:16:57 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Go言語でメモリ上の大きさや配置を調べる</title>
+      <link>http://ota42y.com/blog/2015/05/06/go-struct-offset/</link>
+      <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/05/06/go-struct-offset/</guid>
+      <description>
+
+&lt;p&gt;golangで構造体を定義した場合、
+メモリ上にどのように配置されるのでしょうか。&lt;/p&gt;
+
+&lt;p&gt;通常意識する必要はありませんが、32bitと64bitで挙動がおかしい場合など、&lt;br /&gt;
+ごく希に調べる必要に迫られる場合があります。&lt;br /&gt;
+そのような場合、各要素のサイズや、構造体先頭からのオフセットを調べることで、&lt;br /&gt;
+メモリ上に構造体がどう置かれるかを調べることができます。&lt;/p&gt;
+
+&lt;p&gt;C言語でのsizeofやoffsetofに対応する物が、golangのunsafeパッケージに用意されているため、&lt;br /&gt;
+これを利用することで構造体の様子を調べることができます。&lt;br /&gt;
+&lt;a href=&#34;https://golang.org/pkg/unsafe/&#34;&gt;https://golang.org/pkg/unsafe/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回は以下のようなテスト構造体を使い、メモリ上にどのように置かれるかを調べました。&lt;br /&gt;
+テスト環境はwindows7(32bit)とmac(64bit)になります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type A struct {
+  flag bool
+  num int64
+  ptr *int64
+  mini int32
+  str string
+  nums []int64
+  nums5 [5]int64
+  strs []string
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;要素のサイズ:7df659e690576969cb149167507e359f&#34;&gt;要素のサイズ&lt;/h1&gt;
+
+&lt;p&gt;unsafe.Sizeof関数は、引数の要素のサイズを調べ、バイト数をint型で返してくれます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;a := A{}
+log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括弧内は64bit
+log.Println(unsafe.Sizeof(a.flag)) // 1
+log.Println(unsafe.Sizeof(a.num)) // 8
+log.Println(unsafe.Sizeof(a.ptr)) // 4 (8)
+log.Println(unsafe.Sizeof(a.mini)) // 4
+log.Println(unsafe.Sizeof(a.str)) // 8 (16)
+log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
+log.Println(unsafe.Sizeof(a.nums5)) // 40
+log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
+
+a.nums = append(a.nums, 42)
+a.strs = append(a.strs, &amp;quot;デーデッデー&amp;quot;)
+log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
+log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
+
+log.Println(unsafe.Sizeof(&amp;amp;a)) // 4 (8)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;この関数は指定した要素のサイズを返します。
+そのため、32bit環境ではint64のポインタであるa.ptrは、&lt;br /&gt;
+ポインタのサイズである4byte(=32bit)を返します。&lt;/p&gt;
+
+&lt;p&gt;また、配列の場合は配列全体のサイズ(a.nums5 = 64 * 5)を返しますが、&lt;br /&gt;
+スライスの場合はスライス自身の値(12 or 24byte)を返し、スライス全体の値は返しません。&lt;br /&gt;
+そのため、要素を追加してもスライス自身の大きさは変化しません。&lt;/p&gt;
+
+&lt;h1 id=&#34;先頭からのオフセット:7df659e690576969cb149167507e359f&#34;&gt;先頭からのオフセット&lt;/h1&gt;
+
+&lt;p&gt;上記の例でbool値のa.flagが1byteかつ、ほかの要素がすべて偶数なのにもかかわらず、&lt;br /&gt;
+構造体全体の大きさが92byteの偶数になっています。&lt;br /&gt;
+このことから、golangの構造体はパディングされる場合があることがわかります。&lt;br /&gt;
+そのため、要素のサイズを足していったところが、実際にメモリ上に置かれる場所とは限りません。&lt;/p&gt;
+
+&lt;p&gt;構造体先頭からのオフセットが何byteかをint型で返す、unsafe.Offsetofを使うことで、&lt;br /&gt;
+実際にどの位置に配置されているかを確認できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;log.Println(unsafe.Offsetof(a.flag)) // 0
+log.Println(unsafe.Offsetof(a.num)) // 4 (8)
+log.Println(unsafe.Offsetof(a.ptr)) // 12 (16)
+log.Println(unsafe.Offsetof(a.mini)) // 16 (24)
+log.Println(unsafe.Offsetof(a.str)) // 20 (32)
+log.Println(unsafe.Offsetof(a.nums)) // 28 (48)
+log.Println(unsafe.Offsetof(a.nums5)) // 40 (72)
+log.Println(unsafe.Offsetof(a.strs)) // 80 (112)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;32bit環境ではa.flagの1byteの後に3byteパディングがされ、&lt;br /&gt;
+a.numが先頭から4byte(=32bit)の位置から始まっています。&lt;/p&gt;
+
+&lt;p&gt;64bit環境ではa.flagの後ろに7byteパディングされ、&lt;br /&gt;
+a.numが先頭から8byte(=64bit)の位置から始まっています。&lt;br /&gt;
+また、int32のa.miniも4byteパディングされ、a.strが32byte目から始まるようになっています。&lt;/p&gt;
+
+&lt;p&gt;このように、32bit環境では32bitに、64bit環境では64bitの倍数から始まるように、&lt;br /&gt;
+コンパイラが構造体にパディングをするようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;構造体内の構造体の場合:7df659e690576969cb149167507e359f&#34;&gt;構造体内の構造体の場合&lt;/h1&gt;
+
+&lt;p&gt;以下のように構造体に実態を持つ場合、宣言したとおりに配置されます。&lt;br /&gt;
+そのためAの実態であるaの前後で、構造体のサイズ分だけオフセットが移動しています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type B struct {
+  bflag bool
+  intnum int64
+  a A
+  bflag2 bool
+  a2 *A
+  bflag3 bool
+  A
+  blfag4 bool
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;b := B{
+  a2: &amp;amp;A{},
+}
+log.Println(unsafe.Offsetof(b.bflag)) // 0
+log.Println(unsafe.Offsetof(b.intnum)) // 4
+log.Println(&amp;quot;b.a&amp;quot;)
+log.Println(unsafe.Offsetof(b.a.flag)) // 0
+log.Println(unsafe.Offsetof(b.a.strs)) // 80
+log.Println(&amp;quot;b.flag2&amp;quot;)
+log.Println(unsafe.Offsetof(b.bflag2)) // 104 (4 + 8 + 92)
+log.Println(&amp;quot;b.a2&amp;quot;) // a2 is pointer
+log.Println(unsafe.Offsetof(b.a2.flag)) // 0
+log.Println(unsafe.Offsetof(b.a2.strs)) // 80 (112)
+log.Println(&amp;quot;b.bflag3&amp;quot;)
+log.Println(unsafe.Offsetof(b.bflag3)) // 112 (104 + 8)
+log.Println(&amp;quot;b.flag&amp;quot;)
+log.Println(unsafe.Offsetof(b.flag)) // 116
+log.Println(unsafe.Offsetof(b.num)) // 120
+log.Println(unsafe.Offsetof(b.ptr)) // 128
+log.Println(unsafe.Offsetof(b.mini)) // 132
+log.Println(unsafe.Offsetof(b.strs)) // 196
+log.Println(&amp;quot;b.bflag4&amp;quot;)
+log.Println(unsafe.Offsetof(b.blfag4)) // 208 (112 + 92)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;unsafe.Offsetofは対象の要素を持つ構造体の先頭からのオフセットを指すため、&lt;br /&gt;
+構造体Bの中にあるAでも、Bからのオフセットではなく、Aの先頭からのオフセットを出力しています。&lt;/p&gt;
+
+&lt;p&gt;また、ポインタとして持つ場合、実態は別のところにあるため、a2のサイズはポインタ分のみになります。&lt;/p&gt;
+
+&lt;p&gt;構造体を埋め込んだ場合、それらの値がそのままそこに置かれたかのように置かれます。&lt;br /&gt;
+また、埋め込んだ構造体の値として扱われるらしく、&lt;br /&gt;
+実態として持っているときと違い、構造体Aの要素でもBの先頭からのオフセットを出力しています。&lt;/p&gt;
+
+&lt;h1 id=&#34;ソースコード:7df659e690576969cb149167507e359f&#34;&gt;ソースコード&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;log&amp;quot;
+  &amp;quot;unsafe&amp;quot;
+)
+
+type A struct {
+  flag bool
+  num int64
+  ptr *int64
+  mini int32
+  str string
+  nums []int64
+  nums5 [5]int64
+  strs []string
+}
+
+type B struct {
+  bflag bool
+  intnum int64
+  a A
+  bflag2 bool
+  a2 *A
+  bflag3 bool
+  A
+  blfag4 bool
+}
+
+func main() {
+  log.Println(&amp;quot;sizeof&amp;quot;)
+  a := A{}
+  log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧内は64bit
+  log.Println(unsafe.Sizeof(a.flag)) // 1
+  log.Println(unsafe.Sizeof(a.num)) // 8
+  log.Println(unsafe.Sizeof(a.ptr)) // 4 (8)
+  log.Println(unsafe.Sizeof(a.mini)) // 4
+  log.Println(unsafe.Sizeof(a.str)) // 8 (16)
+  log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
+  log.Println(unsafe.Sizeof(a.nums5)) // 40
+  log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
+
+  a.nums = append(a.nums, 42)
+  a.strs = append(a.strs, &amp;quot;デーデッデー&amp;quot;)
+  log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
+  log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
+
+  log.Println(unsafe.Sizeof(&amp;amp;a)) // 4 (8)
+
+  log.Println(&amp;quot;offest&amp;quot;)
+  log.Println(unsafe.Offsetof(a.flag)) // 0
+  log.Println(unsafe.Offsetof(a.num)) // 4 (8)
+  log.Println(unsafe.Offsetof(a.ptr)) // 12 (16)
+  log.Println(unsafe.Offsetof(a.mini)) // 16 (24)
+  log.Println(unsafe.Offsetof(a.str)) // 20 (32)
+  log.Println(unsafe.Offsetof(a.nums)) // 28 (48)
+  log.Println(unsafe.Offsetof(a.nums5)) // 40 (72)
+  log.Println(unsafe.Offsetof(a.strs)) // 80 (112)
+
+
+
+  log.Println(&amp;quot;b&amp;quot;)
+  b := B{
+    a2: &amp;amp;A{},
+  }
+  log.Println(unsafe.Offsetof(b.bflag)) // 0
+  log.Println(unsafe.Offsetof(b.intnum)) // 4
+  log.Println(&amp;quot;b.a&amp;quot;)
+  log.Println(unsafe.Offsetof(b.a.flag)) // 0
+  log.Println(unsafe.Offsetof(b.a.strs)) // 80
+  log.Println(&amp;quot;b.flag2&amp;quot;)
+  log.Println(unsafe.Offsetof(b.bflag2)) // 104 (4 + 8 + 92)
+  log.Println(&amp;quot;b.a2&amp;quot;) // a2 is pointer
+  log.Println(unsafe.Offsetof(b.a2.flag)) // 0
+  log.Println(unsafe.Offsetof(b.a2.strs)) // 80 (112)
+  log.Println(&amp;quot;b.bflag3&amp;quot;)
+  log.Println(unsafe.Offsetof(b.bflag3)) // 112 (104 + 8)
+  log.Println(&amp;quot;b.flag&amp;quot;)
+  log.Println(unsafe.Offsetof(b.flag)) // 116
+  log.Println(unsafe.Offsetof(b.num)) // 120
+  log.Println(unsafe.Offsetof(b.ptr)) // 128
+  log.Println(unsafe.Offsetof(b.mini)) // 132
+  log.Println(unsafe.Offsetof(b.strs)) // 196
+  log.Println(&amp;quot;b.bflag4&amp;quot;)
+  log.Println(unsafe.Offsetof(b.blfag4)) // 208 (112 + 92)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年18週目まとめ</title>
@@ -1842,36 +2082,6 @@ func TestPrint(t *testing.T) {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年13週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-13/</link>
-      <pubDate>Sun, 29 Mar 2015 10:37:34 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-13/</guid>
-      <description>
-
-&lt;h1 id=&#34;プロトタイプ展に行きました:c970b2167d590a8651f22cb3848b6111&#34;&gt;プロトタイプ展に行きました&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.design-lab.iis.u-tokyo.ac.jp/exhibition/proto2015/&#34;&gt;東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;&lt;/a&gt;に行きました。&lt;br /&gt;
-全く同じ素材でも構造を変えることで、握ったり持ったりしたときの感触が全く違うのはおもしろかったです。&lt;br /&gt;
-現代アートっぽいやつはよくわからなかったですが…&lt;/p&gt;
-
-&lt;h1 id=&#34;goについて理解が深まった:c970b2167d590a8651f22cb3848b6111&#34;&gt;Goについて理解が深まった&lt;/h1&gt;
-
-&lt;p&gt;Golangを多く触った一週間でした。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/03/28/go_interface/&#34;&gt;GoのポインタはC++ポインタとは違う&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;gxuiで簡単なGUIアプリを作りました
-
-&lt;ul&gt;
-&lt;li&gt;gorutineのすばらしさを改めて感じる&lt;/li&gt;
-&lt;li&gt;描画処理とは別に平行して処理をしたい場合にgorutineで簡単に書ける&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
