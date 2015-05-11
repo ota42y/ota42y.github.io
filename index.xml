@@ -6,8 +6,93 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 06 May 2015 20:16:57 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2015 21:55:04 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年19週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-19/</link>
+      <pubDate>Mon, 11 May 2015 21:55:04 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-19/</guid>
+      <description>
+
+&lt;h1 id=&#34;atomicな処理でアライメントを揃える必要があるらしい:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;atomicな処理でアライメントを揃える必要があるらしい&lt;/h1&gt;
+
+&lt;p&gt;goのatomic.AddInt64や、&lt;br /&gt;
+WindowsのInterlockedExchangeでは、&lt;br /&gt;
+32bit環境で64bitの値をアトミックに変更する場合、&lt;br /&gt;
+その値が64bit境界に置かれている必要があるらしいです。&lt;br /&gt;
+ですが、何故それが必要なのかを調べているのですが、それらしい理由が見つかりません…&lt;/p&gt;
+
+&lt;p&gt;一応、Intelのアーキテクチャには、ロックをせずに変更する場合、&lt;br /&gt;
+64bitアライメントに乗っていない場合はアトミックな処理が保証されないと書いてありましたが、&lt;br /&gt;
+goではロックしてからCMPXCHG8Bを実行しており、アトミックな処理になるはずです。&lt;/p&gt;
+
+&lt;p&gt;また、ロックやCMPXCHG8Bもメモリアライメントの制約は受けないため、特に問題は無さそうです。&lt;/p&gt;
+
+&lt;p&gt;一応、64bit境界に無い場合は性能が低下する可能性があるそうですが…&lt;/p&gt;
+
+&lt;h1 id=&#34;android-触ってた:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;Android 触ってた&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;string.xmlは同じフォルダに別の名前のxmlを作っても、勝手にまとめてくれるので同じようにアクセスできるみたい。&lt;/li&gt;
+&lt;li&gt;Dropbox SDKを触ってみた
+
+&lt;ul&gt;
+&lt;li&gt;サンプルがかなり良い具合に出来ている&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;UIを変更できるのは描画用のスレッドだけ
+
+&lt;ul&gt;
+&lt;li&gt;doInBackgroundは別スレッドで処理を行う&lt;/li&gt;
+&lt;li&gt;UIを変更しようとすると落ちる&lt;/li&gt;
+&lt;li&gt;終了時にonPostExecuteがUIスレッドで呼ばれるのでそこで処理する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;fluentdを触ってる:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;fluentdを触ってる&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;自分用のアプリのログ処理を入れ換えた&lt;/li&gt;
+&lt;li&gt;windowsとlinuxそれぞれあるけど、fluentd-forwarderを使ってlinuxのfluentdに集約&lt;/li&gt;
+&lt;li&gt;windowsはrubyで書いてる
+
+&lt;ul&gt;
+&lt;li&gt;ruby2.1じゃないと動かない
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/okahashi117/items/a0b55ea24a6ef7b6582b&#34;&gt;http://qiita.com/okahashi117/items/a0b55ea24a6ef7b6582b&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;msgpackは未対応&lt;/li&gt;
+&lt;li&gt;オプションが渡せないため、bundlerも使えない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SSL接続に失敗する
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/luislavena/f064211759ee0f806c88&#34;&gt;https://gist.github.com/luislavena/f064211759ee0f806c88&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ここのpemファイルの位置をSSL_CERT_FILE環境変数に設定する必要がある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;fluentd-forwarder-にpr送った:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;fluentd-forwarder にPR送った&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;atomic処理のメモリアライメント的な問題でwindows 32bitだと動かなかったので直した
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder/pull/10&#34;&gt;https://github.com/fluent/fluentd-forwarder/pull/10&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;まだマージされてないので、手元のブランチでビルドしたものを使ってる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;goのパッケージシステムは手元で動かすのとものすごく相性が悪い
+
+&lt;ul&gt;
+&lt;li&gt;全てのパッケージバスを自分のリポジトリに書き換えないといけない&lt;/li&gt;
+&lt;li&gt;しかもmasterブランチ限定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Go言語でメモリ上の大きさや配置を調べる</title>
@@ -1984,104 +2069,6 @@ func main() {
 
 &lt;p&gt;一応golangでgithubのapiラッパーはあるようです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/google/go-github&#34;&gt;google/go-github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>golangでIOへのテストを行う</title>
-      <link>http://ota42y.com/blog/2015/04/01/go-io-test/</link>
-      <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;fmt.Print等にちゃんと出力されるかテストしたい
-
-&lt;ul&gt;
-&lt;li&gt;結論としては直接は無理&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;io.Writerを利用するように変えることで簡単にテスト可能
-
-&lt;ul&gt;
-&lt;li&gt;渡されたio.Writerに書き込むようにする&lt;/li&gt;
-&lt;li&gt;通常はos.Stdout、テストの時はbytes.Bufferを渡す&lt;/li&gt;
-&lt;li&gt;どちらもio.Writerを実装している&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
-
-&lt;p&gt;fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。&lt;br /&gt;
-ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。&lt;/p&gt;
-
-&lt;p&gt;このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、&lt;br /&gt;
-テストの時は書き込み先を切り替えることで簡単にテストができるようになります。&lt;/p&gt;
-
-&lt;h2 id=&#34;fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
-
-&lt;p&gt;golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。&lt;br /&gt;
-この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。&lt;br /&gt;
-&lt;a href=&#34;https://golang.org/pkg/fmt/#Fprint&#34;&gt;https://golang.org/pkg/fmt/#Fprint&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;io.Writerは&lt;code&gt;Write(p []byte) (n int, err error)&lt;/code&gt;関数だけを持ったインターフェースです。&lt;br /&gt;
-そのため、これを実装していればfmt.Fprintの書き込み先として使えます。&lt;br /&gt;
-&lt;a href=&#34;http://golang.org/pkg/io/#Writer&#34;&gt;http://golang.org/pkg/io/#Writer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。&lt;br /&gt;
-そのため、os.Stdoutにfmt.Fprintで書き込むことにより、&lt;br /&gt;
-出力先を変更可能な状態で標準出力に出力できます。&lt;/p&gt;
-
-&lt;h2 id=&#34;メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;メモリ上に出力する&lt;/h2&gt;
-
-&lt;p&gt;golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。&lt;br /&gt;
-そして、String()関数により、書き込まれた文字列をstringとして取得できます。&lt;br /&gt;
-&lt;a href=&#34;http://golang.org/pkg/bytes/#Buffer&#34;&gt;http://golang.org/pkg/bytes/#Buffer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、&lt;br /&gt;
-標準出力に出力されたかどうかをテストすることができるようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;サンプルコード&lt;/h1&gt;
-
-&lt;p&gt;print.go&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-golang&#34;&gt;import (
-    &amp;quot;fmt&amp;quot;
-    &amp;quot;io&amp;quot;
-    &amp;quot;os&amp;quot;
-)
-
-func testPrint(w io.Writer) {
-    fmt.Fprint(w, &amp;quot;write test\n&amp;quot;)
-}
-
-func main() {
-    testPrint(os.Stdout)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;print_test.go&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-import (
-    &amp;quot;bytes&amp;quot;
-    &amp;quot;testing&amp;quot;
-)
-
-func TestPrint(t *testing.T) {
-    buf := &amp;amp;bytes.Buffer{}
-    testPrint(buf)
-    outputString := buf.String()
-    
-    correctString := &amp;quot;write test\n&amp;quot;
-    if correctString != outputString {
-        t.Errorf(&amp;quot;output string shud be %s but %s&amp;quot;, correctString, outputString)
-        t.FailNow()
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
