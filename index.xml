@@ -6,8 +6,31 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 11 May 2015 21:55:04 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2015 21:40:28 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年20週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-20/</link>
+      <pubDate>Mon, 18 May 2015 21:40:28 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-20/</guid>
+      <description>
+
+&lt;h1 id=&#34;一週間何もしていないことが可視化される:aa9a80d3c7f9b6c9852a691c72ac9714&#34;&gt;一週間何もしていないことが可視化される&lt;/h1&gt;
+
+&lt;p&gt;毎週先週やったことをまとめているので、&lt;br /&gt;
+先週何もしていないのが可視化される…&lt;/p&gt;
+
+&lt;h1 id=&#34;prマージされた:aa9a80d3c7f9b6c9852a691c72ac9714&#34;&gt;PRマージされた&lt;/h1&gt;
+
+&lt;p&gt;fluentd-forwarderに送っていたPRがマージされた。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder/pull/10&#34;&gt;https://github.com/fluent/fluentd-forwarder/pull/10&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;が、テストのバグでテストが通らないとの指摘が。&lt;br /&gt;
+ただし、手元のMacやLinuxでは通るので、Windowsだけの問題っぽいです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年19週目まとめ</title>
@@ -2034,41 +2057,6 @@ func main() {
 &lt;li&gt;ターミナルの問題の可能性も&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年14週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-14/</link>
-      <pubDate>Mon, 06 Apr 2015 07:37:34 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-14/</guid>
-      <description>
-
-&lt;h1 id=&#34;pitが便利:694b6c6ee0002c07e107ab179febb18f&#34;&gt;pitが便利&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/cho45/pit&#34;&gt;cho45/pit&lt;/a&gt;&lt;br /&gt;
-ユーザ名やキー等が必要な場合に、pitからロードするコードを書くことで、&lt;br /&gt;
-保存されていればそれをロード、保存されていなければエディタを立ち上げて入力を促し、&lt;br /&gt;
-結果をpitのディレクトリに保存してくれるものです。&lt;/p&gt;
-
-&lt;p&gt;これにより、アプリにパスワードを埋め込んだり、自分でいちいちファイルから読み込む必要がなくなり、&lt;br /&gt;
-秘密情報の管理がとても楽になります。&lt;/p&gt;
-
-&lt;p&gt;golangにもpitがあるらしく、便利なのでgoで使ったやつにも入れようと思います。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/typester/go-pit&#34;&gt;https://github.com/typester/go-pit&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;changelogアプリに良いのがない:694b6c6ee0002c07e107ab179febb18f&#34;&gt;changelogアプリに良いのがない&lt;/h1&gt;
-
-&lt;p&gt;githubの情報からchangelogを作ってくれるのはいくつかあります。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives&#34;&gt;https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ですが、どれも帯に短したすきに長しといった感じで、なかなか私が想定している使い方に合致した物がありません。&lt;br /&gt;
-やっていることはそんなに難しくないはずなので、やはり自作するしか無いのでしょうか…&lt;br /&gt;
-その場合、ある程度出力形式を変えられる形のがほしいですね。&lt;/p&gt;
-
-&lt;p&gt;一応golangでgithubのapiラッパーはあるようです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/google/go-github&#34;&gt;google/go-github&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
