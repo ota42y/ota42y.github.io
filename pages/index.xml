@@ -6,8 +6,39 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 18 May 2015 21:40:28 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2015 22:09:32 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年21週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-21/</link>
+      <pubDate>Mon, 25 May 2015 22:09:32 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-21/</guid>
+      <description>
+
+&lt;h1 id=&#34;体調を崩した:63b972d7b8a9e5b8ecb6903994a97d8c&#34;&gt;体調を崩した&lt;/h1&gt;
+
+&lt;p&gt;体調を崩して週の半分は倒れてた。&lt;br /&gt;
+3日倒れるとやることリストが大変なことになるので、&lt;br /&gt;
+体調がおかしい場合は速やかに医者に行って、薬をもらうべきだと再認識した。&lt;/p&gt;
+
+&lt;h1 id=&#34;c-03以前ではオーバーロードされたコンストラクタが呼び出せない:63b972d7b8a9e5b8ecb6903994a97d8c&#34;&gt;C++03以前ではオーバーロードされたコンストラクタが呼び出せない&lt;/h1&gt;
+
+&lt;p&gt;以下のように、コンストラクタから別のコンストラクタを呼び出すことで、&lt;br /&gt;
+処理を共通化するのはわりと自然ではないかと思います。&lt;/p&gt;
+
+&lt;p&gt;これはdelegate constructorとうい名前がついており、&lt;br /&gt;
+残念ながらC++11以降じゃないと使えません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct A {
+  A() : A(0) {}
+  A(int num) : a(num) {}
+  int a;
+};
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年20週目まとめ</title>
@@ -890,40 +921,6 @@ Build Flow Pluginを多用していたならば、こっちに乗り換えた方
 
 &lt;p&gt;もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、&lt;br /&gt;
 代わりのサービスを探すか作るかしようと思います…&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年06週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-06/</link>
-      <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-06/</guid>
-      <description>
-
-&lt;p&gt;ちゃんとその週に何をやったかをまとめると、&lt;br /&gt;
-今週はあんまり活動していない事がよくわかりますね…&lt;/p&gt;
-
-&lt;h1 id=&#34;jenkins-workflow-pluginが素晴らしそう:d8557742a33269e75592dd05f8ca14f3&#34;&gt;Jenkins Workflow Pluginが素晴らしそう&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/11/jenkins-conference/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;で知った、Workflow Pluginが思った以上に良さそうです。&lt;br /&gt;
-Jenkins本体の機能では出来ないmaster/slaveを選択してコマンドを実行するといったことが可能になり、&lt;br /&gt;
-効率の良い分散ビルドが出来るようになります。&lt;/p&gt;
-
-&lt;p&gt;そのうち詳しくまとめる予定…&lt;/p&gt;
-
-&lt;h1 id=&#34;思った以上にtwitterに時間を取られる:d8557742a33269e75592dd05f8ca14f3&#34;&gt;思った以上にTwitterに時間を取られる&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.binerx.aptrax&amp;amp;hl=ja&#34;&gt;Aptrax | App Usage Tracker&lt;/a&gt;というツールで、&lt;br /&gt;
-スマホの各アプリの使用時間を計測していますが、Twitterの使用率が凄い結果になっていました。&lt;/p&gt;
-
-&lt;p&gt;PC上で見ている時間も結構多く、かなりの時間を浪費している気がします…&lt;br /&gt;
-重要なことだけ抜き出してできる限り見ないみたいな事が必要ですね。&lt;/p&gt;
-
-&lt;h1 id=&#34;twieveでツイートをevernoteに保存:d8557742a33269e75592dd05f8ca14f3&#34;&gt;twieveでツイートをevernoteに保存&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://twieve.net/&#34;&gt;twieve&lt;/a&gt;を使って、ツイートをevernoteに保存するようにしました。&lt;br /&gt;
-これでやってることを呟いておけば、今週何をやったかを簡単に思い出せるようになるはずです。&lt;/p&gt;
 </description>
     </item>
     

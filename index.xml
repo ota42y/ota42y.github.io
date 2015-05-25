@@ -6,8 +6,39 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 18 May 2015 21:40:28 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2015 22:09:32 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年21週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-21/</link>
+      <pubDate>Mon, 25 May 2015 22:09:32 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-21/</guid>
+      <description>
+
+&lt;h1 id=&#34;体調を崩した:63b972d7b8a9e5b8ecb6903994a97d8c&#34;&gt;体調を崩した&lt;/h1&gt;
+
+&lt;p&gt;体調を崩して週の半分は倒れてた。&lt;br /&gt;
+3日倒れるとやることリストが大変なことになるので、&lt;br /&gt;
+体調がおかしい場合は速やかに医者に行って、薬をもらうべきだと再認識した。&lt;/p&gt;
+
+&lt;h1 id=&#34;c-03以前ではオーバーロードされたコンストラクタが呼び出せない:63b972d7b8a9e5b8ecb6903994a97d8c&#34;&gt;C++03以前ではオーバーロードされたコンストラクタが呼び出せない&lt;/h1&gt;
+
+&lt;p&gt;以下のように、コンストラクタから別のコンストラクタを呼び出すことで、&lt;br /&gt;
+処理を共通化するのはわりと自然ではないかと思います。&lt;/p&gt;
+
+&lt;p&gt;これはdelegate constructorとうい名前がついており、&lt;br /&gt;
+残念ながらC++11以降じゃないと使えません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct A {
+  A() : A(0) {}
+  A(int num) : a(num) {}
+  int a;
+};
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年20週目まとめ</title>
@@ -1891,170 +1922,6 @@ deviantARTは存在を知らなかったので、いろいろ調べてみたい�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;規模的にはpixivの倍ぐらいらしい&lt;/li&gt;
 &lt;li&gt;300万人で3億投稿&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>golangのラインエディタはlinerが便利</title>
-      <link>http://ota42y.com/blog/2015/04/11/go-liner/</link>
-      <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/04/11/go-liner/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/peterh/liner&#34;&gt;peterh/liner&lt;/a&gt;&lt;br /&gt;
-golangでCLIを作る際に活用できるラインエディタです。&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;p&gt;liner.NewLinerで作成し、Prompt関数で入力を待機します。&lt;br /&gt;
-入力があると関数が入力を返してくるため、それによって処理を分岐します。&lt;/p&gt;
-
-&lt;p&gt;なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、&lt;br /&gt;
-エラー時に終了するようにしておくことでCtrl+dで終了できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/peterh/liner&amp;quot;
-)
-
-func main() {
-	line := liner.NewLiner()
-	defer line.Close()
-
-	for {
-		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
-		if err != nil {
-			fmt.Println(&amp;quot;error: &amp;quot;, err)
-		} else {
-			fmt.Println(&amp;quot;get: &amp;quot;, l)
-
-			if l == &amp;quot;exit&amp;quot; {
-				break
-			}
-		}
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;入力履歴を使う:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;入力履歴を使う&lt;/h1&gt;
-
-&lt;p&gt;AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。&lt;br /&gt;
-&lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.AppendHistory&#34;&gt;State.AppendHistory&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/peterh/liner&amp;quot;
-	&amp;quot;os&amp;quot;
-)
-
-func main() {
-	line := liner.NewLiner()
-	defer line.Close()
-
-	f, err := os.Open(&amp;quot;inputs.log&amp;quot;)
-	if err == nil {
-		n, _ := line.ReadHistory(f)
-		fmt.Println(&amp;quot;load&amp;quot;, n, &amp;quot;history&amp;quot;)
-		f.Close()
-	}
-
-	for {
-		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
-		if err != nil {
-			fmt.Println(&amp;quot;error: &amp;quot;, err)
-		} else {
-			fmt.Println(&amp;quot;get: &amp;quot;, l)
-			line.AppendHistory(l)
-
-			if l == &amp;quot;exit&amp;quot; {
-				break
-			}
-		}
-	}
-
-	f, err = os.Create(&amp;quot;inputs.log&amp;quot;)
-	if err == nil {
-		fmt.Println(&amp;quot;write history&amp;quot;)
-
-		line.WriteHistory(f)
-		f.Close()
-	} else {
-		fmt.Println(&amp;quot;write history error: &amp;quot;, err)
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;タブ補完を使う:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;タブ補完を使う&lt;/h1&gt;
-
-&lt;p&gt;SetCompleter関数に補完用の関数を登録することで、タブ補完も使えます。&lt;br /&gt;
-&lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.SetCompleter&#34;&gt;State.SetCompleter&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;引数として、現在入力中のstringを受け取り、tab候補をstringの配列で返す関数を渡します。&lt;br /&gt;
-入力中の文字が配列のはじめの要素で置き換えられ、以降tabを押すごとに次の要素と置き換えられます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/peterh/liner&amp;quot;
-	&amp;quot;strings&amp;quot;
-)
-
-func main() {
-	inputs := make([]string, 0)
-
-	line := liner.NewLiner()
-	defer line.Close()
-
-	line.SetCompleter(func(line string) (c []string) {
-		for _, n := range inputs {
-			if strings.HasPrefix(n, strings.ToLower(line)) {
-				c = append(c, n)
-			}
-		}
-		return
-	})
-
-	for {
-		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
-		if err != nil {
-			fmt.Println(&amp;quot;error: &amp;quot;, err)
-		} else {
-			fmt.Println(&amp;quot;get: &amp;quot;, l)
-			inputs = append(inputs, l)
-
-			if l == &amp;quot;exit&amp;quot; {
-				break
-			}
-		}
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;まとめ:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ラインエディタに必要な物は大体揃っている
-
-&lt;ul&gt;
-&lt;li&gt;入力中の左右移動&lt;/li&gt;
-&lt;li&gt;履歴&lt;/li&gt;
-&lt;li&gt;補完&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;日本語入力はちょっとおかしい
-
-&lt;ul&gt;
-&lt;li&gt;日本語を入れて左右移動すると表示がおかしい&lt;/li&gt;
-&lt;li&gt;ターミナルの問題の可能性も&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
