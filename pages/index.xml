@@ -6,8 +6,65 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 25 May 2015 22:09:32 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2015 22:00:39 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年22週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-22/</link>
+      <pubDate>Mon, 01 Jun 2015 22:00:39 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-22/</guid>
+      <description>
+
+&lt;p&gt;今週まとめ&lt;/p&gt;
+
+&lt;h1 id=&#34;cでのマルチスレッド処理を調べてる:68ba6b064e3726dd0f45c78184617ab0&#34;&gt;Cでのマルチスレッド処理を調べてる&lt;/h1&gt;
+
+&lt;p&gt;Cにはクラスが無いので、Threadクラスを継承し、&lt;br /&gt;
+runメソッドをオーバーライドするといった、いろんな言語でよくあるパターンは使えません。&lt;br /&gt;
+代わりに、pthread_create関数にコールバック関数を渡すと、&lt;br /&gt;
+別スレッドから呼び出してくれるため、それを利用して別スレッドを作るようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;cでのロック処理を調べている:68ba6b064e3726dd0f45c78184617ab0&#34;&gt;Cでのロック処理を調べている&lt;/h1&gt;
+
+&lt;p&gt;ロック用変数を作り、pthread_mutex_lock関数を呼ぶことで、ロックをかけられます。&lt;/p&gt;
+
+&lt;p&gt;他のスレッドから起こされるまで待つには、&lt;br /&gt;
+mutexとcond変数を定義して、mutexのロックを取得して、&lt;br /&gt;
+pthread_cond_waitを呼びます。&lt;/p&gt;
+
+&lt;p&gt;一定時間たったら呼ばれて無くても起きて欲しい場合は、&lt;br /&gt;
+pthread_cond_timedwaitを呼びます。&lt;/p&gt;
+
+&lt;p&gt;なお、C++11からmutexオブジェクトといった、&lt;br /&gt;
+ロックや排他制御が簡単にできる仕組みが導入されています。&lt;/p&gt;
+
+&lt;h1 id=&#34;c-ではintに-演算が出来る:68ba6b064e3726dd0f45c78184617ab0&#34;&gt;C++ではintに[]演算が出来る&lt;/h1&gt;
+
+&lt;p&gt;元ネタ&lt;br /&gt;
+&lt;a href=&#34;http://twitter.com/mattn_jp/status/605245747429179392&#34;&gt;http://twitter.com/mattn_jp/status/605245747429179392&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;memory.h&amp;gt;
+
+int main() {
+  int v[] = {1, 2, 3};
+  int off = 2;
+  printf(&amp;quot;%d\n&amp;quot;, off[v]); // 3
+  printf(&amp;quot;%d\n&amp;quot;, 1[v]); // 2
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;C++では、intやenum型に対して[]が実行された場合、暗黙的な方変換によりstd::ptrdiff_tに変換されます。&lt;br /&gt;
+そのため、a[b]は&lt;code&gt;*(a+b)&lt;/code&gt;と同義になり、上の例は&lt;code&gt;*(off+v)&lt;/code&gt;や&lt;code&gt;*(1+v)&lt;/code&gt;と解釈され、
+正しく動くようです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://en.cppreference.com/w/cpp/language/operator_member_access&#34;&gt;http://en.cppreference.com/w/cpp/language/operator_member_access&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年21週目まとめ</title>
@@ -865,62 +922,6 @@ Windows上で開発するよりかは幾分マシになっていると思いま�
 実行環境はリモートで、みたいなことができれば良いのですが…&lt;/p&gt;
 
 &lt;p&gt;普段ターミナルでしか作業をしないのであれば、ターミナルの中が変わるだけなので問題ないと思います。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年07週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-07/</link>
-      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-07/</guid>
-      <description>
-
-&lt;p&gt;既に今年の1/8が終わっているという事実…&lt;/p&gt;
-
-&lt;h1 id=&#34;jenkinsのworkflow-pluginがとても便利:199b01a6c63e246a45b954855c93d154&#34;&gt;JenkinsのWorkflow Pluginがとても便利&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/02/10/workflow-plugin/&#34;&gt;Jenkins Workflow Pluginで複数slaveを扱うのが楽になる&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2015/02/11/jenkins-workflow/&#34;&gt;Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点 &lt;/a&gt;&lt;br /&gt;
-にまとめています。
-Build Flow Pluginを多用していたならば、こっちに乗り換えた方がいろいろ楽ですね。&lt;/p&gt;
-
-&lt;p&gt;ただし、まだ出たばかりでバグがあったり、所々かゆいところに手が届かなかったりするので、&lt;br /&gt;
-その辺の辛いところは結構あります…&lt;/p&gt;
-
-&lt;h1 id=&#34;remember-the-milkが使いにくく感じる:199b01a6c63e246a45b954855c93d154&#34;&gt;Remember The Milkが使いにくく感じる&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;良い点&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;タスクの追加時に独自の記法で様々な条件をつけられる&lt;/li&gt;
-&lt;li&gt;オフラインでAndroid, iOSで見られる(有料)&lt;/li&gt;
-&lt;li&gt;繰り返し処理、期日等の設定が十分に豊富&lt;/li&gt;
-&lt;li&gt;Evernotのノートとタスクを関連づけれる&lt;/li&gt;
-&lt;li&gt;タスクと参考資料をくっつけられる&lt;/li&gt;
-&lt;li&gt;ただし、RTM側でつけられる細かい情報をつけられない&lt;/li&gt;
-&lt;li&gt;そのため設定はRTMでする必要があり、そこまで便利ではない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;悪い点&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PC上で使いづらい&lt;/li&gt;
-&lt;li&gt;ブラウザアプリはURLをショートカットキーで使えない&lt;/li&gt;
-&lt;li&gt;送信済みリスト等、複数人での作業用機能がOFFにできない&lt;/li&gt;
-&lt;li&gt;別のリストに移動するショートカットキーがない&lt;/li&gt;
-&lt;li&gt;サブタスクが使えない&lt;/li&gt;
-&lt;li&gt;特定のタスクを細かく分割できない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;特にサブタスクが使えず、かつリスト操作が弱いのがものすごく不便で、&lt;br /&gt;
-特定の大タスクに対してやることをざっと書き出したときに、&lt;br /&gt;
-それを上手くまとめられず、タスクの優先順位等がわかり辛くなります。&lt;/p&gt;
-
-&lt;p&gt;もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、&lt;br /&gt;
-代わりのサービスを探すか作るかしようと思います…&lt;/p&gt;
 </description>
     </item>
     
