@@ -6,8 +6,84 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 01 Jun 2015 22:00:39 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2015 07:39:36 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Linuxのlocaleがおかしくなっていた</title>
+      <link>http://ota42y.com/blog/2015/06/03/linux_local/</link>
+      <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/06/03/linux_local/</guid>
+      <description>
+
+&lt;p&gt;突然プログラムが起動しなくなったため、&lt;br /&gt;
+原因を探ったところ、localesが壊れていました。&lt;br /&gt;
+そのため、再インストールすることで直りました。&lt;br /&gt;
+言語取得部分は動くけど、おかしい結果を返す壊れ方のため、&lt;br /&gt;
+発見にわりと手間取りました。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;プログラム上でlocaleを参照する部分がおかしい結果を返す
+
+&lt;ul&gt;
+&lt;li&gt;常にANSI_X3.4-1968&lt;/li&gt;
+&lt;li&gt;Debian 7.8&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;dpkg-reconfigure localesが何か壊れているメッセージを出す
+
+&lt;ul&gt;
+&lt;li&gt;localeをアップデートすると直る&lt;/li&gt;
+&lt;li&gt;apt-get install locales&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;localeの取得がおかしい:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;localeの取得がおかしい&lt;/h1&gt;
+
+&lt;p&gt;pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。
+ですが、&lt;br /&gt;
+&lt;code&gt;LANG=&#39;ja_JP.UTF-8&#39; echo &#39;import locale; print locale.getpreferredencoding()&#39; | python&lt;/code&gt;&lt;br /&gt;
+を実行しても、&lt;code&gt;ANSI_X3.4-1968&lt;/code&gt;が返ってきてしまい、日本語処理の部分でおかしくなっていました。&lt;br /&gt;
+(前にそのプログラムは動いていたので、気がついたらおかしくなっていました)&lt;/p&gt;
+
+&lt;p&gt;localeを実行してみたところ、以下のように表示されました。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;locale -a
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_COLLATE to default locale: No such file or directory
+C
+C.UTF-8
+POSIX
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうやら日本語のlocaleが有効ではないようです。&lt;/p&gt;
+
+&lt;p&gt;ですが、&lt;code&gt;/etc/locale.gen&lt;/code&gt;では、ja_JP.UTF-8がコメントアウトされていて有効になっていました。&lt;/p&gt;
+
+&lt;h1 id=&#34;原因は不明だがとりあえず直る:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;原因は不明だがとりあえず直る&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo su
+export LC_ALL=C # jaは使えないのでCにする必要がある
+export LANG=C # jaは使えないのでCにする必要がある
+sudo dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;したら、localesが壊れているというメッセージが出てきました。&lt;/p&gt;
+
+&lt;p&gt;そのため、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install locales
+sudo dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;で、ja_JP.UTF-8を有効にしてリブートしたら上手くいくようになりました。&lt;/p&gt;
+
+&lt;p&gt;おそらくlocales周りがおかしくなっており、新しいlocalesを入れる際にそれが直ったのだと思います。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年22週目まとめ</title>
@@ -1684,49 +1760,6 @@ GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&g
 &lt;li&gt;&lt;a href=&#34;https://github.com/zenazn/goji&#34;&gt;https://github.com/zenazn/goji&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年15週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-15/</link>
-      <pubDate>Mon, 13 Apr 2015 11:53:02 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-15/</guid>
-      <description>
-
-&lt;h1 id=&#34;atom-ioのstarでパッケージ管理:d98e074c42c4bcd9d2f6d106cbfe320e&#34;&gt;Atom.ioのstarでパッケージ管理&lt;/h1&gt;
-
-&lt;p&gt;Atom.ioでは、パッケージのページ上でそのパッケージにスターをつけることができます。&lt;br /&gt;
-&lt;a href=&#34;https://atom.io/packages/project-manager&#34;&gt;https://atom.io/packages/project-manager&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ここでスターをつけたパッケージはユーザのお気に入り扱いになり、&lt;br /&gt;
-ユーザページ(例: &lt;a href=&#34;https://atom.io/users/ota42y&#34;&gt;https://atom.io/users/ota42y&lt;/a&gt; )上で確認できます。&lt;/p&gt;
-
-&lt;p&gt;さらに、Atom.ioにはapmというパッケージ管理システムがついており、&lt;br /&gt;
-これにstarsオプションを与えることで一覧を見ることや、&lt;code&gt;apm stars --install&lt;/code&gt;で、&lt;br /&gt;
-ユーザのスターをつけたパッケージをすべてインストールできます。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/atom/apm/blob/master/src/stars.coffee&#34;&gt;https://github.com/atom/apm/blob/master/src/stars.coffee&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;プラグインのバックアップはもちろんのこと、複数環境でのプラグイン同期にとても便利なので重宝します。&lt;/p&gt;
-
-&lt;h1 id=&#34;タスク管理システム作ってる:d98e074c42c4bcd9d2f6d106cbfe320e&#34;&gt;タスク管理システム作ってる&lt;/h1&gt;
-
-&lt;p&gt;最低限表示するだけのver. 0.0.1ができそうです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;対話型インタフェースを作るのにlinerが凄い便利でした。&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2015/04/11/go-liner/&#34;&gt;golangのラインエディタはlinerが便利&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Travis.ciとか入れてCI回したいですが、テスト用コンテナでの依存パッケージの管理とか大変そうです…&lt;br /&gt;
-godepやgomみたいなバージョン管理の導入を検討しますかね。&lt;/p&gt;
-
-&lt;h1 id=&#34;第6回ニコニコ学会β-データ研究会に参加した:d98e074c42c4bcd9d2f6d106cbfe320e&#34;&gt;第6回ニコニコ学会β　データ研究会に参加した&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/04/12/niconico_data_6/&#34;&gt;参加記録 第6回ニコニコ学会β　データ研究会&lt;/a&gt;&lt;br /&gt;
-今回の基調講演も発表もとてもおもしろかったです。&lt;br /&gt;
-特に人狼はそこそこやっているため、とても参考になりました。&lt;br /&gt;
-deviantARTは存在を知らなかったので、いろいろ調べてみたいですね…&lt;/p&gt;
 </description>
     </item>
     
