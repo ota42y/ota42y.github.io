@@ -6,8 +6,41 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 01 Jun 2015 22:00:39 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2015 23:41:38 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年23週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-23/</link>
+      <pubDate>Mon, 08 Jun 2015 23:41:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-23/</guid>
+      <description>
+
+&lt;h1 id=&#34;lock-freeって何:b762442d260e082e6120a3e456dc065a&#34;&gt;Lock Freeって何&lt;/h1&gt;
+
+&lt;p&gt;複数スレッドや複数コアから同じデータを更新する場合、&lt;br /&gt;
+通常はlockをかけて排他制御を行いますが、lockをかけずに行う方法があるらしいです。&lt;/p&gt;
+
+&lt;p&gt;lockをかける場合、その間そのデータにはアクセスできず、並列処理を止めてしまうため、&lt;br /&gt;
+並列数が大きくなるに従って性能が劣化していくそうです。&lt;br /&gt;
+lockなしで排他処理を行う場合、並列数を増やしても性能の劣化が無くなるそうです。&lt;/p&gt;
+
+&lt;p&gt;やっていることとしては、値をコピーして変更を加え、&lt;br /&gt;
+「コピー前の値と現在の値が一緒かどうかをチェック」「変更した値を書き込む」を一括にやる命令を利用し、&lt;br /&gt;
+比較と更新を同時にするというものだそうです。&lt;br /&gt;
+(Compare-and-Swap、CAS命令)&lt;/p&gt;
+
+&lt;p&gt;この比較して更新する命令があることで、&lt;br /&gt;
+ロックせずに複数から値を変更しても一貫性が保たれるらしいです。&lt;br /&gt;
+また、この命令が無いとlock freeが実現できない事が証明されているらしいです。&lt;br /&gt;
+ &lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%9A%E3%82%A2%E3%83%BB%E3%82%A2%E3%83%B3%E3%83%89%E3%83%BB%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97&#34;&gt;コンペア・アンド・スワップ&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;i386ではCMPXCHG〜命令でこれが出来るらしく、&lt;br /&gt;
+goのatomicパッケージでも利用されているようです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34&#34;&gt;https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年22週目まとめ</title>
@@ -880,48 +913,6 @@ iOS,Android,Mac,Windows等かなりのプラットフォームに対応してい
 &lt;/ul&gt;
 
 &lt;p&gt;当面は下の3つを進めていく方向でいきます。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年08週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-08/</link>
-      <pubDate>Sun, 22 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-08/</guid>
-      <description>
-
-&lt;h1 id=&#34;todo-txtは思想は良いけど実際使うと微妙:a32b2cc8e9c86409bd3aff718e1a3967&#34;&gt;Todo.txtは思想は良いけど実際使うと微妙&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://todotxt.com/&#34;&gt;Todo.txt&lt;/a&gt;
-テキストオンリーでTodo管理ができる手法です。&lt;br /&gt;
-ファイルをDropboxに置くことで、&lt;br /&gt;
-どこでも同期してTodo管理ができるようになります。&lt;/p&gt;
-
-&lt;p&gt;本当に単なるテキストなので管理が簡単で、エディタで編集も容易です。&lt;br /&gt;
-コマンドラインから条件を指定して表示できるのも便利で良い感じでした。&lt;br /&gt;
-RTM CLIのオフライン版みたいな使い勝手です。&lt;/p&gt;
-
-&lt;p&gt;ただし、サブタスクが使えないという問題があります。
-一応プラグインとして用意されてはいますが、&lt;br /&gt;
-そうすると他のプラグインが使えなくなってしまうため、別の問題が発生してしまいます。&lt;/p&gt;
-
-&lt;p&gt;このテキストベースという考え方はすごく良く、かつ作るのもそんなに大変じゃなさそうなので、&lt;br /&gt;
-自分で作ってみた方が早そうです。&lt;/p&gt;
-
-&lt;h1 id=&#34;windown-on-linuxで開発環境を整える:a32b2cc8e9c86409bd3aff718e1a3967&#34;&gt;Windown on Linuxで開発環境を整える&lt;/h1&gt;
-
-&lt;p&gt;Windowsで開発環境を整えるのは恐ろしく大変です。&lt;br /&gt;
-幸いなことに私のWindowsマシンは十分なスペックがあるため、&lt;br /&gt;
-VMware上にLinuxを立てて、SSHとファイル共有でしのぐことにしました。&lt;/p&gt;
-
-&lt;p&gt;IDEとかはWindows側で動かしているため、IDEの実行ボタンが使えなくなるのがかなりつらいですが、&lt;br /&gt;
-Windows上で開発するよりかは幾分マシになっていると思います。&lt;/p&gt;
-
-&lt;p&gt;ただし、IDEからデバッガが使えないため、そのあたりでつらい現実が待っている気がします。&lt;br /&gt;
-実行環境はリモートで、みたいなことができれば良いのですが…&lt;/p&gt;
-
-&lt;p&gt;普段ターミナルでしか作業をしないのであれば、ターミナルの中が変わるだけなので問題ないと思います。&lt;/p&gt;
 </description>
     </item>
     

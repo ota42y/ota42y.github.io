@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="ASUS MeMO Pad 7 ME572CをRoot化した">
+    <meta name="description" content="2015年23週目まとめ">
     <meta name="author" content="ota42y">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     </script>
 
     
-    <title>ASUS MeMO Pad 7 ME572CをRoot化した | おおたの物置</title>
+    <title>2015年23週目まとめ | おおたの物置</title>
     
 
     <link rel="stylesheet" href="/css/base.css">
@@ -54,37 +54,17 @@
             <div class="article">
 
                 <div class="post_title">
-                    <h1>ASUS MeMO Pad 7 ME572CをRoot化した</h1>
+                    <h1>2015年23週目まとめ</h1>
                     
 
-<time datetime="2014-12-28" class="post_data">
-2014-12-28
+<time datetime="2015-06-08" class="post_data">
+2015-06-08
 </time>
 
 
 
 
 
-<div class="separator">|</div>
-<div class="post_data">
-    Category: <a href="/categories/tech">tech</a>
-</div>
-
-
-
-
-<div class="tags">
-    <div class="separator">|</div>
-
-    <div class="post_data">tags: [</div>
-
-    
-    <div class="post_data">
-        <a href="/tags/android">android</a>
-    </div>
-    
-    <div class="post_data">]</div>
-</div>
 
 
                     <div class="clear"></div>
@@ -98,7 +78,7 @@
                             <div id="toc_index">目次</div>
                             <nav id="TableOfContents">
 <ul>
-<li><a href="#root化手順:da1b4865caf34b84064437e98e031591">Root化手順</a></li>
+<li><a href="#lock-freeって何:b762442d260e082e6120a3e456dc065a">Lock Freeって何</a></li>
 </ul>
 </nav>
                         </div>
@@ -107,66 +87,28 @@
 
                     
 
-<p>ASUS MeMO Pad 7 ME572Cを買いました。</p>
+<h1 id="lock-freeって何:b762442d260e082e6120a3e456dc065a">Lock Freeって何</h1>
 
-<p><a href="http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/">タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS</a></p>
+<p>複数スレッドや複数コアから同じデータを更新する場合、<br />
+通常はlockをかけて排他制御を行いますが、lockをかけずに行う方法があるらしいです。</p>
 
-<p>Nexus 9とかと迷いましたが、</p>
+<p>lockをかける場合、その間そのデータにはアクセスできず、並列処理を止めてしまうため、<br />
+並列数が大きくなるに従って性能が劣化していくそうです。<br />
+lockなしで排他処理を行う場合、並列数を増やしても性能の劣化が無くなるそうです。</p>
 
-<ul>
-<li>コストパフォーマンスがいい
+<p>やっていることとしては、値をコピーして変更を加え、<br />
+「コピー前の値と現在の値が一緒かどうかをチェック」「変更した値を書き込む」を一括にやる命令を利用し、<br />
+比較と更新を同時にするというものだそうです。<br />
+(Compare-and-Swap、CAS命令)</p>
 
-<ul>
-<li>安くてそこそこ高性能</li>
-</ul></li>
-<li>SDカードが使える
+<p>この比較して更新する命令があることで、<br />
+ロックせずに複数から値を変更しても一貫性が保たれるらしいです。<br />
+また、この命令が無いとlock freeが実現できない事が証明されているらしいです。<br />
+ <a href="http://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%9A%E3%82%A2%E3%83%BB%E3%82%A2%E3%83%B3%E3%83%89%E3%83%BB%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97">コンペア・アンド・スワップ</a></p>
 
-<ul>
-<li>気軽に容量増強出来る</li>
-</ul></li>
-</ul>
-
-<p>といった点から、これに決めました。</p>
-
-<p>ですが実際に届いて起動してみたところ、<br />
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。</p>
-
-<p>特に「やることリスト」(<a href="https://play.google.com/store/apps/details?id=com.asus.task&amp;hl=ja">ASUS Do It Later</a>)というアプリは、<br />
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。</p>
-
-<p>そのため、Rootを取って無効化することにしました。</p>
-
-<h1 id="root化手順:da1b4865caf34b84064437e98e031591">Root化手順</h1>
-
-<p>RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。<br />
-(2014/12/28の最新版は1.4.6.8r)</p>
-
-<p>手順としては以下の通りになります。</p>
-
-<ul>
-<li>RootZenFoneをインストール</li>
-<li>Wifiと3Gを機内モードにして切る</li>
-<li>RootZenFoneを起動</li>
-<li>通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す</li>
-<li>変化がなくなるまで待つ
-
-<ul>
-<li>色々ポップアップが出たりする</li>
-</ul></li>
-<li>もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
-
-<ul>
-<li>この時点でRoot化出来ています</li>
-</ul></li>
-<li>AsusLiveDemoというアカウントが追加されているため削除</li>
-<li>RootZenFonを消す</li>
-<li>通信を有効か</li>
-<li>SuperSuが自動でインストールされているので、最新版に更新</li>
-<li>SuperSuを起動し、データ更新後に再起動を促されるので再起動</li>
-</ul>
-
-<p>Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。<br />
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</p>
+<p>i386ではCMPXCHG〜命令でこれが出来るらしく、<br />
+goのatomicパッケージでも利用されているようです。<br />
+<a href="https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34">https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34</a></p>
 
                 </div>
 
@@ -184,7 +126,7 @@
 
     
     <span class="hatena">
-        <a href="http://ota42y.com/blog/2014/12/28/memopad-root/" class="hatena-bookmark-button"
+        <a href="http://ota42y.com/pages/summary/2015/week-23/" class="hatena-bookmark-button"
            data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
            title="このエントリーをはてなブックマークに追加">
             <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
