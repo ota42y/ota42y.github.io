@@ -202,7 +202,7 @@ module.exports.Test = Test
 &lt;p&gt;sinonに関しては他にもいろいろ有用なものがあります。&lt;br /&gt;
 ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://alpha.mixi.co.jp/2011/10798/&#34;&gt;http://alpha.mixi.co.jp/2011/10798/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://alpha.mixi.co.jp/2011/10798/&#34;&gt;http://alpha.mixi.co.jp/&lt;sup&gt;2011&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10798&lt;/sub&gt;/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
