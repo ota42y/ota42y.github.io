@@ -6,8 +6,205 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 03 Jun 2015 07:39:36 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2015 07:47:43 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>C言語でのスレッド処理</title>
+      <link>http://ota42y.com/blog/2015/06/18/c-thread/</link>
+      <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
+      <description>
+
+&lt;p&gt;C言語でのスレッド処理と、ロックの仕方をまとめました。&lt;br /&gt;
+他の言語のようにスレッド用のクラスを継承するのでは無く、&lt;br /&gt;
+別スレッドで実行する関数のポインタと、&lt;br /&gt;
+その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
+
+&lt;h2 id=&#34;スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
+
+&lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_create(pthread_t * thread,
+	 pthread_attr_t * attr,
+	 void * (*start_routine)(void *),
+	 void * arg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;thread
+
+&lt;ul&gt;
+&lt;li&gt;スレッド管理用のpthread_t型の変数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;attr
+
+&lt;ul&gt;
+&lt;li&gt;スレッドの属性を指定する。&lt;/li&gt;
+&lt;li&gt;NULLの場合はデフォルトが使われる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;(*start_routine)(void *)
+
+&lt;ul&gt;
+&lt;li&gt;別スレッドから呼び出される関数へのポインタ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;arg
+
+&lt;ul&gt;
+&lt;li&gt;start_routineの引数として渡すデータのポインタ&lt;/li&gt;
+&lt;li&gt;元のスレッドからデータを送るのに使う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
+
+&lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_join(pthread_t th, void **thread_return);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;th
+
+&lt;ul&gt;
+&lt;li&gt;待機するスレッドをpthread_t型の変数で指定する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;**thread_return
+
+&lt;ul&gt;
+&lt;li&gt;スレッドの戻り値を格納する領域&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
+排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
+
+&lt;p&gt;実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。&lt;/p&gt;
+
+&lt;p&gt;なお、コンパイルする際はは-pthreadオプションを指定する必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;pthread.h&amp;quot;
+
+int a = 0;
+
+void *func_thread(void *p) {
+  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  printf(&amp;quot;test\n&amp;quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&amp;quot;a=%d\n&amp;quot;, a);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;mutexによるロック処理&lt;/h1&gt;
+
+&lt;h2 id=&#34;排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;排他制御を行う&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
+処理をロックすることができます。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
+このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
+そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;pthread.h&amp;quot;
+
+int a = 0;
+pthread_mutex_t mutex;
+
+void *func_thread(void *p) {
+  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+    pthread_mutex_lock(&amp;amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  pthread_mutex_init(&amp;amp;mutex, NULL);
+  
+  printf(&amp;quot;test\n&amp;quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+    pthread_mutex_lock(&amp;amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&amp;quot;a=%d\n&amp;quot;, a);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Linuxのlocaleがおかしくなっていた</title>
@@ -1494,105 +1691,6 @@ end
 &lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
 これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>http://ota42y.com/blog/2015/01/23/ram-disk/</link>
-      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/23/ram-disk/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:60a44556319ed47b4775982878e62460&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;RAMディスクを作ってビルドすると早くなる
-
-&lt;ul&gt;
-&lt;li&gt;SSD上でビルドすると9分&lt;/li&gt;
-&lt;li&gt;RAMディスクでビルドすると6分&lt;/li&gt;
-&lt;li&gt;Androidは未検証だが同じと思われる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Macだととても簡単にRAMディスクが作れる&lt;/li&gt;
-&lt;li&gt;Jenkins等、ビルドが主目的の場合に有効と思われる&lt;/li&gt;
-&lt;li&gt;メモリが余っているならやる価値はある&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;mac-os-xでのramディスク作成:60a44556319ed47b4775982878e62460&#34;&gt;Mac OS XでのRAMディスク作成&lt;/h1&gt;
-
-&lt;p&gt;Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。&lt;br /&gt;
-メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。&lt;/p&gt;
-
-&lt;p&gt;また、rootでなくても作成できるため、非常に便利です&lt;/p&gt;
-
-&lt;h2 id=&#34;ディスク作成手順:60a44556319ed47b4775982878e62460&#34;&gt;ディスク作成手順&lt;/h2&gt;
-
-&lt;p&gt;2つコマンドを実行するだけです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hdid -nomount ram://4096000
-# 指定した容量でRAMディスクが作成されます。
-# /dev/disk2等作成された場所が返ります。
-# ファイルシステムがないためマウントは失敗します。
-# そのため、-nomuntをつけています。
-
-diskutil eraseDisk HFS+ RAM /dev/disk2
-# 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします
-# さらに、RAMという名前でマウントします。
-# これにより、/Volumes/RAMでアクセスできるようになります。
-
-hdiutil detach disk2
-# 作成したディスクをアンマウントして削除します
-# ディスクは消滅するのでご注意ください
-# diskutil unmountDisk
-# diskutil eject
-# の組み合わせと同じですが、コマンド一つになるため楽です
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;速度比較:60a44556319ed47b4775982878e62460&#34;&gt;速度比較&lt;/h2&gt;
-
-&lt;p&gt;Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。&lt;br /&gt;
-速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
-
-&lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
-ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。&lt;/p&gt;
-
-&lt;h1 id=&#34;ビルド時間比較:60a44556319ed47b4775982878e62460&#34;&gt;ビルド時間比較&lt;/h1&gt;
-
-&lt;p&gt;性能的には以上の通りですが、実際にビルド時間にはどれほど影響があるかを調べてみました。&lt;/p&gt;
-
-&lt;p&gt;比較には&lt;a href=&#34;https://github.com/cocos2d/cocos2d-x-samples&#34;&gt;cocos2d-x-sample&lt;/a&gt;を利用しました。&lt;br /&gt;
-ビルドには&lt;a href=&#34;https://github.com/nomad/shenzhen&#34;&gt;shenzhen&lt;/a&gt;を利用し、コマンドラインからiOSのクリーンビルドを行いました。&lt;/p&gt;
-
-&lt;p&gt;残念ながら証明書が無いためipaを作成することが出来ず、&lt;br /&gt;
-かつその場合にshenzhenが何故か終了せず、timeコマンド等で正確な時間計測が出来ませんでした。&lt;br /&gt;
-timeコマンドを使い手作業で計ったところ、SSD上では9分13秒、RAMディスク上では6分01秒とうい結果になりました。&lt;br /&gt;
-手計測による誤差はせいぜい数秒低度なため、3分以上早くなっているのは確実と言えます。&lt;/p&gt;
-
-&lt;h1 id=&#34;その他:60a44556319ed47b4775982878e62460&#34;&gt;その他&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;R/Wの性能は5倍〜10倍と凄く高速になっている&lt;/li&gt;
-&lt;li&gt;ビルド時間は30%ぐらい減った
-
-&lt;ul&gt;
-&lt;li&gt;ただし、プロジェクトによっては差異があると思われる&lt;/li&gt;
-&lt;li&gt;CPUやメモリの影響もあるため、R/Wの性能向上がそのまま反映されるわけではない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;電源を切ると消えるので使い道は慎重に
-
-&lt;ul&gt;
-&lt;li&gt;開発用よりもビルド専用に使った方が安心&lt;/li&gt;
-&lt;li&gt;Jenkinsのビルドをここで行うのは良い案と思われる&lt;/li&gt;
-&lt;li&gt;ログが残らないので、成果物の保存はよく考える必要あり&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;当然ながら空きメモリ容量を消費するので、余っていない場合は注意&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

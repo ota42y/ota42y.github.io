@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on おおたの物置</title>
+    <link>http://ota42y.com/tags/c/</link>
+    <description>Recent content in C on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 18 Jun 2015 07:47:43 +0900</lastBuildDate>
+    <atom:link href="http://ota42y.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>C言語でのスレッド処理</title>
+      <link>http://ota42y.com/blog/2015/06/18/c-thread/</link>
+      <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
+      <description>
+
+&lt;p&gt;C言語でのスレッド処理と、ロックの仕方をまとめました。&lt;br /&gt;
+他の言語のようにスレッド用のクラスを継承するのでは無く、&lt;br /&gt;
+別スレッドで実行する関数のポインタと、&lt;br /&gt;
+その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
+
+&lt;h2 id=&#34;スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
+
+&lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_create(pthread_t * thread,
+	 pthread_attr_t * attr,
+	 void * (*start_routine)(void *),
+	 void * arg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;thread
+
+&lt;ul&gt;
+&lt;li&gt;スレッド管理用のpthread_t型の変数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;attr
+
+&lt;ul&gt;
+&lt;li&gt;スレッドの属性を指定する。&lt;/li&gt;
+&lt;li&gt;NULLの場合はデフォルトが使われる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;(*start_routine)(void *)
+
+&lt;ul&gt;
+&lt;li&gt;別スレッドから呼び出される関数へのポインタ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;arg
+
+&lt;ul&gt;
+&lt;li&gt;start_routineの引数として渡すデータのポインタ&lt;/li&gt;
+&lt;li&gt;元のスレッドからデータを送るのに使う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
+
+&lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_join(pthread_t th, void **thread_return);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;th
+
+&lt;ul&gt;
+&lt;li&gt;待機するスレッドをpthread_t型の変数で指定する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;**thread_return
+
+&lt;ul&gt;
+&lt;li&gt;スレッドの戻り値を格納する領域&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
+排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
+
+&lt;p&gt;実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。&lt;/p&gt;
+
+&lt;p&gt;なお、コンパイルする際はは-pthreadオプションを指定する必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;pthread.h&amp;quot;
+
+int a = 0;
+
+void *func_thread(void *p) {
+  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  printf(&amp;quot;test\n&amp;quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&amp;quot;a=%d\n&amp;quot;, a);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;mutexによるロック処理&lt;/h1&gt;
+
+&lt;h2 id=&#34;排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;排他制御を行う&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
+処理をロックすることができます。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
+このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
+そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;pthread.h&amp;quot;
+
+int a = 0;
+pthread_mutex_t mutex;
+
+void *func_thread(void *p) {
+  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+    pthread_mutex_lock(&amp;amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  pthread_mutex_init(&amp;amp;mutex, NULL);
+  
+  printf(&amp;quot;test\n&amp;quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+    pthread_mutex_lock(&amp;amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&amp;quot;a=%d\n&amp;quot;, a);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

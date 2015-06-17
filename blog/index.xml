@@ -6,8 +6,205 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 03 Jun 2015 07:39:36 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2015 07:47:43 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>C言語でのスレッド処理</title>
+      <link>http://ota42y.com/blog/2015/06/18/c-thread/</link>
+      <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
+      <description>
+
+&lt;p&gt;C言語でのスレッド処理と、ロックの仕方をまとめました。&lt;br /&gt;
+他の言語のようにスレッド用のクラスを継承するのでは無く、&lt;br /&gt;
+別スレッドで実行する関数のポインタと、&lt;br /&gt;
+その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
+
+&lt;h2 id=&#34;スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
+
+&lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_create(pthread_t * thread,
+	 pthread_attr_t * attr,
+	 void * (*start_routine)(void *),
+	 void * arg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;thread
+
+&lt;ul&gt;
+&lt;li&gt;スレッド管理用のpthread_t型の変数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;attr
+
+&lt;ul&gt;
+&lt;li&gt;スレッドの属性を指定する。&lt;/li&gt;
+&lt;li&gt;NULLの場合はデフォルトが使われる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;(*start_routine)(void *)
+
+&lt;ul&gt;
+&lt;li&gt;別スレッドから呼び出される関数へのポインタ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;arg
+
+&lt;ul&gt;
+&lt;li&gt;start_routineの引数として渡すデータのポインタ&lt;/li&gt;
+&lt;li&gt;元のスレッドからデータを送るのに使う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
+
+&lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_join(pthread_t th, void **thread_return);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;th
+
+&lt;ul&gt;
+&lt;li&gt;待機するスレッドをpthread_t型の変数で指定する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;**thread_return
+
+&lt;ul&gt;
+&lt;li&gt;スレッドの戻り値を格納する領域&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
+排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
+
+&lt;p&gt;実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。&lt;/p&gt;
+
+&lt;p&gt;なお、コンパイルする際はは-pthreadオプションを指定する必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;pthread.h&amp;quot;
+
+int a = 0;
+
+void *func_thread(void *p) {
+  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  printf(&amp;quot;test\n&amp;quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&amp;quot;a=%d\n&amp;quot;, a);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;mutexによるロック処理&lt;/h1&gt;
+
+&lt;h2 id=&#34;排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;排他制御を行う&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
+処理をロックすることができます。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
+このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
+そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
+#include &amp;quot;pthread.h&amp;quot;
+
+int a = 0;
+pthread_mutex_t mutex;
+
+void *func_thread(void *p) {
+  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+    pthread_mutex_lock(&amp;amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  pthread_mutex_init(&amp;amp;mutex, NULL);
+  
+  printf(&amp;quot;test\n&amp;quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
+
+  int i=0;
+  for(i=0; i &amp;lt; 10000; i++){
+    pthread_mutex_lock(&amp;amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&amp;quot;a=%d\n&amp;quot;, a);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Linuxのlocaleがおかしくなっていた</title>
@@ -2024,102 +2221,6 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
 
 &lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
 一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>JenkinsをHTTP経由で叩く</title>
-      <link>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
-      <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JenkinsはWebベースのUI
-
-&lt;ul&gt;
-&lt;li&gt;操作の敷居が低い&lt;/li&gt;
-&lt;li&gt;使い込むと使いづらくなる&lt;/li&gt;
-&lt;li&gt;反応速度&lt;/li&gt;
-&lt;li&gt;複数のビルド実行&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Remote access API
-
-&lt;ul&gt;
-&lt;li&gt;HTTP経由でJobを実行できる&lt;/li&gt;
-&lt;li&gt;ページ表示を待たなくていいため高速&lt;/li&gt;
-&lt;li&gt;プログラムから実行可能&lt;/li&gt;
-&lt;li&gt;ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;jenkinsのjob実行は大変:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
-
-&lt;p&gt;JenkinsはWebブラウザを使ってGUIで操作するため、&lt;br /&gt;
-操作の敷居が低く、簡単に扱えるようになっています。&lt;/p&gt;
-
-&lt;p&gt;ですが、ブラウザやJenkins本体の状態によってはとても遅くなってしまい、&lt;br /&gt;
-ページを切り替えるのに3，4秒待つといった状態まで遅くなると、&lt;br /&gt;
-ビルドをするのがとても辛くなります。&lt;/p&gt;
-
-&lt;p&gt;また、パラメータの組み合わせの分だけビルドしようとすると、&lt;br /&gt;
-さらに辛くなってしまいます。&lt;/p&gt;
-
-&lt;p&gt;このような場合に、Jenkinsに用意されているRemote access APIを使うことで、&lt;br /&gt;
-Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、&lt;br /&gt;
-パラメータの数だけクリックをする必要性から逃れられます。&lt;/p&gt;
-
-&lt;h1 id=&#34;remote-access-api:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;Remote access API&lt;/h1&gt;
-
-&lt;p&gt;詳しくはこちら&lt;br /&gt;
-&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;要するに、パラメータが無い場合は&lt;br /&gt;
-&lt;code&gt;http://HOST/job/JOB_NAME/build&lt;/code&gt;
-に、ある場合は&lt;br /&gt;
-&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters&lt;/code&gt;
-にPOSTで投げるとビルドできます。&lt;/p&gt;
-
-&lt;p&gt;パラメータの投げ方はフォームデータとしてでもいいですし、&lt;br /&gt;
-&lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value&lt;/code&gt;
-のように、URLに直接入れても大丈夫のようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルスクリプト:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;サンプルスクリプト&lt;/h1&gt;
-
-&lt;p&gt;3*3=9種類のビルドを一気に実行するスクリプトです&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require &#39;open-uri&#39;
-require &#39;net/http&#39;
-
-platforms = [&amp;quot;ios&amp;quot;,  &amp;quot;android&amp;quot;, &amp;quot;windows&amp;quot;]
-settings =  [&amp;quot;debug&amp;quot;,&amp;quot;release&amp;quot;, &amp;quot;store&amp;quot;]
-
-platforms.product(settings).each do |platform, setting|
-  params = {:PLATFORM =&amp;gt; platform, :SETTING =&amp;gt; setting}
-  p params
-
-  url = URI.parse(&#39;http://HOST/job/JOB_NAME/buildWithParameters&#39;)
-  req = Net::HTTP::Post.new(url.path)
-  req.basic_auth &#39;NAME&#39;, &#39;PASSWORD&#39;
-  req.set_form_data(params)
-  res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
-  case res
-  when Net::HTTPSuccess, Net::HTTPRedirection
-    p &amp;quot;OK&amp;quot;
-  else
-    res.value
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;問題点:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;問題点&lt;/h1&gt;
-
-&lt;p&gt;Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。&lt;br /&gt;
-そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss&lt;/p&gt;
 </description>
     </item>
     
