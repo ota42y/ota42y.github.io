@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="参加記録 Go Conference 2015 summer">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+      hljs.configure({tabReplace: '    '}); 
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>参加記録 Go Conference 2015 summer | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>参加記録 Go Conference 2015 summer</h1>
+                    
+
+<time datetime="2015-06-21" class="post_data">
+2015-06-21
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/text">text</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/conference">conference</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b">発表まとめ</a>
+<ul>
+<li><a href="#gaurun-a-general-push-notification-server-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b">Gaurun〜A general push notification server in Go〜</a></li>
+<li><a href="#debugging-go-code-with-gdb:1cc9ac2b5800690c1b133bdf3b15ed6b">Debugging Go Code with GDB</a></li>
+<li><a href="#generative-programming-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b">Generative programming in Go.</a></li>
+<li><a href="#gore-go-で-repl-のはなし:1cc9ac2b5800690c1b133bdf3b15ed6b">gore - Go で REPL のはなし</a></li>
+<li><a href="#goと電子工作とロボット:1cc9ac2b5800690c1b133bdf3b15ed6b">Goと電子工作とロボット</a></li>
+<li><a href="#goのastをいじくって新しいツールを作る:1cc9ac2b5800690c1b133bdf3b15ed6b">GoのASTをいじくって新しいツールを作る</a></li>
+<li><a href="#go言語でコマンドラインツールをつくるときに僕の語ること:1cc9ac2b5800690c1b133bdf3b15ed6b">Go言語でコマンドラインツールをつくるときに僕の語ること</a></li>
+<li><a href="#patterns-for-building-a-scalable-testable-web-app-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b">Patterns for building a scalable, testable web app in Go</a></li>
+<li><a href="#ピクシブ社内広告サーバーでのgoの開発-運用:1cc9ac2b5800690c1b133bdf3b15ed6b">ピクシブ社内広告サーバーでのGoの開発・運用</a></li>
+<li><a href="#1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話:1cc9ac2b5800690c1b133bdf3b15ed6b">1binary 自己完結型の 形態素解析器 kagome を 作ってみた話</a></li>
+<li><a href="#goで基盤システムつくってる話:1cc9ac2b5800690c1b133bdf3b15ed6b">GOで基盤システムつくってる話</a></li>
+<li><a href="#lt:1cc9ac2b5800690c1b133bdf3b15ed6b">LT</a>
+<ul>
+<li><a href="#goのパッケージ構成で試行錯誤してみた話:1cc9ac2b5800690c1b133bdf3b15ed6b">Goのパッケージ構成で試行錯誤してみた話</a></li>
+<li><a href="#appengine-for-go-unittest:1cc9ac2b5800690c1b133bdf3b15ed6b">AppEngine for Go Unittest</a></li>
+<li><a href="#golangで始めるハードウェアプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b">Golangで始めるハードウェアプログラミング</a></li>
+<li><a href="#vendoring-golang:1cc9ac2b5800690c1b133bdf3b15ed6b">vendoring @ golang</a></li>
+<li><a href="#gopherになれ:1cc9ac2b5800690c1b133bdf3b15ed6b">「Gopherになれ！」</a></li>
+<li><a href="#go製の拡張可能なslackbot-仮:1cc9ac2b5800690c1b133bdf3b15ed6b">Go製の拡張可能なslackbot（仮）</a></li>
+<li><a href="#goの使われ処:1cc9ac2b5800690c1b133bdf3b15ed6b">Goの使われ処</a></li>
+<li><a href="#k0kubun-pp-についてと-reflectパッケージとメタプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b">k0kubun/pp についてと、reflectパッケージとメタプログラミング</a></li>
+<li><a href="#golangはじめて半日後に野球のアプリ書いてltしてきた:1cc9ac2b5800690c1b133bdf3b15ed6b">Golangはじめて半日後に野球のアプリ書いてLTしてきた</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>今回は日経さんとCAさんがスポンサーとのことですが、<br />
+かなりの人がいるのにwifiが普通に繋がっていて凄かったです…<br />
+なんか機械も見たことも無い凄い奴でしたし。</p>
+
+<p>実際に運用してる上での話が多く、goの時代が来ている…！<br />
+という感じを受けました。<br />
+お仕事でほぼ使ってないのでちゃんと使いたいですねー</p>
+
+<p>また、みんなcode generateに走っているのはおもしろかったです。<br />
+コピペになるようなコードはgenerateするってのはほぼ統一見解ですね。</p>
+
+<h1 id="発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b">発表まとめ</h1>
+
+<p>発表順は覚えてないので、タイムテーブルに順不同で並べられている順です。</p>
+
+<h2 id="gaurun-a-general-push-notification-server-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b">Gaurun〜A general push notification server in Go〜</h2>
+
+<ul>
+<li><a href="https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go">https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go</a></li>
+<li>go製のpushサーバ</li>
+<li>モニタリング用のAPIを用意してるの、凄い良いなーと思いました。</li>
+</ul>
+
+<h2 id="debugging-go-code-with-gdb:1cc9ac2b5800690c1b133bdf3b15ed6b">Debugging Go Code with GDB</h2>
+
+<ul>
+<li><a href="http://kaneshin.hateblo.jp/entry/2015/06/21/202850">http://kaneshin.hateblo.jp/entry/2015/06/21/202850</a></li>
+<li>GDB、あんまり使いこなしてないのでもっとちゃんと使わないと…と思った。</li>
+<li>Goはコンパイル早いし、落ちたときにちゃんとどの行で落ちたか出してくれるし、無くても何とかなる感はある
+
+<ul>
+<li>使った方が何倍も楽なのでちゃんと使った方が良いかと</li>
+</ul></li>
+<li>go 1.5からコンパイラがgoで実装されるけど、吐き出されるバイナリにDWARFが入ってれば関係ないよね？
+
+<ul>
+<li>リリース直後はバグったDWARFになる可能性はありそう…</li>
+</ul></li>
+<li>フォントが$300ってwwwwww</li>
+</ul>
+
+<h2 id="generative-programming-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b">Generative programming in Go.</h2>
+
+<ul>
+<li><a href="https://speakerdeck.com/monochromegane/generative-programming-in-go">https://speakerdeck.com/monochromegane/generative-programming-in-go</a></li>
+<li>reflection凄く遅いです…(直接呼ぶのと1000倍違う)</li>
+<li>金槌を持つと何でも釘に見える病…</li>
+</ul>
+
+<h2 id="gore-go-で-repl-のはなし:1cc9ac2b5800690c1b133bdf3b15ed6b">gore - Go で REPL のはなし</h2>
+
+<ul>
+<li>irbみたいにgoを対話的に実行できるやつの内部事情</li>
+<li>go runしてるだけ</li>
+<li>go runに失敗しないように色々前処理をがんばってるみたいです。</li>
+</ul>
+
+<h2 id="goと電子工作とロボット:1cc9ac2b5800690c1b133bdf3b15ed6b">Goと電子工作とロボット</h2>
+
+<ul>
+<li>goでロボット制御できて、しかもスタンドアロンで動いていて凄いです</li>
+</ul>
+
+<h2 id="goのastをいじくって新しいツールを作る:1cc9ac2b5800690c1b133bdf3b15ed6b">GoのASTをいじくって新しいツールを作る</h2>
+
+<ul>
+<li><a href="http://www.slideshare.net/vvakame/gocon-2015-summer">http://www.slideshare.net/vvakame/gocon-2015-summer</a></li>
+<li>go/astを使うと、コード解析した結果みたいなのをとれるみたいです。
+
+<ul>
+<li>正規表現でがんばる！とかよりかは遙かに楽そう…</li>
+</ul></li>
+<li>ただ、出力部分は気合いとのこと…</li>
+<li>怒りのスライドは良くわかります…
+
+<ul>
+<li>1byte=1文字、再帰的なパッケージ、err!=nilめんどい…(´･_･`)</li>
+</ul></li>
+</ul>
+
+<h2 id="go言語でコマンドラインツールをつくるときに僕の語ること:1cc9ac2b5800690c1b133bdf3b15ed6b">Go言語でコマンドラインツールをつくるときに僕の語ること</h2>
+
+<ul>
+<li><a href="https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon">https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon</a></li>
+<li>CLIツールは何となくこうした方が良いよね…って思ってたのがちゃんとまとめられてます</li>
+<li>さらに、それに沿ったテンプレートを作ってくれるものも作ったらしいです。凄い
+
+<ul>
+<li><a href="https://github.com/tcnksm/gcli">https://github.com/tcnksm/gcli</a></li>
+</ul></li>
+<li>-vとかでバージョン確認したときに、最新バージョンをチェックするの頭良いですね
+
+<ul>
+<li><a href="https://github.com/tcnksm/go-latest">https://github.com/tcnksm/go-latest</a></li>
+</ul></li>
+</ul>
+
+<h2 id="patterns-for-building-a-scalable-testable-web-app-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b">Patterns for building a scalable, testable web app in Go</h2>
+
+<ul>
+<li><a href="https://sourcegraph.com/">https://sourcegraph.com/</a>
+
+<ul>
+<li>そもそもこのサービス知りませんでしたが、めっちゃ凄いです…(o゜▽゜)</li>
+</ul></li>
+</ul>
+
+<h2 id="ピクシブ社内広告サーバーでのgoの開発-運用:1cc9ac2b5800690c1b133bdf3b15ed6b">ピクシブ社内広告サーバーでのGoの開発・運用</h2>
+
+<ul>
+<li><a href="http://catatsuy.hateblo.jp/entry/2015/06/21/214229">http://catatsuy.hateblo.jp/entry/2015/06/21/214229</a></li>
+<li>goのサーバを実際に運用している上での知見が詰まってました。
+
+<ul>
+<li>nginxをフロントに立てることで、goサーバは特定の機能を素早く処理することに集中できるとか</li>
+<li>ホットデプロイするためにnginxとの間にunixソケット受付のアプリを立てておくとか</li>
+</ul></li>
+<li>CPU Throttlingによって混んでないときはレスポンスが遅い話がおもしろかったです。</li>
+</ul>
+
+<h2 id="1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話:1cc9ac2b5800690c1b133bdf3b15ed6b">1binary 自己完結型の 形態素解析器 kagome を 作ってみた話</h2>
+
+<ul>
+<li><a href="http://ikawaha.hateblo.jp/entry/2015/06/21/155636">http://ikawaha.hateblo.jp/entry/2015/06/21/155636</a></li>
+<li>辞書のエンコーディングに悩まなくて良いの凄く良いと思います。</li>
+<li>形態素解析説明が凄くわかりやすかったです
+
+<ul>
+<li>ただ、文脈IDをどう使ってるのか良くわかりませんでした…</li>
+</ul></li>
+</ul>
+
+<h2 id="goで基盤システムつくってる話:1cc9ac2b5800690c1b133bdf3b15ed6b">GOで基盤システムつくってる話</h2>
+
+<ul>
+<li>CAでLoL並の接続数を捌けるような基盤システムを作ってる話</li>
+<li>パッケージ管理やパッケージ構成…(´･_･`)</li>
+<li>標準パッケージは宝の山。goらしさを調べるにはうってつけとのこと
+
+<ul>
+<li>A Tour of GoやEffective Goの後に最適</li>
+</ul></li>
+</ul>
+
+<h2 id="lt:1cc9ac2b5800690c1b133bdf3b15ed6b">LT</h2>
+
+<h3 id="goのパッケージ構成で試行錯誤してみた話:1cc9ac2b5800690c1b133bdf3b15ed6b">Goのパッケージ構成で試行錯誤してみた話</h3>
+
+<ul>
+<li><a href="http://www.slideshare.net/fkmhrk/go-49650783">http://www.slideshare.net/fkmhrk/go-49650783</a></li>
+<li>パッケージの分け方は特にgo特有のやり方はなく、他の言語とおんなじっぽいです</li>
+</ul>
+
+<h3 id="appengine-for-go-unittest:1cc9ac2b5800690c1b133bdf3b15ed6b">AppEngine for Go Unittest</h3>
+
+<ul>
+<li>デバッグ用のサーバの立ち上げが遅いので、Unittestに時間がかかるそうです</li>
+<li>並列化しても最初の分の時間はやっぱりかかってしまうとのこと
+
+<ul>
+<li>起動しっぱなしにして、そこに接続して使うとかはダメなのでしょうか？</li>
+</ul></li>
+</ul>
+
+<h3 id="golangで始めるハードウェアプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b">Golangで始めるハードウェアプログラミング</h3>
+
+<p>メモり損ねました…(´･_･`)</p>
+
+<h3 id="vendoring-golang:1cc9ac2b5800690c1b133bdf3b15ed6b">vendoring @ golang</h3>
+
+<p>メモり損ねました…(´･_･`)</p>
+
+<h3 id="gopherになれ:1cc9ac2b5800690c1b133bdf3b15ed6b">「Gopherになれ！」</h3>
+
+<ul>
+<li>この人<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">コミケにgopher君がいた <a href="http://t.co/cMyhSFgIwy">pic.twitter.com/cMyhSFgIwy</a></p>&mdash; ななやん (@7yan00) <a href="https://twitter.com/7yan00/status/549767136445333504">2014, 12月 30</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+</ul>
+
+<h3 id="go製の拡張可能なslackbot-仮:1cc9ac2b5800690c1b133bdf3b15ed6b">Go製の拡張可能なslackbot（仮）</h3>
+
+<ul>
+<li><a href="http://kyokomi.hatenablog.com/entry/2015/06/21/213610">http://kyokomi.hatenablog.com/entry/2015/06/21/213610</a></li>
+<li>pluginの拡張をどうしてるのか謎でしたが、コードを読んで納得
+
+<ul>
+<li>パッケージのinit関数で、pluginsパッケージが保有するプラグインのリストに自分を登録する</li>
+<li>botがpluginsの中を読み込んで動作する</li>
+</ul></li>
+</ul>
+
+<h3 id="goの使われ処:1cc9ac2b5800690c1b133bdf3b15ed6b">Goの使われ処</h3>
+
+<ul>
+<li><a href="https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian">https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian</a></li>
+<li>5分間ひたすら採用している会社を羅列していました</li>
+<li>想像以上に多くて、盛り上がってるなーと思いました</li>
+</ul>
+
+<h3 id="k0kubun-pp-についてと-reflectパッケージとメタプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b">k0kubun/pp についてと、reflectパッケージとメタプログラミング</h3>
+
+<ul>
+<li><a href="http://k0kubun.hatenablog.com/entry/2015/06/21/195229">http://k0kubun.hatenablog.com/entry/2015/06/21/195229</a></li>
+<li>ppをラップしただけの関数を定義しておくってのが凄い便利そうです
+
+<ul>
+<li>import書いたり消したりがとても面倒なので…</li>
+</ul></li>
+<li>メタプログラミングは…やっぱり現実的じゃ無いですよね</li>
+</ul>
+
+<h3 id="golangはじめて半日後に野球のアプリ書いてltしてきた:1cc9ac2b5800690c1b133bdf3b15ed6b">Golangはじめて半日後に野球のアプリ書いてLTしてきた</h3>
+
+<ul>
+<li><a href="http://shinyorke.hatenablog.com/entry/2015/06/21/195656">http://shinyorke.hatenablog.com/entry/2015/06/21/195656</a></li>
+<li>やったことの時系列になってておもしろいです</li>
+<li>やっぱり学習コストは低いんですねー</li>
+</ul>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/06/21/gocon-2015-summer/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+

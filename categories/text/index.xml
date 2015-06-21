@@ -6,8 +6,237 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 29 Apr 2015 13:49:43 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2015 23:43:02 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/text/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 Go Conference 2015 summer</title>
+      <link>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</link>
+      <pubDate>Sun, 21 Jun 2015 23:43:02 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</guid>
+      <description>
+
+&lt;p&gt;今回は日経さんとCAさんがスポンサーとのことですが、&lt;br /&gt;
+かなりの人がいるのにwifiが普通に繋がっていて凄かったです…&lt;br /&gt;
+なんか機械も見たことも無い凄い奴でしたし。&lt;/p&gt;
+
+&lt;p&gt;実際に運用してる上での話が多く、goの時代が来ている…！&lt;br /&gt;
+という感じを受けました。&lt;br /&gt;
+お仕事でほぼ使ってないのでちゃんと使いたいですねー&lt;/p&gt;
+
+&lt;p&gt;また、みんなcode generateに走っているのはおもしろかったです。&lt;br /&gt;
+コピペになるようなコードはgenerateするってのはほぼ統一見解ですね。&lt;/p&gt;
+
+&lt;h1 id=&#34;発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;発表まとめ&lt;/h1&gt;
+
+&lt;p&gt;発表順は覚えてないので、タイムテーブルに順不同で並べられている順です。&lt;/p&gt;
+
+&lt;h2 id=&#34;gaurun-a-general-push-notification-server-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Gaurun〜A general push notification server in Go〜&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&#34;&gt;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;go製のpushサーバ&lt;/li&gt;
+&lt;li&gt;モニタリング用のAPIを用意してるの、凄い良いなーと思いました。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;debugging-go-code-with-gdb:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Debugging Go Code with GDB&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&#34;&gt;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GDB、あんまり使いこなしてないのでもっとちゃんと使わないと…と思った。&lt;/li&gt;
+&lt;li&gt;Goはコンパイル早いし、落ちたときにちゃんとどの行で落ちたか出してくれるし、無くても何とかなる感はある
+
+&lt;ul&gt;
+&lt;li&gt;使った方が何倍も楽なのでちゃんと使った方が良いかと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;go 1.5からコンパイラがgoで実装されるけど、吐き出されるバイナリにDWARFが入ってれば関係ないよね？
+
+&lt;ul&gt;
+&lt;li&gt;リリース直後はバグったDWARFになる可能性はありそう…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;フォントが$300ってwwwwww&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;generative-programming-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Generative programming in Go.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/monochromegane/generative-programming-in-go&#34;&gt;https://speakerdeck.com/monochromegane/generative-programming-in-go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;reflection凄く遅いです…(直接呼ぶのと1000倍違う)&lt;/li&gt;
+&lt;li&gt;金槌を持つと何でも釘に見える病…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;gore-go-で-repl-のはなし:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;gore - Go で REPL のはなし&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;irbみたいにgoを対話的に実行できるやつの内部事情&lt;/li&gt;
+&lt;li&gt;go runしてるだけ&lt;/li&gt;
+&lt;li&gt;go runに失敗しないように色々前処理をがんばってるみたいです。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goと電子工作とロボット:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goと電子工作とロボット&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goでロボット制御できて、しかもスタンドアロンで動いていて凄いです&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goのastをいじくって新しいツールを作る:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GoのASTをいじくって新しいツールを作る&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/vvakame/gocon-2015-summer&#34;&gt;http://www.slideshare.net/vvakame/gocon-2015-summer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;go/astを使うと、コード解析した結果みたいなのをとれるみたいです。
+
+&lt;ul&gt;
+&lt;li&gt;正規表現でがんばる！とかよりかは遙かに楽そう…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ただ、出力部分は気合いとのこと…&lt;/li&gt;
+&lt;li&gt;怒りのスライドは良くわかります…
+
+&lt;ul&gt;
+&lt;li&gt;1byte=1文字、再帰的なパッケージ、err!=nilめんどい…(´･_･`)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go言語でコマンドラインツールをつくるときに僕の語ること:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go言語でコマンドラインツールをつくるときに僕の語ること&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&#34;&gt;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CLIツールは何となくこうした方が良いよね…って思ってたのがちゃんとまとめられてます&lt;/li&gt;
+&lt;li&gt;さらに、それに沿ったテンプレートを作ってくれるものも作ったらしいです。凄い
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tcnksm/gcli&#34;&gt;https://github.com/tcnksm/gcli&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;-vとかでバージョン確認したときに、最新バージョンをチェックするの頭良いですね
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tcnksm/go-latest&#34;&gt;https://github.com/tcnksm/go-latest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;patterns-for-building-a-scalable-testable-web-app-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Patterns for building a scalable, testable web app in Go&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcegraph.com/&#34;&gt;https://sourcegraph.com/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;そもそもこのサービス知りませんでしたが、めっちゃ凄いです…(o゜▽゜)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ピクシブ社内広告サーバーでのgoの開発-運用:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;ピクシブ社内広告サーバーでのGoの開発・運用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&#34;&gt;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;goのサーバを実際に運用している上での知見が詰まってました。
+
+&lt;ul&gt;
+&lt;li&gt;nginxをフロントに立てることで、goサーバは特定の機能を素早く処理することに集中できるとか&lt;/li&gt;
+&lt;li&gt;ホットデプロイするためにnginxとの間にunixソケット受付のアプリを立てておくとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CPU Throttlingによって混んでないときはレスポンスが遅い話がおもしろかったです。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;1binary 自己完結型の 形態素解析器 kagome を 作ってみた話&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&#34;&gt;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;辞書のエンコーディングに悩まなくて良いの凄く良いと思います。&lt;/li&gt;
+&lt;li&gt;形態素解析説明が凄くわかりやすかったです
+
+&lt;ul&gt;
+&lt;li&gt;ただ、文脈IDをどう使ってるのか良くわかりませんでした…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goで基盤システムつくってる話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GOで基盤システムつくってる話&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CAでLoL並の接続数を捌けるような基盤システムを作ってる話&lt;/li&gt;
+&lt;li&gt;パッケージ管理やパッケージ構成…(´･_･`)&lt;/li&gt;
+&lt;li&gt;標準パッケージは宝の山。goらしさを調べるにはうってつけとのこと
+
+&lt;ul&gt;
+&lt;li&gt;A Tour of GoやEffective Goの後に最適&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lt:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;LT&lt;/h2&gt;
+
+&lt;h3 id=&#34;goのパッケージ構成で試行錯誤してみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goのパッケージ構成で試行錯誤してみた話&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/fkmhrk/go-49650783&#34;&gt;http://www.slideshare.net/fkmhrk/go-49650783&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;パッケージの分け方は特にgo特有のやり方はなく、他の言語とおんなじっぽいです&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;appengine-for-go-unittest:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;AppEngine for Go Unittest&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;デバッグ用のサーバの立ち上げが遅いので、Unittestに時間がかかるそうです&lt;/li&gt;
+&lt;li&gt;並列化しても最初の分の時間はやっぱりかかってしまうとのこと
+
+&lt;ul&gt;
+&lt;li&gt;起動しっぱなしにして、そこに接続して使うとかはダメなのでしょうか？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;golangで始めるハードウェアプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangで始めるハードウェアプログラミング&lt;/h3&gt;
+
+&lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
+
+&lt;h3 id=&#34;vendoring-golang:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;vendoring @ golang&lt;/h3&gt;
+
+&lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
+
+&lt;h3 id=&#34;gopherになれ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;「Gopherになれ！」&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;この人&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;コミケにgopher君がいた &lt;a href=&#34;http://t.co/cMyhSFgIwy&#34;&gt;pic.twitter.com/cMyhSFgIwy&lt;/a&gt;&lt;/p&gt;&amp;mdash; ななやん (@7yan00) &lt;a href=&#34;https://twitter.com/7yan00/status/549767136445333504&#34;&gt;2014, 12月 30&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;go製の拡張可能なslackbot-仮:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go製の拡張可能なslackbot（仮）&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&#34;&gt;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;pluginの拡張をどうしてるのか謎でしたが、コードを読んで納得
+
+&lt;ul&gt;
+&lt;li&gt;パッケージのinit関数で、pluginsパッケージが保有するプラグインのリストに自分を登録する&lt;/li&gt;
+&lt;li&gt;botがpluginsの中を読み込んで動作する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;goの使われ処:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goの使われ処&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&#34;&gt;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5分間ひたすら採用している会社を羅列していました&lt;/li&gt;
+&lt;li&gt;想像以上に多くて、盛り上がってるなーと思いました&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;k0kubun-pp-についてと-reflectパッケージとメタプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;k0kubun/pp についてと、reflectパッケージとメタプログラミング&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&#34;&gt;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ppをラップしただけの関数を定義しておくってのが凄い便利そうです
+
+&lt;ul&gt;
+&lt;li&gt;import書いたり消したりがとても面倒なので…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;メタプログラミングは…やっぱり現実的じゃ無いですよね&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;golangはじめて半日後に野球のアプリ書いてltしてきた:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangはじめて半日後に野球のアプリ書いてLTしてきた&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&#34;&gt;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;やったことの時系列になってておもしろいです&lt;/li&gt;
+&lt;li&gt;やっぱり学習コストは低いんですねー&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 BPStudy#92</title>
@@ -2093,80 +2322,6 @@ pixiv上のラブライブのイラストについて見ていこうと思いま
 
 &lt;p&gt;明日はカップリングについて現状と、その推移を調べていきます。&lt;br /&gt;
 &lt;a href=&#34;http://ota42y.com/blog/2014/12/26/lovelive-cp/&#34;&gt;pixivのタグから読み解くラブライブカップリング傾向(2014年11月現在)&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 Android Bazaar and Conference 2014 Winter</title>
-      <link>http://ota42y.com/blog/2014/12/21/abc2014w/</link>
-      <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/12/21/abc2014w/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://abc.android-group.jp/2014w/&#34;&gt;Android Bazaar and Conference 2014 Winter&lt;/a&gt;に参加してきました。&lt;/p&gt;
-
-&lt;p&gt;なかなか興味深いお話を聞けたので、気になった部分を抜粋&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;携帯は９５％の人類が持ってる&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;インターネットを利用するのは４割&lt;/li&gt;
-&lt;li&gt;スマホ利用者は３２％&lt;/li&gt;
-&lt;li&gt;スマホは１０年前の携帯と同じ水準まで来てる
--１０年後は世界の携帯がスマホに置き換わる&lt;/li&gt;
-&lt;li&gt;今後１０年間で７０億人がインターネットに繋がる&lt;/li&gt;
-&lt;li&gt;Androidは今のところ全世界で84.4%のシェア&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;各国のもの作り政策&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ドイツのINDUSTRIE 4.0&lt;/li&gt;
-&lt;li&gt;第四次産業革命&lt;/li&gt;
-&lt;li&gt;多数の企業を結んだバリューネットワーク&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;工場内の結合されたネットワーク　は出来てる&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;アメリカ&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;AMP立ち上げ&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;アメリカで発明し、アメリカで製造する&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Made in Americaの復活&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;中国&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;2008年以降世界の製造業売り上げTop&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;EU全体を合わせて、ようやく中国をちょっと上回る&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;第１２期５カ年計画&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;５年で１６８兆円使う&lt;/li&gt;
-&lt;li&gt;IoTを重視する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Googleが買収したNest&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://japan.cnet.com/news/commentary/35042541/&#34;&gt;http://japan.cnet.com/news/commentary/35042541/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ネットに繋がるサーモスタット&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Android Wear&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WearのNotificationはアプリの顔になる&lt;/li&gt;
-&lt;li&gt;ノイジーな通知をするとアンインストールされる&lt;/li&gt;
-&lt;li&gt;リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する&lt;/li&gt;
-&lt;li&gt;わざわざ起動するのは減っていく&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

@@ -6,8 +6,237 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 18 Jun 2015 07:47:43 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2015 23:43:02 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>参加記録 Go Conference 2015 summer</title>
+      <link>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</link>
+      <pubDate>Sun, 21 Jun 2015 23:43:02 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</guid>
+      <description>
+
+&lt;p&gt;今回は日経さんとCAさんがスポンサーとのことですが、&lt;br /&gt;
+かなりの人がいるのにwifiが普通に繋がっていて凄かったです…&lt;br /&gt;
+なんか機械も見たことも無い凄い奴でしたし。&lt;/p&gt;
+
+&lt;p&gt;実際に運用してる上での話が多く、goの時代が来ている…！&lt;br /&gt;
+という感じを受けました。&lt;br /&gt;
+お仕事でほぼ使ってないのでちゃんと使いたいですねー&lt;/p&gt;
+
+&lt;p&gt;また、みんなcode generateに走っているのはおもしろかったです。&lt;br /&gt;
+コピペになるようなコードはgenerateするってのはほぼ統一見解ですね。&lt;/p&gt;
+
+&lt;h1 id=&#34;発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;発表まとめ&lt;/h1&gt;
+
+&lt;p&gt;発表順は覚えてないので、タイムテーブルに順不同で並べられている順です。&lt;/p&gt;
+
+&lt;h2 id=&#34;gaurun-a-general-push-notification-server-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Gaurun〜A general push notification server in Go〜&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&#34;&gt;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;go製のpushサーバ&lt;/li&gt;
+&lt;li&gt;モニタリング用のAPIを用意してるの、凄い良いなーと思いました。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;debugging-go-code-with-gdb:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Debugging Go Code with GDB&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&#34;&gt;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GDB、あんまり使いこなしてないのでもっとちゃんと使わないと…と思った。&lt;/li&gt;
+&lt;li&gt;Goはコンパイル早いし、落ちたときにちゃんとどの行で落ちたか出してくれるし、無くても何とかなる感はある
+
+&lt;ul&gt;
+&lt;li&gt;使った方が何倍も楽なのでちゃんと使った方が良いかと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;go 1.5からコンパイラがgoで実装されるけど、吐き出されるバイナリにDWARFが入ってれば関係ないよね？
+
+&lt;ul&gt;
+&lt;li&gt;リリース直後はバグったDWARFになる可能性はありそう…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;フォントが$300ってwwwwww&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;generative-programming-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Generative programming in Go.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/monochromegane/generative-programming-in-go&#34;&gt;https://speakerdeck.com/monochromegane/generative-programming-in-go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;reflection凄く遅いです…(直接呼ぶのと1000倍違う)&lt;/li&gt;
+&lt;li&gt;金槌を持つと何でも釘に見える病…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;gore-go-で-repl-のはなし:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;gore - Go で REPL のはなし&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;irbみたいにgoを対話的に実行できるやつの内部事情&lt;/li&gt;
+&lt;li&gt;go runしてるだけ&lt;/li&gt;
+&lt;li&gt;go runに失敗しないように色々前処理をがんばってるみたいです。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goと電子工作とロボット:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goと電子工作とロボット&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goでロボット制御できて、しかもスタンドアロンで動いていて凄いです&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goのastをいじくって新しいツールを作る:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GoのASTをいじくって新しいツールを作る&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/vvakame/gocon-2015-summer&#34;&gt;http://www.slideshare.net/vvakame/gocon-2015-summer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;go/astを使うと、コード解析した結果みたいなのをとれるみたいです。
+
+&lt;ul&gt;
+&lt;li&gt;正規表現でがんばる！とかよりかは遙かに楽そう…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ただ、出力部分は気合いとのこと…&lt;/li&gt;
+&lt;li&gt;怒りのスライドは良くわかります…
+
+&lt;ul&gt;
+&lt;li&gt;1byte=1文字、再帰的なパッケージ、err!=nilめんどい…(´･_･`)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go言語でコマンドラインツールをつくるときに僕の語ること:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go言語でコマンドラインツールをつくるときに僕の語ること&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&#34;&gt;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CLIツールは何となくこうした方が良いよね…って思ってたのがちゃんとまとめられてます&lt;/li&gt;
+&lt;li&gt;さらに、それに沿ったテンプレートを作ってくれるものも作ったらしいです。凄い
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tcnksm/gcli&#34;&gt;https://github.com/tcnksm/gcli&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;-vとかでバージョン確認したときに、最新バージョンをチェックするの頭良いですね
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tcnksm/go-latest&#34;&gt;https://github.com/tcnksm/go-latest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;patterns-for-building-a-scalable-testable-web-app-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Patterns for building a scalable, testable web app in Go&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcegraph.com/&#34;&gt;https://sourcegraph.com/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;そもそもこのサービス知りませんでしたが、めっちゃ凄いです…(o゜▽゜)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ピクシブ社内広告サーバーでのgoの開発-運用:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;ピクシブ社内広告サーバーでのGoの開発・運用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&#34;&gt;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;goのサーバを実際に運用している上での知見が詰まってました。
+
+&lt;ul&gt;
+&lt;li&gt;nginxをフロントに立てることで、goサーバは特定の機能を素早く処理することに集中できるとか&lt;/li&gt;
+&lt;li&gt;ホットデプロイするためにnginxとの間にunixソケット受付のアプリを立てておくとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CPU Throttlingによって混んでないときはレスポンスが遅い話がおもしろかったです。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;1binary 自己完結型の 形態素解析器 kagome を 作ってみた話&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&#34;&gt;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;辞書のエンコーディングに悩まなくて良いの凄く良いと思います。&lt;/li&gt;
+&lt;li&gt;形態素解析説明が凄くわかりやすかったです
+
+&lt;ul&gt;
+&lt;li&gt;ただ、文脈IDをどう使ってるのか良くわかりませんでした…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goで基盤システムつくってる話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GOで基盤システムつくってる話&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CAでLoL並の接続数を捌けるような基盤システムを作ってる話&lt;/li&gt;
+&lt;li&gt;パッケージ管理やパッケージ構成…(´･_･`)&lt;/li&gt;
+&lt;li&gt;標準パッケージは宝の山。goらしさを調べるにはうってつけとのこと
+
+&lt;ul&gt;
+&lt;li&gt;A Tour of GoやEffective Goの後に最適&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lt:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;LT&lt;/h2&gt;
+
+&lt;h3 id=&#34;goのパッケージ構成で試行錯誤してみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goのパッケージ構成で試行錯誤してみた話&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/fkmhrk/go-49650783&#34;&gt;http://www.slideshare.net/fkmhrk/go-49650783&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;パッケージの分け方は特にgo特有のやり方はなく、他の言語とおんなじっぽいです&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;appengine-for-go-unittest:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;AppEngine for Go Unittest&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;デバッグ用のサーバの立ち上げが遅いので、Unittestに時間がかかるそうです&lt;/li&gt;
+&lt;li&gt;並列化しても最初の分の時間はやっぱりかかってしまうとのこと
+
+&lt;ul&gt;
+&lt;li&gt;起動しっぱなしにして、そこに接続して使うとかはダメなのでしょうか？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;golangで始めるハードウェアプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangで始めるハードウェアプログラミング&lt;/h3&gt;
+
+&lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
+
+&lt;h3 id=&#34;vendoring-golang:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;vendoring @ golang&lt;/h3&gt;
+
+&lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
+
+&lt;h3 id=&#34;gopherになれ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;「Gopherになれ！」&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;この人&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;コミケにgopher君がいた &lt;a href=&#34;http://t.co/cMyhSFgIwy&#34;&gt;pic.twitter.com/cMyhSFgIwy&lt;/a&gt;&lt;/p&gt;&amp;mdash; ななやん (@7yan00) &lt;a href=&#34;https://twitter.com/7yan00/status/549767136445333504&#34;&gt;2014, 12月 30&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;go製の拡張可能なslackbot-仮:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go製の拡張可能なslackbot（仮）&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&#34;&gt;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;pluginの拡張をどうしてるのか謎でしたが、コードを読んで納得
+
+&lt;ul&gt;
+&lt;li&gt;パッケージのinit関数で、pluginsパッケージが保有するプラグインのリストに自分を登録する&lt;/li&gt;
+&lt;li&gt;botがpluginsの中を読み込んで動作する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;goの使われ処:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goの使われ処&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&#34;&gt;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5分間ひたすら採用している会社を羅列していました&lt;/li&gt;
+&lt;li&gt;想像以上に多くて、盛り上がってるなーと思いました&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;k0kubun-pp-についてと-reflectパッケージとメタプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;k0kubun/pp についてと、reflectパッケージとメタプログラミング&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&#34;&gt;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ppをラップしただけの関数を定義しておくってのが凄い便利そうです
+
+&lt;ul&gt;
+&lt;li&gt;import書いたり消したりがとても面倒なので…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;メタプログラミングは…やっぱり現実的じゃ無いですよね&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;golangはじめて半日後に野球のアプリ書いてltしてきた:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangはじめて半日後に野球のアプリ書いてLTしてきた&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&#34;&gt;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;やったことの時系列になってておもしろいです&lt;/li&gt;
+&lt;li&gt;やっぱり学習コストは低いんですねー&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>C言語でのスレッド処理</title>
@@ -2105,122 +2334,6 @@ go get http://github.com/go-gl/glfw/v3.1/glfw
 
 &lt;p&gt;これだけでインストールはおしまいです。
 gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>OctopressからHugoに乗り換えた</title>
-      <link>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
-      <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
-      <description>
-
-&lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
-サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Octopress
-
-&lt;ul&gt;
-&lt;li&gt;Ruby制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;大量の記事を扱うと遅くなっていく
-
-&lt;ul&gt;
-&lt;li&gt;100記事で新しい記事のHTML出力まで10秒ぐらいかかる&lt;/li&gt;
-&lt;li&gt;見た目を確認したいときなどにとても不便&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Hugo
-
-&lt;ul&gt;
-&lt;li&gt;Golang制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;利点&lt;/li&gt;
-&lt;li&gt;早い
-
-&lt;ul&gt;
-&lt;li&gt;100記事で200msぐらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;環境構築いらず
-
-&lt;ul&gt;
-&lt;li&gt;公式がバイナリ配布&lt;/li&gt;
-&lt;li&gt;手を加えないならそのまま使える&lt;/li&gt;
-&lt;li&gt;Win-Mac両方使う人にはとても楽&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;欠点
-
-&lt;ul&gt;
-&lt;li&gt;テーマが少ない
-
-&lt;ul&gt;
-&lt;li&gt;このサイトも自作&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;手を加えにくい
-
-&lt;ul&gt;
-&lt;li&gt;手を加えると環境構築いらずの利点が失われる&lt;/li&gt;
-&lt;li&gt;クロスコンパイルは楽なのでそれほどでもない？
-
-&lt;ul&gt;
-&lt;li&gt;手を加える必要が無いのでそのとき考える&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Octopressの問題点&lt;/h1&gt;
-
-&lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
-
-&lt;p&gt;Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。&lt;br /&gt;
-この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、&lt;br /&gt;
-表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。&lt;/p&gt;
-
-&lt;p&gt;現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。&lt;br /&gt;
-ちょっとした修正ごとに10秒待つのはなかなかにつらく、&lt;br /&gt;
-かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
-そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
-
-&lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
-&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
-
-&lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
-
-&lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
-ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
-ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
-特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
-
-&lt;h2 id=&#34;環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;環境構築いらず&lt;/h2&gt;
-
-&lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
-環境構築でがんばる必要がありません。&lt;br /&gt;
-私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
-Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの問題点&lt;/h1&gt;
-
-&lt;h2 id=&#34;テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;テーマがない&lt;/h2&gt;
-
-&lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
-実際このサイトも自分でテーマを作りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;手を入れにくい&lt;/h2&gt;
-
-&lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
-Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
-これは環境構築の手間とのトレードオフなので仕方ないことなのですが…&lt;/p&gt;
-
-&lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
-一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
 </description>
     </item>
     
