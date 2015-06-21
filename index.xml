@@ -28,6 +28,20 @@
 &lt;p&gt;また、みんなcode generateに走っているのはおもしろかったです。&lt;br /&gt;
 コピペになるようなコードはgenerateするってのはほぼ統一見解ですね。&lt;/p&gt;
 
+&lt;h1 id=&#34;キーノート:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;キーノート&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go1.5凄そうです&lt;/li&gt;
+&lt;li&gt;go oracleのすごさ
+
+&lt;ul&gt;
+&lt;li&gt;関数がどこで使われているかが調べられる&lt;/li&gt;
+&lt;li&gt;関数ポインタで呼ぶ場合も大丈夫&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;gomobile、早くiOSに対応してC++を駆逐してほしいです…&lt;/li&gt;
+&lt;li&gt;公式の依存管理ツールも楽しみです&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&#34;発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;発表まとめ&lt;/h1&gt;
 
 &lt;p&gt;発表順は覚えてないので、タイムテーブルに順不同で並べられている順です。&lt;/p&gt;
@@ -45,7 +59,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&#34;&gt;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;GDB、あんまり使いこなしてないのでもっとちゃんと使わないと…と思った。&lt;/li&gt;
-&lt;li&gt;Goはコンパイル早いし、落ちたときにちゃんとどの行で落ちたか出してくれるし、無くても何とかなる感はある
+&lt;li&gt;Goはコンパイル早いし、落ちたときにちゃんとどの行で落ちたか出してくれるし、無くても何とかなる感はあります
 
 &lt;ul&gt;
 &lt;li&gt;使った方が何倍も楽なのでちゃんと使った方が良いかと&lt;/li&gt;
