@@ -6,8 +6,42 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 15 Jun 2015 22:37:01 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2015 22:09:20 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年25週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-25/</link>
+      <pubDate>Mon, 22 Jun 2015 22:09:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-25/</guid>
+      <description>
+
+&lt;h1 id=&#34;go-conに参加していた:4120373b776e428195f8931ca37ff809&#34;&gt;go conに参加していた&lt;/h1&gt;
+
+&lt;p&gt;去年の秋と比べて、実際に使っている例が多くて、&lt;br /&gt;
+もうプロダクション投入されてるなーという印象でした。
+&lt;a href=&#34;http://ota42y.com/blog/2015/06/21/gocon-2015-summer/&#34;&gt;参加記録 Go Conference 2015 summer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;atom-ioは辞めた:4120373b776e428195f8931ca37ff809&#34;&gt;atom.ioは辞めた&lt;/h1&gt;
+
+&lt;p&gt;Atom.ioの現状の仕様は、プロジェクトごとにウィンドウを割り当てて使うようになっています。&lt;br /&gt;
+ですが、MacではWindowsに比べて同じアプリ内のウィンドウを切り替えるのがとても大変であり、&lt;br /&gt;
+このようにウィンドウを細かく分けられると著しく不便です。&lt;br /&gt;
+Macのひどい仕様に負けるのはあまり良い気分ではないですが、&lt;br /&gt;
+このあたりの仕様が変わるまでは私の使い方では使い物になりません…&lt;/p&gt;
+
+&lt;p&gt;また、立ち上がりが重いのも大きな問題の1つです。&lt;br /&gt;
+ビルド中はCPUをものすごく使っているおり、その状態でAtom.ioを立ち上げると起動まで十数秒かかります。&lt;br /&gt;
+ただこの点に関しては、ネィティブではなくwebエンジニアであれば問題にならないとは思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;gosweepが便利そう:4120373b776e428195f8931ca37ff809&#34;&gt;gosweepが便利そう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/hailiang/gosweep&#34;&gt;https://github.com/hailiang/gosweep&lt;/a&gt;&lt;br /&gt;
+gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です。&lt;br /&gt;
+便利＆go vetやgoimports等知らないのもあったので有用そうです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年24週目まとめ</title>
@@ -775,41 +809,6 @@ iOS,Android,Mac,Windows等かなりのプラットフォームに対応してい
 
 &lt;pre&gt;&lt;code&gt;xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年10週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-10/</link>
-      <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-10/</guid>
-      <description>
-
-&lt;h1 id=&#34;hugoを実験中:e975d64a31c4cd5e9fd296d1cb8af56a&#34;&gt;Hugoを実験中&lt;/h1&gt;
-
-&lt;p&gt;今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。&lt;/p&gt;
-
-&lt;p&gt;ゼロから作ると、テンプレート作成の大変さが身にしみます…&lt;br /&gt;
-デザインを考える部分はもちろんのこと、CSSとの格闘や、&lt;br /&gt;
-フレームワークの使い方とかを調べる必要があり、中々大変です。&lt;/p&gt;
-
-&lt;p&gt;また、golangのテンプレート機能については情報が少ないので、&lt;br /&gt;
-やりたいことがあっても、普通に書くとうまくいかずに実現できない事が多々あったので、&lt;br /&gt;
-あとでちゃんと勉強し直した方がよさそうです。&lt;/p&gt;
-
-&lt;p&gt;最も、本来テンプレート層で複雑な操作はするべきではなく、コントローラー側で処理をし、&lt;br /&gt;
-テンプレートは渡されたデータを表示するだけにした方が望ましいです。&lt;br /&gt;
-ただ、今回はhugo側にはあまり手を加えるのは避けたいため、&lt;br /&gt;
-コントローラ側に処理を追加する事が出来ず、テンプレート部分で頑張る必要がでてしまいました。&lt;br /&gt;
-テンプレートとhugoの間に普通のgoで処理を追加できたらいいのですが…&lt;/p&gt;
-
-&lt;p&gt;また、hugo側で用意されている奴を上手く使えばできる事も、&lt;br /&gt;
-わざわざ自前でがんばって実装しようとしていたりしてて無駄が多いです…&lt;br /&gt;
-サンプル集みたいなのがもう少し整っていると良い気がします。&lt;/p&gt;
-
-&lt;p&gt;ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。&lt;br /&gt;
-テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。&lt;/p&gt;
 </description>
     </item>
     

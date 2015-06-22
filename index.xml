@@ -6,8 +6,42 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 21 Jun 2015 23:43:02 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2015 22:09:20 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年25週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-25/</link>
+      <pubDate>Mon, 22 Jun 2015 22:09:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-25/</guid>
+      <description>
+
+&lt;h1 id=&#34;go-conに参加していた:4120373b776e428195f8931ca37ff809&#34;&gt;go conに参加していた&lt;/h1&gt;
+
+&lt;p&gt;去年の秋と比べて、実際に使っている例が多くて、&lt;br /&gt;
+もうプロダクション投入されてるなーという印象でした。
+&lt;a href=&#34;http://ota42y.com/blog/2015/06/21/gocon-2015-summer/&#34;&gt;参加記録 Go Conference 2015 summer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;atom-ioは辞めた:4120373b776e428195f8931ca37ff809&#34;&gt;atom.ioは辞めた&lt;/h1&gt;
+
+&lt;p&gt;Atom.ioの現状の仕様は、プロジェクトごとにウィンドウを割り当てて使うようになっています。&lt;br /&gt;
+ですが、MacではWindowsに比べて同じアプリ内のウィンドウを切り替えるのがとても大変であり、&lt;br /&gt;
+このようにウィンドウを細かく分けられると著しく不便です。&lt;br /&gt;
+Macのひどい仕様に負けるのはあまり良い気分ではないですが、&lt;br /&gt;
+このあたりの仕様が変わるまでは私の使い方では使い物になりません…&lt;/p&gt;
+
+&lt;p&gt;また、立ち上がりが重いのも大きな問題の1つです。&lt;br /&gt;
+ビルド中はCPUをものすごく使っているおり、その状態でAtom.ioを立ち上げると起動まで十数秒かかります。&lt;br /&gt;
+ただこの点に関しては、ネィティブではなくwebエンジニアであれば問題にならないとは思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;gosweepが便利そう:4120373b776e428195f8931ca37ff809&#34;&gt;gosweepが便利そう&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/hailiang/gosweep&#34;&gt;https://github.com/hailiang/gosweep&lt;/a&gt;&lt;br /&gt;
+gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です。&lt;br /&gt;
+便利＆go vetやgoimports等知らないのもあったので有用そうです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 Go Conference 2015 summer</title>
@@ -1638,139 +1672,6 @@ Windowsのサーバで動かしているやつのログをとってくるの面�
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&#34;&gt;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
-      <link>http://ota42y.com/blog/2015/04/24/go-windows-development/</link>
-      <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
-      <description>
-
-&lt;p&gt;取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WindowsのGolang開発
-
-&lt;ul&gt;
-&lt;li&gt;IntelliJ便利
-
-&lt;ul&gt;
-&lt;li&gt;機能がとても豊富&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Windows上ではつらい
-
-&lt;ul&gt;
-&lt;li&gt;開発ツールが少ない&lt;/li&gt;
-&lt;li&gt;LinuxはGUI使いづらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;LinuxのファイルをWindowsから変更する
-
-&lt;ul&gt;
-&lt;li&gt;良いところ取り
-
-&lt;ul&gt;
-&lt;li&gt;開発はWindows&lt;/li&gt;
-&lt;li&gt;実行はLinux&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ファイルはSambaで共有
-
-&lt;ul&gt;
-&lt;li&gt;ネットワークドライブをマウント&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;IDEデバッグは使えなくなる
-
-&lt;ul&gt;
-&lt;li&gt;そのときだけWindowsで動かすとか&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;golang開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
-
-&lt;h2 id=&#34;intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
-
-&lt;p&gt;IntelliJ IDEAとGolang pluginはとてもよく動くため、&lt;br /&gt;
-Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/kaiinui/items/433eb86c022ffcad0bea&#34;&gt;Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
-
-&lt;p&gt;IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。&lt;br /&gt;
-ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、&lt;br /&gt;
-Windows上で開発するのは細かいところで面倒になることが多いです。&lt;br /&gt;
-そのため、仮想マシンや別サーバにLinuxマシンを1台作り、&lt;br /&gt;
-その中で開発をした方が何かと便利です。&lt;/p&gt;
-
-&lt;p&gt;ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、&lt;br /&gt;
-開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。&lt;br /&gt;
-そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、&lt;br /&gt;
-それらをssh経由のCLIから操作するのが最も良い案になっています。&lt;/p&gt;
-
-&lt;p&gt;このような構成にすることで、Unixで動く便利なツールを利用しつつ、&lt;br /&gt;
-Windowsの快適なGUI環境を利用することができます。&lt;br /&gt;
-また、ファイルや実行環境と手元の環境とが切り離されるため、&lt;br /&gt;
-複数の実行環境を切り替えたり、&lt;br /&gt;
-マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。&lt;/p&gt;
-
-&lt;p&gt;なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。&lt;/p&gt;
-
-&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
-
-&lt;p&gt;残念ながらIntelliJはこのような用途を想定していないため、
-別マシンの環境下で作業できません。&lt;/p&gt;
-
-&lt;p&gt;幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、&lt;br /&gt;
-IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。&lt;/p&gt;
-
-&lt;p&gt;そこで、サーバ上の開発ディレクトリをSambaで共有し、&lt;br /&gt;
-Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、&lt;br /&gt;
-IntelliJで開発を行うことができます。&lt;/p&gt;
-
-&lt;p&gt;私の環境では、以下のような設定をsmb.confに追加しています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[global]
-map archive = no
-
-～中略～
-
-[workspace]
-   path = /home/username/workspace
-   writable = yes
-   guest ok = no
-   guest only = no
-   create mode = 0755
-   directory mode = 0755
-   share modes = yes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;map archiveについてはこちらを参照&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/haoling/items/b306b23c41c7110e9e35&#34;&gt;sambaでファイルを上書きすると実行属性が付いてしまう場合の対処&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
-
-&lt;p&gt;補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。&lt;br /&gt;
-ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、&lt;br /&gt;
-依存ライブラリ等に関しては意図的にそろえる必要があります。&lt;/p&gt;
-
-&lt;p&gt;幸いにも、私はgolangのパッケージ管理に&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;gom&lt;/a&gt;を利用しています。&lt;br /&gt;
-このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。&lt;/p&gt;
-
-&lt;p&gt;そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、&lt;br /&gt;
-依存パッケージの補完や、定義元ジャンプが効くようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;問題点:2107e1477c09702be9950e3792aa06c4&#34;&gt;問題点&lt;/h1&gt;
-
-&lt;p&gt;この手法ではIDEから実行することを想定していないため、&lt;br /&gt;
-IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。&lt;br /&gt;
-このような場合は常に同じ実行環境を維持しておき、&lt;br /&gt;
-必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…&lt;/p&gt;
-
-&lt;p&gt;ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、&lt;br /&gt;
-大きな問題にはなっていません。&lt;/p&gt;
 </description>
     </item>
     
