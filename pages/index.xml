@@ -6,8 +6,79 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 22 Jun 2015 22:09:20 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2015 22:17:29 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年26週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-26/</link>
+      <pubDate>Mon, 29 Jun 2015 22:17:29 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-26/</guid>
+      <description>
+
+&lt;h1 id=&#34;fluentd-forwarderのビルドの仕組み:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;fluentd-forwarderのビルドの仕組み&lt;/h1&gt;
+
+&lt;p&gt;基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;https://github.com/fluent/fluentd-forwarder&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;READMEに書いてある一つ目の手順の、&lt;br /&gt;
+&lt;code&gt;go get github.com/fluent/fluentd-forwarder/entrypoints/build_fluentd_forwarder&lt;/code&gt;&lt;br /&gt;
+で、GOPATH以下にリポジトリがcloneし、&lt;br /&gt;
+entrypoints/build_fluentd_forwarder内のビルド作業用バイナリが作られます。&lt;/p&gt;
+
+&lt;p&gt;次に、&lt;code&gt;bin/build_fluentd_forwarder fluentd_forwarder&lt;/code&gt;を実行することで、&lt;br /&gt;
+さっき作ったbuild_fluentd_forwarderが&lt;code&gt;go get -u&lt;/code&gt;を実行し、&lt;br /&gt;
+リポジトリをcloneして(既にしているけど)、entrypoints/fluentd_forwarder下をビルドします。&lt;/p&gt;
+
+&lt;p&gt;というわけで、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go getでbuild_fluentd_forwarderをビルドする&lt;/li&gt;
+&lt;li&gt;build_fluentd_forwarderがgo getでfluentd_forwarderをビルドする。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という流れになっています。&lt;/p&gt;
+
+&lt;h1 id=&#34;fluentd-forwarderに手を加えてみる:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;fluentd-forwarderに手を加えてみる&lt;/h1&gt;
+
+&lt;h2 id=&#34;ローカルで変更する場合:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;ローカルで変更する場合&lt;/h2&gt;
+
+&lt;p&gt;fluentd-forwarderに手を加えたい場合、GOPATH下のfluent/fluentd-forwarderを書き換えてビルドするのが最も早い方法です。&lt;br /&gt;
+build_fluentd_forwarderがcloneしますが、変更はそのままでビルド出来ます。&lt;/p&gt;
+
+&lt;h2 id=&#34;forkしたリポジトリに変更を加える場合:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;Forkしたリポジトリに変更を加える場合&lt;/h2&gt;
+
+&lt;p&gt;Forkしてそこに対して変更をした場合、若干やっかいな事が起きます。&lt;/p&gt;
+
+&lt;p&gt;前述したように、build_fluentd_forwarderはgo getを使い、リポジトリをクローンしてビルドします。&lt;br /&gt;
+そのため、build_fluentd_forwarderの中に書いてあるリポジトリを書き換え、自分のリポジトリに変更する必要があります。&lt;/p&gt;
+
+&lt;p&gt;また、entrypoints/fluentd_forwarderはリポジトリルートのファイルを外部ライブラリとしてインポートしています。&lt;br /&gt;
+そのため、main.goでfluent/fluentd_folwarderをインポートしている部分も、自分のリポジトリに変更する必要があります。&lt;/p&gt;
+
+&lt;p&gt;以上の変更を加えることで、Forkした自分のリポジトリからビルドすることが出来ます。&lt;/p&gt;
+
+&lt;p&gt;まとめると以下のの2ステップになります。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;build_fluentd_forwarder内のリポジトリを書き換える
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder/blob/master/entrypoints/build_fluentd_forwarder/main.go&#34;&gt;https://github.com/fluent/fluentd-forwarder/blob/master/entrypoints/build_fluentd_forwarder/main.go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ImportPathBaseを書き換える&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;fluent/fluentd_forwarderをインポートしている部分を書き換える
+
+&lt;ul&gt;
+&lt;li&gt;entrypoints/fluentd_forwarder以下の2ファイル共&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;前者はbueild_fluentd_forwarderを変えれば何とかなりそうですが、&lt;br /&gt;
+後者はgoのimportの仕組みがリポジトリ名まで指定する仕組みのため、書き換える以外に良い解決方法が思いつきません。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年25週目まとめ</title>
@@ -775,40 +846,6 @@ GoogleによるGolang制のクロスプラットフォームなGUIライブラ�
 &lt;p&gt;Octopressの場合はGithub Pagesにアップロードしてくれるコマンドがありましたが、&lt;br /&gt;
 Hugoの場合、特にそんなコマンドはないようです。&lt;br /&gt;
 そのため、HugoがHTMLを出力するフォルダに、Github Pagesをcloneしておく必要があります。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年11週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-11/</link>
-      <pubDate>Mon, 16 Mar 2015 07:34:46 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-11/</guid>
-      <description>
-
-&lt;h1 id=&#34;hugoに移行した:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;Hugoに移行した&lt;/h1&gt;
-
-&lt;p&gt;このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2015/03/16/octopress_to_hugo/&#34;&gt;OctopressからHugoに乗り換えた&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;goのwindows開発環境を整えた:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;GoのWindows開発環境を整えた&lt;/h1&gt;
-
-&lt;p&gt;IntelliJを使うとWindowsでも問題なく扱えます。&lt;br /&gt;
-ただし、テストを実行するときはexeファイルを作ってから実行します。&lt;br /&gt;
-そのため、テストのたびにウィルスソフトのスキャンが挟まるため、テストが無駄に遅いです…&lt;br /&gt;
-特定のフォルダにexeファイルがはかれるため、そこだけ除外設定をしようかと検討中です。&lt;/p&gt;
-
-&lt;h1 id=&#34;google-breakpad:6bd09a8a6f76d3dafa276f77f1aaa1d8&#34;&gt;google breakpad&lt;/h1&gt;
-
-&lt;p&gt;マルチプラットフォームなクラッシュレポートみたいです。&lt;br /&gt;
-iOS,Android,Mac,Windows等かなりのプラットフォームに対応しているのでよさそうです。&lt;br /&gt;
-&lt;a href=&#34;https://code.google.com/p/google-breakpad/&#34;&gt;https://code.google.com/p/google-breakpad&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ちなみにMac OS10.9では以下のコマンドでビルドする必要があります。&lt;br /&gt;
-(引用元は忘れました…stackoverflowだったはず）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

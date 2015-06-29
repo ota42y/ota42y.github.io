@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="2015年26週目まとめ">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+      hljs.configure({tabReplace: '    '}); 
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>2015年26週目まとめ | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>2015年26週目まとめ</h1>
+                    
+
+<time datetime="2015-06-29" class="post_data">
+2015-06-29
+</time>
+
+
+
+
+
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#fluentd-forwarderのビルドの仕組み:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderのビルドの仕組み</a></li>
+<li><a href="#fluentd-forwarderに手を加えてみる:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderに手を加えてみる</a>
+<ul>
+<li><a href="#ローカルで変更する場合:fb0b111ab341d72273c19a831f63e0c6">ローカルで変更する場合</a></li>
+<li><a href="#forkしたリポジトリに変更を加える場合:fb0b111ab341d72273c19a831f63e0c6">Forkしたリポジトリに変更を加える場合</a></li>
+</ul></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<h1 id="fluentd-forwarderのビルドの仕組み:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderのビルドの仕組み</h1>
+
+<p>基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。<br />
+<a href="https://github.com/fluent/fluentd-forwarder">https://github.com/fluent/fluentd-forwarder</a></p>
+
+<p>READMEに書いてある一つ目の手順の、<br />
+<code>go get github.com/fluent/fluentd-forwarder/entrypoints/build_fluentd_forwarder</code><br />
+で、GOPATH以下にリポジトリがcloneし、<br />
+entrypoints/build_fluentd_forwarder内のビルド作業用バイナリが作られます。</p>
+
+<p>次に、<code>bin/build_fluentd_forwarder fluentd_forwarder</code>を実行することで、<br />
+さっき作ったbuild_fluentd_forwarderが<code>go get -u</code>を実行し、<br />
+リポジトリをcloneして(既にしているけど)、entrypoints/fluentd_forwarder下をビルドします。</p>
+
+<p>というわけで、</p>
+
+<ul>
+<li>go getでbuild_fluentd_forwarderをビルドする</li>
+<li>build_fluentd_forwarderがgo getでfluentd_forwarderをビルドする。</li>
+</ul>
+
+<p>という流れになっています。</p>
+
+<h1 id="fluentd-forwarderに手を加えてみる:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderに手を加えてみる</h1>
+
+<h2 id="ローカルで変更する場合:fb0b111ab341d72273c19a831f63e0c6">ローカルで変更する場合</h2>
+
+<p>fluentd-forwarderに手を加えたい場合、GOPATH下のfluent/fluentd-forwarderを書き換えてビルドするのが最も早い方法です。<br />
+build_fluentd_forwarderがcloneしますが、変更はそのままでビルド出来ます。</p>
+
+<h2 id="forkしたリポジトリに変更を加える場合:fb0b111ab341d72273c19a831f63e0c6">Forkしたリポジトリに変更を加える場合</h2>
+
+<p>Forkしてそこに対して変更をした場合、若干やっかいな事が起きます。</p>
+
+<p>前述したように、build_fluentd_forwarderはgo getを使い、リポジトリをクローンしてビルドします。<br />
+そのため、build_fluentd_forwarderの中に書いてあるリポジトリを書き換え、自分のリポジトリに変更する必要があります。</p>
+
+<p>また、entrypoints/fluentd_forwarderはリポジトリルートのファイルを外部ライブラリとしてインポートしています。<br />
+そのため、main.goでfluent/fluentd_folwarderをインポートしている部分も、自分のリポジトリに変更する必要があります。</p>
+
+<p>以上の変更を加えることで、Forkした自分のリポジトリからビルドすることが出来ます。</p>
+
+<p>まとめると以下のの2ステップになります。</p>
+
+<ul>
+<li>build_fluentd_forwarder内のリポジトリを書き換える
+
+<ul>
+<li><a href="https://github.com/fluent/fluentd-forwarder/blob/master/entrypoints/build_fluentd_forwarder/main.go">https://github.com/fluent/fluentd-forwarder/blob/master/entrypoints/build_fluentd_forwarder/main.go</a></li>
+<li>ImportPathBaseを書き換える</li>
+</ul></li>
+<li>fluent/fluentd_forwarderをインポートしている部分を書き換える
+
+<ul>
+<li>entrypoints/fluentd_forwarder以下の2ファイル共</li>
+</ul></li>
+</ul>
+
+<p>前者はbueild_fluentd_forwarderを変えれば何とかなりそうですが、<br />
+後者はgoのimportの仕組みがリポジトリ名まで指定する仕組みのため、書き換える以外に良い解決方法が思いつきません。</p>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/pages/summary/2015/week-26/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
