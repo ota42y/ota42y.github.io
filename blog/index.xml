@@ -6,8 +6,90 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 21 Jun 2015 23:43:02 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>dinoでrubyからArduinoを扱う</title>
+      <link>http://ota42y.com/blog/2015/07/05/dino/</link>
+      <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PCからArduinoを制御するのは面倒
+
+&lt;ul&gt;
+&lt;li&gt;作業量が多い&lt;/li&gt;
+&lt;li&gt;電子工作&lt;/li&gt;
+&lt;li&gt;Arduinoプログラミング&lt;/li&gt;
+&lt;li&gt;PCからArduinoを制御するプログラミング&lt;/li&gt;
+&lt;li&gt;Arduinoプログラミングは専用言語&lt;/li&gt;
+&lt;li&gt;学習コストがある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;dinoならrubyだけで全て完結できる
+
+&lt;ul&gt;
+&lt;li&gt;rubyからArduinoの全機能を制御するプログラムが付随&lt;/li&gt;
+&lt;li&gt;rubyのオブジェクト操作でArduinoを制御出来る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;PCからArduinoを制御するのは面倒&lt;/h1&gt;
+
+&lt;p&gt;Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。&lt;br /&gt;
+ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。&lt;/p&gt;
+
+&lt;p&gt;PCとからArduinoを制御する場合、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;電子工作をしてArduinoと部品をつなげる&lt;/li&gt;
+&lt;li&gt;Arduinoを制御したり、PCに情報を送るプログラムを書く&lt;/li&gt;
+&lt;li&gt;PC側でArduinoからの情報を受け取って制御するプログラムを書く&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;の3種類の別々の作業が必要になります。&lt;/p&gt;
+
+&lt;p&gt;Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。&lt;br /&gt;
+ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、&lt;br /&gt;
+rubyプログラムを書くだけでArduinoの制御が全てできるようになります。&lt;/p&gt;
+
+&lt;p&gt;これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;dino:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;dino&lt;/h1&gt;
+
+&lt;p&gt;Arduinoをrubyから扱うライブラリです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/austinbv/dino&#34;&gt;https://github.com/austinbv/dino&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Arduinoの全機能を外部から制御可能にするプログラムが付随しており、&lt;br /&gt;
+これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。&lt;/p&gt;
+
+&lt;h2 id=&#34;サンプルコード:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;A0ポートに対する入力を拾うプログラムは以下の通りです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;board = Dino::Board.new(Dino::TxRx::Serial.new)
+sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board)
+
+sensor.when_data_received do |data|
+  puts &amp;quot;data=#{data.to_i}&amp;quot;
+end
+
+sleep
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ポートに対する入力があるたびにブロックが実行されます。&lt;/p&gt;
+
+&lt;p&gt;このように、arduinoをほぼrubyのオブジェクトのように扱えるため、&lt;br /&gt;
+PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。&lt;/p&gt;
+
+&lt;p&gt;ただし、当然ながらPCと接続して制御するものであり、&lt;br /&gt;
+Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 Go Conference 2015 summer</title>
@@ -2299,55 +2381,6 @@ func main() {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;あらゆる型に関数をつけられるというのが、C++に染まった頭からだと理解できなくて手間取りました。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Windowsにgxuiをインストールする</title>
-      <link>http://ota42y.com/blog/2015/03/22/gxui-install/</link>
-      <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/03/22/gxui-install/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;gxui&lt;/a&gt;は、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
-WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。&lt;br /&gt;
-なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。&lt;/p&gt;
-
-&lt;h1 id=&#34;go言語の環境構築:e3f779623d1fe78142ffab511be6be70&#34;&gt;Go言語の環境構築&lt;/h1&gt;
-
-&lt;p&gt;Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。&lt;br /&gt;
-元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、&lt;br /&gt;
-mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。&lt;/p&gt;
-
-&lt;h2 id=&#34;vcsのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;VCSのインストール&lt;/h2&gt;
-
-&lt;p&gt;git(&lt;a href=&#34;http://git-scm.com/&#34;&gt;http://git-scm.com/&lt;/a&gt;)とmercurial(&lt;a href=&#34;http://mercurial.selenic.com/&#34;&gt;http://mercurial.selenic.com/&lt;/a&gt;)をインストールします。&lt;br /&gt;
-gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください&lt;/p&gt;
-
-&lt;h2 id=&#34;mingwのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;mingwのインストール&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://sourceforge.net/projects/mingw/&#34;&gt;http://sourceforge.net/projects/mingw/&lt;/a&gt;からmingwを入れ、&lt;br /&gt;
-mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。&lt;/p&gt;
-
-&lt;p&gt;なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。&lt;br /&gt;
-これは両方とも32bitに揃えることで回避できました。&lt;/p&gt;
-
-&lt;p&gt;コマンドラインからgccが使えるようになっていれば大丈夫です。&lt;/p&gt;
-
-&lt;h1 id=&#34;gxuiのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;gxuiのインストール&lt;/h1&gt;
-
-&lt;p&gt;gxuiと4つの依存するパッケージをインストールします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get http://github.com/google/gxui
-go get http://code.google.com/p/freetype-go/freetype/raster
-go get http://code.google.com/p/freetype-go/freetype/truetype
-go get http://github.com/go-gl/gl/v3.2-core/gl
-go get http://github.com/go-gl/glfw/v3.1/glfw
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これだけでインストールはおしまいです。
-gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
 </description>
     </item>
     

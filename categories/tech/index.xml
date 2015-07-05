@@ -6,8 +6,90 @@
     <description>Recent content in Tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 18 Jun 2015 07:47:43 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>dinoでrubyからArduinoを扱う</title>
+      <link>http://ota42y.com/blog/2015/07/05/dino/</link>
+      <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PCからArduinoを制御するのは面倒
+
+&lt;ul&gt;
+&lt;li&gt;作業量が多い&lt;/li&gt;
+&lt;li&gt;電子工作&lt;/li&gt;
+&lt;li&gt;Arduinoプログラミング&lt;/li&gt;
+&lt;li&gt;PCからArduinoを制御するプログラミング&lt;/li&gt;
+&lt;li&gt;Arduinoプログラミングは専用言語&lt;/li&gt;
+&lt;li&gt;学習コストがある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;dinoならrubyだけで全て完結できる
+
+&lt;ul&gt;
+&lt;li&gt;rubyからArduinoの全機能を制御するプログラムが付随&lt;/li&gt;
+&lt;li&gt;rubyのオブジェクト操作でArduinoを制御出来る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;PCからArduinoを制御するのは面倒&lt;/h1&gt;
+
+&lt;p&gt;Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。&lt;br /&gt;
+ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。&lt;/p&gt;
+
+&lt;p&gt;PCとからArduinoを制御する場合、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;電子工作をしてArduinoと部品をつなげる&lt;/li&gt;
+&lt;li&gt;Arduinoを制御したり、PCに情報を送るプログラムを書く&lt;/li&gt;
+&lt;li&gt;PC側でArduinoからの情報を受け取って制御するプログラムを書く&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;の3種類の別々の作業が必要になります。&lt;/p&gt;
+
+&lt;p&gt;Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。&lt;br /&gt;
+ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、&lt;br /&gt;
+rubyプログラムを書くだけでArduinoの制御が全てできるようになります。&lt;/p&gt;
+
+&lt;p&gt;これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;dino:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;dino&lt;/h1&gt;
+
+&lt;p&gt;Arduinoをrubyから扱うライブラリです。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/austinbv/dino&#34;&gt;https://github.com/austinbv/dino&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Arduinoの全機能を外部から制御可能にするプログラムが付随しており、&lt;br /&gt;
+これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。&lt;/p&gt;
+
+&lt;h2 id=&#34;サンプルコード:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;サンプルコード&lt;/h2&gt;
+
+&lt;p&gt;A0ポートに対する入力を拾うプログラムは以下の通りです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;board = Dino::Board.new(Dino::TxRx::Serial.new)
+sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board)
+
+sensor.when_data_received do |data|
+  puts &amp;quot;data=#{data.to_i}&amp;quot;
+end
+
+sleep
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ポートに対する入力があるたびにブロックが実行されます。&lt;/p&gt;
+
+&lt;p&gt;このように、arduinoをほぼrubyのオブジェクトのように扱えるため、&lt;br /&gt;
+PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。&lt;/p&gt;
+
+&lt;p&gt;ただし、当然ながらPCと接続して制御するものであり、&lt;br /&gt;
+Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>C言語でのスレッド処理</title>
@@ -1586,111 +1668,6 @@ node(&amp;quot;master&amp;quot;){
       <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
 暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
 &lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
-      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
-      <description>
-
-&lt;p&gt;bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、&lt;br /&gt;
-一回目のbundlerに対してbundleが実行されてしまい、&lt;br /&gt;
-別のbundleを呼び出せないという問題が起きました。&lt;br /&gt;
-これはbundlerが設定する環境変数が原因でした。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;bundle exec中に、別のbundlerを実行するとおかしくなる
-
-&lt;ul&gt;
-&lt;li&gt;主にsystemやspawn等を使った場合&lt;/li&gt;
-&lt;li&gt;最初のbundle execと同じものであれば問題は起きない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;bundlerが設定をしている環境変数が問題
-
-&lt;ul&gt;
-&lt;li&gt;別のbundlerを呼ぼうとして元のbundlerが呼ばれている&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Bundler.with_clean_envで回避可能
-
-&lt;ul&gt;
-&lt;li&gt;Bundler.clean_systemでも可&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;問題:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;問題&lt;/h1&gt;
-
-&lt;p&gt;以下のような構成かつtestフォルダにいる状態で、&lt;br /&gt;
-&lt;code&gt;bundle install --path vendor/bundle&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;bundle exec test.rb&lt;/code&gt;を実行すると、&lt;br /&gt;
-test2内でbundlerを呼んだ時にエラーになります&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
-├─ test
-│  │  Gemfile (gemのhello_world_gemを使用)
-│  └─ test.rb
-|
-└─ test2
-   └─ Gemfile (gemのhello-worldを使用)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
-Dir.chdir(&amp;quot;../test2&amp;quot;) do
-  # error
-  system &#39;bundle install --path vendor/bundle&#39;
-  system &#39;bundle exec hello-world&#39;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;エラー文言&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;oh hai thar
-Using hello_world_gem 0.0.3
-Using bundler 1.7.3
-Your bundle is complete!
-It was installed into ./vendor/bundle
-bundler: command not found: hello-world
-Install missing gem executables with `bundle install`
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;原因:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;原因&lt;/h1&gt;
-
-&lt;p&gt;bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、&lt;br /&gt;
-そこで指定されているbundlerから実行されていると見なされるため、&lt;br /&gt;
-bundle系のコマンドが全て元のbundlerに対して実行されてしまうのが原因です。&lt;br /&gt;
-実際、test2に移動後のbundle install時のログが、testフォルダでbundle installした時のものと同じ出力になっています。&lt;/p&gt;
-
-&lt;p&gt;この仕組みのおかげで同じbundleの場合はそのまま実行できるため、&lt;br /&gt;
-1行目のhello_world_gemの呼び出しにbundle execが不要になっています。&lt;br /&gt;
-このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。&lt;/p&gt;
-
-&lt;h1 id=&#34;解決策:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;解決策&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239&#34;&gt;Bundler.with_clean_env&lt;/a&gt;を利用することで、この問題を回避できます。&lt;br /&gt;
-このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。&lt;br /&gt;
-そのため、これに渡したブロックの中で別のbundlerを呼ぶことで、予期した動作になります。&lt;br /&gt;
-また、コマンドが一つだけの場合は&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L251&#34;&gt;Bundler.clean_system&lt;/a&gt;メソッドも使えます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;system &#39;hello_world_gem&#39;
-Dir.chdir(&amp;quot;../test2&amp;quot;) do
-  Bundler.with_clean_env do
-    # ok
-    system &#39;bundle install --path vendor/bundle&#39;
-    system &#39;bundle exec hello-world&#39;
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;補足:bfa2b8729b2aee25617387a8cd02f953&#34;&gt;補足&lt;/h1&gt;
-
-&lt;p&gt;他にGEM_HOMEという環境変数を設定していますが、&lt;br /&gt;
-これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&#34;&gt;https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L416&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="dinoでrubyからArduinoを扱う">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+      hljs.configure({tabReplace: '    '}); 
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>dinoでrubyからArduinoを扱う | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>dinoでrubyからArduinoを扱う</h1>
+                    
+
+<time datetime="2015-07-05" class="post_data">
+2015-07-05
+</time>
+
+
+
+
+
+<div class="separator">|</div>
+<div class="post_data">
+    Category: <a href="/categories/tech">tech</a>
+</div>
+
+
+
+
+<div class="tags">
+    <div class="separator">|</div>
+
+    <div class="post_data">tags: [</div>
+
+    
+    <div class="post_data">
+        <a href="/tags/ruby">ruby</a>
+    </div>
+    
+    <div class="post_data">
+        <a href="/tags/arduino">arduino</a>
+    </div>
+    
+    <div class="post_data">]</div>
+</div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ:97955e611a2d8858fe77d22ec1869f8a">まとめ</a></li>
+<li><a href="#pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a">PCからArduinoを制御するのは面倒</a></li>
+<li><a href="#dino:97955e611a2d8858fe77d22ec1869f8a">dino</a>
+<ul>
+<li><a href="#サンプルコード:97955e611a2d8858fe77d22ec1869f8a">サンプルコード</a></li>
+</ul></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<h1 id="まとめ:97955e611a2d8858fe77d22ec1869f8a">まとめ</h1>
+
+<ul>
+<li>PCからArduinoを制御するのは面倒
+
+<ul>
+<li>作業量が多い</li>
+<li>電子工作</li>
+<li>Arduinoプログラミング</li>
+<li>PCからArduinoを制御するプログラミング</li>
+<li>Arduinoプログラミングは専用言語</li>
+<li>学習コストがある</li>
+</ul></li>
+<li>dinoならrubyだけで全て完結できる
+
+<ul>
+<li>rubyからArduinoの全機能を制御するプログラムが付随</li>
+<li>rubyのオブジェクト操作でArduinoを制御出来る</li>
+</ul></li>
+</ul>
+
+<h1 id="pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a">PCからArduinoを制御するのは面倒</h1>
+
+<p>Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。<br />
+ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。</p>
+
+<p>PCとからArduinoを制御する場合、</p>
+
+<ul>
+<li>電子工作をしてArduinoと部品をつなげる</li>
+<li>Arduinoを制御したり、PCに情報を送るプログラムを書く</li>
+<li>PC側でArduinoからの情報を受け取って制御するプログラムを書く</li>
+</ul>
+
+<p>の3種類の別々の作業が必要になります。</p>
+
+<p>Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。<br />
+ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、<br />
+rubyプログラムを書くだけでArduinoの制御が全てできるようになります。</p>
+
+<p>これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。</p>
+
+<h1 id="dino:97955e611a2d8858fe77d22ec1869f8a">dino</h1>
+
+<p>Arduinoをrubyから扱うライブラリです。<br />
+<a href="https://github.com/austinbv/dino">https://github.com/austinbv/dino</a></p>
+
+<p>Arduinoの全機能を外部から制御可能にするプログラムが付随しており、<br />
+これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。</p>
+
+<h2 id="サンプルコード:97955e611a2d8858fe77d22ec1869f8a">サンプルコード</h2>
+
+<p>A0ポートに対する入力を拾うプログラムは以下の通りです。</p>
+
+<pre><code class="language-ruby">board = Dino::Board.new(Dino::TxRx::Serial.new)
+sensor = Dino::Components::Sensor.new(pin: 'A0', board: board)
+
+sensor.when_data_received do |data|
+  puts &quot;data=#{data.to_i}&quot;
+end
+
+sleep
+</code></pre>
+
+<p>ポートに対する入力があるたびにブロックが実行されます。</p>
+
+<p>このように、arduinoをほぼrubyのオブジェクトのように扱えるため、<br />
+PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。</p>
+
+<p>ただし、当然ながらPCと接続して制御するものであり、<br />
+Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。</p>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/07/05/dino/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
