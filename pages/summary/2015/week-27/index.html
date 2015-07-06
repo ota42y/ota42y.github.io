@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="2015年26週目まとめ">
+    <meta name="author" content="ota42y">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+      hljs.configure({tabReplace: '    '}); 
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>2015年26週目まとめ | おおたの物置</title>
+    
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+
+<body>
+
+<div class="body">
+
+    <div class="header_wrapper">
+        <div class="content">
+            <div class="header">
+                <div class="header_left">
+                    <a class="banner" href="/">おおたの物置</a>
+                </div>
+                <div class="header_right">
+                    
+                    <a href="https://twitter.com/ota42y">twitter</a>
+                    
+
+                    
+                    <a href="https://github.com/ota42y">github</a>
+                    
+                    <a href="">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main">
+
+            <div class="article">
+
+                <div class="post_title">
+                    <h1>2015年26週目まとめ</h1>
+                    
+
+<time datetime="2015-07-06" class="post_data">
+2015-07-06
+</time>
+
+
+
+
+
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="article_body">
+
+                    
+                    <div id="toc">
+                        <div id="toc_body">
+                            <div id="toc_index">目次</div>
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#tmux環境を整えた:26038bc9325a7e1e74b9ae9d9fc662f9">tmux環境を整えた</a></li>
+<li><a href="#gemのannotateが便利:26038bc9325a7e1e74b9ae9d9fc662f9">gemのAnnotateが便利</a></li>
+<li><a href="#emacsのパッケージ管理:26038bc9325a7e1e74b9ae9d9fc662f9">emacsのパッケージ管理</a>
+<ul>
+<li><a href="#パッケージ本体の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ本体の管理</a></li>
+<li><a href="#パッケージ設定の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ設定の管理</a></li>
+<li><a href="#まとめ:26038bc9325a7e1e74b9ae9d9fc662f9">まとめ</a></li>
+</ul></li>
+</ul>
+</nav>
+                        </div>
+                    </div>
+                    
+
+                    
+
+<p>今週まとめ</p>
+
+<h1 id="tmux環境を整えた:26038bc9325a7e1e74b9ae9d9fc662f9">tmux環境を整えた</h1>
+
+<p>画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。<br />
+ただペインを分けているだけでなく、ペインの中身はウィンドウなので、<br />
+ウィンドウを作って入れ換えたり、左右の中身を入れ換えたり出来ます。</p>
+
+<p>具体的にはこんな感じで、分割を維持したまま各シェルを入れ換え可能です。
+<img src="/images/blog/2015/2015-07-06-tmux.png" alt="2015-07-06-tmux.png" />
+</p>
+
+<p>入れ替えはswap-paneを利用しています。<br />
+<a href="https://github.com/abicky/swap-pane">https://github.com/abicky/swap-pane</a></p>
+
+<h1 id="gemのannotateが便利:26038bc9325a7e1e74b9ae9d9fc662f9">gemのAnnotateが便利</h1>
+
+<p><a href="https://github.com/ctran/annotate_models">https://github.com/ctran/annotate_models</a></p>
+
+<p>DBからSchemaを読み取り、対応するモデルが書かれたファイルにその情報を書き込むgemです。<br />
+このモデルにどんなカラムがあったっけ？って時に、schemeファイルから探し出す必要がなくなるので大変便利です。<br />
+また、情報はコメントに追加されるため、既存のコードの邪魔になったり勝手にアクセサが追加されたりしないのも便利です。</p>
+
+<h1 id="emacsのパッケージ管理:26038bc9325a7e1e74b9ae9d9fc662f9">emacsのパッケージ管理</h1>
+
+<p>現在私のemacsはpackage.el、el-get、init-loaderの3つを使ってパッケージ管理をしています。<br />
+package.el、el-getがパッケージのDLや読み込み、init-loaderが設定ファイルのロードをしています。</p>
+
+<p>具体的な使い方はググれば解るので省略するとして、使い分けとこの構成になった理由は以下の通りです。</p>
+
+<p>なお、以下のリポジトリに設定ファイルが置いてあります。
+<a href="https://github.com/ota42y/dotfiles">https://github.com/ota42y/dotfiles</a></p>
+
+<h2 id="パッケージ本体の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ本体の管理</h2>
+
+<p>まず、package.elはMELPA等専用なため、そこにあるパッケージはこちらで管理します。<br />
+一方で、githubや個別のgitリポジトリで管理されているものはel-getでrecipeを書いて管理しています。<br />
+機能的にはel-getだけで完結しますが、package.elの方が楽なので基本はpackage.el、<br />
+そこでカバーできないものをel-getで管理させています。</p>
+
+<p>また、これらで管理されているものは自動でロードされるようになっているため、<br />
+設定ファイルに追加するだけでインストールが完了します。</p>
+
+<h2 id="パッケージ設定の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ設定の管理</h2>
+
+<p>init-loderを使うことで、特定フォルダ内の設定ファイルを一気に読み込むことが出来ます。<br />
+このため、気軽に設定ファイルを分割できます。</p>
+
+<p>ファイル名に数字を入れる事で読み込む順番の設定も出来るため、<br />
+package.elがダウンロードし、読み込みが終了してからパッケージの設定ファイルを読み込むように設定しています。</p>
+
+<p>また、私の環境では、el-getでinit-loaderを管理しているため、<br />
+el-get&gt;init-loder&gt;package.el&gt;その他の設定ファイルの順で実行をしています。<br />
+el-getも自動インストールするようにしているため、設定ファイルを持って行くだけで全て自動でインストールできます。</p>
+
+<h2 id="まとめ:26038bc9325a7e1e74b9ae9d9fc662f9">まとめ</h2>
+
+<ul>
+<li>recipeに追加（必要なら）</li>
+<li>使用するパッケージを追加する
+
+<ul>
+<li>package.elの場合</li>
+<li>init-loderから読まれるpackage.el用の設定ファイル</li>
+<li>無ければ自動で読み込む</li>
+<li>el-getの場合</li>
+<li>emacs.dのinit.elに名前を書く</li>
+<li>recipeを元にDLする</li>
+<li>自動で読み込みも行われる</li>
+</ul></li>
+<li>設定をconf下に書く
+
+<ul>
+<li>init-loderが読み込む</li>
+<li>カスタマイズが必要ならば</li>
+</ul></li>
+</ul>
+
+                </div>
+
+            </div>
+
+            
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/pages/summary/2015/week-27/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+        </div>
+    </div>
+    <div class="footer_height"></div>
+
+
+<div class="footer_margin"></div>
+<div class="footer_wrapper footer_height">
+    <div class="content">
+        <div class="footer">
+            Copyright © 2015 - ota42y
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
