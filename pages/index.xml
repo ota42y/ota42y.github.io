@@ -6,8 +6,73 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 06 Jul 2015 22:42:53 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2015 23:25:27 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年28週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-28/</link>
+      <pubDate>Mon, 13 Jul 2015 23:25:27 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-28/</guid>
+      <description>
+
+&lt;h1 id=&#34;シェル環境を改善中:581fc548323f605be65cf3be104399ee&#34;&gt;シェル環境を改善中&lt;/h1&gt;
+
+&lt;p&gt;tmux plugin managerを導入しました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/tmux-plugins/tpm&#34;&gt;https://github.com/tmux-plugins/tpm&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;tmuxのconfファイルでやる設定をある程度共通化し、
+プラグインのインストールだけで使えるようにするものです。&lt;br /&gt;
+公式でいくつか便利なものが提供されているので入れてみました。&lt;br /&gt;
+プラグインは自分で作れるので、swap-paneもこれで管理したいな…と思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;pecoの導入:581fc548323f605be65cf3be104399ee&#34;&gt;pecoの導入&lt;/h1&gt;
+
+&lt;p&gt;入力からインクリメンタルに行を検索できるツールです。&lt;br /&gt;
+goなのでバイナリ単体で簡単に動き、インストールが簡単なのが特徴です。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/peco/peco&#34;&gt;https://github.com/peco/peco&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/ota42y/dotfiles/commit/62ea2fa76cfa0fab8ee8076e0eb59f3b1421b42e&#34;&gt;前にいたディレクトリをたどる設定&lt;/a&gt;や、
+&lt;a href=&#34;https://github.com/ota42y/dotfiles/commit/2d16f36f14520862eb5292b05c278016d180bdf3&#34;&gt;git statusから指定したファイルをinsertする設定&lt;/a&gt;をしました。&lt;/p&gt;
+
+&lt;h1 id=&#34;markdown-modeが便利:581fc548323f605be65cf3be104399ee&#34;&gt;markdown-modeが便利&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://jblevins.org/projects/markdown-mode/&#34;&gt;http://jblevins.org/projects/markdown-mode/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;emacs上でmarkdownのハイライトやスニペット入力が出来る便利モードです。&lt;br /&gt;
+個人的には見出しをorg-modeのように折りたたみが出来るので、&lt;br /&gt;
+アウトラインエディタとしてものすごく便利です。&lt;/p&gt;
+
+&lt;h1 id=&#34;mecab-ipadicをいじっていた:581fc548323f605be65cf3be104399ee&#34;&gt;mecab-ipadicをいじっていた&lt;/h1&gt;
+
+&lt;p&gt;形態素解析をいじってみたくて、igoとmecab-ipadicについて調べていました。&lt;/p&gt;
+
+&lt;h2 id=&#34;igoとは:581fc548323f605be65cf3be104399ee&#34;&gt;igoとは&lt;/h2&gt;
+
+&lt;p&gt;igoとはjava製の形態素解析です。
+&lt;a href=&#34;http://igo.osdn.jp/&#34;&gt;http://igo.osdn.jp/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;javaとantがあれば直ぐに使えるため、インストールがとても楽です。&lt;br /&gt;
+なお、辞書は同梱されていないため、mecabの辞書を取ってくる必要があります。&lt;br /&gt;
+&lt;a href=&#34;http://taku910.github.io/mecab/&#34;&gt;http://taku910.github.io/mecab/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;辞書が組み込みではないので普通に使う分にはちょっと面倒ですが、
+今回のように辞書をいじって動きを観察する用途にとても便利でした。&lt;/p&gt;
+
+&lt;h2 id=&#34;ipadicを変更してみる:581fc548323f605be65cf3be104399ee&#34;&gt;ipadicを変更してみる&lt;/h2&gt;
+
+&lt;p&gt;igoの動かし方はサイトの通りなので省略します。&lt;/p&gt;
+
+&lt;p&gt;ipadicから解析用のバイナリ辞書を生成する手順がありますが、&lt;br /&gt;
+このときipadicのフォルダに辞書ファイルを追加する事で、新たな辞書を追加する事が出来ます。&lt;br /&gt;
+また、既存のファイルを削除することで単語の登録をさせないことが出来るため、&lt;br /&gt;
+自分が作った辞書だけにすることで、正しく使えるかどうかを調べることが出来ます。&lt;/p&gt;
+
+&lt;p&gt;なお、バイナリ辞書作成時はフォルダの中のcsvを全て読み込むらしく、&lt;br /&gt;
+追加時に必要な設定などは無いようです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年27週目まとめ</title>
@@ -870,36 +935,6 @@ deviantARTは存在を知らなかったので、いろいろ調べてみたい�
 
 &lt;p&gt;一応golangでgithubのapiラッパーはあるようです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/google/go-github&#34;&gt;google/go-github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年13週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-13/</link>
-      <pubDate>Sun, 29 Mar 2015 10:37:34 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-13/</guid>
-      <description>
-
-&lt;h1 id=&#34;プロトタイプ展に行きました:c970b2167d590a8651f22cb3848b6111&#34;&gt;プロトタイプ展に行きました&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.design-lab.iis.u-tokyo.ac.jp/exhibition/proto2015/&#34;&gt;東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;&lt;/a&gt;に行きました。&lt;br /&gt;
-全く同じ素材でも構造を変えることで、握ったり持ったりしたときの感触が全く違うのはおもしろかったです。&lt;br /&gt;
-現代アートっぽいやつはよくわからなかったですが…&lt;/p&gt;
-
-&lt;h1 id=&#34;goについて理解が深まった:c970b2167d590a8651f22cb3848b6111&#34;&gt;Goについて理解が深まった&lt;/h1&gt;
-
-&lt;p&gt;Golangを多く触った一週間でした。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/03/28/go_interface/&#34;&gt;GoのポインタはC++ポインタとは違う&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;gxuiで簡単なGUIアプリを作りました
-
-&lt;ul&gt;
-&lt;li&gt;gorutineのすばらしさを改めて感じる&lt;/li&gt;
-&lt;li&gt;描画処理とは別に平行して処理をしたい場合にgorutineで簡単に書ける&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
