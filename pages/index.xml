@@ -6,8 +6,47 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 13 Jul 2015 23:25:27 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2015 17:56:49 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年29週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-29/</link>
+      <pubDate>Tue, 21 Jul 2015 17:56:49 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-29/</guid>
+      <description>
+
+&lt;p&gt;#CPUの特権レベルについて調べた
+&lt;a href=&#34;https://ja.wikipedia.org/wiki/CPU%E3%83%A2%E3%83%BC%E3%83%89&#34;&gt;CPUモード&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3&#34;&gt;リングプロテクション&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;CPUには複数のモードが存在し、特定の機能やメモリ領域にアクセスできるかどうかがこのモードで制御されるらしいです。&lt;/p&gt;
+
+&lt;p&gt;通常、ユーザのプログラムはレベル３、カーネルがレベル０で動いており、&lt;br /&gt;
+ユーザのプログラムはレベル０で動いています。&lt;br /&gt;
+そのため、 レベル０用のリソースを使うためにはカーネルに処理をお願いする必要があるそうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;goのビルドツールについて調べる:c2d0a3130aad94273f8f684d791e0140&#34;&gt;goのビルドツールについて調べる&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;go build&lt;/code&gt;を実行することで、コンパイルとリンクをまとめて行うことが出来ます。&lt;br /&gt;
+ですが、goではそれを別々に実行することも出来ます。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go tool 8g&lt;/code&gt;もしくは&lt;code&gt;go tool 6g&lt;/code&gt;を使うことで、goのソースコードからオブジェクトファイルを作成できます。&lt;br /&gt;
+(どちらかは使用しているマシンのアーキテクチャによります)&lt;/p&gt;
+
+&lt;p&gt;生成されるオブジェクトファイルは.8もしくは.6の拡張子になります。&lt;br /&gt;
+このファイルを&lt;code&gt;go tool 8l&lt;/code&gt;もしくは&lt;code&gt;go tool 6l&lt;/code&gt;を使ってリンクすることで、実行ファイルを作成できます。&lt;br /&gt;
+実行ファイルはファイル名を指定しない場合、8.outもしくは6.outになります。&lt;/p&gt;
+
+&lt;h1 id=&#34;レーベンシュタイン距離計算を実装した:c2d0a3130aad94273f8f684d791e0140&#34;&gt;レーベンシュタイン距離計算を実装した&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/ota42y/29dc71841f4388957020&#34;&gt;https://gist.github.com/ota42y/29dc71841f4388957020&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;二つの文字列のうち、片方をどれくらい編集したらもう片方の文字列に出来るかを求めるやつです。&lt;br /&gt;
+アルゴリズム的には凄い簡単ですね。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年28週目まとめ</title>
@@ -900,41 +939,6 @@ godepやgomみたいなバージョン管理の導入を検討しますかね。
 今回の基調講演も発表もとてもおもしろかったです。&lt;br /&gt;
 特に人狼はそこそこやっているため、とても参考になりました。&lt;br /&gt;
 deviantARTは存在を知らなかったので、いろいろ調べてみたいですね…&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年14週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-14/</link>
-      <pubDate>Mon, 06 Apr 2015 07:37:34 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-14/</guid>
-      <description>
-
-&lt;h1 id=&#34;pitが便利:694b6c6ee0002c07e107ab179febb18f&#34;&gt;pitが便利&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/cho45/pit&#34;&gt;cho45/pit&lt;/a&gt;&lt;br /&gt;
-ユーザ名やキー等が必要な場合に、pitからロードするコードを書くことで、&lt;br /&gt;
-保存されていればそれをロード、保存されていなければエディタを立ち上げて入力を促し、&lt;br /&gt;
-結果をpitのディレクトリに保存してくれるものです。&lt;/p&gt;
-
-&lt;p&gt;これにより、アプリにパスワードを埋め込んだり、自分でいちいちファイルから読み込む必要がなくなり、&lt;br /&gt;
-秘密情報の管理がとても楽になります。&lt;/p&gt;
-
-&lt;p&gt;golangにもpitがあるらしく、便利なのでgoで使ったやつにも入れようと思います。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/typester/go-pit&#34;&gt;https://github.com/typester/go-pit&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;changelogアプリに良いのがない:694b6c6ee0002c07e107ab179febb18f&#34;&gt;changelogアプリに良いのがない&lt;/h1&gt;
-
-&lt;p&gt;githubの情報からchangelogを作ってくれるのはいくつかあります。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives&#34;&gt;https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ですが、どれも帯に短したすきに長しといった感じで、なかなか私が想定している使い方に合致した物がありません。&lt;br /&gt;
-やっていることはそんなに難しくないはずなので、やはり自作するしか無いのでしょうか…&lt;br /&gt;
-その場合、ある程度出力形式を変えられる形のがほしいですね。&lt;/p&gt;
-
-&lt;p&gt;一応golangでgithubのapiラッパーはあるようです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/google/go-github&#34;&gt;google/go-github&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
