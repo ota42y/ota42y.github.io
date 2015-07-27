@@ -6,8 +6,51 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 21 Jul 2015 17:56:49 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2015 23:09:42 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年30週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-30/</link>
+      <pubDate>Mon, 27 Jul 2015 23:09:42 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-30/</guid>
+      <description>
+
+&lt;h1 id=&#34;ブログ修正中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;ブログ修正中&lt;/h1&gt;
+
+&lt;p&gt;Bootstrapを使って構築し直してます。&lt;br /&gt;
+ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。&lt;/p&gt;
+
+&lt;h1 id=&#34;freeコマンドの出力が変わってる:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;freeコマンドの出力が変わってる&lt;/h1&gt;
+
+&lt;p&gt;freeするとavailableなる見慣れない出力が出ます…&lt;br /&gt;
+おそらく空きメモリを示しているようですが、ちょっと調べる必要がありそうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;evernoteの代わりを探し中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;Evernoteの代わりを探し中&lt;/h1&gt;
+
+&lt;p&gt;昨日ちょうどEvernoteプレミアムが切れてしまい、慌てて延長しました。&lt;/p&gt;
+
+&lt;p&gt;このとき、一時的に容量超過状態になったため、説明には「コンテンツのアップロードが出来ません」と出ていましたが、&lt;br /&gt;
+ローカルのEvernoteクライアント上での編集や新規ノートの作成など、アップロード以外の作業が全て出来なくなっていました。&lt;br /&gt;
+また、その際の挙動も編集できないのでは無く、従来通り編集可能ですが保存されないため、&lt;br /&gt;
+別の操作をしたタイミングでデータが消滅するというかなり危険な挙動をしていました。&lt;/p&gt;
+
+&lt;p&gt;今回はたまたまオンラインに繋げる環境にいたので大事には至りませんでしたが、&lt;br /&gt;
+もしオフライン環境だったらと思うと一大事です…&lt;/p&gt;
+
+&lt;p&gt;Evernoteはオフラインでもそこに保存しておけば次にオンラインになった時に同期されるという仕様のため、&lt;br /&gt;
+オフライン環境で特によく使い、その上プレミアムを戻しても非プレミアム中にやった変更は消滅するため、かなり被害が大きいです。&lt;/p&gt;
+
+&lt;p&gt;というわけで、Evernoteは参照オンリーの情報だけ保存するようにし、&lt;br /&gt;
+変更が必要なノートなどは別の方式で管理しようと思います。&lt;br /&gt;
+元々ノートの容量増加に伴って、Evernoteクライアントの反応速度が低下しつつありましたし、
+良い頃合いかと思います。&lt;/p&gt;
+
+&lt;p&gt;おそらくDropbox内に置いたファイルを上手く閲覧するような感じになると思います。&lt;br /&gt;
+此方の場合は最悪でもローカルファイルになるだけなので、Evernoteのように変更不可能になることはないため、何かあった場合でも大丈夫です。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年29週目まとめ</title>
@@ -1083,91 +1126,6 @@ int main() {
 
 &lt;p&gt;が、テストのバグでテストが通らないとの指摘が。&lt;br /&gt;
 ただし、手元のMacやLinuxでは通るので、Windowsだけの問題っぽいです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年19週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-19/</link>
-      <pubDate>Mon, 11 May 2015 21:55:04 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-19/</guid>
-      <description>
-
-&lt;h1 id=&#34;atomicな処理でアライメントを揃える必要があるらしい:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;atomicな処理でアライメントを揃える必要があるらしい&lt;/h1&gt;
-
-&lt;p&gt;goのatomic.AddInt64や、&lt;br /&gt;
-WindowsのInterlockedExchangeでは、&lt;br /&gt;
-32bit環境で64bitの値をアトミックに変更する場合、&lt;br /&gt;
-その値が64bit境界に置かれている必要があるらしいです。&lt;br /&gt;
-ですが、何故それが必要なのかを調べているのですが、それらしい理由が見つかりません…&lt;/p&gt;
-
-&lt;p&gt;一応、Intelのアーキテクチャには、ロックをせずに変更する場合、&lt;br /&gt;
-64bitアライメントに乗っていない場合はアトミックな処理が保証されないと書いてありましたが、&lt;br /&gt;
-goではロックしてからCMPXCHG8Bを実行しており、アトミックな処理になるはずです。&lt;/p&gt;
-
-&lt;p&gt;また、ロックやCMPXCHG8Bもメモリアライメントの制約は受けないため、特に問題は無さそうです。&lt;/p&gt;
-
-&lt;p&gt;一応、64bit境界に無い場合は性能が低下する可能性があるそうですが…&lt;/p&gt;
-
-&lt;h1 id=&#34;android-触ってた:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;Android 触ってた&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;string.xmlは同じフォルダに別の名前のxmlを作っても、勝手にまとめてくれるので同じようにアクセスできるみたい。&lt;/li&gt;
-&lt;li&gt;Dropbox SDKを触ってみた
-
-&lt;ul&gt;
-&lt;li&gt;サンプルがかなり良い具合に出来ている&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;UIを変更できるのは描画用のスレッドだけ
-
-&lt;ul&gt;
-&lt;li&gt;doInBackgroundは別スレッドで処理を行う&lt;/li&gt;
-&lt;li&gt;UIを変更しようとすると落ちる&lt;/li&gt;
-&lt;li&gt;終了時にonPostExecuteがUIスレッドで呼ばれるのでそこで処理する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;fluentdを触ってる:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;fluentdを触ってる&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;自分用のアプリのログ処理を入れ換えた&lt;/li&gt;
-&lt;li&gt;windowsとlinuxそれぞれあるけど、fluentd-forwarderを使ってlinuxのfluentdに集約&lt;/li&gt;
-&lt;li&gt;windowsはrubyで書いてる
-
-&lt;ul&gt;
-&lt;li&gt;ruby2.1じゃないと動かない
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://qiita.com/okahashi117/items/a0b55ea24a6ef7b6582b&#34;&gt;http://qiita.com/okahashi117/items/a0b55ea24a6ef7b6582b&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;msgpackは未対応&lt;/li&gt;
-&lt;li&gt;オプションが渡せないため、bundlerも使えない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;SSL接続に失敗する
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://gist.github.com/luislavena/f064211759ee0f806c88&#34;&gt;https://gist.github.com/luislavena/f064211759ee0f806c88&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ここのpemファイルの位置をSSL_CERT_FILE環境変数に設定する必要がある&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;fluentd-forwarder-にpr送った:732daa6ed2fb5abdbd55e43c0c719906&#34;&gt;fluentd-forwarder にPR送った&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;atomic処理のメモリアライメント的な問題でwindows 32bitだと動かなかったので直した
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder/pull/10&#34;&gt;https://github.com/fluent/fluentd-forwarder/pull/10&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;まだマージされてないので、手元のブランチでビルドしたものを使ってる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;goのパッケージシステムは手元で動かすのとものすごく相性が悪い
-
-&lt;ul&gt;
-&lt;li&gt;全てのパッケージバスを自分のリポジトリに書き換えないといけない&lt;/li&gt;
-&lt;li&gt;しかもmasterブランチ限定&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

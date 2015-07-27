@@ -231,7 +231,7 @@ switch関数はnewprocの呼び出し元であるfork関数に1で戻ります�
 &lt;p&gt;この問題に対しては(まだ不十分ですが)修正パッチが公開されており、また各ディストリビューションでも修正したbashが配布されています。&lt;/p&gt;
 
 &lt;p&gt;Redhad系の対策はこちら&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/richmikan@github/items/5f54114a46e64178133d&#34;&gt;&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;09&lt;/sub&gt;/24に発表されたBash脆弱性と解決法(RedHat系)&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/richmikan@github/items/5f54114a46e64178133d&#34;&gt;2014/09/24に発表されたBash脆弱性と解決法(RedHat系)&lt;/a&gt;&lt;br /&gt;
 Mac OS X系の対策はこちら&lt;br /&gt;
 &lt;a href=&#34;http://qiita.com/syui/items/809c1cd8ed57c8cdb055&#34;&gt;CVE-2014-6271のbashの脆弱性に対応する方法&lt;/a&gt;　　&lt;/p&gt;
 
@@ -241,7 +241,7 @@ Mac OS X系の対策はこちら&lt;br /&gt;
 &lt;h1 id=&#34;修正版へのアップデート:377013f15561b7f0d7c8de02112ec895&#34;&gt;修正版へのアップデート&lt;/h1&gt;
 
 &lt;p&gt;修正されたbashはsqueezeの通常のリポジトリには修正版は公開されておらず、&lt;br /&gt;
-ltsリポジトリを参照する必要があります。(&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;09&lt;/sub&gt;/26 7:00現在)&lt;br /&gt;
+ltsリポジトリを参照する必要があります。(2014/09/26 7:00現在)&lt;br /&gt;
 &lt;a href=&#34;https://wiki.debian.org/LTS/Using#Add_squeeze-lts_to_your_sources.list&#34;&gt;LTS/Using - Debian Wiki&lt;/a&gt;にリポジトリが書いてあるので、それをapt-getの参照先に追加します。&lt;/p&gt;
 
 &lt;p&gt;/etc/apt/sources.list.d`に、lts.listを作り、以下のように書き込みます。&lt;/p&gt;

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="ASUS MeMO Pad 7 ME572CをRoot化した">
+    <meta name="description" content="2015年30週目まとめ">
     <meta name="author" content="ota42y">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     </script>
 
     
-    <title>ASUS MeMO Pad 7 ME572CをRoot化した | おおたの物置</title>
+    <title>2015年30週目まとめ | おおたの物置</title>
     
 
     <link rel="stylesheet" href="/css/base.css">
@@ -54,37 +54,17 @@
             <div class="article">
 
                 <div class="post_title">
-                    <h1>ASUS MeMO Pad 7 ME572CをRoot化した</h1>
+                    <h1>2015年30週目まとめ</h1>
                     
 
-<time datetime="2014-12-28" class="post_data">
-2014-12-28
+<time datetime="2015-07-27" class="post_data">
+2015-07-27
 </time>
 
 
 
 
 
-<div class="separator">|</div>
-<div class="post_data">
-    Category: <a href="/categories/tech">tech</a>
-</div>
-
-
-
-
-<div class="tags">
-    <div class="separator">|</div>
-
-    <div class="post_data">tags: [</div>
-
-    
-    <div class="post_data">
-        <a href="/tags/android">android</a>
-    </div>
-    
-    <div class="post_data">]</div>
-</div>
 
 
                     <div class="clear"></div>
@@ -98,7 +78,9 @@
                             <div id="toc_index">目次</div>
                             <nav id="TableOfContents">
 <ul>
-<li><a href="#root化手順:da1b4865caf34b84064437e98e031591">Root化手順</a></li>
+<li><a href="#ブログ修正中:83c0250635adb9b49b05de588a8ee0a4">ブログ修正中</a></li>
+<li><a href="#freeコマンドの出力が変わってる:83c0250635adb9b49b05de588a8ee0a4">freeコマンドの出力が変わってる</a></li>
+<li><a href="#evernoteの代わりを探し中:83c0250635adb9b49b05de588a8ee0a4">Evernoteの代わりを探し中</a></li>
 </ul>
 </nav>
                         </div>
@@ -107,66 +89,38 @@
 
                     
 
-<p>ASUS MeMO Pad 7 ME572Cを買いました。</p>
+<h1 id="ブログ修正中:83c0250635adb9b49b05de588a8ee0a4">ブログ修正中</h1>
 
-<p><a href="http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/">タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS</a></p>
+<p>Bootstrapを使って構築し直してます。<br />
+ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。</p>
 
-<p>Nexus 9とかと迷いましたが、</p>
+<h1 id="freeコマンドの出力が変わってる:83c0250635adb9b49b05de588a8ee0a4">freeコマンドの出力が変わってる</h1>
 
-<ul>
-<li>コストパフォーマンスがいい
+<p>freeするとavailableなる見慣れない出力が出ます…<br />
+おそらく空きメモリを示しているようですが、ちょっと調べる必要がありそうです。</p>
 
-<ul>
-<li>安くてそこそこ高性能</li>
-</ul></li>
-<li>SDカードが使える
+<h1 id="evernoteの代わりを探し中:83c0250635adb9b49b05de588a8ee0a4">Evernoteの代わりを探し中</h1>
 
-<ul>
-<li>気軽に容量増強出来る</li>
-</ul></li>
-</ul>
+<p>昨日ちょうどEvernoteプレミアムが切れてしまい、慌てて延長しました。</p>
 
-<p>といった点から、これに決めました。</p>
+<p>このとき、一時的に容量超過状態になったため、説明には「コンテンツのアップロードが出来ません」と出ていましたが、<br />
+ローカルのEvernoteクライアント上での編集や新規ノートの作成など、アップロード以外の作業が全て出来なくなっていました。<br />
+また、その際の挙動も編集できないのでは無く、従来通り編集可能ですが保存されないため、<br />
+別の操作をしたタイミングでデータが消滅するというかなり危険な挙動をしていました。</p>
 
-<p>ですが実際に届いて起動してみたところ、<br />
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。</p>
+<p>今回はたまたまオンラインに繋げる環境にいたので大事には至りませんでしたが、<br />
+もしオフライン環境だったらと思うと一大事です…</p>
 
-<p>特に「やることリスト」(<a href="https://play.google.com/store/apps/details?id=com.asus.task&amp;hl=ja">ASUS Do It Later</a>)というアプリは、<br />
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。</p>
+<p>Evernoteはオフラインでもそこに保存しておけば次にオンラインになった時に同期されるという仕様のため、<br />
+オフライン環境で特によく使い、その上プレミアムを戻しても非プレミアム中にやった変更は消滅するため、かなり被害が大きいです。</p>
 
-<p>そのため、Rootを取って無効化することにしました。</p>
+<p>というわけで、Evernoteは参照オンリーの情報だけ保存するようにし、<br />
+変更が必要なノートなどは別の方式で管理しようと思います。<br />
+元々ノートの容量増加に伴って、Evernoteクライアントの反応速度が低下しつつありましたし、
+良い頃合いかと思います。</p>
 
-<h1 id="root化手順:da1b4865caf34b84064437e98e031591">Root化手順</h1>
-
-<p>RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。<br />
-(2014/12/28の最新版は1.4.6.8r)</p>
-
-<p>手順としては以下の通りになります。</p>
-
-<ul>
-<li>RootZenFoneをインストール</li>
-<li>Wifiと3Gを機内モードにして切る</li>
-<li>RootZenFoneを起動</li>
-<li>通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す</li>
-<li>変化がなくなるまで待つ
-
-<ul>
-<li>色々ポップアップが出たりする</li>
-</ul></li>
-<li>もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
-
-<ul>
-<li>この時点でRoot化出来ています</li>
-</ul></li>
-<li>AsusLiveDemoというアカウントが追加されているため削除</li>
-<li>RootZenFonを消す</li>
-<li>通信を有効か</li>
-<li>SuperSuが自動でインストールされているので、最新版に更新</li>
-<li>SuperSuを起動し、データ更新後に再起動を促されるので再起動</li>
-</ul>
-
-<p>Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。<br />
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</p>
+<p>おそらくDropbox内に置いたファイルを上手く閲覧するような感じになると思います。<br />
+此方の場合は最悪でもローカルファイルになるだけなので、Evernoteのように変更不可能になることはないため、何かあった場合でも大丈夫です。</p>
 
                 </div>
 
@@ -184,7 +138,7 @@
 
     
     <span class="hatena">
-        <a href="http://ota42y.com/blog/2014/12/28/memopad-root/" class="hatena-bookmark-button"
+        <a href="http://ota42y.com/pages/summary/2015/week-30/" class="hatena-bookmark-button"
            data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
            title="このエントリーをはてなブックマークに追加">
             <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"

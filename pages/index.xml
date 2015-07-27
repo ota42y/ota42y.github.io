@@ -6,8 +6,51 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 21 Jul 2015 17:56:49 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2015 23:09:42 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年30週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-30/</link>
+      <pubDate>Mon, 27 Jul 2015 23:09:42 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-30/</guid>
+      <description>
+
+&lt;h1 id=&#34;ブログ修正中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;ブログ修正中&lt;/h1&gt;
+
+&lt;p&gt;Bootstrapを使って構築し直してます。&lt;br /&gt;
+ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。&lt;/p&gt;
+
+&lt;h1 id=&#34;freeコマンドの出力が変わってる:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;freeコマンドの出力が変わってる&lt;/h1&gt;
+
+&lt;p&gt;freeするとavailableなる見慣れない出力が出ます…&lt;br /&gt;
+おそらく空きメモリを示しているようですが、ちょっと調べる必要がありそうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;evernoteの代わりを探し中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;Evernoteの代わりを探し中&lt;/h1&gt;
+
+&lt;p&gt;昨日ちょうどEvernoteプレミアムが切れてしまい、慌てて延長しました。&lt;/p&gt;
+
+&lt;p&gt;このとき、一時的に容量超過状態になったため、説明には「コンテンツのアップロードが出来ません」と出ていましたが、&lt;br /&gt;
+ローカルのEvernoteクライアント上での編集や新規ノートの作成など、アップロード以外の作業が全て出来なくなっていました。&lt;br /&gt;
+また、その際の挙動も編集できないのでは無く、従来通り編集可能ですが保存されないため、&lt;br /&gt;
+別の操作をしたタイミングでデータが消滅するというかなり危険な挙動をしていました。&lt;/p&gt;
+
+&lt;p&gt;今回はたまたまオンラインに繋げる環境にいたので大事には至りませんでしたが、&lt;br /&gt;
+もしオフライン環境だったらと思うと一大事です…&lt;/p&gt;
+
+&lt;p&gt;Evernoteはオフラインでもそこに保存しておけば次にオンラインになった時に同期されるという仕様のため、&lt;br /&gt;
+オフライン環境で特によく使い、その上プレミアムを戻しても非プレミアム中にやった変更は消滅するため、かなり被害が大きいです。&lt;/p&gt;
+
+&lt;p&gt;というわけで、Evernoteは参照オンリーの情報だけ保存するようにし、&lt;br /&gt;
+変更が必要なノートなどは別の方式で管理しようと思います。&lt;br /&gt;
+元々ノートの容量増加に伴って、Evernoteクライアントの反応速度が低下しつつありましたし、
+良い頃合いかと思います。&lt;/p&gt;
+
+&lt;p&gt;おそらくDropbox内に置いたファイルを上手く閲覧するような感じになると思います。&lt;br /&gt;
+此方の場合は最悪でもローカルファイルになるだけなので、Evernoteのように変更不可能になることはないため、何かあった場合でも大丈夫です。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年29週目まとめ</title>
@@ -897,49 +940,6 @@ Windowsのサーバで動かしているやつのログをとってくるの面�
 &lt;li&gt;タスク閲覧機能のみ&lt;/li&gt;
 &lt;li&gt;次はタスク追加機能とかつける&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年15週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-15/</link>
-      <pubDate>Mon, 13 Apr 2015 11:53:02 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-15/</guid>
-      <description>
-
-&lt;h1 id=&#34;atom-ioのstarでパッケージ管理:d98e074c42c4bcd9d2f6d106cbfe320e&#34;&gt;Atom.ioのstarでパッケージ管理&lt;/h1&gt;
-
-&lt;p&gt;Atom.ioでは、パッケージのページ上でそのパッケージにスターをつけることができます。&lt;br /&gt;
-&lt;a href=&#34;https://atom.io/packages/project-manager&#34;&gt;https://atom.io/packages/project-manager&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ここでスターをつけたパッケージはユーザのお気に入り扱いになり、&lt;br /&gt;
-ユーザページ(例: &lt;a href=&#34;https://atom.io/users/ota42y&#34;&gt;https://atom.io/users/ota42y&lt;/a&gt; )上で確認できます。&lt;/p&gt;
-
-&lt;p&gt;さらに、Atom.ioにはapmというパッケージ管理システムがついており、&lt;br /&gt;
-これにstarsオプションを与えることで一覧を見ることや、&lt;code&gt;apm stars --install&lt;/code&gt;で、&lt;br /&gt;
-ユーザのスターをつけたパッケージをすべてインストールできます。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/atom/apm/blob/master/src/stars.coffee&#34;&gt;https://github.com/atom/apm/blob/master/src/stars.coffee&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;プラグインのバックアップはもちろんのこと、複数環境でのプラグイン同期にとても便利なので重宝します。&lt;/p&gt;
-
-&lt;h1 id=&#34;タスク管理システム作ってる:d98e074c42c4bcd9d2f6d106cbfe320e&#34;&gt;タスク管理システム作ってる&lt;/h1&gt;
-
-&lt;p&gt;最低限表示するだけのver. 0.0.1ができそうです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/plaintodo&#34;&gt;https://github.com/ota42y/plaintodo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;対話型インタフェースを作るのにlinerが凄い便利でした。&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2015/04/11/go-liner/&#34;&gt;golangのラインエディタはlinerが便利&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Travis.ciとか入れてCI回したいですが、テスト用コンテナでの依存パッケージの管理とか大変そうです…&lt;br /&gt;
-godepやgomみたいなバージョン管理の導入を検討しますかね。&lt;/p&gt;
-
-&lt;h1 id=&#34;第6回ニコニコ学会β-データ研究会に参加した:d98e074c42c4bcd9d2f6d106cbfe320e&#34;&gt;第6回ニコニコ学会β　データ研究会に参加した&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/04/12/niconico_data_6/&#34;&gt;参加記録 第6回ニコニコ学会β　データ研究会&lt;/a&gt;&lt;br /&gt;
-今回の基調講演も発表もとてもおもしろかったです。&lt;br /&gt;
-特に人狼はそこそこやっているため、とても参考になりました。&lt;br /&gt;
-deviantARTは存在を知らなかったので、いろいろ調べてみたいですね…&lt;/p&gt;
 </description>
     </item>
     
