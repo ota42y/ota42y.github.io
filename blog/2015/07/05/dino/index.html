@@ -1,106 +1,127 @@
 <!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta name="description" content="dinoでrubyからArduinoを扱う">
     <meta name="author" content="ota42y">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
     <script>
-      hljs.configure({tabReplace: '    '}); 
-      hljs.initHighlightingOnLoad();
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
     </script>
 
     
     <title>dinoでrubyからArduinoを扱う | おおたの物置</title>
     
-
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/list.css">
-    <link rel="stylesheet" href="/css/single.css">
-    <link rel="stylesheet" href="/css/index.css">
 </head>
 
 
 <body>
 
-<div class="body">
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
 
-    <div class="header_wrapper">
-        <div class="content">
-            <div class="header">
-                <div class="header_left">
-                    <a class="banner" href="/">おおたの物置</a>
-                </div>
-                <div class="header_right">
-                    
-                    <a href="https://twitter.com/ota42y">twitter</a>
-                    
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
 
-                    
-                    <a href="https://github.com/ota42y">github</a>
-                    
-                    <a href="">RSS</a>
-                </div>
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/ota42y">github</a></p>
+                
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://twitter.com/ota42y">twitter</a></p>
+                
             </div>
         </div>
     </div>
-
-    <div class="content">
-        <div class="main">
-
-            <div class="article">
-
-                <div class="post_title">
-                    <h1>dinoでrubyからArduinoを扱う</h1>
-                    
-
-<time datetime="2015-07-05" class="post_data">
-2015-07-05
-</time>
+</header>
 
 
 
-
-
-<div class="separator">|</div>
-<div class="post_data">
-    Category: <a href="/categories/tech">tech</a>
-</div>
-
-
-
-
-<div class="tags">
-    <div class="separator">|</div>
-
-    <div class="post_data">tags: [</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/07/05/dino/">dinoでrubyからArduinoを扱う</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-07-05" class="post_data">
+    2015-07-05
+    </time>
+    
 
     
-    <div class="post_data">
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
         <a href="/tags/ruby">ruby</a>
-    </div>
+    </span>
     
-    <div class="post_data">
+    <span class="post_data">
         <a href="/tags/arduino">arduino</a>
-    </div>
+    </span>
     
-    <div class="post_data">]</div>
-</div>
 
+    <span class="post_data">]</span>
+    
+</p>
 
-                    <div class="clear"></div>
-                </div>
+            </div>
 
-                <div class="article_body">
-
-                    
-                    <div id="toc">
-                        <div id="toc_body">
-                            <div id="toc_index">目次</div>
-                            <nav id="TableOfContents">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
 <ul>
 <li><a href="#まとめ:97955e611a2d8858fe77d22ec1869f8a">まとめ</a></li>
 <li><a href="#pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a">PCからArduinoを制御するのは面倒</a></li>
@@ -110,11 +131,12 @@
 </ul></li>
 </ul>
 </nav>
-                        </div>
-                    </div>
-                    
+                </div>
+            </div>
+            
 
-                    
+            <div class="article">
+              
 
 <h1 id="まとめ:97955e611a2d8858fe77d22ec1869f8a">まとめ</h1>
 
@@ -188,11 +210,11 @@ PC上でrubyプログラムを書くだけで、電子部品を制御するこ�
 <p>ただし、当然ながらPCと接続して制御するものであり、<br />
 Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。</p>
 
-                </div>
-
             </div>
+        </div>
+    </div>
 
-            
+    
 
 <div class="social_buttons">
     
@@ -217,20 +239,22 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
     
 </div>
 
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
         </div>
     </div>
-    <div class="footer_height"></div>
+</footer>
 
 
-<div class="footer_margin"></div>
-<div class="footer_wrapper footer_height">
-    <div class="content">
-        <div class="footer">
-            Copyright © 2015 - ota42y
-        </div>
-    </div>
-</div>
-</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
 </body>
 </html>
 
