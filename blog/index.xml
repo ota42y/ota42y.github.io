@@ -6,8 +6,26 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2015 23:25:20 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hugoのブログテーマを作った</title>
+      <link>http://ota42y.com/blog/2015/07/29/blog_theme/</link>
+      <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/07/29/blog_theme/</guid>
+      <description>&lt;p&gt;ブログテーマ更新を更新しました。&lt;br /&gt;
+今回は、Bootstrapを元にした&lt;a href=&#34;http://honokak.osaka/&#34;&gt;Honoka&lt;/a&gt;を利用して作りました。&lt;/p&gt;
+
+&lt;p&gt;リポジトリはこちら&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/honokichi&#34;&gt;https://github.com/ota42y/honokichi&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bootstrapの作りにあったHTMLを出力するようにテンプレートを作ると、&lt;br /&gt;
+ほぼそれっぽいデザインになったためとても楽でした。&lt;br /&gt;
+一応、ブログでよく使う見出し間の間隔や、記事一覧画面でのマージンをちょっと変更しています。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
@@ -2275,112 +2293,6 @@ func TestPrint(t *testing.T) {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
-      <link>http://ota42y.com/blog/2015/03/28/go_interface/</link>
-      <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/03/28/go_interface/</guid>
-      <description>
-
-&lt;p&gt;C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。&lt;/p&gt;
-
-&lt;h1 id=&#34;goでインターフェースを実装したクラスのポインタを扱う:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;Goでインターフェースを実装したクラスのポインタを扱う&lt;/h1&gt;
-
-&lt;p&gt;Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Node interface{
-  ToString() string
-}
-
-func Output(l Node) {
-  fmt.Println(l.ToString())
-}
-
-type NodeTest struct{
-}
-
-func (n NodeTest) ToString() string{
-  return &amp;quot;test&amp;quot;
-}
-
-func main(){
-  n := NodeTest{}
-  Output(n)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、
-インターフェースのポインタを渡すように変更します。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l *Node) {
-  fmt.Println((*l).ToString())
-}
-
-func (n *NodeTest) ToString() string{
-  return &amp;quot;test&amp;quot;
-}
-
-func main(){
-  n := &amp;amp;NodeTest{}
-  Output(n)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、
-関数の引数として渡すことができず、コンパイルが通りません。&lt;/p&gt;
-
-&lt;p&gt;そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、
-ちゃんとこのような場合も解決方法は存在します。&lt;/p&gt;
-
-&lt;h1 id=&#34;ポインタにインターフェースを実装する:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;ポインタにインターフェースを実装する&lt;/h1&gt;
-
-&lt;p&gt;上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。&lt;br /&gt;
-そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l Node) {
-  fmt.Println(l.ToString())
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これにより、Output関数にNodeインタフェースを実装したNodeTestのポインタがコピーして渡され、&lt;br /&gt;
-NodeTestオブジェクト自体はコピーされずに渡されます。&lt;/p&gt;
-
-&lt;p&gt;ここがC++とはだいぶ違う考え方が必要なので戸惑いました。&lt;br /&gt;
-C++では構造体にメソッドを実装し、ポインタからその構造体のメソッドを呼び出します。&lt;br /&gt;
-そのため、あくまでポインタの指しているオブジェクトのメソッド呼び出しであり、&lt;br /&gt;
-クラスのポインタそのものにメソッドが定義されている訳ではありません。&lt;/p&gt;
-
-&lt;p&gt;ですがGoのインターフェースを使った場合、前述の通り上手く動きません。&lt;br /&gt;
-そのため、型のポインタにメソッドを定義し、それをインターフェースとして扱う必要があります。&lt;/p&gt;
-
-&lt;p&gt;C++ではポインタに対して別名をつけることはできますが、メソッドの実装はできませんでした。&lt;br /&gt;
-ですがGoではポインタやint型といったほぼすべての型に対してメソッドを実装できます。&lt;/p&gt;
-
-&lt;p&gt;たとえば、以下のようにint型に対しても好きなメソッドを定義できます。&lt;br /&gt;
-(一応名前は変える必要があります)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-import (
-    &amp;quot;fmt&amp;quot;
-)
-
-type MyInt int
-
-func (i *MyInt) Out() {
-     fmt.Println(*i)
-}
-
-func main() {
-     var i MyInt = 1
-     (&amp;amp;i).Out()
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あらゆる型に関数をつけられるというのが、C++に染まった頭からだと理解できなくて手間取りました。&lt;/p&gt;
 </description>
     </item>
     

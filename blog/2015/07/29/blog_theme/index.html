@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Hugo">
+    <meta name="description" content="Hugoのブログテーマを作った">
     <meta name="author" content="ota42y">
 
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
@@ -22,7 +22,7 @@
     </script>
 
     
-    <title>Hugo | おおたの物置</title>
+    <title>Hugoのブログテーマを作った | おおたの物置</title>
     
 </head>
 
@@ -51,14 +51,15 @@
                       
                       
                       
+                      class="active"
+                      
+
                       
 
                       ><a href="/blog/">Blog</a></li>
                     <li
                       
 
-                      
-                      class="active"
                       
                       ><a href="/tags/">Tags</a></li>
 
@@ -68,7 +69,7 @@
                       
                       ><a href="/pages/">Pages</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><a class="navbar-link" href="http://ota42y.com/tags/hugo/index.xml">rss</a></p>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
 
                 
                 <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/ota42y">github</a></p>
@@ -83,17 +84,13 @@
 </header>
 
 
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
-                <h1 class="article_title">Hugo</h1>
-            </div>
-
-            
-            <div class="post_item">
-    <h3><strong><a href="/blog/2015/07/29/blog_theme/">Hugoのブログテーマを作った</a></strong></h3>
-    <p class="post_detail">
+              <h1 class="article_title"><a href="/blog/2015/07/29/blog_theme/">Hugoのブログテーマを作った</a></h1>
+              <p class="post_detail">
     
     <time datetime="2015-07-29" class="post_data">
     2015-07-29
@@ -114,48 +111,51 @@
     
 </p>
 
-</div>
+            </div>
 
             
-            <div class="post_item">
-    <h3><strong><a href="/blog/2015/03/16/octopress_to_hugo/">OctopressからHugoに乗り換えた</a></strong></h3>
-    <p class="post_detail">
-    
-    <time datetime="2015-03-16" class="post_data">
-    2015-03-16
-    </time>
-    
 
-    
-    <span class="separator">|</span>
-    <span class="post_data">tags: [</span>
+            <div class="article">
+              <p>ブログテーマ更新を更新しました。<br />
+今回は、Bootstrapを元にした<a href="http://honokak.osaka/">Honoka</a>を利用して作りました。</p>
 
-    
-    <span class="post_data">
-        <a href="/tags/golang">golang</a>
-    </span>
-    
-    <span class="post_data">
-        <a href="/tags/hugo">hugo</a>
-    </span>
-    
+<p>リポジトリはこちら<br />
+<a href="https://github.com/ota42y/honokichi">https://github.com/ota42y/honokichi</a></p>
 
-    <span class="post_data">]</span>
-    
-</p>
+<p>Bootstrapの作りにあったHTMLを出力するようにテンプレートを作ると、<br />
+ほぼそれっぽいデザインになったためとても楽でした。<br />
+一応、ブログでよく使う見出し間の間隔や、記事一覧画面でのマージンをちょっと変更しています。</p>
 
-</div>
-
-            
-        </div>
-
-        <div class="text-center">
-          
-    
+            </div>
         </div>
     </div>
+
+    
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/07/29/blog_theme/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
 </div>
 
+</div>
 
 <footer class="small">
     <div class="container">
