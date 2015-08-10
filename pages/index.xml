@@ -6,8 +6,68 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 03 Aug 2015 22:21:40 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2015 21:50:30 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年32週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-32/</link>
+      <pubDate>Mon, 10 Aug 2015 21:50:30 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-32/</guid>
+      <description>
+
+&lt;h1 id=&#34;最近のhci研究を調べてる:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;最近のHCI研究を調べてる&lt;/h1&gt;
+
+&lt;p&gt;とりあえずざっとアブストを見て良さそうなものをピックアップする作業。&lt;br /&gt;
+いくつかは昔読んだ奴をもう一度読んでいたりします。&lt;/p&gt;
+
+&lt;h2 id=&#34;jamsheets:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;jamSheets&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://tangible.media.mit.edu/project/jamsheets/&#34;&gt;http://tangible.media.mit.edu/project/jamsheets/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一枚のシートを、人が座れるぐらい堅くしたり、毛布みたいにまで柔らかくしたり、&lt;br /&gt;
+自由自在に過多さを変えられるシートを作ったみたい。&lt;br /&gt;
+どうなっているのかすごい気になる…&lt;/p&gt;
+
+&lt;h2 id=&#34;inverse-foley-animation:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;Inverse-Foley Animation&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cs.cornell.edu/projects/Sound/ifa/&#34;&gt;http://www.cs.cornell.edu/projects/Sound/ifa/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;事前に音と3Dモデルを学習しておき、入力された音にマッチする映像を作成する。&lt;br /&gt;
+映像にマッチする音じゃなくて、音にマッチする映像を作るのがすごい…&lt;/p&gt;
+
+&lt;h2 id=&#34;afordance:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;afordance++&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://hpi.de/baudisch/projects/affordance.html&#34;&gt;http://hpi.de/baudisch/projects/affordance.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ものを持ったときや触れる前に、そのものの情報にあった動きを腕に提示することで、&lt;br /&gt;
+触れずとも熱いものがわかったり、どう扱えば良いかがわかるようになる。&lt;br /&gt;
+大体視覚と過去の経験に頼ってるアフォーダンスを大幅に拡張できて凄い。&lt;/p&gt;
+
+&lt;h2 id=&#34;3d-object-manipulation-in-a-single-photograph-using-stock-3d-models:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;3D Object Manipulation in a Single Photograph using Stock 3D Models&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cs.cmu.edu/~om3d/&#34;&gt;http://www.cs.cmu.edu/~om3d/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一枚の画像から3Dオブジェクトを取り出し、写真と上手く合成してくれるっぽい。&lt;br /&gt;
+光の加減とかも調節してくれるため、凄く上手く合成出来ていて凄かった。&lt;/p&gt;
+
+&lt;h2 id=&#34;fluxpaper-reinventing-paper-with-dynamic-actuation-powered-by-magnetic-flux:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;FluxPaper: Reinventing Paper With Dynamic Actuation Powered by Magnetic Flux&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://masaogata.com/projects/fluxpaper/&#34;&gt;http://masaogata.com/projects/fluxpaper/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;紙の裏に磁力を持つ物体を付け、磁界を制御することで紙の移動や検索などを可能にしたみたい。&lt;br /&gt;
+紙に付ける方のパターンを工夫してるっぽい。&lt;/p&gt;
+
+&lt;h2 id=&#34;scene-completion-using-millions-of-photographs:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;Scene Completion Using Millions of Photographs&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://graphics.cs.cmu.edu/projects/scene-completion/&#34;&gt;http://graphics.cs.cmu.edu/projects/scene-completion/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;従来の写真の中の一部分を削除する技術に加え、&lt;br /&gt;
+大量の画像の中から似た画像を探し出してくることで、&lt;br /&gt;
+消した部分を正しく補完できるみたい。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年31週目まとめ</title>
@@ -943,40 +1003,6 @@ Dateオブジェクトを利用してミリ秒で指定する必要があるよ�
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mongodump --host localhost --db testdb -q \&amp;quot;{time : { \\$gte :  new Date(1430000000000), \\$lt :  new Date(1440000000000) } }\&amp;quot; -o dump/2015-05-04
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年17週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-17/</link>
-      <pubDate>Mon, 27 Apr 2015 11:58:59 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-17/</guid>
-      <description>
-
-&lt;h1 id=&#34;cpplintが便利そう:4d6f6f3ae9acaa6b2b7ea721f3040303&#34;&gt;cpplintが便利そう&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/AtomLinter/linter-cpplint&#34;&gt;AtomLinter/linter-cpplint&lt;/a&gt;&lt;br /&gt;
-Google Style Guideに沿っているかをチェックしてくれるcpplintを、&lt;br /&gt;
-Atom.ioから使えるようにしているPluginです。&lt;/p&gt;
-
-&lt;p&gt;めっちゃ便利なのですが、標準だとcpplintのフィルターしか設定できず、&lt;br /&gt;
-他のオプションを設定できないため、PRを送りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/AtomLinter/linter-cpplint/pull/12&#34;&gt;https://github.com/AtomLinter/linter-cpplint/pull/12&lt;/a&gt;&lt;br /&gt;
-レビュー待ちです(o゜▽゜)&lt;/p&gt;
-
-&lt;h1 id=&#34;apple-watch買った:4d6f6f3ae9acaa6b2b7ea721f3040303&#34;&gt;Apple Watch買った&lt;/h1&gt;
-
-&lt;p&gt;たまたま発売日に秋葉原を歩いていたら売っていたのでつい買ってしまいました。&lt;br /&gt;
-が、iPhoneをメインで使っているわけではないので、いまいち使い道が良くわからないです。&lt;br /&gt;
-しばらくは見せるようですかね…&lt;/p&gt;
-
-&lt;h1 id=&#34;fluentd-forwarderを触ってた:4d6f6f3ae9acaa6b2b7ea721f3040303&#34;&gt;fluentd-forwarderを触ってた&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;fluent/fluentd-forwarder&lt;/a&gt;&lt;br /&gt;
-Windowsのサーバで動かしているやつのログをとってくるの面倒だなー&lt;br /&gt;
-と思っていたので、便利そうです(o゜▽゜)&lt;br /&gt;
-とりあえず動かし方はわかったので、実際に入れてみようかと…&lt;/p&gt;
 </description>
     </item>
     
