@@ -6,8 +6,54 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 10 Aug 2015 21:50:30 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2015 22:08:50 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年33週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-33/</link>
+      <pubDate>Mon, 17 Aug 2015 22:08:50 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-33/</guid>
+      <description>
+
+&lt;h1 id=&#34;tmux-change-pane作った:757ce72f8f598825a7068b8bdeb98514&#34;&gt;tmux-change-pane作った&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;swap-pane&lt;/a&gt;は機能としてはとても便利なのですが、&lt;br /&gt;
+ショートカットからの切り替え時に画面全てを切り替えてしまい、&lt;br /&gt;
+とても使いづらかったので現在のパネル上で切り替える版を作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/tmux-change-pane&#34;&gt;tmux-change-pane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;いずれちゃんと記事を書く予定です…&lt;/p&gt;
+
+&lt;h1 id=&#34;c-03だとmapのatが無い:757ce72f8f598825a7068b8bdeb98514&#34;&gt;C++03だとmapのatが無い&lt;/h1&gt;
+
+&lt;p&gt;std::mapの[]は値が無い場合、その値を作ってしまうためconstではありません。&lt;br /&gt;
+&lt;a href=&#34;http://www.cplusplus.com/reference/map/map/operator[]/&#34;&gt;http://www.cplusplus.com/reference/map/map/operator[]/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そのため、以下のように配列内の要素を参照する場合、たとえ100％あることがわかっていても、constにすることは出来ません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) {
+  printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName[unique_id].c_str());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そのため、以下のようにfindして要素を取り出す必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) {
+  std::map&amp;lt;int, std::string&amp;gt;::const_iterator it = uniqueIdToName.find(unique_id);
+  printf(&amp;quot;%s\n&amp;quot;, it-&amp;gt;second.c_str());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;C++11からだとconstでも使えるatメソッドが用意されているため、これを利用することで、以下のようにかなりすっきりと書くことができます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) {
+  printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName.at(unique_id).c_str());
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年32週目まとめ</title>
@@ -1126,82 +1172,6 @@ lockなしで排他処理を行う場合、並列数を増やしても性能の�
 &lt;p&gt;i386ではCMPXCHG〜命令でこれが出来るらしく、&lt;br /&gt;
 goのatomicパッケージでも利用されているようです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34&#34;&gt;https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Linuxのlocaleがおかしくなっていた</title>
-      <link>http://ota42y.com/blog/2015/06/03/linux_local/</link>
-      <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/06/03/linux_local/</guid>
-      <description>
-
-&lt;p&gt;突然プログラムが起動しなくなったため、&lt;br /&gt;
-原因を探ったところ、localesが壊れていました。&lt;br /&gt;
-そのため、再インストールすることで直りました。&lt;br /&gt;
-言語取得部分は動くけど、おかしい結果を返す壊れ方のため、&lt;br /&gt;
-発見にわりと手間取りました。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;プログラム上でlocaleを参照する部分がおかしい結果を返す
-
-&lt;ul&gt;
-&lt;li&gt;常にANSI_X3.4-1968&lt;/li&gt;
-&lt;li&gt;Debian 7.8&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dpkg-reconfigure localesが何か壊れているメッセージを出す
-
-&lt;ul&gt;
-&lt;li&gt;localeをアップデートすると直る&lt;/li&gt;
-&lt;li&gt;apt-get install locales&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;localeの取得がおかしい:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;localeの取得がおかしい&lt;/h1&gt;
-
-&lt;p&gt;pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。
-ですが、&lt;br /&gt;
-&lt;code&gt;LANG=&#39;ja_JP.UTF-8&#39; echo &#39;import locale; print locale.getpreferredencoding()&#39; | python&lt;/code&gt;&lt;br /&gt;
-を実行しても、&lt;code&gt;ANSI_X3.4-1968&lt;/code&gt;が返ってきてしまい、日本語処理の部分でおかしくなっていました。&lt;br /&gt;
-(前にそのプログラムは動いていたので、気がついたらおかしくなっていました)&lt;/p&gt;
-
-&lt;p&gt;localeを実行してみたところ、以下のように表示されました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;locale -a
-locale: Cannot set LC_CTYPE to default locale: No such file or directory
-locale: Cannot set LC_MESSAGES to default locale: No such file or directory
-locale: Cannot set LC_COLLATE to default locale: No such file or directory
-C
-C.UTF-8
-POSIX
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら日本語のlocaleが有効ではないようです。&lt;/p&gt;
-
-&lt;p&gt;ですが、&lt;code&gt;/etc/locale.gen&lt;/code&gt;では、ja_JP.UTF-8がコメントアウトされていて有効になっていました。&lt;/p&gt;
-
-&lt;h1 id=&#34;原因は不明だがとりあえず直る:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;原因は不明だがとりあえず直る&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo su
-export LC_ALL=C # jaは使えないのでCにする必要がある
-export LANG=C # jaは使えないのでCにする必要がある
-sudo dpkg-reconfigure locales
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;したら、localesが壊れているというメッセージが出てきました。&lt;/p&gt;
-
-&lt;p&gt;そのため、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install locales
-sudo dpkg-reconfigure locales
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;で、ja_JP.UTF-8を有効にしてリブートしたら上手くいくようになりました。&lt;/p&gt;
-
-&lt;p&gt;おそらくlocales周りがおかしくなっており、新しいlocalesを入れる際にそれが直ったのだと思います。&lt;/p&gt;
 </description>
     </item>
     

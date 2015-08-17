@@ -6,8 +6,54 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 10 Aug 2015 21:50:30 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2015 22:08:50 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年33週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-33/</link>
+      <pubDate>Mon, 17 Aug 2015 22:08:50 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-33/</guid>
+      <description>
+
+&lt;h1 id=&#34;tmux-change-pane作った:757ce72f8f598825a7068b8bdeb98514&#34;&gt;tmux-change-pane作った&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;swap-pane&lt;/a&gt;は機能としてはとても便利なのですが、&lt;br /&gt;
+ショートカットからの切り替え時に画面全てを切り替えてしまい、&lt;br /&gt;
+とても使いづらかったので現在のパネル上で切り替える版を作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/tmux-change-pane&#34;&gt;tmux-change-pane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;いずれちゃんと記事を書く予定です…&lt;/p&gt;
+
+&lt;h1 id=&#34;c-03だとmapのatが無い:757ce72f8f598825a7068b8bdeb98514&#34;&gt;C++03だとmapのatが無い&lt;/h1&gt;
+
+&lt;p&gt;std::mapの[]は値が無い場合、その値を作ってしまうためconstではありません。&lt;br /&gt;
+&lt;a href=&#34;http://www.cplusplus.com/reference/map/map/operator[]/&#34;&gt;http://www.cplusplus.com/reference/map/map/operator[]/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そのため、以下のように配列内の要素を参照する場合、たとえ100％あることがわかっていても、constにすることは出来ません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) {
+  printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName[unique_id].c_str());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そのため、以下のようにfindして要素を取り出す必要があります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) {
+  std::map&amp;lt;int, std::string&amp;gt;::const_iterator it = uniqueIdToName.find(unique_id);
+  printf(&amp;quot;%s\n&amp;quot;, it-&amp;gt;second.c_str());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;C++11からだとconstでも使えるatメソッドが用意されているため、これを利用することで、以下のようにかなりすっきりと書くことができます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) {
+  printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName.at(unique_id).c_str());
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年32週目まとめ</title>
@@ -782,227 +828,6 @@ goではロックしてからCMPXCHG8Bを実行しており、アトミックな
 &lt;li&gt;しかもmasterブランチ限定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年18週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-18/</link>
-      <pubDate>Mon, 04 May 2015 11:27:52 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-18/</guid>
-      <description>
-
-&lt;h1 id=&#34;goのテストはクラス設計がとても大事っぽい:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;goのテストはクラス設計がとても大事っぽい&lt;/h1&gt;
-
-&lt;p&gt;まだこうした方が良いんじゃないか？ぐらいなので、&lt;br /&gt;
-ベストプラクティスは他にありそうです…&lt;/p&gt;
-
-&lt;h2 id=&#34;rubyで関数の差し替え:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;rubyで関数の差し替え&lt;/h2&gt;
-
-&lt;p&gt;Rubyだと以下のように、&lt;br /&gt;
-すでに存在するクラスに対して関数を再定義したり、&lt;br /&gt;
-継承して関数の差し替えをすることが簡単にできます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;
-class A
-  def exec
-    f()
-    a()
-  end
-
-  def f
-    print &amp;quot;f &amp;quot;
-  end
-
-  def a
-    print &amp;quot;a\n&amp;quot;
-  end
-end
-
-a = A.new
-a.exec # f a
-
-class A
-  def f
-    print &amp;quot;newf &amp;quot;
-  end
-end
-
-a.exec #newf a
-
-class B &amp;lt; A
-  def f
-    print &amp;quot;newf &amp;quot;
-  end
-end
-
-b = B.new
-b.exec #newf a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;そのため、一部の関数をモックやスタブにし、正しく呼び出されているかを検証したり、&lt;br /&gt;
-その機能以外のところがちゃんと動いているかを検証するのが簡単にできます。&lt;/p&gt;
-
-&lt;h2 id=&#34;goで関数の差し替え:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;goで関数の差し替え&lt;/h2&gt;
-
-&lt;h3 id=&#34;埋め込みによる差し替え-できない:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;埋め込みによる差し替え（できない）&lt;/h3&gt;
-
-&lt;p&gt;golangでは既存の構造体に関数を再定義することはできません。&lt;br /&gt;
-また、以下のrubyコードのように埋め込んだ後に関数を再定義しても、&lt;br /&gt;
-継承前の関数を読んでいる部分を差し替えることはできません。&lt;/p&gt;
-
-&lt;p&gt;そのため、rubyの2番目の例のような以下のコードでは、&lt;br /&gt;
-&lt;code&gt;b.Exec&lt;/code&gt;はAの関数fを呼び出してしまうため、動きを差し替えられません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-)
-
-type A struct {
-}
-
-func (a *A) Exec() {
-	a.f()
-	a.a()
-}
-
-func (a *A) f() {
-	fmt.Print(&amp;quot;f &amp;quot;)
-}
-
-func (a *A) a() {
-	fmt.Print(&amp;quot;a\n&amp;quot;)
-}
-
-type B struct {
-	*A
-}
-
-func (a *B) f() {
-	fmt.Print(&amp;quot;newf &amp;quot;)
-}
-
-func main() {
-	a := &amp;amp;A{}
-	a.Exec() // f a
-
-	b := &amp;amp;B{
-		A: a,
-	}
-	b.Exec() // f a (not &amp;quot;newf a&amp;quot;)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;インターフェースを利用する:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;インターフェースを利用する&lt;/h3&gt;
-
-&lt;p&gt;golangにはインターフェースが合っていれば何でも代入できるため、&lt;br /&gt;
-インターフェースを呼び出すように実装し、わたす構造体を変えることで、&lt;br /&gt;
-関数の差し替えをすることができるようになります。&lt;/p&gt;
-
-&lt;p&gt;以下の例では計算用のCalcというインタフェースを定義し、&lt;br /&gt;
-実際に計算を行うSumAddと、固定の値を返したり渡された値を見えるようにしたSumTestを用意しています。&lt;br /&gt;
-SmuTestを利用することで、呼び出し側のAのロジックが正しいかを検証できるようになっています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-)
-
-type A struct {
-  calc Calc
-  list []int
-}
-
-func (a *A) F(ratio float64) float64 {
-  s := a.calc.sum(a.list)
-  return float64(s) * ratio
-}
-
-type Calc interface {
-  sum(l []int) int
-}
-
-type SumAdd struct{
-}
-
-func (s *SumAdd) sum(l []int) int {
-  sum := 0
-  for _, i := range l {
-    sum += i
-  }
-  return sum
-}
-
-type SumTest struct {
-  Nums []int
-}
-
-func (s *SumTest) sum(l []int) int {
-  s.Nums = l
-  return 15
-}
-
-func main() {
-  s := &amp;amp;SumAdd{}
-  l := []int{1,2,3,4,5}
-
-  a := &amp;amp;A{
-    calc: s,
-    list: l,
-  }
-  fmt.Println(a.F(3.0))
-
-  t := &amp;amp;SumTest{}
-  testA := &amp;amp;A{
-    calc: t,
-    list: l,
-  }
-
-  ret := testA.F(3.0)
-  fmt.Println(ret == 45)
-  fmt.Println(len(t.Nums) == 5)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;まとめ:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;golangではインタフェースを利用して挙動を変えることで、部分的にテストができます。&lt;br /&gt;
-ただし、設計時にどこをインターフェースにするかを考えて作らないと、上手く差し替えができません。&lt;/p&gt;
-
-&lt;p&gt;つまり、rubyは適当に作ったテストしにくい設計でも無理矢理テストできますが、&lt;br /&gt;
-golangはテストしやすい設計を考えてから作る必要があるようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;bpstudy-92に参加した:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;BPStudy#92に参加した&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;blog/2015/04/29/bpstudy92/&#34;&gt;参加記録 BPStudy#92&lt;/a&gt;
-お金の話でした。&lt;br /&gt;
-経営や簿記は全く本業ではないのですが、自分が生きてる世界を構成する重要な要素なので、&lt;br /&gt;
-知っておいた方が良いと思いました。&lt;/p&gt;
-
-&lt;h1 id=&#34;mongodbについて調べていた:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;mongodbについて調べていた&lt;/h1&gt;
-
-&lt;h2 id=&#34;一定時間後にデータが消える設定:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;一定時間後にデータが消える設定&lt;/h2&gt;
-
-&lt;p&gt;容量節約のため、一定期間後のデータは消えるようにしたいなーと思っていたところ、&lt;br /&gt;
-時間の入っているキーに対してexpireAfterSecondsのついたTTL(time to live)インデックスを作ることで、&lt;br /&gt;
-指定時刻経過後に消されるようにできるみたいです。&lt;br /&gt;
-&lt;a href=&#34;http://docs.mongodb.org/manual/tutorial/expire-data/&#34;&gt;Expire Data from Collections by Setting TTL&lt;/a&gt;&lt;br /&gt;
-また、このインデックスはそのまま時刻付きのインデックスとしても利用できるそうです。&lt;/p&gt;
-
-&lt;h2 id=&#34;指定した期間のデータをdumpする:fbc8528214e49b0085aa07c0c8b68dfd&#34;&gt;指定した期間のデータをdumpする&lt;/h2&gt;
-
-&lt;p&gt;mongodumpでは-qオプションでクエリを指定できるため、&lt;br /&gt;
-そこで時刻を指定することで指定した期間のデータをdumpできます。&lt;/p&gt;
-
-&lt;p&gt;ただし、どうやらISODateはコマンドラインからは上手く動かないらしく、&lt;br /&gt;
-Dateオブジェクトを利用してミリ秒で指定する必要があるようです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mongodump --host localhost --db testdb -q \&amp;quot;{time : { \\$gte :  new Date(1430000000000), \\$lt :  new Date(1440000000000) } }\&amp;quot; -o dump/2015-05-04
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
