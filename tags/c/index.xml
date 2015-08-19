@@ -6,8 +6,71 @@
     <description>Recent content in C on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 18 Jun 2015 07:47:43 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2015 07:43:49 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>構造体のサイズはsizeofをちゃんと使うべき</title>
+      <link>http://ota42y.com/blog/2015/08/20/c-struct/</link>
+      <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/08/20/c-struct/</guid>
+      <description>
+
+&lt;p&gt;以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。&lt;br /&gt;
+ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
+
+struct St{
+	int a;
+	bool flag;
+	};
+
+struct StSt{
+	S s;
+	bool f;
+};
+
+int main(void) {
+	printf(&amp;quot;%lu\n&amp;quot;, sizeof(St));
+	printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt));
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;原因:d474409fc3d5a09281bbe4edf50306a1&#34;&gt;原因&lt;/h1&gt;
+
+&lt;p&gt;Cでは構造体の後ろにパディングを追加できるようになっています。&lt;br /&gt;
+&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;6.7.2.1 Structure and union specifiers&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;13 Within a structure object, the non-bit-field members and the units in which bit-fields
+reside have addresses that increase in the order in which they are declared. A pointer to a
+structure object, suitably converted, points to its initial member (or if that member is a
+bit-field, then to the unit in which it resides), and vice versa. There may be unnamed
+padding within a structure object, but not at its beginning.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そのため、sizeofがパディングを含めた値を返し、変数の合計とは違った値を返してきます。&lt;br /&gt;
+このように、Cの構造体の大きさはではメンバの合計とは違うため、ちゃんとsizeofを使って計算しないと大変な事になります。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;参考資料:d474409fc3d5a09281bbe4edf50306a1&#34;&gt;参考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards.html&#34;&gt;ISO/IEC JTC1/SC22/WG14 - C: Approved standards&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;WG14 N1256&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;&lt;a href=&#34;https://www.jpcert.or.jp/sc-rules/c-exp03-c.html&#34;&gt;EXP03-C. 構造体のサイズが構造体のメンバのサイズの和に等しいと決めてかからない&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>C言語でのスレッド処理</title>

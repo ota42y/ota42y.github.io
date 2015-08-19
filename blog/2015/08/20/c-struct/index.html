@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="構造体のサイズはsizeofをちゃんと使うべき">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>構造体のサイズはsizeofをちゃんと使うべき | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/ota42y">github</a></p>
+                
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://twitter.com/ota42y">twitter</a></p>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/08/20/c-struct/">構造体のサイズはsizeofをちゃんと使うべき</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-08-20" class="post_data">
+    2015-08-20
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/c">c</a>
+    </span>
+    
+    <span class="post_data">
+        <a href="/tags/cpp">cpp</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#原因:d474409fc3d5a09281bbe4edf50306a1">原因</a></li>
+<li><a href="#参考資料:d474409fc3d5a09281bbe4edf50306a1">参考資料</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+
+            <div class="article">
+              
+
+<p>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。<br />
+ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。</p>
+
+<pre><code>#include &quot;stdio.h&quot;
+
+struct St{
+	int a;
+	bool flag;
+	};
+
+struct StSt{
+	S s;
+	bool f;
+};
+
+int main(void) {
+	printf(&quot;%lu\n&quot;, sizeof(St));
+	printf(&quot;%lu\n&quot;, sizeof(StSt));
+	return 0;
+}
+</code></pre>
+
+<h1 id="原因:d474409fc3d5a09281bbe4edf50306a1">原因</h1>
+
+<p>Cでは構造体の後ろにパディングを追加できるようになっています。<br />
+<a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">6.7.2.1 Structure and union specifiers</a></p>
+
+<pre><code>13 Within a structure object, the non-bit-field members and the units in which bit-fields
+reside have addresses that increase in the order in which they are declared. A pointer to a
+structure object, suitably converted, points to its initial member (or if that member is a
+bit-field, then to the unit in which it resides), and vice versa. There may be unnamed
+padding within a structure object, but not at its beginning.
+</code></pre>
+
+<p>そのため、sizeofがパディングを含めた値を返し、変数の合計とは違った値を返してきます。<br />
+このように、Cの構造体の大きさはではメンバの合計とは違うため、ちゃんとsizeofを使って計算しないと大変な事になります。<sup class="footnote-ref" id="fnref:d474409fc3d5a09281bbe4edf50306a1:1"><a rel="footnote" href="#fn:d474409fc3d5a09281bbe4edf50306a1:1">1</a></sup></p>
+
+<h1 id="参考資料:d474409fc3d5a09281bbe4edf50306a1">参考資料</h1>
+
+<ul>
+<li><a href="http://www.open-std.org/jtc1/sc22/wg14/www/standards.html">ISO/IEC JTC1/SC22/WG14 - C: Approved standards</a></li>
+<li><a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">WG14 N1256</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:d474409fc3d5a09281bbe4edf50306a1:1"><a href="https://www.jpcert.or.jp/sc-rules/c-exp03-c.html">EXP03-C. 構造体のサイズが構造体のメンバのサイズの和に等しいと決めてかからない</a>
+ <a class="footnote-return" href="#fnref:d474409fc3d5a09281bbe4edf50306a1:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/08/20/c-struct/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
