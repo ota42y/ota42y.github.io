@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Pages">
+    <meta name="description" content="2015年34週目まとめ">
     <meta name="author" content="ota42y">
 
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
@@ -22,7 +22,7 @@
     </script>
 
     
-    <title>Pages | おおたの物置</title>
+    <title>2015年34週目まとめ | おおたの物置</title>
     
 </head>
 
@@ -51,6 +51,7 @@
                       
                       
                       
+
                       
 
                       ><a href="/blog/">Blog</a></li>
@@ -64,11 +65,9 @@
                       
 
                       
-                      class="active"
-                      
                       ><a href="/pages/">Pages</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><a class="navbar-link" href="http://ota42y.com/pages/index.xml">rss</a></p>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
 
                 
                 <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/ota42y">github</a></p>
@@ -83,102 +82,83 @@
 </header>
 
 
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
-                <h1 class="article_title">Pages</h1>
+              <h1 class="article_title"><a href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-08-24" class="post_data">
+    2015-08-24
+    </time>
+    
+
+    
+</p>
+
             </div>
 
             
-            <div class="post_item">
-    <h3><strong><a href="/pages/summary/2015/week-04/">2015年04週目まとめ</a></strong></h3>
-    <p class="post_detail">
-    
-    <time datetime="2015-01-26" class="post_data">
-    2015-01-26
-    </time>
-    
-
-    
-</p>
-
-</div>
-
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#毎週まとめはおしまい:d7f507d6eed5faf8097f3ede69217ef1">毎週まとめはおしまい</a></li>
+<li><a href="#rsyncで特定フォルダをバックアップする:d7f507d6eed5faf8097f3ede69217ef1">rsyncで特定フォルダをバックアップする</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
             
-            <div class="post_item">
-    <h3><strong><a href="/pages/summary/2015/week-03/">2015年03週目まとめ</a></strong></h3>
-    <p class="post_detail">
-    
-    <time datetime="2015-01-17" class="post_data">
-    2015-01-17
-    </time>
-    
 
-    
-</p>
+            <div class="article">
+              
 
-</div>
+<h1 id="毎週まとめはおしまい:d7f507d6eed5faf8097f3ede69217ef1">毎週まとめはおしまい</h1>
 
-            
-            <div class="post_item">
-    <h3><strong><a href="/pages/summary/2015/week-02/">2015年02週目まとめ</a></strong></h3>
-    <p class="post_detail">
-    
-    <time datetime="2015-01-10" class="post_data">
-    2015-01-10
-    </time>
-    
+<p>そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。</p>
 
-    
-</p>
+<h1 id="rsyncで特定フォルダをバックアップする:d7f507d6eed5faf8097f3ede69217ef1">rsyncで特定フォルダをバックアップする</h1>
 
-</div>
+<p><code>rsync -a --delete origin/ backup</code><br />
+で、backupフォルダの中身をoriginと一緒になるように同期してくれるため、フォルダごとバックアップすることが出来ます。</p>
 
-            
-        </div>
+<p><code>rsync -a --delete origin backup</code><br />
+と、スラッシュを外すと、backupフォルダ内にoriginフォルダを作って同期します。</p>
 
-        <div class="text-center">
-          
-    
-    <ul class="pagination">
-        
-        <li>
-            <a href="/pages/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-        </li>
-        
-        <li
-        >
-        <a href="/pages/page/3/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-        </li>
-        
-        <li
-        ><a href="/pages/">1</a></li>
-        
-        <li
-        ><a href="/pages/page/2/">2</a></li>
-        
-        <li
-        ><a href="/pages/page/3/">3</a></li>
-        
-        <li
-        class="active"><a href="/pages/page/4/">4</a></li>
-        
-        <li
-        class="disabled">
-        <a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-        </li>
-        
-        <li>
-            <a href="/pages/page/4/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-        </li>
-        
-    </ul>
-    
+            </div>
         </div>
     </div>
+
+    
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/pages/summary/2015/week-34/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
 </div>
 
+</div>
 
 <footer class="small">
     <div class="container">

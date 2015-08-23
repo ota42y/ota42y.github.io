@@ -6,8 +6,30 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Aug 2015 07:43:49 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2015 07:34:15 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年34週目まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/week-34/</link>
+      <pubDate>Mon, 24 Aug 2015 07:34:15 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/week-34/</guid>
+      <description>
+
+&lt;h1 id=&#34;毎週まとめはおしまい:d7f507d6eed5faf8097f3ede69217ef1&#34;&gt;毎週まとめはおしまい&lt;/h1&gt;
+
+&lt;p&gt;そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。&lt;/p&gt;
+
+&lt;h1 id=&#34;rsyncで特定フォルダをバックアップする:d7f507d6eed5faf8097f3ede69217ef1&#34;&gt;rsyncで特定フォルダをバックアップする&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;rsync -a --delete origin/ backup&lt;/code&gt;&lt;br /&gt;
+で、backupフォルダの中身をoriginと一緒になるように同期してくれるため、フォルダごとバックアップすることが出来ます。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rsync -a --delete origin backup&lt;/code&gt;&lt;br /&gt;
+と、スラッシュを外すと、backupフォルダ内にoriginフォルダを作って同期します。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>構造体のサイズはsizeofをちゃんと使うべき</title>
@@ -1160,45 +1182,6 @@ int main(void) {
   pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
   printf(&amp;quot;a=%d\n&amp;quot;, a);
 
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年24週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-24/</link>
-      <pubDate>Mon, 15 Jun 2015 22:37:01 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-24/</guid>
-      <description>
-
-&lt;h1 id=&#34;c-入出力の書式を制御する:b0204dc6a3868861d55079e7791d2606&#34;&gt;C++入出力の書式を制御する&lt;/h1&gt;
-
-&lt;p&gt;c++でstreamを使って出力する場合、iomanipに用意されているものを利用することで、&lt;br /&gt;
-入出力の書式を制御することが出来ます。&lt;/p&gt;
-
-&lt;p&gt;設定はstreamに対して設定用のオブジェクトを送るように設定するみたいです。&lt;br /&gt;
-なお、以下は出力の例です。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;iomanip&amp;gt;
-
-int main(void) {
-  double a = 25252;
-  int p = 2;
-
-  std::cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; std::endl; // 25252
-  std::cout &amp;lt;&amp;lt; std::setprecision(p); //浮動小数点の有効桁数を指定する
-  std::cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; std::endl; // 2.5e+04
-
-  std::cout &amp;lt;&amp;lt; std::oct; // 8進数表示
-  std::cout &amp;lt;&amp;lt; 874 &amp;lt;&amp;lt; std::endl; // 1552
-
-  std::cout &amp;lt;&amp;lt; std::showbase; // 基数を表示する
-  std::cout &amp;lt;&amp;lt; std::hex; // 16進数表示
-  std::cout &amp;lt;&amp;lt; 874 &amp;lt;&amp;lt; std::endl; // 0x36a
   return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
