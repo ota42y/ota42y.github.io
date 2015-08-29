@@ -6,8 +6,158 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 24 Aug 2015 07:34:15 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2015 17:35:03 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CEDEC2015のCoverityクイズをどう直すか</title>
+      <link>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</link>
+      <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
+      <description>
+
+&lt;p&gt;CEDEC2015では、&lt;a href=&#34;http://www.coverity.com/html_ja/&#34;&gt;Coverity社&lt;/a&gt;のブースでバグのあるコードが掲示されていました。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;バグが入ったC++コードらしい。&lt;a href=&#34;https://twitter.com/hashtag/CEDEC2015?src=hash&#34;&gt;#CEDEC2015&lt;/a&gt; &lt;a href=&#34;http://t.co/ca9vb0emVT&#34;&gt;pic.twitter.com/ca9vb0emVT&lt;/a&gt;&lt;/p&gt;&amp;mdash; alwei (@aizen76) &lt;a href=&#34;https://twitter.com/aizen76/status/636434428563054593&#34;&gt;2015, 8月 26&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;バグがあるかどうかはCoverityが検出してくれるとして、じゃあどう解決すれば良いのか？を考えました。&lt;/p&gt;
+
+&lt;p&gt;コードを見る限り、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配列の添え字と同じ値を入れたい&lt;/li&gt;
+&lt;li&gt;処理は2つのクラスで共通化したい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という要求があると考えます。&lt;br /&gt;
+(zに値を入れないが元コードもそうなのでよしとする)&lt;/p&gt;
+
+&lt;p&gt;また、簡単化のために与えられるデータは全て正しいと仮定します。&lt;br /&gt;
+(実際は適切な箇所でエラーチェックが必要)&lt;/p&gt;
+
+&lt;h1 id=&#34;テンプレートでキャストを回避する:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;テンプレートでキャストを回避する&lt;/h1&gt;
+
+&lt;p&gt;今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、&lt;br /&gt;
+キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+
+class base_class {
+public:
+  base_class() { x = 0; y = 0; }
+
+public:
+  int x ;
+  int y;
+};
+
+class derived_class : public base_class {
+public:
+  derived_class() { z = 0; }
+
+public:
+  int z;
+};
+
+template &amp;lt;typename T&amp;gt;
+void calc_class_members(T b, int array_size)
+{
+  for(int i = 0; i &amp;lt; array_size; i++)
+  {
+    b[i].x = i;
+    b[i].y = i;
+  }
+}
+
+int update_class_members(
+  derived_class * class_array,
+  int num_array )
+{
+  if( class_array == NULL)
+    return -1;
+
+  calc_class_members(class_array, num_array);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;アドレス計算を先にする:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;アドレス計算を先にする&lt;/h1&gt;
+
+&lt;p&gt;型が違う状態でアドレス計算しているのが問題なので、アドレス計算部分を外に出してしまう方法です。&lt;br /&gt;
+関数ではなくクラスにメソッドとして持たせるとより良さそうです。&lt;/p&gt;
+
+&lt;p&gt;ただしこの場合、他の誰かが元コードのような処理を書くことを防げません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void calc_class_member(base_class *b, int i)
+{
+  b-&amp;gt;x = i;
+  b-&amp;gt;y = i;
+}
+
+int update_class_members(
+  derived_class *class_array,
+  int num_array )
+{
+  if( class_array == NULL)
+    return -1;
+
+  for(int i = 0; i &amp;lt; num_array; i++){
+	calc_class_member(&amp;amp;class_array[i], i);
+  }
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;設計から変える:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;設計から変える&lt;/h1&gt;
+
+&lt;p&gt;意図的にバグを入れているコードに対して、全体を書き換えるのはナンセンスな気がしますが、&lt;br /&gt;
+たぶんこういうことをする前提なら最も良い書き方はこうではないかと。&lt;/p&gt;
+
+&lt;p&gt;おおよそ上の通りですが、vectorの場合は中身の型が違うvectorにキャストされないため、&lt;br /&gt;
+型が違う状態でアドレス計算が行われることはありません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;vector&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+class base_class {
+public:
+  base_class() { x = 0; y = 0; }
+
+  void calc_class_member(int i)
+  {
+    x = i;
+    y = i;
+  }
+
+public:
+  int x ;
+  int y;
+};
+
+class derived_class : public base_class {
+public:
+  derived_class() { z = 0; }
+
+public:
+  int z;
+};
+
+
+void update_class_members(std::vector&amp;lt;derived_class&amp;gt; &amp;amp;a)
+{
+  size_t size = a.size();
+  for(size_t i = 0; i &amp;lt; size; ++i)
+  {
+    a.at(i).calc_class_member(static_cast&amp;lt;int&amp;gt;(i));
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年34週目まとめ</title>
@@ -988,203 +1138,6 @@ gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です�
 &lt;li&gt;やったことの時系列になってておもしろいです&lt;/li&gt;
 &lt;li&gt;やっぱり学習コストは低いんですねー&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>C言語でのスレッド処理</title>
-      <link>http://ota42y.com/blog/2015/06/18/c-thread/</link>
-      <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
-      <description>
-
-&lt;p&gt;C言語でのスレッド処理と、ロックの仕方をまとめました。&lt;br /&gt;
-他の言語のようにスレッド用のクラスを継承するのでは無く、&lt;br /&gt;
-別スレッドで実行する関数のポインタと、&lt;br /&gt;
-その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
-
-&lt;h2 id=&#34;スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
-
-&lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_create(pthread_t * thread,
-	 pthread_attr_t * attr,
-	 void * (*start_routine)(void *),
-	 void * arg);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;thread
-
-&lt;ul&gt;
-&lt;li&gt;スレッド管理用のpthread_t型の変数&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;attr
-
-&lt;ul&gt;
-&lt;li&gt;スレッドの属性を指定する。&lt;/li&gt;
-&lt;li&gt;NULLの場合はデフォルトが使われる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;(*start_routine)(void *)
-
-&lt;ul&gt;
-&lt;li&gt;別スレッドから呼び出される関数へのポインタ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;arg
-
-&lt;ul&gt;
-&lt;li&gt;start_routineの引数として渡すデータのポインタ&lt;/li&gt;
-&lt;li&gt;元のスレッドからデータを送るのに使う&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
-
-&lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_join(pthread_t th, void **thread_return);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;th
-
-&lt;ul&gt;
-&lt;li&gt;待機するスレッドをpthread_t型の変数で指定する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;**thread_return
-
-&lt;ul&gt;
-&lt;li&gt;スレッドの戻り値を格納する領域&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
-
-&lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
-排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
-
-&lt;p&gt;実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。&lt;/p&gt;
-
-&lt;p&gt;なお、コンパイルする際はは-pthreadオプションを指定する必要があります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
-#include &amp;quot;pthread.h&amp;quot;
-
-int a = 0;
-
-void *func_thread(void *p) {
-  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-	int next = a + 1;
-	int now = a;
-	a = next;
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  return 0;
-}
-
-int main(void) {
-  printf(&amp;quot;test\n&amp;quot;);
-
-  int b = 42;
-
-  pthread_t pthread;
-  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-	int next = a + 1;
-	int now = a;
-	a = next;
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
-  printf(&amp;quot;a=%d\n&amp;quot;, a);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;mutexによるロック処理&lt;/h1&gt;
-
-&lt;h2 id=&#34;排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;排他制御を行う&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
-処理をロックすることができます。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
-このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
-
-&lt;h2 id=&#34;サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
-
-&lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
-そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
-#include &amp;quot;pthread.h&amp;quot;
-
-int a = 0;
-pthread_mutex_t mutex;
-
-void *func_thread(void *p) {
-  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-    pthread_mutex_lock(&amp;amp;mutex);
-	int next = a + 1;
-	int now = a;
-	a = next;
-    pthread_mutex_unlock(&amp;amp;mutex);
-
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  return 0;
-}
-
-int main(void) {
-  pthread_mutex_init(&amp;amp;mutex, NULL);
-  
-  printf(&amp;quot;test\n&amp;quot;);
-
-  int b = 42;
-
-  pthread_t pthread;
-  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-    pthread_mutex_lock(&amp;amp;mutex);
-	int next = a + 1;
-	int now = a;
-	a = next;
-    pthread_mutex_unlock(&amp;amp;mutex);
-
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
-  printf(&amp;quot;a=%d\n&amp;quot;, a);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

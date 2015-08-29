@@ -6,8 +6,158 @@
     <description>Recent content in Cpp on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Aug 2015 07:43:49 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2015 17:35:03 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CEDEC2015のCoverityクイズをどう直すか</title>
+      <link>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</link>
+      <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
+      <description>
+
+&lt;p&gt;CEDEC2015では、&lt;a href=&#34;http://www.coverity.com/html_ja/&#34;&gt;Coverity社&lt;/a&gt;のブースでバグのあるコードが掲示されていました。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;バグが入ったC++コードらしい。&lt;a href=&#34;https://twitter.com/hashtag/CEDEC2015?src=hash&#34;&gt;#CEDEC2015&lt;/a&gt; &lt;a href=&#34;http://t.co/ca9vb0emVT&#34;&gt;pic.twitter.com/ca9vb0emVT&lt;/a&gt;&lt;/p&gt;&amp;mdash; alwei (@aizen76) &lt;a href=&#34;https://twitter.com/aizen76/status/636434428563054593&#34;&gt;2015, 8月 26&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;バグがあるかどうかはCoverityが検出してくれるとして、じゃあどう解決すれば良いのか？を考えました。&lt;/p&gt;
+
+&lt;p&gt;コードを見る限り、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配列の添え字と同じ値を入れたい&lt;/li&gt;
+&lt;li&gt;処理は2つのクラスで共通化したい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という要求があると考えます。&lt;br /&gt;
+(zに値を入れないが元コードもそうなのでよしとする)&lt;/p&gt;
+
+&lt;p&gt;また、簡単化のために与えられるデータは全て正しいと仮定します。&lt;br /&gt;
+(実際は適切な箇所でエラーチェックが必要)&lt;/p&gt;
+
+&lt;h1 id=&#34;テンプレートでキャストを回避する:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;テンプレートでキャストを回避する&lt;/h1&gt;
+
+&lt;p&gt;今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、&lt;br /&gt;
+キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+
+class base_class {
+public:
+  base_class() { x = 0; y = 0; }
+
+public:
+  int x ;
+  int y;
+};
+
+class derived_class : public base_class {
+public:
+  derived_class() { z = 0; }
+
+public:
+  int z;
+};
+
+template &amp;lt;typename T&amp;gt;
+void calc_class_members(T b, int array_size)
+{
+  for(int i = 0; i &amp;lt; array_size; i++)
+  {
+    b[i].x = i;
+    b[i].y = i;
+  }
+}
+
+int update_class_members(
+  derived_class * class_array,
+  int num_array )
+{
+  if( class_array == NULL)
+    return -1;
+
+  calc_class_members(class_array, num_array);
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;アドレス計算を先にする:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;アドレス計算を先にする&lt;/h1&gt;
+
+&lt;p&gt;型が違う状態でアドレス計算しているのが問題なので、アドレス計算部分を外に出してしまう方法です。&lt;br /&gt;
+関数ではなくクラスにメソッドとして持たせるとより良さそうです。&lt;/p&gt;
+
+&lt;p&gt;ただしこの場合、他の誰かが元コードのような処理を書くことを防げません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void calc_class_member(base_class *b, int i)
+{
+  b-&amp;gt;x = i;
+  b-&amp;gt;y = i;
+}
+
+int update_class_members(
+  derived_class *class_array,
+  int num_array )
+{
+  if( class_array == NULL)
+    return -1;
+
+  for(int i = 0; i &amp;lt; num_array; i++){
+	calc_class_member(&amp;amp;class_array[i], i);
+  }
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;設計から変える:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;設計から変える&lt;/h1&gt;
+
+&lt;p&gt;意図的にバグを入れているコードに対して、全体を書き換えるのはナンセンスな気がしますが、&lt;br /&gt;
+たぶんこういうことをする前提なら最も良い書き方はこうではないかと。&lt;/p&gt;
+
+&lt;p&gt;おおよそ上の通りですが、vectorの場合は中身の型が違うvectorにキャストされないため、&lt;br /&gt;
+型が違う状態でアドレス計算が行われることはありません。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;vector&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+class base_class {
+public:
+  base_class() { x = 0; y = 0; }
+
+  void calc_class_member(int i)
+  {
+    x = i;
+    y = i;
+  }
+
+public:
+  int x ;
+  int y;
+};
+
+class derived_class : public base_class {
+public:
+  derived_class() { z = 0; }
+
+public:
+  int z;
+};
+
+
+void update_class_members(std::vector&amp;lt;derived_class&amp;gt; &amp;amp;a)
+{
+  size_t size = a.size();
+  for(size_t i = 0; i &amp;lt; size; ++i)
+  {
+    a.at(i).calc_class_member(static_cast&amp;lt;int&amp;gt;(i));
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>構造体のサイズはsizeofをちゃんと使うべき</title>
