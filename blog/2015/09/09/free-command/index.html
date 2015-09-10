@@ -119,8 +119,7 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee">freeコマンドに追加されたavailable</a></li>
-<li><a href="#availableは何を差しているか:dbabf7c03815177c3b438c3f806470ee">availableは何を差しているか</a>
+<li><a href="#freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee">freeコマンドに追加されたavailable</a>
 <ul>
 <li><a href="#コード:dbabf7c03815177c3b438c3f806470ee">コード</a></li>
 <li><a href="#コード内容:dbabf7c03815177c3b438c3f806470ee">コード内容</a></li>
@@ -136,7 +135,11 @@
 
 <h1 id="freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee">freeコマンドに追加されたavailable</h1>
 
-<p>3.14および2.6.27から、freeコマンドの書式が変わり、availableという項目が増えました。</p>
+<p>3.14および2.6.27から、freeコマンドの書式が変わり、<br />
+<code>-/+ buffers/cache</code>が消えてavailableという項目が増えました。</p>
+
+<p>availableは<code>/proc/meminfo</code>の中にあるMemAvailablの値を参照しています。<br />
+この値は、新しいアプリがスワップせずに使える容量はどれくらいか。といった値を示しているようです</p>
 
 <pre><code>available
 Estimation of how much memory  is  available  for  starting  new
@@ -148,14 +151,9 @@ able on kernels 3.14, emulated on kernels 2.6.27+, otherwise the
 same as free)
 </code></pre>
 
-<h1 id="availableは何を差しているか:dbabf7c03815177c3b438c3f806470ee">availableは何を差しているか</h1>
-
-<p>/proc/meminfoの中にあるMemAvailablの値を参照しているようです。<br />
-この値は、新しいアプリがスワップせずに使える容量はどれくらいか？を示しているようです</p>
-
 <h2 id="コード:dbabf7c03815177c3b438c3f806470ee">コード</h2>
 
-<p>/proc/meminfoは以下のコードによって作成されるようです。
+<p>/proc/meminfoは以下のコードによって作成されるようです。<br />
 <a href="https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c">https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c</a></p>
 
 <pre><code class="language-cpp">available = i.freeram - wmark_low;

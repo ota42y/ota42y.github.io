@@ -19,7 +19,11 @@
 
 &lt;h1 id=&#34;freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee&#34;&gt;freeコマンドに追加されたavailable&lt;/h1&gt;
 
-&lt;p&gt;3.14および2.6.27から、freeコマンドの書式が変わり、availableという項目が増えました。&lt;/p&gt;
+&lt;p&gt;3.14および2.6.27から、freeコマンドの書式が変わり、&lt;br /&gt;
+&lt;code&gt;-/+ buffers/cache&lt;/code&gt;が消えてavailableという項目が増えました。&lt;/p&gt;
+
+&lt;p&gt;availableは&lt;code&gt;/proc/meminfo&lt;/code&gt;の中にあるMemAvailablの値を参照しています。&lt;br /&gt;
+この値は、新しいアプリがスワップせずに使える容量はどれくらいか。といった値を示しているようです&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;available
 Estimation of how much memory  is  available  for  starting  new
@@ -31,14 +35,9 @@ able on kernels 3.14, emulated on kernels 2.6.27+, otherwise the
 same as free)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;availableは何を差しているか:dbabf7c03815177c3b438c3f806470ee&#34;&gt;availableは何を差しているか&lt;/h1&gt;
-
-&lt;p&gt;/proc/meminfoの中にあるMemAvailablの値を参照しているようです。&lt;br /&gt;
-この値は、新しいアプリがスワップせずに使える容量はどれくらいか？を示しているようです&lt;/p&gt;
-
 &lt;h2 id=&#34;コード:dbabf7c03815177c3b438c3f806470ee&#34;&gt;コード&lt;/h2&gt;
 
-&lt;p&gt;/proc/meminfoは以下のコードによって作成されるようです。
+&lt;p&gt;/proc/meminfoは以下のコードによって作成されるようです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c&#34;&gt;https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;available = i.freeram - wmark_low;
