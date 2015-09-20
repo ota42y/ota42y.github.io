@@ -6,8 +6,42 @@
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 21 Jun 2015 23:43:02 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2015 17:10:23 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>情報科学若手の会2015で発表してきた</title>
+      <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
+      <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</guid>
+      <description>
+
+&lt;p&gt;というわけで発表しました。&lt;br /&gt;
+発表資料はこちら。&lt;br /&gt;
+&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究 軽量版&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究 軽量版&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;発表内容について:960011acd5e7afc5edcb122b8bab3124&#34;&gt;発表内容について&lt;/h1&gt;
+
+&lt;p&gt;4回目ぐらいの参加ですが、ほぼ毎年CHIの締め切りと重なったり、&lt;br /&gt;
+UISTの数週間前みたいな時期なのであまりこの分野からの参加者が少なく、&lt;br /&gt;
+需要がありそうだったのでやってみました。&lt;/p&gt;
+
+&lt;p&gt;新しいインタフェース系は結構話題になりますが、改善とか調査系とかはあまりHCI分野の人以外からは話題にされないので、&lt;br /&gt;
+意図的に新しいインタフェース系は抑えてそれ以外のやつを入れています。(非表示にたくさんあるけど)&lt;br /&gt;
+実際、その辺についてはあまり聞かないのでためになったという声を頂いたので、&lt;br /&gt;
+いい案配だったとおもいます。&lt;/p&gt;
+
+&lt;h1 id=&#34;反省点:960011acd5e7afc5edcb122b8bab3124&#34;&gt;反省点&lt;/h1&gt;
+
+&lt;p&gt;質疑応答で盛り上がるだろう場所は予測できていたので、&lt;br /&gt;
+そこに関しての補足スライドを用意するべきでした…&lt;/p&gt;
+
+&lt;p&gt;事前に作ったスライドを、前日にダメダメに見えたので作り直してしまったので、&lt;br /&gt;
+結果としては良くなったけどもう少し早くに完成させて修正したかったです。&lt;br /&gt;
+ただし、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>参加記録 Go Conference 2015 summer</title>
@@ -2133,61 +2167,6 @@ FirefoxやX等ははじめから入っているため、立ち上げるだけで
 &lt;p&gt;本来は水がとても綺麗と噂の柿田川公園にも足を伸ばす予定でしたが、&lt;br /&gt;
 バスの時間が1時間に一本な上に、曇っている事を加味すると、今日行っても&lt;br /&gt;
 微妙そうでしたので、来年チャレンジします。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>情報科学若手の会2014で発表してきた</title>
-      <link>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</link>
-      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</guid>
-      <description>&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;805e4bc01e29013299017e6feed6723a&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;LT発表してきました。&lt;/p&gt;
-
-&lt;p&gt;最近CIとか継続的デリバリーとか流行ってるけど、&lt;br /&gt;
-ネット上にあふれている事例は、テスト(ビルド)が頑張れば5分程度で出来たり、&lt;br /&gt;
-ユーザにすぐに提供できるWebサービスの話が多く、&lt;br /&gt;
-それ以外の事例に適応した話が全然無いなーと思っていました。&lt;/p&gt;
-
-&lt;p&gt;特にスマホアプリでは、一つのjobに時間がかかったり、&lt;br /&gt;
-ユーザに届けるのにもの凄く時間がかかるため、&lt;br /&gt;
-良くあるやり方をそのまま持って行っても、&lt;br /&gt;
-全然上手くいかないんですよね。&lt;/p&gt;
-
-&lt;p&gt;ただし、やり方をそっくり持ってくるんじゃなくって、&lt;br /&gt;
-その手法をやると何がうれしいの？を考えていくと、&lt;br /&gt;
-自ずとその環境に沿ったいい方法、というのが見つかる気がします。&lt;/p&gt;
-
-&lt;p&gt;より実践的なTipsになるので削った補足事項等&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;コンパイルだけに出来ないのか
-
-&lt;ul&gt;
-&lt;li&gt;ビルドのほとんどがコンパイル時間なのでそれほど効果がありません…(´･_･`)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;キャッシュは使っていないのか
-
-&lt;ul&gt;
-&lt;li&gt;キャッシュが悪さをする可能性が考えられるため意図的に切っています。&lt;br /&gt;
-手元で開発する場合は活用しています。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ビルド自体の速度は速くしないのか
-
-&lt;ul&gt;
-&lt;li&gt;分散コンパイル等で早くできますが、Xcodeは対応していないのでAndroidのみになり、&lt;br /&gt;
-そんなに効果がありません。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;スライドで並列ビルドすればいいじゃん！と書いてますが、それも問題があります
-
-&lt;ul&gt;
-&lt;li&gt;アップロード先が並列で受け付けていないので、デプロイ時に失敗しまくります&lt;/li&gt;
-&lt;li&gt;排他制御しようとすると、Jenkinsの仕様とJob割り振りがよろしくないので&lt;br /&gt;
-もの凄く辛いことになります。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

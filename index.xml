@@ -6,8 +6,42 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 09 Sep 2015 21:53:07 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2015 17:10:23 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>情報科学若手の会2015で発表してきた</title>
+      <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
+      <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</guid>
+      <description>
+
+&lt;p&gt;というわけで発表しました。&lt;br /&gt;
+発表資料はこちら。&lt;br /&gt;
+&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究 軽量版&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究 軽量版&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;発表内容について:960011acd5e7afc5edcb122b8bab3124&#34;&gt;発表内容について&lt;/h1&gt;
+
+&lt;p&gt;4回目ぐらいの参加ですが、ほぼ毎年CHIの締め切りと重なったり、&lt;br /&gt;
+UISTの数週間前みたいな時期なのであまりこの分野からの参加者が少なく、&lt;br /&gt;
+需要がありそうだったのでやってみました。&lt;/p&gt;
+
+&lt;p&gt;新しいインタフェース系は結構話題になりますが、改善とか調査系とかはあまりHCI分野の人以外からは話題にされないので、&lt;br /&gt;
+意図的に新しいインタフェース系は抑えてそれ以外のやつを入れています。(非表示にたくさんあるけど)&lt;br /&gt;
+実際、その辺についてはあまり聞かないのでためになったという声を頂いたので、&lt;br /&gt;
+いい案配だったとおもいます。&lt;/p&gt;
+
+&lt;h1 id=&#34;反省点:960011acd5e7afc5edcb122b8bab3124&#34;&gt;反省点&lt;/h1&gt;
+
+&lt;p&gt;質疑応答で盛り上がるだろう場所は予測できていたので、&lt;br /&gt;
+そこに関しての補足スライドを用意するべきでした…&lt;/p&gt;
+
+&lt;p&gt;事前に作ったスライドを、前日にダメダメに見えたので作り直してしまったので、&lt;br /&gt;
+結果としては良くなったけどもう少し早くに完成させて修正したかったです。&lt;br /&gt;
+ただし、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>freeコマンドに新しく追加されたavailableについて</title>
@@ -911,40 +945,6 @@ build_fluentd_forwarderがcloneしますが、変更はそのままでビルド�
 
 &lt;p&gt;前者はbueild_fluentd_forwarderを変えれば何とかなりそうですが、&lt;br /&gt;
 後者はgoのimportの仕組みがリポジトリ名まで指定する仕組みのため、書き換える以外に良い解決方法が思いつきません。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年25週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-25/</link>
-      <pubDate>Mon, 22 Jun 2015 22:09:20 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-25/</guid>
-      <description>
-
-&lt;h1 id=&#34;go-conに参加していた:4120373b776e428195f8931ca37ff809&#34;&gt;go conに参加していた&lt;/h1&gt;
-
-&lt;p&gt;去年の秋と比べて、実際に使っている例が多くて、&lt;br /&gt;
-もうプロダクション投入されてるなーという印象でした。
-&lt;a href=&#34;http://ota42y.com/blog/2015/06/21/gocon-2015-summer/&#34;&gt;参加記録 Go Conference 2015 summer&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;atom-ioは辞めた:4120373b776e428195f8931ca37ff809&#34;&gt;atom.ioは辞めた&lt;/h1&gt;
-
-&lt;p&gt;Atom.ioの現状の仕様は、プロジェクトごとにウィンドウを割り当てて使うようになっています。&lt;br /&gt;
-ですが、MacではWindowsに比べて同じアプリ内のウィンドウを切り替えるのがとても大変であり、&lt;br /&gt;
-このようにウィンドウを細かく分けられると著しく不便です。&lt;br /&gt;
-Macのひどい仕様に負けるのはあまり良い気分ではないですが、&lt;br /&gt;
-このあたりの仕様が変わるまでは私の使い方では使い物になりません…&lt;/p&gt;
-
-&lt;p&gt;また、立ち上がりが重いのも大きな問題の1つです。&lt;br /&gt;
-ビルド中はCPUをものすごく使っているおり、その状態でAtom.ioを立ち上げると起動まで十数秒かかります。&lt;br /&gt;
-ただこの点に関しては、ネィティブではなくwebエンジニアであれば問題にならないとは思います。&lt;/p&gt;
-
-&lt;h1 id=&#34;gosweepが便利そう:4120373b776e428195f8931ca37ff809&#34;&gt;gosweepが便利そう&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/hailiang/gosweep&#34;&gt;https://github.com/hailiang/gosweep&lt;/a&gt;&lt;br /&gt;
-gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です。&lt;br /&gt;
-便利＆go vetやgoimports等知らないのもあったので有用そうです。&lt;/p&gt;
 </description>
     </item>
     
