@@ -6,11 +6,446 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 20 Sep 2015 17:10:23 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2015 00:45:03 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>情報科学若手の会2015で発表してきた</title>
+      <title>第48回情報科学若手の会2015に参加してきた</title>
+      <link>http://ota42y.com/blog/2015/09/22/wakate2015/</link>
+      <pubDate>Tue, 22 Sep 2015 00:45:03 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/09/22/wakate2015/</guid>
+      <description>
+
+&lt;p&gt;2015年9月19日(土)〜21日(月)に静岡県伊東市の山喜旅館で開催された、&lt;br /&gt;
+第48回情報科学若手の会2015に参加してきました。&lt;br /&gt;
+四回目の参加で、ショートで発表を行いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://togetter.com/li/875554&#34;&gt;第48回情報科学若手の会まとめ #wakate2015&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1日目:052cb3961210afac04dd94f202db818b&#34;&gt;1日目&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;はじめてでもわかる!IoTの過去・現在・未来 (特にホームネットワーク)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/TsubasaYumura/iot-52973276&#34;&gt;http://www.slideshare.net/TsubasaYumura/iot-52973276&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;TRON電脳住宅
+
+&lt;ul&gt;
+&lt;li&gt;1988年にIoTに言及していた&lt;a href=&#34;http://www.amazon.co.jp/%E9%9B%BB%E8%84%B3%E7%A4%BE%E4%BC%9A%E8%AB%96%E2%80%95TRON%E3%81%AE%E4%BA%88%E8%A8%80-%E5%9D%82%E6%9D%91-%E5%81%A5/dp/4870310473&#34;&gt;電脳社会論&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;BLEとか今使われている技術の特徴とか&lt;/li&gt;
+&lt;li&gt;最新研究とかも(IllumiRoomとかSquamaとか)&lt;/li&gt;
+&lt;li&gt;IoTは最近いろんな製品が出てきてますし、有名なのだとIFTTTや国内だとmyThingsみたいに、インターネット側も実世界の機器との連動ができるサービスが出てきていて、数年でアーリーマジョリティぐらいまでは到達しそうかなーって気がします。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IoTで進化するミツバチとの交流&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/decobisu/iotdejin-hua-surumitubatitofalsejiao-liu&#34;&gt;https://speakerdeck.com/decobisu/iotdejin-hua-surumitubatitofalsejiao-liu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;知られざるミツバチの実態
+
+&lt;ul&gt;
+&lt;li&gt;ミツバチは刺激しない限り刺さない&lt;/li&gt;
+&lt;li&gt;ハチミツがとれるぐらい蜜を集めるのはミツバチだけ&lt;/li&gt;
+&lt;li&gt;養蜂は意外とブームらしい(観測範囲は狭い)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;巣箱の温度をセンサとRasPiで調べてMackerelに飛ばしてSlackに通知&lt;/li&gt;
+&lt;li&gt;めっちゃ簡単に作れそうな構成だけど、凄く役立ちそうでテンション上がる&lt;/li&gt;
+&lt;li&gt;動物とのインタラクション研究とかわりとあるので、ミツバチとのインタラクションも普通に研究になりそう…&lt;/li&gt;
+&lt;li&gt;TLで言及されていたハチミツを集めやすい巣箱が凄い
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.indiegogo.com/projects/flow-hive-honey-on-tap-directly-from-your-beehive#/story&#34;&gt;https://www.indiegogo.com/projects/flow-hive-honey-on-tap-directly-from-your-beehive#/story&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/kyoro353/status/645125093425676288&#34;&gt;https://twitter.com/kyoro353/status/645125093425676288&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ハンドルを回すと六角形が崩れて一直線上になるので、ハチミツが下に流れていく機構&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;プログラムを書くってどういうこと？を哲学的に考える話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;話は凄い上手いし言ってることも解るのに理解が追いつかない…(´･_･`)&lt;/li&gt;
+&lt;li&gt;プログラムは人が計算機で計算をしているor計算のさせ方を教示しているという仮定の下では、プログラムを書く行為はプログラムが表現できる世界への対応付けを行っている…という話だった気がします。&lt;br /&gt;
+理解が追いついていないのでスライドがほしい…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;群ロボット&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;複数のロボットを使って1つのタスクを実行する
+
+&lt;ul&gt;
+&lt;li&gt;ベイマックスのマイクロロボットみたいなもの？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;複数のロボットを強調させるために動物の動きを模したアルゴリズムを使っているらしい
+
+&lt;ul&gt;
+&lt;li&gt;実際の動物とは全く関係ないアルゴリズムとかあるのだろうか？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;既存の探索を行うアルゴリズムは通信回数や移動で性能が良くない
+
+&lt;ul&gt;
+&lt;li&gt;それを改善するアルゴリズムを作った&lt;/li&gt;
+&lt;li&gt;ただしコストが安い代わりに探索時間はかかる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;質疑応答で無線通信ならブロードキャストできるので、既存アルゴリズムも通信コストは安いのでは？という質問
+
+&lt;ul&gt;
+&lt;li&gt;無線ってブロードキャストできるんだ…(よく知らない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Alloyで学ぶ形式手法&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/marin72_com/alloydexue-buxing-shi-shou-fa&#34;&gt;https://speakerdeck.com/marin72_com/alloydexue-buxing-shi-shou-fa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;形式手法言語
+
+&lt;ul&gt;
+&lt;li&gt;設計時に使うらしい&lt;/li&gt;
+&lt;li&gt;仕様バグを調べるみたい？&lt;/li&gt;
+&lt;li&gt;AlloyはLL形式手法言語みたいなもの&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;仕様を定義して、ちょっとの記述をするだけで反例があるかを返してくれる
+
+&lt;ul&gt;
+&lt;li&gt;自動でテスト条件を検証してくれるみたい？&lt;/li&gt;
+&lt;li&gt;めっっっっっっちゃ便利っぽい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;スライド中のサンプルコード&lt;br /&gt;
+&lt;a href=&#34;https://gist.github.com/marin72-com/688d47f1e91b3e510c28&#34;&gt;https://gist.github.com/marin72-com/688d47f1e91b3e510c28&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;交流イベント&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;マシュマロチャレンジだった&lt;/li&gt;
+&lt;li&gt;当初の予定が失敗したのでパスタ1本分の高さに(´･_･`)&lt;/li&gt;
+&lt;li&gt;事前にクイズをして、チートアイテム（巨大パスタとか）を配布する改変ルール
+
+&lt;ul&gt;
+&lt;li&gt;試行錯誤よりチートアイテムを持っているかで勝負が決まる。富めるものはより富める世界だったww&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;2日目:052cb3961210afac04dd94f202db818b&#34;&gt;2日目&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;若手特別講演「ぼくらのプログラミングから、みんなのプログラミングへ」&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://junkato.jp/publications/wakate2015-kato-slides.pdf&#34;&gt;http://junkato.jp/publications/wakate2015-kato-slides.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;これらの論文読んだことがある…ぞ…(((;ﾟДﾟ)))
+
+&lt;ul&gt;
+&lt;li&gt;Picodeを発表したWISSに参加してたので、DejaVuとかもそこで知った気がする&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;後半は&lt;a href=&#34;http://textalive.jp/&#34;&gt;http://textalive.jp/&lt;/a&gt;の話
+
+&lt;ul&gt;
+&lt;li&gt;めっちゃ凄いサービス&lt;/li&gt;
+&lt;li&gt;動画編集の仕方を知らなくても、キネティックタイポグラフィできるってのが凄い&lt;/li&gt;
+&lt;li&gt;プログラマが機能拡張できたり、非プログラマでも改変可能にしていたり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Moive as Code凄い
+
+&lt;ul&gt;
+&lt;li&gt;文字を指定された位置に表示して動かしているだけ&lt;/li&gt;
+&lt;li&gt;FPS変更も動画サイズ変更もパラメータを変えれば対応可能&lt;/li&gt;
+&lt;li&gt;将来的にPCの性能が上がったら、パラメータを変えれば全て高画質化&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HCI分野の紹介と最新研究&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;こっちに大体書いた&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/09/20/wakate2015-hci/&#34;&gt;http://ota42y.com/blog/2015/09/20/wakate2015-hci/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ワンスイッチ Wii コントローラーの製作 〜福祉機器における Arduino 活用〜&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ゲームのコントロールをスイッチ1つでできるように改変する話
+
+&lt;ul&gt;
+&lt;li&gt;Wiiのコントローラーハック&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;体をほとんど動かせない人でもゲームができる&lt;/li&gt;
+&lt;li&gt;ターンベースは何でもいけそう&lt;/li&gt;
+&lt;li&gt;やっぱり制限時間がある系は難しいらしい
+
+&lt;ul&gt;
+&lt;li&gt;制限時間を調整できれば解決しそうだけど、コントローラーからの入力部分に手を入れ、ゲームからは通常の入力と完全に同じに見えるようにするアプローチなので、違う話っぽいなぁ…&lt;/li&gt;
+&lt;li&gt;シミュレーター上で動くゲームなら、シミュレーターの速度を下げるという荒技が…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;筋電は訓練によって制御出来るようになるという知見(´･_･`)！&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;趣味でも使えるクラウド！&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;slackで会話、Google Docsで情報共有とか&lt;/li&gt;
+&lt;li&gt;物量でICFPCの問題を解く
+
+&lt;ul&gt;
+&lt;li&gt;リソース自由に使っていいらしい&lt;/li&gt;
+&lt;li&gt;Amazonのスポットインスタンスで安くCPUパワーを確保&lt;/li&gt;
+&lt;li&gt;100CPU 1TBが150円とか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;AWS Lambda
+
+&lt;ul&gt;
+&lt;li&gt;最近出た奴&lt;/li&gt;
+&lt;li&gt;CPUのミリ秒単位で課金される&lt;/li&gt;
+&lt;li&gt;一瞬で計算を終わらせたいときに役立つっぽい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The Internetの仕組み 〜 ISPの作り方&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/chibiegg/the-internet-falseshi-zu-mi-ispfalsezuo-rifang&#34;&gt;https://speakerdeck.com/chibiegg/the-internet-falseshi-zu-mi-ispfalsezuo-rifang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ISPは作れる！！！
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bgp.ne.jp/&#34;&gt;https://www.bgp.ne.jp/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;IPアドレスがあれば&lt;/li&gt;
+&lt;li&gt;複数のASと繋ぐ場合、AS番号が必要&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ルーティングの話(BGPやOSPF)
+
+&lt;ul&gt;
+&lt;li&gt;トランジットを避け、ピアに流すように工夫する&lt;/li&gt;
+&lt;li&gt;手動で経路設定は人間には無理なのでそういうプロトコルを使う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;インフラ屋の間では「2497です」みたいな自己紹介がされるらしい…
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nic.ad.jp/ja/ip/as-numbers.txt&#34;&gt;https://www.nic.ad.jp/ja/ip/as-numbers.txt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;招待講演「IT×宇宙で何をしよう!?」&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JAXAのITへの取り組みのお話&lt;/li&gt;
+&lt;li&gt;前半は社内のITシステムの話
+
+&lt;ul&gt;
+&lt;li&gt;大体独自開発のシステムっぽい&lt;/li&gt;
+&lt;li&gt;失敗のリスクが尋常じゃないから、既存のに合わせて失敗するより開発コストをかけてでも使い手に全力で最適化した方が良いのだろうか？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;後半は情報公開の話&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;準天頂衛星システム（QZSS）みちびきデータ公開サイト[QZ-vision]&lt;br /&gt;
+&lt;a href=&#34;http://qz-vision.jaxa.jp/&#34;&gt;http://qz-vision.jaxa.jp/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;JAXA | JAXAの歩き方 公開データのウェブサイトカタログ&lt;br /&gt;
+公開しているデータのまとめ&lt;br /&gt;
+&lt;a href=&#34;http://www.jaxa.jp/projects/db/tebiki_j.html&#34;&gt;http://www.jaxa.jp/projects/db/tebiki_j.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;JAXA OPEN API&lt;br /&gt;
+データが凄い扱いやすいように整備されてる&lt;br /&gt;
+夢が広がる…(´･_･`)！&lt;br /&gt;
+&lt;a href=&#34;http://www.satnavi.jaxa.jp/jaxa_api_competition/index.html&#34;&gt;http://www.satnavi.jaxa.jp/jaxa_api_competition/index.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;提供したデータが想定していない使われ方をする場合もある&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;海面温度のデータが漁業に活用されたり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use Open Data with SPARQL&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/denari01/use-open-data-with-sparql&#34;&gt;http://www.slideshare.net/denari01/use-open-data-with-sparql&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SPARQL、書くのめっちゃつらそう…&lt;/li&gt;
+&lt;li&gt;実際にブラウザ上で書いて動かせるサービス
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://sparql.odp.jig.jp/&#34;&gt;http://sparql.odp.jig.jp/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;OpenDataについては情報科学若手の会冬の陣2015での発表がわかりやすかったけど、資料は公開されていないっぽい…(´･_･`)
+
+&lt;ul&gt;
+&lt;li&gt;ナイトセッションで再演されていた&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Denkinovelをどうして作り続けているのか&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ノベルゲームスクリプトを書いてブラウザ上で実行できるっぽい
+
+&lt;ul&gt;
+&lt;li&gt;文章以外はいろんな素材がすでに用意済みで、自由に使える&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;開発に関する話
+
+&lt;ul&gt;
+&lt;li&gt;個人開発ではチーム開発のセオリーは無視した方がいい&lt;br /&gt;
+意味の無いオーバーヘッドになるので&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;機能追加時にコンセプトがぶれていないのが凄い
+
+&lt;ul&gt;
+&lt;li&gt;立ち絵機能はわざと入れていない&lt;/li&gt;
+&lt;li&gt;絵が描けない人のために作ったので、入れると絵が描ける人との差がついてしまうので&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;何を学べばいいか解らないので、作って学ぶという姿勢は共感できる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;リッチラボの開発に 集中するための開発環境&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DevOpsはうちもやりたいなー&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LT&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数が多いので気になったのだけ&lt;/li&gt;
+&lt;li&gt;筆跡の特徴学習とニューラルネットワーク
+
+&lt;ul&gt;
+&lt;li&gt;教師データ凄い少ないのにそこそこの結果&lt;/li&gt;
+&lt;li&gt;凄いいい手法なのか偶然なのか…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ビジコン金ある
+
+&lt;ul&gt;
+&lt;li&gt;コンセプトを実現する最低限の実装と、いいコンセプトが大事とのこと&lt;/li&gt;
+&lt;li&gt;完璧な実装&amp;lt;&amp;lt;&amp;lt;&amp;lt;コンセプトを伝える最低限度のプロトタイプ&lt;br /&gt;
+動かなくても動いているように見えればいい&lt;/li&gt;
+&lt;li&gt;コンセプトを煮詰める時間を含めると時給下がるのでは…？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;こわくないBLE
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/izumin5210/Bletia&#34;&gt;https://github.com/izumin5210/Bletia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;キーボードを浮かそう
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/decobisu/status/645550061926133761&#34;&gt;https://twitter.com/decobisu/status/645550061926133761&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Kinesis使ってるからこの解法出来ないのです…(´・_・`)&lt;/li&gt;
+&lt;li&gt;が、マウス遠いのは人類共通の悩み…&lt;/li&gt;
+&lt;li&gt;操作時間を計測するKLMモデルにも、機器の切り替えにかかる時間が含まれていてわりと無視できない…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ローリングシャッター芸人の人の発表
+
+&lt;ul&gt;
+&lt;li&gt;デジタルネイチャー研究室の人&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/keyword/%A5%ED%A1%BC%A5%EA%A5%F3%A5%B0%A5%B7%A5%E3%A5%C3%A5%BF%A1%BC%B8%BD%BE%DD&#34;&gt;ローリングシャッター現象&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CMOSは一度にまとめてではなく順番に素子上の映像を記録していく&lt;/li&gt;
+&lt;li&gt;被写体の動きが速いと、記録中に映像が変わって変になる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The Relationship between Laughter and Health
+
+&lt;ul&gt;
+&lt;li&gt;笑うと健康にいいってのが示されてる&lt;/li&gt;
+&lt;li&gt;よく聞くのでジンクスだと思っていたけど、ちゃんと証明されてるっぽい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;3日目:052cb3961210afac04dd94f202db818b&#34;&gt;3日目&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Twitter のデータ処理テクノロジーとTwitterでの仕事について&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;バッチ処理とリアルタイム処理の使い分けが凄い
+
+&lt;ul&gt;
+&lt;li&gt;正確だけど時間がかかるバッチ処理と、早いけど誤差の出るリアルタイム処理との組み合わせ&lt;/li&gt;
+&lt;li&gt;前回のバッチ処理からの差分だけリアルタイム処理で計算し、それを合算&lt;/li&gt;
+&lt;li&gt;早くて正確に結果を返せる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;モノイドを利用して正しい結果になると証明されているっぽい&lt;/li&gt;
+&lt;li&gt;やっぱりREPLはデモにも使えて便利っぽい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ICTトラブルシューティングコンテストのご紹介&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;他のコンテストに比べて運用上実際に起きる問題をベースとした感じのコンテストっぽい？&lt;/li&gt;
+&lt;li&gt;スライドで紹介された例題を見る限り、プログラムというよりかはミドルウェア知識的な感じ&lt;/li&gt;
+&lt;li&gt;あとは問題の原因を突き止める手順とか&lt;/li&gt;
+&lt;li&gt;運営メンバーが学生で、スポンサー11社いるの凄い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ルータで斬り込め！おうちIoT&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OpenWrt凄い&lt;/li&gt;
+&lt;li&gt;「ルータはIoTのハブになる」というのはわりと的を射ている気がする
+
+&lt;ul&gt;
+&lt;li&gt;OnHubの登場はもちろんですが、ルータはその役割上、多くの場合外部ネットと内部ネット両方にアクセス出来る位置にいるため、内部ネットに繋がるIoT機器の情報を外部のクラウドに投げるみたいな事をするには、かなり理想的な位置にいそう。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;その他全体の話:052cb3961210afac04dd94f202db818b&#34;&gt;その他全体の話&lt;/h1&gt;
+
+&lt;h2 id=&#34;ネット環境:052cb3961210afac04dd94f202db818b&#34;&gt;ネット環境&lt;/h2&gt;
+
+&lt;p&gt;去年に比べてさらに山喜旅館の無線APが増強されたらしく、いっそう快適になりました。&lt;br /&gt;
+ただ、APの同時接続数に引っかかって、たまに接続が切れる事があったようです。&lt;br /&gt;
+二台以上にすれば解決しそうですが、若手の会の接続台数は異常なので、普通に使うにはほぼ問題ないと思われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;picala:052cb3961210afac04dd94f202db818b&#34;&gt;PICALA&lt;/h2&gt;
+
+&lt;p&gt;会場では「PICALA: 照明色による聴講者の感情共有システム」が動いていました。&lt;br /&gt;
+発表中に色に言及できるほど余裕はなかったですが、ウケているかウケていないかはわかるのでわりとよかったです。&lt;/p&gt;
+
+&lt;p&gt;笑いを狙ったスライドに対しては笑い声で反応がわかりますが、「凄い」「へぇ」といったアクションが薄い反応をしそうなスライドでも、聞いている人がどう思っているかがわかるので、これ凄いでしょ！！みたいなスライドで、みんな凄い！って思ってくれていると発表中にわかるのでよかったです。また、光でちょっとだけ提示するので、発表に割り込まれないのもいいです。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;明日の &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; の僕の発表時間中に「PICALA: 照明色による聴講者の感情共有システム」を運用予定です。詳細は発表開始前に説明します。お楽しみに！（発表者の方で、自分の発表時間に使いたい方がいたら声かけて下さい〜) &lt;a href=&#34;http://t.co/ldVnGhAA2N&#34;&gt;pic.twitter.com/ldVnGhAA2N&lt;/a&gt;&lt;/p&gt;&amp;mdash; 湯村 翼＠10/3おうちハックナイト (@yumu19) &lt;a href=&#34;https://twitter.com/yumu19/status/644863368537309184&#34;&gt;2015, 9月 18&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;togetter超便利:052cb3961210afac04dd94f202db818b&#34;&gt;togetter超便利&lt;/h2&gt;
+
+&lt;p&gt;夜中に過去の年のまとめを読んだりして盛り上がったので、&lt;br /&gt;
+毎年まとめてくれる人には超感謝してます…&lt;/p&gt;
+
+&lt;p&gt;また、ブログを書くときも思い出すベースやメモし忘れた部分の補足、&lt;br /&gt;
+話していい/ダメとかをtogetterから判別出来るのでとても重宝しています。&lt;/p&gt;
+
+&lt;p&gt;というのをあらためて思いました&lt;/p&gt;
+
+&lt;h2 id=&#34;いつまで若手か:052cb3961210afac04dd94f202db818b&#34;&gt;いつまで若手か&lt;/h2&gt;
+
+&lt;p&gt;若手の会の日程について行けるうちは若手だと思います！！！&lt;br /&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;若手の会めっちゃ疲れた…&lt;em&gt;(:3 」∠)&lt;/em&gt; ふと、上の世代が自然とフェードアウトしていくのは、この日程に体力がついていかないからなんじゃないかって思ったww &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt;&lt;/p&gt;&amp;mdash; おおた (@ota42y) &lt;a href=&#34;https://twitter.com/ota42y/status/645938601587511296&#34;&gt;2015, 9月 21&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;帰り:052cb3961210afac04dd94f202db818b&#34;&gt;帰り&lt;/h1&gt;
+
+&lt;p&gt;熱海から二駅の三島にある柿田川に寄りました。&lt;br /&gt;
+日本三大清流の1つで、水がめっちゃ綺麗な川でした。&lt;br /&gt;
+&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E6%9F%BF%E7%94%B0%E5%B7%9D&#34;&gt;https://ja.wikipedia.org/wiki/%E6%9F%BF%E7%94%B0%E5%B7%9D&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;元々去年行こうと思っていましたが、桜屋のうなぎに思った以上に並んだので断念してました…&lt;br /&gt;
+あのうまいうなぎはこの水で一度泳がせているからなのかーと勝手に感心しました。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2014/09/15/wakate2014/#その後:5448e46160544c3c78693ad97d653b2a&#34;&gt;http://ota42y.com/blog/2014/09/15/wakate2014/#その後:5448e46160544c3c78693ad97d653b2a&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ただ、この川目当てで行くには短すぎるので(日本一短い一級河川)、&lt;br /&gt;
+うなぎと組み合わせるとか他の用事のついでに足を運ぶのがいいと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>第48回情報科学若手の会2015で発表してきた</title>
       <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
       <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
       
@@ -18,14 +453,20 @@
       <description>
 
 &lt;p&gt;というわけで発表しました。&lt;br /&gt;
-発表資料はこちら。&lt;br /&gt;
-&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究 軽量版&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究 軽量版&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+発表資料はこちら。&lt;/p&gt;
+
+&lt;p&gt;実際は動画で紹介していますが、めっちゃ重くなったのでそれは外した軽量版になります。&lt;br /&gt;
+代わりにリンクをスライドに書いてあるので、そちらで見てください。&lt;br /&gt;
+また、実際は使わなかった非表示スライドも表示していますが、ちゃんと作っていないのでご注意ください。&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;発表内容について:960011acd5e7afc5edcb122b8bab3124&#34;&gt;発表内容について&lt;/h1&gt;
 
 &lt;p&gt;4回目ぐらいの参加ですが、ほぼ毎年CHIの締め切りと重なったり、&lt;br /&gt;
 UISTの数週間前みたいな時期なのであまりこの分野からの参加者が少なく、&lt;br /&gt;
-需要がありそうだったのでやってみました。&lt;/p&gt;
+需要がありそうとういうのを去年から考えていました。(&lt;a href=&#34;http://ota42y.com/blog/2014/09/15/wakate2014/#まとめ:5448e46160544c3c78693ad97d653b2a&#34;&gt;去年のエントリ&lt;/a&gt;)&lt;br /&gt;
+何故か今年に限って似た分野の研究が多かったですがw&lt;/p&gt;
 
 &lt;p&gt;新しいインタフェース系は結構話題になりますが、改善とか調査系とかはあまりHCI分野の人以外からは話題にされないので、&lt;br /&gt;
 意図的に新しいインタフェース系は抑えてそれ以外のやつを入れています。(非表示にたくさんあるけど)&lt;br /&gt;
@@ -39,7 +480,25 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 
 &lt;p&gt;事前に作ったスライドを、前日にダメダメに見えたので作り直してしまったので、&lt;br /&gt;
 結果としては良くなったけどもう少し早くに完成させて修正したかったです。&lt;br /&gt;
-ただし、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
+ただ、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
+
+&lt;h1 id=&#34;追加情報:960011acd5e7afc5edcb122b8bab3124&#34;&gt;追加情報&lt;/h1&gt;
+
+&lt;p&gt;今回のはほぼ英語論文から取ってきましたが、日本語での発表を捜すなら&lt;a href=&#34;www.interaction-ipsj.org/&#34;&gt;インタラクション&lt;/a&gt;がオススメです。&lt;/p&gt;
+
+&lt;p&gt;また、質疑応答時やTwitterで追加情報を流していただきました。感謝です。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;HCI分野でも（調査系と比べて）とくに新技術の発表が多いトップカンファレンスACM UISTは、来年アジア初開催、「日本で」開催ですよ！みんなで行こー &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; / 今年は &lt;a href=&#34;http://t.co/GY2XiamnkI&#34;&gt;http://t.co/GY2XiamnkI&lt;/a&gt;&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645410232546410496&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;HCI系のトップカンファレンスACM CHIの自主勉強会が毎年東京と北海道で開催され、過去の資料が公開されているので、HCIに興味持った方はまずこの資料見てみるといいと思います！ &lt;a href=&#34;http://t.co/WTIFCbO04m&#34;&gt;http://t.co/WTIFCbO04m&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt;&lt;/p&gt;&amp;mdash; 湯村 翼＠10/3おうちハックナイト (@yumu19) &lt;a href=&#34;https://twitter.com/yumu19/status/645412250988077060&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;調査系（エスノグラフィー）なども多くユーザビリティを仕事にしてる方も参考になりそうなトップカンファACM CHIは、今年アジア初開催、韓国でした。 &lt;a href=&#34;http://t.co/7iFp4VFQPG&#34;&gt;http://t.co/7iFp4VFQPG&lt;/a&gt; ←6月の勉強会 &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; &lt;a href=&#34;https://t.co/VsVFP9y5Ov&#34;&gt;https://t.co/VsVFP9y5Ov&lt;/a&gt;&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645411168899600388&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; HRI &lt;a href=&#34;http://t.co/uvweEJIpNy&#34;&gt;http://t.co/uvweEJIpNy&lt;/a&gt; , HAI &lt;a href=&#34;http://t.co/SU4DV1xPF3&#34;&gt;http://t.co/SU4DV1xPF3&lt;/a&gt; という国際会議を紹介しました。HRIは心理学系の人たちが多いです。HAIは実装系もバランスよくいる印象。&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645412878262996993&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1804,79 +2263,6 @@ IDEデバッグなど、IDE経由で実行した際に動く機能が使えな�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>golangのパッケージ管理</title>
-      <link>http://ota42y.com/blog/2015/04/18/go-package-management/</link>
-      <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/04/18/go-package-management/</guid>
-      <description>
-
-&lt;p&gt;goでは標準でいろいろなツールが揃っていますが、&lt;br /&gt;
-npmやbundlerのようなパッケージの依存管理をするツールはありません。&lt;/p&gt;
-
-&lt;p&gt;これは、goでは公開されている物は後方互換性を守り、&lt;br /&gt;
-それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.
-&lt;a href=&#34;http://golang.org/doc/faq#get_version&#34;&gt;http://golang.org/doc/faq#get_version&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;そうはいっても、これに従うかどうかはパッケージの開発者の裁量によるため、&lt;br /&gt;
-自分が管理していないパッケージを利用する場合はどうしても管理が必要になります。&lt;/p&gt;
-
-&lt;p&gt;調べたところ、同じような問題に直面している人は多いらしく、いくつかツールがありました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/golang/go/wiki/PackageManagementTools&#34;&gt;PackageManagementTools&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;一応、go公式でもパッケージ管理ソフトを作るという噂を聞きましたが、1.5には入る気配がないので、&lt;br /&gt;
-とりあえずはこれらの中のどれかを使う必要があります。&lt;/p&gt;
-
-&lt;p&gt;そこで、この中で特にスターが多かったgodep、gom、goopについて調べました。&lt;/p&gt;
-
-&lt;h1 id=&#34;パッケージ管理ツール:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
-
-&lt;p&gt;この3つに共通する物として、importしている物をリストアップし、ファイルに書き出す機能があるようです。&lt;br /&gt;
-また、gomとgoopはほぼ同じ機能を提供し、管理用のファイルの形式が違うようです。&lt;/p&gt;
-
-&lt;h2 id=&#34;godep:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;godep&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/tools/godep&#34;&gt;https://github.com/tools/godep&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;こちらはかなりgoの思想に沿った作りをしているツールになります。&lt;/p&gt;
-
-&lt;p&gt;このツールはパッケージのインポート情報を保存しますが、バージョンまでは保存しません。&lt;br /&gt;
-そのため、依存しているパッケージを入れる際は、go getにより最新版をとってきます。&lt;/p&gt;
-
-&lt;p&gt;go getでとれないようなリポジトリ用に、プロジェクト内にワークスペースを作ってソースごと保存し、&lt;br /&gt;
-GOPATHでそこを見るようにしてコマンド実行することもできます。&lt;/p&gt;
-
-&lt;p&gt;つまり、常に最新のmasterを使うか、自分の手元で管理するかの二択です。&lt;br /&gt;
-基本的に全部管理下に置いてある前提の作りっぽいです。&lt;/p&gt;
-
-&lt;h2 id=&#34;gom-goop:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gom/goop&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;https://github.com/mattn/gom&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/nitrous-io/goop&#34;&gt;https://github.com/nitrous-io/goop&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;gomとgoopはほぼnpmのような使い勝手になるパッケージ管理ツールです。&lt;br /&gt;
-すなわち、使っているパッケージのバージョンまでも保存します。&lt;/p&gt;
-
-&lt;p&gt;依存するパッケージはローカルにフォルダを作ってそこに保存され、&lt;br /&gt;
-GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&gt;
-
-&lt;p&gt;gomはRakefileのような書式、goopは普通のテキストにちょっと書式が加わったようなものになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;gomが良さそう:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gomが良さそう&lt;/h1&gt;
-
-&lt;p&gt;godepはそういう環境やメンテナンスフローから作る必要があり、気軽に導入は難しそうです。&lt;br /&gt;
-そのため、npmやbundlerに似ているgomやgoopを使った方が楽そうです。&lt;/p&gt;
-
-&lt;p&gt;また、gomはRakefileっぽい書式のため、独自？のgoopよりかは使い勝手がよさそうなので、&lt;br /&gt;
-とりあえずはgomでやろうと思います。&lt;/p&gt;
 </description>
     </item>
     
