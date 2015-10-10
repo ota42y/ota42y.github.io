@@ -6,8 +6,26 @@
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 22 Sep 2015 00:45:03 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2015 23:58:16 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ABPro2015で発表してきた</title>
+      <link>http://ota42y.com/blog/2015/10/10/abpro2015/</link>
+      <pubDate>Sat, 10 Oct 2015 23:58:16 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/10/10/abpro2015/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://togetter.com/li/884899&#34;&gt;togetterまとめ&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/39s0Ljtiud4tKP&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ss-53771391&#34; title=&#34;身近なサイバー攻撃から身を守る&#34; target=&#34;_blank&#34;&gt;身近なサイバー攻撃から身を守る&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;ディープラーニングによる画像認識でTL上の飯テロ画像を判定しています。&lt;br /&gt;
+事前に発表タイミングをお昼直前にお願いしており、&lt;br /&gt;
+その通りにしていただけたため大好評だったと思います。&lt;/p&gt;
+
+&lt;p&gt;なお、画像認識自体は&lt;a href=&#34;http://www.alchemyapi.com/&#34;&gt;AlchemyAPI&lt;/a&gt;に投げているだけです.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>第48回情報科学若手の会2015に参加してきた</title>
@@ -2437,86 +2455,6 @@ iPhone6や6+では従来のUIはかなり使いづらいものになってしま
 
 &lt;p&gt;二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…&lt;br /&gt;
 恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Travis CI Meetup Tokyoに行ってきた</title>
-      <link>http://ota42y.com/blog/2014/09/18/travisci-meetup/</link>
-      <pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/09/18/travisci-meetup/</guid>
-      <description>
-
-&lt;p&gt;前半はTravis CIのデモ、真ん中てCEOのお話、最後にLTと三部構成でした。&lt;br /&gt;
-こちらに動画があるそうです。&lt;br /&gt;
-&lt;a href=&#34;http://www.ustream.tv/recorded/52769967&#34;&gt;http://www.ustream.tv/recorded/52769967&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;デモは一通りのTravis CIの使い方をデモしていただきました。&lt;br /&gt;
-何となくわかってるデフォルトの挙動などにちゃんと説明がはいり、&lt;br /&gt;
-基礎知識を固めるには凄く良かったです。&lt;br /&gt;
-また、いくつか知らない機能(sudo false)や、&lt;br /&gt;
-.travis.ymlの書式をオンラインで確認できる&lt;a href=&#34;http://lint.travis-ci.org/&#34;&gt;Travis WebLint&lt;/a&gt;等が紹介されていました。&lt;/p&gt;
-
-&lt;p&gt;なお、デモに使ったリポジトリは以下にあるようです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/BanzaiMan/travis-intro-tokyo&#34;&gt;https://github.com/BanzaiMan/travis-intro-tokyo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;CEOの話では、現在のjob数やVM数、サーバの数などを話していただきました。&lt;br /&gt;
-それと後半では環境によって良くはまる10個が紹介されていました。&lt;br /&gt;
-ファイルシステムのケースセンシティブや、GNUとBSDの違いだったり、aptから古いバージョンが消えたり、&lt;br /&gt;
-タイムゾーンやOSの違いによる環境構築や&lt;a href=&#34;https://github.com/travis-ci/travis-ci/issues/2755&#34;&gt;言語自体のバグ&lt;/a&gt;等々…&lt;br /&gt;
-ここ最近に当たった奴がいくつかあり頭が痛かったです…(´･_･`)&lt;/p&gt;
-
-&lt;p&gt;最後のLTではいろんな発表が行われました。&lt;br /&gt;
-見つけた分だけまとめておきます。&lt;/p&gt;
-
-&lt;h2 id=&#34;automated-releasing-ios-app-with-travis-ci:df0acc4cb2b4055628ad432a471de563&#34;&gt;Automated releasing iOS app with Travis CI&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci&#34;&gt;https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci&lt;/a&gt;&lt;br /&gt;
-私はJenkinsを使っていますが、似たような構成でやってるので参考になりました。&lt;br /&gt;
-ただ、ビルド時間が5倍ぐらい長いので、こちらのプロジェクトにそのまま導入は難しそうです…&lt;br /&gt;
-xcarchiveに書き出すと、申請用ビルドでテストフライトに出せるというのは新たな発見でした。&lt;br /&gt;
-(追記: 発表者様から指摘がありました)　　
-&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/ota42y&#34;&gt;@ota42y&lt;/a&gt; 僕の話し方が悪かったのですが、xcarchiveだから、というわけではなくて、AppStoreとAdHocのプロビジョニングは互換性があるので、xcarchiveからipaにするところでプロビジョニングをAdHocにしています。同じビルドで署名だけ変える方法です。&lt;/p&gt;&amp;mdash; kishikawa katsumi (@k_katsumi) &lt;a href=&#34;https://twitter.com/k_katsumi/status/512399910176432130&#34;&gt;2014, 9月 18&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;travis-ci-api-lt:df0acc4cb2b4055628ad432a471de563&#34;&gt;Travis CI API LT&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/pinzolo/travis-ci-api-lt&#34;&gt;https://speakerdeck.com/pinzolo/travis-ci-api-lt&lt;/a&gt;&lt;br /&gt;
-Travis CIのAPIと、gemの利用例です。&lt;br /&gt;
-パッと見た限り、必要最低限は揃ってそうなので、hubotから叩くみたいなことが出来そうです。&lt;/p&gt;
-
-&lt;h2 id=&#34;qunit-on-travis-ci-shigemk2:df0acc4cb2b4055628ad432a471de563&#34;&gt;QUnit on Travis CI @shigemk2&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://shigemk2.github.io/travisci_jp/#/step-1&#34;&gt;https://shigemk2.github.io/travisci_jp/#/step-1&lt;/a&gt;&lt;br /&gt;
-jsのライブラリを作った際の利用例でした。&lt;br /&gt;
-実際に作る際に参考に出来そうでした。&lt;/p&gt;
-
-&lt;h2 id=&#34;when-was-the-build-passing:df0acc4cb2b4055628ad432a471de563&#34;&gt;When was the build passing?&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/&#34;&gt;http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/&lt;/a&gt;&lt;br /&gt;
-依存してるライブラリが更新すると、いつの間にかテストが落ちるようになってるけど、&lt;br /&gt;
-テストが実行されないとわからないので、活発でないプロジェクトだと大変だよね…って話です。&lt;/p&gt;
-
-&lt;p&gt;これに対して、定期的にPRを送る&lt;a href=&#34;http://tachikoma.io/&#34;&gt;Tachikoma.io - Interval Pull Request App&lt;/a&gt;というものを作ったそうです。&lt;br /&gt;
-bundle updateをしてPR送るみたいなこともやってくれるため、とりあえず仕掛けておいて損は無さそうです。&lt;/p&gt;
-
-&lt;h2 id=&#34;testing-your-app-with-selenium-on-travis-ci-by-yusuke-ando:df0acc4cb2b4055628ad432a471de563&#34;&gt;Testing your app with Selenium on Travis CI by Yusuke Ando&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1&#34;&gt;https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1&lt;/a&gt;&lt;br /&gt;
-Travis CIでのSelenium導入の話です。&lt;br /&gt;
-FirefoxやX等ははじめから入っているため、立ち上げるだけでいいらしく、&lt;br /&gt;
-面倒なインストールをしなくていいためとても楽そうでした。&lt;/p&gt;
-
-&lt;h1 id=&#34;懇親会:df0acc4cb2b4055628ad432a471de563&#34;&gt;懇親会&lt;/h1&gt;
-
-&lt;p&gt;DeNAさんがお寿司を出してくれました！！！！！！！！
-&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;お寿司だヽ( ･∀･)ﾉ &lt;a href=&#34;https://twitter.com/hashtag/travisci_jp?src=hash&#34;&gt;#travisci_jp&lt;/a&gt; &lt;a href=&#34;http://t.co/zrmrhO6WMw&#34;&gt;pic.twitter.com/zrmrhO6WMw&lt;/a&gt;&lt;/p&gt;&amp;mdash; おおた (@ota42y) &lt;a href=&#34;https://twitter.com/ota42y/status/512210649699463168&#34;&gt;2014, 9月 17&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;懇親会で聞いたところ、大体の人がJenkinsは保守が死ねるよね…&lt;br /&gt;
-って言っていたので、やっぱりみんな大変なんだな…となりました(´･_･`)&lt;br /&gt;
-やはりYAMLで設定できるTravis CIの方が楽ですよね…&lt;/p&gt;
 </description>
     </item>
     
