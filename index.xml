@@ -6,8 +6,26 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 22 Sep 2015 00:45:03 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2015 23:58:16 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ABPro2015で発表してきた</title>
+      <link>http://ota42y.com/blog/2015/10/10/abpro2015/</link>
+      <pubDate>Sat, 10 Oct 2015 23:58:16 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/10/10/abpro2015/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://togetter.com/li/884899&#34;&gt;togetterまとめ&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/39s0Ljtiud4tKP&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ss-53771391&#34; title=&#34;身近なサイバー攻撃から身を守る&#34; target=&#34;_blank&#34;&gt;身近なサイバー攻撃から身を守る&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;ディープラーニングによる画像認識でTL上の飯テロ画像を判定しています。&lt;br /&gt;
+事前に発表タイミングをお昼直前にお願いしており、&lt;br /&gt;
+その通りにしていただけたため大好評だったと思います。&lt;/p&gt;
+
+&lt;p&gt;なお、画像認識自体は&lt;a href=&#34;http://www.alchemyapi.com/&#34;&gt;AlchemyAPI&lt;/a&gt;に投げているだけです.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>第48回情報科学若手の会2015に参加してきた</title>
@@ -1251,88 +1269,6 @@ el-getも自動インストールするようにしているため、設定フ�
 &lt;li&gt;カスタマイズが必要ならば&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>dinoでrubyからArduinoを扱う</title>
-      <link>http://ota42y.com/blog/2015/07/05/dino/</link>
-      <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PCからArduinoを制御するのは面倒
-
-&lt;ul&gt;
-&lt;li&gt;作業量が多い&lt;/li&gt;
-&lt;li&gt;電子工作&lt;/li&gt;
-&lt;li&gt;Arduinoプログラミング&lt;/li&gt;
-&lt;li&gt;PCからArduinoを制御するプログラミング&lt;/li&gt;
-&lt;li&gt;Arduinoプログラミングは専用言語&lt;/li&gt;
-&lt;li&gt;学習コストがある&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dinoならrubyだけで全て完結できる
-
-&lt;ul&gt;
-&lt;li&gt;rubyからArduinoの全機能を制御するプログラムが付随&lt;/li&gt;
-&lt;li&gt;rubyのオブジェクト操作でArduinoを制御出来る&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;PCからArduinoを制御するのは面倒&lt;/h1&gt;
-
-&lt;p&gt;Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。&lt;br /&gt;
-ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。&lt;/p&gt;
-
-&lt;p&gt;PCとからArduinoを制御する場合、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;電子工作をしてArduinoと部品をつなげる&lt;/li&gt;
-&lt;li&gt;Arduinoを制御したり、PCに情報を送るプログラムを書く&lt;/li&gt;
-&lt;li&gt;PC側でArduinoからの情報を受け取って制御するプログラムを書く&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;の3種類の別々の作業が必要になります。&lt;/p&gt;
-
-&lt;p&gt;Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。&lt;br /&gt;
-ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、&lt;br /&gt;
-rubyプログラムを書くだけでArduinoの制御が全てできるようになります。&lt;/p&gt;
-
-&lt;p&gt;これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。&lt;/p&gt;
-
-&lt;h1 id=&#34;dino:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;dino&lt;/h1&gt;
-
-&lt;p&gt;Arduinoをrubyから扱うライブラリです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/austinbv/dino&#34;&gt;https://github.com/austinbv/dino&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Arduinoの全機能を外部から制御可能にするプログラムが付随しており、&lt;br /&gt;
-これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。&lt;/p&gt;
-
-&lt;h2 id=&#34;サンプルコード:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;サンプルコード&lt;/h2&gt;
-
-&lt;p&gt;A0ポートに対する入力を拾うプログラムは以下の通りです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;board = Dino::Board.new(Dino::TxRx::Serial.new)
-sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board)
-
-sensor.when_data_received do |data|
-  puts &amp;quot;data=#{data.to_i}&amp;quot;
-end
-
-sleep
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ポートに対する入力があるたびにブロックが実行されます。&lt;/p&gt;
-
-&lt;p&gt;このように、arduinoをほぼrubyのオブジェクトのように扱えるため、&lt;br /&gt;
-PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。&lt;/p&gt;
-
-&lt;p&gt;ただし、当然ながらPCと接続して制御するものであり、&lt;br /&gt;
-Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。&lt;/p&gt;
 </description>
     </item>
     
