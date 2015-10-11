@@ -6,8 +6,122 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 10 Oct 2015 23:58:16 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2015 22:39:33 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
+      <link>http://ota42y.com/blog/2015/10/11/alchemyapi/</link>
+      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:ab936406d233aece22e2039cdf3abfc2&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AlchemyAPIに画像をアップロードすると識別結果を返してくれる&lt;/li&gt;
+&lt;li&gt;無料で使える&lt;/li&gt;
+&lt;li&gt;ライブラリも豊富&lt;/li&gt;
+&lt;li&gt;画像認識がAPIで呼び出せる世界の可能性凄い
+
+&lt;ul&gt;
+&lt;li&gt;画像認識ライブラリすら必要ない世界…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;alchemyapiで画像認識が凄い簡単にできる:ab936406d233aece22e2039cdf3abfc2&#34;&gt;AlchemyAPIで画像認識が凄い簡単にできる&lt;/h1&gt;
+
+&lt;p&gt;先日のABPro2015でこんな&lt;a href=&#34;http://ota42y.com/blog/2015/10/10/abpro2015/&#34;&gt;発表をしました&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/39s0Ljtiud4tKP&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ss-53771391&#34; title=&#34;身近なサイバー攻撃から身を守る&#34; target=&#34;_blank&#34;&gt;身近なサイバー攻撃から身を守る&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;ここで画像の判定にAlchemyAPIを利用しています。&lt;br /&gt;
+Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。&lt;/p&gt;
+
+&lt;h1 id=&#34;alchemyapiとは:ab936406d233aece22e2039cdf3abfc2&#34;&gt;AlchemyAPIとは？&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.alchemyapi.com/&#34;&gt;http://www.alchemyapi.com/&lt;/a&gt;&lt;br /&gt;
+IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt;
+画像認識や自然言語処理に強い会社だったらしく、その一部を&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;で提供しています。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;は最小構成なら無料で使え、&lt;br /&gt;
+(おそらく)AlchemyAPIの使用権はアカウントを持っていれば1日1000件まで無料らしいので、&lt;br /&gt;
+回数は限られますが無料で画像認識ができます。&lt;/p&gt;
+
+&lt;p&gt;どうやらIBM Bluemixは単なるクラウドサービスではなく、&lt;br /&gt;
+音声認識や機械翻訳、データ処理等複雑な処理をサービスとして簡単にセットアップできるようになっているらしく、&lt;br /&gt;
+その中の1つにAlchemyAPIが含まれているようです。&lt;br /&gt;
+なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:ab936406d233aece22e2039cdf3abfc2&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;のアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。&lt;br /&gt;
+その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。&lt;/p&gt;
+
+&lt;p&gt;登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、&lt;br /&gt;
+それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。&lt;/p&gt;
+
+&lt;h1 id=&#34;ライブラリ:ab936406d233aece22e2039cdf3abfc2&#34;&gt;ライブラリ&lt;/h1&gt;
+
+&lt;p&gt;公式がいくつかの言語のライブラリを提供しています。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/AlchemyAPI&#34;&gt;https://github.com/AlchemyAPI&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;golangによる画像認識APIは無かったため、ライブラリを作りました。&lt;br /&gt;
+使いたい方はどうぞ。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/go-alchemyapi&#34;&gt;https://github.com/ota42y/go-alchemyapi&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:ab936406d233aece22e2039cdf3abfc2&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+	&amp;quot;os&amp;quot;
+	&amp;quot;fmt&amp;quot;
+	
+	alchemyapi &amp;quot;github.com/ota42y/go-alchemyapi&amp;quot;
+)
+
+func main() {
+	token := os.Getenv(&amp;quot;ALCHEMYAPI_TOKEN&amp;quot;)
+	if token == &amp;quot;&amp;quot; {
+		fmt.Println(&amp;quot;skip this test because no token&amp;quot;)
+		return
+	}
+
+	client := alchemyapi.New(token)
+	res, err := client.URLGetRankedImageKeywords(&amp;quot;https://pbs.twimg.com/media/CQ7ENtOUwAAZyNF.jpg&amp;quot;, false, false)
+	if err == nil {
+		for _, keyword := range res.ImageKeywords {
+			fmt.Println(keyword.Text, keyword.Score)
+		}
+	} else {
+		fmt.Println(err)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;結果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% go run test.go
+food 0.832018
+sushi 0.5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;感想:ab936406d233aece22e2039cdf3abfc2&#34;&gt;感想&lt;/h1&gt;
+
+&lt;p&gt;件数は限定的とはいえ、投げるだけで画像認識できるとか相当凄いです。&lt;br /&gt;
+しかも食べ物かそうじゃないかだけでなく、寿司かどうかまで判定しているので、学習精度もかなり良いです。&lt;br /&gt;
+ここ1年ぐらいでディープラーニングによる画像識別が流行り、便利なライブラリがたくさん出た印象ですが、&lt;br /&gt;
+もう自前でやらずにAPIとして使うのが当たり前になってしまいそうです。&lt;/p&gt;
+
+&lt;p&gt;また、Bluemixについては初めて知りましたが、単にサーバを提供するだけでなく、&lt;br /&gt;
+こういった高度なサービスを提供するのは上手いなぁ…と思いました。&lt;br /&gt;
+使う側はセットアップや教師データの収集を考えずに使えてしまうので、&lt;br /&gt;
+画像認識を使う敷居がぐっと下がるのではないかと思います。&lt;br /&gt;
+(制限を超えたときの料金が書いてないのでお値段がどれくらいかはわかりませんが…)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ABPro2015で発表してきた</title>
@@ -1989,139 +2103,6 @@ func main() {
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&#34;&gt;https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
-      <link>http://ota42y.com/blog/2015/04/24/go-windows-development/</link>
-      <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
-      <description>
-
-&lt;p&gt;取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WindowsのGolang開発
-
-&lt;ul&gt;
-&lt;li&gt;IntelliJ便利
-
-&lt;ul&gt;
-&lt;li&gt;機能がとても豊富&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Windows上ではつらい
-
-&lt;ul&gt;
-&lt;li&gt;開発ツールが少ない&lt;/li&gt;
-&lt;li&gt;LinuxはGUI使いづらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;LinuxのファイルをWindowsから変更する
-
-&lt;ul&gt;
-&lt;li&gt;良いところ取り
-
-&lt;ul&gt;
-&lt;li&gt;開発はWindows&lt;/li&gt;
-&lt;li&gt;実行はLinux&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ファイルはSambaで共有
-
-&lt;ul&gt;
-&lt;li&gt;ネットワークドライブをマウント&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;IDEデバッグは使えなくなる
-
-&lt;ul&gt;
-&lt;li&gt;そのときだけWindowsで動かすとか&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;golang開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
-
-&lt;h2 id=&#34;intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
-
-&lt;p&gt;IntelliJ IDEAとGolang pluginはとてもよく動くため、&lt;br /&gt;
-Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/kaiinui/items/433eb86c022ffcad0bea&#34;&gt;Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
-
-&lt;p&gt;IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。&lt;br /&gt;
-ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、&lt;br /&gt;
-Windows上で開発するのは細かいところで面倒になることが多いです。&lt;br /&gt;
-そのため、仮想マシンや別サーバにLinuxマシンを1台作り、&lt;br /&gt;
-その中で開発をした方が何かと便利です。&lt;/p&gt;
-
-&lt;p&gt;ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、&lt;br /&gt;
-開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。&lt;br /&gt;
-そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、&lt;br /&gt;
-それらをssh経由のCLIから操作するのが最も良い案になっています。&lt;/p&gt;
-
-&lt;p&gt;このような構成にすることで、Unixで動く便利なツールを利用しつつ、&lt;br /&gt;
-Windowsの快適なGUI環境を利用することができます。&lt;br /&gt;
-また、ファイルや実行環境と手元の環境とが切り離されるため、&lt;br /&gt;
-複数の実行環境を切り替えたり、&lt;br /&gt;
-マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。&lt;/p&gt;
-
-&lt;p&gt;なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。&lt;/p&gt;
-
-&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
-
-&lt;p&gt;残念ながらIntelliJはこのような用途を想定していないため、
-別マシンの環境下で作業できません。&lt;/p&gt;
-
-&lt;p&gt;幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、&lt;br /&gt;
-IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。&lt;/p&gt;
-
-&lt;p&gt;そこで、サーバ上の開発ディレクトリをSambaで共有し、&lt;br /&gt;
-Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、&lt;br /&gt;
-IntelliJで開発を行うことができます。&lt;/p&gt;
-
-&lt;p&gt;私の環境では、以下のような設定をsmb.confに追加しています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[global]
-map archive = no
-
-～中略～
-
-[workspace]
-   path = /home/username/workspace
-   writable = yes
-   guest ok = no
-   guest only = no
-   create mode = 0755
-   directory mode = 0755
-   share modes = yes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;map archiveについてはこちらを参照&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/haoling/items/b306b23c41c7110e9e35&#34;&gt;sambaでファイルを上書きすると実行属性が付いてしまう場合の対処&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
-
-&lt;p&gt;補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。&lt;br /&gt;
-ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、&lt;br /&gt;
-依存ライブラリ等に関しては意図的にそろえる必要があります。&lt;/p&gt;
-
-&lt;p&gt;幸いにも、私はgolangのパッケージ管理に&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;gom&lt;/a&gt;を利用しています。&lt;br /&gt;
-このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。&lt;/p&gt;
-
-&lt;p&gt;そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、&lt;br /&gt;
-依存パッケージの補完や、定義元ジャンプが効くようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;問題点:2107e1477c09702be9950e3792aa06c4&#34;&gt;問題点&lt;/h1&gt;
-
-&lt;p&gt;この手法ではIDEから実行することを想定していないため、&lt;br /&gt;
-IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。&lt;br /&gt;
-このような場合は常に同じ実行環境を維持しておき、&lt;br /&gt;
-必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…&lt;/p&gt;
-
-&lt;p&gt;ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、&lt;br /&gt;
-大きな問題にはなっていません。&lt;/p&gt;
 </description>
     </item>
     

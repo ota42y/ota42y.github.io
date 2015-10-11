@@ -6,8 +6,122 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 10 Oct 2015 23:58:16 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2015 22:39:33 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
+      <link>http://ota42y.com/blog/2015/10/11/alchemyapi/</link>
+      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:ab936406d233aece22e2039cdf3abfc2&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AlchemyAPIに画像をアップロードすると識別結果を返してくれる&lt;/li&gt;
+&lt;li&gt;無料で使える&lt;/li&gt;
+&lt;li&gt;ライブラリも豊富&lt;/li&gt;
+&lt;li&gt;画像認識がAPIで呼び出せる世界の可能性凄い
+
+&lt;ul&gt;
+&lt;li&gt;画像認識ライブラリすら必要ない世界…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;alchemyapiで画像認識が凄い簡単にできる:ab936406d233aece22e2039cdf3abfc2&#34;&gt;AlchemyAPIで画像認識が凄い簡単にできる&lt;/h1&gt;
+
+&lt;p&gt;先日のABPro2015でこんな&lt;a href=&#34;http://ota42y.com/blog/2015/10/10/abpro2015/&#34;&gt;発表をしました&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/39s0Ljtiud4tKP&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ss-53771391&#34; title=&#34;身近なサイバー攻撃から身を守る&#34; target=&#34;_blank&#34;&gt;身近なサイバー攻撃から身を守る&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;ここで画像の判定にAlchemyAPIを利用しています。&lt;br /&gt;
+Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。&lt;/p&gt;
+
+&lt;h1 id=&#34;alchemyapiとは:ab936406d233aece22e2039cdf3abfc2&#34;&gt;AlchemyAPIとは？&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.alchemyapi.com/&#34;&gt;http://www.alchemyapi.com/&lt;/a&gt;&lt;br /&gt;
+IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt;
+画像認識や自然言語処理に強い会社だったらしく、その一部を&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;で提供しています。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;は最小構成なら無料で使え、&lt;br /&gt;
+(おそらく)AlchemyAPIの使用権はアカウントを持っていれば1日1000件まで無料らしいので、&lt;br /&gt;
+回数は限られますが無料で画像認識ができます。&lt;/p&gt;
+
+&lt;p&gt;どうやらIBM Bluemixは単なるクラウドサービスではなく、&lt;br /&gt;
+音声認識や機械翻訳、データ処理等複雑な処理をサービスとして簡単にセットアップできるようになっているらしく、&lt;br /&gt;
+その中の1つにAlchemyAPIが含まれているようです。&lt;br /&gt;
+なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:ab936406d233aece22e2039cdf3abfc2&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;のアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。&lt;br /&gt;
+その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。&lt;/p&gt;
+
+&lt;p&gt;登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、&lt;br /&gt;
+それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。&lt;/p&gt;
+
+&lt;h1 id=&#34;ライブラリ:ab936406d233aece22e2039cdf3abfc2&#34;&gt;ライブラリ&lt;/h1&gt;
+
+&lt;p&gt;公式がいくつかの言語のライブラリを提供しています。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/AlchemyAPI&#34;&gt;https://github.com/AlchemyAPI&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;golangによる画像認識APIは無かったため、ライブラリを作りました。&lt;br /&gt;
+使いたい方はどうぞ。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/go-alchemyapi&#34;&gt;https://github.com/ota42y/go-alchemyapi&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;サンプルコード:ab936406d233aece22e2039cdf3abfc2&#34;&gt;サンプルコード&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+	&amp;quot;os&amp;quot;
+	&amp;quot;fmt&amp;quot;
+	
+	alchemyapi &amp;quot;github.com/ota42y/go-alchemyapi&amp;quot;
+)
+
+func main() {
+	token := os.Getenv(&amp;quot;ALCHEMYAPI_TOKEN&amp;quot;)
+	if token == &amp;quot;&amp;quot; {
+		fmt.Println(&amp;quot;skip this test because no token&amp;quot;)
+		return
+	}
+
+	client := alchemyapi.New(token)
+	res, err := client.URLGetRankedImageKeywords(&amp;quot;https://pbs.twimg.com/media/CQ7ENtOUwAAZyNF.jpg&amp;quot;, false, false)
+	if err == nil {
+		for _, keyword := range res.ImageKeywords {
+			fmt.Println(keyword.Text, keyword.Score)
+		}
+	} else {
+		fmt.Println(err)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;結果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% go run test.go
+food 0.832018
+sushi 0.5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;感想:ab936406d233aece22e2039cdf3abfc2&#34;&gt;感想&lt;/h1&gt;
+
+&lt;p&gt;件数は限定的とはいえ、投げるだけで画像認識できるとか相当凄いです。&lt;br /&gt;
+しかも食べ物かそうじゃないかだけでなく、寿司かどうかまで判定しているので、学習精度もかなり良いです。&lt;br /&gt;
+ここ1年ぐらいでディープラーニングによる画像識別が流行り、便利なライブラリがたくさん出た印象ですが、&lt;br /&gt;
+もう自前でやらずにAPIとして使うのが当たり前になってしまいそうです。&lt;/p&gt;
+
+&lt;p&gt;また、Bluemixについては初めて知りましたが、単にサーバを提供するだけでなく、&lt;br /&gt;
+こういった高度なサービスを提供するのは上手いなぁ…と思いました。&lt;br /&gt;
+使う側はセットアップや教師データの収集を考えずに使えてしまうので、&lt;br /&gt;
+画像認識を使う敷居がぐっと下がるのではないかと思います。&lt;br /&gt;
+(制限を超えたときの料金が書いてないのでお値段がどれくらいかはわかりませんが…)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ABPro2015で発表してきた</title>
@@ -1183,92 +1297,6 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 
 &lt;p&gt;なお、バイナリ辞書作成時はフォルダの中のcsvを全て読み込むらしく、&lt;br /&gt;
 追加時に必要な設定などは無いようです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年27週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-27/</link>
-      <pubDate>Mon, 06 Jul 2015 22:42:53 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-27/</guid>
-      <description>
-
-&lt;h1 id=&#34;tmux環境を整えた:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;tmux環境を整えた&lt;/h1&gt;
-
-&lt;p&gt;画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。&lt;br /&gt;
-ただペインを分けているだけでなく、ペインの中身はウィンドウなので、&lt;br /&gt;
-ウィンドウを作って入れ換えたり、左右の中身を入れ換えたり出来ます。&lt;/p&gt;
-
-&lt;p&gt;具体的にはこんな感じで、分割を維持したまま各シェルを入れ換え可能です。
-&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-07-06-tmux.png&#34; alt=&#34;2015-07-06-tmux.png&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;入れ替えはswap-paneを利用しています。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;gemのannotateが便利:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;gemのAnnotateが便利&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/ctran/annotate_models&#34;&gt;https://github.com/ctran/annotate_models&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;DBからSchemaを読み取り、対応するモデルが書かれたファイルにその情報を書き込むgemです。&lt;br /&gt;
-このモデルにどんなカラムがあったっけ？って時に、schemeファイルから探し出す必要がなくなるので大変便利です。&lt;br /&gt;
-また、情報はコメントに追加されるため、既存のコードの邪魔になったり勝手にアクセサが追加されたりしないのも便利です。&lt;/p&gt;
-
-&lt;h1 id=&#34;emacsのパッケージ管理:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;emacsのパッケージ管理&lt;/h1&gt;
-
-&lt;p&gt;現在私のemacsはpackage.el、el-get、init-loaderの3つを使ってパッケージ管理をしています。&lt;br /&gt;
-package.el、el-getがパッケージのDLや読み込み、init-loaderが設定ファイルのロードをしています。&lt;/p&gt;
-
-&lt;p&gt;具体的な使い方はググれば解るので省略するとして、使い分けとこの構成になった理由は以下の通りです。&lt;/p&gt;
-
-&lt;p&gt;なお、以下のリポジトリに設定ファイルが置いてあります。
-&lt;a href=&#34;https://github.com/ota42y/dotfiles&#34;&gt;https://github.com/ota42y/dotfiles&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;パッケージ本体の管理:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;パッケージ本体の管理&lt;/h2&gt;
-
-&lt;p&gt;まず、package.elはMELPA等専用なため、そこにあるパッケージはこちらで管理します。&lt;br /&gt;
-一方で、githubや個別のgitリポジトリで管理されているものはel-getでrecipeを書いて管理しています。&lt;br /&gt;
-機能的にはel-getだけで完結しますが、package.elの方が楽なので基本はpackage.el、&lt;br /&gt;
-そこでカバーできないものをel-getで管理させています。&lt;/p&gt;
-
-&lt;p&gt;また、これらで管理されているものは自動でロードされるようになっているため、&lt;br /&gt;
-設定ファイルに追加するだけでインストールが完了します。&lt;/p&gt;
-
-&lt;h2 id=&#34;パッケージ設定の管理:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;パッケージ設定の管理&lt;/h2&gt;
-
-&lt;p&gt;init-loderを使うことで、特定フォルダ内の設定ファイルを一気に読み込むことが出来ます。&lt;br /&gt;
-このため、気軽に設定ファイルを分割できます。&lt;/p&gt;
-
-&lt;p&gt;ファイル名に数字を入れる事で読み込む順番の設定も出来るため、&lt;br /&gt;
-package.elがダウンロードし、読み込みが終了してからパッケージの設定ファイルを読み込むように設定しています。&lt;/p&gt;
-
-&lt;p&gt;また、私の環境では、el-getでinit-loaderを管理しているため、&lt;br /&gt;
-el-get&amp;gt;init-loder&amp;gt;package.el&amp;gt;その他の設定ファイルの順で実行をしています。&lt;br /&gt;
-el-getも自動インストールするようにしているため、設定ファイルを持って行くだけで全て自動でインストールできます。&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;recipeに追加（必要なら）&lt;/li&gt;
-&lt;li&gt;使用するパッケージを追加する
-
-&lt;ul&gt;
-&lt;li&gt;package.elの場合&lt;/li&gt;
-&lt;li&gt;init-loderから読まれるpackage.el用の設定ファイル&lt;/li&gt;
-&lt;li&gt;無ければ自動で読み込む&lt;/li&gt;
-&lt;li&gt;el-getの場合&lt;/li&gt;
-&lt;li&gt;emacs.dのinit.elに名前を書く&lt;/li&gt;
-&lt;li&gt;recipeを元にDLする&lt;/li&gt;
-&lt;li&gt;自動で読み込みも行われる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;設定をconf下に書く
-
-&lt;ul&gt;
-&lt;li&gt;init-loderが読み込む&lt;/li&gt;
-&lt;li&gt;カスタマイズが必要ならば&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
