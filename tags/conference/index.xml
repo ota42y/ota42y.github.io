@@ -6,8 +6,76 @@
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 10 Oct 2015 23:58:16 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2015 22:23:57 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>バッカソン（おばかハック）! #MA11 に参加してきた</title>
+      <link>http://ota42y.com/blog/2015/10/18/ma11/</link>
+      <pubDate>Sun, 18 Oct 2015 22:23:57 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/10/18/ma11/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://hacklog.jp/events/view/61&#34;&gt;http://hacklog.jp/events/view/61&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以下反省も含めたメモメモ&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://c9.io/&#34;&gt;Cloud.9&lt;/a&gt;便利
+
+&lt;ul&gt;
+&lt;li&gt;いい点&lt;/li&gt;
+&lt;li&gt;オンラインIDE+公開サーバ&lt;/li&gt;
+&lt;li&gt;複数人で同時編集可能&lt;/li&gt;
+&lt;li&gt;作ってその場で動かせて共有可能なのでもの凄い便利&lt;/li&gt;
+&lt;li&gt;sudoも自由にできる&lt;/li&gt;
+&lt;li&gt;はまりどころ&lt;/li&gt;
+&lt;li&gt;謎の挙動が多い
+
+&lt;ul&gt;
+&lt;li&gt;URLの末尾にいつの間にか-1がついてたり&lt;/li&gt;
+&lt;li&gt;プログラムから自分のURLを取ると:80がついていたり(URLには無い)&lt;/li&gt;
+&lt;li&gt;コンソールが8行ぐらいしか出なかったり(同時に開いている一番小さいサイズになる?)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.projectoxford.ai/&#34;&gt;Microsoft Project Oxford&lt;/a&gt;便利
+
+&lt;ul&gt;
+&lt;li&gt;精度のいい文字認識&lt;/li&gt;
+&lt;li&gt;顔認識も&lt;/li&gt;
+&lt;li&gt;Cloud9の公開ディレクトリに保存してURLを渡すだけで終わる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;チーム分担
+
+&lt;ul&gt;
+&lt;li&gt;全員エンジニアなだけあって、役割分担は凄く上手くいった&lt;/li&gt;
+&lt;li&gt;特にタスク切らなくても勝手に動いていく感じ&lt;/li&gt;
+&lt;li&gt;実装、コンテンツ作成、調査と分担もいい感じ&lt;/li&gt;
+&lt;li&gt;結果としては後述するように着地点の設定が甘かった&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;アイデアだし
+
+&lt;ul&gt;
+&lt;li&gt;そもそも技術的に難しそうなチャレンジにフォーカスして中身に集中できなかった&lt;/li&gt;
+&lt;li&gt;認識部分をどう作るか？にフォーカスしすぎた&lt;/li&gt;
+&lt;li&gt;今回のハッカソンの趣向的に、モノの仕上がり具合やプレゼンに集中すべきだった&lt;/li&gt;
+&lt;li&gt;チャレンジよりコンテンツ作りに振るべき&lt;/li&gt;
+&lt;li&gt;思しくすることに時間を割けなかった&lt;/li&gt;
+&lt;li&gt;発表プレゼンとかも&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;技術力不足
+
+&lt;ul&gt;
+&lt;li&gt;画像認識によるシール判別をしたかったが時間が足りず断念&lt;/li&gt;
+&lt;li&gt;事前にある程度作れるものをまとめておいた方が絶対にいい&lt;/li&gt;
+&lt;li&gt;何を作るかだけにフォーカスする&lt;/li&gt;
+&lt;li&gt;登録された画像パターンの検索は何かと便利そうだし作っておいていいかも&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;色々と問題点が明らかになりましたが、やっていてとても楽しかったです。&lt;br /&gt;
+今回のMAはもう終わりますが、次のMAは色々なハッカソンに参加してみようと思います。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ABPro2015で発表してきた</title>
@@ -2408,53 +2476,6 @@ Keynote2の@fumitoshi_ukaiさんも言っていたように、&lt;br /&gt;
 &lt;p&gt;##Togetterまとめ
 Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。&lt;br /&gt;
 振り返る際にとてもお世話になったので、感謝の限りです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 BPStudy ♯87</title>
-      <link>http://ota42y.com/blog/2014/11/29/bpstudy-87/</link>
-      <pubDate>Sat, 29 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/11/29/bpstudy-87/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://bpstudy.connpass.com/event/9741/&#34;&gt;BPStudy#87&lt;/a&gt;に参加しました。&lt;br /&gt;
-&lt;a href=&#34;http://togetter.com/li/751302&#34;&gt;togetterまとめ&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;じっくりと把握する-ios8-iphone6-最前線-ユーザーにとって-開発者にとって何が変わったのか:67d601d79e13ed00541001f833c4d7ec&#34;&gt;じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6&#34;&gt;http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;iOS8とiPhone6の新機能まとめと、それによって生じる問題紹介でした。&lt;/p&gt;
-
-&lt;p&gt;スライド46ページ目の親指の可動範囲の図を見せられると一目瞭然ですが、&lt;br /&gt;
-画面サイズが大きくなったことによるタッチ領域の変化はとても激しく、&lt;br /&gt;
-iPhone6や6+では従来のUIはかなり使いづらいものになってしまいます。&lt;/p&gt;
-
-&lt;p&gt;あと、リモートで任意の端末をレンタルできるRemote TestKitが凄い便利そうでした。&lt;br /&gt;
-&lt;a href=&#34;http://appkitbox.com/testkit/&#34;&gt;Remote TestKit&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;iphone-6がリリースされて2ヶ月が過ぎました-iosの分断化時代を乗り切ろう:67d601d79e13ed00541001f833c4d7ec&#34;&gt;iPhone 6がリリースされて2ヶ月が過ぎました　〜iOSの分断化時代を乗り切ろう〜&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/masashiono1/bpstudy-87&#34;&gt;http://www.slideshare.net/masashiono1/bpstudy-87&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/akisute/AutoLayoutTest&#34;&gt;akisute/AutoLayoutTest&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;前半のスワイプUIのススメは、前の発表のiPhone6や6+向けのUIの回答として、&lt;br /&gt;
-かなり良い回答ではないかなと思いました。&lt;br /&gt;
-あと後半のSwiftのまとめが、Swiftの闇をひしひしと感じる内容で凄いです…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;lt:67d601d79e13ed00541001f833c4d7ec&#34;&gt;LT&lt;/h1&gt;
-
-&lt;p&gt;一件目はiOS7と8で遭遇したブラウザバグの紹介でした。&lt;br /&gt;
-&lt;a href=&#34;http://slides.com/monjudoh/ios_browser_bugs&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;画像を範囲指定で切り抜くと何故か指定したサイズより大きくなるとか、&lt;br /&gt;
-同時接続数が2個になったが、レスポンスの受信時間がかぶるとクラッシュするので同時接続してはいけないとか、&lt;br /&gt;
-かなり辛い感じのバグが多かったです…&lt;/p&gt;
-
-&lt;p&gt;二件目ではペアプロ合コンに参加した人が、相手側の女性の手によって公開処刑される様子を見物していました…&lt;br /&gt;
-恐ろしい…(((;ﾟДﾟ)))ｶﾞｸﾌﾞﾙｶﾞｸﾌﾞﾙ&lt;/p&gt;
 </description>
     </item>
     
