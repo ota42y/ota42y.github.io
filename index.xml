@@ -6,8 +6,65 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 18 Oct 2015 22:23:57 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 02 Dec 2015 07:25:25 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MongoDB の update は部分 update ではない</title>
+      <link>http://ota42y.com/blog/2015/12/02/mongodb_update/</link>
+      <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:621f39d31cd5b5462567615247739831&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MongoDB の update はレコードのID以外の要素を全て置き換える&lt;/li&gt;
+&lt;li&gt;指定したカラムだけ置き換えてはくれない&lt;/li&gt;
+&lt;li&gt;部分 update したい場合は専用の方法でクエリを作る&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mongodb-の-update-はレコードをほぼ全て置き換える:621f39d31cd5b5462567615247739831&#34;&gt;MongoDB の update はレコードをほぼ全て置き換える&lt;/h1&gt;
+
+&lt;p&gt;以下のように insert して update を実行します&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.test.insert({a: 1})
+db.test.update({a:1}, {b: 1})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# ruby版
+mongo = Mongo::Client.new(&amp;quot;mongodb://localhost&amp;quot;)
+col = mongo[:test]
+col.insert_one({ a: 1 })
+col.find(a: 1).replace_one({b:1})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;insert と update とでキーが違うため、指定した部分だけが書き換わり&lt;br /&gt;
+&lt;code&gt;{a:1, b:1}&lt;/code&gt;&lt;br /&gt;
+となりそうですが、実際は&lt;br /&gt;
+&lt;code&gt;{b:1}&lt;/code&gt;&lt;br /&gt;
+と、後のデータで完全上書きされてしまいます。&lt;/p&gt;
+
+&lt;p&gt;このように、MongoDB の update はデータの全置き換えを実行します。&lt;br /&gt;
+なお、ObjectId は変わらないため、消して再度 insert しているのではなく、ObjectId 以外のデータを全て変更しています。&lt;/p&gt;
+
+&lt;h1 id=&#34;回避方法:621f39d31cd5b5462567615247739831&#34;&gt;回避方法&lt;/h1&gt;
+
+&lt;p&gt;もちろん毎度上書きだととても不便なため、回避方法が存在します。&lt;/p&gt;
+
+&lt;p&gt;以下のように、update する際に &lt;code&gt;$set&lt;/code&gt; のキーとして変更するデータのみを渡します。&lt;br /&gt;
+これにより、指定したものだけ書き換えられるようになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.test.update({a:1}, {$set:{b: 1}})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# ruby版
+col.insert_one({ a: 1 })
+col.find(a: 1).replace_one(&#39;$set&#39; =&amp;gt; {b:1})
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>バッカソン（おばかハック）! #MA11 に参加してきた</title>
@@ -1282,49 +1339,6 @@ padding within a structure object, but not at its beginning.
 &lt;p&gt;Bootstrapの作りにあったHTMLを出力するようにテンプレートを作ると、&lt;br /&gt;
 ほぼそれっぽいデザインになったためとても楽でした。&lt;br /&gt;
 一応、ブログでよく使う見出し間の間隔や、記事一覧画面でのマージンをちょっと変更しています。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年30週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-30/</link>
-      <pubDate>Mon, 27 Jul 2015 23:09:42 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-30/</guid>
-      <description>
-
-&lt;h1 id=&#34;ブログ修正中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;ブログ修正中&lt;/h1&gt;
-
-&lt;p&gt;Bootstrapを使って構築し直してます。&lt;br /&gt;
-ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。&lt;/p&gt;
-
-&lt;h1 id=&#34;freeコマンドの出力が変わってる:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;freeコマンドの出力が変わってる&lt;/h1&gt;
-
-&lt;p&gt;freeするとavailableなる見慣れない出力が出ます…&lt;br /&gt;
-おそらく空きメモリを示しているようですが、ちょっと調べる必要がありそうです。&lt;/p&gt;
-
-&lt;h1 id=&#34;evernoteの代わりを探し中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;Evernoteの代わりを探し中&lt;/h1&gt;
-
-&lt;p&gt;昨日ちょうどEvernoteプレミアムが切れてしまい、慌てて延長しました。&lt;/p&gt;
-
-&lt;p&gt;このとき、一時的に容量超過状態になったため、説明には「コンテンツのアップロードが出来ません」と出ていましたが、&lt;br /&gt;
-ローカルのEvernoteクライアント上での編集や新規ノートの作成など、アップロード以外の作業が全て出来なくなっていました。&lt;br /&gt;
-また、その際の挙動も編集できないのでは無く、従来通り編集可能ですが保存されないため、&lt;br /&gt;
-別の操作をしたタイミングでデータが消滅するというかなり危険な挙動をしていました。&lt;/p&gt;
-
-&lt;p&gt;今回はたまたまオンラインに繋げる環境にいたので大事には至りませんでしたが、&lt;br /&gt;
-もしオフライン環境だったらと思うと一大事です…&lt;/p&gt;
-
-&lt;p&gt;Evernoteはオフラインでもそこに保存しておけば次にオンラインになった時に同期されるという仕様のため、&lt;br /&gt;
-オフライン環境で特によく使い、その上プレミアムを戻しても非プレミアム中にやった変更は消滅するため、かなり被害が大きいです。&lt;/p&gt;
-
-&lt;p&gt;というわけで、Evernoteは参照オンリーの情報だけ保存するようにし、&lt;br /&gt;
-変更が必要なノートなどは別の方式で管理しようと思います。&lt;br /&gt;
-元々ノートの容量増加に伴って、Evernoteクライアントの反応速度が低下しつつありましたし、
-良い頃合いかと思います。&lt;/p&gt;
-
-&lt;p&gt;おそらくDropbox内に置いたファイルを上手く閲覧するような感じになると思います。&lt;br /&gt;
-此方の場合は最悪でもローカルファイルになるだけなので、Evernoteのように変更不可能になることはないため、何かあった場合でも大丈夫です。&lt;/p&gt;
 </description>
     </item>
     

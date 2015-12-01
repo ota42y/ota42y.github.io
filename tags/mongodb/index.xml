@@ -6,8 +6,65 @@
     <description>Recent content in Mongodb on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 14 Oct 2015 23:24:16 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 02 Dec 2015 07:25:25 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MongoDB の update は部分 update ではない</title>
+      <link>http://ota42y.com/blog/2015/12/02/mongodb_update/</link>
+      <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:621f39d31cd5b5462567615247739831&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MongoDB の update はレコードのID以外の要素を全て置き換える&lt;/li&gt;
+&lt;li&gt;指定したカラムだけ置き換えてはくれない&lt;/li&gt;
+&lt;li&gt;部分 update したい場合は専用の方法でクエリを作る&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mongodb-の-update-はレコードをほぼ全て置き換える:621f39d31cd5b5462567615247739831&#34;&gt;MongoDB の update はレコードをほぼ全て置き換える&lt;/h1&gt;
+
+&lt;p&gt;以下のように insert して update を実行します&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.test.insert({a: 1})
+db.test.update({a:1}, {b: 1})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# ruby版
+mongo = Mongo::Client.new(&amp;quot;mongodb://localhost&amp;quot;)
+col = mongo[:test]
+col.insert_one({ a: 1 })
+col.find(a: 1).replace_one({b:1})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;insert と update とでキーが違うため、指定した部分だけが書き換わり&lt;br /&gt;
+&lt;code&gt;{a:1, b:1}&lt;/code&gt;&lt;br /&gt;
+となりそうですが、実際は&lt;br /&gt;
+&lt;code&gt;{b:1}&lt;/code&gt;&lt;br /&gt;
+と、後のデータで完全上書きされてしまいます。&lt;/p&gt;
+
+&lt;p&gt;このように、MongoDB の update はデータの全置き換えを実行します。&lt;br /&gt;
+なお、ObjectId は変わらないため、消して再度 insert しているのではなく、ObjectId 以外のデータを全て変更しています。&lt;/p&gt;
+
+&lt;h1 id=&#34;回避方法:621f39d31cd5b5462567615247739831&#34;&gt;回避方法&lt;/h1&gt;
+
+&lt;p&gt;もちろん毎度上書きだととても不便なため、回避方法が存在します。&lt;/p&gt;
+
+&lt;p&gt;以下のように、update する際に &lt;code&gt;$set&lt;/code&gt; のキーとして変更するデータのみを渡します。&lt;br /&gt;
+これにより、指定したものだけ書き換えられるようになります。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.test.update({a:1}, {$set:{b: 1}})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# ruby版
+col.insert_one({ a: 1 })
+col.find(a: 1).replace_one(&#39;$set&#39; =&amp;gt; {b:1})
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
