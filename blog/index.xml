@@ -6,8 +6,60 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 02 Dec 2015 07:25:25 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 08 Dec 2015 07:58:08 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Wunderlistでサマリー出力をする</title>
+      <link>http://ota42y.com/blog/2015/12/08/wl_report/</link>
+      <pubDate>Tue, 08 Dec 2015 07:58:08 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/08/wl_report/</guid>
+      <description>
+
+&lt;p&gt;最近知った&lt;a href=&#34;https://www.wunderlist.com&#34;&gt;Wunderlist&lt;/a&gt;が、全プラットフォーム使えたり、
+モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。&lt;/p&gt;
+
+&lt;p&gt;ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。
+たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。&lt;/p&gt;
+
+&lt;p&gt;すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/robdimsdale/wl&#34;&gt;https://github.com/robdimsdale/wl&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;以下のように利用します。&lt;br /&gt;
+&lt;code&gt;
+wl tasks --completed true -j | go run report.go
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;こんな感じに日ごとに終了したタスクがリスト化されていきます。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;2015-11-30 10 tasks completed&lt;br /&gt;
+07:37:51 mail check&lt;br /&gt;
+07:59:23 review PR&lt;br /&gt;
+22:06:09 create blog entry&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;コード:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;コード&lt;/h1&gt;
+
+&lt;p&gt;コードはこれです。
+&lt;script src=&#34;https://gist.github.com/ota42y/f40dd18687d3bd5350d8.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全部のタスクを並べるのはつらいので、3日以前は終了タスク数のみとかにしたい&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;コマンドが面倒なので、単体で完結したい
+
+&lt;ul&gt;
+&lt;li&gt;単体で完結するようになったらgithubのリポジトリ作るかも&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;もうちょっと見やすくしたい&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>MongoDB の update は部分 update ではない</title>
@@ -1624,82 +1676,6 @@ int main(void) {
   return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Linuxのlocaleがおかしくなっていた</title>
-      <link>http://ota42y.com/blog/2015/06/03/linux_local/</link>
-      <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/06/03/linux_local/</guid>
-      <description>
-
-&lt;p&gt;突然プログラムが起動しなくなったため、&lt;br /&gt;
-原因を探ったところ、localesが壊れていました。&lt;br /&gt;
-そのため、再インストールすることで直りました。&lt;br /&gt;
-言語取得部分は動くけど、おかしい結果を返す壊れ方のため、&lt;br /&gt;
-発見にわりと手間取りました。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;プログラム上でlocaleを参照する部分がおかしい結果を返す
-
-&lt;ul&gt;
-&lt;li&gt;常にANSI_X3.4-1968&lt;/li&gt;
-&lt;li&gt;Debian 7.8&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dpkg-reconfigure localesが何か壊れているメッセージを出す
-
-&lt;ul&gt;
-&lt;li&gt;localeをアップデートすると直る&lt;/li&gt;
-&lt;li&gt;apt-get install locales&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;localeの取得がおかしい:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;localeの取得がおかしい&lt;/h1&gt;
-
-&lt;p&gt;pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。
-ですが、&lt;br /&gt;
-&lt;code&gt;LANG=&#39;ja_JP.UTF-8&#39; echo &#39;import locale; print locale.getpreferredencoding()&#39; | python&lt;/code&gt;&lt;br /&gt;
-を実行しても、&lt;code&gt;ANSI_X3.4-1968&lt;/code&gt;が返ってきてしまい、日本語処理の部分でおかしくなっていました。&lt;br /&gt;
-(前にそのプログラムは動いていたので、気がついたらおかしくなっていました)&lt;/p&gt;
-
-&lt;p&gt;localeを実行してみたところ、以下のように表示されました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;locale -a
-locale: Cannot set LC_CTYPE to default locale: No such file or directory
-locale: Cannot set LC_MESSAGES to default locale: No such file or directory
-locale: Cannot set LC_COLLATE to default locale: No such file or directory
-C
-C.UTF-8
-POSIX
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら日本語のlocaleが有効ではないようです。&lt;/p&gt;
-
-&lt;p&gt;ですが、&lt;code&gt;/etc/locale.gen&lt;/code&gt;では、ja_JP.UTF-8がコメントアウトされていて有効になっていました。&lt;/p&gt;
-
-&lt;h1 id=&#34;原因は不明だがとりあえず直る:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;原因は不明だがとりあえず直る&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo su
-export LC_ALL=C # jaは使えないのでCにする必要がある
-export LANG=C # jaは使えないのでCにする必要がある
-sudo dpkg-reconfigure locales
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;したら、localesが壊れているというメッセージが出てきました。&lt;/p&gt;
-
-&lt;p&gt;そのため、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install locales
-sudo dpkg-reconfigure locales
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;で、ja_JP.UTF-8を有効にしてリブートしたら上手くいくようになりました。&lt;/p&gt;
-
-&lt;p&gt;おそらくlocales周りがおかしくなっており、新しいlocalesを入れる際にそれが直ったのだと思います。&lt;/p&gt;
 </description>
     </item>
     

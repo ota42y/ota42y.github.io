@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tool on おおたの物置</title>
+    <link>http://ota42y.com/tags/tool/</link>
+    <description>Recent content in Tool on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 08 Dec 2015 07:58:08 +0900</lastBuildDate>
+    <atom:link href="http://ota42y.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Wunderlistでサマリー出力をする</title>
+      <link>http://ota42y.com/blog/2015/12/08/wl_report/</link>
+      <pubDate>Tue, 08 Dec 2015 07:58:08 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/08/wl_report/</guid>
+      <description>
+
+&lt;p&gt;最近知った&lt;a href=&#34;https://www.wunderlist.com&#34;&gt;Wunderlist&lt;/a&gt;が、全プラットフォーム使えたり、
+モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。&lt;/p&gt;
+
+&lt;p&gt;ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。
+たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。&lt;/p&gt;
+
+&lt;p&gt;すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/robdimsdale/wl&#34;&gt;https://github.com/robdimsdale/wl&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;使い方:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;使い方&lt;/h1&gt;
+
+&lt;p&gt;以下のように利用します。&lt;br /&gt;
+&lt;code&gt;
+wl tasks --completed true -j | go run report.go
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;こんな感じに日ごとに終了したタスクがリスト化されていきます。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;2015-11-30 10 tasks completed&lt;br /&gt;
+07:37:51 mail check&lt;br /&gt;
+07:59:23 review PR&lt;br /&gt;
+22:06:09 create blog entry&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;コード:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;コード&lt;/h1&gt;
+
+&lt;p&gt;コードはこれです。
+&lt;script src=&#34;https://gist.github.com/ota42y/f40dd18687d3bd5350d8.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全部のタスクを並べるのはつらいので、3日以前は終了タスク数のみとかにしたい&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;コマンドが面倒なので、単体で完結したい
+
+&lt;ul&gt;
+&lt;li&gt;単体で完結するようになったらgithubのリポジトリ作るかも&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;もうちょっと見やすくしたい&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
