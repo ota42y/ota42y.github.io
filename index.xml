@@ -6,8 +6,63 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 08 Dec 2015 07:58:08 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 09 Dec 2015 07:00:01 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GithubのContributionsを使ってアウトプットを500日続ける</title>
+      <link>http://ota42y.com/blog/2015/12/09/500_output/</link>
+      <pubDate>Wed, 09 Dec 2015 07:00:01 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/09/500_output/</guid>
+      <description>
+
+&lt;p&gt;前から&lt;a href=&#34;http://ota42y.com/blog/2014/12/31/150-output/&#34;&gt;GithubのContributionsを使ってアウトプットを150日続ける&lt;/a&gt;というものを続けていましたが、ついに500日たちました。ちょうどいい区切りなので振り返ってみようと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/images/blog/2015/2015-12-08-500-output.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-12-08-500-output.png&#34;  width=&#34;100%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;良かったこと:8a0d3fbcafca7fe52cfeb7820ee0b7a6&#34;&gt;良かったこと&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;常にプログラムを書いたり、物事を調べてまとめる習慣が出来た&lt;/li&gt;
+&lt;li&gt;「いつかやろう」を放置せずに取りかかるようになった&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;およそ前に考えたとおり、アウトプット量を確保するために色々なことに手を出し、良い習慣になっていたと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;問題点:8a0d3fbcafca7fe52cfeb7820ee0b7a6&#34;&gt;問題点&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一つ一つのアウトプットの質が安定しない&lt;/li&gt;
+&lt;li&gt;読書など長いインプットをしなくなった&lt;/li&gt;
+&lt;li&gt;github以外のアウトプットができなくなった&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;特に質が悪い部分に関しては前から予想できており、
+そのときはまずは質より量の方が重要と思い、特に対策はしませんでした.
+ただ、最近は量は担保できるようになったので、次は質かな…と思っています。&lt;/p&gt;
+
+&lt;p&gt;また、本を読むなど量の少ないアウトプットしか出来ない事に対して消極的になってしまいました。
+これは質の高い1つのアウトプットより、コードを書くなど試行錯誤した安定しないアウトプットの方が量が稼げるため、
+最適戦略をとるとどうしてもいいアウトプットを作る方向に行かないのが原因です。&lt;/p&gt;
+
+&lt;p&gt;また、計測をGithubでやっている関係上、QiitaなどGithub以外のアウトプットは加算されないため、ほとんどしなくなっていました。&lt;/p&gt;
+
+&lt;h1 id=&#34;これから:8a0d3fbcafca7fe52cfeb7820ee0b7a6&#34;&gt;これから&lt;/h1&gt;
+
+&lt;p&gt;利点もいくつかありましたが、同時に欠点も見えてきました。
+特にgithubに固定化されてしまうことや、毎日更新という量に縛られる事が問題となっている気がします。&lt;/p&gt;
+
+&lt;p&gt;そのため、次からは月に5回以上の文章によるアウトプットをする方向で行こうと思います。
+これにより、github以外のアウトプットも換算できますし、コードを書いてそれを文章でまとめればコーディングも換算できます。
+また、回数が減ったことにより量を確保することに縛られなくなるため、時間がかかるような事も出来るようになります。&lt;/p&gt;
+
+&lt;p&gt;とりあえず今月から初めて見ようと思います。
+毎月前月の分をまとめることで（まとめエントリはカウント外）、継続しているかのチェックにもなりそうです。&lt;/p&gt;
+
+&lt;p&gt;しばらくやってみて、続かなそうならまた一日一コミットに戻そうと思います。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Wunderlistでサマリー出力をする</title>
@@ -1264,115 +1319,6 @@ padding within a structure object, but not at its beginning.
 &lt;p&gt;従来の写真の中の一部分を削除する技術に加え、&lt;br /&gt;
 大量の画像の中から似た画像を探し出してくることで、&lt;br /&gt;
 消した部分を正しく補完できるみたい。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年31週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-31/</link>
-      <pubDate>Mon, 03 Aug 2015 22:21:40 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-31/</guid>
-      <description>
-
-&lt;h1 id=&#34;エンジニアボドゲ会に参加しました:31b234e8f87a2f0e233edbe520beb73a&#34;&gt;エンジニアボドゲ会に参加しました&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://tgboardgame.connpass.com/event/17621/&#34;&gt;不思議な力によってエンジニアが多く集まる（エンジニア以外も集まる）ボードゲーム会&lt;/a&gt;に参加しました。&lt;br /&gt;
-想像以上にボードゲームがあって凄かったです。&lt;/p&gt;
-
-&lt;p&gt;プレイしたゲームは&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;王たちの同人誌
-
-&lt;ul&gt;
-&lt;li&gt;同人誌即売会をネタにしたゲーム&lt;/li&gt;
-&lt;li&gt;カードの引きにかなり左右される&lt;/li&gt;
-&lt;li&gt;イベントあるあるネタが多数&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;枯山水
-
-&lt;ul&gt;
-&lt;li&gt;徳を高めて庭を造る&lt;/li&gt;
-&lt;li&gt;中々思い通りにならなくて面白い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Splendor
-
-&lt;ul&gt;
-&lt;li&gt;拡大再生産を繰り返していく&lt;/li&gt;
-&lt;li&gt;素材を元に素材を生み出すカードを買うのでインフレしていく&lt;/li&gt;
-&lt;li&gt;インフレさせすぎると他の人にゲームクリアされるので、バランス大事&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;エセ芸術家ニューヨークへ行く
-
-&lt;ul&gt;
-&lt;li&gt;お題の絵を一筆ずつ書いていく&lt;/li&gt;
-&lt;li&gt;一人だけいる、お題を知らない人（エセ芸術家）を見つける&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ピクテル
-
-&lt;ul&gt;
-&lt;li&gt;出されたお題をピクトグラムで表現してあててもらうゲーム&lt;/li&gt;
-&lt;li&gt;限られたピクトグラムを組み合わせてお題を表現するのがとても面白い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;init
-
-&lt;ul&gt;
-&lt;li&gt;変数の初期化を元にしたゲーム&lt;/li&gt;
-&lt;li&gt;ルールがよくわからず、おかしい状態に陥った…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;CV 履歴書
-
-&lt;ul&gt;
-&lt;li&gt;自分の履歴書を作っていくゲーム&lt;/li&gt;
-&lt;li&gt;さいころ運が全てを左右する&lt;/li&gt;
-&lt;li&gt;勝敗もそうだけど、どんな履歴書になったかを見るのも面白い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;羊と狼のピースフルワールド
-
-&lt;ul&gt;
-&lt;li&gt;カードを自分で見えないように掲げ、自分以外の番号から自分のの番号を推理するゲーム&lt;/li&gt;
-&lt;li&gt;頭の体操に良さそう&lt;/li&gt;
-&lt;li&gt;番号が書かれていないカードもある&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;お蜜柑様
-
-&lt;ul&gt;
-&lt;li&gt;指定された動きを取り入れた踊りをするゲーム&lt;/li&gt;
-&lt;li&gt;他のチームの動きが何かを推理して、それも踊りに入れる&lt;/li&gt;
-&lt;li&gt;1度やってみたいけど2回目以降はやってるのを見ていたいゲーム&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;お邪魔無視
-
-&lt;ul&gt;
-&lt;li&gt;お宝まで通路を延ばしていくゲーム&lt;/li&gt;
-&lt;li&gt;チームに分かれてたり、お宝を取らせなかったら勝つ人がいたり&lt;/li&gt;
-&lt;li&gt;お互い仲間なのか敵なのかわからずに進む感じが面白い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;なつのたからもの
-
-&lt;ul&gt;
-&lt;li&gt;なつのたからものを集めるゲーム&lt;/li&gt;
-&lt;li&gt;金魚すくい、かき氷、花火大会、etc&amp;hellip;&lt;/li&gt;
-&lt;li&gt;カードを集めて合計得点を競う&lt;/li&gt;
-&lt;li&gt;欲張りすぎると何も手に入らない等バランス大事&lt;/li&gt;
-&lt;li&gt;精神的ダメージが大きい&lt;/li&gt;
-&lt;li&gt;あの頃のあの夏は2度と来ない…(´・_・`)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ディクシット
-
-&lt;ul&gt;
-&lt;li&gt;出されたお題に最も近いものを手札のカードから選ぶ&lt;/li&gt;
-&lt;li&gt;かなり抽象的なカードばかりで、ぴったりのを考えるのが面白い&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;情報科学若手の会2015に参加します:31b234e8f87a2f0e233edbe520beb73a&#34;&gt;情報科学若手の会2015に参加します&lt;/h1&gt;
-
-&lt;p&gt;今回はショート発表でHCIについて話す予定です。&lt;br /&gt;
-おそらく基本的な研究から、最新動向ぐらいまでをざっと話せれば良いかなと思います。&lt;/p&gt;
-
-&lt;p&gt;そのために取り合えずUISTとCHIを見返して、最近の内容をキャッチアップしようと思います。&lt;/p&gt;
 </description>
     </item>
     
