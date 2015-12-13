@@ -6,8 +6,83 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 09 Dec 2015 07:00:01 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 13 Dec 2015 07:01:33 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」</title>
+      <link>http://ota42y.com/blog/2015/12/13/hci_advent_13/</link>
+      <pubDate>Sun, 13 Dec 2015 07:01:33 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/13/hci_advent_13/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Webページのリバースエンジニアリングの支援をする研究&lt;/li&gt;
+&lt;li&gt;コール情報やDOMの変化を記録、閲覧可能に&lt;/li&gt;
+&lt;li&gt;該当のソースを見つけるまでの時間が早くなる&lt;/li&gt;
+&lt;li&gt;chrome拡張が公開されているので実際に試せる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;はじめに:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;はじめに&lt;/h1&gt;
+
+&lt;p&gt;このエントリは&lt;a href=&#34;http://qiita.com/advent-calendar/2015/hci&#34;&gt;「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」&lt;/a&gt;の13日目のものです。&lt;/p&gt;
+
+&lt;p&gt;今回はUIST20015からWeb系の論文でいいのがあったので紹介します。&lt;br /&gt;
+実は昨日のUIST勉強会で読んだので、参加してる人にとってはまたかよ…ってなりますが、&lt;br /&gt;
+去年を見る限りUIST勉強会は資料を公開しないようなので、参加しなかった人にとってはお得なはずです…&lt;/p&gt;
+
+&lt;h1 id=&#34;論文の内容:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;論文の内容&lt;/h1&gt;
+
+&lt;p&gt;今回紹介する論文は「&lt;a href=&#34;http://dl.acm.org/citation.cfm?id=2807468&#34;&gt;Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection&lt;/a&gt;」です。
+この論文は、UnravelというWebページのリバースエンジニアリングを支援するツールについての論文です。&lt;/p&gt;
+
+&lt;p&gt;このツールはまず、Webページ上で動いているDOMの変化やJSのコール情報を記録していきます、
+そして、Chromeのデベロッパーツールにタブを追加し、そこに変更回数や呼び出し回数でソートして情報を表示します。
+これにより、Webページ上での動きが、どのようなJSとDOMの変化によって実現されているのかを簡単に調べることができます。&lt;/p&gt;
+
+&lt;p&gt;動画はこちらになります。&lt;br /&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/mhY7jvRFXJ8&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;先行研究との比較:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;先行研究との比較&lt;/h1&gt;
+
+&lt;p&gt;論文中でいくつかあげられていますが、先行研究は条件が限定的だったり、巨大なサイトを対象にしたときに動作が遅くなってしまうのに対し、
+このツールは任意のサイトに適応可能で、巨大なサイトでも遅くならないと述べられています。&lt;/p&gt;
+
+&lt;h1 id=&#34;実装方法:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;実装方法&lt;/h1&gt;
+
+&lt;p&gt;documentへの書き込みを全てフックして情報を保存してるらしいです。
+そのため、他の研究に比べて取れる情報が限定的になりますが、任意のサイトに適応可能になっているとのことです。
+また、後述するようにソースが公開されているので、詳しく知りたい方はコードを読むのがいいと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;実験:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;実験&lt;/h1&gt;
+
+&lt;p&gt;このツールのありなしで、TumblerやApple等のサイトのアニメーションを再現するタスクを行い、途中のチェックポイントごとに比較をしたそうです。
+結果として、システムアリの方が関連するソースの最初に見つけるまでの時間が50%短縮され、全体としても30%短縮されたそうです。
+ただし、関連するコードを見つけてからタスク終了までの時間に差は無いらしく、動きからコードの位置を調べるのには役に立っているが、
+ソースコードが理解しやすくなっているわけではなさそうです。
+なお、上級者と初級者で特に差は無かったそうです。&lt;/p&gt;
+
+&lt;p&gt;残念なことに、論文ではこのツールのありなしでしか比較しておらず、先行研究との比較がされていませんでした。
+このツールの押しの1つであるポータブル製（環境が特殊で無くてもどこでも使える）は比較が難しいですが、
+もう一つの巨大なサイトでも遅くならないという速度に関しては比較できそうなので、そっちは既存のやつとの差を調べてほしかったと思いました。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;このツールは公開されているので普通に使う事が出来ます。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/NUDelta/Unravel&#34;&gt;https://github.com/NUDelta/Unravel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ただし、minifyされているとJSのコール情報部分がとてもわかりにくいので、事前にunminifyしておく必要があります。&lt;br /&gt;
+（実験ではunminify済みの状態で行った）&lt;/p&gt;
+
+&lt;p&gt;知っているコードならともかく、知らないコードに対しては動きと対応する部分を見つけるのはとても大変なので、
+もの凄く便利そうでした。自動minifyとかが出来ると、普通に実用的なツールになると思います。&lt;/p&gt;
+
+&lt;p&gt;なお、今日が&lt;a href=&#34;http://qiita.com/advent-calendar/2015/hci&#34;&gt;「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」&lt;/a&gt;の13日目ですが、14日目はあいているのでおすすめな論文がある人や面白い論文を読んだことがある人は是非！&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>GithubのContributionsを使ってアウトプットを500日続ける</title>
@@ -1259,66 +1334,6 @@ padding within a structure object, but not at its beginning.
   printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName.at(unique_id).c_str());
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年32週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-32/</link>
-      <pubDate>Mon, 10 Aug 2015 21:50:30 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-32/</guid>
-      <description>
-
-&lt;h1 id=&#34;最近のhci研究を調べてる:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;最近のHCI研究を調べてる&lt;/h1&gt;
-
-&lt;p&gt;とりあえずざっとアブストを見て良さそうなものをピックアップする作業。&lt;br /&gt;
-いくつかは昔読んだ奴をもう一度読んでいたりします。&lt;/p&gt;
-
-&lt;h2 id=&#34;jamsheets:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;jamSheets&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://tangible.media.mit.edu/project/jamsheets/&#34;&gt;http://tangible.media.mit.edu/project/jamsheets/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;一枚のシートを、人が座れるぐらい堅くしたり、毛布みたいにまで柔らかくしたり、&lt;br /&gt;
-自由自在に過多さを変えられるシートを作ったみたい。&lt;br /&gt;
-どうなっているのかすごい気になる…&lt;/p&gt;
-
-&lt;h2 id=&#34;inverse-foley-animation:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;Inverse-Foley Animation&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cs.cornell.edu/projects/Sound/ifa/&#34;&gt;http://www.cs.cornell.edu/projects/Sound/ifa/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;事前に音と3Dモデルを学習しておき、入力された音にマッチする映像を作成する。&lt;br /&gt;
-映像にマッチする音じゃなくて、音にマッチする映像を作るのがすごい…&lt;/p&gt;
-
-&lt;h2 id=&#34;afordance:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;afordance++&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://hpi.de/baudisch/projects/affordance.html&#34;&gt;http://hpi.de/baudisch/projects/affordance.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ものを持ったときや触れる前に、そのものの情報にあった動きを腕に提示することで、&lt;br /&gt;
-触れずとも熱いものがわかったり、どう扱えば良いかがわかるようになる。&lt;br /&gt;
-大体視覚と過去の経験に頼ってるアフォーダンスを大幅に拡張できて凄い。&lt;/p&gt;
-
-&lt;h2 id=&#34;3d-object-manipulation-in-a-single-photograph-using-stock-3d-models:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;3D Object Manipulation in a Single Photograph using Stock 3D Models&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cs.cmu.edu/~om3d/&#34;&gt;http://www.cs.cmu.edu/~om3d/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;一枚の画像から3Dオブジェクトを取り出し、写真と上手く合成してくれるっぽい。&lt;br /&gt;
-光の加減とかも調節してくれるため、凄く上手く合成出来ていて凄かった。&lt;/p&gt;
-
-&lt;h2 id=&#34;fluxpaper-reinventing-paper-with-dynamic-actuation-powered-by-magnetic-flux:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;FluxPaper: Reinventing Paper With Dynamic Actuation Powered by Magnetic Flux&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://masaogata.com/projects/fluxpaper/&#34;&gt;http://masaogata.com/projects/fluxpaper/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;紙の裏に磁力を持つ物体を付け、磁界を制御することで紙の移動や検索などを可能にしたみたい。&lt;br /&gt;
-紙に付ける方のパターンを工夫してるっぽい。&lt;/p&gt;
-
-&lt;h2 id=&#34;scene-completion-using-millions-of-photographs:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;Scene Completion Using Millions of Photographs&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://graphics.cs.cmu.edu/projects/scene-completion/&#34;&gt;http://graphics.cs.cmu.edu/projects/scene-completion/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;従来の写真の中の一部分を削除する技術に加え、&lt;br /&gt;
-大量の画像の中から似た画像を探し出してくることで、&lt;br /&gt;
-消した部分を正しく補完できるみたい。&lt;/p&gt;
 </description>
     </item>
     

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/ota42y">github</a></p>
+                
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://twitter.com/ota42y">twitter</a></p>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/12/13/hci_advent_13/">論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-12-13" class="post_data">
+    2015-12-13
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/memo">memo</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ:9913c53850aa0622c9092d02fc2a6ba6">まとめ</a></li>
+<li><a href="#はじめに:9913c53850aa0622c9092d02fc2a6ba6">はじめに</a></li>
+<li><a href="#論文の内容:9913c53850aa0622c9092d02fc2a6ba6">論文の内容</a></li>
+<li><a href="#先行研究との比較:9913c53850aa0622c9092d02fc2a6ba6">先行研究との比較</a></li>
+<li><a href="#実装方法:9913c53850aa0622c9092d02fc2a6ba6">実装方法</a></li>
+<li><a href="#実験:9913c53850aa0622c9092d02fc2a6ba6">実験</a></li>
+<li><a href="#その他:9913c53850aa0622c9092d02fc2a6ba6">その他</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+
+            <div class="article">
+              
+
+<h1 id="まとめ:9913c53850aa0622c9092d02fc2a6ba6">まとめ</h1>
+
+<ul>
+<li>Webページのリバースエンジニアリングの支援をする研究</li>
+<li>コール情報やDOMの変化を記録、閲覧可能に</li>
+<li>該当のソースを見つけるまでの時間が早くなる</li>
+<li>chrome拡張が公開されているので実際に試せる</li>
+</ul>
+
+<h1 id="はじめに:9913c53850aa0622c9092d02fc2a6ba6">はじめに</h1>
+
+<p>このエントリは<a href="http://qiita.com/advent-calendar/2015/hci">「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」</a>の13日目のものです。</p>
+
+<p>今回はUIST20015からWeb系の論文でいいのがあったので紹介します。<br />
+実は昨日のUIST勉強会で読んだので、参加してる人にとってはまたかよ…ってなりますが、<br />
+去年を見る限りUIST勉強会は資料を公開しないようなので、参加しなかった人にとってはお得なはずです…</p>
+
+<h1 id="論文の内容:9913c53850aa0622c9092d02fc2a6ba6">論文の内容</h1>
+
+<p>今回紹介する論文は「<a href="http://dl.acm.org/citation.cfm?id=2807468">Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection</a>」です。
+この論文は、UnravelというWebページのリバースエンジニアリングを支援するツールについての論文です。</p>
+
+<p>このツールはまず、Webページ上で動いているDOMの変化やJSのコール情報を記録していきます、
+そして、Chromeのデベロッパーツールにタブを追加し、そこに変更回数や呼び出し回数でソートして情報を表示します。
+これにより、Webページ上での動きが、どのようなJSとDOMの変化によって実現されているのかを簡単に調べることができます。</p>
+
+<p>動画はこちらになります。<br />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mhY7jvRFXJ8" frameborder="0" allowfullscreen></iframe></p>
+
+<h1 id="先行研究との比較:9913c53850aa0622c9092d02fc2a6ba6">先行研究との比較</h1>
+
+<p>論文中でいくつかあげられていますが、先行研究は条件が限定的だったり、巨大なサイトを対象にしたときに動作が遅くなってしまうのに対し、
+このツールは任意のサイトに適応可能で、巨大なサイトでも遅くならないと述べられています。</p>
+
+<h1 id="実装方法:9913c53850aa0622c9092d02fc2a6ba6">実装方法</h1>
+
+<p>documentへの書き込みを全てフックして情報を保存してるらしいです。
+そのため、他の研究に比べて取れる情報が限定的になりますが、任意のサイトに適応可能になっているとのことです。
+また、後述するようにソースが公開されているので、詳しく知りたい方はコードを読むのがいいと思います。</p>
+
+<h1 id="実験:9913c53850aa0622c9092d02fc2a6ba6">実験</h1>
+
+<p>このツールのありなしで、TumblerやApple等のサイトのアニメーションを再現するタスクを行い、途中のチェックポイントごとに比較をしたそうです。
+結果として、システムアリの方が関連するソースの最初に見つけるまでの時間が50%短縮され、全体としても30%短縮されたそうです。
+ただし、関連するコードを見つけてからタスク終了までの時間に差は無いらしく、動きからコードの位置を調べるのには役に立っているが、
+ソースコードが理解しやすくなっているわけではなさそうです。
+なお、上級者と初級者で特に差は無かったそうです。</p>
+
+<p>残念なことに、論文ではこのツールのありなしでしか比較しておらず、先行研究との比較がされていませんでした。
+このツールの押しの1つであるポータブル製（環境が特殊で無くてもどこでも使える）は比較が難しいですが、
+もう一つの巨大なサイトでも遅くならないという速度に関しては比較できそうなので、そっちは既存のやつとの差を調べてほしかったと思いました。</p>
+
+<h1 id="その他:9913c53850aa0622c9092d02fc2a6ba6">その他</h1>
+
+<p>このツールは公開されているので普通に使う事が出来ます。<br />
+<a href="https://github.com/NUDelta/Unravel">https://github.com/NUDelta/Unravel</a></p>
+
+<p>ただし、minifyされているとJSのコール情報部分がとてもわかりにくいので、事前にunminifyしておく必要があります。<br />
+（実験ではunminify済みの状態で行った）</p>
+
+<p>知っているコードならともかく、知らないコードに対しては動きと対応する部分を見つけるのはとても大変なので、
+もの凄く便利そうでした。自動minifyとかが出来ると、普通に実用的なツールになると思います。</p>
+
+<p>なお、今日が<a href="http://qiita.com/advent-calendar/2015/hci">「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」</a>の13日目ですが、14日目はあいているのでおすすめな論文がある人や面白い論文を読んだことがある人は是非！</p>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/12/13/hci_advent_13/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

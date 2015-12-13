@@ -6,8 +6,83 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 09 Dec 2015 07:00:01 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 13 Dec 2015 07:01:33 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」</title>
+      <link>http://ota42y.com/blog/2015/12/13/hci_advent_13/</link>
+      <pubDate>Sun, 13 Dec 2015 07:01:33 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/13/hci_advent_13/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Webページのリバースエンジニアリングの支援をする研究&lt;/li&gt;
+&lt;li&gt;コール情報やDOMの変化を記録、閲覧可能に&lt;/li&gt;
+&lt;li&gt;該当のソースを見つけるまでの時間が早くなる&lt;/li&gt;
+&lt;li&gt;chrome拡張が公開されているので実際に試せる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;はじめに:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;はじめに&lt;/h1&gt;
+
+&lt;p&gt;このエントリは&lt;a href=&#34;http://qiita.com/advent-calendar/2015/hci&#34;&gt;「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」&lt;/a&gt;の13日目のものです。&lt;/p&gt;
+
+&lt;p&gt;今回はUIST20015からWeb系の論文でいいのがあったので紹介します。&lt;br /&gt;
+実は昨日のUIST勉強会で読んだので、参加してる人にとってはまたかよ…ってなりますが、&lt;br /&gt;
+去年を見る限りUIST勉強会は資料を公開しないようなので、参加しなかった人にとってはお得なはずです…&lt;/p&gt;
+
+&lt;h1 id=&#34;論文の内容:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;論文の内容&lt;/h1&gt;
+
+&lt;p&gt;今回紹介する論文は「&lt;a href=&#34;http://dl.acm.org/citation.cfm?id=2807468&#34;&gt;Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection&lt;/a&gt;」です。
+この論文は、UnravelというWebページのリバースエンジニアリングを支援するツールについての論文です。&lt;/p&gt;
+
+&lt;p&gt;このツールはまず、Webページ上で動いているDOMの変化やJSのコール情報を記録していきます、
+そして、Chromeのデベロッパーツールにタブを追加し、そこに変更回数や呼び出し回数でソートして情報を表示します。
+これにより、Webページ上での動きが、どのようなJSとDOMの変化によって実現されているのかを簡単に調べることができます。&lt;/p&gt;
+
+&lt;p&gt;動画はこちらになります。&lt;br /&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/mhY7jvRFXJ8&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;先行研究との比較:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;先行研究との比較&lt;/h1&gt;
+
+&lt;p&gt;論文中でいくつかあげられていますが、先行研究は条件が限定的だったり、巨大なサイトを対象にしたときに動作が遅くなってしまうのに対し、
+このツールは任意のサイトに適応可能で、巨大なサイトでも遅くならないと述べられています。&lt;/p&gt;
+
+&lt;h1 id=&#34;実装方法:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;実装方法&lt;/h1&gt;
+
+&lt;p&gt;documentへの書き込みを全てフックして情報を保存してるらしいです。
+そのため、他の研究に比べて取れる情報が限定的になりますが、任意のサイトに適応可能になっているとのことです。
+また、後述するようにソースが公開されているので、詳しく知りたい方はコードを読むのがいいと思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;実験:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;実験&lt;/h1&gt;
+
+&lt;p&gt;このツールのありなしで、TumblerやApple等のサイトのアニメーションを再現するタスクを行い、途中のチェックポイントごとに比較をしたそうです。
+結果として、システムアリの方が関連するソースの最初に見つけるまでの時間が50%短縮され、全体としても30%短縮されたそうです。
+ただし、関連するコードを見つけてからタスク終了までの時間に差は無いらしく、動きからコードの位置を調べるのには役に立っているが、
+ソースコードが理解しやすくなっているわけではなさそうです。
+なお、上級者と初級者で特に差は無かったそうです。&lt;/p&gt;
+
+&lt;p&gt;残念なことに、論文ではこのツールのありなしでしか比較しておらず、先行研究との比較がされていませんでした。
+このツールの押しの1つであるポータブル製（環境が特殊で無くてもどこでも使える）は比較が難しいですが、
+もう一つの巨大なサイトでも遅くならないという速度に関しては比較できそうなので、そっちは既存のやつとの差を調べてほしかったと思いました。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:9913c53850aa0622c9092d02fc2a6ba6&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;このツールは公開されているので普通に使う事が出来ます。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/NUDelta/Unravel&#34;&gt;https://github.com/NUDelta/Unravel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ただし、minifyされているとJSのコール情報部分がとてもわかりにくいので、事前にunminifyしておく必要があります。&lt;br /&gt;
+（実験ではunminify済みの状態で行った）&lt;/p&gt;
+
+&lt;p&gt;知っているコードならともかく、知らないコードに対しては動きと対応する部分を見つけるのはとても大変なので、
+もの凄く便利そうでした。自動minifyとかが出来ると、普通に実用的なツールになると思います。&lt;/p&gt;
+
+&lt;p&gt;なお、今日が&lt;a href=&#34;http://qiita.com/advent-calendar/2015/hci&#34;&gt;「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」&lt;/a&gt;の13日目ですが、14日目はあいているのでおすすめな論文がある人や面白い論文を読んだことがある人は是非！&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>GithubのContributionsを使ってアウトプットを500日続ける</title>
@@ -1291,249 +1366,6 @@ PC上でrubyプログラムを書くだけで、電子部品を制御するこ�
 
 &lt;p&gt;ただし、当然ながらPCと接続して制御するものであり、&lt;br /&gt;
 Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 Go Conference 2015 summer</title>
-      <link>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</link>
-      <pubDate>Sun, 21 Jun 2015 23:43:02 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</guid>
-      <description>
-
-&lt;p&gt;今回は日経さんとCAさんがスポンサーとのことですが、&lt;br /&gt;
-かなりの人がいるのにwifiが普通に繋がっていて凄かったです…&lt;br /&gt;
-なんか機械も見たことも無い凄い奴でしたし。&lt;/p&gt;
-
-&lt;p&gt;実際に運用してる上での話が多く、goの時代が来ている…！&lt;br /&gt;
-という感じを受けました。&lt;br /&gt;
-お仕事でほぼ使ってないのでちゃんと使いたいですねー&lt;/p&gt;
-
-&lt;p&gt;また、みんなcode generateに走っているのはおもしろかったです。&lt;br /&gt;
-コピペになるようなコードはgenerateするってのはほぼ統一見解ですね。&lt;/p&gt;
-
-&lt;h1 id=&#34;キーノート:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;キーノート&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;go1.5凄そうです&lt;/li&gt;
-&lt;li&gt;go oracleのすごさ
-
-&lt;ul&gt;
-&lt;li&gt;関数がどこで使われているかが調べられる&lt;/li&gt;
-&lt;li&gt;関数ポインタで呼ぶ場合も大丈夫&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;gomobile、早くiOSに対応してC++を駆逐してほしいです…&lt;/li&gt;
-&lt;li&gt;公式の依存管理ツールも楽しみです&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;発表まとめ&lt;/h1&gt;
-
-&lt;p&gt;発表順は覚えてないので、タイムテーブルに順不同で並べられている順です。&lt;/p&gt;
-
-&lt;h2 id=&#34;gaurun-a-general-push-notification-server-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Gaurun〜A general push notification server in Go〜&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&#34;&gt;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;go製のpushサーバ&lt;/li&gt;
-&lt;li&gt;モニタリング用のAPIを用意してるの、凄い良いなーと思いました。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;debugging-go-code-with-gdb:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Debugging Go Code with GDB&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&#34;&gt;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;GDB、あんまり使いこなしてないのでもっとちゃんと使わないと…と思った。&lt;/li&gt;
-&lt;li&gt;Goはコンパイル早いし、落ちたときにちゃんとどの行で落ちたか出してくれるし、無くても何とかなる感はあります
-
-&lt;ul&gt;
-&lt;li&gt;使った方が何倍も楽なのでちゃんと使った方が良いかと&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;go 1.5からコンパイラがgoで実装されるけど、吐き出されるバイナリにDWARFが入ってれば関係ないよね？
-
-&lt;ul&gt;
-&lt;li&gt;リリース直後はバグったDWARFになる可能性はありそう…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;フォントが$300ってwwwwww&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;generative-programming-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Generative programming in Go.&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/monochromegane/generative-programming-in-go&#34;&gt;https://speakerdeck.com/monochromegane/generative-programming-in-go&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;reflection凄く遅いです…(直接呼ぶのと1000倍違う)&lt;/li&gt;
-&lt;li&gt;金槌を持つと何でも釘に見える病…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;gore-go-で-repl-のはなし:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;gore - Go で REPL のはなし&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;irbみたいにgoを対話的に実行できるやつの内部事情&lt;/li&gt;
-&lt;li&gt;go runしてるだけ&lt;/li&gt;
-&lt;li&gt;go runに失敗しないように色々前処理をがんばってるみたいです。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;goと電子工作とロボット:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goと電子工作とロボット&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;goでロボット制御できて、しかもスタンドアロンで動いていて凄いです&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;goのastをいじくって新しいツールを作る:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GoのASTをいじくって新しいツールを作る&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/vvakame/gocon-2015-summer&#34;&gt;http://www.slideshare.net/vvakame/gocon-2015-summer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;go/astを使うと、コード解析した結果みたいなのをとれるみたいです。
-
-&lt;ul&gt;
-&lt;li&gt;正規表現でがんばる！とかよりかは遙かに楽そう…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ただ、出力部分は気合いとのこと…&lt;/li&gt;
-&lt;li&gt;怒りのスライドは良くわかります…
-
-&lt;ul&gt;
-&lt;li&gt;1byte=1文字、再帰的なパッケージ、err!=nilめんどい…(´･_･`)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;go言語でコマンドラインツールをつくるときに僕の語ること:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go言語でコマンドラインツールをつくるときに僕の語ること&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&#34;&gt;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;CLIツールは何となくこうした方が良いよね…って思ってたのがちゃんとまとめられてます&lt;/li&gt;
-&lt;li&gt;さらに、それに沿ったテンプレートを作ってくれるものも作ったらしいです。凄い
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tcnksm/gcli&#34;&gt;https://github.com/tcnksm/gcli&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;-vとかでバージョン確認したときに、最新バージョンをチェックするの頭良いですね
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tcnksm/go-latest&#34;&gt;https://github.com/tcnksm/go-latest&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;patterns-for-building-a-scalable-testable-web-app-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Patterns for building a scalable, testable web app in Go&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://sourcegraph.com/&#34;&gt;https://sourcegraph.com/&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;そもそもこのサービス知りませんでしたが、めっちゃ凄いです…(o゜▽゜)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;ピクシブ社内広告サーバーでのgoの開発-運用:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;ピクシブ社内広告サーバーでのGoの開発・運用&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&#34;&gt;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;goのサーバを実際に運用している上での知見が詰まってました。
-
-&lt;ul&gt;
-&lt;li&gt;nginxをフロントに立てることで、goサーバは特定の機能を素早く処理することに集中できるとか&lt;/li&gt;
-&lt;li&gt;ホットデプロイするためにnginxとの間にunixソケット受付のアプリを立てておくとか&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;CPU Throttlingによって混んでないときはレスポンスが遅い話がおもしろかったです。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;1binary 自己完結型の 形態素解析器 kagome を 作ってみた話&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&#34;&gt;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;辞書のエンコーディングに悩まなくて良いの凄く良いと思います。&lt;/li&gt;
-&lt;li&gt;形態素解析説明が凄くわかりやすかったです
-
-&lt;ul&gt;
-&lt;li&gt;ただ、文脈IDをどう使ってるのか良くわかりませんでした…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;goで基盤システムつくってる話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GOで基盤システムつくってる話&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;CAでLoL並の接続数を捌けるような基盤システムを作ってる話&lt;/li&gt;
-&lt;li&gt;パッケージ管理やパッケージ構成…(´･_･`)&lt;/li&gt;
-&lt;li&gt;標準パッケージは宝の山。goらしさを調べるにはうってつけとのこと
-
-&lt;ul&gt;
-&lt;li&gt;A Tour of GoやEffective Goの後に最適&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;lt:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;LT&lt;/h2&gt;
-
-&lt;h3 id=&#34;goのパッケージ構成で試行錯誤してみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goのパッケージ構成で試行錯誤してみた話&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/fkmhrk/go-49650783&#34;&gt;http://www.slideshare.net/fkmhrk/go-49650783&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;パッケージの分け方は特にgo特有のやり方はなく、他の言語とおんなじっぽいです&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;appengine-for-go-unittest:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;AppEngine for Go Unittest&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;デバッグ用のサーバの立ち上げが遅いので、Unittestに時間がかかるそうです&lt;/li&gt;
-&lt;li&gt;並列化しても最初の分の時間はやっぱりかかってしまうとのこと
-
-&lt;ul&gt;
-&lt;li&gt;起動しっぱなしにして、そこに接続して使うとかはダメなのでしょうか？&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;golangで始めるハードウェアプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangで始めるハードウェアプログラミング&lt;/h3&gt;
-
-&lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
-
-&lt;h3 id=&#34;vendoring-golang:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;vendoring @ golang&lt;/h3&gt;
-
-&lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
-
-&lt;h3 id=&#34;gopherになれ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;「Gopherになれ！」&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;この人&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;コミケにgopher君がいた &lt;a href=&#34;http://t.co/cMyhSFgIwy&#34;&gt;pic.twitter.com/cMyhSFgIwy&lt;/a&gt;&lt;/p&gt;&amp;mdash; ななやん (@7yan00) &lt;a href=&#34;https://twitter.com/7yan00/status/549767136445333504&#34;&gt;2014, 12月 30&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;go製の拡張可能なslackbot-仮:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go製の拡張可能なslackbot（仮）&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&#34;&gt;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;pluginの拡張をどうしてるのか謎でしたが、コードを読んで納得
-
-&lt;ul&gt;
-&lt;li&gt;パッケージのinit関数で、pluginsパッケージが保有するプラグインのリストに自分を登録する&lt;/li&gt;
-&lt;li&gt;botがpluginsの中を読み込んで動作する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;goの使われ処:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goの使われ処&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&#34;&gt;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;5分間ひたすら採用している会社を羅列していました&lt;/li&gt;
-&lt;li&gt;想像以上に多くて、盛り上がってるなーと思いました&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;k0kubun-pp-についてと-reflectパッケージとメタプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;k0kubun/pp についてと、reflectパッケージとメタプログラミング&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&#34;&gt;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ppをラップしただけの関数を定義しておくってのが凄い便利そうです
-
-&lt;ul&gt;
-&lt;li&gt;import書いたり消したりがとても面倒なので…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;メタプログラミングは…やっぱり現実的じゃ無いですよね&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;golangはじめて半日後に野球のアプリ書いてltしてきた:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangはじめて半日後に野球のアプリ書いてLTしてきた&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&#34;&gt;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;やったことの時系列になってておもしろいです&lt;/li&gt;
-&lt;li&gt;やっぱり学習コストは低いんですねー&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
