@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/ota42y">github</a></p>
+                
+
+                
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="https://twitter.com/ota42y">twitter</a></p>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/12/25/hci_advent_25/">論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-12-25" class="post_data">
+    2015-12-25
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/text">text</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ:b5ab9fb37652233f44e2716edb31652a">まとめ</a></li>
+<li><a href="#はじめに:b5ab9fb37652233f44e2716edb31652a">はじめに</a></li>
+<li><a href="#紹介する論文:b5ab9fb37652233f44e2716edb31652a">紹介する論文</a></li>
+<li><a href="#手法について:b5ab9fb37652233f44e2716edb31652a">手法について</a></li>
+<li><a href="#やってみた:b5ab9fb37652233f44e2716edb31652a">やってみた</a></li>
+<li><a href="#その他:b5ab9fb37652233f44e2716edb31652a">その他</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+
+            <div class="article">
+              
+
+<h1 id="まとめ:b5ab9fb37652233f44e2716edb31652a">まとめ</h1>
+
+<ul>
+<li>BluetoothのRSSIだけで対象のデバイスがどこにいるかわかる
+
+<ul>
+<li>動画を見るのが手っ取り早い</li>
+<li><a href="https://www.youtube.com/watch?v=VqAoxVhO4xA">https://www.youtube.com/watch?v=VqAoxVhO4xA</a></li>
+</ul></li>
+<li>BluetoothのRSSIが位置によって違うことを利用している
+
+<ul>
+<li>RSSIを学習すれば、どこにあるか予測可能</li>
+</ul></li>
+<li>オリジナルより精度が悪いて実装をしてみたが、それでも結構ちゃんと動く
+
+<ul>
+<li><a href="https://github.com/ota42y/corona-clone">https://github.com/ota42y/corona-clone</a></li>
+<li><a href="https://youtu.be/wsglHEhtYCM">https://youtu.be/wsglHEhtYCM</a></li>
+</ul></li>
+</ul>
+
+<h1 id="はじめに:b5ab9fb37652233f44e2716edb31652a">はじめに</h1>
+
+<p>このエントリは「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」の25日目のものです。<br />
+<a href="http://qiita.com/advent-calendar/2015/hci">http://qiita.com/advent-calendar/2015/hci</a></p>
+
+<h1 id="紹介する論文:b5ab9fb37652233f44e2716edb31652a">紹介する論文</h1>
+
+<p>今回もUIST2015から、<a href="http://dl.acm.org/citation.cfm?doid=2807442.2807485">Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions</a>という論文を紹介します。<br />
+これはBluetoothのRSSIだけを利用し、デバイスの相対的な位置を検出する手法についての論文です。</p>
+
+<p>動画はこちらになります。<br />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VqAoxVhO4xA" frameborder="0" allowfullscreen></iframe></p>
+
+<h1 id="手法について:b5ab9fb37652233f44e2716edb31652a">手法について</h1>
+
+<p>Bluetoothのチップの位置はデバイスの中心からずれたところに置かれているため、
+各辺からチップまでの距離はそれぞれ異なり、結果としてRSSIが異なってきます。この距離の違いから来るRSSIの違いを学習しておくことで、
+現在のRSSIからどの位置に置かれているかが識別できるというのがこの論文で提案している手法です。</p>
+
+<p>わかりにくいと思うので図にしました。灰色の長方形内にあり、中心線上にない任意の青色の点から、
+オレンジで表された各辺までの距離が全て異なるということがわかると思います。<br />
+<a href="/images/blog/2015/2015-12-25-corona-example.png"><img src="/images/blog/2015/2015-12-25-corona-example.png"  width="20%" /></a></p>
+
+<p>実際、私の手元のタブレットでは左上にチップがあるため、右辺や下辺は遠く、上辺や左辺は近くなっており、RSSIも-40~-20までかなりの差が出ます。
+値は常に若干上下しますが直近数秒でまとめるとだいたい安定しているので、確かに識別に使えそうです。</p>
+
+<h1 id="やってみた:b5ab9fb37652233f44e2716edb31652a">やってみた</h1>
+
+<p>RSSIだけで位置が測定できる！と聞いても半信半疑だったので、実際にやってみました。<br />
+(15秒あたりから開始)<br />
+<a href="https://github.com/ota42y/corona-clone">https://github.com/ota42y/corona-clone</a></p>
+
+<p>実際に動いている様子は以下の通りです。<br />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wsglHEhtYCM" frameborder="0" allowfullscreen></iframe></p>
+
+<p>オリジナルの手法をそのまま実装するのが大変だったので、学習量を少なめに、かつ適当なベイズ識別期に投げるだけとかなり簡素化しています。<br />
+動画の通り、かなり簡素化した状態でもわりといい精度でどの位置にあるかを識別できていますので、
+ちゃんとオリジナルのを実装すれば相当な精度になることが予想できます。</p>
+
+<h1 id="その他:b5ab9fb37652233f44e2716edb31652a">その他</h1>
+
+<p>Bluetoothチップが中心からずれていることに依存しているので、今後中心や中心線上に乗ったデバイスに対しては識別できるのか心配です。
+たとえば横方向の中心線上（上辺と下辺から等距離）の場合、左右では距離が違いますが上下では距離が同じになります。
+もちろん片方のデバイスが等距離でももう片方が等距離でないなら、上に置いたときと下に置いたときで距離が変わるため識別可能ですが、どちらも同じ距離になるようにおいた場合は判別ができなさそうです…</p>
+
+<p>とはいえ、動画のサムネイルや論文の図にあるRSSIの等高線が円ではなく多角形の形をしていることから、
+内部の基板やデバイスの材質によって大きく変動するため、完全にRSSIが同じ2点が存在するというのはほぼあり得ないと考えて良さそうです。</p>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+<div class="social_buttons">
+    
+    <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+    
+
+    
+    <span class="hatena">
+        <a href="http://ota42y.com/blog/2015/12/25/hci_advent_25/" class="hatena-bookmark-button"
+           data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+           title="このエントリーをはてなブックマークに追加">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+                 alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+                charset="utf-8" async="async">
+        </script>
+    </span>
+    
+</div>
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

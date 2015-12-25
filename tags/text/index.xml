@@ -6,8 +6,88 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 13 Dec 2015 07:01:33 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 25 Dec 2015 00:39:52 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/text/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」</title>
+      <link>http://ota42y.com/blog/2015/12/25/hci_advent_25/</link>
+      <pubDate>Fri, 25 Dec 2015 00:39:52 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2015/12/25/hci_advent_25/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:b5ab9fb37652233f44e2716edb31652a&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BluetoothのRSSIだけで対象のデバイスがどこにいるかわかる
+
+&lt;ul&gt;
+&lt;li&gt;動画を見るのが手っ取り早い&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=VqAoxVhO4xA&#34;&gt;https://www.youtube.com/watch?v=VqAoxVhO4xA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;BluetoothのRSSIが位置によって違うことを利用している
+
+&lt;ul&gt;
+&lt;li&gt;RSSIを学習すれば、どこにあるか予測可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;オリジナルより精度が悪いて実装をしてみたが、それでも結構ちゃんと動く
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/corona-clone&#34;&gt;https://github.com/ota42y/corona-clone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/wsglHEhtYCM&#34;&gt;https://youtu.be/wsglHEhtYCM&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;はじめに:b5ab9fb37652233f44e2716edb31652a&#34;&gt;はじめに&lt;/h1&gt;
+
+&lt;p&gt;このエントリは「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」の25日目のものです。&lt;br /&gt;
+&lt;a href=&#34;http://qiita.com/advent-calendar/2015/hci&#34;&gt;http://qiita.com/advent-calendar/2015/hci&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;紹介する論文:b5ab9fb37652233f44e2716edb31652a&#34;&gt;紹介する論文&lt;/h1&gt;
+
+&lt;p&gt;今回もUIST2015から、&lt;a href=&#34;http://dl.acm.org/citation.cfm?doid=2807442.2807485&#34;&gt;Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions&lt;/a&gt;という論文を紹介します。&lt;br /&gt;
+これはBluetoothのRSSIだけを利用し、デバイスの相対的な位置を検出する手法についての論文です。&lt;/p&gt;
+
+&lt;p&gt;動画はこちらになります。&lt;br /&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/VqAoxVhO4xA&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;手法について:b5ab9fb37652233f44e2716edb31652a&#34;&gt;手法について&lt;/h1&gt;
+
+&lt;p&gt;Bluetoothのチップの位置はデバイスの中心からずれたところに置かれているため、
+各辺からチップまでの距離はそれぞれ異なり、結果としてRSSIが異なってきます。この距離の違いから来るRSSIの違いを学習しておくことで、
+現在のRSSIからどの位置に置かれているかが識別できるというのがこの論文で提案している手法です。&lt;/p&gt;
+
+&lt;p&gt;わかりにくいと思うので図にしました。灰色の長方形内にあり、中心線上にない任意の青色の点から、
+オレンジで表された各辺までの距離が全て異なるということがわかると思います。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/images/blog/2015/2015-12-25-corona-example.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-12-25-corona-example.png&#34;  width=&#34;20%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;実際、私の手元のタブレットでは左上にチップがあるため、右辺や下辺は遠く、上辺や左辺は近くなっており、RSSIも-40~-20までかなりの差が出ます。
+値は常に若干上下しますが直近数秒でまとめるとだいたい安定しているので、確かに識別に使えそうです。&lt;/p&gt;
+
+&lt;h1 id=&#34;やってみた:b5ab9fb37652233f44e2716edb31652a&#34;&gt;やってみた&lt;/h1&gt;
+
+&lt;p&gt;RSSIだけで位置が測定できる！と聞いても半信半疑だったので、実際にやってみました。&lt;br /&gt;
+(15秒あたりから開始)&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/corona-clone&#34;&gt;https://github.com/ota42y/corona-clone&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;実際に動いている様子は以下の通りです。&lt;br /&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/wsglHEhtYCM&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;オリジナルの手法をそのまま実装するのが大変だったので、学習量を少なめに、かつ適当なベイズ識別期に投げるだけとかなり簡素化しています。&lt;br /&gt;
+動画の通り、かなり簡素化した状態でもわりといい精度でどの位置にあるかを識別できていますので、
+ちゃんとオリジナルのを実装すれば相当な精度になることが予想できます。&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:b5ab9fb37652233f44e2716edb31652a&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;Bluetoothチップが中心からずれていることに依存しているので、今後中心や中心線上に乗ったデバイスに対しては識別できるのか心配です。
+たとえば横方向の中心線上（上辺と下辺から等距離）の場合、左右では距離が違いますが上下では距離が同じになります。
+もちろん片方のデバイスが等距離でももう片方が等距離でないなら、上に置いたときと下に置いたときで距離が変わるため識別可能ですが、どちらも同じ距離になるようにおいた場合は判別ができなさそうです…&lt;/p&gt;
+
+&lt;p&gt;とはいえ、動画のサムネイルや論文の図にあるRSSIの等高線が円ではなく多角形の形をしていることから、
+内部の基板やデバイスの材質によって大きく変動するため、完全にRSSIが同じ2点が存在するというのはほぼあり得ないと考えて良さそうです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」</title>
