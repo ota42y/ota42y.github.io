@@ -6,8 +6,31 @@
     <description>Recent content in Tool on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 08 Dec 2015 07:58:08 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jan 2016 22:24:44 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>tmux-change-paneというコマンドを作った</title>
+      <link>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</link>
+      <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</guid>
+      <description>&lt;p&gt;tmux-change-paneというコマンドを作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/tmux-change-pane&#34;&gt;https://github.com/ota42y/tmux-change-pane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-01-26-tmux_change_pane.gif&#34; alt=&#34;&amp;lt;img src=&amp;quot;/images/blog/2016/2016-01-26-tmux_change_pane.gif&amp;quot;  width=&amp;quot;100%&amp;quot; /&amp;gt;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;似たようなものでswap-paneというものがすでにあります。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;swap-paneでは複数画面に分割している際に、全ての分割をいったん消して選択画面を表示します。そのため、切り替えのたびに画面が一度フラッシュし、かつ必ず左上に作業領域が移ります。そのため、右下で作業してるような場合にかなり視線の操作が強制的に発生してとても面倒でした。&lt;/p&gt;
+
+&lt;p&gt;tmux-change-paneでは今いる分割領域しか使わないため、作業する位置が大きく変わることがなく、また切り替え中も他の領域の情報を参考にすることができます。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Wunderlistでサマリー出力をする</title>

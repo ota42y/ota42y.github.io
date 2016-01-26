@@ -6,8 +6,31 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 22 Jan 2016 14:14:08 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jan 2016 22:24:44 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>tmux-change-paneというコマンドを作った</title>
+      <link>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</link>
+      <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</guid>
+      <description>&lt;p&gt;tmux-change-paneというコマンドを作りました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/ota42y/tmux-change-pane&#34;&gt;https://github.com/ota42y/tmux-change-pane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-01-26-tmux_change_pane.gif&#34; alt=&#34;&amp;lt;img src=&amp;quot;/images/blog/2016/2016-01-26-tmux_change_pane.gif&amp;quot;  width=&amp;quot;100%&amp;quot; /&amp;gt;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;似たようなものでswap-paneというものがすでにあります。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;swap-paneでは複数画面に分割している際に、全ての分割をいったん消して選択画面を表示します。そのため、切り替えのたびに画面が一度フラッシュし、かつ必ず左上に作業領域が移ります。そのため、右下で作業してるような場合にかなり視線の操作が強制的に発生してとても面倒でした。&lt;/p&gt;
+
+&lt;p&gt;tmux-change-paneでは今いる分割領域しか使わないため、作業する位置が大きく変わることがなく、また切り替え中も他の領域の情報を参考にすることができます。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年のpixiv内ラブライブイラストの推移</title>
@@ -1465,28 +1488,6 @@ void update_class_members(std::vector&amp;lt;derived_class&amp;gt; &amp;amp;a)
   }
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年34週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-34/</link>
-      <pubDate>Mon, 24 Aug 2015 07:34:15 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-34/</guid>
-      <description>
-
-&lt;h1 id=&#34;毎週まとめはおしまい:d7f507d6eed5faf8097f3ede69217ef1&#34;&gt;毎週まとめはおしまい&lt;/h1&gt;
-
-&lt;p&gt;そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。&lt;/p&gt;
-
-&lt;h1 id=&#34;rsyncで特定フォルダをバックアップする:d7f507d6eed5faf8097f3ede69217ef1&#34;&gt;rsyncで特定フォルダをバックアップする&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;rsync -a --delete origin/ backup&lt;/code&gt;&lt;br /&gt;
-で、backupフォルダの中身をoriginと一緒になるように同期してくれるため、フォルダごとバックアップすることが出来ます。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;rsync -a --delete origin backup&lt;/code&gt;&lt;br /&gt;
-と、スラッシュを外すと、backupフォルダ内にoriginフォルダを作って同期します。&lt;/p&gt;
 </description>
     </item>
     
