@@ -6,8 +6,52 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 31 Jan 2016 14:45:49 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2016 16:36:57 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年12月まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/2015-12/</link>
+      <pubDate>Sun, 31 Jan 2016 16:36:57 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/2015-12/</guid>
+      <description>&lt;p&gt;まとめ忘れていたけどまとめ。&lt;br /&gt;
+月5本以上何らかのアウトプットするのは達成。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/02/mongodb_update/&#34;&gt;MongoDB の update は部分 update ではない&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基本部分updateでいい気がするけど、なんでキーを置き換えるようにしているんだろう…？&lt;/li&gt;
+&lt;li&gt;MySQLと違ってどんな列があるか明確じゃないし、データを消すのが難しいからとか？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/08/wl_report/&#34;&gt;Wunderlistでサマリー出力をする&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;まだ使ってる。便利。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/09/500_output/&#34;&gt;GithubのContributionsを使ってアウトプットを500日続ける&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;どうも表示される最大長しかカウントされないらしく、今見たらLongestが500より減っていた&lt;/li&gt;
+&lt;li&gt;常に手を動かし続ける習慣はできたし、良かったと思う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/13/hci_advent_13/&#34;&gt;論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;めっちゃ便利。早く標準搭載されて欲しい。&lt;/li&gt;
+&lt;li&gt;普通のデバッガはわかっているコードに対してバグ調査に使えるけど、コード理解のお供としては使えないよね。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/25/hci_advent_25/&#34;&gt;論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bluetoothだけで距離計測ができるとか凄い&lt;/li&gt;
+&lt;li&gt;実際適当に追実装してもいい精度になるので、ちゃんと作れば凄い良さそう。&lt;/li&gt;
+&lt;li&gt;ボードゲームの一部として使えそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>オーバーライドとオーバーロードは全く別物</title>
@@ -1491,56 +1535,6 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 
 &lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; HRI &lt;a href=&#34;http://t.co/uvweEJIpNy&#34;&gt;http://t.co/uvweEJIpNy&lt;/a&gt; , HAI &lt;a href=&#34;http://t.co/SU4DV1xPF3&#34;&gt;http://t.co/SU4DV1xPF3&lt;/a&gt; という国際会議を紹介しました。HRIは心理学系の人たちが多いです。HAIは実装系もバランスよくいる印象。&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645412878262996993&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>freeコマンドに新しく追加されたavailableについて</title>
-      <link>http://ota42y.com/blog/2015/09/09/free-command/</link>
-      <pubDate>Wed, 09 Sep 2015 21:53:07 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/09/09/free-command/</guid>
-      <description>
-
-&lt;h1 id=&#34;freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee&#34;&gt;freeコマンドに追加されたavailable&lt;/h1&gt;
-
-&lt;p&gt;3.14および2.6.27から、freeコマンドの書式が変わり、&lt;br /&gt;
-&lt;code&gt;-/+ buffers/cache&lt;/code&gt;が消えてavailableという項目が増えました。&lt;/p&gt;
-
-&lt;p&gt;availableは&lt;code&gt;/proc/meminfo&lt;/code&gt;の中にあるMemAvailablの値を参照しています。&lt;br /&gt;
-この値は、新しいアプリがスワップせずに使える容量はどれくらいか。といった値を示しているようです&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;available
-Estimation of how much memory  is  available  for  starting  new
-applications,  without swapping. Unlike the data provided by the
-cache or free fields, this field takes into account  page  cache
-and also that not all reclaimable memory slabs will be reclaimed
-due to items being in use (MemAvailable in /proc/meminfo, avail‐
-able on kernels 3.14, emulated on kernels 2.6.27+, otherwise the
-same as free)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;コード:dbabf7c03815177c3b438c3f806470ee&#34;&gt;コード&lt;/h2&gt;
-
-&lt;p&gt;/proc/meminfoは以下のコードによって作成されるようです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c&#34;&gt;https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;available = i.freeram - wmark_low;
-
-pagecache = pages[LRU_ACTIVE_FILE] + pages[LRU_INACTIVE_FILE];
-pagecache -= min(pagecache / 2, wmark_low);
-available += pagecache;
-
-available += global_page_state(NR_SLAB_RECLAIMABLE) -
-			 min(global_page_state(NR_SLAB_RECLAIMABLE) / 2, wmark_low);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;コード内容:dbabf7c03815177c3b438c3f806470ee&#34;&gt;コード内容&lt;/h2&gt;
-
-&lt;p&gt;ざっと見たところ、sysinfoのfreeramの値から、ページキャッシュやslabキャッシュの中の再利用可能な分を足した値が、MemAvailableとして計算されるようです。&lt;/p&gt;
-
-&lt;p&gt;実際の空き容量＋直ぐに解放可能な容量＝利用可能なメモリ容量といった感じのようです。&lt;br /&gt;
-そのため、ほぼこの値を見てメモリの空き容量を判断してよさそうです。&lt;/p&gt;
 </description>
     </item>
     

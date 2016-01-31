@@ -6,8 +6,52 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 24 Aug 2015 07:34:15 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2016 16:36:57 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年12月まとめ</title>
+      <link>http://ota42y.com/pages/summary/2015/2015-12/</link>
+      <pubDate>Sun, 31 Jan 2016 16:36:57 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2015/2015-12/</guid>
+      <description>&lt;p&gt;まとめ忘れていたけどまとめ。&lt;br /&gt;
+月5本以上何らかのアウトプットするのは達成。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/02/mongodb_update/&#34;&gt;MongoDB の update は部分 update ではない&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基本部分updateでいい気がするけど、なんでキーを置き換えるようにしているんだろう…？&lt;/li&gt;
+&lt;li&gt;MySQLと違ってどんな列があるか明確じゃないし、データを消すのが難しいからとか？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/08/wl_report/&#34;&gt;Wunderlistでサマリー出力をする&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;まだ使ってる。便利。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/09/500_output/&#34;&gt;GithubのContributionsを使ってアウトプットを500日続ける&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;どうも表示される最大長しかカウントされないらしく、今見たらLongestが500より減っていた&lt;/li&gt;
+&lt;li&gt;常に手を動かし続ける習慣はできたし、良かったと思う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/13/hci_advent_13/&#34;&gt;論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;めっちゃ便利。早く標準搭載されて欲しい。&lt;/li&gt;
+&lt;li&gt;普通のデバッガはわかっているコードに対してバグ調査に使えるけど、コード理解のお供としては使えないよね。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/12/25/hci_advent_25/&#34;&gt;論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bluetoothだけで距離計測ができるとか凄い&lt;/li&gt;
+&lt;li&gt;実際適当に追実装してもいい精度になるので、ちゃんと作れば凄い良さそう。&lt;/li&gt;
+&lt;li&gt;ボードゲームの一部として使えそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年34週目まとめ</title>
@@ -742,29 +786,6 @@ int main() {
   int a;
 };
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年20週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-20/</link>
-      <pubDate>Mon, 18 May 2015 21:40:28 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-20/</guid>
-      <description>
-
-&lt;h1 id=&#34;一週間何もしていないことが可視化される:aa9a80d3c7f9b6c9852a691c72ac9714&#34;&gt;一週間何もしていないことが可視化される&lt;/h1&gt;
-
-&lt;p&gt;毎週先週やったことをまとめているので、&lt;br /&gt;
-先週何もしていないのが可視化される…&lt;/p&gt;
-
-&lt;h1 id=&#34;prマージされた:aa9a80d3c7f9b6c9852a691c72ac9714&#34;&gt;PRマージされた&lt;/h1&gt;
-
-&lt;p&gt;fluentd-forwarderに送っていたPRがマージされた。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/fluent/fluentd-forwarder/pull/10&#34;&gt;https://github.com/fluent/fluentd-forwarder/pull/10&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;が、テストのバグでテストが通らないとの指摘が。&lt;br /&gt;
-ただし、手元のMacやLinuxでは通るので、Windowsだけの問題っぽいです。&lt;/p&gt;
 </description>
     </item>
     
