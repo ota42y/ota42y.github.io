@@ -6,8 +6,211 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 26 Jan 2016 22:24:44 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2016 14:45:49 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>オーバーライドとオーバーロードは全く別物</title>
+      <link>http://ota42y.com/blog/2016/01/31/override-overload/</link>
+      <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/01/31/override-overload/</guid>
+      <description>
+
+&lt;p&gt;EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:673abe6170b0f105c1aee0e413f3350c&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;オーバーライドされたvirtualなメソッド呼び出しは実行時に決定
+
+&lt;ul&gt;
+&lt;li&gt;実態が子クラスなら、親クラスとして扱っても子クラスのメソッドが実行される&lt;/li&gt;
+&lt;li&gt;実態が孫クラスの場合は孫クラスのメソッドが呼ばれる&lt;/li&gt;
+&lt;li&gt;親から子、孫へと呼び出される関数が探されていく感じ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;オーバーロードされたメソッド呼び出しはコンパイル時に決定
+
+&lt;ul&gt;
+&lt;li&gt;virtual関数のように実態で切り替えが出来ない&lt;/li&gt;
+&lt;li&gt;実態が子クラスでも、親クラスとして扱うなら親クラスのメソッドが実行される&lt;/li&gt;
+&lt;li&gt;一致するものが無い場合は親クラスにキャストして一致するものを探す&lt;/li&gt;
+&lt;li&gt;子から親へと一致するものを探していく感じ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;オーバーライドとは:673abe6170b0f105c1aee0e413f3350c&#34;&gt;オーバーライドとは&lt;/h1&gt;
+
+&lt;p&gt;メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。
+C++では親クラスでvirtualにされているメソッドをオーバーライドすると、
+子クラスのオブジェクトを親クラスにキャストしてメソッドを呼び出しても、再定義された子クラスのメソッドが呼ばれます。
+(virtualをつけないと親クラスのメソッドが呼ばれます)&lt;/p&gt;
+
+&lt;p&gt;たとえば以下のコードでは、オーバーライドされているためExtのshowメソッドが実行され、「show ext」が表示されます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;cstdio&amp;gt;
+
+class Base {
+public:
+  virtual void show() { printf(&amp;quot;show base\n&amp;quot;); }
+};
+
+class Ext: public Base {
+public:
+  virtual void show() { printf(&amp;quot;show ext\n&amp;quot;); }
+};
+
+int main() {
+    Ext *e = new Ext();
+    Base *b = static_cast&amp;lt;Base*&amp;gt;(e);
+    b-&amp;gt;show();
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このように、オーバーライドされたメソッドは実行時にどのメソッドが呼ばれるか決定されます。&lt;/p&gt;
+
+&lt;h1 id=&#34;オーバーロードとは:673abe6170b0f105c1aee0e413f3350c&#34;&gt;オーバーロードとは&lt;/h1&gt;
+
+&lt;p&gt;一方、似たような名前でオーバーロードというものもあります。
+こちらは継承とは特に関係なく、同じメソッド名で引数の違うものを定義しておくと、
+引数の種類をみて自動的に一致するメソッドが実行されます。&lt;/p&gt;
+
+&lt;p&gt;たとえば以下の場合、呼び出しているのはprintという名前の関数ですが、
+それぞれ引数が一致する関数が呼ばれるため、base、extと表示されます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;cstdio&amp;gt;
+
+class Base { };
+
+class Ext: public Base { };
+
+void print(Base *b) {printf(&amp;quot;base\n&amp;quot;);}
+void print(Ext *b) {printf(&amp;quot;ext\n&amp;quot;);}
+
+int main() {
+    Ext *e = new Ext();
+    Base *b = new Base();
+    print(e);
+    print(b);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;オーバーロードはコンパイル時決定:673abe6170b0f105c1aee0e413f3350c&#34;&gt;オーバーロードはコンパイル時決定&lt;/h2&gt;
+
+&lt;p&gt;オーバーライドを見ているとオーバーロードも実行時にどれを呼び出すか決定していそうですが、
+実際はコンパイル時にすでにどれが呼び出されるか決定しています。&lt;/p&gt;
+
+&lt;p&gt;そのため、以下のように実態が子クラスだとしても、親クラスとして引数に渡した場合、親クラスのメソッドが呼ばれます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+class Base {
+public:
+  virtual void show() { printf(&amp;quot;show base\n&amp;quot;); }
+};
+
+class Ext: public Base {
+public:
+  virtual void show() { printf(&amp;quot;show ext\n&amp;quot;); }
+};
+
+void print(Base *b) {printf(&amp;quot;base\n&amp;quot;);}
+void print(Ext *b) {printf(&amp;quot;ext\n&amp;quot;);}
+
+
+int main() {
+std::vector&amp;lt;Base*&amp;gt; b;
+b.push_back(new Base());
+b.push_back(new Ext());
+
+for (int i=0; i &amp;lt; b.size(); ++i){
+  print(b.at(i));
+  b.at(i)-&amp;gt;show();
+  }
+
+ return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;出力は以下の通りです&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;base
+show base
+base
+show ext
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ただし親クラスは検索対象になる:673abe6170b0f105c1aee0e413f3350c&#34;&gt;ただし親クラスは検索対象になる&lt;/h2&gt;
+
+&lt;p&gt;一方でオーバーロードは型が一致するものが無い場合は引数として渡されたクラスの継承ツリーをたどり、一致する親クラスを探してそれにキャストして実行してくれます。
+もちろん親クラスから子クラスへはコンパイル時にはわからないため、子クラスから親クラスに検索を行います。
+そのため、以下のコードは「ext」と表示されます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+class Base {
+};
+
+class Ext: public Base {
+};
+
+class ExtExt: public Ext {
+};
+
+void print(Base *b) {printf(&amp;quot;base\n&amp;quot;);}
+void print(Ext *b) {printf(&amp;quot;ext\n&amp;quot;);}
+
+int main() {
+    ExtExt *b = new ExtExt();
+    print(b);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;一意に定まらない場合:673abe6170b0f105c1aee0e413f3350c&#34;&gt;一意に定まらない場合&lt;/h2&gt;
+
+&lt;p&gt;なお、本当にどっちか決められない場合はambiguousというエラーになります&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+class InterA{
+public:
+    virtual void interA() = 0;
+};
+
+class InterB{
+public:
+    virtual void interB() = 0;
+};
+
+class Base : public InterA, public InterB {
+public:
+  virtual void interA() { printf(&amp;quot;interA\n&amp;quot;); }
+  virtual void interB() { printf(&amp;quot;interB\n&amp;quot;); }
+};
+
+
+void print(InterA *i) { i-&amp;gt;interA(); }
+void print(InterB *i) { i-&amp;gt;interB(); }
+
+int main() {
+    Base *b = new Base();
+    print(b);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;test.cpp:26:5: error: call to &#39;print&#39; is ambiguous
+    print(b);
+    ^~~~~
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>tmux-change-paneというコマンドを作った</title>
@@ -1338,156 +1541,6 @@ available += global_page_state(NR_SLAB_RECLAIMABLE) -
 
 &lt;p&gt;実際の空き容量＋直ぐに解放可能な容量＝利用可能なメモリ容量といった感じのようです。&lt;br /&gt;
 そのため、ほぼこの値を見てメモリの空き容量を判断してよさそうです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>CEDEC2015のCoverityクイズをどう直すか</title>
-      <link>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</link>
-      <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
-      <description>
-
-&lt;p&gt;CEDEC2015では、&lt;a href=&#34;http://www.coverity.com/html_ja/&#34;&gt;Coverity社&lt;/a&gt;のブースでバグのあるコードが掲示されていました。&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;バグが入ったC++コードらしい。&lt;a href=&#34;https://twitter.com/hashtag/CEDEC2015?src=hash&#34;&gt;#CEDEC2015&lt;/a&gt; &lt;a href=&#34;http://t.co/ca9vb0emVT&#34;&gt;pic.twitter.com/ca9vb0emVT&lt;/a&gt;&lt;/p&gt;&amp;mdash; alwei (@aizen76) &lt;a href=&#34;https://twitter.com/aizen76/status/636434428563054593&#34;&gt;2015, 8月 26&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;バグがあるかどうかはCoverityが検出してくれるとして、じゃあどう解決すれば良いのか？を考えました。&lt;/p&gt;
-
-&lt;p&gt;コードを見る限り、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;配列の添え字と同じ値を入れたい&lt;/li&gt;
-&lt;li&gt;処理は2つのクラスで共通化したい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という要求があると考えます。&lt;br /&gt;
-(zに値を入れないが元コードもそうなのでよしとする)&lt;/p&gt;
-
-&lt;p&gt;また、簡単化のために与えられるデータは全て正しいと仮定します。&lt;br /&gt;
-(実際は適切な箇所でエラーチェックが必要)&lt;/p&gt;
-
-&lt;h1 id=&#34;テンプレートでキャストを回避する:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;テンプレートでキャストを回避する&lt;/h1&gt;
-
-&lt;p&gt;今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、&lt;br /&gt;
-キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-
-class base_class {
-public:
-  base_class() { x = 0; y = 0; }
-
-public:
-  int x ;
-  int y;
-};
-
-class derived_class : public base_class {
-public:
-  derived_class() { z = 0; }
-
-public:
-  int z;
-};
-
-template &amp;lt;typename T&amp;gt;
-void calc_class_members(T b, int array_size)
-{
-  for(int i = 0; i &amp;lt; array_size; i++)
-  {
-    b[i].x = i;
-    b[i].y = i;
-  }
-}
-
-int update_class_members(
-  derived_class * class_array,
-  int num_array )
-{
-  if( class_array == NULL)
-    return -1;
-
-  calc_class_members(class_array, num_array);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;アドレス計算を先にする:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;アドレス計算を先にする&lt;/h1&gt;
-
-&lt;p&gt;型が違う状態でアドレス計算しているのが問題なので、アドレス計算部分を外に出してしまう方法です。&lt;br /&gt;
-関数ではなくクラスにメソッドとして持たせるとより良さそうです。&lt;/p&gt;
-
-&lt;p&gt;ただしこの場合、他の誰かが元コードのような処理を書くことを防げません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void calc_class_member(base_class *b, int i)
-{
-  b-&amp;gt;x = i;
-  b-&amp;gt;y = i;
-}
-
-int update_class_members(
-  derived_class *class_array,
-  int num_array )
-{
-  if( class_array == NULL)
-    return -1;
-
-  for(int i = 0; i &amp;lt; num_array; i++){
-	calc_class_member(&amp;amp;class_array[i], i);
-  }
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;設計から変える:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;設計から変える&lt;/h1&gt;
-
-&lt;p&gt;意図的にバグを入れているコードに対して、全体を書き換えるのはナンセンスな気がしますが、&lt;br /&gt;
-たぶんこういうことをする前提なら最も良い書き方はこうではないかと。&lt;/p&gt;
-
-&lt;p&gt;おおよそ上の通りですが、vectorの場合は中身の型が違うvectorにキャストされないため、&lt;br /&gt;
-型が違う状態でアドレス計算が行われることはありません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;vector&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
-
-class base_class {
-public:
-  base_class() { x = 0; y = 0; }
-
-  void calc_class_member(int i)
-  {
-    x = i;
-    y = i;
-  }
-
-public:
-  int x ;
-  int y;
-};
-
-class derived_class : public base_class {
-public:
-  derived_class() { z = 0; }
-
-public:
-  int z;
-};
-
-
-void update_class_members(std::vector&amp;lt;derived_class&amp;gt; &amp;amp;a)
-{
-  size_t size = a.size();
-  for(size_t i = 0; i &amp;lt; size; ++i)
-  {
-    a.at(i).calc_class_member(static_cast&amp;lt;int&amp;gt;(i));
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
