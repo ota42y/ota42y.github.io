@@ -6,8 +6,55 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 31 Jan 2016 16:36:57 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2016 16:54:04 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2016年01月まとめ</title>
+      <link>http://ota42y.com/pages/summary/2016/2016-01/</link>
+      <pubDate>Sun, 31 Jan 2016 16:54:04 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2016/2016-01/</guid>
+      <description>&lt;p&gt;まとめ。&lt;br /&gt;
+Qiitaを再開した。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ota42y/items/6d8b2279d6456ff389a0&#34;&gt;Centos7でsquidを立てる&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;必要なときにサクっと作れるの便利&lt;/li&gt;
+&lt;li&gt;実際はプロキシサーバはVPNでつないで内部ネットワークにしているので、外部からのアクセスを想定した制限は不要&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/01/22/lovelive-pixiv-illust-2015/&#34;&gt;2015年のpixiv内ラブライブイラストの推移
+&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全落ちつらい…&lt;/li&gt;
+&lt;li&gt;サンシャインに関して取り直してるので次はもうちょっと時間かかる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/01/26/tmux-change-pane/&#34;&gt;tmux-change-paneというコマンドを作った&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;便利&lt;/li&gt;
+&lt;li&gt;CLIでもUIは大事&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ota42y/items/0364d1da7cbf90df3dc4&#34;&gt;The innodb_system data file~でmacのmysqlが動かない場合の対処法&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;どのタイミングから動かなくなったのかは不明&lt;/li&gt;
+&lt;li&gt;無駄に時間を浪費した…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/01/31/override-overload/&#34;&gt;オーバーライドとオーバーロードは全く別物&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;そもそもオーバーロードは必要なのか？という疑問もある。&lt;/li&gt;
+&lt;li&gt;動的に切り替わるわけではないので、メソッド名が統一されるという利点があるけど…&lt;/li&gt;
+&lt;li&gt;暗黙的にキャストされるので、ビルドは通るけど意図した動作でない事が起きそう&lt;/li&gt;
+&lt;li&gt;内容が同じメソッドならいいけど、処理を振り分けるなら危なそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年12月まとめ</title>
@@ -1477,64 +1524,6 @@ sushi 0.5
 
 &lt;p&gt;ただ、この川目当てで行くには短すぎるので(日本一短い一級河川)、&lt;br /&gt;
 うなぎと組み合わせるとか他の用事のついでに足を運ぶのがいいと思います。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>第48回情報科学若手の会2015で発表してきた</title>
-      <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
-      <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</guid>
-      <description>
-
-&lt;p&gt;というわけで発表しました。&lt;br /&gt;
-発表資料はこちら。&lt;/p&gt;
-
-&lt;p&gt;実際は動画で紹介していますが、めっちゃ重くなったのでそれは外した軽量版になります。&lt;br /&gt;
-代わりにリンクをスライドに書いてあるので、そちらで見てください。&lt;br /&gt;
-また、実際は使わなかった非表示スライドも表示していますが、ちゃんと作っていないのでご注意ください。&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;発表内容について:960011acd5e7afc5edcb122b8bab3124&#34;&gt;発表内容について&lt;/h1&gt;
-
-&lt;p&gt;4回目ぐらいの参加ですが、ほぼ毎年CHIの締め切りと重なったり、&lt;br /&gt;
-UISTの数週間前みたいな時期なのであまりこの分野からの参加者が少なく、&lt;br /&gt;
-需要がありそうとういうのを去年から考えていました。(&lt;a href=&#34;http://ota42y.com/blog/2014/09/15/wakate2014/#まとめ:5448e46160544c3c78693ad97d653b2a&#34;&gt;去年のエントリ&lt;/a&gt;)&lt;br /&gt;
-何故か今年に限って似た分野の研究が多かったですがw&lt;/p&gt;
-
-&lt;p&gt;新しいインタフェース系は結構話題になりますが、改善とか調査系とかはあまりHCI分野の人以外からは話題にされないので、&lt;br /&gt;
-意図的に新しいインタフェース系は抑えてそれ以外のやつを入れています。(非表示にたくさんあるけど)&lt;br /&gt;
-実際、その辺についてはあまり聞かないのでためになったという声を頂いたので、&lt;br /&gt;
-いい案配だったとおもいます。&lt;/p&gt;
-
-&lt;h1 id=&#34;反省点:960011acd5e7afc5edcb122b8bab3124&#34;&gt;反省点&lt;/h1&gt;
-
-&lt;p&gt;質疑応答で盛り上がるだろう場所は予測できていたので、&lt;br /&gt;
-そこに関しての補足スライドを用意するべきでした…&lt;/p&gt;
-
-&lt;p&gt;事前に作ったスライドを、前日にダメダメに見えたので作り直してしまったので、&lt;br /&gt;
-結果としては良くなったけどもう少し早くに完成させて修正したかったです。&lt;br /&gt;
-ただ、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
-
-&lt;h1 id=&#34;追加情報:960011acd5e7afc5edcb122b8bab3124&#34;&gt;追加情報&lt;/h1&gt;
-
-&lt;p&gt;今回のはほぼ英語論文から取ってきましたが、日本語での発表を捜すなら&lt;a href=&#34;www.interaction-ipsj.org/&#34;&gt;インタラクション&lt;/a&gt;がオススメです。&lt;/p&gt;
-
-&lt;p&gt;また、質疑応答時やTwitterで追加情報を流していただきました。感謝です。&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;HCI分野でも（調査系と比べて）とくに新技術の発表が多いトップカンファレンスACM UISTは、来年アジア初開催、「日本で」開催ですよ！みんなで行こー &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; / 今年は &lt;a href=&#34;http://t.co/GY2XiamnkI&#34;&gt;http://t.co/GY2XiamnkI&lt;/a&gt;&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645410232546410496&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;HCI系のトップカンファレンスACM CHIの自主勉強会が毎年東京と北海道で開催され、過去の資料が公開されているので、HCIに興味持った方はまずこの資料見てみるといいと思います！ &lt;a href=&#34;http://t.co/WTIFCbO04m&#34;&gt;http://t.co/WTIFCbO04m&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt;&lt;/p&gt;&amp;mdash; 湯村 翼＠10/3おうちハックナイト (@yumu19) &lt;a href=&#34;https://twitter.com/yumu19/status/645412250988077060&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;調査系（エスノグラフィー）なども多くユーザビリティを仕事にしてる方も参考になりそうなトップカンファACM CHIは、今年アジア初開催、韓国でした。 &lt;a href=&#34;http://t.co/7iFp4VFQPG&#34;&gt;http://t.co/7iFp4VFQPG&lt;/a&gt; ←6月の勉強会 &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; &lt;a href=&#34;https://t.co/VsVFP9y5Ov&#34;&gt;https://t.co/VsVFP9y5Ov&lt;/a&gt;&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645411168899600388&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; HRI &lt;a href=&#34;http://t.co/uvweEJIpNy&#34;&gt;http://t.co/uvweEJIpNy&lt;/a&gt; , HAI &lt;a href=&#34;http://t.co/SU4DV1xPF3&#34;&gt;http://t.co/SU4DV1xPF3&lt;/a&gt; という国際会議を紹介しました。HRIは心理学系の人たちが多いです。HAIは実装系もバランスよくいる印象。&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645412878262996993&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
     </item>
     

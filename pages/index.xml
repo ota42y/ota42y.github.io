@@ -6,8 +6,55 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 31 Jan 2016 16:36:57 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2016 16:54:04 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2016年01月まとめ</title>
+      <link>http://ota42y.com/pages/summary/2016/2016-01/</link>
+      <pubDate>Sun, 31 Jan 2016 16:54:04 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2016/2016-01/</guid>
+      <description>&lt;p&gt;まとめ。&lt;br /&gt;
+Qiitaを再開した。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ota42y/items/6d8b2279d6456ff389a0&#34;&gt;Centos7でsquidを立てる&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;必要なときにサクっと作れるの便利&lt;/li&gt;
+&lt;li&gt;実際はプロキシサーバはVPNでつないで内部ネットワークにしているので、外部からのアクセスを想定した制限は不要&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/01/22/lovelive-pixiv-illust-2015/&#34;&gt;2015年のpixiv内ラブライブイラストの推移
+&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全落ちつらい…&lt;/li&gt;
+&lt;li&gt;サンシャインに関して取り直してるので次はもうちょっと時間かかる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/01/26/tmux-change-pane/&#34;&gt;tmux-change-paneというコマンドを作った&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;便利&lt;/li&gt;
+&lt;li&gt;CLIでもUIは大事&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ota42y/items/0364d1da7cbf90df3dc4&#34;&gt;The innodb_system data file~でmacのmysqlが動かない場合の対処法&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;どのタイミングから動かなくなったのかは不明&lt;/li&gt;
+&lt;li&gt;無駄に時間を浪費した…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/01/31/override-overload/&#34;&gt;オーバーライドとオーバーロードは全く別物&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;そもそもオーバーロードは必要なのか？という疑問もある。&lt;/li&gt;
+&lt;li&gt;動的に切り替わるわけではないので、メソッド名が統一されるという利点があるけど…&lt;/li&gt;
+&lt;li&gt;暗黙的にキャストされるので、ビルドは通るけど意図した動作でない事が起きそう&lt;/li&gt;
+&lt;li&gt;内容が同じメソッドならいいけど、処理を振り分けるなら危なそう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年12月まとめ</title>
@@ -755,37 +802,6 @@ int main() {
 正しく動くようです。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://en.cppreference.com/w/cpp/language/operator_member_access&#34;&gt;http://en.cppreference.com/w/cpp/language/operator_member_access&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2015年21週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-21/</link>
-      <pubDate>Mon, 25 May 2015 22:09:32 +0900</pubDate>
-      
-      <guid>http://ota42y.com/pages/summary/2015/week-21/</guid>
-      <description>
-
-&lt;h1 id=&#34;体調を崩した:63b972d7b8a9e5b8ecb6903994a97d8c&#34;&gt;体調を崩した&lt;/h1&gt;
-
-&lt;p&gt;体調を崩して週の半分は倒れてた。&lt;br /&gt;
-3日倒れるとやることリストが大変なことになるので、&lt;br /&gt;
-体調がおかしい場合は速やかに医者に行って、薬をもらうべきだと再認識した。&lt;/p&gt;
-
-&lt;h1 id=&#34;c-03以前ではオーバーロードされたコンストラクタが呼び出せない:63b972d7b8a9e5b8ecb6903994a97d8c&#34;&gt;C++03以前ではオーバーロードされたコンストラクタが呼び出せない&lt;/h1&gt;
-
-&lt;p&gt;以下のように、コンストラクタから別のコンストラクタを呼び出すことで、&lt;br /&gt;
-処理を共通化するのはわりと自然ではないかと思います。&lt;/p&gt;
-
-&lt;p&gt;これはdelegate constructorとうい名前がついており、&lt;br /&gt;
-残念ながらC++11以降じゃないと使えません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct A {
-  A() : A(0) {}
-  A(int num) : a(num) {}
-  int a;
-};
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
