@@ -6,8 +6,122 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 22 Jan 2016 14:14:08 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 04 Feb 2016 21:27:18 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/text/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年のpixiv内ラブライブイラストの分析</title>
+      <link>http://ota42y.com/blog/2016/02/04/lovelive-pixiv-character-2016/</link>
+      <pubDate>Thu, 04 Feb 2016 21:27:18 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/02/04/lovelive-pixiv-character-2016/</guid>
+      <description>
+
+&lt;p&gt;HP先行の結果が出ましたね。&lt;br /&gt;
+誰か3/31の東京ドームに連れて行ってください… ＿: (´ཀ`」∠):＿&lt;/p&gt;
+
+&lt;p&gt;さて、前回(&lt;a href=&#34;http://ota42y.com/blog/2016/01/22/lovelive-pixiv-illust-2015/&#34;&gt;2015年のpixiv内ラブライブイラストの推移
+&lt;/a&gt;)に引き続き、pixiv内のラブライブイラストについて見ていきます。&lt;br /&gt;
+本来はもう少し内容を書く予定でしたが、落選のダメージがでかいので少なめです…＿(:3 」∠)＿&lt;/p&gt;
+
+&lt;h1 id=&#34;キャラごとの投稿数増加率:75ddd37748aba843c77b1dfa46ae15ad&#34;&gt;キャラごとの投稿数増加率&lt;/h1&gt;
+
+&lt;p&gt;映画で人気が出たキャラがいないかと思い、2014年の12月から2015年の12月までに総投稿数がどれくらい増えたかを調べました。&lt;br /&gt;
+特に増加率が大きい場合、映画によって人気が上がった可能性が考えられます。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/image
+s/blog/2016/2016-02-04-chara_inc_rate.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-02-04-chara_inc_rate.png&#34;  width=&#34;40%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;小泉花陽と園田海未がかなり伸びていますが、この二人は去年12月時点では二期が始まってからの聖誕祭が行われていなかったので、前回が少なすぎただけの可能性があります。
+一応投稿数の推移を調べてみたところ、他のキャラと同じく全体的に上がっており、劇場版で爆発的に人気が出たとかそういうのではないようです。&lt;/p&gt;
+
+&lt;p&gt;一方で、星空凛、高坂穂乃果、東條希の3人は2期の恩恵を受けた前回からも伸びているため、全体的に人気が上がったor劇場版で大きく伸びたといえそうです。
+とはいえ、ほぼ全員が2倍ぐらい伸びているため、劇場版で人気が伸びたと言うほど差があるとは言いづらい結果になっています。
+なお、にこは割合ではちょっと少なめですが、去年の投稿数、および総投稿数では一位であり、増加率では劣ってますが増加数ではものすごい量でした。&lt;/p&gt;
+
+&lt;h1 id=&#34;カップリング人気か-単体人気か:75ddd37748aba843c77b1dfa46ae15ad&#34;&gt;カップリング人気か、単体人気か&lt;/h1&gt;
+
+&lt;p&gt;イラストは必ずしもカップリングだけとは限らず、単体でも投稿されています。
+前回の結果からわかるとおり、にこまき等のカップリングイラストはとても多いですが、キャラ単体とカップリングとでどちらの方が人気なのでしょうか？
+そこで、キャラごとにカップリングとキャラ単体、どっちが人気なのかを集計しました。&lt;/p&gt;
+
+&lt;p&gt;なお、カップリングタグがついたものにはキャラの名前のタグがつけられる傾向にあるため、
+キャラ単体でカップリングタグがないものと、カップリングタグがあるもの（キャラ単体のタグもあっていい）で集計しています。
+また、投稿数だとキャラ別に比較しにくいので、そのキャラの全イラストとの割合で集計しています。&lt;br /&gt;
+（全イラスト＝キャラ単体＋カップリングイラスト）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/image
+s/blog/2016/2016-02-04-chara_cp_rate.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-02-04-chara_cp_rate.png&#34;  width=&#34;70%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;多くのキャラはキャラ:カップリングイラストが7:3になっていますが、南ことりはキャラ単体の人気が高く、80％以上が単体のイラストになっています。&lt;/p&gt;
+
+&lt;p&gt;一方で西木野真姫と絢瀬絵里はカップリング人気が特に高く、4割を超えています。
+昨日の結果からわかるように、この二人はそれぞれ3種類のカップリングがランクインしており（「にこまき」「りんまき」「ほのまき」、「のぞえり」「うみえり」「ほのえり」）、やはりカップリング人気が高いのもうなずけます。&lt;/p&gt;
+
+&lt;h1 id=&#34;サンシャイン:75ddd37748aba843c77b1dfa46ae15ad&#34;&gt;サンシャイン&lt;/h1&gt;
+
+&lt;p&gt;サンシャインが発表されておよそ一年たちましたが、pixiv上の反応はどうだったのでしょうか。
+というわけで調べてみました。&lt;/p&gt;
+
+&lt;h2 id=&#34;サンシャインイラスト全体:75ddd37748aba843c77b1dfa46ae15ad&#34;&gt;サンシャインイラスト全体&lt;/h2&gt;
+
+&lt;p&gt;サンシャインイラスト全体の投稿数の推移をまとめました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/image
+s/blog/2016/2016-02-04-sun_illust_all.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-02-04-sun_illust_all.png&#34;  width=&#34;50%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;CD発売で一気に盛り上がり、12月の段階では一段落した感じです。
+μ&amp;rsquo;sの初期も同じく発売後2ndまでは落ちていったので、およそ同じ傾向にあるようです。&lt;br /&gt;
+(参考: &lt;a href=&#34;http://ota42y.com/blog/2014/12/25/lovelive/&#34;&gt;pixivのタグから読み解くラブライブイラストの歩み&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;ただ、1月にAqoursのイベントが行われたり、アニメ化が発表されたりと大きく動いたため、今月にかけてまた一気に盛り返すと思われます。&lt;/p&gt;
+
+&lt;h2 id=&#34;aqoursキャラごとの投稿数推移:75ddd37748aba843c77b1dfa46ae15ad&#34;&gt;Aqoursキャラごとの投稿数推移&lt;/h2&gt;
+
+&lt;p&gt;Aqoursメンバーのキャラごとに投稿数推移を見てみました。&lt;br /&gt;
+なお、月ごとの投稿数をグラフ化すると上昇下降が激しすぎたので、累計で集計しています。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ota42y.com/image
+s/blog/2016/2016-02-04-sun_aqours_illust.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-02-04-sun_aqours_illust.png&#34;  width=&#34;70%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;センター総選挙では渡辺曜、黒澤ルビィ、桜内梨子の順でしたが、イラストではルビィがずば抜けて多く、次にヨハネ〜1年2年組と固まっています。&lt;/p&gt;
+
+&lt;p&gt;総選挙でも3年生は下にいましたが、イラストでも同じ結果になっています…
+とはいえ絶対数ではそもそもそんなに差は無く、μ&amp;rsquo;sのころに比べれば全然多いため、アニメ化や2ndでこれから先どう変化していくのが楽しみです。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:75ddd37748aba843c77b1dfa46ae15ad&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;劇場版で爆発的に人気が出たキャラはいなさそう
+
+&lt;ul&gt;
+&lt;li&gt;うみぱなが伸びているが、2期以降初めての聖誕祭が今年だったためと思われる&lt;/li&gt;
+&lt;li&gt;他の伸びが大きいキャラもそこまでかけ離れてはいない&lt;/li&gt;
+&lt;li&gt;にこは伸び率は悪いが投稿数は一番多い&lt;/li&gt;
+&lt;li&gt;伸びてないというより、元から凄い人気だっただけかと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;キャラごとにカップリングか単体かはかなり好みが違う
+
+&lt;ul&gt;
+&lt;li&gt;西木野真姫と絢瀬絵里はカップリング相手としてかなり人気&lt;/li&gt;
+&lt;li&gt;南ことりはカップリングより一人の方が人気&lt;/li&gt;
+&lt;li&gt;他のキャラはだいたい単体7:カップリング3ぐらい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;サンシャインはいったん落ち着いた
+
+&lt;ul&gt;
+&lt;li&gt;μ&amp;rsquo;sの1st以降と同じ傾向&lt;/li&gt;
+&lt;li&gt;ただし数自体は全然多い&lt;/li&gt;
+&lt;li&gt;総選挙とpixivの人気は違うみたい&lt;/li&gt;
+&lt;li&gt;とはいえ、そこまで差は無い&lt;/li&gt;
+&lt;li&gt;2016/01で大きく動いたので今後の動きに期待&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;サンシャインに関しては先月にかなり大きく動いたため、ここ最近の変化も調べたいと思います。&lt;br /&gt;
+ただし、落選ショックから立ち直れたらの話ですが…(´･_･`)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年のpixiv内ラブライブイラストの推移</title>
@@ -18,7 +132,8 @@
       <description>
 
 &lt;p&gt;「はぁい！楽しい人生送ってる？」&lt;br /&gt;
-私はファイナルライブ全落ちしたので楽しい人生は送れてません…全落ち…&lt;/p&gt;
+私はファイナルライブ落ちたので楽しい人生は送れてません…&lt;br /&gt;
+誰か3/31の東京ドームに連れて行ってください… ＿: (´ཀ`」∠):＿&lt;/p&gt;
 
 &lt;p&gt;さてーーー&lt;br /&gt;
 去年「&lt;a href=&#34;http://ota42y.com/blog/2014/12/25/lovelive/&#34;&gt;pixivのタグから読み解くラブライブイラストの歩み&lt;/a&gt;」というのを書きましたが、それ以降である2015/12月までの変化をまとめました。&lt;/p&gt;
