@@ -6,8 +6,87 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 04 Feb 2016 21:27:18 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>dump/restoreコマンドでデータのバックアップ・リストアをする</title>
+      <link>http://ota42y.com/blog/2016/02/07/dump_restore_command/</link>
+      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:24d1aea959d1a3feee770b5361f2f824&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dump/restoreコマンドでパーティションごとバックアップ/リストアができる&lt;/li&gt;
+&lt;li&gt;SDカードの中身を移行するのに便利
+
+&lt;ul&gt;
+&lt;li&gt;もちろんHDDでもいける&lt;/li&gt;
+&lt;li&gt;Windowsは基本的にSDカードの第一パーティションしか認識できない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;sdカードのデータ移行がしたい:24d1aea959d1a3feee770b5361f2f824&#34;&gt;SDカードのデータ移行がしたい&lt;/h1&gt;
+
+&lt;p&gt;Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。&lt;/p&gt;
+
+&lt;p&gt;ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2014/12/30/link2sd/&#34;&gt;ASUS MeMO Pad 7 ME572CでLink2SDを動かす&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、  HDDを対象としたバックアップも同じ手順で可能です。&lt;/p&gt;
+
+&lt;h1 id=&#34;sdカードの第二パーティションのマウント:24d1aea959d1a3feee770b5361f2f824&#34;&gt;SDカードの第二パーティションのマウント&lt;/h1&gt;
+
+&lt;p&gt;Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。&lt;/p&gt;
+
+&lt;p&gt;なお、Windowsでは基本的にSDカードの第二パーティションはマウントできないため、Linux上で作業を行いました。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 接続された位置をfdiskで調べる
+sudo fdisk -l
+
+# 以下のようにSDカードのパーティションの位置が表示される
+# /dev/sdc1 42 42424242 4242424242 42 HPFS/NTFS/exFAT
+# /dev/sdc2 4242 42424242 42424242 42 Linux
+
+# ext3でフォーマットしているのでマウントする
+# (どうフォーマットしているかはその人次第です)
+sudo mount -t ext3 /dev/sdc2 /mnt/sd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;dumpコマンドでバックアップ:24d1aea959d1a3feee770b5361f2f824&#34;&gt;dumpコマンドでバックアップ&lt;/h1&gt;
+
+&lt;p&gt;dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。
+差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# mount先の/mnt/sd以下をバックアップ
+sudo dump -0 -f /data/sd.dump /mnt/sd
+
+# -0でダンプレベル0(フルバックアップ)
+# -fでバックアップしたデータのファイル名を指定
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;restoreコマンドでリストア:24d1aea959d1a3feee770b5361f2f824&#34;&gt;restoreコマンドでリストア&lt;/h1&gt;
+
+&lt;p&gt;restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。
+バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、
+上記の手順で同じ場所にマウントしてあります。&lt;/p&gt;
+
+&lt;p&gt;なお、restoreコマンドはリストア先を指定できそうなオプションが存在します。
+ですが何故か上手く動かず、デフォルトの挙動であるカレントディレクトリにリストアされてしまうため、
+事前にマウント先に移動しています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /mnt/sd
+restore -r -f /data/sd.dump
+# -rでデータをフルリストア
+# -fでバックアップしたファイルを指定
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;時間がかかりますが、以上の手順でデータ移行が完了します。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2015年のpixiv内ラブライブイラストの分析</title>
@@ -1549,64 +1628,6 @@ sushi 0.5
 
 &lt;p&gt;ただ、この川目当てで行くには短すぎるので(日本一短い一級河川)、&lt;br /&gt;
 うなぎと組み合わせるとか他の用事のついでに足を運ぶのがいいと思います。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>第48回情報科学若手の会2015で発表してきた</title>
-      <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
-      <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</guid>
-      <description>
-
-&lt;p&gt;というわけで発表しました。&lt;br /&gt;
-発表資料はこちら。&lt;/p&gt;
-
-&lt;p&gt;実際は動画で紹介していますが、めっちゃ重くなったのでそれは外した軽量版になります。&lt;br /&gt;
-代わりにリンクをスライドに書いてあるので、そちらで見てください。&lt;br /&gt;
-また、実際は使わなかった非表示スライドも表示していますが、ちゃんと作っていないのでご注意ください。&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;発表内容について:960011acd5e7afc5edcb122b8bab3124&#34;&gt;発表内容について&lt;/h1&gt;
-
-&lt;p&gt;4回目ぐらいの参加ですが、ほぼ毎年CHIの締め切りと重なったり、&lt;br /&gt;
-UISTの数週間前みたいな時期なのであまりこの分野からの参加者が少なく、&lt;br /&gt;
-需要がありそうとういうのを去年から考えていました。(&lt;a href=&#34;http://ota42y.com/blog/2014/09/15/wakate2014/#まとめ:5448e46160544c3c78693ad97d653b2a&#34;&gt;去年のエントリ&lt;/a&gt;)&lt;br /&gt;
-何故か今年に限って似た分野の研究が多かったですがw&lt;/p&gt;
-
-&lt;p&gt;新しいインタフェース系は結構話題になりますが、改善とか調査系とかはあまりHCI分野の人以外からは話題にされないので、&lt;br /&gt;
-意図的に新しいインタフェース系は抑えてそれ以外のやつを入れています。(非表示にたくさんあるけど)&lt;br /&gt;
-実際、その辺についてはあまり聞かないのでためになったという声を頂いたので、&lt;br /&gt;
-いい案配だったとおもいます。&lt;/p&gt;
-
-&lt;h1 id=&#34;反省点:960011acd5e7afc5edcb122b8bab3124&#34;&gt;反省点&lt;/h1&gt;
-
-&lt;p&gt;質疑応答で盛り上がるだろう場所は予測できていたので、&lt;br /&gt;
-そこに関しての補足スライドを用意するべきでした…&lt;/p&gt;
-
-&lt;p&gt;事前に作ったスライドを、前日にダメダメに見えたので作り直してしまったので、&lt;br /&gt;
-結果としては良くなったけどもう少し早くに完成させて修正したかったです。&lt;br /&gt;
-ただ、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
-
-&lt;h1 id=&#34;追加情報:960011acd5e7afc5edcb122b8bab3124&#34;&gt;追加情報&lt;/h1&gt;
-
-&lt;p&gt;今回のはほぼ英語論文から取ってきましたが、日本語での発表を捜すなら&lt;a href=&#34;www.interaction-ipsj.org/&#34;&gt;インタラクション&lt;/a&gt;がオススメです。&lt;/p&gt;
-
-&lt;p&gt;また、質疑応答時やTwitterで追加情報を流していただきました。感謝です。&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;HCI分野でも（調査系と比べて）とくに新技術の発表が多いトップカンファレンスACM UISTは、来年アジア初開催、「日本で」開催ですよ！みんなで行こー &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; / 今年は &lt;a href=&#34;http://t.co/GY2XiamnkI&#34;&gt;http://t.co/GY2XiamnkI&lt;/a&gt;&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645410232546410496&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;HCI系のトップカンファレンスACM CHIの自主勉強会が毎年東京と北海道で開催され、過去の資料が公開されているので、HCIに興味持った方はまずこの資料見てみるといいと思います！ &lt;a href=&#34;http://t.co/WTIFCbO04m&#34;&gt;http://t.co/WTIFCbO04m&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt;&lt;/p&gt;&amp;mdash; 湯村 翼＠10/3おうちハックナイト (@yumu19) &lt;a href=&#34;https://twitter.com/yumu19/status/645412250988077060&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;調査系（エスノグラフィー）なども多くユーザビリティを仕事にしてる方も参考になりそうなトップカンファACM CHIは、今年アジア初開催、韓国でした。 &lt;a href=&#34;http://t.co/7iFp4VFQPG&#34;&gt;http://t.co/7iFp4VFQPG&lt;/a&gt; ←6月の勉強会 &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; &lt;a href=&#34;https://t.co/VsVFP9y5Ov&#34;&gt;https://t.co/VsVFP9y5Ov&lt;/a&gt;&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645411168899600388&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; HRI &lt;a href=&#34;http://t.co/uvweEJIpNy&#34;&gt;http://t.co/uvweEJIpNy&lt;/a&gt; , HAI &lt;a href=&#34;http://t.co/SU4DV1xPF3&#34;&gt;http://t.co/SU4DV1xPF3&lt;/a&gt; という国際会議を紹介しました。HRIは心理学系の人たちが多いです。HAIは実装系もバランスよくいる印象。&lt;/p&gt;&amp;mdash; arc@dmz (@arcatdmz) &lt;a href=&#34;https://twitter.com/arcatdmz/status/645412878262996993&#34;&gt;2015, 9月 20&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
     </item>
     

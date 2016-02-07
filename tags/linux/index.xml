@@ -6,8 +6,87 @@
     <description>Recent content in Linux on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 14 Oct 2015 23:24:16 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>dump/restoreコマンドでデータのバックアップ・リストアをする</title>
+      <link>http://ota42y.com/blog/2016/02/07/dump_restore_command/</link>
+      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
+      <description>
+
+&lt;h1 id=&#34;まとめ:24d1aea959d1a3feee770b5361f2f824&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dump/restoreコマンドでパーティションごとバックアップ/リストアができる&lt;/li&gt;
+&lt;li&gt;SDカードの中身を移行するのに便利
+
+&lt;ul&gt;
+&lt;li&gt;もちろんHDDでもいける&lt;/li&gt;
+&lt;li&gt;Windowsは基本的にSDカードの第一パーティションしか認識できない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;sdカードのデータ移行がしたい:24d1aea959d1a3feee770b5361f2f824&#34;&gt;SDカードのデータ移行がしたい&lt;/h1&gt;
+
+&lt;p&gt;Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。&lt;/p&gt;
+
+&lt;p&gt;ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。&lt;br /&gt;
+&lt;a href=&#34;http://ota42y.com/blog/2014/12/30/link2sd/&#34;&gt;ASUS MeMO Pad 7 ME572CでLink2SDを動かす&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、  HDDを対象としたバックアップも同じ手順で可能です。&lt;/p&gt;
+
+&lt;h1 id=&#34;sdカードの第二パーティションのマウント:24d1aea959d1a3feee770b5361f2f824&#34;&gt;SDカードの第二パーティションのマウント&lt;/h1&gt;
+
+&lt;p&gt;Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。&lt;/p&gt;
+
+&lt;p&gt;なお、Windowsでは基本的にSDカードの第二パーティションはマウントできないため、Linux上で作業を行いました。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 接続された位置をfdiskで調べる
+sudo fdisk -l
+
+# 以下のようにSDカードのパーティションの位置が表示される
+# /dev/sdc1 42 42424242 4242424242 42 HPFS/NTFS/exFAT
+# /dev/sdc2 4242 42424242 42424242 42 Linux
+
+# ext3でフォーマットしているのでマウントする
+# (どうフォーマットしているかはその人次第です)
+sudo mount -t ext3 /dev/sdc2 /mnt/sd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;dumpコマンドでバックアップ:24d1aea959d1a3feee770b5361f2f824&#34;&gt;dumpコマンドでバックアップ&lt;/h1&gt;
+
+&lt;p&gt;dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。
+差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# mount先の/mnt/sd以下をバックアップ
+sudo dump -0 -f /data/sd.dump /mnt/sd
+
+# -0でダンプレベル0(フルバックアップ)
+# -fでバックアップしたデータのファイル名を指定
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;restoreコマンドでリストア:24d1aea959d1a3feee770b5361f2f824&#34;&gt;restoreコマンドでリストア&lt;/h1&gt;
+
+&lt;p&gt;restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。
+バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、
+上記の手順で同じ場所にマウントしてあります。&lt;/p&gt;
+
+&lt;p&gt;なお、restoreコマンドはリストア先を指定できそうなオプションが存在します。
+ですが何故か上手く動かず、デフォルトの挙動であるカレントディレクトリにリストアされてしまうため、
+事前にマウント先に移動しています。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /mnt/sd
+restore -r -f /data/sd.dump
+# -rでデータをフルリストア
+# -fでバックアップしたファイルを指定
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;時間がかかりますが、以上の手順でデータ移行が完了します。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
