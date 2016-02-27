@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://ota42y.com/</loc>
-    <lastmod>2016-02-07T12:27:38+09:00</lastmod>
+    <lastmod>2016-02-25T22:44:10+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/blog/2016/02/25/docker_develop/</loc>
+    <lastmod>2016-02-25T22:44:10+09:00</lastmod>
   </url>
   
   <url>
