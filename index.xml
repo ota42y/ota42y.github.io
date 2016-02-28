@@ -6,8 +6,51 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 28 Feb 2016 19:37:37 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 28 Feb 2016 22:40:59 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2016年02月まとめ</title>
+      <link>http://ota42y.com/pages/summary/2016/2016-02/</link>
+      <pubDate>Sun, 28 Feb 2016 22:40:59 +0900</pubDate>
+      
+      <guid>http://ota42y.com/pages/summary/2016/2016-02/</guid>
+      <description>&lt;p&gt;まとめ。&lt;br /&gt;
+ぎりぎりに一気に書くスタイル…&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/02/04/lovelive-pixiv-character-2016/&#34;&gt;2015年のpixiv内ラブライブイラストの分析&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;去年との違いを意識したまとめ&lt;/li&gt;
+&lt;li&gt;サンシャインのこれからには期待&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/02/07/dump_restore_command/&#34;&gt;dump/restoreコマンドでデータのバックアップ・リストアをする&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;思った以上に簡単で便利&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/02/25/docker_develop/&#34;&gt;開発・実行環境をDockerで整える&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;開発環境構築に時間かけるの人生の無駄なので凄くいい&lt;/li&gt;
+&lt;li&gt;遅いのは何とかしたい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ota42y.com/blog/2016/02/28/jenkins_node_select/&#34;&gt;Jenkinsのノード選択をNode and Label parameter pluginでやる&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pipeline Pluginは自分で道を開かないといけないので大変&lt;/li&gt;
+&lt;li&gt;こっちはできる事に限界があるが標準的なジョブ構成で使える&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ota42y/items/af90ada86fd671dc5122&#34;&gt;MacのDocker上で動くMongoDBのデータを永続化するの大変そう&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;凄くいいと思ったら意外な落とし穴が&lt;/li&gt;
+&lt;li&gt;とりあえずMongoDBは外部に立てて凌いでます&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Jenkinsのノード選択をNode and Label parameter pluginでやる</title>
@@ -330,7 +373,7 @@ restore -r -f /data/sd.dump
       <description>
 
 &lt;p&gt;HP先行の結果が出ましたね。&lt;br /&gt;
-…………後察しください。&lt;/p&gt;
+…………ご察しください。&lt;/p&gt;
 
 &lt;p&gt;さて、前回(&lt;a href=&#34;http://ota42y.com/blog/2016/01/22/lovelive-pixiv-illust-2015/&#34;&gt;2015年のpixiv内ラブライブイラストの推移
 &lt;/a&gt;)に引き続き、pixiv内のラブライブイラストについて見ていきます。&lt;br /&gt;
@@ -1250,77 +1293,6 @@ col.find(a: 1).replace_one({b:1})
 col.insert_one({ a: 1 })
 col.find(a: 1).replace_one(&#39;$set&#39; =&amp;gt; {b:1})
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>バッカソン（おばかハック）! #MA11 に参加してきた</title>
-      <link>http://ota42y.com/blog/2015/10/18/ma11/</link>
-      <pubDate>Sun, 18 Oct 2015 22:23:57 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/10/18/ma11/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://hacklog.jp/events/view/61&#34;&gt;http://hacklog.jp/events/view/61&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;こんなの(&lt;a href=&#34;http://hacklog.jp/works/4849&#34;&gt;バッカライザー&lt;/a&gt;)を作ったところ、Microsoft賞を頂きましたヽ(´ー｀)ノ&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/images/blog/2015/2015-10-18 ma11.jpg&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-10-18 ma11.jpg&#34;  width=&#34;20%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;以下反省も含めたメモメモ&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://c9.io/&#34;&gt;Cloud.9&lt;/a&gt;便利
-
-&lt;ul&gt;
-&lt;li&gt;いい点&lt;/li&gt;
-&lt;li&gt;オンラインIDE+公開サーバ&lt;/li&gt;
-&lt;li&gt;複数人で同時編集可能&lt;/li&gt;
-&lt;li&gt;作ってその場で動かせて共有可能なのでもの凄い便利&lt;/li&gt;
-&lt;li&gt;sudoも自由にできる&lt;/li&gt;
-&lt;li&gt;はまりどころ&lt;/li&gt;
-&lt;li&gt;謎の挙動が多い
-
-&lt;ul&gt;
-&lt;li&gt;URLの末尾にいつの間にか-1がついてたり&lt;/li&gt;
-&lt;li&gt;プログラムから自分のURLを取ると:80がついていたり(URLには無い)&lt;/li&gt;
-&lt;li&gt;コンソールが8行ぐらいしか出なかったり(同時に開いている一番小さいサイズになる?)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.projectoxford.ai/&#34;&gt;Microsoft Project Oxford&lt;/a&gt;便利
-
-&lt;ul&gt;
-&lt;li&gt;精度のいい文字認識&lt;/li&gt;
-&lt;li&gt;顔認識も&lt;/li&gt;
-&lt;li&gt;Cloud9の公開ディレクトリに保存してURLを渡すだけで終わる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;チーム分担
-
-&lt;ul&gt;
-&lt;li&gt;全員エンジニアなだけあって、役割分担は凄く上手くいった&lt;/li&gt;
-&lt;li&gt;特にタスク切らなくても勝手に動いていく感じ&lt;/li&gt;
-&lt;li&gt;実装、コンテンツ作成、調査と分担もいい感じ&lt;/li&gt;
-&lt;li&gt;結果としては後述するように着地点の設定が甘かった&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;アイデアだし
-
-&lt;ul&gt;
-&lt;li&gt;そもそも技術的に難しそうなチャレンジにフォーカスして中身に集中できなかった&lt;/li&gt;
-&lt;li&gt;認識部分をどう作るか？にフォーカスしすぎた&lt;/li&gt;
-&lt;li&gt;今回のハッカソンの趣向的に、モノの仕上がり具合やプレゼンに集中すべきだった&lt;/li&gt;
-&lt;li&gt;チャレンジよりコンテンツ作りに振るべき&lt;/li&gt;
-&lt;li&gt;思しくすることに時間を割けなかった&lt;/li&gt;
-&lt;li&gt;発表プレゼンとかも&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;技術力不足
-
-&lt;ul&gt;
-&lt;li&gt;画像認識によるシール判別をしたかったが時間が足りず断念&lt;/li&gt;
-&lt;li&gt;事前にある程度作れるものをまとめておいた方が絶対にいい&lt;/li&gt;
-&lt;li&gt;何を作るかだけにフォーカスする&lt;/li&gt;
-&lt;li&gt;登録された画像パターンの検索は何かと便利そうだし作っておいていいかも&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;色々と問題点が明らかになりましたが、やっていてとても楽しかったです。&lt;br /&gt;
-今回のMAはもう終わりますが、次のMAは色々なハッカソンに参加してみようと思います。&lt;/p&gt;
 </description>
     </item>
     

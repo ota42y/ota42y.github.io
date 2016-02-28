@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on おおたの物置</title>
+    <link>http://ota42y.com/tags/docker/</link>
+    <description>Recent content in Docker on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 25 Feb 2016 22:44:10 +0900</lastBuildDate>
+    <atom:link href="http://ota42y.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>開発・実行環境をDockerで整える</title>
+      <link>http://ota42y.com/blog/2016/02/25/docker_develop/</link>
+      <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/02/25/docker_develop/</guid>
+      <description>
+
+&lt;h1 id=&#34;概要:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;概要&lt;/h1&gt;
+
+&lt;p&gt;開発環境構築はだいたい辛い作業ですが、Dockerを使うことで構築がとても楽になります。もちろん銀の弾丸ではないので別のつらさは存在します。
+しかし一歩も進まずに時間だけが過ぎることはなくなるため精神衛生上良く、開発を始める段階においてはとても効果的です。&lt;/p&gt;
+
+&lt;h1 id=&#34;開発環境構築が辛い:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;開発環境構築が辛い&lt;/h1&gt;
+
+&lt;p&gt;開発環境構築はプログラミングをする上で必須の作業ですが、依存関係など非常に多くの落とし穴があることが多いです。
+また、環境構築そのものが目的ということは少なく、その先に別にやりたい事が控えていることが多いと思います。
+そのため、とりあえずやってみようと思った際に、その試してみるべき部分にたどり着けずに時間を浪費していくのはかなり辛いです…&lt;/p&gt;
+
+&lt;h2 id=&#34;設定自動化スクリプトでは足りない:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;設定自動化スクリプトでは足りない&lt;/h2&gt;
+
+&lt;p&gt;環境構築の手順が煩雑な問題に対しては、chefやAnsible等、自動で環境を構築する方法はいくつかあります。
+これらは一度作れば同じ環境を何度でも作ることが出来ますが、2回目以降を楽にするものであるため初回はそれほど楽になりません。
+また、すでに入っているものとの依存関係の問題などはこれらのツールでは解決しないため、
+複雑な環境になればなるほど環境構築の難易度は上がります。&lt;/p&gt;
+
+&lt;h2 id=&#34;開発環境にdockerを使う:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;開発環境にDockerを使う&lt;/h2&gt;
+
+&lt;p&gt;このような問題に対応するために、Dockerを開発環境として使うことを考えます。
+Dockerでは毎回クリーンな環境から必要な分だけインストールするため、
+依存関係地獄にはまりにくいです。
+さらに、Dockerfileで構築手順を保存できるため、
+複数のマシンで同じ環境を揃えるのが簡単で、かつ不要になったらコンテナを消すことで容量の削減にもなります。&lt;/p&gt;
+
+&lt;p&gt;また、Dockerfileを本番環境に持って行き、そのままデプロイすることも可能です。
+そのため、本番でだけバグが起きる…といったことも回避出来ます。&lt;/p&gt;
+
+&lt;h1 id=&#34;dockerで開発環境を整える:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;Dockerで開発環境を整える&lt;/h1&gt;
+
+&lt;p&gt;細かい部分はDocker入門を読むのが早いと思います。
+そのため、割とさくっとしか説明しません。&lt;/p&gt;
+
+&lt;h2 id=&#34;dockerコンテナの作成:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;Dockerコンテナの作成&lt;/h2&gt;
+
+&lt;p&gt;Dockerコンテナを構築するのに便利なDockerfileは、
+ベースとなるコンテナをもとに、指定されたコマンドを実行してコンテナを作ってくれます。
+例えば、以下のDockerfileはffmpegがインストール済みのコンテナに対して、
+&lt;a href=&#34;https://nico-opendata.jp/ja/index.html&#34;&gt;ニコニコ静画を使ったChainer用の学習済みモデルファイル&lt;/a&gt;を利用出来る環境を整えています。
+ffmpeg自体はベースのコンテナに入っているため、その後にpythonの実行環境を入れ、様々なライブラリを入れているだけです。
+コンテナの作成はこのDockerfileが置いてあるディレクトリまで移動し、
+&lt;code&gt;docker build -t ffmpeg_test .&lt;/code&gt;
+で作れます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM cellofellow/ffmpeg:latest
+
+RUN apt-get -y update &amp;amp;&amp;amp; apt-get -y upgrade
+RUN apt-get install -y ccache curl g++ gfortran git libhdf5-dev
+RUN apt-get install -y python-pip python-dev
+
+RUN pip install numpy==1.10.2
+
+# scipy
+RUN apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran
+RUN pip install scipy
+RUN pip install Pillow
+RUN pip install scikit-image
+RUN pip install chainer==1.3
+
+# niconico dataset
+RUN pip install git+http://github.com/nico-opendata/niconico_chainer_models.git#egg=niconico_chainer_models
+
+CMD [&amp;quot;/bin/bash -c&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;データの永続化:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;データの永続化&lt;/h2&gt;
+
+&lt;p&gt;Dockerfileに変更を加えるとコンテナが新たに作成されるため、データを入れても気がつくと消えてしまいます。
+もちろんそれでは使い物にならないので、永続化の手法はいくつか考えられているようです。
+開発環境として使う分には、手元のマシンの特定フォルダをDockerマシン上にマウントできるData Volumeを利用するのが良いと思います。&lt;/p&gt;
+
+&lt;p&gt;以下のようにコンテナを実行することで、手元のマシンの~/docker_volume/ffmpeg/を、Dockerマシン上の/tmp/hostにマウントすることが出来ます。&lt;br /&gt;
+&lt;code&gt;docker run -v ~/docker_volume/ffmpeg/:/tmp/host --name ffmpeg -i -t ffmpeg_test /bin/bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;マウントしているだけなので変更もリアルタイムに反映されるため、作業用フォルダをマウントするとスムーズに開発出来ると思います。&lt;/p&gt;
+
+&lt;h1 id=&#34;dockerを開発環境にする上での問題点:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;Dockerを開発環境にする上での問題点&lt;/h1&gt;
+
+&lt;p&gt;環境構築は物凄く楽になりましたが、すべてが良いわけではなく、
+いくつか問題点があります。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境の使い分けの煩雑さ:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;環境の使い分けの煩雑さ&lt;/h2&gt;
+
+&lt;p&gt;Dockerは実行にだけ利用し、開発は手元のホストマシンで行う場合、
+ホストとコンテナとの違いを意識しないといけないため、煩雑さがだいぶ上がります。
+ファイルに保存する場合に保存場所を意識しないといけなかったり、gitにコミットしようとしたらコンテナ上だったりと、コンソール作業のたびに今いる環境を確認するのは結構面倒です。&lt;/p&gt;
+
+&lt;p&gt;もちろん、自動実行が整っててコンテナ側をいじる必要が無かったり、
+開発もコンテナ内でやるような場合は当てはまりません&lt;/p&gt;
+
+&lt;h2 id=&#34;実行速度の問題:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;実行速度の問題&lt;/h2&gt;
+
+&lt;p&gt;MacだとVirtualBoxのVM上でコンテナが動いているため、実質的に専用のVMを立ち上げているのと変わりません。
+そのため、実行速度が遅くなるという問題があります。
+実際、私のMacBook Pro上記の環境で画像分類を行うと、ホストのMacで実行すると1秒以内に終わる処理が、コンテナ上だと100秒ぐらいかかってしまいます。
+おそらくWindowsも同じ仕組みのはずなので、同じような結果になりそうです。
+画像処理など特に重い処理等の場合はとても時間がかかってしまうため、環境構築とは別方面のつらさが出てきます。&lt;/p&gt;
+
+&lt;p&gt;これにたいしては、とりあえず動かしたい初期段階ではDockerを使い、環境が固定化してきた段階で手元のマシンで開発するようにすると、
+開発初期のとりあえず使ってみたい状態は楽に環境を整えられ、確定した段階でローカルでの開発に移行することで、速度的な部分も問題にならなくなります。&lt;/p&gt;
+
+&lt;p&gt;もしかしたら、サーバ上のコンテナにローカルのファイルをマウントするといったことが可能かもしれないので、
+この辺はもう少し調査が必要です…&lt;/p&gt;
+
+&lt;p&gt;なお、何故遅いのかの原因まではつかめていません。
+VMのオーバーヘッドなのかもしれませんし、&lt;a href=&#34;http://qiita.com/masuidrive/items/d71ee1881fffb6ad098f&#34;&gt;VirtualBoxボリュームによるせい&lt;/a&gt;の可能性もあります。
+ここをもう少し調べれば回避策はあるかもしれません。&lt;/p&gt;
+
+&lt;h1 id=&#34;まとめ:b4435baf1accd1f59ab486a39b64af8d&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;開発環境構築は毎回辛い
+
+&lt;ul&gt;
+&lt;li&gt;依存関係&lt;/li&gt;
+&lt;li&gt;複数台で開発すると何回もセットアップする羽目に&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;環境構築自動化
+
+&lt;ul&gt;
+&lt;li&gt;構築用スクリプトでは解決しない
+
+&lt;ul&gt;
+&lt;li&gt;スタート地点がそれぞれ違う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Dockerで環境ごと作る
+
+&lt;ul&gt;
+&lt;li&gt;毎回クリーンな環境から構築
+
+&lt;ul&gt;
+&lt;li&gt;依存関係に悩まされにくい
+
+&lt;ul&gt;
+&lt;li&gt;一度成功すれば後は固定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;別ベクトルで辛いところはある
+
+&lt;ul&gt;
+&lt;li&gt;作業してるところを意識しないといけない&lt;/li&gt;
+&lt;li&gt;環境によっては遅い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一歩も進まずに四苦八苦するよりも精神衛生上良い
+
+&lt;ul&gt;
+&lt;li&gt;心が折れない&lt;/li&gt;
+&lt;li&gt;問題点がはっきりとして解決しやすい&lt;/li&gt;
+&lt;li&gt;開発初期はDocker、本格的に行けそうなら直接入れるように使い分け&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
