@@ -20,8 +20,7 @@
 
 &lt;p&gt;tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-01-26-tmux_change_pane.gif&#34; alt=&#34;&amp;lt;img src=&amp;quot;/images/blog/2016/2016-01-26-tmux_change_pane.gif&amp;quot;  width=&amp;quot;100%&amp;quot; /&amp;gt;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-01-26-tmux_change_pane.gif&#34; alt=&#34;&amp;lt;img src=&amp;quot;/images/blog/2016/2016-01-26-tmux_change_pane.gif&amp;quot;  width=&amp;quot;100%&amp;quot; /&amp;gt;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;似たようなものでswap-paneというものがすでにあります。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;

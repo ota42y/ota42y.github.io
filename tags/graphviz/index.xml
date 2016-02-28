@@ -19,8 +19,7 @@
 
 &lt;p&gt;こんな感じの画像を作る際に&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-12-22-grahviz.png&#34; alt=&#34;グラフ&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-12-22-grahviz.png&#34; alt=&#34;グラフ&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;これまではパワポの図形機能とかペイントで頑張って作っていましたが、&lt;br /&gt;
 Graphvizを使うと自動で出力できます。&lt;/p&gt;

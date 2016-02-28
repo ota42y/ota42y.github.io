@@ -281,8 +281,7 @@ Workflow Pluginを使う事で、さらに簡単に解決することが出来�
 ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。&lt;br /&gt;
 (また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;
-&lt;br /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-02-10-master-slave.jpg&#34; alt=&#34;分割イメージ&#34; /&gt;&lt;br /&gt;
 (上段のup#4はup#3の間違いです…)&lt;/p&gt;
 
 &lt;p&gt;ビルドが数十分、数時間かかるような巨大な処理の場合、&lt;br /&gt;
@@ -734,8 +733,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 ほぼ同じだけれど若干違うjobを15個並べるといった運用をしていました。&lt;/p&gt;
 
 &lt;p&gt;こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-07-21-jenkins-1.png&#34; alt=&#34;こんな感じ&#34; /&gt;
-&lt;/p&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-07-21-jenkins-1.png&#34; alt=&#34;こんな感じ&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、&lt;br /&gt;
 古い手順のバージョンのマイクロアップデートと、&lt;br /&gt;
@@ -765,8 +763,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   ビルドジョブを下流ビルドとして呼び出す方式です。&lt;/p&gt;
 
 &lt;p&gt;こんな感じですね。&lt;br /&gt;
-  &lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-07-21-jenkins-2.png&#34; alt=&#34;ワークスペース共有&#34; /&gt;
-&lt;/p&gt;
+  &lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-07-21-jenkins-2.png&#34; alt=&#34;ワークスペース共有&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ワークスペース共有を使い、&lt;br /&gt;
   下流ビルドは上流のワークスペース上でビルド作業を行うようにすることで、&lt;br /&gt;

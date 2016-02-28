@@ -51,8 +51,7 @@ Aレコードを下記のページにあるように変更するだけです。&
 &lt;li&gt;既存のIPアドレスをクリックし、前述のGithubの新しいIPアドレスを設定する&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-11-20-github-pages-ip.png&#34; alt=&#34;設定画面&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-11-20-github-pages-ip.png&#34; alt=&#34;設定画面&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;変更をすると、先ほどのdigコマンドがOKを出すようになり、&lt;br /&gt;
 Github Pagesにコミットしても警告メールが飛ばなくなります。&lt;/p&gt;

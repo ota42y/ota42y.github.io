@@ -500,8 +500,7 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 ウィンドウを作って入れ換えたり、左右の中身を入れ換えたり出来ます。&lt;/p&gt;
 
 &lt;p&gt;具体的にはこんな感じで、分割を維持したまま各シェルを入れ換え可能です。
-&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-07-06-tmux.png&#34; alt=&#34;2015-07-06-tmux.png&#34; /&gt;
-&lt;/p&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-07-06-tmux.png&#34; alt=&#34;2015-07-06-tmux.png&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;入れ替えはswap-paneを利用しています。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;

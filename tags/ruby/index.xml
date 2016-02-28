@@ -499,8 +499,7 @@ Mac上ではアプリケーションとして扱われます。&lt;/p&gt;
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-08-10-evernote-link.jpg&#34; alt=&#34;Evernote link&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。&lt;br /&gt;
 そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。&lt;br /&gt;

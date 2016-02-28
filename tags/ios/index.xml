@@ -68,8 +68,7 @@ hdiutil detach disk2
 速度計測には&lt;a href=&#34;http://xbench.com/&#34;&gt;Xbench&lt;/a&gt;を使用しました。&lt;/p&gt;
 
 &lt;p&gt;結果は以下の通りになりました。&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;
-&lt;/p&gt;
+&lt;img src=&#34;http://ota42y.com/images/blog/2015/2015-01-23-speed.png&#34; alt=&#34;2015-01-23-speed.png&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;どれをとってもRAMディスクの方が圧倒的に早い結果になりました。&lt;br /&gt;
 ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。&lt;/p&gt;
