@@ -6,8 +6,105 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 28 Feb 2016 22:40:59 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 01 Mar 2016 22:43:14 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>うるう日に1番なりやすい曜日は？</title>
+      <link>http://ota42y.com/blog/2016/03/01/leap-day/</link>
+      <pubDate>Tue, 01 Mar 2016 22:43:14 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/03/01/leap-day/</guid>
+      <description>
+
+&lt;p&gt;今年はうるう年のため、昨日の2016-02-29はうるう日でした。
+うるう年は4年に一回かつ干支は12種類のため、うるう年になる干支は子と辰と申しかありません。&lt;/p&gt;
+
+&lt;p&gt;さて、うるう年にならない干支が存在しますが、うるう日にならない曜日というのは存在するのでしょうか？
+存在しないなら、うるう日になりやすい曜日というのは存在するのでしょうか？&lt;br /&gt;
+気になったので調べました。&lt;/p&gt;
+
+&lt;h1 id=&#34;うるう年のルール:d25f66a7a55da90824e850a39bbd6219&#34;&gt;うるう年のルール&lt;/h1&gt;
+
+&lt;p&gt;うるう年は4年に一回、ただし100で割り切れて400で割り切れない年は来ないというルールになっており、400年間で97回うるう年がおきて一周します。
+そのため、一周する400年間の傾向を調べれば、後はその繰り返しなので変化がなく、うるう日の傾向をすべて調べたと言えます。
+今回は2000年から2399年までのうるう年を調べました。&lt;/p&gt;
+
+&lt;h1 id=&#34;うるう日になりやすい曜日は何曜日か:d25f66a7a55da90824e850a39bbd6219&#34;&gt;うるう日になりやすい曜日は何曜日か&lt;/h1&gt;
+
+&lt;p&gt;97は7で割り切れず、6余るため、全ての曜日が均等にうるう日になることはありません。
+数学が得意な人ならば数式でぱっと曜日計算ができそうですが、私は得意ではないのでプログラムで全列挙して集計します。&lt;/p&gt;
+
+&lt;h2 id=&#34;うるう日カウントプログラム:d25f66a7a55da90824e850a39bbd6219&#34;&gt;うるう日カウントプログラム&lt;/h2&gt;
+
+&lt;p&gt;以下のrubyスクリプトを実行する2ことで、2000年から2399年までのうるう日の曜日をカウントして集計します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;date&#39;
+
+w = Hash.new(0)
+2000.step(2399, 4) do |year|
+    if Date::valid_date?(year, 2, 29)
+        d = Date.new(year, 2, 29)
+        w[d.wday] += 1        
+    end
+end
+
+7.times {|wday| puts &amp;quot;#{Date::DAYNAMES[wday]}:#{w[wday]}&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;結果:d25f66a7a55da90824e850a39bbd6219&#34;&gt;結果&lt;/h2&gt;
+
+&lt;p&gt;結果は以下のようになりました。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sunday:13
+Monday:15
+Tuesday:13
+Wednesday:15
+Thursday:13
+Friday:14
+Saturday:14
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;月曜日と水曜日がうるう日になりやすく、日曜と火曜と木曜がうるう日になりにくい結果になりました。
+もっと差が出るかと思いましたが、均等に起きた場合に比べて一回少ない程度に収まり、思った以上に偏りはないようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;うるう日の偏りの原因:d25f66a7a55da90824e850a39bbd6219&#34;&gt;うるう日の偏りの原因&lt;/h1&gt;
+
+&lt;p&gt;どうしてこのような偏りができるのでしょうか。
+どうやら100年に一度のうるう年にならない年が影響していそうです。&lt;/p&gt;
+
+&lt;p&gt;うるう日は基本的に以下の順に曜日が変わっていきます。&lt;br /&gt;
+火→日→金→水→月→土→木→火（2000年をスタートとした場合)&lt;/p&gt;
+
+&lt;p&gt;ですが、100で割り切れて400で割り切れない年はうるう年では無いため、曜日がずれてしまいます。
+このとき、次のうるう日まで一日少なくなるため、次のうるう日の曜日は一日前の曜日になります（土曜日なら金曜日になる）&lt;/p&gt;
+
+&lt;p&gt;例えば、100年に一度のスキップが無い場合、2104年のうるう日は土曜日になりますが、2100年がスキップされたため一日前の金曜日になります。
+これにより、火→日→金→水→金→水→月→土→木→火と、うるう日のループでは3つ前の曜日に戻ります。&lt;/p&gt;
+
+&lt;p&gt;これにより、2092年、2096年に金曜日と水曜日がうるう日になりましたが、2104年と2108年もまた金曜日と水曜日がうるう日になり、他の曜日より2回多くなります。同じように2204年は木曜日になるはずですが2200年の影響により水曜日になり、水曜日と月曜日が、2304年は木曜日になるはずが月曜日になり、月曜日と土曜日が多くうるう日になります。&lt;/p&gt;
+
+&lt;p&gt;まとめると、2100年の影響で金曜日と水曜日が、2200年の影響で水曜日と月曜日が、2300年の影響で月曜日と土曜日が多くうるう日になります。
+そのため、400年間で多くならなかった日火木が13回うるう日になり、1回多くなる金土が14回、2回多くなる月水が15回うるう日になるようです。&lt;/p&gt;
+
+&lt;h1 id=&#34;次にうるう日が月曜日になるのはいつか:d25f66a7a55da90824e850a39bbd6219&#34;&gt;次にうるう日が月曜日になるのはいつか？&lt;/h1&gt;
+
+&lt;p&gt;今年と同じく、月曜日がうるう日になるのは最速で28年後の2044年です。
+例外でスキップされる場合を除けば28年後になります。&lt;/p&gt;
+
+&lt;p&gt;なお、私は1988年生まれであり、その年のうるう日は月曜日でした。
+2000年は例外スキップが無いため、ことしは生まれ年とうるう日が一致する年になります。&lt;/p&gt;
+
+&lt;p&gt;なお、2400年までに月曜日がうるう日になるのは以下の通りです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2016-02-29 2044-02-29 2072-02-29 2112-02-29 2140-02-29
+2168-02-29 2196-02-29 2208-02-29 2236-02-29 2264-02-29
+2292-02-29 2304-02-29 2332-02-29 2360-02-29 2388-02-29
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;私が生きている間にはあと2回くるか、人類が老いを克服して無限に生きられるようになり、数えるのが無意味になるかのどっちかですね。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2016年02月まとめ</title>
@@ -1236,63 +1333,6 @@ wl tasks --completed true -j | go run report.go
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;もうちょっと見やすくしたい&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MongoDB の update は部分 update ではない</title>
-      <link>http://ota42y.com/blog/2015/12/02/mongodb_update/</link>
-      <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
-      
-      <guid>http://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ:621f39d31cd5b5462567615247739831&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;MongoDB の update はレコードのID以外の要素を全て置き換える&lt;/li&gt;
-&lt;li&gt;指定したカラムだけ置き換えてはくれない&lt;/li&gt;
-&lt;li&gt;部分 update したい場合は専用の方法でクエリを作る&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;mongodb-の-update-はレコードをほぼ全て置き換える:621f39d31cd5b5462567615247739831&#34;&gt;MongoDB の update はレコードをほぼ全て置き換える&lt;/h1&gt;
-
-&lt;p&gt;以下のように insert して update を実行します&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;db.test.insert({a: 1})
-db.test.update({a:1}, {b: 1})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# ruby版
-mongo = Mongo::Client.new(&amp;quot;mongodb://localhost&amp;quot;)
-col = mongo[:test]
-col.insert_one({ a: 1 })
-col.find(a: 1).replace_one({b:1})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;insert と update とでキーが違うため、指定した部分だけが書き換わり&lt;br /&gt;
-&lt;code&gt;{a:1, b:1}&lt;/code&gt;&lt;br /&gt;
-となりそうですが、実際は&lt;br /&gt;
-&lt;code&gt;{b:1}&lt;/code&gt;&lt;br /&gt;
-と、後のデータで完全上書きされてしまいます。&lt;/p&gt;
-
-&lt;p&gt;このように、MongoDB の update はデータの全置き換えを実行します。&lt;br /&gt;
-なお、ObjectId は変わらないため、消して再度 insert しているのではなく、ObjectId 以外のデータを全て変更しています。&lt;/p&gt;
-
-&lt;h1 id=&#34;回避方法:621f39d31cd5b5462567615247739831&#34;&gt;回避方法&lt;/h1&gt;
-
-&lt;p&gt;もちろん毎度上書きだととても不便なため、回避方法が存在します。&lt;/p&gt;
-
-&lt;p&gt;以下のように、update する際に &lt;code&gt;$set&lt;/code&gt; のキーとして変更するデータのみを渡します。&lt;br /&gt;
-これにより、指定したものだけ書き換えられるようになります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;db.test.update({a:1}, {$set:{b: 1}})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# ruby版
-col.insert_one({ a: 1 })
-col.find(a: 1).replace_one(&#39;$set&#39; =&amp;gt; {b:1})
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
