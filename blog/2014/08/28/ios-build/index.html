@@ -119,19 +119,19 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#usr-bin-agvtool:bc0afc4cfa6f44ceb49a050ef4299a5f">/usr/bin/agvtool</a>
+<li><a href="#usr-bin-agvtool">/usr/bin/agvtool</a>
 <ul>
-<li><a href="#バージョンを設定する:bc0afc4cfa6f44ceb49a050ef4299a5f">バージョンを設定する</a></li>
-<li><a href="#バージョンを確認する:bc0afc4cfa6f44ceb49a050ef4299a5f">バージョンを確認する</a></li>
+<li><a href="#バージョンを設定する">バージョンを設定する</a></li>
+<li><a href="#バージョンを確認する">バージョンを確認する</a></li>
 </ul></li>
-<li><a href="#使える証明書を確認する:bc0afc4cfa6f44ceb49a050ef4299a5f">使える証明書を確認する</a></li>
-<li><a href="#usr-bin-xcodebuild:bc0afc4cfa6f44ceb49a050ef4299a5f">/usr/bin/xcodebuild</a>
+<li><a href="#使える証明書を確認する">使える証明書を確認する</a></li>
+<li><a href="#usr-bin-xcodebuild">/usr/bin/xcodebuild</a>
 <ul>
-<li><a href="#使えるsdkを確認する:bc0afc4cfa6f44ceb49a050ef4299a5f">使えるSDKを確認する</a></li>
-<li><a href="#ビルド設定を表示する:bc0afc4cfa6f44ceb49a050ef4299a5f">ビルド設定を表示する</a></li>
-<li><a href="#ビルドする:bc0afc4cfa6f44ceb49a050ef4299a5f">ビルドする</a></li>
+<li><a href="#使えるsdkを確認する">使えるSDKを確認する</a></li>
+<li><a href="#ビルド設定を表示する">ビルド設定を表示する</a></li>
+<li><a href="#ビルドする">ビルドする</a></li>
 </ul></li>
-<li><a href="#appを署名してipaファイルにする:bc0afc4cfa6f44ceb49a050ef4299a5f">appを署名してipaファイルにする</a></li>
+<li><a href="#appを署名してipaファイルにする">appを署名してipaファイルにする</a></li>
 </ul>
 </nav>
                 </div>
@@ -148,21 +148,21 @@
 <p>なお、以下のサンプルプロジェクトを使って確認しました。<br />
 <a href="https://developer.apple.com/library/ios/samplecode/CustomHTTPProtocol/Introduction/Intro.html#//apple_ref/doc/uid/DTS40013653">CustomHTTPProtocol</a></p>
 
-<h1 id="usr-bin-agvtool:bc0afc4cfa6f44ceb49a050ef4299a5f">/usr/bin/agvtool</h1>
+<h1 id="usr-bin-agvtool">/usr/bin/agvtool</h1>
 
-<h2 id="バージョンを設定する:bc0afc4cfa6f44ceb49a050ef4299a5f">バージョンを設定する</h2>
+<h2 id="バージョンを設定する">バージョンを設定する</h2>
 
 <p><code>/usr/bin/agvtool new-version -all (VERSION_NUMBER)</code><br />
 xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更できます。</p>
 
-<h2 id="バージョンを確認する:bc0afc4cfa6f44ceb49a050ef4299a5f">バージョンを確認する</h2>
+<h2 id="バージョンを確認する">バージョンを確認する</h2>
 
 <p><code>/usr/bin/agvtool mvers -terse</code>
 アプリのバージョン番号を確認出来ます。<br />
 プロジェクト設定のVersionの部分ですね。<br />
 (mversはmarketing-versionの略です)</p>
 
-<h1 id="使える証明書を確認する:bc0afc4cfa6f44ceb49a050ef4299a5f">使える証明書を確認する</h1>
+<h1 id="使える証明書を確認する">使える証明書を確認する</h1>
 
 <pre><code class="language-bash">/usr/bin/security find-identity -p codesigning -v
   1) ABCDEFGHIJKLMNOPQRSTUVWXYZ(識別子) &quot;iPhone Developer: ota42y (XXXXXXXX識別子)&quot;
@@ -171,9 +171,9 @@ xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更で�
 
 <p>このコンピュータで使えるcodesigningの一覧が取れます。</p>
 
-<h1 id="usr-bin-xcodebuild:bc0afc4cfa6f44ceb49a050ef4299a5f">/usr/bin/xcodebuild</h1>
+<h1 id="usr-bin-xcodebuild">/usr/bin/xcodebuild</h1>
 
-<h2 id="使えるsdkを確認する:bc0afc4cfa6f44ceb49a050ef4299a5f">使えるSDKを確認する</h2>
+<h2 id="使えるsdkを確認する">使えるSDKを確認する</h2>
 
 <pre><code class="language-bash">/usr/bin/xcodebuild -showsdks
 OS X SDKs:
@@ -190,7 +190,7 @@ iOS Simulator SDKs:
 
 <p>使えるSDK一覧が表示されます。</p>
 
-<h2 id="ビルド設定を表示する:bc0afc4cfa6f44ceb49a050ef4299a5f">ビルド設定を表示する</h2>
+<h2 id="ビルド設定を表示する">ビルド設定を表示する</h2>
 
 <p><code>/usr/bin/xcodebuild -list</code></p>
 
@@ -211,13 +211,13 @@ iOS Simulator SDKs:
         CustomHTTPProtocol
 </code></pre>
 
-<h2 id="ビルドする:bc0afc4cfa6f44ceb49a050ef4299a5f">ビルドする</h2>
+<h2 id="ビルドする">ビルドする</h2>
 
 <p><code>/usr/bin/xcodebuild -target CustomHTTPProtocol -configuration Debug build CONFIGURATION_BUILD_DIR=./app</code><br />
 でビルドを実行できます。<br />
 target、configurationを指定し、appディレクトリにappファイルとdSYMファイルを作成します。</p>
 
-<h1 id="appを署名してipaファイルにする:bc0afc4cfa6f44ceb49a050ef4299a5f">appを署名してipaファイルにする</h1>
+<h1 id="appを署名してipaファイルにする">appを署名してipaファイルにする</h1>
 
 <p><code>/usr/bin/xcrun -sdk iphoneos PackageApplication -v (appファイルへのフルパス) -o (保存するipaファイルのフルパス)</code><br />
 何故か相対パスだとうまくいきませんでした</p>

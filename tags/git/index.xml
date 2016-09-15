@@ -35,7 +35,7 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
       <guid>http://ota42y.com/blog/2014/08/25/git-new-workdir/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ビルドに時間がかかる環境下では、ビルドのキャッシュが重要&lt;/li&gt;
@@ -47,7 +47,7 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
 &lt;li&gt;スマホアプリじゃなくても便利&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;ビルドのキャッシュ:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;ビルドのキャッシュ&lt;/h1&gt;
+&lt;h1 id=&#34;ビルドのキャッシュ&#34;&gt;ビルドのキャッシュ&lt;/h1&gt;
 
 &lt;p&gt;Objective-cやJava、C++でスマホアプリを作成する場合、&lt;br /&gt;
 どの言語もコンパイルが必要になります。&lt;br /&gt;
@@ -57,7 +57,7 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
 変更したファイルのみがコンパイルされるため、&lt;br /&gt;
 フルビルドをしなければ気にならないはずです。&lt;/p&gt;
 
-&lt;h1 id=&#34;gitのチェックアウトによるファイル変更問題:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;gitのチェックアウトによるファイル変更問題&lt;/h1&gt;
+&lt;h1 id=&#34;gitのチェックアウトによるファイル変更問題&#34;&gt;gitのチェックアウトによるファイル変更問題&lt;/h1&gt;
 
 &lt;p&gt;gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。&lt;br /&gt;
 これにより、ブランチ間の差分が全てビルド対象になってしまいます。&lt;/p&gt;
@@ -74,7 +74,7 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
 &lt;p&gt;こういった場合、git-new-workdirを使うことで、
 だいぶ楽に解決することができます。&lt;/p&gt;
 
-&lt;h1 id=&#34;git-new-workdirとは:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;git-new-workdirとは&lt;/h1&gt;
+&lt;h1 id=&#34;git-new-workdirとは&#34;&gt;git-new-workdirとは&lt;/h1&gt;
 
 &lt;p&gt;これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。&lt;br /&gt;
 これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、&lt;br /&gt;
@@ -83,13 +83,13 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
 &lt;p&gt;また、gitのワーキングディレクトリやステージングエリアは共用されないため、&lt;br /&gt;
 コミットしていない変更が別のディレクトリに影響をあたることはありません。　&lt;/p&gt;
 
-&lt;h2 id=&#34;インストール:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;インストール&lt;/h2&gt;
+&lt;h2 id=&#34;インストール&#34;&gt;インストール&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;git/contrib/workdir/git-new-workdir&lt;/code&gt;に入っていたので、&lt;br /&gt;
 &lt;code&gt;export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH&lt;/code&gt;
 でパスを通しました。&lt;/p&gt;
 
-&lt;h2 id=&#34;使い方:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;使い方&lt;/h2&gt;
+&lt;h2 id=&#34;使い方&#34;&gt;使い方&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;git-new-workdir repository_folder new_workdir branch_name(オプション)&lt;/code&gt;です。&lt;br /&gt;
 後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、&lt;br /&gt;
@@ -97,7 +97,7 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
 
 &lt;p&gt;新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。&lt;/p&gt;
 
-&lt;h1 id=&#34;注意点:bab02fce294c55cfdd08d2d994439ea8&#34;&gt;注意点&lt;/h1&gt;
+&lt;h1 id=&#34;注意点&#34;&gt;注意点&lt;/h1&gt;
 
 &lt;p&gt;同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。&lt;br /&gt;
 なお、片方からもう片方が何をチェックアウトしているかはわからないため、&lt;br /&gt;

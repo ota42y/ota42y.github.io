@@ -17,14 +17,14 @@
       <guid>http://ota42y.com/blog/2014/08/16/evernote-url/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる&lt;/li&gt;
 &lt;li&gt;Automatorならターミナルを立ち上げずにスクリプトを実行できる&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;automatorでスクリプトを実行する:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;Automatorでスクリプトを実行する&lt;/h1&gt;
+&lt;h1 id=&#34;automatorでスクリプトを実行する&#34;&gt;Automatorでスクリプトを実行する&lt;/h1&gt;
 
 &lt;p&gt;前回(&lt;a href=&#34;http://ota42y.com/blog/2014/08/10/evernote-link/&#34;&gt;Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした&lt;/a&gt;)
 では、&lt;br /&gt;
@@ -33,12 +33,12 @@
 &lt;p&gt;結論としては、Macと標準で入っているAutomatorを使うことで、&lt;br /&gt;
 ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;automatorのワークフローを作る:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;Automatorのワークフローを作る&lt;/h1&gt;
+&lt;h1 id=&#34;automatorのワークフローを作る&#34;&gt;Automatorのワークフローを作る&lt;/h1&gt;
 
 &lt;p&gt;単体のアプリケーションとして実行するため、&lt;br /&gt;
 Automatorを立ち上げアプリケーションを選択します。&lt;/p&gt;
 
-&lt;h2 id=&#34;実行ディレクトリの取得:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;実行ディレクトリの取得&lt;/h2&gt;
+&lt;h2 id=&#34;実行ディレクトリの取得&#34;&gt;実行ディレクトリの取得&lt;/h2&gt;
 
 &lt;p&gt;私の環境では、clipboardのインストール先はグローバルではなく、&lt;br /&gt;
 スクリプトのあるフォルダにbundler専用のディレクトリを作り、&lt;br /&gt;
@@ -54,7 +54,7 @@ Automatorを立ち上げアプリケーションを選択します。&lt;/p&gt;
 Automatorの実行ファイルがあるパスを求め、&lt;br /&gt;
 そこに移動するようにしています。&lt;/p&gt;
 
-&lt;h2 id=&#34;自分自身のパスを求めるapple-script:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;自分自身のパスを求めるApple Script&lt;/h2&gt;
+&lt;h2 id=&#34;自分自身のパスを求めるapple-script&#34;&gt;自分自身のパスを求めるApple Script&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;on run {input, parameters}
 set p to POSIX path of (path to me)
@@ -68,7 +68,7 @@ end run
 このスクリプトを後述するシェルスクリプトの前に実行するようにします。&lt;br /&gt;
 これでシェルスクリプトに引数としてパスを渡せます。&lt;/p&gt;
 
-&lt;h2 id=&#34;evernote-urlを置換するスクリプト:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;Evernote URLを置換するスクリプト&lt;/h2&gt;
+&lt;h2 id=&#34;evernote-urlを置換するスクリプト&#34;&gt;Evernote URLを置換するスクリプト&lt;/h2&gt;
 
 &lt;p&gt;内容はほぼ前回と同じです。&lt;br /&gt;
 ただし、各種環境設定は読み込んでくれないため、&lt;br /&gt;
@@ -101,7 +101,7 @@ popd
 Alfredから実行することでターミナルを立ち上げることなく、&lt;br /&gt;
 クリップボードのノートリンクを置換できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;完成品:b168c087bfcbe9dcf4a213cfde27f9b0&#34;&gt;完成品&lt;/h1&gt;
+&lt;h1 id=&#34;完成品&#34;&gt;完成品&lt;/h1&gt;
 
 &lt;p&gt;できあがったスクリプトは&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace&#34;&gt;https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace&lt;/a&gt;&lt;br /&gt;
@@ -120,7 +120,7 @@ Mac上ではアプリケーションとして扱われます。&lt;/p&gt;
       <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Evernoteのノートリンクの仕様が変わって使い物にならなくなった&lt;/li&gt;
@@ -128,7 +128,7 @@ Mac上ではアプリケーションとして扱われます。&lt;/p&gt;
 &lt;li&gt;ただし、Macではスクリプトの実行方法で問題あり&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
+&lt;h1 id=&#34;evernoteのノートリンク仕様の変更&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
@@ -150,9 +150,9 @@ AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、&l
 幸いなことにevernote:///スキームは未だ有効です。&lt;br /&gt;
 また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。&lt;/p&gt;
 
-&lt;h1 id=&#34;リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
+&lt;h1 id=&#34;リンク置換スクリプトの作成&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
 
-&lt;h2 id=&#34;ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
+&lt;h2 id=&#34;ノートリンクの仕様&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;以下は予想であり、正確なものではありません&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
@@ -171,7 +171,7 @@ Macでは残念ながらまともな物はありませんでした。&lt;/p&gt;
 それを実行するまでにかなりキーストロークが必要なため、見送りました。&lt;br /&gt;
 理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。&lt;/p&gt;
 
-&lt;h2 id=&#34;リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
+&lt;h2 id=&#34;リンク置換スクリプト&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
 
 &lt;p&gt;結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。&lt;br /&gt;
 事前にclipboard gemをインストールしておく必要があります。&lt;/p&gt;

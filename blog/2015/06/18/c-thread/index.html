@@ -123,16 +123,16 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf">スレッドによる並行処理</a>
+<li><a href="#スレッドによる並行処理">スレッドによる並行処理</a>
 <ul>
-<li><a href="#スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf">スレッドの作成(pthread_create)</a></li>
-<li><a href="#スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf">スレッドの終了を待つ(pthread_join)</a></li>
-<li><a href="#サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf">サンプルコード</a></li>
+<li><a href="#スレッドの作成-pthread-create">スレッドの作成(pthread_create)</a></li>
+<li><a href="#スレッドの終了を待つ-pthread-join">スレッドの終了を待つ(pthread_join)</a></li>
+<li><a href="#サンプルコード">サンプルコード</a></li>
 </ul></li>
-<li><a href="#mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf">mutexによるロック処理</a>
+<li><a href="#mutexによるロック処理">mutexによるロック処理</a>
 <ul>
-<li><a href="#排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf">排他制御を行う</a></li>
-<li><a href="#サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf">サンプルコード</a></li>
+<li><a href="#排他制御を行う">排他制御を行う</a></li>
+<li><a href="#サンプルコード-1">サンプルコード</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -148,9 +148,9 @@
 別スレッドで実行する関数のポインタと、<br />
 その関数に渡すデータのポインタを指定して実行するようです。</p>
 
-<h1 id="スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf">スレッドによる並行処理</h1>
+<h1 id="スレッドによる並行処理">スレッドによる並行処理</h1>
 
-<h2 id="スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf">スレッドの作成(pthread_create)</h2>
+<h2 id="スレッドの作成-pthread-create">スレッドの作成(pthread_create)</h2>
 
 <p>Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。</p>
 
@@ -185,7 +185,7 @@
 </ul></li>
 </ul>
 
-<h2 id="スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf">スレッドの終了を待つ(pthread_join)</h2>
+<h2 id="スレッドの終了を待つ-pthread-join">スレッドの終了を待つ(pthread_join)</h2>
 
 <p>pthread_joinで、指定したスレッドが終了するまで待機することができます。</p>
 
@@ -205,7 +205,7 @@
 </ul></li>
 </ul>
 
-<h2 id="サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf">サンプルコード</h2>
+<h2 id="サンプルコード">サンプルコード</h2>
 
 <p>以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。<br />
 排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。</p>
@@ -260,9 +260,9 @@ int main(void) {
 }
 </code></pre>
 
-<h1 id="mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf">mutexによるロック処理</h1>
+<h1 id="mutexによるロック処理">mutexによるロック処理</h1>
 
-<h2 id="排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf">排他制御を行う</h2>
+<h2 id="排他制御を行う">排他制御を行う</h2>
 
 <p><code>pthread_mutex_t</code>型の変数に対して、<code>pthread_mutex_lock</code>、<code>pthread_mutex_unlock</code>を実行することで、<br />
 処理をロックすることができます。</p>
@@ -270,7 +270,7 @@ int main(void) {
 <p><code>pthread_mutex_t</code>型の変数は<code>pthread_mutex_init</code>で初期化することができます。<br />
 このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。</p>
 
-<h2 id="サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf">サンプルコード</h2>
+<h2 id="サンプルコード-1">サンプルコード</h2>
 
 <p>上記の例にロックによる排他制御を入れました。<br />
 そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。</p>

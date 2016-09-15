@@ -21,7 +21,7 @@
 だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、&lt;br /&gt;
 forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ブログ用リポジトリの状態:ddb8b92e74a0bbb467acacf69fe7edf1&#34;&gt;ブログ用リポジトリの状態&lt;/h1&gt;
+&lt;h1 id=&#34;ブログ用リポジトリの状態&#34;&gt;ブログ用リポジトリの状態&lt;/h1&gt;
 
 &lt;p&gt;このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/ota42y.github.io&#34;&gt;https://github.com/ota42y/ota42y.github.io&lt;/a&gt;&lt;/p&gt;
@@ -30,7 +30,7 @@ forkして手を加えたリポジトリにfork元の修正を取り入れる事
 bitbucket上にOctopress自体のリポジトリが存在します。&lt;br /&gt;
 このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。&lt;/p&gt;
 
-&lt;h1 id=&#34;octopressのアップデート:ddb8b92e74a0bbb467acacf69fe7edf1&#34;&gt;Octopressのアップデート&lt;/h1&gt;
+&lt;h1 id=&#34;octopressのアップデート&#34;&gt;Octopressのアップデート&lt;/h1&gt;
 
 &lt;p&gt;普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。&lt;br /&gt;
 その後、Octopress側のmasterとマージをするだけになります。&lt;/p&gt;

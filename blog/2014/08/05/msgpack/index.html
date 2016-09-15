@@ -119,13 +119,13 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#messagepackとは:2b6eb61cc702492464e1c57eb2dbd5d5">MessagePackとは</a></li>
-<li><a href="#他のバイナリシリアライズフォーマットとの差:2b6eb61cc702492464e1c57eb2dbd5d5">他のバイナリシリアライズフォーマットとの差</a></li>
-<li><a href="#使い方:2b6eb61cc702492464e1c57eb2dbd5d5">使い方</a></li>
-<li><a href="#コード:2b6eb61cc702492464e1c57eb2dbd5d5">コード</a>
+<li><a href="#messagepackとは">MessagePackとは</a></li>
+<li><a href="#他のバイナリシリアライズフォーマットとの差">他のバイナリシリアライズフォーマットとの差</a></li>
+<li><a href="#使い方">使い方</a></li>
+<li><a href="#コード">コード</a>
 <ul>
-<li><a href="#c:2b6eb61cc702492464e1c57eb2dbd5d5">C++</a></li>
-<li><a href="#ruby:2b6eb61cc702492464e1c57eb2dbd5d5">ruby</a></li>
+<li><a href="#c">C++</a></li>
+<li><a href="#ruby">ruby</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -138,7 +138,7 @@
 
 <p>最近よく聞くMessagePackとは何かを調べたのでメモ。</p>
 
-<h1 id="messagepackとは:2b6eb61cc702492464e1c57eb2dbd5d5">MessagePackとは</h1>
+<h1 id="messagepackとは">MessagePackとは</h1>
 
 <p>バイナリでデータを保存するフォーマットです。<br />
 JSONと比べると、保存した状態の可読性を犠牲にする代わりに、<br />
@@ -148,14 +148,14 @@ JSONと比べると、保存した状態の可読性を犠牲にする代わり�
 いろんな言語(nodeとかrubyとかcppとか)
 で相互にデータを使えます。</p>
 
-<h1 id="他のバイナリシリアライズフォーマットとの差:2b6eb61cc702492464e1c57eb2dbd5d5">他のバイナリシリアライズフォーマットとの差</h1>
+<h1 id="他のバイナリシリアライズフォーマットとの差">他のバイナリシリアライズフォーマットとの差</h1>
 
 <p>MessagePackはバッファをうまく使って早かったり、
 読み込み途中でもデシリアライズできるとか、<br />
 結構いろいろと高速化のための工夫がされています。<br />
 (ただし、実装によって若干違いがあるようです)</p>
 
-<h1 id="使い方:2b6eb61cc702492464e1c57eb2dbd5d5">使い方</h1>
+<h1 id="使い方">使い方</h1>
 
 <p>rubyなら<code>gem install msgpack</code>で、
 MacのC++なら<code>brew install msgpack</code>で使えるようになります。</p>
@@ -167,9 +167,9 @@ MacのC++なら<code>brew install msgpack</code>で使えるようになりま�
 MSGPACK_DEFINEマクロに入れると、<br />
 自動でシリアライズ/デシリアライズできるみたいです。</p>
 
-<h1 id="コード:2b6eb61cc702492464e1c57eb2dbd5d5">コード</h1>
+<h1 id="コード">コード</h1>
 
-<h2 id="c:2b6eb61cc702492464e1c57eb2dbd5d5">C++</h2>
+<h2 id="c">C++</h2>
 
 <pre><code class="language-c++">#include &lt;msgpack.hpp&gt;
 #include &lt;vector&gt;
@@ -251,7 +251,7 @@ int main(void) {
 }
 </code></pre>
 
-<h2 id="ruby:2b6eb61cc702492464e1c57eb2dbd5d5">ruby</h2>
+<h2 id="ruby">ruby</h2>
 
 <pre><code class="language-ruby">require 'msgpack'
 

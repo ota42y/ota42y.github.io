@@ -17,7 +17,7 @@
       <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:24d1aea959d1a3feee770b5361f2f824&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;dump/restoreコマンドでパーティションごとバックアップ/リストアができる&lt;/li&gt;
@@ -29,7 +29,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;sdカードのデータ移行がしたい:24d1aea959d1a3feee770b5361f2f824&#34;&gt;SDカードのデータ移行がしたい&lt;/h1&gt;
+&lt;h1 id=&#34;sdカードのデータ移行がしたい&#34;&gt;SDカードのデータ移行がしたい&lt;/h1&gt;
 
 &lt;p&gt;Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。&lt;/p&gt;
 
@@ -38,7 +38,7 @@
 
 &lt;p&gt;そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、  HDDを対象としたバックアップも同じ手順で可能です。&lt;/p&gt;
 
-&lt;h1 id=&#34;sdカードの第二パーティションのマウント:24d1aea959d1a3feee770b5361f2f824&#34;&gt;SDカードの第二パーティションのマウント&lt;/h1&gt;
+&lt;h1 id=&#34;sdカードの第二パーティションのマウント&#34;&gt;SDカードの第二パーティションのマウント&lt;/h1&gt;
 
 &lt;p&gt;Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。&lt;/p&gt;
 
@@ -56,7 +56,7 @@ sudo fdisk -l
 sudo mount -t ext3 /dev/sdc2 /mnt/sd
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;dumpコマンドでバックアップ:24d1aea959d1a3feee770b5361f2f824&#34;&gt;dumpコマンドでバックアップ&lt;/h1&gt;
+&lt;h1 id=&#34;dumpコマンドでバックアップ&#34;&gt;dumpコマンドでバックアップ&lt;/h1&gt;
 
 &lt;p&gt;dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。
 差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。&lt;/p&gt;
@@ -68,7 +68,7 @@ sudo dump -0 -f /data/sd.dump /mnt/sd
 # -fでバックアップしたデータのファイル名を指定
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;restoreコマンドでリストア:24d1aea959d1a3feee770b5361f2f824&#34;&gt;restoreコマンドでリストア&lt;/h1&gt;
+&lt;h1 id=&#34;restoreコマンドでリストア&#34;&gt;restoreコマンドでリストア&lt;/h1&gt;
 
 &lt;p&gt;restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。
 バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、
@@ -96,7 +96,7 @@ restore -r -f /data/sd.dump
       <guid>http://ota42y.com/blog/2015/01/21/android-dict/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;clip2dicを使うとクリップボード内を自動で辞書検索する&lt;/li&gt;
@@ -106,7 +106,7 @@ restore -r -f /data/sd.dump
 &lt;li&gt;Google Driveをビューワーとして使うといい&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;ポップアップ辞書アプリ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;ポップアップ辞書アプリ&lt;/h1&gt;
+&lt;h1 id=&#34;ポップアップ辞書アプリ&#34;&gt;ポップアップ辞書アプリ&lt;/h1&gt;
 
 &lt;p&gt;iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。&lt;/p&gt;
 
@@ -116,9 +116,9 @@ restore -r -f /data/sd.dump
 &lt;p&gt;私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、&lt;br /&gt;
 他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;clip2dictから使えるオフライン辞書アプリ:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;clip2dictから使えるオフライン辞書アプリ&lt;/h1&gt;
+&lt;h1 id=&#34;clip2dictから使えるオフライン辞書アプリ&#34;&gt;clip2dictから使えるオフライン辞書アプリ&lt;/h1&gt;
 
-&lt;h2 id=&#34;colordict:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;ColorDict&lt;/h2&gt;
+&lt;h2 id=&#34;colordict&#34;&gt;ColorDict&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&#34;&gt;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&lt;/a&gt;&lt;/p&gt;
 
@@ -130,7 +130,7 @@ restore -r -f /data/sd.dump
 (おそらく&lt;a href=&#34;https://code.google.com/p/stardict-3/&#34;&gt;こちらの辞書&lt;/a&gt;を使用しています)&lt;br /&gt;
 StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。&lt;/p&gt;
 
-&lt;h2 id=&#34;goldendict:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;GoldenDict&lt;/h2&gt;
+&lt;h2 id=&#34;goldendict&#34;&gt;GoldenDict&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&#34;&gt;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android.free&amp;amp;hl=ja&#34;&gt;Free版&lt;/a&gt;&lt;br /&gt;
@@ -143,7 +143,7 @@ StartDict形式の辞書ファイルを持っているならば、端末内のdi
 &lt;p&gt;複数の辞書ファイルを持っている場合は便利ですが、&lt;br /&gt;
 私はそんなに辞書ファイルを持っていないので無料で十分でした。&lt;/p&gt;
 
-&lt;h1 id=&#34;その他:ed221e5557bcd0b4aae577b8b3dc18cd&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;p&gt;手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。&lt;br /&gt;
 pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br /&gt;
@@ -182,13 +182,13 @@ pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br 
 
 &lt;p&gt;なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。&lt;/p&gt;
 
-&lt;h1 id=&#34;link2sd:6514d702fff248069258ee7a3bdb31d4&#34;&gt;Link2SD&lt;/h1&gt;
+&lt;h1 id=&#34;link2sd&#34;&gt;Link2SD&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.Link2SD&amp;amp;hl=ja&#34;&gt;Link2SD&lt;/a&gt;は、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。&lt;br /&gt;
 おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、&lt;br /&gt;
 アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。&lt;/p&gt;
 
-&lt;h1 id=&#34;sdカードの準備:6514d702fff248069258ee7a3bdb31d4&#34;&gt;SDカードの準備&lt;/h1&gt;
+&lt;h1 id=&#34;sdカードの準備&#34;&gt;SDカードの準備&lt;/h1&gt;
 
 &lt;p&gt;このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。&lt;/p&gt;
 
@@ -205,7 +205,7 @@ pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br 
 fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、&lt;br /&gt;
 NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/p&gt;
 
-&lt;h1 id=&#34;アプリをsdカードに移す:6514d702fff248069258ee7a3bdb31d4&#34;&gt;アプリをSDカードに移す&lt;/h1&gt;
+&lt;h1 id=&#34;アプリをsdカードに移す&#34;&gt;アプリをSDカードに移す&lt;/h1&gt;
 
 &lt;p&gt;Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。&lt;br /&gt;
 ただし、データをSDカードに移動する場合は&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.link2sdplus&amp;amp;hl=ja&#34;&gt;有料アドオン&lt;/a&gt;が必要です。&lt;/p&gt;
@@ -255,7 +255,7 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
 
 &lt;p&gt;そのため、Rootを取って無効化することにしました。&lt;/p&gt;
 
-&lt;h1 id=&#34;root化手順:da1b4865caf34b84064437e98e031591&#34;&gt;Root化手順&lt;/h1&gt;
+&lt;h1 id=&#34;root化手順&#34;&gt;Root化手順&lt;/h1&gt;
 
 &lt;p&gt;RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。&lt;br /&gt;
 (2014/12/28の最新版は1.4.6.8r)&lt;/p&gt;
@@ -371,7 +371,7 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
       <guid>http://ota42y.com/blog/2014/09/04/centos7-android-build/</guid>
       <description>
 
-&lt;h1 id=&#34;環境設定:aa9f8b8e81983399e477301661d08262&#34;&gt;環境設定&lt;/h1&gt;
+&lt;h1 id=&#34;環境設定&#34;&gt;環境設定&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip
 sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
@@ -380,14 +380,14 @@ sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
 &lt;p&gt;他にもいくつかあった気がしますが、&lt;br /&gt;
 後はエラーとして出たコマンドをインストールするだけなので都度入れてください&lt;/p&gt;
 
-&lt;h1 id=&#34;android-sdkとndkのダウンロード:aa9f8b8e81983399e477301661d08262&#34;&gt;Android SDKとNDKのダウンロード&lt;/h1&gt;
+&lt;h1 id=&#34;android-sdkとndkのダウンロード&#34;&gt;Android SDKとNDKのダウンロード&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://developer.android.com/sdk/index.html&#34;&gt;http://developer.android.com/sdk/index.html&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://developer.android.com/tools/sdk/ndk/index.html&#34;&gt;https://developer.android.com/tools/sdk/ndk/index.html&lt;/a&gt;&lt;br /&gt;
 からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。&lt;br /&gt;
 その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。&lt;/p&gt;
 
-&lt;h1 id=&#34;sdk-platformのインストール:aa9f8b8e81983399e477301661d08262&#34;&gt;SDK Platformのインストール&lt;/h1&gt;
+&lt;h1 id=&#34;sdk-platformのインストール&#34;&gt;SDK Platformのインストール&lt;/h1&gt;
 
 &lt;p&gt;Eclipseが使えないためSDK Managerは使えませんが、&lt;br /&gt;
 代わりにコマンドラインからインストールすることができます。&lt;/p&gt;
@@ -399,7 +399,7 @@ android update sdk -u -a -t extra-google-google_play_services
 
 &lt;p&gt;後は通常のコマンドラインからビルドする方法でビルド可能です。&lt;/p&gt;
 
-&lt;h1 id=&#34;注意点:aa9f8b8e81983399e477301661d08262&#34;&gt;注意点&lt;/h1&gt;
+&lt;h1 id=&#34;注意点&#34;&gt;注意点&lt;/h1&gt;
 
 &lt;p&gt;なお、MacやWindowsだとファイル名はcase insensitiveですが、&lt;br /&gt;
 CentOSだと普通はcase sensitiveなので注意です。&lt;br /&gt;

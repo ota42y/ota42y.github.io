@@ -43,7 +43,7 @@
 &lt;p&gt;(なお、細かい修正やこの記事の執筆等を、&lt;br /&gt;
 &lt;a href=&#34;https://atnd.org/events/60889&#34;&gt;正月ハッカソン2015&lt;/a&gt;でやりました)&lt;/p&gt;
 
-&lt;h1 id=&#34;どんなchrome拡張か:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;どんなChrome拡張か&lt;/h1&gt;
+&lt;h1 id=&#34;どんなchrome拡張か&#34;&gt;どんなChrome拡張か&lt;/h1&gt;
 
 &lt;p&gt;現在、Evernoteのノート固有のリンクを取得すると、&lt;br /&gt;
 &lt;code&gt;https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/&lt;/code&gt;&lt;br /&gt;
@@ -59,7 +59,7 @@ Evernoteはログインが最長で一週間しか保てず、また二段階認
 &lt;p&gt;そのため、上記のようなWebアプリでノートを開くようなリンクを、&lt;br /&gt;
 オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。&lt;br /&gt;
 Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、&lt;br /&gt;
@@ -111,19 +111,19 @@ hubot scfes levelup time 830 ex
 
 &lt;p&gt;今のところ主な機能は2つです。&lt;/p&gt;
 
-&lt;h2 id=&#34;スタミナがmaxになる時間になったら通知する:91b003f8885a14792b1f4b6d2095c657&#34;&gt;スタミナがMaxになる時間になったら通知する&lt;/h2&gt;
+&lt;h2 id=&#34;スタミナがmaxになる時間になったら通知する&#34;&gt;スタミナがMaxになる時間になったら通知する&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;hubot scfes remind stamina 10 50&lt;/code&gt;&lt;br /&gt;
 で、スタミナの現在値が10、最大値が50の場合に、Maxになる時刻に通知してくれます。&lt;br /&gt;
 それ以外の値の場合は調節してください。&lt;/p&gt;
 
-&lt;h2 id=&#34;スタミナがnの倍数になったときに通知する:91b003f8885a14792b1f4b6d2095c657&#34;&gt;スタミナがnの倍数になったときに通知する&lt;/h2&gt;
+&lt;h2 id=&#34;スタミナがnの倍数になったときに通知する&#34;&gt;スタミナがnの倍数になったときに通知する&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;hubot scfes remind stamina 10 50 25&lt;/code&gt;&lt;br /&gt;
 で、スタミナの現在値が10、最大値が50として、25の倍数の時に通知してくれます。&lt;br /&gt;
 EXでちょうど使い切れるタイミングで通知するといった使い方を想定しています。&lt;/p&gt;
 
-&lt;h2 id=&#34;未実装機能:91b003f8885a14792b1f4b6d2095c657&#34;&gt;未実装機能&lt;/h2&gt;
+&lt;h2 id=&#34;未実装機能&#34;&gt;未実装機能&lt;/h2&gt;
 
 &lt;p&gt;イベント終了までにどれくらいスタミナが回復するかとか、&lt;br /&gt;
 レベルアップするのはいつぐらいになるかとか、&lt;br /&gt;
@@ -148,17 +148,17 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 &lt;p&gt;何をやったかを計測するために定期的にログを残そうと思うのですが、&lt;br /&gt;
 大体忘れるので、こうやって適度に通知することで思いだそう！という試みです。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;進捗 start&lt;/code&gt;で30分ごとに進捗どうですか？と聞いてきます。&lt;br /&gt;
 &lt;code&gt;進捗 stop&lt;/code&gt;でストップします。&lt;/p&gt;
 
-&lt;h1 id=&#34;ホラー体験:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;ホラー体験&lt;/h1&gt;
+&lt;h1 id=&#34;ホラー体験&#34;&gt;ホラー体験&lt;/h1&gt;
 
 &lt;p&gt;setTimeoutが秒設定だと間違えて…(´･_･`)&lt;br /&gt;
 &lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;コード:d0beb815c4c58b718c4b1df8984c9cf3&#34;&gt;コード&lt;/h1&gt;
+&lt;h1 id=&#34;コード&#34;&gt;コード&lt;/h1&gt;
 
 &lt;script src=&#34;https://gist.github.com/ota42y/41fed7d94c23836f3440.js&#34;&gt;&lt;/script&gt;
 </description>
@@ -177,34 +177,34 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
 &lt;p&gt;スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー&lt;br /&gt;
 みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
-&lt;h2 id=&#34;初期化:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;初期化&lt;/h2&gt;
+&lt;h2 id=&#34;初期化&#34;&gt;初期化&lt;/h2&gt;
 
 &lt;p&gt;スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。&lt;br /&gt;
 なお、指定は秒で行います。&lt;br /&gt;
 &lt;code&gt;stamina_calculator = new StaminaCalculator 6*60&lt;/code&gt;&lt;br /&gt;
 この例ですと、6分で1スタミナ回復するゲームになります。&lt;/p&gt;
 
-&lt;h2 id=&#34;指定した値までの回復時間-getnextmaxstaminatime:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;指定した値までの回復時間(getNextMaxStaminaTime)&lt;/h2&gt;
+&lt;h2 id=&#34;指定した値までの回復時間-getnextmaxstaminatime&#34;&gt;指定した値までの回復時間(getNextMaxStaminaTime)&lt;/h2&gt;
 
 &lt;p&gt;現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。&lt;br /&gt;
 Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。&lt;br /&gt;
 &lt;code&gt;stamina_calculator.getNextMaxStaminaTime(10, 60)&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;指定した倍数の値まで回復する時間-getmultiplerecoverytime:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;指定した倍数の値まで回復する時間(getMultipleRecoveryTime)&lt;/h2&gt;
+&lt;h2 id=&#34;指定した倍数の値まで回復する時間-getmultiplerecoverytime&#34;&gt;指定した倍数の値まで回復する時間(getMultipleRecoveryTime)&lt;/h2&gt;
 
 &lt;p&gt;現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。&lt;br /&gt;
 今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。&lt;br /&gt;
 &lt;code&gt;next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;結果をdateオブジェクトにする:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;結果をDateオブジェクトにする&lt;/h2&gt;
+&lt;h2 id=&#34;結果をdateオブジェクトにする&#34;&gt;結果をDateオブジェクトにする&lt;/h2&gt;
 
 &lt;p&gt;メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。&lt;br /&gt;
 Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。&lt;br /&gt;
 &lt;code&gt;stamina_calculator.convertToDate(second)&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;サンプルコード:0cbbc2d9ed2fba7ed86f8c9a20ba848e&#34;&gt;サンプルコード&lt;/h1&gt;
+&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;StaminaCalculator = require(&#39;stamina-calculator&#39;).StaminaCalculator;
 
@@ -248,7 +248,7 @@ Webサーバへのアクセスに対して反応することができます。&l
       <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Evernoteのノートリンクの仕様が変わって使い物にならなくなった&lt;/li&gt;
@@ -256,7 +256,7 @@ Webサーバへのアクセスに対して反応することができます。&l
 &lt;li&gt;ただし、Macではスクリプトの実行方法で問題あり&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
+&lt;h1 id=&#34;evernoteのノートリンク仕様の変更&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
@@ -278,9 +278,9 @@ AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、&l
 幸いなことにevernote:///スキームは未だ有効です。&lt;br /&gt;
 また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。&lt;/p&gt;
 
-&lt;h1 id=&#34;リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
+&lt;h1 id=&#34;リンク置換スクリプトの作成&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
 
-&lt;h2 id=&#34;ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
+&lt;h2 id=&#34;ノートリンクの仕様&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;以下は予想であり、正確なものではありません&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
@@ -299,7 +299,7 @@ Macでは残念ながらまともな物はありませんでした。&lt;/p&gt;
 それを実行するまでにかなりキーストロークが必要なため、見送りました。&lt;br /&gt;
 理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。&lt;/p&gt;
 
-&lt;h2 id=&#34;リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
+&lt;h2 id=&#34;リンク置換スクリプト&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
 
 &lt;p&gt;結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。&lt;br /&gt;
 事前にclipboard gemをインストールしておく必要があります。&lt;/p&gt;

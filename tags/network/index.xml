@@ -26,7 +26,7 @@
 &lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-cards=&#34;hidden&#34; lang=&#34;ja&#34;&gt;&lt;p&gt;GitHub Pagesの旧IPアドレスが利用できなくなります。独自ドメインを利用しているユーザーで旧IPアドレスのままのレポジトリが影響されます。 &lt;a href=&#34;https://t.co/1XI3X3NheA&#34;&gt;https://t.co/1XI3X3NheA&lt;/a&gt;&lt;/p&gt;&amp;mdash; GitHub Japan (@GitHubJapan) &lt;a href=&#34;https://twitter.com/GitHubJapan/status/530526223785811969&#34;&gt;2014, 11月 7&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;確認方法:614adee541427a412227743fac30cb85&#34;&gt;確認方法&lt;/h1&gt;
+&lt;h1 id=&#34;確認方法&#34;&gt;確認方法&lt;/h1&gt;
 
 &lt;p&gt;正しく設定されているかは、
 &lt;a href=&#34;https://github.com/blog/1917-github-pages-legacy-ip-deprecation&#34;&gt;GitHub Pages Legacy IP Deprecation&lt;/a&gt;
@@ -36,7 +36,7 @@ OK以外が表示されたらダメです。&lt;/p&gt;
 &lt;p&gt;このサイトの場合は以下の通りですね。&lt;br /&gt;
 &lt;code&gt;dig ota42y.com | grep -E &#39;(207.97.227.245|204.232.175.78|199.27.73.133)&#39; || echo “OK”&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;修正手順:614adee541427a412227743fac30cb85&#34;&gt;修正手順&lt;/h1&gt;
+&lt;h1 id=&#34;修正手順&#34;&gt;修正手順&lt;/h1&gt;
 
 &lt;p&gt;修正手順は簡単で、自分の持っているドメインを管理しているサービスに行って、&lt;br /&gt;
 Aレコードを下記のページにあるように変更するだけです。&lt;br /&gt;

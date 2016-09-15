@@ -123,12 +123,12 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#manifest-jsonの設定:bd0bcec2c9ce117e634be75ae1170102">manifest.jsonの設定</a></li>
-<li><a href="#使い方:bd0bcec2c9ce117e634be75ae1170102">使い方</a></li>
-<li><a href="#注意点:bd0bcec2c9ce117e634be75ae1170102">注意点</a>
+<li><a href="#manifest-jsonの設定">manifest.jsonの設定</a></li>
+<li><a href="#使い方">使い方</a></li>
+<li><a href="#注意点">注意点</a>
 <ul>
-<li><a href="#保存形式の制約:bd0bcec2c9ce117e634be75ae1170102">保存形式の制約</a></li>
-<li><a href="#読み出せる場所の制約:bd0bcec2c9ce117e634be75ae1170102">読み出せる場所の制約</a></li>
+<li><a href="#保存形式の制約">保存形式の制約</a></li>
+<li><a href="#読み出せる場所の制約">読み出せる場所の制約</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -142,7 +142,7 @@
 <p>Chrome拡張でデータを保存しようとした場合に、<br />
 最も簡単に扱えるのが、localStorageです。</p>
 
-<h1 id="manifest-jsonの設定:bd0bcec2c9ce117e634be75ae1170102">manifest.jsonの設定</h1>
+<h1 id="manifest-jsonの設定">manifest.jsonの設定</h1>
 
 <p>manifest.jsonに以下のパーミッションを追加してください</p>
 
@@ -153,7 +153,7 @@
 
 </code></pre>
 
-<h1 id="使い方:bd0bcec2c9ce117e634be75ae1170102">使い方</h1>
+<h1 id="使い方">使い方</h1>
 
 <p>localStorageという辞書型の変数が定義されるので、<br />
 それに対して読み書きを行うだけで大丈夫です。</p>
@@ -162,9 +162,9 @@
 var data = localStorage[‘data’]
 </code></pre>
 
-<h1 id="注意点:bd0bcec2c9ce117e634be75ae1170102">注意点</h1>
+<h1 id="注意点">注意点</h1>
 
-<h2 id="保存形式の制約:bd0bcec2c9ce117e634be75ae1170102">保存形式の制約</h2>
+<h2 id="保存形式の制約">保存形式の制約</h2>
 
 <p>この方法で保存できるのは文字列だけになります。<br />
 true/falseを保存しても文字列として出てきますし、<br />
@@ -173,7 +173,7 @@ true/falseを保存しても文字列として出てきますし、<br />
 <p>このような場合、JSON.stringifyとJSON.parseを使い、<br />
 JSONに変換して保存すると解決します。</p>
 
-<h2 id="読み出せる場所の制約:bd0bcec2c9ce117e634be75ae1170102">読み出せる場所の制約</h2>
+<h2 id="読み出せる場所の制約">読み出せる場所の制約</h2>
 
 <p>localStorageはページごとに保存するデータがわかれているため、<br />
 読み書きは同じ場所で行う必要があります。</p>

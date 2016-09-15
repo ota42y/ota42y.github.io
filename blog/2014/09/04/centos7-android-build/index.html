@@ -119,10 +119,10 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#環境設定:aa9f8b8e81983399e477301661d08262">環境設定</a></li>
-<li><a href="#android-sdkとndkのダウンロード:aa9f8b8e81983399e477301661d08262">Android SDKとNDKのダウンロード</a></li>
-<li><a href="#sdk-platformのインストール:aa9f8b8e81983399e477301661d08262">SDK Platformのインストール</a></li>
-<li><a href="#注意点:aa9f8b8e81983399e477301661d08262">注意点</a></li>
+<li><a href="#環境設定">環境設定</a></li>
+<li><a href="#android-sdkとndkのダウンロード">Android SDKとNDKのダウンロード</a></li>
+<li><a href="#sdk-platformのインストール">SDK Platformのインストール</a></li>
+<li><a href="#注意点">注意点</a></li>
 </ul>
 </nav>
                 </div>
@@ -132,7 +132,7 @@
             <div class="article">
               
 
-<h1 id="環境設定:aa9f8b8e81983399e477301661d08262">環境設定</h1>
+<h1 id="環境設定">環境設定</h1>
 
 <pre><code class="language-bash">sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip
 sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
@@ -141,14 +141,14 @@ sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
 <p>他にもいくつかあった気がしますが、<br />
 後はエラーとして出たコマンドをインストールするだけなので都度入れてください</p>
 
-<h1 id="android-sdkとndkのダウンロード:aa9f8b8e81983399e477301661d08262">Android SDKとNDKのダウンロード</h1>
+<h1 id="android-sdkとndkのダウンロード">Android SDKとNDKのダウンロード</h1>
 
 <p><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a><br />
 <a href="https://developer.android.com/tools/sdk/ndk/index.html">https://developer.android.com/tools/sdk/ndk/index.html</a><br />
 からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。<br />
 その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。</p>
 
-<h1 id="sdk-platformのインストール:aa9f8b8e81983399e477301661d08262">SDK Platformのインストール</h1>
+<h1 id="sdk-platformのインストール">SDK Platformのインストール</h1>
 
 <p>Eclipseが使えないためSDK Managerは使えませんが、<br />
 代わりにコマンドラインからインストールすることができます。</p>
@@ -160,7 +160,7 @@ android update sdk -u -a -t extra-google-google_play_services
 
 <p>後は通常のコマンドラインからビルドする方法でビルド可能です。</p>
 
-<h1 id="注意点:aa9f8b8e81983399e477301661d08262">注意点</h1>
+<h1 id="注意点">注意点</h1>
 
 <p>なお、MacやWindowsだとファイル名はcase insensitiveですが、<br />
 CentOSだと普通はcase sensitiveなので注意です。<br />
