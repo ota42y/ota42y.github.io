@@ -6,8 +6,51 @@
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 18 Oct 2015 22:23:57 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Oct 2016 22:37:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ginza.rb 第40回でprmdについて話した</title>
+      <link>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</link>
+      <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</guid>
+      <description>
+
+&lt;p&gt;Ginza.rb 第40回に行ってきました。&lt;br /&gt;
+&lt;a href=&#34;https://ginzarb.doorkeeper.jp/events/52895&#34;&gt;https://ginzarb.doorkeeper.jp/events/52895&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回は参加者がLTをする形式で、14人ぐらい？LTがありました。&lt;/p&gt;
+
+&lt;h1 id=&#34;発表内容&#34;&gt;発表内容&lt;/h1&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/Hi86VMANvbpUTn&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ginza-rb-40&#34; title=&#34;prmdのドキュメントが読みやすくなる話&#34; target=&#34;_blank&#34;&gt;prmdのドキュメントが読みやすくなる話&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/ota42y&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆揃える利点を増やしてくれるので、とてもいい構成だと思います。&lt;/p&gt;
+
+&lt;p&gt;また、prmdが出力するドキュメントにはcurlのコマンドやレスポンスのJSONが整った形式でついているため、
+クライアント側としても手軽にAPIをテストすることができてとても有用なので、
+最悪JSON Schema+prmdだけでも導入すると良いと思います。
+(元クライアントからの意見)&lt;/p&gt;
+
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;ruby c extensionが凄い面白かったのでちょっと触ってみようと思います(｀・ω・´)&lt;/p&gt;
+
+&lt;h1 id=&#34;他の方々の資料&#34;&gt;他の方々の資料&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;#ginzarb&lt;/code&gt;のハッシュタグを見て見つかったものだけ上げています&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://koic.hatenablog.com/entry/2016/10/18/000000&#34;&gt;Ginza.rb 第40回 - koicの日記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://keyamb.hatenablog.com/entry/2016/10/19/080000&#34;&gt;Ginza.rb で &amp;ldquo;grifork&amp;rdquo; について発表してきた - weblog of key_amb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kazupon/zi-fen-falseshi-tutamofalsewomisetemiyou&#34;&gt;自分の使ったものをみせてみよう // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://esa-pages.io/p/sharing/2927/posts/159/8a1e5fb77ac4be192dd5.html&#34;&gt;勉強会/ginza.rb #40 - esa-pages.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kyuden/rails-authorization&#34;&gt;Rails Authorization // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/muryoimpl1/buoys-gem&#34;&gt;buoys gem の紹介&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>バッカソン（おばかハック）! #MA11 に参加してきた</title>
@@ -2300,185 +2343,6 @@ Evernoteアプリが立ち上がり、そのノートを開いてくれます。
 &lt;li&gt;わざわざ起動するのは減っていく&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>参加記録 Go Conference 2014 autumn</title>
-      <link>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</link>
-      <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://gocon.connpass.com/event/9748/&#34;&gt;Go Conference 2014 autumn&lt;/a&gt;に参加しました。&lt;br /&gt;
-&lt;a href=&#34;http://togetter.com/li/751700&#34;&gt;togetterまとめ&lt;/a&gt;&lt;br /&gt;
-大体スライドが公開されているので、正確な内容はそちらをどうぞ。&lt;/p&gt;
-
-&lt;p&gt;#まとめ
-- Go言語のシンプルさへのこだわりが凄い
-- 開発陣の徳の高さが凄い
-  - 難しい部分は俺らに任せておけ！的な
-- 明日から使えるGo言語的な情報が盛りだくさん
-  - エラーを_で無視して済みません…(´･_･`)
-- 椅子が痛い
-  - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです…
-- 英語頑張ろう
-  - 日本語スライドありがたや…&lt;/p&gt;
-
-&lt;p&gt;#Keynote1: Rob Pike (@rob_pike) (45min)
-スライドは未公開？&lt;/p&gt;
-
-&lt;p&gt;Go言語の設計者&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%83%91%E3%82%A4%E3%82%AF&#34;&gt;ロブ・パイク&lt;/a&gt;さんのGo言語の思想とかについての話です。&lt;/p&gt;
-
-&lt;p&gt;Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。&lt;br /&gt;
-他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、&lt;br /&gt;
-Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。&lt;br /&gt;
-書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。&lt;/p&gt;
-
-&lt;p&gt;プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。&lt;br /&gt;
-言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、&lt;br /&gt;
-必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。&lt;br /&gt;
-おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。&lt;/p&gt;
-
-&lt;p&gt;簡潔な記述でも理解するのが大変な複雑な事ができるため、&lt;br /&gt;
-簡潔なコード≠単純なコードと言えるのかなと思いました。&lt;/p&gt;
-
-&lt;p&gt;また、Goではコード側ができる限り簡単になるように、&lt;br /&gt;
-複雑な事を可能な限り言語側で隠蔽しているとも言われていました。&lt;br /&gt;
-実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、&lt;br /&gt;
-使う側からはそれほど大変さを感じることなく使えます。&lt;/p&gt;
-
-&lt;p&gt;ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…&lt;/p&gt;
-
-&lt;p&gt;#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)
-&lt;a href=&#34;http://ukai-go-talks.appspot.com/2014/gocon.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。&lt;/p&gt;
-
-&lt;p&gt;Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、&lt;br /&gt;
-ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。&lt;/p&gt;
-
-&lt;p&gt;これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、&lt;br /&gt;
-是非ともスライドが公開されるといいなーと思います。&lt;/p&gt;
-
-&lt;h1 id=&#34;lt1&#34;&gt;LT1&lt;/h1&gt;
-
-&lt;h2 id=&#34;gardener-go&#34;&gt;Gardener &amp;amp; Go&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1cPtFXGVgWcjG7qpwNz7jLbMh9BUW13dM_n1-ls-2u0s/edit#slide=id.p&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。&lt;br /&gt;
-&lt;a href=&#34;http://ec-mail.freegufo.com/items/910014&#34;&gt;GoCon 2014 Autumn Tシャツ | FreeGufo メール便対&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;セッション&#34;&gt;セッション&lt;/h1&gt;
-
-&lt;p&gt;##App Engine for Golang Performance
-&lt;a href=&#34;http://sinmetal-slide.appspot.com/2014/gocon1130/gaego.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@sinmetalさんのGAEとMVM上でのGoとJavaの速度比較です。&lt;br /&gt;
-Goは基本的に倍ぐらい速く、JavaはJavaらしくJVMの起動に時間がかかるといった結果みたいです。&lt;/p&gt;
-
-&lt;p&gt;##Golang @ISUCON
-&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-at-isucon&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@y_matsuwitterさんのISUCONでGo言語を使った話です。&lt;br /&gt;
-ISUCONでやった、Go言語の様々な効率化についてまとめられていました。&lt;/p&gt;
-
-&lt;p&gt;話を聞くとかなり複雑な事をしているようですが、スライドのコードだととても簡単そうで凄いです。&lt;/p&gt;
-
-&lt;p&gt;##mackerel-agent 徹底解説
-&lt;a href=&#34;http://songmu.github.io/slides/gocon2014-autumn/#0&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@Songmuさんによる、mackerel-agentのソースコード解説です。&lt;br /&gt;
-NewRelicっぽいサービスですが、OSSな分色々出来そうで夢が広がる感じです。&lt;/p&gt;
-
-&lt;p&gt;##Why my Go program is slow?
-&lt;a href=&#34;http://www.slideshare.net/InadaNaoki/gocon2014-pprof&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@methaneさんによるCPUプロファイリングについての発表です。&lt;br /&gt;
-アセンブラまで出してくれるpprofの凄さをひしひしと感じます…&lt;/p&gt;
-
-&lt;p&gt;また、Goでは他の関数呼び出しのない末端の関数をインライン展開してくれるので、&lt;br /&gt;
-関数に分けると早かったり、&lt;br /&gt;
-関数呼び出しで呼び出し側が使っているレジスタを全部待避するので、&lt;br /&gt;
-呼び出された側が使った分だけ待避する？Cよりも関数呼び出しは遅いなど、&lt;br /&gt;
-Goの速度についてしっかりと説明されています。&lt;/p&gt;
-
-&lt;p&gt;##Golang JP Community
-&lt;a href=&#34;https://docs.google.com/presentation/d/1UTi4uqt4sOrQ1dHJE0y8UB9BR9iqDK7dLP57QAfrOX4/pub?start=false&amp;amp;loop=false&amp;amp;delayms=3000&amp;amp;slide=id.g4f1d3881c_00&#34;&gt;資料&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.youtube.com/watch?v=LJvEIjRBSDA&#34;&gt;資料２&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@qt_luigiさんの日本のGo言語コミュニティの話でした。&lt;br /&gt;
-いくつか知っているものもありましたが、思った以上に大量にあって驚きました…&lt;/p&gt;
-
-&lt;p&gt;##(タイトルメモり損ねました…GengoでGoの利用事例なお話)
-PHPのAPIをGoに置き換えていったら、500msが10msになったというお話です。&lt;br /&gt;
-クリティカルな所ではなく影響の少ないところから、&lt;br /&gt;
-一気にではなく少しずつ置き換えていくといいそうです。&lt;/p&gt;
-
-&lt;p&gt;Goで作られたデプロイツールが便利そうでした。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/gengo/goship&#34;&gt;https://github.com/gengo/goship&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;##NSQ-Centric Architecture
-&lt;a href=&#34;http://www.slideshare.net/guregu/nsqcentric-architecture-gocon-autumn-2014&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/guregu&#34;&gt;gureguさん&lt;/a&gt;のNSQの話です。&lt;/p&gt;
-
-&lt;p&gt;bit.lyが作ったGo製のメッセージキューである&lt;a href=&#34;https://github.com/bitly/nsq&#34;&gt;NSQ&lt;/a&gt;を使って、&lt;br /&gt;
-チャットアプリを作った発表でした。&lt;/p&gt;
-
-&lt;p&gt;##(Go言語のコンパイラをハックした話)
-&lt;a href=&#34;http://moriyoshi.hatenablog.com/entry/2014/06/03/121728&#34;&gt;参考資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@moriyoshitさんがGo言語で寿司関数を作りたいがために？w　Goのコンパイラをハックしたのと、&lt;br /&gt;
-コンパイラの中についてのお話でした。&lt;/p&gt;
-
-&lt;p&gt;教科書通りのコンパイラの作りしてるんだなーという印象でした。&lt;br /&gt;
-魔境と噂のGCCとかはどうなってるんだろう…と思いました。&lt;/p&gt;
-
-&lt;h1 id=&#34;lt&#34;&gt;LT&lt;/h1&gt;
-
-&lt;h2 id=&#34;nginx-build&#34;&gt;nginx-build&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/nginx-build&#34;&gt;https://speakerdeck.com/cubicdaiya/nginx-build&lt;/a&gt;&lt;br /&gt;
-NginxをビルドするためのツールのDLと、ビルドをやってくれるツールを書いたそうです。&lt;br /&gt;
-バイナリ単体で配布できますし、こういう用途には便利そうな感じ…&lt;/p&gt;
-
-&lt;h2 id=&#34;楽天でterraformを使てる話&#34;&gt;(楽天でTerraformを使てる話)&lt;/h2&gt;
-
-&lt;p&gt;AWSとかのインスタンスをコードから立ち上げられるTerraformを利用して、&lt;br /&gt;
-楽天社内でinfrastructure as codeを進めている話です。&lt;/p&gt;
-
-&lt;p&gt;##ビルドパイプラインツールをGoで作った話
-&lt;a href=&#34;https://speakerdeck.com/ainoya/birudopaipurainturuwogodezuo-tutahua&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;個人的にはJenkinsでビルドパイプラインっぽいのを作るのには、&lt;br /&gt;
-いろんな点からうんざりしていたので、なんか凄い便利そうで気になります！　　
-似たようなのを作ろうと画策していたので、先を越された感はありますが…&lt;/p&gt;
-
-&lt;p&gt;##go/parser, go/astの話
-&lt;a href=&#34;http://yuroyoro.net/gocon_2014_autumn_lt/#/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Goの抽象構文木を生成する標準パッケージの紹介と、可視化するツールを作ったお話です。&lt;br /&gt;
-Goの&lt;a href=&#34;http://ja.wikipedia.org/wiki/Lint&#34;&gt;lint&lt;/a&gt;ではここで紹介した技術を使って実装しているらしいです。&lt;/p&gt;
-
-&lt;p&gt;##Unit-testing programs depend on I/O in Go
-&lt;a href=&#34;https://yuya-takeyama.github.io/presentations/2014/11/30/gocon_2014_autumn/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;表題の通り、I/Oに依存したテストについてのお話です。&lt;br /&gt;
-Keynote2の@fumitoshi_ukaiさんも言っていたように、&lt;br /&gt;
-データを読み書きするだけでファイルとしての挙動が不要な場合は、&lt;br /&gt;
-&lt;code&gt;os.File&lt;/code&gt;ではなく&lt;code&gt;io.Reader&lt;/code&gt;や&lt;code&gt;io.Writer&lt;/code&gt;を使うと、ファイル以外の引数も与えられるため、&lt;br /&gt;
-汎用性が上がり、テストもしやすいそうです。&lt;/p&gt;
-
-&lt;p&gt;##(consul.ioの話)
-&lt;a href=&#34;https://consul.io/&#34;&gt;https://consul.io/&lt;/a&gt;を使うと、色々はかどるらしいが…&lt;br /&gt;
-ごめんなさい理解できてないです(´･_･`)&lt;/p&gt;
-
-&lt;p&gt;##Togetterまとめ
-Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。&lt;br /&gt;
-振り返る際にとてもお世話になったので、感謝の限りです。&lt;/p&gt;
 </description>
     </item>
     

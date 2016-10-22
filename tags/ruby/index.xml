@@ -6,8 +6,51 @@
     <description>Recent content in Ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Oct 2016 22:37:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ginza.rb 第40回でprmdについて話した</title>
+      <link>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</link>
+      <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</guid>
+      <description>
+
+&lt;p&gt;Ginza.rb 第40回に行ってきました。&lt;br /&gt;
+&lt;a href=&#34;https://ginzarb.doorkeeper.jp/events/52895&#34;&gt;https://ginzarb.doorkeeper.jp/events/52895&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回は参加者がLTをする形式で、14人ぐらい？LTがありました。&lt;/p&gt;
+
+&lt;h1 id=&#34;発表内容&#34;&gt;発表内容&lt;/h1&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/Hi86VMANvbpUTn&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ginza-rb-40&#34; title=&#34;prmdのドキュメントが読みやすくなる話&#34; target=&#34;_blank&#34;&gt;prmdのドキュメントが読みやすくなる話&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/ota42y&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆揃える利点を増やしてくれるので、とてもいい構成だと思います。&lt;/p&gt;
+
+&lt;p&gt;また、prmdが出力するドキュメントにはcurlのコマンドやレスポンスのJSONが整った形式でついているため、
+クライアント側としても手軽にAPIをテストすることができてとても有用なので、
+最悪JSON Schema+prmdだけでも導入すると良いと思います。
+(元クライアントからの意見)&lt;/p&gt;
+
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;ruby c extensionが凄い面白かったのでちょっと触ってみようと思います(｀・ω・´)&lt;/p&gt;
+
+&lt;h1 id=&#34;他の方々の資料&#34;&gt;他の方々の資料&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;#ginzarb&lt;/code&gt;のハッシュタグを見て見つかったものだけ上げています&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://koic.hatenablog.com/entry/2016/10/18/000000&#34;&gt;Ginza.rb 第40回 - koicの日記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://keyamb.hatenablog.com/entry/2016/10/19/080000&#34;&gt;Ginza.rb で &amp;ldquo;grifork&amp;rdquo; について発表してきた - weblog of key_amb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kazupon/zi-fen-falseshi-tutamofalsewomisetemiyou&#34;&gt;自分の使ったものをみせてみよう // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://esa-pages.io/p/sharing/2927/posts/159/8a1e5fb77ac4be192dd5.html&#34;&gt;勉強会/ginza.rb #40 - esa-pages.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kyuden/rails-authorization&#34;&gt;Rails Authorization // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/muryoimpl1/buoys-gem&#34;&gt;buoys gem の紹介&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
