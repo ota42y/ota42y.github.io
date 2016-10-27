@@ -6,8 +6,54 @@
     <description>Recent content in Ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 22 Oct 2016 22:37:37 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Oct 2016 15:37:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Shinjuku.rb #42でRubocopについて話した</title>
+      <link>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</link>
+      <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</guid>
+      <description>
+
+&lt;p&gt;Shinjuku.rb #42に行ってきました。&lt;br /&gt;
+&lt;a href=&#34;http://shinjukurb.connpass.com/event/42245/&#34;&gt;http://shinjukurb.connpass.com/event/42245/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。&lt;/p&gt;
+
+&lt;h1 id=&#34;発表内容&#34;&gt;発表内容&lt;/h1&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/sotthH5RjKQHEg&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/shinjukurb-42&#34; title=&#34;Shinjukurb 42&#34; target=&#34;_blank&#34;&gt;Shinjukurb 42&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/ota42y&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Rubocopはソースコードをパーサgemを使ってASTに変換し、ちゃんとどういう構造なのかを見ていて凄くちゃんと解析していたので凄いなーと思う反面、
+自分でルールを追加するのもの凄く大変そうでした。&lt;/p&gt;
+
+&lt;p&gt;また、こういったコードの整形ツールは自転車小屋の議論になって導入するの凄く大変だよね…という闇の深いディスカッションが行われました…
+やはり何処も苦労するところは同じようです…(´・_・`)&lt;/p&gt;
+
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;リファクタリングを支援してくれるgemが紹介されていましたが、
+基本的に既存部分を切り出す→新しいロジックと同時に実行して実行結果をチェック→結果をDBとかに保存する、
+といった手順を踏んでおり、どれもやることは変わらず、rubyのリファクタリング手法としては一般的な方法なのかな…？と思いました。
+(稀にしか起きない問題や、副作用をどう消すかといった部分は別途考える必要ありそう)&lt;/p&gt;
+
+&lt;p&gt;Rubocopがやってくれる一般的なものではなく、もっと自分たち向けのチェック項目が欲しいけど、
+ルール追加がめちゃくちゃ大変だなーと思っていたら、凄くいいgemの発表がありました。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/soutaro/querly&#34;&gt;soutaro/querly: Query Method Calls from Ruby Programs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;メソッドが呼ばれているかをちゃんと解析してチェックできるので、&lt;br /&gt;
+ヤバそうなメソッドや使い方が怪しいやつとかを抽出できるらしく、凄く良さそうでした。&lt;/p&gt;
+
+&lt;h1 id=&#34;他の方々の資料&#34;&gt;他の方々の資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/treby/reading-suture&#34;&gt;reading suture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/threetreeslight/ccf9e20e24cc3ee0c459b25de74d1688&#34;&gt;scientist.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Ginza.rb 第40回でprmdについて話した</title>
