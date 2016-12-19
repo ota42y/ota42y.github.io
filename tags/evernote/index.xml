@@ -34,7 +34,7 @@
       <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:de6a822f66102a3442c0efa1148b97be&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Evernoteのノートリンクの仕様が変わって使い物にならなくなった&lt;/li&gt;
@@ -42,7 +42,7 @@
 &lt;li&gt;ただし、Macではスクリプトの実行方法で問題あり&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;evernoteのノートリンク仕様の変更&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
+&lt;h1 id=&#34;evernoteのノートリンク仕様の変更:de6a822f66102a3442c0efa1148b97be&#34;&gt;Evernoteのノートリンク仕様の変更&lt;/h1&gt;
 
 &lt;p&gt;Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。&lt;/p&gt;
 
@@ -64,9 +64,9 @@ AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、&l
 幸いなことにevernote:///スキームは未だ有効です。&lt;br /&gt;
 また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。&lt;/p&gt;
 
-&lt;h1 id=&#34;リンク置換スクリプトの作成&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
+&lt;h1 id=&#34;リンク置換スクリプトの作成:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプトの作成&lt;/h1&gt;
 
-&lt;h2 id=&#34;ノートリンクの仕様&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
+&lt;h2 id=&#34;ノートリンクの仕様:de6a822f66102a3442c0efa1148b97be&#34;&gt;ノートリンクの仕様&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;以下は予想であり、正確なものではありません&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
@@ -85,7 +85,7 @@ Macでは残念ながらまともな物はありませんでした。&lt;/p&gt;
 それを実行するまでにかなりキーストロークが必要なため、見送りました。&lt;br /&gt;
 理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。&lt;/p&gt;
 
-&lt;h2 id=&#34;リンク置換スクリプト&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
+&lt;h2 id=&#34;リンク置換スクリプト:de6a822f66102a3442c0efa1148b97be&#34;&gt;リンク置換スクリプト&lt;/h2&gt;
 
 &lt;p&gt;結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。&lt;br /&gt;
 事前にclipboard gemをインストールしておく必要があります。&lt;/p&gt;

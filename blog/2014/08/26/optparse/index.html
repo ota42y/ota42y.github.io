@@ -119,14 +119,14 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#インストール">インストール</a></li>
-<li><a href="#使い方">使い方</a>
+<li><a href="#インストール:69991f4bc87acfac541f5b8b32cae170">インストール</a></li>
+<li><a href="#使い方:69991f4bc87acfac541f5b8b32cae170">使い方</a>
 <ul>
-<li><a href="#オプション指定">オプション指定</a></li>
-<li><a href="#オプション処理">オプション処理</a></li>
-<li><a href="#パース実行">パース実行</a></li>
+<li><a href="#オプション指定:69991f4bc87acfac541f5b8b32cae170">オプション指定</a></li>
+<li><a href="#オプション処理:69991f4bc87acfac541f5b8b32cae170">オプション処理</a></li>
+<li><a href="#パース実行:69991f4bc87acfac541f5b8b32cae170">パース実行</a></li>
 </ul></li>
-<li><a href="#サンプルコード">サンプルコード</a></li>
+<li><a href="#サンプルコード:69991f4bc87acfac541f5b8b32cae170">サンプルコード</a></li>
 </ul>
 </nav>
                 </div>
@@ -143,14 +143,14 @@
 <p>javascriptでそれにあたるのがOptparse-jsですが、<br />
 使い方がちょっと独特です。</p>
 
-<h1 id="インストール">インストール</h1>
+<h1 id="インストール:69991f4bc87acfac541f5b8b32cae170">インストール</h1>
 
 <p><a href="https://github.com/jfd/optparse-js">https://github.com/jfd/optparse-js</a>からどうぞ。<br />
 npmにも登録されているので、node.jsからも簡単に使えます。</p>
 
-<h1 id="使い方">使い方</h1>
+<h1 id="使い方:69991f4bc87acfac541f5b8b32cae170">使い方</h1>
 
-<h2 id="オプション指定">オプション指定</h2>
+<h2 id="オプション指定:69991f4bc87acfac541f5b8b32cae170">オプション指定</h2>
 
 <p>どのようなオプションを宇受け取るかは配列で定義します。<br />
 なお、短縮形も同時に定義できます。</p>
@@ -169,7 +169,7 @@ typeを受け取る-tもしくは&ndash;typeを定義しています。</p>
 <pre><code class="language-javascript">var parser = new optparse.OptionParser(options);
 </code></pre>
 
-<h2 id="オプション処理">オプション処理</h2>
+<h2 id="オプション処理:69991f4bc87acfac541f5b8b32cae170">オプション処理</h2>
 
 <p>オプションを受け取ったときの処理は、パーサーオブジェクトに関数を渡して登録します。<br />
 第一引数にオプション名、第二引数にそのオプションがあったときの処理を渡します。</p>
@@ -179,7 +179,7 @@ typeを受け取る-tもしくは&ndash;typeを定義しています。</p>
 });
 </code></pre>
 
-<h2 id="パース実行">パース実行</h2>
+<h2 id="パース実行:69991f4bc87acfac541f5b8b32cae170">パース実行</h2>
 
 <p>パーサーオブジェクトのparseメソッドでパースを実行できます。
 ただし、スペースを自分で区切ってはくれないため、<br />
@@ -190,7 +190,7 @@ typeを受け取る-tもしくは&ndash;typeを定義しています。</p>
 
 <p>(勝手にオプション足したり、区切り文字を自由に設定できる、こうしていると思われます)</p>
 
-<h1 id="サンプルコード">サンプルコード</h1>
+<h1 id="サンプルコード:69991f4bc87acfac541f5b8b32cae170">サンプルコード</h1>
 
 <pre><code class="language-javascript">var optparse = require('optparse');
 

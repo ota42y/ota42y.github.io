@@ -24,7 +24,7 @@
 &lt;p&gt;これまではパワポの図形機能とかペイントで頑張って作っていましたが、&lt;br /&gt;
 Graphvizを使うと自動で出力できます。&lt;/p&gt;
 
-&lt;h2 id=&#34;graphvizとは&#34;&gt;Graphvizとは&lt;/h2&gt;
+&lt;h2 id=&#34;graphvizとは:3a4615046c4807ddfa87121a5586dd26&#34;&gt;Graphvizとは&lt;/h2&gt;
 
 &lt;p&gt;AT&amp;amp;Tが作ったグラフ描画のツールパッケージです。&lt;br /&gt;
 &lt;a href=&#34;http://ja.wikipedia.org/wiki/Graphviz&#34;&gt;http://ja.wikipedia.org/wiki/Graphviz&lt;/a&gt;&lt;/p&gt;
@@ -34,13 +34,13 @@ Graphvizを使うと自動で出力できます。&lt;/p&gt;
 &lt;p&gt;グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、&lt;br /&gt;
 SVGで出力できるため、他のソフトで調整ができます。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方:3a4615046c4807ddfa87121a5586dd26&#34;&gt;使い方&lt;/h1&gt;
 
-&lt;h2 id=&#34;インストール&#34;&gt;インストール&lt;/h2&gt;
+&lt;h2 id=&#34;インストール:3a4615046c4807ddfa87121a5586dd26&#34;&gt;インストール&lt;/h2&gt;
 
 &lt;p&gt;brew gts graphviz&lt;/p&gt;
 
-&lt;h2 id=&#34;dotファイルの作成&#34;&gt;dotファイルの作成&lt;/h2&gt;
+&lt;h2 id=&#34;dotファイルの作成:3a4615046c4807ddfa87121a5586dd26&#34;&gt;dotファイルの作成&lt;/h2&gt;
 
 &lt;p&gt;最初に見せたグラフは以下のように作ります。&lt;/p&gt;
 
@@ -75,7 +75,7 @@ SVGで出力できるため、他のソフトで調整ができます。&lt;/p&g
 &lt;p&gt;初めにレイアウトに使うアルゴリズムを書きます。&lt;br /&gt;
 次に画像だけ、文字だけといったノードを定義し、その関係を記述します。&lt;/p&gt;
 
-&lt;h2 id=&#34;出力&#34;&gt;出力&lt;/h2&gt;
+&lt;h2 id=&#34;出力:3a4615046c4807ddfa87121a5586dd26&#34;&gt;出力&lt;/h2&gt;
 
 &lt;p&gt;上記のファイルをcp.dotという名前で保存し、以下のコマンドを実行するとSVGファイルに出力されます。&lt;br /&gt;
 &lt;code&gt;dot -Tsvg cp.dot -o cp.svg&lt;/code&gt;&lt;/p&gt;
@@ -83,7 +83,7 @@ SVGで出力できるため、他のソフトで調整ができます。&lt;/p&g
 &lt;p&gt;SVG以外にもgifやpngへの出力が可能です。&lt;br /&gt;
 &lt;code&gt;dot -Tpng cp.dot -o cp.png&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;レイアウト詳細&#34;&gt;レイアウト詳細&lt;/h1&gt;
+&lt;h1 id=&#34;レイアウト詳細:3a4615046c4807ddfa87121a5586dd26&#34;&gt;レイアウト詳細&lt;/h1&gt;
 
 &lt;p&gt;配置アルゴリズム等はこちらの記事が参考になると思います。&lt;br /&gt;
 &lt;a href=&#34;http://melborne.github.io/2013/04/02/graphviz-layouts/&#34;&gt;Graphvizレイアウトサンプル&lt;/a&gt;&lt;/p&gt;

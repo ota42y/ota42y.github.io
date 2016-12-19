@@ -17,7 +17,7 @@
       <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;PCからArduinoを制御するのは面倒
@@ -38,7 +38,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;pcからarduinoを制御するのは面倒&#34;&gt;PCからArduinoを制御するのは面倒&lt;/h1&gt;
+&lt;h1 id=&#34;pcからarduinoを制御するのは面倒:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;PCからArduinoを制御するのは面倒&lt;/h1&gt;
 
 &lt;p&gt;Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。&lt;br /&gt;
 ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。&lt;/p&gt;
@@ -59,7 +59,7 @@ rubyプログラムを書くだけでArduinoの制御が全てできるように
 
 &lt;p&gt;これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;dino&#34;&gt;dino&lt;/h1&gt;
+&lt;h1 id=&#34;dino:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;dino&lt;/h1&gt;
 
 &lt;p&gt;Arduinoをrubyから扱うライブラリです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/austinbv/dino&#34;&gt;https://github.com/austinbv/dino&lt;/a&gt;&lt;/p&gt;
@@ -67,7 +67,7 @@ rubyプログラムを書くだけでArduinoの制御が全てできるように
 &lt;p&gt;Arduinoの全機能を外部から制御可能にするプログラムが付随しており、&lt;br /&gt;
 これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。&lt;/p&gt;
 
-&lt;h2 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h2&gt;
+&lt;h2 id=&#34;サンプルコード:97955e611a2d8858fe77d22ec1869f8a&#34;&gt;サンプルコード&lt;/h2&gt;
 
 &lt;p&gt;A0ポートに対する入力を拾うプログラムは以下の通りです。&lt;/p&gt;
 
@@ -104,9 +104,9 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
 別スレッドで実行する関数のポインタと、&lt;br /&gt;
 その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;スレッドによる並行処理&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
+&lt;h1 id=&#34;スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
 
-&lt;h2 id=&#34;スレッドの作成-pthread-create&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
+&lt;h2 id=&#34;スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
 
 &lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
 
@@ -141,7 +141,7 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
+&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
 
 &lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
 
@@ -161,7 +161,7 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h2&gt;
+&lt;h2 id=&#34;サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
 
 &lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
 排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
@@ -216,9 +216,9 @@ int main(void) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;mutexによるロック処理&#34;&gt;mutexによるロック処理&lt;/h1&gt;
+&lt;h1 id=&#34;mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;mutexによるロック処理&lt;/h1&gt;
 
-&lt;h2 id=&#34;排他制御を行う&#34;&gt;排他制御を行う&lt;/h2&gt;
+&lt;h2 id=&#34;排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;排他制御を行う&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
 処理をロックすることができます。&lt;/p&gt;
@@ -226,7 +226,7 @@ int main(void) {
 &lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
 このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
 
-&lt;h2 id=&#34;サンプルコード-1&#34;&gt;サンプルコード&lt;/h2&gt;
+&lt;h2 id=&#34;サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
 
 &lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
 そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
@@ -302,7 +302,7 @@ int main(void) {
 言語取得部分は動くけど、おかしい結果を返す壊れ方のため、&lt;br /&gt;
 発見にわりと手間取りました。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;プログラム上でlocaleを参照する部分がおかしい結果を返す
@@ -319,7 +319,7 @@ int main(void) {
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;localeの取得がおかしい&#34;&gt;localeの取得がおかしい&lt;/h1&gt;
+&lt;h1 id=&#34;localeの取得がおかしい:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;localeの取得がおかしい&lt;/h1&gt;
 
 &lt;p&gt;pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。
 ですが、&lt;br /&gt;
@@ -342,7 +342,7 @@ POSIX
 
 &lt;p&gt;ですが、&lt;code&gt;/etc/locale.gen&lt;/code&gt;では、ja_JP.UTF-8がコメントアウトされていて有効になっていました。&lt;/p&gt;
 
-&lt;h1 id=&#34;原因は不明だがとりあえず直る&#34;&gt;原因は不明だがとりあえず直る&lt;/h1&gt;
+&lt;h1 id=&#34;原因は不明だがとりあえず直る:6e55b0bffb1729855201d3ad39c63b44&#34;&gt;原因は不明だがとりあえず直る&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo su
 export LC_ALL=C # jaは使えないのでCにする必要がある
@@ -399,7 +399,7 @@ sudo dpkg-reconfigure locales
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;要素のサイズ&#34;&gt;要素のサイズ&lt;/h1&gt;
+&lt;h1 id=&#34;要素のサイズ:7df659e690576969cb149167507e359f&#34;&gt;要素のサイズ&lt;/h1&gt;
 
 &lt;p&gt;unsafe.Sizeof関数は、引数の要素のサイズを調べ、バイト数をint型で返してくれます。&lt;/p&gt;
 
@@ -430,7 +430,7 @@ log.Println(unsafe.Sizeof(&amp;amp;a)) // 4 (8)
 スライスの場合はスライス自身の値(12 or 24byte)を返し、スライス全体の値は返しません。&lt;br /&gt;
 そのため、要素を追加してもスライス自身の大きさは変化しません。&lt;/p&gt;
 
-&lt;h1 id=&#34;先頭からのオフセット&#34;&gt;先頭からのオフセット&lt;/h1&gt;
+&lt;h1 id=&#34;先頭からのオフセット:7df659e690576969cb149167507e359f&#34;&gt;先頭からのオフセット&lt;/h1&gt;
 
 &lt;p&gt;上記の例でbool値のa.flagが1byteかつ、ほかの要素がすべて偶数なのにもかかわらず、&lt;br /&gt;
 構造体全体の大きさが92byteの偶数になっています。&lt;br /&gt;
@@ -460,7 +460,7 @@ a.numが先頭から8byte(=64bit)の位置から始まっています。&lt;br /
 &lt;p&gt;このように、32bit環境では32bitに、64bit環境では64bitの倍数から始まるように、&lt;br /&gt;
 コンパイラが構造体にパディングをするようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;構造体内の構造体の場合&#34;&gt;構造体内の構造体の場合&lt;/h1&gt;
+&lt;h1 id=&#34;構造体内の構造体の場合:7df659e690576969cb149167507e359f&#34;&gt;構造体内の構造体の場合&lt;/h1&gt;
 
 &lt;p&gt;以下のように構造体に実態を持つ場合、宣言したとおりに配置されます。&lt;br /&gt;
 そのためAの実態であるaの前後で、構造体のサイズ分だけオフセットが移動しています。&lt;/p&gt;
@@ -511,7 +511,7 @@ log.Println(unsafe.Offsetof(b.blfag4)) // 208 (112 + 92)
 また、埋め込んだ構造体の値として扱われるらしく、&lt;br /&gt;
 実態として持っているときと違い、構造体Aの要素でもBの先頭からのオフセットを出力しています。&lt;/p&gt;
 
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
+&lt;h1 id=&#34;ソースコード:7df659e690576969cb149167507e359f&#34;&gt;ソースコード&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
 
@@ -652,15 +652,15 @@ func main() {
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;golang開発環境を整える&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
+&lt;h1 id=&#34;golang開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
 
-&lt;h2 id=&#34;intellijでのgo開発環境&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
+&lt;h2 id=&#34;intellijでのgo開発環境:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
 
 &lt;p&gt;IntelliJ IDEAとGolang pluginはとてもよく動くため、&lt;br /&gt;
 Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。&lt;br /&gt;
 &lt;a href=&#34;http://qiita.com/kaiinui/items/433eb86c022ffcad0bea&#34;&gt;Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;vmwareに開発環境を整える&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
+&lt;h2 id=&#34;vmwareに開発環境を整える:2107e1477c09702be9950e3792aa06c4&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
 
 &lt;p&gt;IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。&lt;br /&gt;
 ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、&lt;br /&gt;
@@ -681,7 +681,7 @@ Windowsの快適なGUI環境を利用することができます。&lt;br /&gt;
 
 &lt;p&gt;なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。&lt;/p&gt;
 
-&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
+&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする:2107e1477c09702be9950e3792aa06c4&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
 
 &lt;p&gt;残念ながらIntelliJはこのような用途を想定していないため、
 別マシンの環境下で作業できません。&lt;/p&gt;
@@ -713,7 +713,7 @@ map archive = no
 &lt;p&gt;map archiveについてはこちらを参照&lt;br /&gt;
 &lt;a href=&#34;http://qiita.com/haoling/items/b306b23c41c7110e9e35&#34;&gt;sambaでファイルを上書きすると実行属性が付いてしまう場合の対処&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;サーバと手元の環境を合わせる&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
+&lt;h2 id=&#34;サーバと手元の環境を合わせる:2107e1477c09702be9950e3792aa06c4&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
 
 &lt;p&gt;補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。&lt;br /&gt;
 ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、&lt;br /&gt;
@@ -725,7 +725,7 @@ map archive = no
 &lt;p&gt;そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、&lt;br /&gt;
 依存パッケージの補完や、定義元ジャンプが効くようになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
+&lt;h1 id=&#34;問題点:2107e1477c09702be9950e3792aa06c4&#34;&gt;問題点&lt;/h1&gt;
 
 &lt;p&gt;この手法ではIDEから実行することを想定していないため、&lt;br /&gt;
 IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。&lt;br /&gt;
@@ -767,12 +767,12 @@ npmやbundlerのようなパッケージの依存管理をするツールはあ�
 
 &lt;p&gt;そこで、この中で特にスターが多かったgodep、gom、goopについて調べました。&lt;/p&gt;
 
-&lt;h1 id=&#34;パッケージ管理ツール&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
+&lt;h1 id=&#34;パッケージ管理ツール:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
 
 &lt;p&gt;この3つに共通する物として、importしている物をリストアップし、ファイルに書き出す機能があるようです。&lt;br /&gt;
 また、gomとgoopはほぼ同じ機能を提供し、管理用のファイルの形式が違うようです。&lt;/p&gt;
 
-&lt;h2 id=&#34;godep&#34;&gt;godep&lt;/h2&gt;
+&lt;h2 id=&#34;godep:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;godep&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/tools/godep&#34;&gt;https://github.com/tools/godep&lt;/a&gt;&lt;/p&gt;
 
@@ -787,7 +787,7 @@ GOPATHでそこを見るようにしてコマンド実行することもでき�
 &lt;p&gt;つまり、常に最新のmasterを使うか、自分の手元で管理するかの二択です。&lt;br /&gt;
 基本的に全部管理下に置いてある前提の作りっぽいです。&lt;/p&gt;
 
-&lt;h2 id=&#34;gom-goop&#34;&gt;gom/goop&lt;/h2&gt;
+&lt;h2 id=&#34;gom-goop:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gom/goop&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;https://github.com/mattn/gom&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://github.com/nitrous-io/goop&#34;&gt;https://github.com/nitrous-io/goop&lt;/a&gt;&lt;/p&gt;
@@ -800,7 +800,7 @@ GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&g
 
 &lt;p&gt;gomはRakefileのような書式、goopは普通のテキストにちょっと書式が加わったようなものになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;gomが良さそう&#34;&gt;gomが良さそう&lt;/h1&gt;
+&lt;h1 id=&#34;gomが良さそう:067ebe2002f9cc45ac92e9a88185b56c&#34;&gt;gomが良さそう&lt;/h1&gt;
 
 &lt;p&gt;godepはそういう環境やメンテナンスフローから作る必要があり、気軽に導入は難しそうです。&lt;br /&gt;
 そのため、npmやbundlerに似ているgomやgoopを使った方が楽そうです。&lt;/p&gt;
@@ -821,7 +821,7 @@ GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&g
 &lt;p&gt;&lt;a href=&#34;https://github.com/peterh/liner&#34;&gt;peterh/liner&lt;/a&gt;&lt;br /&gt;
 golangでCLIを作る際に活用できるラインエディタです。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;liner.NewLinerで作成し、Prompt関数で入力を待機します。&lt;br /&gt;
 入力があると関数が入力を返してくるため、それによって処理を分岐します。&lt;/p&gt;
@@ -855,7 +855,7 @@ func main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;入力履歴を使う&#34;&gt;入力履歴を使う&lt;/h1&gt;
+&lt;h1 id=&#34;入力履歴を使う:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;入力履歴を使う&lt;/h1&gt;
 
 &lt;p&gt;AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。&lt;br /&gt;
 &lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.AppendHistory&#34;&gt;State.AppendHistory&lt;/a&gt;&lt;/p&gt;
@@ -907,7 +907,7 @@ func main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;タブ補完を使う&#34;&gt;タブ補完を使う&lt;/h1&gt;
+&lt;h1 id=&#34;タブ補完を使う:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;タブ補完を使う&lt;/h1&gt;
 
 &lt;p&gt;SetCompleter関数に補完用の関数を登録することで、タブ補完も使えます。&lt;br /&gt;
 &lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.SetCompleter&#34;&gt;State.SetCompleter&lt;/a&gt;&lt;/p&gt;
@@ -954,7 +954,7 @@ func main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:2af15ccd9bc45fb3ffe2661631874425&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ラインエディタに必要な物は大体揃っている
@@ -982,7 +982,7 @@ func main() {
       <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;fmt.Print等にちゃんと出力されるかテストしたい
@@ -999,7 +999,7 @@ func main() {
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;標準出力への書き込みをテストしたい&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
+&lt;h1 id=&#34;標準出力への書き込みをテストしたい:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
 
 &lt;p&gt;fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。&lt;br /&gt;
 ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。&lt;/p&gt;
@@ -1007,7 +1007,7 @@ func main() {
 &lt;p&gt;このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、&lt;br /&gt;
 テストの時は書き込み先を切り替えることで簡単にテストができるようになります。&lt;/p&gt;
 
-&lt;h2 id=&#34;fmt-fprintで出力先を指定する&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
+&lt;h2 id=&#34;fmt-fprintで出力先を指定する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
 
 &lt;p&gt;golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。&lt;br /&gt;
 この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。&lt;br /&gt;
@@ -1021,7 +1021,7 @@ func main() {
 そのため、os.Stdoutにfmt.Fprintで書き込むことにより、&lt;br /&gt;
 出力先を変更可能な状態で標準出力に出力できます。&lt;/p&gt;
 
-&lt;h2 id=&#34;メモリ上に出力する&#34;&gt;メモリ上に出力する&lt;/h2&gt;
+&lt;h2 id=&#34;メモリ上に出力する:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;メモリ上に出力する&lt;/h2&gt;
 
 &lt;p&gt;golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。&lt;br /&gt;
 そして、String()関数により、書き込まれた文字列をstringとして取得できます。&lt;br /&gt;
@@ -1030,7 +1030,7 @@ func main() {
 &lt;p&gt;これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、&lt;br /&gt;
 標準出力に出力されたかどうかをテストすることができるようになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
+&lt;h1 id=&#34;サンプルコード:45434d41f1f2e75f0b6bd5a92c14794f&#34;&gt;サンプルコード&lt;/h1&gt;
 
 &lt;p&gt;print.go&lt;/p&gt;
 
@@ -1082,7 +1082,7 @@ func TestPrint(t *testing.T) {
 
 &lt;p&gt;C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;goでインターフェースを実装したクラスのポインタを扱う&#34;&gt;Goでインターフェースを実装したクラスのポインタを扱う&lt;/h1&gt;
+&lt;h1 id=&#34;goでインターフェースを実装したクラスのポインタを扱う:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;Goでインターフェースを実装したクラスのポインタを扱う&lt;/h1&gt;
 
 &lt;p&gt;Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。&lt;/p&gt;
 
@@ -1130,7 +1130,7 @@ func main(){
 &lt;p&gt;そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、
 ちゃんとこのような場合も解決方法は存在します。&lt;/p&gt;
 
-&lt;h1 id=&#34;ポインタにインターフェースを実装する&#34;&gt;ポインタにインターフェースを実装する&lt;/h1&gt;
+&lt;h1 id=&#34;ポインタにインターフェースを実装する:50fdd019e9a71df208e16a3cc56d13ed&#34;&gt;ポインタにインターフェースを実装する&lt;/h1&gt;
 
 &lt;p&gt;上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。&lt;br /&gt;
 そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。&lt;/p&gt;
@@ -1190,18 +1190,18 @@ func main() {
 WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。&lt;br /&gt;
 なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。&lt;/p&gt;
 
-&lt;h1 id=&#34;go言語の環境構築&#34;&gt;Go言語の環境構築&lt;/h1&gt;
+&lt;h1 id=&#34;go言語の環境構築:e3f779623d1fe78142ffab511be6be70&#34;&gt;Go言語の環境構築&lt;/h1&gt;
 
 &lt;p&gt;Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。&lt;br /&gt;
 元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、&lt;br /&gt;
 mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。&lt;/p&gt;
 
-&lt;h2 id=&#34;vcsのインストール&#34;&gt;VCSのインストール&lt;/h2&gt;
+&lt;h2 id=&#34;vcsのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;VCSのインストール&lt;/h2&gt;
 
 &lt;p&gt;git(&lt;a href=&#34;http://git-scm.com/&#34;&gt;http://git-scm.com/&lt;/a&gt;)とmercurial(&lt;a href=&#34;http://mercurial.selenic.com/&#34;&gt;http://mercurial.selenic.com/&lt;/a&gt;)をインストールします。&lt;br /&gt;
 gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください&lt;/p&gt;
 
-&lt;h2 id=&#34;mingwのインストール&#34;&gt;mingwのインストール&lt;/h2&gt;
+&lt;h2 id=&#34;mingwのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;mingwのインストール&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://sourceforge.net/projects/mingw/&#34;&gt;http://sourceforge.net/projects/mingw/&lt;/a&gt;からmingwを入れ、&lt;br /&gt;
 mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。&lt;/p&gt;
@@ -1211,7 +1211,7 @@ mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInsta
 
 &lt;p&gt;コマンドラインからgccが使えるようになっていれば大丈夫です。&lt;/p&gt;
 
-&lt;h1 id=&#34;gxuiのインストール&#34;&gt;gxuiのインストール&lt;/h1&gt;
+&lt;h1 id=&#34;gxuiのインストール:e3f779623d1fe78142ffab511be6be70&#34;&gt;gxuiのインストール&lt;/h1&gt;
 
 &lt;p&gt;gxuiと4つの依存するパッケージをインストールします。&lt;/p&gt;
 
@@ -1238,7 +1238,7 @@ gxui内のsample/下にあるサンプルを動かして確認をしてくださ
 &lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
 サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Octopress
@@ -1292,7 +1292,7 @@ gxui内のsample/下にあるサンプルを動かして確認をしてくださ
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;octopressの問題点&#34;&gt;Octopressの問題点&lt;/h1&gt;
+&lt;h1 id=&#34;octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Octopressの問題点&lt;/h1&gt;
 
 &lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
 
@@ -1308,31 +1308,31 @@ gxui内のsample/下にあるサンプルを動かして確認をしてくださ
 &lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
 &lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;hugoの利点&#34;&gt;Hugoの利点&lt;/h1&gt;
+&lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
 
-&lt;h2 id=&#34;htmlのレンダリングが早い&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
+&lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
 
 &lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
 ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
 ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
 特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
 
-&lt;h2 id=&#34;環境構築いらず&#34;&gt;環境構築いらず&lt;/h2&gt;
+&lt;h2 id=&#34;環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;環境構築いらず&lt;/h2&gt;
 
 &lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
 環境構築でがんばる必要がありません。&lt;br /&gt;
 私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
 Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
 
-&lt;h1 id=&#34;hugoの問題点&#34;&gt;Hugoの問題点&lt;/h1&gt;
+&lt;h1 id=&#34;hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの問題点&lt;/h1&gt;
 
-&lt;h2 id=&#34;テーマがない&#34;&gt;テーマがない&lt;/h2&gt;
+&lt;h2 id=&#34;テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;テーマがない&lt;/h2&gt;
 
 &lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
 実際このサイトも自分でテーマを作りました。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;手を入れにくい&#34;&gt;手を入れにくい&lt;/h2&gt;
+&lt;h2 id=&#34;手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;手を入れにくい&lt;/h2&gt;
 
 &lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
 Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
@@ -1351,7 +1351,7 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
       <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;JenkinsはWebベースのUI
@@ -1372,7 +1372,7 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;jenkinsのjob実行は大変&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
+&lt;h1 id=&#34;jenkinsのjob実行は大変:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
 
 &lt;p&gt;JenkinsはWebブラウザを使ってGUIで操作するため、&lt;br /&gt;
 操作の敷居が低く、簡単に扱えるようになっています。&lt;/p&gt;
@@ -1388,7 +1388,7 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
 Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、&lt;br /&gt;
 パラメータの数だけクリックをする必要性から逃れられます。&lt;/p&gt;
 
-&lt;h1 id=&#34;remote-access-api&#34;&gt;Remote access API&lt;/h1&gt;
+&lt;h1 id=&#34;remote-access-api:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;Remote access API&lt;/h1&gt;
 
 &lt;p&gt;詳しくはこちら&lt;br /&gt;
 &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&lt;/a&gt;&lt;br /&gt;
@@ -1404,7 +1404,7 @@ Jenkinsをプログラムから制御でき、反応の遅さに悩まされた�
 &lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value&lt;/code&gt;
 のように、URLに直接入れても大丈夫のようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;サンプルスクリプト&#34;&gt;サンプルスクリプト&lt;/h1&gt;
+&lt;h1 id=&#34;サンプルスクリプト:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;サンプルスクリプト&lt;/h1&gt;
 
 &lt;p&gt;3*3=9種類のビルドを一気に実行するスクリプトです&lt;/p&gt;
 
@@ -1432,7 +1432,7 @@ platforms.product(settings).each do |platform, setting|
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
+&lt;h1 id=&#34;問題点:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;問題点&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。&lt;br /&gt;
 そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss&lt;/p&gt;
@@ -1447,7 +1447,7 @@ end
       <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ブランチをパラメーターにするとスクリプトを読めない
@@ -1465,7 +1465,7 @@ end
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
+&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
 
 &lt;p&gt;(以下に用意されているdocker上のJenkinsで確認しました)&lt;br /&gt;
 &lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&#34;&gt;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&lt;/a&gt;&lt;/p&gt;
@@ -1495,7 +1495,7 @@ Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo
 &lt;p&gt;このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、&lt;br /&gt;
 指定したブランチからスクリプトを読み込んで実行できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
+&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
 
 &lt;p&gt;(公式のdockerにも&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin-pipeline-demo/blob/master/flow.groovy&#34;&gt;スクリプト&lt;/a&gt;がありますが、より簡単化したもので説明します)&lt;/p&gt;
 
@@ -1525,7 +1525,7 @@ flow.build()
 そのため、これでリポジトリ内のファイルをロードして実行することが出来ます。&lt;br /&gt;
 また、buildメソッドをnodeの外側で実行することで、ビルド中はmasterのキューを開けておくことが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ロード時に変数を保存したい場合&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
+&lt;h1 id=&#34;ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
 
 &lt;p&gt;上記の方式の場合、masterにcloneしてその後にslave上に再度cloneしてビルドを始めています。&lt;br /&gt;
 slaveの選択を凝らない場合は問題ないですが、リリースビルド専用マシンがあったり、&lt;br /&gt;
@@ -1537,7 +1537,7 @@ slaveの選択を凝らない場合は問題ないですが、リリースビル
 
 &lt;p&gt;このような場合、groovyスクリプトの戻り値で独自クラスを返すことで解決できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
+&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsから以下のようなgroovyスクリプトを読み込むことで、slaveの選択も柔軟にできるようになります。&lt;/p&gt;
 
@@ -1578,7 +1578,7 @@ return f;
       <guid>http://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkinsはjob単位でしかノードに割り振れない
@@ -1596,7 +1596,7 @@ return f;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;複数ノードをコントロールするのは難しい&#34;&gt;複数ノードをコントロールするのは難しい&lt;/h1&gt;
+&lt;h1 id=&#34;複数ノードをコントロールするのは難しい:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;複数ノードをコントロールするのは難しい&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、&lt;br /&gt;
 複数のノードで、jobの一部の部分だけを別のノードで実行するなど、&lt;br /&gt;
@@ -1605,7 +1605,7 @@ return f;
 &lt;p&gt;このような問題に対して、これまではBuild Flow Pluginを使う事で解決が可能でしたが、&lt;br /&gt;
 Workflow Pluginを使う事で、さらに簡単に解決することが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;build-flow-pluginの問題点&#34;&gt;Build Flow Pluginの問題点&lt;/h1&gt;
+&lt;h1 id=&#34;build-flow-pluginの問題点:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Build Flow Pluginの問題点&lt;/h1&gt;
 
 &lt;p&gt;Build Flow Pluginは基本的に複数の下流ビルドを管理するために作られているため、&lt;br /&gt;
 処理を分けようとするとjobの数が増加していきます。&lt;/p&gt;
@@ -1628,7 +1628,7 @@ Workflow Pluginを使う事で、さらに簡単に解決することが出来�
 &lt;p&gt;jobの数が増えると管理も大変ですし、使う方もどれを使えば良いのか解らなくなります。&lt;br /&gt;
 ここで、Workflow Pluginを使うことで大きく改善することが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;workflow-pluginを使ったビルド&#34;&gt;Workflow Pluginを使ったビルド&lt;/h1&gt;
+&lt;h1 id=&#34;workflow-pluginを使ったビルド:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Workflow Pluginを使ったビルド&lt;/h1&gt;
 
 &lt;p&gt;Workflow Pluginでは、slaveを選択してコマンドを実行、&lt;br /&gt;
 特定のファイルを別のslaveにコピーして処理を実行ということががスクリプトで書けます。&lt;/p&gt;

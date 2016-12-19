@@ -19,7 +19,7 @@
 
 &lt;p&gt;EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:673abe6170b0f105c1aee0e413f3350c&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;オーバーライドされたvirtualなメソッド呼び出しは実行時に決定
@@ -39,7 +39,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;オーバーライドとは&#34;&gt;オーバーライドとは&lt;/h1&gt;
+&lt;h1 id=&#34;オーバーライドとは:673abe6170b0f105c1aee0e413f3350c&#34;&gt;オーバーライドとは&lt;/h1&gt;
 
 &lt;p&gt;メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。
 C++では親クラスでvirtualにされているメソッドをオーバーライドすると、
@@ -70,7 +70,7 @@ int main() {
 
 &lt;p&gt;このように、オーバーライドされたメソッドは実行時にどのメソッドが呼ばれるか決定されます。&lt;/p&gt;
 
-&lt;h1 id=&#34;オーバーロードとは&#34;&gt;オーバーロードとは&lt;/h1&gt;
+&lt;h1 id=&#34;オーバーロードとは:673abe6170b0f105c1aee0e413f3350c&#34;&gt;オーバーロードとは&lt;/h1&gt;
 
 &lt;p&gt;一方、似たような名前でオーバーロードというものもあります。
 こちらは継承とは特に関係なく、同じメソッド名で引数の違うものを定義しておくと、
@@ -97,7 +97,7 @@ int main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;オーバーロードはコンパイル時決定&#34;&gt;オーバーロードはコンパイル時決定&lt;/h2&gt;
+&lt;h2 id=&#34;オーバーロードはコンパイル時決定:673abe6170b0f105c1aee0e413f3350c&#34;&gt;オーバーロードはコンパイル時決定&lt;/h2&gt;
 
 &lt;p&gt;オーバーライドを見ているとオーバーロードも実行時にどれを呼び出すか決定していそうですが、
 実際はコンパイル時にすでにどれが呼び出されるか決定しています。&lt;/p&gt;
@@ -143,7 +143,7 @@ base
 show ext
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ただし親クラスは検索対象になる&#34;&gt;ただし親クラスは検索対象になる&lt;/h2&gt;
+&lt;h2 id=&#34;ただし親クラスは検索対象になる:673abe6170b0f105c1aee0e413f3350c&#34;&gt;ただし親クラスは検索対象になる&lt;/h2&gt;
 
 &lt;p&gt;一方でオーバーロードは型が一致するものが無い場合は引数として渡されたクラスの継承ツリーをたどり、一致する親クラスを探してそれにキャストして実行してくれます。
 もちろん親クラスから子クラスへはコンパイル時にはわからないため、子クラスから親クラスに検索を行います。
@@ -171,7 +171,7 @@ int main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;一意に定まらない場合&#34;&gt;一意に定まらない場合&lt;/h2&gt;
+&lt;h2 id=&#34;一意に定まらない場合:673abe6170b0f105c1aee0e413f3350c&#34;&gt;一意に定まらない場合&lt;/h2&gt;
 
 &lt;p&gt;なお、本当にどっちか決められない場合はambiguousというエラーになります&lt;/p&gt;
 
@@ -240,7 +240,7 @@ int main() {
 &lt;p&gt;また、簡単化のために与えられるデータは全て正しいと仮定します。&lt;br /&gt;
 (実際は適切な箇所でエラーチェックが必要)&lt;/p&gt;
 
-&lt;h1 id=&#34;テンプレートでキャストを回避する&#34;&gt;テンプレートでキャストを回避する&lt;/h1&gt;
+&lt;h1 id=&#34;テンプレートでキャストを回避する:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;テンプレートでキャストを回避する&lt;/h1&gt;
 
 &lt;p&gt;今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、&lt;br /&gt;
 キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。&lt;/p&gt;
@@ -287,7 +287,7 @@ int update_class_members(
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;アドレス計算を先にする&#34;&gt;アドレス計算を先にする&lt;/h1&gt;
+&lt;h1 id=&#34;アドレス計算を先にする:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;アドレス計算を先にする&lt;/h1&gt;
 
 &lt;p&gt;型が違う状態でアドレス計算しているのが問題なので、アドレス計算部分を外に出してしまう方法です。&lt;br /&gt;
 関数ではなくクラスにメソッドとして持たせるとより良さそうです。&lt;/p&gt;
@@ -315,7 +315,7 @@ int update_class_members(
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;設計から変える&#34;&gt;設計から変える&lt;/h1&gt;
+&lt;h1 id=&#34;設計から変える:1c95fc0dbbac16d51d7792d35e4a1fd2&#34;&gt;設計から変える&lt;/h1&gt;
 
 &lt;p&gt;意図的にバグを入れているコードに対して、全体を書き換えるのはナンセンスな気がしますが、&lt;br /&gt;
 たぶんこういうことをする前提なら最も良い書き方はこうではないかと。&lt;/p&gt;
@@ -392,7 +392,7 @@ int main(void) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;原因&#34;&gt;原因&lt;/h1&gt;
+&lt;h1 id=&#34;原因:d474409fc3d5a09281bbe4edf50306a1&#34;&gt;原因&lt;/h1&gt;
 
 &lt;p&gt;Cでは構造体の後ろにパディングを追加できるようになっています。&lt;br /&gt;
 &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;6.7.2.1 Structure and union specifiers&lt;/a&gt;&lt;/p&gt;
@@ -405,9 +405,9 @@ padding within a structure object, but not at its beginning.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;そのため、sizeofがパディングを含めた値を返し、変数の合計とは違った値を返してきます。&lt;br /&gt;
-このように、Cの構造体の大きさはではメンバの合計とは違うため、ちゃんとsizeofを使って計算しないと大変な事になります。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+このように、Cの構造体の大きさはではメンバの合計とは違うため、ちゃんとsizeofを使って計算しないと大変な事になります。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;参考資料&#34;&gt;参考資料&lt;/h1&gt;
+&lt;h1 id=&#34;参考資料:d474409fc3d5a09281bbe4edf50306a1&#34;&gt;参考資料&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards.html&#34;&gt;ISO/IEC JTC1/SC22/WG14 - C: Approved standards&lt;/a&gt;&lt;/li&gt;
@@ -418,8 +418,8 @@ padding within a structure object, but not at its beginning.
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://www.jpcert.or.jp/sc-rules/c-exp03-c.html&#34;&gt;EXP03-C. 構造体のサイズが構造体のメンバのサイズの和に等しいと決めてかからない&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;&lt;a href=&#34;https://www.jpcert.or.jp/sc-rules/c-exp03-c.html&#34;&gt;EXP03-C. 構造体のサイズが構造体のメンバのサイズの和に等しいと決めてかからない&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:d474409fc3d5a09281bbe4edf50306a1:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
@@ -438,9 +438,9 @@ padding within a structure object, but not at its beginning.
 別スレッドで実行する関数のポインタと、&lt;br /&gt;
 その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;スレッドによる並行処理&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
+&lt;h1 id=&#34;スレッドによる並行処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
 
-&lt;h2 id=&#34;スレッドの作成-pthread-create&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
+&lt;h2 id=&#34;スレッドの作成-pthread-create:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
 
 &lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
 
@@ -475,7 +475,7 @@ padding within a structure object, but not at its beginning.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
+&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
 
 &lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
 
@@ -495,7 +495,7 @@ padding within a structure object, but not at its beginning.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h2&gt;
+&lt;h2 id=&#34;サンプルコード:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
 
 &lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
 排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
@@ -550,9 +550,9 @@ int main(void) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;mutexによるロック処理&#34;&gt;mutexによるロック処理&lt;/h1&gt;
+&lt;h1 id=&#34;mutexによるロック処理:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;mutexによるロック処理&lt;/h1&gt;
 
-&lt;h2 id=&#34;排他制御を行う&#34;&gt;排他制御を行う&lt;/h2&gt;
+&lt;h2 id=&#34;排他制御を行う:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;排他制御を行う&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
 処理をロックすることができます。&lt;/p&gt;
@@ -560,7 +560,7 @@ int main(void) {
 &lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
 このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
 
-&lt;h2 id=&#34;サンプルコード-1&#34;&gt;サンプルコード&lt;/h2&gt;
+&lt;h2 id=&#34;サンプルコード-1:7f82349edcf7fd7ee59ba5f448e957cf&#34;&gt;サンプルコード&lt;/h2&gt;
 
 &lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
 そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
@@ -635,7 +635,7 @@ int main(void) {
 
 &lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;調査内容&#34;&gt;調査内容&lt;/h1&gt;
+&lt;h1 id=&#34;調査内容:5658da961537009d14c2d83db44bc8e6&#34;&gt;調査内容&lt;/h1&gt;
 
 &lt;p&gt;昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、&lt;br /&gt;
 同じファイル内でどのようになるかは調べていませんでしたので、&lt;br /&gt;
@@ -643,7 +643,7 @@ int main(void) {
 
 &lt;p&gt;方法は昨日と同じく、-Sオプションをつけて結果を見ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
+&lt;h1 id=&#34;ソースコード:5658da961537009d14c2d83db44bc8e6&#34;&gt;ソースコード&lt;/h1&gt;
 
 &lt;p&gt;以下のようなファイルを使います&lt;/p&gt;
 
@@ -693,13 +693,13 @@ int TestA::getPrivate(){
 getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。&lt;br /&gt;
 getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。&lt;/p&gt;
 
-&lt;h1 id=&#34;最適化しない場合&#34;&gt;最適化しない場合&lt;/h1&gt;
+&lt;h1 id=&#34;最適化しない場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化しない場合&lt;/h1&gt;
 
 &lt;p&gt;3つの関数は全て普通にコンパイルされました。&lt;/p&gt;
 
-&lt;h1 id=&#34;最適化した場合&#34;&gt;最適化した場合&lt;/h1&gt;
+&lt;h1 id=&#34;最適化した場合:5658da961537009d14c2d83db44bc8e6&#34;&gt;最適化した場合&lt;/h1&gt;
 
-&lt;h2 id=&#34;同じファイル内のインライン展開&#34;&gt;同じファイル内のインライン展開&lt;/h2&gt;
+&lt;h2 id=&#34;同じファイル内のインライン展開:5658da961537009d14c2d83db44bc8e6&#34;&gt;同じファイル内のインライン展開&lt;/h2&gt;
 
 &lt;p&gt;getThrough関数は以下のようになりました。&lt;/p&gt;
 
@@ -718,7 +718,7 @@ retq
 そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。&lt;br /&gt;
 なので、どのファイルに関数が書かれているかは関係ないと思われます。&lt;/p&gt;
 
-&lt;h2 id=&#34;インライン展開後の関数&#34;&gt;インライン展開後の関数&lt;/h2&gt;
+&lt;h2 id=&#34;インライン展開後の関数:5658da961537009d14c2d83db44bc8e6&#34;&gt;インライン展開後の関数&lt;/h2&gt;
 
 &lt;p&gt;getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、&lt;br /&gt;
 関数が出力されていました。&lt;/p&gt;
@@ -731,7 +731,7 @@ retq
 そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、&lt;br /&gt;
 この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:5658da961537009d14c2d83db44bc8e6&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;同じファイル内でもインライン展開は行われる
@@ -770,7 +770,7 @@ retq
 &lt;p&gt;なお、アセンブラに関してはほとんど説明しません。&lt;br /&gt;
 「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。&lt;/p&gt;
 
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
+&lt;h1 id=&#34;ソースコード:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;ソースコード&lt;/h1&gt;
 
 &lt;p&gt;以下のソースコードを使います&lt;/p&gt;
 
@@ -862,7 +862,7 @@ int TestA::getNumInCpp() {
 
 &lt;p&gt;になります。&lt;/p&gt;
 
-&lt;h1 id=&#34;最適化しない場合&#34;&gt;最適化しない場合&lt;/h1&gt;
+&lt;h1 id=&#34;最適化しない場合:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;最適化しない場合&lt;/h1&gt;
 
 &lt;p&gt;まずは最適化オプションをつけずにコンパイルしました。&lt;br /&gt;
 &lt;code&gt;g++ -S test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
@@ -895,7 +895,7 @@ callq	_printf
 &lt;p&gt;callqで4種類の関数を全て呼び出しているのがわかります。&lt;br /&gt;
 インライン展開はされていないため、func.hやfunc.cppで直接書いている数値はどこにも出てきません。&lt;/p&gt;
 
-&lt;h1 id=&#34;最適化した場合&#34;&gt;最適化した場合&lt;/h1&gt;
+&lt;h1 id=&#34;最適化した場合:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;最適化した場合&lt;/h1&gt;
 
 &lt;p&gt;O3オプションをつけてインライン展開されるようにしました。&lt;br /&gt;
 &lt;code&gt;g++ -S -O3 test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
@@ -941,7 +941,7 @@ privateFunc関数はprivateメソッドですが、アセンブラではアク�
 直接値を書いてある状態と同じになるようにインライン展開されるため、&lt;br /&gt;
 コンパイラの最適化によって処理順番を入れ替えられ、printfへの呼び出し直前に移動させられています。&lt;/p&gt;
 
-&lt;h1 id=&#34;インライン指定しない場合のエラー&#34;&gt;インライン指定しない場合のエラー&lt;/h1&gt;
+&lt;h1 id=&#34;インライン指定しない場合のエラー:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;インライン指定しない場合のエラー&lt;/h1&gt;
 
 &lt;p&gt;コメントアウトしてあるgetNumNormal関数は、ヘッダファイル内でインライン指定をせずに定義しています。&lt;br /&gt;
 このコメントアウトを戻すと、以下のエラーにより失敗します。&lt;/p&gt;
@@ -962,7 +962,7 @@ duplicate symbolになっています。&lt;/p&gt;
 &lt;p&gt;インライン展開されるgetNumInline関数は、関数自体はどこにも定義されないため二重定義にはならず、&lt;br /&gt;
 問題なく動いているようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:fa823a2862c1b0d94eead303a1afbae2&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;最適化しないとインライン展開されない&lt;/li&gt;
@@ -1047,7 +1047,7 @@ size_tがunsigned intの場合、両者は同じ大きさのため特に意識�
 ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、&lt;br /&gt;
 突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)&lt;/p&gt;
 
-&lt;h1 id=&#34;intからvoid型のポインタへの変換&#34;&gt;intからvoid型のポインタへの変換&lt;/h1&gt;
+&lt;h1 id=&#34;intからvoid型のポインタへの変換:732d3cc7e129dde003d75bf89bebcc11&#34;&gt;intからvoid型のポインタへの変換&lt;/h1&gt;
 
 &lt;p&gt;int型の値をvoid *を利用して保持したい場合、&lt;a href=&#34;http://ota42y.com/blog/2014/11/06/cpp-void-pointer/&#34;&gt;前の例&lt;/a&gt;のように、int型を保持するオブジェクトを作り、&lt;br /&gt;
 その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。&lt;/p&gt;
@@ -1097,7 +1097,7 @@ int number = (int)con.data;
 
 &lt;p&gt;このような場合は最初に述べたとおり、オブジェクトを作ってそのポインタを利用しましょう。&lt;/p&gt;
 
-&lt;h1 id=&#34;ポインタ型をint型に代入している場合&#34;&gt;ポインタ型をint型に代入している場合&lt;/h1&gt;
+&lt;h1 id=&#34;ポインタ型をint型に代入している場合:732d3cc7e129dde003d75bf89bebcc11&#34;&gt;ポインタ型をint型に代入している場合&lt;/h1&gt;
 
 &lt;p&gt;上記の例は32bitを64bitにしてから32bitに戻すため、キャストの仕様によっては問題なく動きます。&lt;br /&gt;
 ですが、以下のようにポインタをintにキャストした場合、64bit環境かつintが32bitの場合、&lt;br /&gt;
@@ -1142,7 +1142,7 @@ intに入りきらない部分が消滅してしまうため、ポインタに�
 &lt;p&gt;ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。&lt;br /&gt;
 C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。&lt;/p&gt;
 
-&lt;h1 id=&#34;汎用ポインタ&#34;&gt;汎用ポインタ&lt;/h1&gt;
+&lt;h1 id=&#34;汎用ポインタ:0786ea65f9d157fadc2353c5e96d356e&#34;&gt;汎用ポインタ&lt;/h1&gt;
 
 &lt;p&gt;void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。&lt;br /&gt;
 これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。&lt;/p&gt;
@@ -1177,14 +1177,14 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
 &lt;p&gt;そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。&lt;br /&gt;
 前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。&lt;/p&gt;
 
-&lt;h1 id=&#34;mallocの戻り値&#34;&gt;mallocの戻り値&lt;/h1&gt;
+&lt;h1 id=&#34;mallocの戻り値:0786ea65f9d157fadc2353c5e96d356e&#34;&gt;mallocの戻り値&lt;/h1&gt;
 
 &lt;p&gt;void *はmallocの戻り値としても使われています。&lt;br /&gt;
 &lt;a href=&#34;http://www.cplusplus.com/reference/cstdlib/malloc/&#34;&gt;http://www.cplusplus.com/reference/cstdlib/malloc/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;mallocの戻り値が何にでもキャスト出来るのは、この仕様によるものです。　&lt;/p&gt;
 
-&lt;h1 id=&#34;ポインタを整数値として扱う&#34;&gt;ポインタを整数値として扱う&lt;/h1&gt;
+&lt;h1 id=&#34;ポインタを整数値として扱う:0786ea65f9d157fadc2353c5e96d356e&#34;&gt;ポインタを整数値として扱う&lt;/h1&gt;
 
 &lt;p&gt;ポインタを整数値として利用したい場合、intptr_tとuintptr_tが利用できます。&lt;br /&gt;
 これはそれぞれ符号つき、符号なしの整数として扱うことができます。&lt;/p&gt;
@@ -1202,7 +1202,7 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
       <guid>http://ota42y.com/blog/2014/09/23/cpp-build/</guid>
       <description>
 
-&lt;h1 id=&#34;結論&#34;&gt;結論&lt;/h1&gt;
+&lt;h1 id=&#34;結論:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;結論&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;キャッシュを使う&lt;/li&gt;
@@ -1218,18 +1218,18 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
 
 &lt;p&gt;どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。&lt;/p&gt;
 
-&lt;h1 id=&#34;キャッシュを使う&#34;&gt;キャッシュを使う&lt;/h1&gt;
+&lt;h1 id=&#34;キャッシュを使う:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;キャッシュを使う&lt;/h1&gt;
 
 &lt;p&gt;ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、&lt;br /&gt;
 2回目以降のビルドは差分だけをコンパイルし直すため早くなります。&lt;br /&gt;
 といっても、多分使わない方が珍しいと思いますが。&lt;/p&gt;
 
-&lt;h1 id=&#34;不要なinclude削除&#34;&gt;不要なinclude削除&lt;/h1&gt;
+&lt;h1 id=&#34;不要なinclude削除:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;不要なinclude削除&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/09/22/cpp-include/&#34;&gt;C++で不要なincludeを減らす&lt;/a&gt;のように、&lt;br /&gt;
 不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。&lt;/p&gt;
 
-&lt;h1 id=&#34;static-library-or-dynamic-library化する&#34;&gt;Static Library or Dynamic Library化する&lt;/h1&gt;
+&lt;h1 id=&#34;static-library-or-dynamic-library化する:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;Static Library or Dynamic Library化する&lt;/h1&gt;
 
 &lt;p&gt;切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、&lt;br /&gt;
 本体のコンパイル時間が短縮されます。&lt;br /&gt;
@@ -1242,17 +1242,17 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
 代わりに、ライブラリの部分だけ入れ換えるといったことができます。&lt;br /&gt;
 ただし、iOSでは使えません…(´・_・`)　&lt;/p&gt;
 
-&lt;h1 id=&#34;並列コンパイルする&#34;&gt;並列コンパイルする&lt;/h1&gt;
+&lt;h1 id=&#34;並列コンパイルする:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;並列コンパイルする&lt;/h1&gt;
 
 &lt;p&gt;makeにはjオプションがあり、指定した数だけ並列実行されます。&lt;br /&gt;
 多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。&lt;/p&gt;
 
-&lt;h1 id=&#34;分散コンパイルする&#34;&gt;分散コンパイルする&lt;/h1&gt;
+&lt;h1 id=&#34;分散コンパイルする:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;分散コンパイルする&lt;/h1&gt;
 
 &lt;p&gt;distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。&lt;br /&gt;
 ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)&lt;/p&gt;
 
-&lt;h1 id=&#34;いいパソコンを使う&#34;&gt;いいパソコンを使う&lt;/h1&gt;
+&lt;h1 id=&#34;いいパソコンを使う:c738617e187c72fcfb45cdb91f5e4f9d&#34;&gt;いいパソコンを使う&lt;/h1&gt;
 
 &lt;p&gt;当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。&lt;br /&gt;
 ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。&lt;/p&gt;
@@ -1267,7 +1267,7 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
       <guid>http://ota42y.com/blog/2014/09/22/cpp-include/</guid>
       <description>
 
-&lt;h1 id=&#34;不要なinclude削除&#34;&gt;不要なinclude削除&lt;/h1&gt;
+&lt;h1 id=&#34;不要なinclude削除:0e527f0ffbbaaeb51ab52f1aa3a84d5a&#34;&gt;不要なinclude削除&lt;/h1&gt;
 
 &lt;p&gt;cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。&lt;br /&gt;
 そのため、includeする量が増えるほどコンパイラが解析する量も増え、&lt;br /&gt;
@@ -1277,7 +1277,7 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
 includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、&lt;br /&gt;
 不要なincludeを消すとよりキャッシュを活用できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;クラスの前方宣言を活用する&#34;&gt;クラスの前方宣言を活用する&lt;/h1&gt;
+&lt;h1 id=&#34;クラスの前方宣言を活用する:0e527f0ffbbaaeb51ab52f1aa3a84d5a&#34;&gt;クラスの前方宣言を活用する&lt;/h1&gt;
 
 &lt;p&gt;クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。&lt;br /&gt;
 そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、&lt;br /&gt;
@@ -1359,7 +1359,7 @@ TestAクラスだけをコンパイルすれば良くなります。&lt;/p&gt;
 &lt;p&gt;ただし、メモリをきちんと確保しないと行けないため、デストラクタでの解放忘れなどに注意する必要があります。&lt;br /&gt;
 また、最近の環境ではそれほど問題にはならないと思いますが、ヒープを確保するのでメモリが断片化します。&lt;/p&gt;
 
-&lt;h1 id=&#34;pimplイディオム&#34;&gt;Pimplイディオム&lt;/h1&gt;
+&lt;h1 id=&#34;pimplイディオム:0e527f0ffbbaaeb51ab52f1aa3a84d5a&#34;&gt;Pimplイディオム&lt;/h1&gt;
 
 &lt;p&gt;classの前方宣言をさらに活用し、privateな物を全て別クラスにして持つ方法です。
 これにより、privateの変数を外から完全に見えなくしたり、&lt;br /&gt;
@@ -1453,7 +1453,7 @@ int TestA::getWeight(int density){
 &lt;p&gt;ただし、一つのcppに複数のクラスが入り、さらに外から見える部分と実際の実装が離れるため、&lt;br /&gt;
 かなりコードが読みにくくなります。&lt;/p&gt;
 
-&lt;h1 id=&#34;前方宣言を使えない場合&#34;&gt;前方宣言を使えない場合&lt;/h1&gt;
+&lt;h1 id=&#34;前方宣言を使えない場合:0e527f0ffbbaaeb51ab52f1aa3a84d5a&#34;&gt;前方宣言を使えない場合&lt;/h1&gt;
 
 &lt;p&gt;クラスの実態を持つ場合や、継承したクラスの場合は前方宣言にすることはできません。&lt;br /&gt;
 このような場合はポインタを持つようにしたり、&lt;a href=&#34;http://ja.m.wikipedia.org/wiki/Decorator_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&#34;&gt;Decorator パターン&lt;/a&gt;によって、&lt;br /&gt;
@@ -1514,11 +1514,11 @@ example.txt
 &lt;p&gt;上の例ではたまたま同じアドレスが再利用されたため、同じ文字列が設定されました。&lt;br /&gt;
 ですが、間に様々な処理を実行した場合は、謎の値が書き込まれるなどがあり得るため注意が必要です。&lt;/p&gt;
 
-&lt;h1 id=&#34;対策&#34;&gt;対策&lt;/h1&gt;
+&lt;h1 id=&#34;対策:76851629c11d7cf84901473873ea27ed&#34;&gt;対策&lt;/h1&gt;
 
 &lt;p&gt;このような場合、いくつかの対策があります。&lt;/p&gt;
 
-&lt;h2 id=&#34;引数で渡す&#34;&gt;引数で渡す&lt;/h2&gt;
+&lt;h2 id=&#34;引数で渡す:76851629c11d7cf84901473873ea27ed&#34;&gt;引数で渡す&lt;/h2&gt;
 
 &lt;p&gt;1つ目が、strncpyやstrncatのように、メモリ利用域を引数として受け取る方法です。&lt;br /&gt;
 これにより、自分のスコープから外れても値を保持することができます。&lt;br /&gt;
@@ -1526,7 +1526,7 @@ example.txt
 
 &lt;p&gt;確保したスコープを抜けるとやはり解放されますが、確実に解放されるためとても楽です。&lt;/p&gt;
 
-&lt;h2 id=&#34;ヒープに確保する&#34;&gt;ヒープに確保する&lt;/h2&gt;
+&lt;h2 id=&#34;ヒープに確保する:76851629c11d7cf84901473873ea27ed&#34;&gt;ヒープに確保する&lt;/h2&gt;
 
 &lt;p&gt;2つ目はmallocやnewでヒープ領域に確保する方法です。&lt;br /&gt;
 以下はnewで配列を確保するように書き換えました。&lt;/p&gt;
@@ -1560,7 +1560,7 @@ int main(void){
 &lt;p&gt;newやmallocでメモリ領域を確保した場合、ヒープ領域に確保され、スコープを超えてメモリを確保し続けられます。&lt;br /&gt;
 ただし、明示的に解放しないとメモリリークが起きるため、注意が必要です。&lt;/p&gt;
 
-&lt;h2 id=&#34;オブジェクトをコピーする&#34;&gt;オブジェクトをコピーする&lt;/h2&gt;
+&lt;h2 id=&#34;オブジェクトをコピーする:76851629c11d7cf84901473873ea27ed&#34;&gt;オブジェクトをコピーする&lt;/h2&gt;
 
 &lt;p&gt;3つめがコピーを使う方法です。&lt;br /&gt;
 今回の関数では配列を使っていますが、コピーコンストラクタをもつstd::stringを使うと、&lt;br /&gt;

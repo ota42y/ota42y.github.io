@@ -17,7 +17,7 @@
       <guid>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Debian 7 32bitではmongodb3.0はapt-getで入れられない&lt;/li&gt;
@@ -25,7 +25,7 @@
 &lt;li&gt;面倒ならdbファイルを&lt;code&gt;/data/db&lt;/code&gt;に移動してしまうのが楽そう&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;debian-7-32bitのmongodb&#34;&gt;Debian 7 32bitのmongodb&lt;/h1&gt;
+&lt;h1 id=&#34;debian-7-32bitのmongodb:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;Debian 7 32bitのmongodb&lt;/h1&gt;
 
 &lt;p&gt;Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、&lt;br /&gt;
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)&lt;br /&gt;
@@ -39,7 +39,7 @@ tarballからインストールする必要があります。&lt;/p&gt;
 
 &lt;p&gt;ただし、aptで入れた2.6からアップデートし、既存のDBファイルを使う場合は若干面倒になります。&lt;/p&gt;
 
-&lt;h1 id=&#34;aptからのアップグレード時の注意点&#34;&gt;aptからのアップグレード時の注意点&lt;/h1&gt;
+&lt;h1 id=&#34;aptからのアップグレード時の注意点:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;aptからのアップグレード時の注意点&lt;/h1&gt;
 
 &lt;p&gt;新規に入れる場合は公式サイトの手順通りですが、aptからのアップグレードの場合は問題が起きます。&lt;br /&gt;
 公式サイトの手順では、ログインユーザで&lt;code&gt;/data/db&lt;/code&gt;をDB書き込み先として使いますが、&lt;br /&gt;
@@ -50,7 +50,7 @@ aptで入れた2.6系統は特に設定しない場合、mongodbユーザで&lt;
 mongodbユーザがtarballの解凍と実行をする必要があります。&lt;br /&gt;
 今回は後者の方式をとります。&lt;/p&gt;
 
-&lt;h1 id=&#34;インストール手順&#34;&gt;インストール手順&lt;/h1&gt;
+&lt;h1 id=&#34;インストール手順:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;インストール手順&lt;/h1&gt;
 
 &lt;p&gt;公式サイトの手順からインストール先を変え、実行時にオプションを指定しているだけです。&lt;br /&gt;
 &lt;a href=&#34;https://docs.mongodb.org/master/tutorial/install-mongodb-on-linux/&#34;&gt;Install MongoDB From Tarbal&lt;/a&gt;&lt;/p&gt;
@@ -65,7 +65,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo -u mongodb mongod --dbpath /var/lib/mongodb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;まとめ-1&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ-1:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;p&gt;起動が面倒なら、&lt;code&gt;/var/lib/mongodb&lt;/code&gt;を&lt;code&gt;/data/db&lt;/code&gt;に移動して所有権を書き換えるのもいいと思います。&lt;/p&gt;
 </description>

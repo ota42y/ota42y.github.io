@@ -17,7 +17,7 @@
       <guid>http://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:ab936406d233aece22e2039cdf3abfc2&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;AlchemyAPIに画像をアップロードすると識別結果を返してくれる&lt;/li&gt;
@@ -30,7 +30,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;alchemyapiで画像認識が凄い簡単にできる&#34;&gt;AlchemyAPIで画像認識が凄い簡単にできる&lt;/h1&gt;
+&lt;h1 id=&#34;alchemyapiで画像認識が凄い簡単にできる:ab936406d233aece22e2039cdf3abfc2&#34;&gt;AlchemyAPIで画像認識が凄い簡単にできる&lt;/h1&gt;
 
 &lt;p&gt;先日のABPro2015でこんな&lt;a href=&#34;http://ota42y.com/blog/2015/10/10/abpro2015/&#34;&gt;発表をしました&lt;/a&gt;。&lt;/p&gt;
 
@@ -39,7 +39,7 @@
 &lt;p&gt;ここで画像の判定にAlchemyAPIを利用しています。&lt;br /&gt;
 Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。&lt;/p&gt;
 
-&lt;h1 id=&#34;alchemyapiとは&#34;&gt;AlchemyAPIとは？&lt;/h1&gt;
+&lt;h1 id=&#34;alchemyapiとは:ab936406d233aece22e2039cdf3abfc2&#34;&gt;AlchemyAPIとは？&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.alchemyapi.com/&#34;&gt;http://www.alchemyapi.com/&lt;/a&gt;&lt;br /&gt;
 IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt;
@@ -54,7 +54,7 @@ IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt
 その中の1つにAlchemyAPIが含まれているようです。&lt;br /&gt;
 なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方:ab936406d233aece22e2039cdf3abfc2&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;のアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。&lt;br /&gt;
 その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。&lt;/p&gt;
@@ -62,7 +62,7 @@ IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt
 &lt;p&gt;登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、&lt;br /&gt;
 それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ライブラリ&#34;&gt;ライブラリ&lt;/h1&gt;
+&lt;h1 id=&#34;ライブラリ:ab936406d233aece22e2039cdf3abfc2&#34;&gt;ライブラリ&lt;/h1&gt;
 
 &lt;p&gt;公式がいくつかの言語のライブラリを提供しています。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/AlchemyAPI&#34;&gt;https://github.com/AlchemyAPI&lt;/a&gt;&lt;/p&gt;
@@ -71,7 +71,7 @@ IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt
 使いたい方はどうぞ。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/go-alchemyapi&#34;&gt;https://github.com/ota42y/go-alchemyapi&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
+&lt;h1 id=&#34;サンプルコード:ab936406d233aece22e2039cdf3abfc2&#34;&gt;サンプルコード&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
 
@@ -108,7 +108,7 @@ food 0.832018
 sushi 0.5
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;感想&#34;&gt;感想&lt;/h1&gt;
+&lt;h1 id=&#34;感想:ab936406d233aece22e2039cdf3abfc2&#34;&gt;感想&lt;/h1&gt;
 
 &lt;p&gt;件数は限定的とはいえ、投げるだけで画像認識できるとか相当凄いです。&lt;br /&gt;
 しかも食べ物かそうじゃないかだけでなく、寿司かどうかまで判定しているので、学習精度もかなり良いです。&lt;br /&gt;

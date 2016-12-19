@@ -123,13 +123,13 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ">まとめ</a></li>
-<li><a href="#alchemyapiで画像認識が凄い簡単にできる">AlchemyAPIで画像認識が凄い簡単にできる</a></li>
-<li><a href="#alchemyapiとは">AlchemyAPIとは？</a></li>
-<li><a href="#使い方">使い方</a></li>
-<li><a href="#ライブラリ">ライブラリ</a></li>
-<li><a href="#サンプルコード">サンプルコード</a></li>
-<li><a href="#感想">感想</a></li>
+<li><a href="#まとめ:ab936406d233aece22e2039cdf3abfc2">まとめ</a></li>
+<li><a href="#alchemyapiで画像認識が凄い簡単にできる:ab936406d233aece22e2039cdf3abfc2">AlchemyAPIで画像認識が凄い簡単にできる</a></li>
+<li><a href="#alchemyapiとは:ab936406d233aece22e2039cdf3abfc2">AlchemyAPIとは？</a></li>
+<li><a href="#使い方:ab936406d233aece22e2039cdf3abfc2">使い方</a></li>
+<li><a href="#ライブラリ:ab936406d233aece22e2039cdf3abfc2">ライブラリ</a></li>
+<li><a href="#サンプルコード:ab936406d233aece22e2039cdf3abfc2">サンプルコード</a></li>
+<li><a href="#感想:ab936406d233aece22e2039cdf3abfc2">感想</a></li>
 </ul>
 </nav>
                 </div>
@@ -139,7 +139,7 @@
             <div class="article">
               
 
-<h1 id="まとめ">まとめ</h1>
+<h1 id="まとめ:ab936406d233aece22e2039cdf3abfc2">まとめ</h1>
 
 <ul>
 <li>AlchemyAPIに画像をアップロードすると識別結果を返してくれる</li>
@@ -152,7 +152,7 @@
 </ul></li>
 </ul>
 
-<h1 id="alchemyapiで画像認識が凄い簡単にできる">AlchemyAPIで画像認識が凄い簡単にできる</h1>
+<h1 id="alchemyapiで画像認識が凄い簡単にできる:ab936406d233aece22e2039cdf3abfc2">AlchemyAPIで画像認識が凄い簡単にできる</h1>
 
 <p>先日のABPro2015でこんな<a href="http://ota42y.com/blog/2015/10/10/abpro2015/">発表をしました</a>。</p>
 
@@ -161,7 +161,7 @@
 <p>ここで画像の判定にAlchemyAPIを利用しています。<br />
 Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。</p>
 
-<h1 id="alchemyapiとは">AlchemyAPIとは？</h1>
+<h1 id="alchemyapiとは:ab936406d233aece22e2039cdf3abfc2">AlchemyAPIとは？</h1>
 
 <p><a href="http://www.alchemyapi.com/">http://www.alchemyapi.com/</a><br />
 IBMが買収した機械学習によるデータ分析会社です。<br />
@@ -176,7 +176,7 @@ IBMが買収した機械学習によるデータ分析会社です。<br />
 その中の1つにAlchemyAPIが含まれているようです。<br />
 なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。</p>
 
-<h1 id="使い方">使い方</h1>
+<h1 id="使い方:ab936406d233aece22e2039cdf3abfc2">使い方</h1>
 
 <p><a href="https://console.ng.bluemix.net/home/">IBM Bluemix</a>のアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。<br />
 その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。</p>
@@ -184,7 +184,7 @@ IBMが買収した機械学習によるデータ分析会社です。<br />
 <p>登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、<br />
 それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。</p>
 
-<h1 id="ライブラリ">ライブラリ</h1>
+<h1 id="ライブラリ:ab936406d233aece22e2039cdf3abfc2">ライブラリ</h1>
 
 <p>公式がいくつかの言語のライブラリを提供しています。<br />
 <a href="https://github.com/AlchemyAPI">https://github.com/AlchemyAPI</a></p>
@@ -193,7 +193,7 @@ IBMが買収した機械学習によるデータ分析会社です。<br />
 使いたい方はどうぞ。<br />
 <a href="https://github.com/ota42y/go-alchemyapi">https://github.com/ota42y/go-alchemyapi</a></p>
 
-<h1 id="サンプルコード">サンプルコード</h1>
+<h1 id="サンプルコード:ab936406d233aece22e2039cdf3abfc2">サンプルコード</h1>
 
 <pre><code class="language-go">package main
 
@@ -230,7 +230,7 @@ food 0.832018
 sushi 0.5
 </code></pre>
 
-<h1 id="感想">感想</h1>
+<h1 id="感想:ab936406d233aece22e2039cdf3abfc2">感想</h1>
 
 <p>件数は限定的とはいえ、投げるだけで画像認識できるとか相当凄いです。<br />
 しかも食べ物かそうじゃないかだけでなく、寿司かどうかまで判定しているので、学習精度もかなり良いです。<br />

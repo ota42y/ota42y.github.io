@@ -48,7 +48,7 @@
 &lt;p&gt;すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/robdimsdale/wl&#34;&gt;https://github.com/robdimsdale/wl&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;以下のように利用します。&lt;br /&gt;
 &lt;code&gt;
@@ -64,12 +64,12 @@ wl tasks --completed true -j | go run report.go
 22:06:09 create blog entry&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&#34;コード&#34;&gt;コード&lt;/h1&gt;
+&lt;h1 id=&#34;コード:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;コード&lt;/h1&gt;
 
 &lt;p&gt;コードはこれです。
 &lt;script src=&#34;https://gist.github.com/ota42y/f40dd18687d3bd5350d8.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他:5c0e355a2ac83f934f41ecabb47e608e&#34;&gt;その他&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;全部のタスクを並べるのはつらいので、3日以前は終了タスク数のみとかにしたい&lt;br /&gt;&lt;/li&gt;

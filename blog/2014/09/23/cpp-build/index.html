@@ -119,13 +119,13 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#結論">結論</a></li>
-<li><a href="#キャッシュを使う">キャッシュを使う</a></li>
-<li><a href="#不要なinclude削除">不要なinclude削除</a></li>
-<li><a href="#static-library-or-dynamic-library化する">Static Library or Dynamic Library化する</a></li>
-<li><a href="#並列コンパイルする">並列コンパイルする</a></li>
-<li><a href="#分散コンパイルする">分散コンパイルする</a></li>
-<li><a href="#いいパソコンを使う">いいパソコンを使う</a></li>
+<li><a href="#結論:c738617e187c72fcfb45cdb91f5e4f9d">結論</a></li>
+<li><a href="#キャッシュを使う:c738617e187c72fcfb45cdb91f5e4f9d">キャッシュを使う</a></li>
+<li><a href="#不要なinclude削除:c738617e187c72fcfb45cdb91f5e4f9d">不要なinclude削除</a></li>
+<li><a href="#static-library-or-dynamic-library化する:c738617e187c72fcfb45cdb91f5e4f9d">Static Library or Dynamic Library化する</a></li>
+<li><a href="#並列コンパイルする:c738617e187c72fcfb45cdb91f5e4f9d">並列コンパイルする</a></li>
+<li><a href="#分散コンパイルする:c738617e187c72fcfb45cdb91f5e4f9d">分散コンパイルする</a></li>
+<li><a href="#いいパソコンを使う:c738617e187c72fcfb45cdb91f5e4f9d">いいパソコンを使う</a></li>
 </ul>
 </nav>
                 </div>
@@ -135,7 +135,7 @@
             <div class="article">
               
 
-<h1 id="結論">結論</h1>
+<h1 id="結論:c738617e187c72fcfb45cdb91f5e4f9d">結論</h1>
 
 <ul>
 <li>キャッシュを使う</li>
@@ -151,18 +151,18 @@
 
 <p>どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。</p>
 
-<h1 id="キャッシュを使う">キャッシュを使う</h1>
+<h1 id="キャッシュを使う:c738617e187c72fcfb45cdb91f5e4f9d">キャッシュを使う</h1>
 
 <p>ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、<br />
 2回目以降のビルドは差分だけをコンパイルし直すため早くなります。<br />
 といっても、多分使わない方が珍しいと思いますが。</p>
 
-<h1 id="不要なinclude削除">不要なinclude削除</h1>
+<h1 id="不要なinclude削除:c738617e187c72fcfb45cdb91f5e4f9d">不要なinclude削除</h1>
 
 <p><a href="http://ota42y.com/blog/2014/09/22/cpp-include/">C++で不要なincludeを減らす</a>のように、<br />
 不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。</p>
 
-<h1 id="static-library-or-dynamic-library化する">Static Library or Dynamic Library化する</h1>
+<h1 id="static-library-or-dynamic-library化する:c738617e187c72fcfb45cdb91f5e4f9d">Static Library or Dynamic Library化する</h1>
 
 <p>切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、<br />
 本体のコンパイル時間が短縮されます。<br />
@@ -175,17 +175,17 @@
 代わりに、ライブラリの部分だけ入れ換えるといったことができます。<br />
 ただし、iOSでは使えません…(´・_・`)　</p>
 
-<h1 id="並列コンパイルする">並列コンパイルする</h1>
+<h1 id="並列コンパイルする:c738617e187c72fcfb45cdb91f5e4f9d">並列コンパイルする</h1>
 
 <p>makeにはjオプションがあり、指定した数だけ並列実行されます。<br />
 多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。</p>
 
-<h1 id="分散コンパイルする">分散コンパイルする</h1>
+<h1 id="分散コンパイルする:c738617e187c72fcfb45cdb91f5e4f9d">分散コンパイルする</h1>
 
 <p>distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。<br />
 ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)</p>
 
-<h1 id="いいパソコンを使う">いいパソコンを使う</h1>
+<h1 id="いいパソコンを使う:c738617e187c72fcfb45cdb91f5e4f9d">いいパソコンを使う</h1>
 
 <p>当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。<br />
 ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</p>

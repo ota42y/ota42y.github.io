@@ -119,9 +119,9 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#shellshock-cve-2014-6271">ShellShock(CVE-2014-6271)</a></li>
-<li><a href="#修正パッチ状況">修正パッチ状況</a></li>
-<li><a href="#修正版へのアップデート">修正版へのアップデート</a></li>
+<li><a href="#shellshock-cve-2014-6271:377013f15561b7f0d7c8de02112ec895">ShellShock(CVE-2014-6271)</a></li>
+<li><a href="#修正パッチ状況:377013f15561b7f0d7c8de02112ec895">修正パッチ状況</a></li>
+<li><a href="#修正版へのアップデート:377013f15561b7f0d7c8de02112ec895">修正版へのアップデート</a></li>
 </ul>
 </nav>
                 </div>
@@ -133,7 +133,7 @@
 
 <p>Debianは探しても見つからなかったので…(´･_･`)</p>
 
-<h1 id="shellshock-cve-2014-6271">ShellShock(CVE-2014-6271)</h1>
+<h1 id="shellshock-cve-2014-6271:377013f15561b7f0d7c8de02112ec895">ShellShock(CVE-2014-6271)</h1>
 
 <p>CVE-2014-6271(とCVE-2014-7169)として、bashに第三者から任意のコードが実行される脆弱性が見つかりました。<br />
 <a href="https://www.jpcert.or.jp/at/2014/at140037.html">GNU bash の脆弱性に関する注意喚起</a><br />
@@ -145,7 +145,7 @@
 <pre><code class="language-bash">env x='() { :;}; echo vulnerable' bash -c 'echo hello'
 </code></pre>
 
-<h1 id="修正パッチ状況">修正パッチ状況</h1>
+<h1 id="修正パッチ状況:377013f15561b7f0d7c8de02112ec895">修正パッチ状況</h1>
 
 <p>この問題に対しては(まだ不十分ですが)修正パッチが公開されており、また各ディストリビューションでも修正したbashが配布されています。</p>
 
@@ -157,7 +157,7 @@ Mac OS X系の対策はこちら<br />
 <p>私の使っているDebian(squeeze)でも、パッチが適応されたbashを配布しています。<br />
 <a href="https://security-tracker.debian.org/tracker/CVE-2014-6271">https://security-tracker.debian.org/tracker/CVE-2014-6271</a></p>
 
-<h1 id="修正版へのアップデート">修正版へのアップデート</h1>
+<h1 id="修正版へのアップデート:377013f15561b7f0d7c8de02112ec895">修正版へのアップデート</h1>
 
 <p>修正されたbashはsqueezeの通常のリポジトリには修正版は公開されておらず、<br />
 ltsリポジトリを参照する必要があります。(2014/09/26 7:00現在)<br />

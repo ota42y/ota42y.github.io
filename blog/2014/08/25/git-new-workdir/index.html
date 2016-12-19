@@ -119,15 +119,15 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ">まとめ</a></li>
-<li><a href="#ビルドのキャッシュ">ビルドのキャッシュ</a></li>
-<li><a href="#gitのチェックアウトによるファイル変更問題">gitのチェックアウトによるファイル変更問題</a></li>
-<li><a href="#git-new-workdirとは">git-new-workdirとは</a>
+<li><a href="#まとめ:bab02fce294c55cfdd08d2d994439ea8">まとめ</a></li>
+<li><a href="#ビルドのキャッシュ:bab02fce294c55cfdd08d2d994439ea8">ビルドのキャッシュ</a></li>
+<li><a href="#gitのチェックアウトによるファイル変更問題:bab02fce294c55cfdd08d2d994439ea8">gitのチェックアウトによるファイル変更問題</a></li>
+<li><a href="#git-new-workdirとは:bab02fce294c55cfdd08d2d994439ea8">git-new-workdirとは</a>
 <ul>
-<li><a href="#インストール">インストール</a></li>
-<li><a href="#使い方">使い方</a></li>
+<li><a href="#インストール:bab02fce294c55cfdd08d2d994439ea8">インストール</a></li>
+<li><a href="#使い方:bab02fce294c55cfdd08d2d994439ea8">使い方</a></li>
 </ul></li>
-<li><a href="#注意点">注意点</a></li>
+<li><a href="#注意点:bab02fce294c55cfdd08d2d994439ea8">注意点</a></li>
 </ul>
 </nav>
                 </div>
@@ -137,7 +137,7 @@
             <div class="article">
               
 
-<h1 id="まとめ">まとめ</h1>
+<h1 id="まとめ:bab02fce294c55cfdd08d2d994439ea8">まとめ</h1>
 
 <ul>
 <li>ビルドに時間がかかる環境下では、ビルドのキャッシュが重要</li>
@@ -149,7 +149,7 @@
 <li>スマホアプリじゃなくても便利</li>
 </ul>
 
-<h1 id="ビルドのキャッシュ">ビルドのキャッシュ</h1>
+<h1 id="ビルドのキャッシュ:bab02fce294c55cfdd08d2d994439ea8">ビルドのキャッシュ</h1>
 
 <p>Objective-cやJava、C++でスマホアプリを作成する場合、<br />
 どの言語もコンパイルが必要になります。<br />
@@ -159,7 +159,7 @@
 変更したファイルのみがコンパイルされるため、<br />
 フルビルドをしなければ気にならないはずです。</p>
 
-<h1 id="gitのチェックアウトによるファイル変更問題">gitのチェックアウトによるファイル変更問題</h1>
+<h1 id="gitのチェックアウトによるファイル変更問題:bab02fce294c55cfdd08d2d994439ea8">gitのチェックアウトによるファイル変更問題</h1>
 
 <p>gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。<br />
 これにより、ブランチ間の差分が全てビルド対象になってしまいます。</p>
@@ -176,7 +176,7 @@
 <p>こういった場合、git-new-workdirを使うことで、
 だいぶ楽に解決することができます。</p>
 
-<h1 id="git-new-workdirとは">git-new-workdirとは</h1>
+<h1 id="git-new-workdirとは:bab02fce294c55cfdd08d2d994439ea8">git-new-workdirとは</h1>
 
 <p>これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。<br />
 これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、<br />
@@ -185,13 +185,13 @@
 <p>また、gitのワーキングディレクトリやステージングエリアは共用されないため、<br />
 コミットしていない変更が別のディレクトリに影響をあたることはありません。　</p>
 
-<h2 id="インストール">インストール</h2>
+<h2 id="インストール:bab02fce294c55cfdd08d2d994439ea8">インストール</h2>
 
 <p><code>git/contrib/workdir/git-new-workdir</code>に入っていたので、<br />
 <code>export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH</code>
 でパスを通しました。</p>
 
-<h2 id="使い方">使い方</h2>
+<h2 id="使い方:bab02fce294c55cfdd08d2d994439ea8">使い方</h2>
 
 <p><code>git-new-workdir repository_folder new_workdir branch_name(オプション)</code>です。<br />
 後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、<br />
@@ -199,7 +199,7 @@
 
 <p>新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。</p>
 
-<h1 id="注意点">注意点</h1>
+<h1 id="注意点:bab02fce294c55cfdd08d2d994439ea8">注意点</h1>
 
 <p>同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。<br />
 なお、片方からもう片方が何をチェックアウトしているかはわからないため、<br />

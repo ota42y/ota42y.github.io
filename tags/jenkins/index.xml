@@ -17,11 +17,11 @@
       <guid>http://ota42y.com/blog/2016/02/28/jenkins_node_select/</guid>
       <description>
 
-&lt;h1 id=&#34;概要&#34;&gt;概要&lt;/h1&gt;
+&lt;h1 id=&#34;概要:0be37591a98e09367cb74beb3aab8bdc&#34;&gt;概要&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsのノード制御はあまりカスタマイズが効きません。そのため、ノードを細かく制御したい場合はジョブを分ける必要があり、ジョブ数が増えて管理コストが上がります。このプラグインはパラメーターでノードを選択できるので、一つのジョブでノードごとにジョブを動かせるようになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;jenkinsのノード選択は柔軟性に欠ける&#34;&gt;Jenkinsのノード選択は柔軟性に欠ける&lt;/h1&gt;
+&lt;h1 id=&#34;jenkinsのノード選択は柔軟性に欠ける:0be37591a98e09367cb74beb3aab8bdc&#34;&gt;Jenkinsのノード選択は柔軟性に欠ける&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsのノード選択がパラメータでできるプラグインです。
 Jenkinsでは基本機能として、実行するノードを制限して特定ノードでだけジョブを実行できます。
@@ -29,7 +29,7 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 そのため、例えばgoでWindowsとMac両方でテストを実行したい場合、windows用とmac用というノードごとの個別のジョブを作る必要があります。
 しかし、それを続けるとJenkinsのジョブの数が際限なく増えていき、ジョブのメンテが大変になるという問題が出ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;node-and-label-parameter-plugin&#34;&gt;Node and Label parameter plugin&lt;/h1&gt;
+&lt;h1 id=&#34;node-and-label-parameter-plugin:0be37591a98e09367cb74beb3aab8bdc&#34;&gt;Node and Label parameter plugin&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin&lt;/a&gt;&lt;/p&gt;
 
@@ -42,7 +42,7 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 そのため、ノードにwindowsやmac等の適切なラベルをつけることで、任意のノードでビルドすることができるようになります。
 また、全てのノードに共通のラベルを一つ定義しておくことで、どれでもいいからとりあえずビルドするといったこともできます。&lt;/p&gt;
 
-&lt;h1 id=&#34;該当するノード全てでビルドする&#34;&gt;該当するノード全てでビルドする&lt;/h1&gt;
+&lt;h1 id=&#34;該当するノード全てでビルドする:0be37591a98e09367cb74beb3aab8bdc&#34;&gt;該当するノード全てでビルドする&lt;/h1&gt;
 
 &lt;p&gt;このプラグインは、特に設定がない場合は該当するノードのどれか一つでjobが実行されますが、以下のオプションをつけることで該当するノード全てで実行されるようになります。
 そのため、複数環境でテストしたい場合も１回ビルドを実行するだけで後は自動で全てのノードでビルドが実行されるようになります。
@@ -50,14 +50,14 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 
 &lt;p&gt;&lt;a href=&#34;http://ota42y.com/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png&#34;&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png&#34;  width=&#34;40%&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;pipeline-pluginとの違い&#34;&gt;Pipeline Pluginとの違い&lt;/h1&gt;
+&lt;h1 id=&#34;pipeline-pluginとの違い:0be37591a98e09367cb74beb3aab8bdc&#34;&gt;Pipeline Pluginとの違い&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin&#34;&gt;Pipeline Plugin&lt;/a&gt;では、Jenkinsのジョブを丸ごとgroovyで書けるため、このプラグインよりもさらに柔軟に選択できます。
 ただ、こちらは本当にジョブの内容を全てgroovyで書く必要があり、既存のJenkinsの知見を活用できなかったり、他のプラグインとの相性はあまり良くないです。
 Node and Label parameter pluginはパラメータのみ変更されるため、標準的なジョブ構成であればとても簡単に導入できます。
 そのため、どうしても複雑な制御が必要な時にのみPipeline Pluginを使うべきだと思います。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:0be37591a98e09367cb74beb3aab8bdc&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;通常の機能だとノードをあまり制御するのは難しい&lt;/li&gt;
@@ -85,7 +85,7 @@ Node and Label parameter pluginはパラメータのみ変更されるため、�
       <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;JenkinsはWebベースのUI
@@ -106,7 +106,7 @@ Node and Label parameter pluginはパラメータのみ変更されるため、�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;jenkinsのjob実行は大変&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
+&lt;h1 id=&#34;jenkinsのjob実行は大変:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;JenkinsのJob実行は大変&lt;/h1&gt;
 
 &lt;p&gt;JenkinsはWebブラウザを使ってGUIで操作するため、&lt;br /&gt;
 操作の敷居が低く、簡単に扱えるようになっています。&lt;/p&gt;
@@ -122,7 +122,7 @@ Node and Label parameter pluginはパラメータのみ変更されるため、�
 Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、&lt;br /&gt;
 パラメータの数だけクリックをする必要性から逃れられます。&lt;/p&gt;
 
-&lt;h1 id=&#34;remote-access-api&#34;&gt;Remote access API&lt;/h1&gt;
+&lt;h1 id=&#34;remote-access-api:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;Remote access API&lt;/h1&gt;
 
 &lt;p&gt;詳しくはこちら&lt;br /&gt;
 &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&#34;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API&lt;/a&gt;&lt;br /&gt;
@@ -138,7 +138,7 @@ Jenkinsをプログラムから制御でき、反応の遅さに悩まされた�
 &lt;code&gt;http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value&lt;/code&gt;
 のように、URLに直接入れても大丈夫のようです。&lt;/p&gt;
 
-&lt;h1 id=&#34;サンプルスクリプト&#34;&gt;サンプルスクリプト&lt;/h1&gt;
+&lt;h1 id=&#34;サンプルスクリプト:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;サンプルスクリプト&lt;/h1&gt;
 
 &lt;p&gt;3*3=9種類のビルドを一気に実行するスクリプトです&lt;/p&gt;
 
@@ -166,7 +166,7 @@ platforms.product(settings).each do |platform, setting|
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
+&lt;h1 id=&#34;問題点:af624862a939b6a21fcbc09ac950f3c4&#34;&gt;問題点&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsの仕様上、キューを入れた段階でビルド番号が確定しません。&lt;br /&gt;
 そのため、実行したビルドが何番のビルドとして登録されたかをレスポンスから知ることは出来ません。ss&lt;/p&gt;
@@ -181,7 +181,7 @@ end
       <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:0ccb30a040a233a026556ed14d67937d&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ブランチをパラメーターにするとスクリプトを読めない
@@ -199,7 +199,7 @@ end
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
+&lt;h1 id=&#34;gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d&#34;&gt;gitリポジトリ内のスクリプトを指定できない&lt;/h1&gt;
 
 &lt;p&gt;(以下に用意されているdocker上のJenkinsで確認しました)&lt;br /&gt;
 &lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&#34;&gt;https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md&lt;/a&gt;&lt;/p&gt;
@@ -229,7 +229,7 @@ Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo
 &lt;p&gt;このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、&lt;br /&gt;
 指定したブランチからスクリプトを読み込んで実行できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
+&lt;h1 id=&#34;スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d&#34;&gt;スクリプトをロードして実行するスクリプト&lt;/h1&gt;
 
 &lt;p&gt;(公式のdockerにも&lt;a href=&#34;https://github.com/jenkinsci/workflow-plugin-pipeline-demo/blob/master/flow.groovy&#34;&gt;スクリプト&lt;/a&gt;がありますが、より簡単化したもので説明します)&lt;/p&gt;
 
@@ -259,7 +259,7 @@ flow.build()
 そのため、これでリポジトリ内のファイルをロードして実行することが出来ます。&lt;br /&gt;
 また、buildメソッドをnodeの外側で実行することで、ビルド中はmasterのキューを開けておくことが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ロード時に変数を保存したい場合&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
+&lt;h1 id=&#34;ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d&#34;&gt;ロード時に変数を保存したい場合&lt;/h1&gt;
 
 &lt;p&gt;上記の方式の場合、masterにcloneしてその後にslave上に再度cloneしてビルドを始めています。&lt;br /&gt;
 slaveの選択を凝らない場合は問題ないですが、リリースビルド専用マシンがあったり、&lt;br /&gt;
@@ -271,7 +271,7 @@ slaveの選択を凝らない場合は問題ないですが、リリースビル
 
 &lt;p&gt;このような場合、groovyスクリプトの戻り値で独自クラスを返すことで解決できます。&lt;/p&gt;
 
-&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
+&lt;h1 id=&#34;load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d&#34;&gt;load関数の戻り値で独自クラスを返す&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsから以下のようなgroovyスクリプトを読み込むことで、slaveの選択も柔軟にできるようになります。&lt;/p&gt;
 
@@ -312,7 +312,7 @@ return f;
       <guid>http://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkinsはjob単位でしかノードに割り振れない
@@ -330,7 +330,7 @@ return f;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;複数ノードをコントロールするのは難しい&#34;&gt;複数ノードをコントロールするのは難しい&lt;/h1&gt;
+&lt;h1 id=&#34;複数ノードをコントロールするのは難しい:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;複数ノードをコントロールするのは難しい&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、&lt;br /&gt;
 複数のノードで、jobの一部の部分だけを別のノードで実行するなど、&lt;br /&gt;
@@ -339,7 +339,7 @@ return f;
 &lt;p&gt;このような問題に対して、これまではBuild Flow Pluginを使う事で解決が可能でしたが、&lt;br /&gt;
 Workflow Pluginを使う事で、さらに簡単に解決することが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;build-flow-pluginの問題点&#34;&gt;Build Flow Pluginの問題点&lt;/h1&gt;
+&lt;h1 id=&#34;build-flow-pluginの問題点:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Build Flow Pluginの問題点&lt;/h1&gt;
 
 &lt;p&gt;Build Flow Pluginは基本的に複数の下流ビルドを管理するために作られているため、&lt;br /&gt;
 処理を分けようとするとjobの数が増加していきます。&lt;/p&gt;
@@ -362,7 +362,7 @@ Workflow Pluginを使う事で、さらに簡単に解決することが出来�
 &lt;p&gt;jobの数が増えると管理も大変ですし、使う方もどれを使えば良いのか解らなくなります。&lt;br /&gt;
 ここで、Workflow Pluginを使うことで大きく改善することが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;workflow-pluginを使ったビルド&#34;&gt;Workflow Pluginを使ったビルド&lt;/h1&gt;
+&lt;h1 id=&#34;workflow-pluginを使ったビルド:ccf6631e819df9368a47b40de1b4ff36&#34;&gt;Workflow Pluginを使ったビルド&lt;/h1&gt;
 
 &lt;p&gt;Workflow Pluginでは、slaveを選択してコマンドを実行、&lt;br /&gt;
 特定のファイルを別のslaveにコピーして処理を実行ということががスクリプトで書けます。&lt;/p&gt;
@@ -403,9 +403,9 @@ node(&amp;quot;master&amp;quot;){
 &lt;p&gt;&lt;a href=&#34;http://build-shokunin.org/juc2015/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;に参加しました。&lt;br /&gt;
 &lt;a href=&#34;http://togetter.com/li/765735&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;発表まとめ&#34;&gt;発表まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;発表まとめ:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;発表まとめ&lt;/h1&gt;
 
-&lt;h2 id=&#34;アンケート結果&#34;&gt;アンケート結果&lt;/h2&gt;
+&lt;h2 id=&#34;アンケート結果:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;アンケート結果&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;参加申し込み時のアンケート結果&lt;/li&gt;
@@ -415,7 +415,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;li&gt;アンケート結果は後日公開&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jenkinsプロジェクトの現状とワークフロー&#34;&gt;Jenkinsプロジェクトの現状とワークフロー&lt;/h2&gt;
+&lt;h2 id=&#34;jenkinsプロジェクトの現状とワークフロー:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;Jenkinsプロジェクトの現状とワークフロー&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;DotCiが良さそう
@@ -436,7 +436,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jenkinsとseleniumの活用事例-試験自動化のプロジェクトへの導入&#34;&gt;JenkinsとSeleniumの活用事例：試験自動化のプロジェクトへの導入&lt;/h2&gt;
+&lt;h2 id=&#34;jenkinsとseleniumの活用事例-試験自動化のプロジェクトへの導入:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;JenkinsとSeleniumの活用事例：試験自動化のプロジェクトへの導入&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;アジャイル開発だとイテレーション毎に試験項目は増えていくが、開発後半になるほど試験に割ける時間は減る
@@ -458,7 +458,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jenkinsを使ったコンシューマゲームでのデプロイとテスト&#34;&gt;Jenkinsを使ったコンシューマゲームでのデプロイとテスト&lt;/h2&gt;
+&lt;h2 id=&#34;jenkinsを使ったコンシューマゲームでのデプロイとテスト:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;Jenkinsを使ったコンシューマゲームでのデプロイとテスト&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/swiftnest/jenkins-43394510&#34;&gt;http://www.slideshare.net/swiftnest/jenkins-43394510&lt;/a&gt;&lt;/li&gt;
@@ -558,7 +558,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;おばかxfdコンテスト&#34;&gt;おばかXFDコンテスト&lt;/h2&gt;
+&lt;h2 id=&#34;おばかxfdコンテスト:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;おばかXFDコンテスト&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;人は慣れる生き物
@@ -574,7 +574,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;lt大会&#34;&gt;LT大会&lt;/h2&gt;
+&lt;h2 id=&#34;lt大会:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;LT大会&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkinsを使った継続的Webセキュリティテスト
@@ -618,7 +618,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkins単体の話はなくって、Jenkinsと○○連携してこう使ってますが多かった
@@ -656,7 +656,7 @@ node(&amp;quot;master&amp;quot;){
       <guid>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:e43210b67d1ef6ec3aec4d3b4c38c191&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒&lt;/li&gt;
@@ -665,7 +665,7 @@ node(&amp;quot;master&amp;quot;){
 &lt;li&gt;これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;jenkinsのjob設定問題&#34;&gt;Jenkinsのjob設定問題&lt;/h1&gt;
+&lt;h1 id=&#34;jenkinsのjob設定問題:e43210b67d1ef6ec3aec4d3b4c38c191&#34;&gt;Jenkinsのjob設定問題&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。&lt;/p&gt;
 
@@ -677,7 +677,7 @@ node(&amp;quot;master&amp;quot;){
 
 &lt;p&gt;このような場合、二通りの解決方法が存在します。&lt;/p&gt;
 
-&lt;h2 id=&#34;全部スクリプトで処理する方法&#34;&gt;全部スクリプトで処理する方法&lt;/h2&gt;
+&lt;h2 id=&#34;全部スクリプトで処理する方法:e43210b67d1ef6ec3aec4d3b4c38c191&#34;&gt;全部スクリプトで処理する方法&lt;/h2&gt;
 
 &lt;p&gt;一つ目が全部スクリプトでやってしまう方法です。&lt;br /&gt;
 Jenkinsのjobからは単一のスクリプトだけを実行し、その中で全てを行います。&lt;/p&gt;
@@ -688,7 +688,7 @@ Jenkinsのjobからは単一のスクリプトだけを実行し、その中で�
 &lt;p&gt;ですがこの方法では、プラグインや下流jobとの連携、特定の処理だけ別ノードで実行するなど、&lt;br /&gt;
 Jenkinsの機能が使えなくなります。&lt;/p&gt;
 
-&lt;h2 id=&#34;新しいjobを作っていく方法&#34;&gt;新しいJobを作っていく方法&lt;/h2&gt;
+&lt;h2 id=&#34;新しいjobを作っていく方法:e43210b67d1ef6ec3aec4d3b4c38c191&#34;&gt;新しいJobを作っていく方法&lt;/h2&gt;
 
 &lt;p&gt;これに対し、jobの変更管理を諦め、どんどん新しいjobを作ってく方法があります。&lt;br /&gt;
 Jenkinsはjobのコピーが容易なため、後方互換性のない変更を加える段階で新しいjobに切り替え、&lt;br /&gt;
@@ -700,7 +700,7 @@ Jenkinsはjobのコピーが容易なため、後方互換性のない変更を�
 &lt;p&gt;これに対し、build flow pluginを使う事で、どのjobでビルドするかといった情報を、&lt;br /&gt;
 リポジトリ内に入れてバージョン管理することが出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;build-flow-pluginでjobの関係をリポジトリに入れる&#34;&gt;build flow pluginでjobの関係をリポジトリに入れる&lt;/h1&gt;
+&lt;h1 id=&#34;build-flow-pluginでjobの関係をリポジトリに入れる:e43210b67d1ef6ec3aec4d3b4c38c191&#34;&gt;build flow pluginでjobの関係をリポジトリに入れる&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsのbuild flow pluginでは、複数のjobをスクリプトから実行することが出来ます。&lt;br /&gt;
 &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Build+Flow+Plugin&#34;&gt;Build Flow Plugin&lt;/a&gt;&lt;/p&gt;
@@ -760,7 +760,7 @@ job間のデータの受け渡しが面倒になるという問題が生じま�
 ほぼ同じ内容のjobを15個ぐらい使っていたら、&lt;br /&gt;
 だんだんと運用が死んできたのでメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;p&gt;Jenkinsはプラグインの挙動を変えるのが難しいため、&lt;br /&gt;
 ほぼ同じだけれど若干違う手順を行う必要がある場合、&lt;br /&gt;
@@ -772,7 +772,7 @@ jobを種類別に細かく分け、&lt;br /&gt;
 最上位のjobにはどの下流jobを実行するかだけを管理させることで、&lt;br /&gt;
 複雑なjobでも変更に強くすることができるようになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;前提条件&#34;&gt;前提条件&lt;/h1&gt;
+&lt;h1 id=&#34;前提条件:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;前提条件&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;設定が全部で7種類ぐらいある&lt;/li&gt;
@@ -783,7 +783,7 @@ jobを種類別に細かく分け、&lt;br /&gt;
 &lt;li&gt;ビルド手順はバージョン/デプロイ先によって変化する&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
+&lt;h1 id=&#34;問題点:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;問題点&lt;/h1&gt;
 
 &lt;p&gt;大きな問題として、&lt;br /&gt;
 Jenkins pulginで提供されている機能を切り替えるのが難しいという問題があります。&lt;/p&gt;
@@ -812,9 +812,9 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
 &lt;p&gt;これに対する対策を考えましたが、あまり良いのが無い感じですが、&lt;br /&gt;
 とりあえずまとまったのでメモをしておきます。&lt;/p&gt;
 
-&lt;h1 id=&#34;解決案&#34;&gt;解決案&lt;/h1&gt;
+&lt;h1 id=&#34;解決案:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;解決案&lt;/h1&gt;
 
-&lt;h2 id=&#34;1-ビルド手順や通知を全てをシェルスクリプトにし-jenkinsはシェルを叩くだけにする&#34;&gt;1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする&lt;/h2&gt;
+&lt;h2 id=&#34;1-ビルド手順や通知を全てをシェルスクリプトにし-jenkinsはシェルを叩くだけにする:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする&lt;/h2&gt;
 
 &lt;p&gt;Jenkinsのプラグインをほぼ使用せず、全てスクリプトで解決する手法です。&lt;br /&gt;
  ビルド手順や通知がSCMに保存されるため、ビルド手順とバージョンが完全に紐付き、&lt;br /&gt;
@@ -824,7 +824,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
  今プラグインでやっている処理を全て置き換える必要があります。&lt;br /&gt;
  また、新たな手順の追加が大変と言った問題もあります。&lt;/p&gt;
 
-&lt;h2 id=&#34;2-ワークスペース共有を使ってうまくやる&#34;&gt;2.ワークスペース共有を使ってうまくやる&lt;/h2&gt;
+&lt;h2 id=&#34;2-ワークスペース共有を使ってうまくやる:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;2.ワークスペース共有を使ってうまくやる&lt;/h2&gt;
 
 &lt;p&gt;チェックアウトとビルドジョブを切り離し、&lt;br /&gt;
   SCMのポーリング&amp;amp;チェックアウトだけを行うjobから、&lt;br /&gt;
@@ -844,7 +844,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   - A-Cとビルドするjobと、B-Cとビルドするjobがあり、jenkinsの同時実行が2の場合、&lt;br /&gt;
    2つのビルドを同時に実行するとCが2つともキューに積まれて進まない場合がある&lt;/p&gt;
 
-&lt;h2 id=&#34;3-jobを疎結合にして成果物を使ってうまくやる&#34;&gt;3.jobを疎結合にして成果物を使ってうまくやる&lt;/h2&gt;
+&lt;h2 id=&#34;3-jobを疎結合にして成果物を使ってうまくやる:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;3.jobを疎結合にして成果物を使ってうまくやる&lt;/h2&gt;
 
 &lt;p&gt;2のデッドロックを回避するために、疎結合にした版になります。&lt;br /&gt;
   この方式ではワークスペースを共有せず、&lt;br /&gt;
@@ -859,7 +859,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
   ビルドログが完全に細切れになるため追いにくく、&lt;br /&gt;
   またいつ何が正常に終了したかを把握しにくいという問題があります。&lt;/p&gt;
 
-&lt;h2 id=&#34;4-master-slaveにして-masterからslaveのjobを呼び出すようにする&#34;&gt;4.master-slaveにして、masterからslaveのjobを呼び出すようにする&lt;/h2&gt;
+&lt;h2 id=&#34;4-master-slaveにして-masterからslaveのjobを呼び出すようにする:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;4.master-slaveにして、masterからslaveのjobを呼び出すようにする&lt;/h2&gt;
 
 &lt;p&gt;3のやりかたを踏まえつつ、個別のjobでは無く下流のjobとして運用する方法です。&lt;br /&gt;
  そのために、2で問題となっていたキューが埋まる問題への解決策を入れました。&lt;/p&gt;
@@ -876,7 +876,7 @@ JenkinsのGit プラグインではそのあたりをうまく設定すること
  jobをmasterとslaveどっちでやるかを考えないといけない、&lt;br /&gt;
  下流jobとして紐付けはされるが、ログはまだ細切れになっているといった問題があります。&lt;/p&gt;
 
-&lt;h1 id=&#34;おわりに&#34;&gt;おわりに&lt;/h1&gt;
+&lt;h1 id=&#34;おわりに:1454c4e5d7cb83f9989cba8b03537b99&#34;&gt;おわりに&lt;/h1&gt;
 
 &lt;p&gt;とりあえず今のところは、4番が一番いい方法ではないかと考えています。&lt;br /&gt;
 そのためしばらくこれで運用し、また問題が起きた場合、&lt;br /&gt;

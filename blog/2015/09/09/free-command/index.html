@@ -119,10 +119,10 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#freeコマンドに追加されたavailable">freeコマンドに追加されたavailable</a>
+<li><a href="#freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee">freeコマンドに追加されたavailable</a>
 <ul>
-<li><a href="#コード">コード</a></li>
-<li><a href="#コード内容">コード内容</a></li>
+<li><a href="#コード:dbabf7c03815177c3b438c3f806470ee">コード</a></li>
+<li><a href="#コード内容:dbabf7c03815177c3b438c3f806470ee">コード内容</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -133,7 +133,7 @@
             <div class="article">
               
 
-<h1 id="freeコマンドに追加されたavailable">freeコマンドに追加されたavailable</h1>
+<h1 id="freeコマンドに追加されたavailable:dbabf7c03815177c3b438c3f806470ee">freeコマンドに追加されたavailable</h1>
 
 <p>3.14および2.6.27から、freeコマンドの書式が変わり、<br />
 <code>-/+ buffers/cache</code>が消えてavailableという項目が増えました。</p>
@@ -151,7 +151,7 @@ able on kernels 3.14, emulated on kernels 2.6.27+, otherwise the
 same as free)
 </code></pre>
 
-<h2 id="コード">コード</h2>
+<h2 id="コード:dbabf7c03815177c3b438c3f806470ee">コード</h2>
 
 <p>/proc/meminfoは以下のコードによって作成されるようです。<br />
 <a href="https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c">https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c</a></p>
@@ -166,7 +166,7 @@ available += global_page_state(NR_SLAB_RECLAIMABLE) -
 			 min(global_page_state(NR_SLAB_RECLAIMABLE) / 2, wmark_low);
 </code></pre>
 
-<h2 id="コード内容">コード内容</h2>
+<h2 id="コード内容:dbabf7c03815177c3b438c3f806470ee">コード内容</h2>
 
 <p>ざっと見たところ、sysinfoのfreeramの値から、ページキャッシュやslabキャッシュの中の再利用可能な分を足した値が、MemAvailableとして計算されるようです。</p>
 

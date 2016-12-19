@@ -123,20 +123,20 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ">まとめ</a></li>
-<li><a href="#mochaの使い方">Mochaの使い方</a>
+<li><a href="#まとめ:3bae98bb6aa9abe8f0b8472a1492cace">まとめ</a></li>
+<li><a href="#mochaの使い方:3bae98bb6aa9abe8f0b8472a1492cace">Mochaの使い方</a>
 <ul>
-<li><a href="#テストの書き方">テストの書き方</a></li>
-<li><a href="#beforeの使い方">beforeの使い方</a></li>
-<li><a href="#pendingテストの作り方">pendingテストの作り方</a></li>
-<li><a href="#外部ファイル読み込み">外部ファイル読み込み</a></li>
-<li><a href="#assertを使う">assertを使う</a></li>
+<li><a href="#テストの書き方:3bae98bb6aa9abe8f0b8472a1492cace">テストの書き方</a></li>
+<li><a href="#beforeの使い方:3bae98bb6aa9abe8f0b8472a1492cace">beforeの使い方</a></li>
+<li><a href="#pendingテストの作り方:3bae98bb6aa9abe8f0b8472a1492cace">pendingテストの作り方</a></li>
+<li><a href="#外部ファイル読み込み:3bae98bb6aa9abe8f0b8472a1492cace">外部ファイル読み込み</a></li>
+<li><a href="#assertを使う:3bae98bb6aa9abe8f0b8472a1492cace">assertを使う</a></li>
 </ul></li>
-<li><a href="#sinonの使い方">sinonの使い方</a>
+<li><a href="#sinonの使い方:3bae98bb6aa9abe8f0b8472a1492cace">sinonの使い方</a>
 <ul>
-<li><a href="#mockやstubを使う">mockやstubを使う</a></li>
-<li><a href="#時間変更の仕方">時間変更の仕方</a></li>
-<li><a href="#sinonのその他の機能">sinonのその他の機能</a></li>
+<li><a href="#mockやstubを使う:3bae98bb6aa9abe8f0b8472a1492cace">mockやstubを使う</a></li>
+<li><a href="#時間変更の仕方:3bae98bb6aa9abe8f0b8472a1492cace">時間変更の仕方</a></li>
+<li><a href="#sinonのその他の機能:3bae98bb6aa9abe8f0b8472a1492cace">sinonのその他の機能</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -147,7 +147,7 @@
             <div class="article">
               
 
-<h1 id="まとめ">まとめ</h1>
+<h1 id="まとめ:3bae98bb6aa9abe8f0b8472a1492cace">まとめ</h1>
 
 <ul>
 <li>Mochaではrspecっぽい感じにテストが書ける</li>
@@ -155,11 +155,11 @@
 <li>sinonにはいろいろ便利機能がある</li>
 </ul>
 
-<h1 id="mochaの使い方">Mochaの使い方</h1>
+<h1 id="mochaの使い方:3bae98bb6aa9abe8f0b8472a1492cace">Mochaの使い方</h1>
 
 <p>coffeescriptを前提にしています。</p>
 
-<h2 id="テストの書き方">テストの書き方</h2>
+<h2 id="テストの書き方:3bae98bb6aa9abe8f0b8472a1492cace">テストの書き方</h2>
 
 <p>Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、<br />
 そのitを呼び出す関数をdescribeに渡すしようです。</p>
@@ -174,7 +174,7 @@
 これを呼ばない場合は終了を待ち続け、<br />
 一定時間後にタイムアウトしてテストが失敗した扱いになります。</p>
 
-<h2 id="beforeの使い方">beforeの使い方</h2>
+<h2 id="beforeの使い方:3bae98bb6aa9abe8f0b8472a1492cace">beforeの使い方</h2>
 
 <p>rspecのbeforeにあたるものは、beforeEachになります。<br />
  なお、変数を他のブロックに渡したい場合、<br />
@@ -197,7 +197,7 @@
         done()
 </code></pre>
 
-<h2 id="pendingテストの作り方">pendingテストの作り方</h2>
+<h2 id="pendingテストの作り方:3bae98bb6aa9abe8f0b8472a1492cace">pendingテストの作り方</h2>
 
 <p>テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。</p>
 
@@ -210,7 +210,7 @@
           done()
 </code></pre>
 
-<h2 id="外部ファイル読み込み">外部ファイル読み込み</h2>
+<h2 id="外部ファイル読み込み:3bae98bb6aa9abe8f0b8472a1492cace">外部ファイル読み込み</h2>
 
 <p>test.coffeeで</p>
 
@@ -230,7 +230,7 @@ module.exports.Test = Test
 
 <p>#chaiの使い方</p>
 
-<h2 id="assertを使う">assertを使う</h2>
+<h2 id="assertを使う:3bae98bb6aa9abe8f0b8472a1492cace">assertを使う</h2>
 
 <p>前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、<br />
 別ライブラリのchaiを読み込む必要があります。</p>
@@ -240,9 +240,9 @@ module.exports.Test = Test
 
 <p>これで、 assert.equalや assert.notEqualが使えます。</p>
 
-<h1 id="sinonの使い方">sinonの使い方</h1>
+<h1 id="sinonの使い方:3bae98bb6aa9abe8f0b8472a1492cace">sinonの使い方</h1>
 
-<h2 id="mockやstubを使う">mockやstubを使う</h2>
+<h2 id="mockやstubを使う:3bae98bb6aa9abe8f0b8472a1492cace">mockやstubを使う</h2>
 
 <p>Mochaにはmockやstubの為の物は含まれていないので、<br />
 今度はsinonを読み込む必要があります。</p>
@@ -268,7 +268,7 @@ module.exports.Test = Test
 
 </code></pre>
 
-<h2 id="時間変更の仕方">時間変更の仕方</h2>
+<h2 id="時間変更の仕方:3bae98bb6aa9abe8f0b8472a1492cace">時間変更の仕方</h2>
 
 <p><code>new Date()</code>などによって日付がちゃんと設定されたかどうかを確認したい場合、<br />
 グローバルなDate()部分を置き換える必要があります。</p>
@@ -286,7 +286,7 @@ module.exports.Test = Test
 指定したミリ秒だけ時間を進めることもできます。<br />
 <code>@clock.tick(3600000)</code></p>
 
-<h2 id="sinonのその他の機能">sinonのその他の機能</h2>
+<h2 id="sinonのその他の機能:3bae98bb6aa9abe8f0b8472a1492cace">sinonのその他の機能</h2>
 
 <p>sinonに関しては他にもいろいろ有用なものがあります。<br />
 ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。</p>

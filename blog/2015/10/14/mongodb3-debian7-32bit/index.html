@@ -127,11 +127,11 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ">まとめ</a></li>
-<li><a href="#debian-7-32bitのmongodb">Debian 7 32bitのmongodb</a></li>
-<li><a href="#aptからのアップグレード時の注意点">aptからのアップグレード時の注意点</a></li>
-<li><a href="#インストール手順">インストール手順</a></li>
-<li><a href="#まとめ-1">まとめ</a></li>
+<li><a href="#まとめ:6fb0a1a816b71cb934be2e92d07fd3af">まとめ</a></li>
+<li><a href="#debian-7-32bitのmongodb:6fb0a1a816b71cb934be2e92d07fd3af">Debian 7 32bitのmongodb</a></li>
+<li><a href="#aptからのアップグレード時の注意点:6fb0a1a816b71cb934be2e92d07fd3af">aptからのアップグレード時の注意点</a></li>
+<li><a href="#インストール手順:6fb0a1a816b71cb934be2e92d07fd3af">インストール手順</a></li>
+<li><a href="#まとめ-1:6fb0a1a816b71cb934be2e92d07fd3af">まとめ</a></li>
 </ul>
 </nav>
                 </div>
@@ -141,7 +141,7 @@
             <div class="article">
               
 
-<h1 id="まとめ">まとめ</h1>
+<h1 id="まとめ:6fb0a1a816b71cb934be2e92d07fd3af">まとめ</h1>
 
 <ul>
 <li>Debian 7 32bitではmongodb3.0はapt-getで入れられない</li>
@@ -149,7 +149,7 @@
 <li>面倒ならdbファイルを<code>/data/db</code>に移動してしまうのが楽そう</li>
 </ul>
 
-<h1 id="debian-7-32bitのmongodb">Debian 7 32bitのmongodb</h1>
+<h1 id="debian-7-32bitのmongodb:6fb0a1a816b71cb934be2e92d07fd3af">Debian 7 32bitのmongodb</h1>
 
 <p>Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、<br />
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)<br />
@@ -163,7 +163,7 @@ tarballからインストールする必要があります。</p>
 
 <p>ただし、aptで入れた2.6からアップデートし、既存のDBファイルを使う場合は若干面倒になります。</p>
 
-<h1 id="aptからのアップグレード時の注意点">aptからのアップグレード時の注意点</h1>
+<h1 id="aptからのアップグレード時の注意点:6fb0a1a816b71cb934be2e92d07fd3af">aptからのアップグレード時の注意点</h1>
 
 <p>新規に入れる場合は公式サイトの手順通りですが、aptからのアップグレードの場合は問題が起きます。<br />
 公式サイトの手順では、ログインユーザで<code>/data/db</code>をDB書き込み先として使いますが、<br />
@@ -174,7 +174,7 @@ aptで入れた2.6系統は特に設定しない場合、mongodbユーザで<cod
 mongodbユーザがtarballの解凍と実行をする必要があります。<br />
 今回は後者の方式をとります。</p>
 
-<h1 id="インストール手順">インストール手順</h1>
+<h1 id="インストール手順:6fb0a1a816b71cb934be2e92d07fd3af">インストール手順</h1>
 
 <p>公式サイトの手順からインストール先を変え、実行時にオプションを指定しているだけです。<br />
 <a href="https://docs.mongodb.org/master/tutorial/install-mongodb-on-linux/">Install MongoDB From Tarbal</a></p>
@@ -189,7 +189,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 <pre><code class="language-bash">sudo -u mongodb mongod --dbpath /var/lib/mongodb
 </code></pre>
 
-<h1 id="まとめ-1">まとめ</h1>
+<h1 id="まとめ-1:6fb0a1a816b71cb934be2e92d07fd3af">まとめ</h1>
 
 <p>起動が面倒なら、<code>/var/lib/mongodb</code>を<code>/data/db</code>に移動して所有権を書き換えるのもいいと思います。</p>
 

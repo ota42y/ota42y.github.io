@@ -119,9 +119,9 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#事前データ準備">事前データ準備</a></li>
-<li><a href="#インデックス作成">インデックス作成</a></li>
-<li><a href="#explain">explain</a></li>
+<li><a href="#事前データ準備:7c69230a45f10ec129d1ee4fa0ab55a3">事前データ準備</a></li>
+<li><a href="#インデックス作成:7c69230a45f10ec129d1ee4fa0ab55a3">インデックス作成</a></li>
+<li><a href="#explain:7c69230a45f10ec129d1ee4fa0ab55a3">explain</a></li>
 </ul>
 </nav>
                 </div>
@@ -131,7 +131,7 @@
             <div class="article">
               
 
-<h1 id="事前データ準備">事前データ準備</h1>
+<h1 id="事前データ準備:7c69230a45f10ec129d1ee4fa0ab55a3">事前データ準備</h1>
 
 <pre><code> for (var i=0; i&lt;100; i++) { db.test_object.save({name: &quot;test1&quot;, num: i}) }
  for (var i=0; i&lt;100; i++) { db.test_object.save({name: &quot;test2&quot;, num: i*1000}) }
@@ -140,7 +140,7 @@
 
 <p>stringは3種類100個ずつ、numはuniqueなオブジェクトを作成します。</p>
 
-<h1 id="インデックス作成">インデックス作成</h1>
+<h1 id="インデックス作成:7c69230a45f10ec129d1ee4fa0ab55a3">インデックス作成</h1>
 
 <pre><code>db.test_object.ensureIndex({&quot;name&quot;: 1})
 </code></pre>
@@ -157,7 +157,7 @@
 <p>なお、MongoDBのばあい、インデックスに使用したキーが存在しない場合もあります。
 そのような場合は、キーを持っていないものはNULLとして扱われます。</p>
 
-<h1 id="explain">explain</h1>
+<h1 id="explain:7c69230a45f10ec129d1ee4fa0ab55a3">explain</h1>
 
 <p>検索したときにindexが使われているかはexplainで確認出来ます。</p>
 

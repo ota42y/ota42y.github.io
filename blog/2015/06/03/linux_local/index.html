@@ -119,9 +119,9 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ">まとめ</a></li>
-<li><a href="#localeの取得がおかしい">localeの取得がおかしい</a></li>
-<li><a href="#原因は不明だがとりあえず直る">原因は不明だがとりあえず直る</a></li>
+<li><a href="#まとめ:6e55b0bffb1729855201d3ad39c63b44">まとめ</a></li>
+<li><a href="#localeの取得がおかしい:6e55b0bffb1729855201d3ad39c63b44">localeの取得がおかしい</a></li>
+<li><a href="#原因は不明だがとりあえず直る:6e55b0bffb1729855201d3ad39c63b44">原因は不明だがとりあえず直る</a></li>
 </ul>
 </nav>
                 </div>
@@ -137,7 +137,7 @@
 言語取得部分は動くけど、おかしい結果を返す壊れ方のため、<br />
 発見にわりと手間取りました。</p>
 
-<h1 id="まとめ">まとめ</h1>
+<h1 id="まとめ:6e55b0bffb1729855201d3ad39c63b44">まとめ</h1>
 
 <ul>
 <li>プログラム上でlocaleを参照する部分がおかしい結果を返す
@@ -154,7 +154,7 @@
 </ul></li>
 </ul>
 
-<h1 id="localeの取得がおかしい">localeの取得がおかしい</h1>
+<h1 id="localeの取得がおかしい:6e55b0bffb1729855201d3ad39c63b44">localeの取得がおかしい</h1>
 
 <p>pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。
 ですが、<br />
@@ -177,7 +177,7 @@ POSIX
 
 <p>ですが、<code>/etc/locale.gen</code>では、ja_JP.UTF-8がコメントアウトされていて有効になっていました。</p>
 
-<h1 id="原因は不明だがとりあえず直る">原因は不明だがとりあえず直る</h1>
+<h1 id="原因は不明だがとりあえず直る:6e55b0bffb1729855201d3ad39c63b44">原因は不明だがとりあえず直る</h1>
 
 <pre><code>sudo su
 export LC_ALL=C # jaは使えないのでCにする必要がある

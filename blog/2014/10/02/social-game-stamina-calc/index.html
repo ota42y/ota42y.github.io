@@ -123,14 +123,14 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#使い方">使い方</a>
+<li><a href="#使い方:0cbbc2d9ed2fba7ed86f8c9a20ba848e">使い方</a>
 <ul>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#指定した値までの回復時間-getnextmaxstaminatime">指定した値までの回復時間(getNextMaxStaminaTime)</a></li>
-<li><a href="#指定した倍数の値まで回復する時間-getmultiplerecoverytime">指定した倍数の値まで回復する時間(getMultipleRecoveryTime)</a></li>
-<li><a href="#結果をdateオブジェクトにする">結果をDateオブジェクトにする</a></li>
+<li><a href="#初期化:0cbbc2d9ed2fba7ed86f8c9a20ba848e">初期化</a></li>
+<li><a href="#指定した値までの回復時間-getnextmaxstaminatime:0cbbc2d9ed2fba7ed86f8c9a20ba848e">指定した値までの回復時間(getNextMaxStaminaTime)</a></li>
+<li><a href="#指定した倍数の値まで回復する時間-getmultiplerecoverytime:0cbbc2d9ed2fba7ed86f8c9a20ba848e">指定した倍数の値まで回復する時間(getMultipleRecoveryTime)</a></li>
+<li><a href="#結果をdateオブジェクトにする:0cbbc2d9ed2fba7ed86f8c9a20ba848e">結果をDateオブジェクトにする</a></li>
 </ul></li>
-<li><a href="#サンプルコード">サンプルコード</a></li>
+<li><a href="#サンプルコード:0cbbc2d9ed2fba7ed86f8c9a20ba848e">サンプルコード</a></li>
 </ul>
 </nav>
                 </div>
@@ -145,34 +145,34 @@
 <p>スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー<br />
 みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。</p>
 
-<h1 id="使い方">使い方</h1>
+<h1 id="使い方:0cbbc2d9ed2fba7ed86f8c9a20ba848e">使い方</h1>
 
-<h2 id="初期化">初期化</h2>
+<h2 id="初期化:0cbbc2d9ed2fba7ed86f8c9a20ba848e">初期化</h2>
 
 <p>スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。<br />
 なお、指定は秒で行います。<br />
 <code>stamina_calculator = new StaminaCalculator 6*60</code><br />
 この例ですと、6分で1スタミナ回復するゲームになります。</p>
 
-<h2 id="指定した値までの回復時間-getnextmaxstaminatime">指定した値までの回復時間(getNextMaxStaminaTime)</h2>
+<h2 id="指定した値までの回復時間-getnextmaxstaminatime:0cbbc2d9ed2fba7ed86f8c9a20ba848e">指定した値までの回復時間(getNextMaxStaminaTime)</h2>
 
 <p>現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。<br />
 Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。<br />
 <code>stamina_calculator.getNextMaxStaminaTime(10, 60)</code></p>
 
-<h2 id="指定した倍数の値まで回復する時間-getmultiplerecoverytime">指定した倍数の値まで回復する時間(getMultipleRecoveryTime)</h2>
+<h2 id="指定した倍数の値まで回復する時間-getmultiplerecoverytime:0cbbc2d9ed2fba7ed86f8c9a20ba848e">指定した倍数の値まで回復する時間(getMultipleRecoveryTime)</h2>
 
 <p>現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。<br />
 今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。<br />
 <code>next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)</code></p>
 
-<h2 id="結果をdateオブジェクトにする">結果をDateオブジェクトにする</h2>
+<h2 id="結果をdateオブジェクトにする:0cbbc2d9ed2fba7ed86f8c9a20ba848e">結果をDateオブジェクトにする</h2>
 
 <p>メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。<br />
 Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。<br />
 <code>stamina_calculator.convertToDate(second)</code></p>
 
-<h1 id="サンプルコード">サンプルコード</h1>
+<h1 id="サンプルコード:0cbbc2d9ed2fba7ed86f8c9a20ba848e">サンプルコード</h1>
 
 <pre><code>StaminaCalculator = require('stamina-calculator').StaminaCalculator;
 
