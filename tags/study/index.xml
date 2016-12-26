@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Study on おおたの物置</title>
-    <link>http://ota42y.com/tags/study/</link>
+    <link>http://ota42y.com/tags/study/index.xml</link>
     <description>Recent content in Study on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/study/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -19,7 +18,7 @@
 
 &lt;p&gt;Dockerについて調べたので概要と簡単な使い方のメモ&lt;/p&gt;
 
-&lt;h1 id=&#34;dockerとは何か:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerとは何か&lt;/h1&gt;
+&lt;h1 id=&#34;dockerとは何か&#34;&gt;Dockerとは何か&lt;/h1&gt;
 
 &lt;p&gt;いわゆるコンテナ型仮想化ツールの1つです。&lt;br /&gt;
 VMwareやKVMのような完全仮想化と違い、&lt;br /&gt;
@@ -36,9 +35,9 @@ VMwareやKVMのような完全仮想化と違い、&lt;br /&gt;
 その設定を反映した状態のコンテナを作成することが出来ます。&lt;br /&gt;
 そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。&lt;/p&gt;
 
-&lt;h1 id=&#34;docker上のcent-osにjenkinsを立てる:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Docker上のCent OSにJenkinsを立てる&lt;/h1&gt;
+&lt;h1 id=&#34;docker上のcent-osにjenkinsを立てる&#34;&gt;Docker上のCent OSにJenkinsを立てる&lt;/h1&gt;
 
-&lt;h2 id=&#34;dockerの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerの起動&lt;/h2&gt;
+&lt;h2 id=&#34;dockerの起動&#34;&gt;Dockerの起動&lt;/h2&gt;
 
 &lt;p&gt;Dockerコマンドを実行するためには、Macだとboot2dockerを&lt;br /&gt;
 &lt;code&gt;boot2docker start&lt;/code&gt;で起動し、そのとき提示された環境変数を設定する必要があります。&lt;/p&gt;
@@ -48,9 +47,9 @@ VMwareやKVMのような完全仮想化と違い、&lt;br /&gt;
 を実行し、コンテナに対してアクセスできるようにする必要があります。&lt;br /&gt;
 なお、この時出たURLは後で使います。&lt;/p&gt;
 
-&lt;h2 id=&#34;cent-osの構築:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Cent OSの構築&lt;/h2&gt;
+&lt;h2 id=&#34;cent-osの構築&#34;&gt;Cent OSの構築&lt;/h2&gt;
 
-&lt;h3 id=&#34;dockerfileの準備:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;Dockerfileの準備&lt;/h3&gt;
+&lt;h3 id=&#34;dockerfileの準備&#34;&gt;Dockerfileの準備&lt;/h3&gt;
 
 &lt;p&gt;以下のファイルをDockerfileという名前で適当なディレクトリに保存します。&lt;/p&gt;
 
@@ -63,13 +62,13 @@ RUN yum -y install java-1.7.0-openjdk jenkins
 
 &lt;p&gt;見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。&lt;/p&gt;
 
-&lt;h3 id=&#34;コンテナの作成:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;コンテナの作成&lt;/h3&gt;
+&lt;h3 id=&#34;コンテナの作成&#34;&gt;コンテナの作成&lt;/h3&gt;
 
 &lt;p&gt;次に、Dockerfileを保存したディレクトリで&lt;br /&gt;
 &lt;code&gt;docker build -t jenkins .&lt;/code&gt;
 を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。&lt;/p&gt;
 
-&lt;h3 id=&#34;コンテナの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;コンテナの起動&lt;/h3&gt;
+&lt;h3 id=&#34;コンテナの起動&#34;&gt;コンテナの起動&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;docker run -p 8080:8080 -i -t jenkins bash&lt;/code&gt;&lt;br /&gt;
 を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、&lt;br /&gt;
@@ -79,7 +78,7 @@ RUN yum -y install java-1.7.0-openjdk jenkins
 &lt;p&gt;この状態で、&lt;code&gt;boot2docker ip&lt;/code&gt;で出てきたURLの8080ポートにブラウザでアクセスすると、&lt;br /&gt;
 いつものJenkins画面が表示されます。&lt;/p&gt;
 
-&lt;h1 id=&#34;その他:fe3ec5b2de26a9c10e3aa43ace9c66a1&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;p&gt;Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、&lt;br /&gt;
 それを他のセットアップの下地にするといったことも出来るそうです。&lt;/p&gt;
@@ -107,9 +106,9 @@ Jenkinsの用にサービスとして動かすものは、ログインして起�
 
 &lt;p&gt;結論としては、実装を見れば簡単に解決しました。&lt;/p&gt;
 
-&lt;h1 id=&#34;内部実装:1d9ac05339414913fb473655d52b315e&#34;&gt;内部実装&lt;/h1&gt;
+&lt;h1 id=&#34;内部実装&#34;&gt;内部実装&lt;/h1&gt;
 
-&lt;h2 id=&#34;find-ifの場合:1d9ac05339414913fb473655d52b315e&#34;&gt;find_ifの場合&lt;/h2&gt;
+&lt;h2 id=&#34;find-ifの場合&#34;&gt;find_ifの場合&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;template &amp;lt;class _InputIter, class _Predicate&amp;gt;
 inline _InputIter find_if(_InputIter __first, _InputIter __last,
@@ -122,7 +121,7 @@ inline _InputIter find_if(_InputIter __first, _InputIter __last,
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ソートの場合:1d9ac05339414913fb473655d52b315e&#34;&gt;ソートの場合&lt;/h2&gt;
+&lt;h2 id=&#34;ソートの場合&#34;&gt;ソートの場合&lt;/h2&gt;
 
 &lt;p&gt;ソートは少々複雑なので、該当部分だけ抜き出します。&lt;/p&gt;
 
@@ -140,7 +139,7 @@ void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val,
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;まとめ:1d9ac05339414913fb473655d52b315e&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。&lt;/p&gt;
 
@@ -161,7 +160,7 @@ void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val,
 
 &lt;p&gt;最近よく聞くMessagePackとは何かを調べたのでメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;messagepackとは:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;MessagePackとは&lt;/h1&gt;
+&lt;h1 id=&#34;messagepackとは&#34;&gt;MessagePackとは&lt;/h1&gt;
 
 &lt;p&gt;バイナリでデータを保存するフォーマットです。&lt;br /&gt;
 JSONと比べると、保存した状態の可読性を犠牲にする代わりに、&lt;br /&gt;
@@ -171,14 +170,14 @@ JSONと比べると、保存した状態の可読性を犠牲にする代わり�
 いろんな言語(nodeとかrubyとかcppとか)
 で相互にデータを使えます。&lt;/p&gt;
 
-&lt;h1 id=&#34;他のバイナリシリアライズフォーマットとの差:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;他のバイナリシリアライズフォーマットとの差&lt;/h1&gt;
+&lt;h1 id=&#34;他のバイナリシリアライズフォーマットとの差&#34;&gt;他のバイナリシリアライズフォーマットとの差&lt;/h1&gt;
 
 &lt;p&gt;MessagePackはバッファをうまく使って早かったり、
 読み込み途中でもデシリアライズできるとか、&lt;br /&gt;
 結構いろいろと高速化のための工夫がされています。&lt;br /&gt;
 (ただし、実装によって若干違いがあるようです)&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;rubyなら&lt;code&gt;gem install msgpack&lt;/code&gt;で、
 MacのC++なら&lt;code&gt;brew install msgpack&lt;/code&gt;で使えるようになります。&lt;/p&gt;
@@ -190,9 +189,9 @@ MacのC++なら&lt;code&gt;brew install msgpack&lt;/code&gt;で使えるよう�
 MSGPACK_DEFINEマクロに入れると、&lt;br /&gt;
 自動でシリアライズ/デシリアライズできるみたいです。&lt;/p&gt;
 
-&lt;h1 id=&#34;コード:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;コード&lt;/h1&gt;
+&lt;h1 id=&#34;コード&#34;&gt;コード&lt;/h1&gt;
 
-&lt;h2 id=&#34;c:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;C++&lt;/h2&gt;
+&lt;h2 id=&#34;c&#34;&gt;C++&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;msgpack.hpp&amp;gt;
 #include &amp;lt;vector&amp;gt;
@@ -274,7 +273,7 @@ int main(void) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ruby:2b6eb61cc702492464e1c57eb2dbd5d5&#34;&gt;ruby&lt;/h2&gt;
+&lt;h2 id=&#34;ruby&#34;&gt;ruby&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;msgpack&#39;
 

@@ -119,11 +119,11 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ:0ccb30a040a233a026556ed14d67937d">まとめ</a></li>
-<li><a href="#gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d">gitリポジトリ内のスクリプトを指定できない</a></li>
-<li><a href="#スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d">スクリプトをロードして実行するスクリプト</a></li>
-<li><a href="#ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d">ロード時に変数を保存したい場合</a></li>
-<li><a href="#load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d">load関数の戻り値で独自クラスを返す</a></li>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#gitリポジトリ内のスクリプトを指定できない">gitリポジトリ内のスクリプトを指定できない</a></li>
+<li><a href="#スクリプトをロードして実行するスクリプト">スクリプトをロードして実行するスクリプト</a></li>
+<li><a href="#ロード時に変数を保存したい場合">ロード時に変数を保存したい場合</a></li>
+<li><a href="#load関数の戻り値で独自クラスを返す">load関数の戻り値で独自クラスを返す</a></li>
 </ul>
 </nav>
                 </div>
@@ -133,7 +133,7 @@
             <div class="article">
               
 
-<h1 id="まとめ:0ccb30a040a233a026556ed14d67937d">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>ブランチをパラメーターにするとスクリプトを読めない
@@ -151,7 +151,7 @@
 </ul></li>
 </ul>
 
-<h1 id="gitリポジトリ内のスクリプトを指定できない:0ccb30a040a233a026556ed14d67937d">gitリポジトリ内のスクリプトを指定できない</h1>
+<h1 id="gitリポジトリ内のスクリプトを指定できない">gitリポジトリ内のスクリプトを指定できない</h1>
 
 <p>(以下に用意されているdocker上のJenkinsで確認しました)<br />
 <a href="https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md">https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md</a></p>
@@ -181,7 +181,7 @@ Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo
 <p>このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、<br />
 指定したブランチからスクリプトを読み込んで実行できます。</p>
 
-<h1 id="スクリプトをロードして実行するスクリプト:0ccb30a040a233a026556ed14d67937d">スクリプトをロードして実行するスクリプト</h1>
+<h1 id="スクリプトをロードして実行するスクリプト">スクリプトをロードして実行するスクリプト</h1>
 
 <p>(公式のdockerにも<a href="https://github.com/jenkinsci/workflow-plugin-pipeline-demo/blob/master/flow.groovy">スクリプト</a>がありますが、より簡単化したもので説明します)</p>
 
@@ -211,7 +211,7 @@ flow.build()
 そのため、これでリポジトリ内のファイルをロードして実行することが出来ます。<br />
 また、buildメソッドをnodeの外側で実行することで、ビルド中はmasterのキューを開けておくことが出来ます。</p>
 
-<h1 id="ロード時に変数を保存したい場合:0ccb30a040a233a026556ed14d67937d">ロード時に変数を保存したい場合</h1>
+<h1 id="ロード時に変数を保存したい場合">ロード時に変数を保存したい場合</h1>
 
 <p>上記の方式の場合、masterにcloneしてその後にslave上に再度cloneしてビルドを始めています。<br />
 slaveの選択を凝らない場合は問題ないですが、リリースビルド専用マシンがあったり、<br />
@@ -223,7 +223,7 @@ slaveの選択を凝らない場合は問題ないですが、リリースビル
 
 <p>このような場合、groovyスクリプトの戻り値で独自クラスを返すことで解決できます。</p>
 
-<h1 id="load関数の戻り値で独自クラスを返す:0ccb30a040a233a026556ed14d67937d">load関数の戻り値で独自クラスを返す</h1>
+<h1 id="load関数の戻り値で独自クラスを返す">load関数の戻り値で独自クラスを返す</h1>
 
 <p>Jenkinsから以下のようなgroovyスクリプトを読み込むことで、slaveの選択も柔軟にできるようになります。</p>
 

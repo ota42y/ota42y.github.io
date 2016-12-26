@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on おおたの物置</title>
-    <link>http://ota42y.com/tags/hugo/</link>
+    <link>http://ota42y.com/tags/hugo/index.xml</link>
     <description>Recent content in Hugo on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 29 Jul 2015 23:25:20 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -38,7 +37,7 @@
 &lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
 サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Octopress
@@ -92,7 +91,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;octopressの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Octopressの問題点&lt;/h1&gt;
+&lt;h1 id=&#34;octopressの問題点&#34;&gt;Octopressの問題点&lt;/h1&gt;
 
 &lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
 
@@ -108,31 +107,31 @@
 &lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
 &lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;hugoの利点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの利点&lt;/h1&gt;
+&lt;h1 id=&#34;hugoの利点&#34;&gt;Hugoの利点&lt;/h1&gt;
 
-&lt;h2 id=&#34;htmlのレンダリングが早い:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
+&lt;h2 id=&#34;htmlのレンダリングが早い&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
 
 &lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
 ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
 ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
 特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
 
-&lt;h2 id=&#34;環境構築いらず:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;環境構築いらず&lt;/h2&gt;
+&lt;h2 id=&#34;環境構築いらず&#34;&gt;環境構築いらず&lt;/h2&gt;
 
 &lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
 環境構築でがんばる必要がありません。&lt;br /&gt;
 私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
 Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
 
-&lt;h1 id=&#34;hugoの問題点:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;Hugoの問題点&lt;/h1&gt;
+&lt;h1 id=&#34;hugoの問題点&#34;&gt;Hugoの問題点&lt;/h1&gt;
 
-&lt;h2 id=&#34;テーマがない:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;テーマがない&lt;/h2&gt;
+&lt;h2 id=&#34;テーマがない&#34;&gt;テーマがない&lt;/h2&gt;
 
 &lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
 実際このサイトも自分でテーマを作りました。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;手を入れにくい:fdc6cdc059d5bbb297f2d7b38c26691e&#34;&gt;手を入れにくい&lt;/h2&gt;
+&lt;h2 id=&#34;手を入れにくい&#34;&gt;手を入れにくい&lt;/h2&gt;
 
 &lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
 Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;

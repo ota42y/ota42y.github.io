@@ -119,16 +119,16 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#原因となるコードを捜す:43f580fa1d5683a492ce120b5a384ffc">原因となるコードを捜す</a>
+<li><a href="#原因となるコードを捜す">原因となるコードを捜す</a>
 <ul>
-<li><a href="#hubot-irc-reply:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.reply</a></li>
-<li><a href="#hubot-irc-send:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.send</a></li>
+<li><a href="#hubot-irc-reply">hubot-irc.reply</a></li>
+<li><a href="#hubot-irc-send">hubot-irc.send</a></li>
 </ul></li>
-<li><a href="#hubt-irc-gettargetfromenvelope:43f580fa1d5683a492ce120b5a384ffc">hubt-irc._getTargetFromEnvelope</a>
+<li><a href="#hubt-irc-gettargetfromenvelope">hubt-irc._getTargetFromEnvelope</a>
 <ul>
-<li><a href="#replyメソッドの呼ばれ方:43f580fa1d5683a492ce120b5a384ffc">replyメソッドの呼ばれ方</a></li>
-<li><a href="#hubot-irc-createuser:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.createUser</a></li>
-<li><a href="#hubot-getuserfromid:43f580fa1d5683a492ce120b5a384ffc">hubot.getUserFromId</a></li>
+<li><a href="#replyメソッドの呼ばれ方">replyメソッドの呼ばれ方</a></li>
+<li><a href="#hubot-irc-createuser">hubot-irc.createUser</a></li>
+<li><a href="#hubot-getuserfromid">hubot.getUserFromId</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -169,11 +169,11 @@ replyしてるのに発言元とは別のチャットに送信してしまうと
   msg.send &quot;進捗 start&quot;
 </code></pre>
 
-<h1 id="原因となるコードを捜す:43f580fa1d5683a492ce120b5a384ffc">原因となるコードを捜す</h1>
+<h1 id="原因となるコードを捜す">原因となるコードを捜す</h1>
 
 <p>というのは振る舞いから推測したものなので、実際にコードを追ってみます。</p>
 
-<h2 id="hubot-irc-reply:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.reply</h2>
+<h2 id="hubot-irc-reply">hubot-irc.reply</h2>
 
 <p>まずはhubot-ircのmsg.replyの中を見ます。<br />
 <a href="https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78">https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78</a></p>
@@ -185,7 +185,7 @@ replyしてるのに発言元とは別のチャットに送信してしまうと
 
 <p>メッセージをユーザ宛に変換し、sendメソッドにenvelope.userと一緒に渡しています。</p>
 
-<h2 id="hubot-irc-send:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.send</h2>
+<h2 id="hubot-irc-send">hubot-irc.send</h2>
 
 <p>次にsendメソッドの中身を見ます。<br />
 <a href="https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L16">https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L16</a></p>
@@ -210,7 +210,7 @@ replyしてるのに発言元とは別のチャットに送信してしまうと
 sayメソッドはtargetに対してメッセージを送るようになっています。<br />
 そのため、このtargetに設定される返信先が変更される可能性が高そうです。</p>
 
-<h1 id="hubt-irc-gettargetfromenvelope:43f580fa1d5683a492ce120b5a384ffc">hubt-irc._getTargetFromEnvelope</h1>
+<h1 id="hubt-irc-gettargetfromenvelope">hubt-irc._getTargetFromEnvelope</h1>
 
 <p><a href="https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L336">https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L336</a></p>
 
@@ -254,7 +254,7 @@ sayメソッドはtargetに対してメッセージを送るようになって�
 
 <p>そのため、次はreplyメソッドのenvelope.user.roomが書き換わるかどうかを調べていきます。</p>
 
-<h2 id="replyメソッドの呼ばれ方:43f580fa1d5683a492ce120b5a384ffc">replyメソッドの呼ばれ方</h2>
+<h2 id="replyメソッドの呼ばれ方">replyメソッドの呼ばれ方</h2>
 
 <p>コールスタックをさかのぼっていくと、以下のメソッドが順に呼ばれていました。<br />
 <a href="https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22">https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22</a><br />
@@ -290,7 +290,7 @@ sayメソッドはtargetに対してメッセージを送るようになって�
 
 <p>userオブジェクトは、受け取ったメッセージからcreateUserを使って求めているようです</p>
 
-<h2 id="hubot-irc-createuser:43f580fa1d5683a492ce120b5a384ffc">hubot-irc.createUser</h2>
+<h2 id="hubot-irc-createuser">hubot-irc.createUser</h2>
 
 <p><a href="https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L111">https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L111</a></p>
 
@@ -309,7 +309,7 @@ sayメソッドはtargetに対してメッセージを送るようになって�
 そのため、getUserFromIdが返すuserオブジェクトがメッセージごとに共通なら、<br />
 replyメソッドに渡された後に別のメッセージによって書き換わる可能性があると言えます。</p>
 
-<h2 id="hubot-getuserfromid:43f580fa1d5683a492ce120b5a384ffc">hubot.getUserFromId</h2>
+<h2 id="hubot-getuserfromid">hubot.getUserFromId</h2>
 
 <p>getUserFromIdはhubot.getUserFromIdを呼び出しているだけでした。<br />
 （HubotのAPIが変わったため、一手間挟んでいる）</p>

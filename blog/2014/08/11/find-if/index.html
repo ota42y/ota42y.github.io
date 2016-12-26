@@ -119,11 +119,11 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#内部実装:1d9ac05339414913fb473655d52b315e">内部実装</a>
+<li><a href="#内部実装">内部実装</a>
 <ul>
-<li><a href="#find-ifの場合:1d9ac05339414913fb473655d52b315e">find_ifの場合</a></li>
-<li><a href="#ソートの場合:1d9ac05339414913fb473655d52b315e">ソートの場合</a></li>
-<li><a href="#まとめ:1d9ac05339414913fb473655d52b315e">まとめ</a></li>
+<li><a href="#find-ifの場合">find_ifの場合</a></li>
+<li><a href="#ソートの場合">ソートの場合</a></li>
+<li><a href="#まとめ">まとめ</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -143,9 +143,9 @@
 
 <p>結論としては、実装を見れば簡単に解決しました。</p>
 
-<h1 id="内部実装:1d9ac05339414913fb473655d52b315e">内部実装</h1>
+<h1 id="内部実装">内部実装</h1>
 
-<h2 id="find-ifの場合:1d9ac05339414913fb473655d52b315e">find_ifの場合</h2>
+<h2 id="find-ifの場合">find_ifの場合</h2>
 
 <pre><code class="language-cpp">template &lt;class _InputIter, class _Predicate&gt;
 inline _InputIter find_if(_InputIter __first, _InputIter __last,
@@ -158,7 +158,7 @@ inline _InputIter find_if(_InputIter __first, _InputIter __last,
 }
 </code></pre>
 
-<h2 id="ソートの場合:1d9ac05339414913fb473655d52b315e">ソートの場合</h2>
+<h2 id="ソートの場合">ソートの場合</h2>
 
 <p>ソートは少々複雑なので、該当部分だけ抜き出します。</p>
 
@@ -176,7 +176,7 @@ void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val,
 }
 </code></pre>
 
-<h2 id="まとめ:1d9ac05339414913fb473655d52b315e">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <p>動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。</p>
 

@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conference on おおたの物置</title>
-    <link>http://ota42y.com/tags/conference/</link>
+    <link>http://ota42y.com/tags/conference/index.xml</link>
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 27 Oct 2016 15:37:37 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +21,7 @@
 
 &lt;p&gt;今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。&lt;/p&gt;
 
-&lt;h1 id=&#34;発表内容:29032400095a17eb3902d8af1c46e25a&#34;&gt;発表内容&lt;/h1&gt;
+&lt;h1 id=&#34;発表内容&#34;&gt;発表内容&lt;/h1&gt;
 
 &lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/sotthH5RjKQHEg&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/shinjukurb-42&#34; title=&#34;Shinjukurb 42&#34; target=&#34;_blank&#34;&gt;Shinjukurb 42&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/ota42y&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
 
@@ -32,7 +31,7 @@
 &lt;p&gt;また、こういったコードの整形ツールは自転車小屋の議論になって導入するの凄く大変だよね…という闇の深いディスカッションが行われました…
 やはり何処も苦労するところは同じようです…(´・_・`)&lt;/p&gt;
 
-&lt;h1 id=&#34;その他:29032400095a17eb3902d8af1c46e25a&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;p&gt;リファクタリングを支援してくれるgemが紹介されていましたが、
 基本的に既存部分を切り出す→新しいロジックと同時に実行して実行結果をチェック→結果をDBとかに保存する、
@@ -46,7 +45,7 @@
 &lt;p&gt;メソッドが呼ばれているかをちゃんと解析してチェックできるので、&lt;br /&gt;
 ヤバそうなメソッドや使い方が怪しいやつとかを抽出できるらしく、凄く良さそうでした。&lt;/p&gt;
 
-&lt;h1 id=&#34;他の方々の資料:29032400095a17eb3902d8af1c46e25a&#34;&gt;他の方々の資料&lt;/h1&gt;
+&lt;h1 id=&#34;他の方々の資料&#34;&gt;他の方々の資料&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/treby/reading-suture&#34;&gt;reading suture&lt;/a&gt;&lt;/li&gt;
@@ -68,7 +67,7 @@
 
 &lt;p&gt;今回は参加者がLTをする形式で、14人ぐらい？LTがありました。&lt;/p&gt;
 
-&lt;h1 id=&#34;発表内容:421c2687308ebf9804295039a919603d&#34;&gt;発表内容&lt;/h1&gt;
+&lt;h1 id=&#34;発表内容&#34;&gt;発表内容&lt;/h1&gt;
 
 &lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/Hi86VMANvbpUTn&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ginza-rb-40&#34; title=&#34;prmdのドキュメントが読みやすくなる話&#34; target=&#34;_blank&#34;&gt;prmdのドキュメントが読みやすくなる話&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/ota42y&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
 
@@ -79,11 +78,11 @@
 最悪JSON Schema+prmdだけでも導入すると良いと思います。
 (元クライアントからの意見)&lt;/p&gt;
 
-&lt;h1 id=&#34;その他:421c2687308ebf9804295039a919603d&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;p&gt;ruby c extensionが凄い面白かったのでちょっと触ってみようと思います(｀・ω・´)&lt;/p&gt;
 
-&lt;h1 id=&#34;他の方々の資料:421c2687308ebf9804295039a919603d&#34;&gt;他の方々の資料&lt;/h1&gt;
+&lt;h1 id=&#34;他の方々の資料&#34;&gt;他の方々の資料&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;#ginzarb&lt;/code&gt;のハッシュタグを見て見つかったものだけ上げています&lt;/p&gt;
 
@@ -201,7 +200,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://togetter.com/li/875554&#34;&gt;第48回情報科学若手の会まとめ #wakate2015&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;1日目:052cb3961210afac04dd94f202db818b&#34;&gt;1日目&lt;/h1&gt;
+&lt;h1 id=&#34;1日目&#34;&gt;1日目&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;はじめてでもわかる!IoTの過去・現在・未来 (特にホームネットワーク)&lt;/p&gt;
@@ -309,7 +308,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;2日目:052cb3961210afac04dd94f202db818b&#34;&gt;2日目&lt;/h1&gt;
+&lt;h1 id=&#34;2日目&#34;&gt;2日目&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;若手特別講演「ぼくらのプログラミングから、みんなのプログラミングへ」&lt;/p&gt;
@@ -535,7 +534,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;3日目:052cb3961210afac04dd94f202db818b&#34;&gt;3日目&lt;/h1&gt;
+&lt;h1 id=&#34;3日目&#34;&gt;3日目&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Twitter のデータ処理テクノロジーとTwitterでの仕事について&lt;/p&gt;
@@ -573,15 +572,15 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;その他全体の話:052cb3961210afac04dd94f202db818b&#34;&gt;その他全体の話&lt;/h1&gt;
+&lt;h1 id=&#34;その他全体の話&#34;&gt;その他全体の話&lt;/h1&gt;
 
-&lt;h2 id=&#34;ネット環境:052cb3961210afac04dd94f202db818b&#34;&gt;ネット環境&lt;/h2&gt;
+&lt;h2 id=&#34;ネット環境&#34;&gt;ネット環境&lt;/h2&gt;
 
 &lt;p&gt;去年に比べてさらに山喜旅館の無線APが増強されたらしく、いっそう快適になりました。&lt;br /&gt;
 ただ、APの同時接続数に引っかかって、たまに接続が切れる事があったようです。&lt;br /&gt;
 二台以上にすれば解決しそうですが、若手の会の接続台数は異常なので、普通に使うにはほぼ問題ないと思われます。&lt;/p&gt;
 
-&lt;h2 id=&#34;picala:052cb3961210afac04dd94f202db818b&#34;&gt;PICALA&lt;/h2&gt;
+&lt;h2 id=&#34;picala&#34;&gt;PICALA&lt;/h2&gt;
 
 &lt;p&gt;会場では「PICALA: 照明色による聴講者の感情共有システム」が動いていました。&lt;br /&gt;
 発表中に色に言及できるほど余裕はなかったですが、ウケているかウケていないかはわかるのでわりとよかったです。&lt;/p&gt;
@@ -591,7 +590,7 @@
 &lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;明日の &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt; の僕の発表時間中に「PICALA: 照明色による聴講者の感情共有システム」を運用予定です。詳細は発表開始前に説明します。お楽しみに！（発表者の方で、自分の発表時間に使いたい方がいたら声かけて下さい〜) &lt;a href=&#34;http://t.co/ldVnGhAA2N&#34;&gt;pic.twitter.com/ldVnGhAA2N&lt;/a&gt;&lt;/p&gt;&amp;mdash; 湯村 翼＠10/3おうちハックナイト (@yumu19) &lt;a href=&#34;https://twitter.com/yumu19/status/644863368537309184&#34;&gt;2015, 9月 18&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;togetter超便利:052cb3961210afac04dd94f202db818b&#34;&gt;togetter超便利&lt;/h2&gt;
+&lt;h2 id=&#34;togetter超便利&#34;&gt;togetter超便利&lt;/h2&gt;
 
 &lt;p&gt;夜中に過去の年のまとめを読んだりして盛り上がったので、&lt;br /&gt;
 毎年まとめてくれる人には超感謝してます…&lt;/p&gt;
@@ -601,13 +600,13 @@
 
 &lt;p&gt;というのをあらためて思いました&lt;/p&gt;
 
-&lt;h2 id=&#34;いつまで若手か:052cb3961210afac04dd94f202db818b&#34;&gt;いつまで若手か&lt;/h2&gt;
+&lt;h2 id=&#34;いつまで若手か&#34;&gt;いつまで若手か&lt;/h2&gt;
 
 &lt;p&gt;若手の会の日程について行けるうちは若手だと思います！！！&lt;br /&gt;
 &lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;若手の会めっちゃ疲れた…&lt;em&gt;(:3 」∠)&lt;/em&gt; ふと、上の世代が自然とフェードアウトしていくのは、この日程に体力がついていかないからなんじゃないかって思ったww &lt;a href=&#34;https://twitter.com/hashtag/wakate2015?src=hash&#34;&gt;#wakate2015&lt;/a&gt;&lt;/p&gt;&amp;mdash; おおた (@ota42y) &lt;a href=&#34;https://twitter.com/ota42y/status/645938601587511296&#34;&gt;2015, 9月 21&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;帰り:052cb3961210afac04dd94f202db818b&#34;&gt;帰り&lt;/h1&gt;
+&lt;h1 id=&#34;帰り&#34;&gt;帰り&lt;/h1&gt;
 
 &lt;p&gt;熱海から二駅の三島にある柿田川に寄りました。&lt;br /&gt;
 日本三大清流の1つで、水がめっちゃ綺麗な川でした。&lt;br /&gt;
@@ -639,7 +638,7 @@
 
 &lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/EQpP7WPDYLZM30&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/hci-52978848&#34; title=&#34;HCI分野の紹介と最新研究&#34; target=&#34;_blank&#34;&gt;HCI分野の紹介と最新研究&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;発表内容について:960011acd5e7afc5edcb122b8bab3124&#34;&gt;発表内容について&lt;/h1&gt;
+&lt;h1 id=&#34;発表内容について&#34;&gt;発表内容について&lt;/h1&gt;
 
 &lt;p&gt;4回目ぐらいの参加ですが、ほぼ毎年CHIの締め切りと重なったり、&lt;br /&gt;
 UISTの数週間前みたいな時期なのであまりこの分野からの参加者が少なく、&lt;br /&gt;
@@ -651,7 +650,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 実際、その辺についてはあまり聞かないのでためになったという声を頂いたので、&lt;br /&gt;
 いい案配だったとおもいます。&lt;/p&gt;
 
-&lt;h1 id=&#34;反省点:960011acd5e7afc5edcb122b8bab3124&#34;&gt;反省点&lt;/h1&gt;
+&lt;h1 id=&#34;反省点&#34;&gt;反省点&lt;/h1&gt;
 
 &lt;p&gt;質疑応答で盛り上がるだろう場所は予測できていたので、&lt;br /&gt;
 そこに関しての補足スライドを用意するべきでした…&lt;/p&gt;
@@ -660,7 +659,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 結果としては良くなったけどもう少し早くに完成させて修正したかったです。&lt;br /&gt;
 ただ、調査を1ヶ月ぐらい前から始められたので、その点に関してはわりとよかった。&lt;/p&gt;
 
-&lt;h1 id=&#34;追加情報:960011acd5e7afc5edcb122b8bab3124&#34;&gt;追加情報&lt;/h1&gt;
+&lt;h1 id=&#34;追加情報&#34;&gt;追加情報&lt;/h1&gt;
 
 &lt;p&gt;今回のはほぼ英語論文から取ってきましたが、日本語での発表を捜すなら&lt;a href=&#34;www.interaction-ipsj.org/&#34;&gt;インタラクション&lt;/a&gt;がオススメです。&lt;/p&gt;
 
@@ -699,7 +698,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;p&gt;また、みんなcode generateに走っているのはおもしろかったです。&lt;br /&gt;
 コピペになるようなコードはgenerateするってのはほぼ統一見解ですね。&lt;/p&gt;
 
-&lt;h1 id=&#34;キーノート:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;キーノート&lt;/h1&gt;
+&lt;h1 id=&#34;キーノート&#34;&gt;キーノート&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;go1.5凄そうです&lt;/li&gt;
@@ -713,11 +712,11 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;公式の依存管理ツールも楽しみです&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;発表まとめ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;発表まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;発表まとめ&#34;&gt;発表まとめ&lt;/h1&gt;
 
 &lt;p&gt;発表順は覚えてないので、タイムテーブルに順不同で並べられている順です。&lt;/p&gt;
 
-&lt;h2 id=&#34;gaurun-a-general-push-notification-server-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Gaurun〜A general push notification server in Go〜&lt;/h2&gt;
+&lt;h2 id=&#34;gaurun-a-general-push-notification-server-in-go&#34;&gt;Gaurun〜A general push notification server in Go〜&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&#34;&gt;https://speakerdeck.com/cubicdaiya/a-general-push-notification-server-in-go&lt;/a&gt;&lt;/li&gt;
@@ -725,7 +724,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;モニタリング用のAPIを用意してるの、凄い良いなーと思いました。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;debugging-go-code-with-gdb:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Debugging Go Code with GDB&lt;/h2&gt;
+&lt;h2 id=&#34;debugging-go-code-with-gdb&#34;&gt;Debugging Go Code with GDB&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&#34;&gt;http://kaneshin.hateblo.jp/entry/2015/06/21/202850&lt;/a&gt;&lt;/li&gt;
@@ -743,7 +742,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;フォントが$300ってwwwwww&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;generative-programming-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Generative programming in Go.&lt;/h2&gt;
+&lt;h2 id=&#34;generative-programming-in-go&#34;&gt;Generative programming in Go.&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/monochromegane/generative-programming-in-go&#34;&gt;https://speakerdeck.com/monochromegane/generative-programming-in-go&lt;/a&gt;&lt;/li&gt;
@@ -751,7 +750,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;金槌を持つと何でも釘に見える病…&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;gore-go-で-repl-のはなし:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;gore - Go で REPL のはなし&lt;/h2&gt;
+&lt;h2 id=&#34;gore-go-で-repl-のはなし&#34;&gt;gore - Go で REPL のはなし&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;irbみたいにgoを対話的に実行できるやつの内部事情&lt;/li&gt;
@@ -759,13 +758,13 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;go runに失敗しないように色々前処理をがんばってるみたいです。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;goと電子工作とロボット:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goと電子工作とロボット&lt;/h2&gt;
+&lt;h2 id=&#34;goと電子工作とロボット&#34;&gt;Goと電子工作とロボット&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;goでロボット制御できて、しかもスタンドアロンで動いていて凄いです&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;goのastをいじくって新しいツールを作る:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GoのASTをいじくって新しいツールを作る&lt;/h2&gt;
+&lt;h2 id=&#34;goのastをいじくって新しいツールを作る&#34;&gt;GoのASTをいじくって新しいツールを作る&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/vvakame/gocon-2015-summer&#34;&gt;http://www.slideshare.net/vvakame/gocon-2015-summer&lt;/a&gt;&lt;/li&gt;
@@ -782,7 +781,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;go言語でコマンドラインツールをつくるときに僕の語ること:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go言語でコマンドラインツールをつくるときに僕の語ること&lt;/h2&gt;
+&lt;h2 id=&#34;go言語でコマンドラインツールをつくるときに僕の語ること&#34;&gt;Go言語でコマンドラインツールをつくるときに僕の語ること&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&#34;&gt;https://speakerdeck.com/tcnksm/what-i-talk-about-when-i-talk-about-cli-tool-by-golang-number-gocon&lt;/a&gt;&lt;/li&gt;
@@ -799,7 +798,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;patterns-for-building-a-scalable-testable-web-app-in-go:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Patterns for building a scalable, testable web app in Go&lt;/h2&gt;
+&lt;h2 id=&#34;patterns-for-building-a-scalable-testable-web-app-in-go&#34;&gt;Patterns for building a scalable, testable web app in Go&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sourcegraph.com/&#34;&gt;https://sourcegraph.com/&lt;/a&gt;
@@ -809,7 +808,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;ピクシブ社内広告サーバーでのgoの開発-運用:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;ピクシブ社内広告サーバーでのGoの開発・運用&lt;/h2&gt;
+&lt;h2 id=&#34;ピクシブ社内広告サーバーでのgoの開発-運用&#34;&gt;ピクシブ社内広告サーバーでのGoの開発・運用&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&#34;&gt;http://catatsuy.hateblo.jp/entry/2015/06/21/214229&lt;/a&gt;&lt;/li&gt;
@@ -822,7 +821,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;CPU Throttlingによって混んでないときはレスポンスが遅い話がおもしろかったです。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;1binary 自己完結型の 形態素解析器 kagome を 作ってみた話&lt;/h2&gt;
+&lt;h2 id=&#34;1binary-自己完結型の-形態素解析器-kagome-を-作ってみた話&#34;&gt;1binary 自己完結型の 形態素解析器 kagome を 作ってみた話&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&#34;&gt;http://ikawaha.hateblo.jp/entry/2015/06/21/155636&lt;/a&gt;&lt;/li&gt;
@@ -834,7 +833,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;goで基盤システムつくってる話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;GOで基盤システムつくってる話&lt;/h2&gt;
+&lt;h2 id=&#34;goで基盤システムつくってる話&#34;&gt;GOで基盤システムつくってる話&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CAでLoL並の接続数を捌けるような基盤システムを作ってる話&lt;/li&gt;
@@ -846,16 +845,16 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;lt:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;LT&lt;/h2&gt;
+&lt;h2 id=&#34;lt&#34;&gt;LT&lt;/h2&gt;
 
-&lt;h3 id=&#34;goのパッケージ構成で試行錯誤してみた話:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goのパッケージ構成で試行錯誤してみた話&lt;/h3&gt;
+&lt;h3 id=&#34;goのパッケージ構成で試行錯誤してみた話&#34;&gt;Goのパッケージ構成で試行錯誤してみた話&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/fkmhrk/go-49650783&#34;&gt;http://www.slideshare.net/fkmhrk/go-49650783&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;パッケージの分け方は特にgo特有のやり方はなく、他の言語とおんなじっぽいです&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;appengine-for-go-unittest:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;AppEngine for Go Unittest&lt;/h3&gt;
+&lt;h3 id=&#34;appengine-for-go-unittest&#34;&gt;AppEngine for Go Unittest&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;デバッグ用のサーバの立ち上げが遅いので、Unittestに時間がかかるそうです&lt;/li&gt;
@@ -866,22 +865,22 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;golangで始めるハードウェアプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangで始めるハードウェアプログラミング&lt;/h3&gt;
+&lt;h3 id=&#34;golangで始めるハードウェアプログラミング&#34;&gt;Golangで始めるハードウェアプログラミング&lt;/h3&gt;
 
 &lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
 
-&lt;h3 id=&#34;vendoring-golang:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;vendoring @ golang&lt;/h3&gt;
+&lt;h3 id=&#34;vendoring-golang&#34;&gt;vendoring @ golang&lt;/h3&gt;
 
 &lt;p&gt;メモり損ねました…(´･_･`)&lt;/p&gt;
 
-&lt;h3 id=&#34;gopherになれ:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;「Gopherになれ！」&lt;/h3&gt;
+&lt;h3 id=&#34;gopherになれ&#34;&gt;「Gopherになれ！」&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;この人&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;コミケにgopher君がいた &lt;a href=&#34;http://t.co/cMyhSFgIwy&#34;&gt;pic.twitter.com/cMyhSFgIwy&lt;/a&gt;&lt;/p&gt;&amp;mdash; ななやん (@7yan00) &lt;a href=&#34;https://twitter.com/7yan00/status/549767136445333504&#34;&gt;2014, 12月 30&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;go製の拡張可能なslackbot-仮:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Go製の拡張可能なslackbot（仮）&lt;/h3&gt;
+&lt;h3 id=&#34;go製の拡張可能なslackbot-仮&#34;&gt;Go製の拡張可能なslackbot（仮）&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&#34;&gt;http://kyokomi.hatenablog.com/entry/2015/06/21/213610&lt;/a&gt;&lt;/li&gt;
@@ -893,7 +892,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;goの使われ処:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Goの使われ処&lt;/h3&gt;
+&lt;h3 id=&#34;goの使われ処&#34;&gt;Goの使われ処&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&#34;&gt;https://speakerdeck.com/qt_luigi/gofalseshi-warechu-ri-ben-falsehui-she-bian&lt;/a&gt;&lt;/li&gt;
@@ -901,7 +900,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;想像以上に多くて、盛り上がってるなーと思いました&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;k0kubun-pp-についてと-reflectパッケージとメタプログラミング:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;k0kubun/pp についてと、reflectパッケージとメタプログラミング&lt;/h3&gt;
+&lt;h3 id=&#34;k0kubun-pp-についてと-reflectパッケージとメタプログラミング&#34;&gt;k0kubun/pp についてと、reflectパッケージとメタプログラミング&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&#34;&gt;http://k0kubun.hatenablog.com/entry/2015/06/21/195229&lt;/a&gt;&lt;/li&gt;
@@ -913,7 +912,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;メタプログラミングは…やっぱり現実的じゃ無いですよね&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;golangはじめて半日後に野球のアプリ書いてltしてきた:1cc9ac2b5800690c1b133bdf3b15ed6b&#34;&gt;Golangはじめて半日後に野球のアプリ書いてLTしてきた&lt;/h3&gt;
+&lt;h3 id=&#34;golangはじめて半日後に野球のアプリ書いてltしてきた&#34;&gt;Golangはじめて半日後に野球のアプリ書いてLTしてきた&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&#34;&gt;http://shinyorke.hatenablog.com/entry/2015/06/21/195656&lt;/a&gt;&lt;/li&gt;
@@ -939,7 +938,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 コンピュータがプログラムをどう解釈しているのかと同じぐらい、&lt;br /&gt;
 お金の事を知っておいた方がいい気がする…と思って参加しました。&lt;/p&gt;
 
-&lt;h1 id=&#34;エンシ-ニアの経営学:12fec0f6c41001deccd7cf88e484e079&#34;&gt;エンジニアの経営学&lt;/h1&gt;
+&lt;h1 id=&#34;エンシ-ニアの経営学&#34;&gt;エンジニアの経営学&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/bejita/bpstudy92&#34;&gt;http://www.slideshare.net/bejita/bpstudy92&lt;/a&gt;
@@ -1049,7 +1048,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;エンジニアのためのお金の話:12fec0f6c41001deccd7cf88e484e079&#34;&gt;エンジニアのためのお金の話&lt;/h1&gt;
+&lt;h1 id=&#34;エンジニアのためのお金の話&#34;&gt;エンジニアのためのお金の話&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;会計、キャッシュフロー、税務
@@ -1288,7 +1287,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。&lt;br /&gt;
 特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。&lt;/p&gt;
 
-&lt;h1 id=&#34;idc-frontierさんの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;IDC Frontierさんの話&lt;/h1&gt;
+&lt;h1 id=&#34;idc-frontierさんの話&#34;&gt;IDC Frontierさんの話&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;IDCクラウドの話&lt;/p&gt;
@@ -1306,7 +1305,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;ゲームサーバの作り方:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;ゲームサーバの作り方&lt;/h1&gt;
+&lt;h1 id=&#34;ゲームサーバの作り方&#34;&gt;ゲームサーバの作り方&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/honyax/ss-47136625&#34;&gt;http://www.slideshare.net/honyax/ss-47136625&lt;/a&gt;&lt;/li&gt;
@@ -1314,7 +1313,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;ゲームサーバも基本的なメッセージやりとり部分はチャットサーバみたいな物。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;fluentdとembulkの話:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;fluentdとembulkの話&lt;/h1&gt;
+&lt;h1 id=&#34;fluentdとembulkの話&#34;&gt;fluentdとembulkの話&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&#34;&gt;http://www.slideshare.net/repeatedly/fluentd-and-embulk-game-server-4&lt;/a&gt;&lt;/li&gt;
@@ -1366,7 +1365,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;負荷がたかいいんだから-仮:2a29e4ac88d71dc8c704f4abe8db92f2&#34;&gt;負荷がたかいいんだから～♪（仮）&lt;/h1&gt;
+&lt;h1 id=&#34;負荷がたかいいんだから-仮&#34;&gt;負荷がたかいいんだから～♪（仮）&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ゲームの負荷対策と負荷試験の話&lt;/li&gt;
@@ -1450,7 +1449,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 情報がほぼ入ってこない環境にいるため、&lt;br /&gt;
 ためになる話ばかりで、とても有意義な時間でした。&lt;/p&gt;
 
-&lt;h1 id=&#34;gomaについて:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;gomaについて&lt;/h1&gt;
+&lt;h1 id=&#34;gomaについて&#34;&gt;gomaについて&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/kyokomi/gomanituite&#34;&gt;https://speakerdeck.com/kyokomi/gomanituite&lt;/a&gt;&lt;/li&gt;
@@ -1474,7 +1473,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;golintを使おう:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;golintを使おう&lt;/h1&gt;
+&lt;h1 id=&#34;golintを使おう&#34;&gt;golintを使おう&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;いろいろ細かい所までチェックしてくれるgolintの話&lt;/li&gt;
@@ -1482,7 +1481,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;よくわかってなかったのでちゃんと使おう&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;go-timeout-もしくはunixツールをgolangで書く話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;go-timeout、もしくはUnixツールをgolangで書く話&lt;/h1&gt;
+&lt;h1 id=&#34;go-timeout-もしくはunixツールをgolangで書く話&#34;&gt;go-timeout、もしくはUnixツールをgolangで書く話&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://songmu.github.io/slides/gunosygo-12/#0&#34;&gt;http://songmu.github.io/slides/gunosygo-12/#0&lt;/a&gt;&lt;/li&gt;
@@ -1512,7 +1511,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;golang-raspiで趣味的iot入門的な話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Golang+Raspiで趣味的IoT入門的な話&lt;/h1&gt;
+&lt;h1 id=&#34;golang-raspiで趣味的iot入門的な話&#34;&gt;Golang+Raspiで趣味的IoT入門的な話&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua&#34;&gt;https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua&lt;/a&gt;&lt;/li&gt;
@@ -1540,7 +1539,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;プログラムよりもデータシートとの格闘が大変…&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;goでのステート管理の仕方:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goでのステート管理の仕方&lt;/h1&gt;
+&lt;h1 id=&#34;goでのステート管理の仕方&#34;&gt;Goでのステート管理の仕方&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/ssuser939b6b/state-managementingo20150413&#34;&gt;http://www.slideshare.net/ssuser939b6b/state-managementingo20150413&lt;/a&gt;&lt;/li&gt;
@@ -1556,7 +1555,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;goと設定ファイル:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goと設定ファイル&lt;/h1&gt;
+&lt;h1 id=&#34;goと設定ファイル&#34;&gt;Goと設定ファイル&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/gototoml&#34;&gt;https://speakerdeck.com/cubicdaiya/gototoml&lt;/a&gt;&lt;/li&gt;
@@ -1575,7 +1574,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;goでゲームを作る:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;Goでゲームを作る&lt;/h1&gt;
+&lt;h1 id=&#34;goでゲームを作る&#34;&gt;Goでゲームを作る&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1&#34;&gt;http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1&lt;/a&gt;&lt;/li&gt;
@@ -1589,7 +1588,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;夏コミで頒布予定&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;dbじゃないoracleの話:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;DBじゃないoracleの話&lt;/h1&gt;
+&lt;h1 id=&#34;dbじゃないoracleの話&#34;&gt;DBじゃないoracleの話&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/damemekam/dboracle-gunosygo12&#34;&gt;http://www.slideshare.net/damemekam/dboracle-gunosygo12&lt;/a&gt;&lt;/li&gt;
@@ -1612,7 +1611,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;gocon2015-summer:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;GoCon2015 Summer&lt;/h1&gt;
+&lt;h1 id=&#34;gocon2015-summer&#34;&gt;GoCon2015 Summer&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/takuyaueda967/goconsummer&#34;&gt;http://www.slideshare.net/takuyaueda967/goconsummer&lt;/a&gt;&lt;/li&gt;
@@ -1620,7 +1619,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;会場探し中らしい&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;その他:0be486f42159ef3319b68e5a2e9ad272&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;GojiなるWebフレームワークが良いらしい
@@ -1642,7 +1641,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 
 &lt;p&gt;&lt;a href=&#34;http://niconicodatasig6.peatix.com/&#34;&gt;第6回ニコニコ学会β　データ研究会&lt;/a&gt;に参加しました。&lt;/p&gt;
 
-&lt;h1 id=&#34;基調講演:77062b116e53641aa03fb4a662d518a8&#34;&gt;基調講演&lt;/h1&gt;
+&lt;h1 id=&#34;基調講演&#34;&gt;基調講演&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;日立のH
@@ -1696,7 +1695,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;人狼知能:77062b116e53641aa03fb4a662d518a8&#34;&gt;人狼知能&lt;/h1&gt;
+&lt;h1 id=&#34;人狼知能&#34;&gt;人狼知能&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;脱初心者！経験は人狼力を向上させるのか？～データから見るベテランの実力～
@@ -1825,7 +1824,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;lt:77062b116e53641aa03fb4a662d518a8&#34;&gt;LT&lt;/h1&gt;
+&lt;h1 id=&#34;lt&#34;&gt;LT&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;初心者向け「凛ちゃん」
@@ -1898,7 +1897,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;a href=&#34;http://togetter.com/li/773792&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;br /&gt;
 会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ:99d83bf71ce3610b971e31175555a6de&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;黒崎優太 (@kuro_m88)  ICTトラブルシューティングコンテストの紹介&lt;/p&gt;
@@ -1989,7 +1988,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;懇親会:99d83bf71ce3610b971e31175555a6de&#34;&gt;懇親会&lt;/h1&gt;
+&lt;h1 id=&#34;懇親会&#34;&gt;懇親会&lt;/h1&gt;
 
 &lt;p&gt;一晩寝たらだいたい忘れるという…(´･_･`)&lt;/p&gt;
 
@@ -2010,7 +2009,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;その他:99d83bf71ce3610b971e31175555a6de&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;p&gt;何か発表したい人生だった…&lt;em&gt;(:3 」∠)&lt;/em&gt;&lt;/p&gt;
 </description>
@@ -2027,9 +2026,9 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;p&gt;&lt;a href=&#34;http://build-shokunin.org/juc2015/&#34;&gt;Jenkins ユーザ・カンファレンス 2015 東京&lt;/a&gt;に参加しました。&lt;br /&gt;
 &lt;a href=&#34;http://togetter.com/li/765735&#34;&gt;Togetterまとめ&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;発表まとめ:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;発表まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;発表まとめ&#34;&gt;発表まとめ&lt;/h1&gt;
 
-&lt;h2 id=&#34;アンケート結果:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;アンケート結果&lt;/h2&gt;
+&lt;h2 id=&#34;アンケート結果&#34;&gt;アンケート結果&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;参加申し込み時のアンケート結果&lt;/li&gt;
@@ -2039,7 +2038,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;li&gt;アンケート結果は後日公開&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jenkinsプロジェクトの現状とワークフロー:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;Jenkinsプロジェクトの現状とワークフロー&lt;/h2&gt;
+&lt;h2 id=&#34;jenkinsプロジェクトの現状とワークフロー&#34;&gt;Jenkinsプロジェクトの現状とワークフロー&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;DotCiが良さそう
@@ -2060,7 +2059,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jenkinsとseleniumの活用事例-試験自動化のプロジェクトへの導入:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;JenkinsとSeleniumの活用事例：試験自動化のプロジェクトへの導入&lt;/h2&gt;
+&lt;h2 id=&#34;jenkinsとseleniumの活用事例-試験自動化のプロジェクトへの導入&#34;&gt;JenkinsとSeleniumの活用事例：試験自動化のプロジェクトへの導入&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;アジャイル開発だとイテレーション毎に試験項目は増えていくが、開発後半になるほど試験に割ける時間は減る
@@ -2082,7 +2081,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jenkinsを使ったコンシューマゲームでのデプロイとテスト:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;Jenkinsを使ったコンシューマゲームでのデプロイとテスト&lt;/h2&gt;
+&lt;h2 id=&#34;jenkinsを使ったコンシューマゲームでのデプロイとテスト&#34;&gt;Jenkinsを使ったコンシューマゲームでのデプロイとテスト&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/swiftnest/jenkins-43394510&#34;&gt;http://www.slideshare.net/swiftnest/jenkins-43394510&lt;/a&gt;&lt;/li&gt;
@@ -2182,7 +2181,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;おばかxfdコンテスト:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;おばかXFDコンテスト&lt;/h2&gt;
+&lt;h2 id=&#34;おばかxfdコンテスト&#34;&gt;おばかXFDコンテスト&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;人は慣れる生き物
@@ -2198,7 +2197,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;lt大会:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;LT大会&lt;/h2&gt;
+&lt;h2 id=&#34;lt大会&#34;&gt;LT大会&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkinsを使った継続的Webセキュリティテスト
@@ -2242,7 +2241,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;まとめ:6fcd8b087d02d0718ea7af307b5884dd&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jenkins単体の話はなくって、Jenkinsと○○連携してこう使ってますが多かった
@@ -2289,7 +2288,7 @@ UISTの数週間前みたいな時期なのであまりこの分野からの参�
 &lt;p&gt;(なお、細かい修正やこの記事の執筆等を、&lt;br /&gt;
 &lt;a href=&#34;https://atnd.org/events/60889&#34;&gt;正月ハッカソン2015&lt;/a&gt;でやりました)&lt;/p&gt;
 
-&lt;h1 id=&#34;どんなchrome拡張か:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;どんなChrome拡張か&lt;/h1&gt;
+&lt;h1 id=&#34;どんなchrome拡張か&#34;&gt;どんなChrome拡張か&lt;/h1&gt;
 
 &lt;p&gt;現在、Evernoteのノート固有のリンクを取得すると、&lt;br /&gt;
 &lt;code&gt;https://www.evernote.com/shard/文字列/文字列/ユーザID/ノートID/&lt;/code&gt;&lt;br /&gt;
@@ -2305,7 +2304,7 @@ Evernoteはログインが最長で一週間しか保てず、また二段階認
 &lt;p&gt;そのため、上記のようなWebアプリでノートを開くようなリンクを、&lt;br /&gt;
 オフラインのEvernoteアプリ上で同じノートを開くChrome拡張を作りました。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方:d78f0763d37ce9c07b17106e4e80f7ce&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;事前に、適当なノートのノートリンクを取得し、自分のユーザIDとshard名を取得する必要があります。&lt;br /&gt;
 Chrome拡張のオプションページにあるように、ノートを右クリックし、ノートリンクを取得し、&lt;br /&gt;

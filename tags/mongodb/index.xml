@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mongodb on おおたの物置</title>
-    <link>http://ota42y.com/tags/mongodb/</link>
+    <link>http://ota42y.com/tags/mongodb/index.xml</link>
     <description>Recent content in Mongodb on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 02 Dec 2015 07:25:25 +0900</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -17,7 +16,7 @@
       <guid>http://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:621f39d31cd5b5462567615247739831&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;MongoDB の update はレコードのID以外の要素を全て置き換える&lt;/li&gt;
@@ -25,7 +24,7 @@
 &lt;li&gt;部分 update したい場合は専用の方法でクエリを作る&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;mongodb-の-update-はレコードをほぼ全て置き換える:621f39d31cd5b5462567615247739831&#34;&gt;MongoDB の update はレコードをほぼ全て置き換える&lt;/h1&gt;
+&lt;h1 id=&#34;mongodb-の-update-はレコードをほぼ全て置き換える&#34;&gt;MongoDB の update はレコードをほぼ全て置き換える&lt;/h1&gt;
 
 &lt;p&gt;以下のように insert して update を実行します&lt;/p&gt;
 
@@ -49,7 +48,7 @@ col.find(a: 1).replace_one({b:1})
 &lt;p&gt;このように、MongoDB の update はデータの全置き換えを実行します。&lt;br /&gt;
 なお、ObjectId は変わらないため、消して再度 insert しているのではなく、ObjectId 以外のデータを全て変更しています。&lt;/p&gt;
 
-&lt;h1 id=&#34;回避方法:621f39d31cd5b5462567615247739831&#34;&gt;回避方法&lt;/h1&gt;
+&lt;h1 id=&#34;回避方法&#34;&gt;回避方法&lt;/h1&gt;
 
 &lt;p&gt;もちろん毎度上書きだととても不便なため、回避方法が存在します。&lt;/p&gt;
 
@@ -74,7 +73,7 @@ col.find(a: 1).replace_one(&#39;$set&#39; =&amp;gt; {b:1})
       <guid>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Debian 7 32bitではmongodb3.0はapt-getで入れられない&lt;/li&gt;
@@ -82,7 +81,7 @@ col.find(a: 1).replace_one(&#39;$set&#39; =&amp;gt; {b:1})
 &lt;li&gt;面倒ならdbファイルを&lt;code&gt;/data/db&lt;/code&gt;に移動してしまうのが楽そう&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;debian-7-32bitのmongodb:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;Debian 7 32bitのmongodb&lt;/h1&gt;
+&lt;h1 id=&#34;debian-7-32bitのmongodb&#34;&gt;Debian 7 32bitのmongodb&lt;/h1&gt;
 
 &lt;p&gt;Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、&lt;br /&gt;
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)&lt;br /&gt;
@@ -96,7 +95,7 @@ tarballからインストールする必要があります。&lt;/p&gt;
 
 &lt;p&gt;ただし、aptで入れた2.6からアップデートし、既存のDBファイルを使う場合は若干面倒になります。&lt;/p&gt;
 
-&lt;h1 id=&#34;aptからのアップグレード時の注意点:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;aptからのアップグレード時の注意点&lt;/h1&gt;
+&lt;h1 id=&#34;aptからのアップグレード時の注意点&#34;&gt;aptからのアップグレード時の注意点&lt;/h1&gt;
 
 &lt;p&gt;新規に入れる場合は公式サイトの手順通りですが、aptからのアップグレードの場合は問題が起きます。&lt;br /&gt;
 公式サイトの手順では、ログインユーザで&lt;code&gt;/data/db&lt;/code&gt;をDB書き込み先として使いますが、&lt;br /&gt;
@@ -107,7 +106,7 @@ aptで入れた2.6系統は特に設定しない場合、mongodbユーザで&lt;
 mongodbユーザがtarballの解凍と実行をする必要があります。&lt;br /&gt;
 今回は後者の方式をとります。&lt;/p&gt;
 
-&lt;h1 id=&#34;インストール手順:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;インストール手順&lt;/h1&gt;
+&lt;h1 id=&#34;インストール手順&#34;&gt;インストール手順&lt;/h1&gt;
 
 &lt;p&gt;公式サイトの手順からインストール先を変え、実行時にオプションを指定しているだけです。&lt;br /&gt;
 &lt;a href=&#34;https://docs.mongodb.org/master/tutorial/install-mongodb-on-linux/&#34;&gt;Install MongoDB From Tarbal&lt;/a&gt;&lt;/p&gt;
@@ -122,7 +121,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo -u mongodb mongod --dbpath /var/lib/mongodb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;まとめ-1:6fb0a1a816b71cb934be2e92d07fd3af&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ-1&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;p&gt;起動が面倒なら、&lt;code&gt;/var/lib/mongodb&lt;/code&gt;を&lt;code&gt;/data/db&lt;/code&gt;に移動して所有権を書き換えるのもいいと思います。&lt;/p&gt;
 </description>
@@ -143,7 +142,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 &lt;p&gt;結論から書きますと、これは複数DBを利用した際の、&lt;br /&gt;
 データの一貫性をどの程度保証するかの設定です。&lt;/p&gt;
 
-&lt;h1 id=&#34;一貫性制御:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;一貫性制御&lt;/h1&gt;
+&lt;h1 id=&#34;一貫性制御&#34;&gt;一貫性制御&lt;/h1&gt;
 
 &lt;p&gt;mgoには複数のDB間での一貫性を制御する３種類のモードがあります。&lt;/p&gt;
 
@@ -159,7 +158,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 &lt;p&gt;それぞれの内容は以下の通りです。&lt;br /&gt;
 おそらく一貫性がちゃんとしていくに従って、複雑化&amp;amp;遅くなっていきます。&lt;/p&gt;
 
-&lt;h2 id=&#34;eventual-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Eventual Consistency&lt;/h2&gt;
+&lt;h2 id=&#34;eventual-consistency&#34;&gt;Eventual Consistency&lt;/h2&gt;
 
 &lt;p&gt;最終的に辻褄が合えばいいよね設定です。&lt;br /&gt;
 データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。&lt;/p&gt;
@@ -171,13 +170,13 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 
 &lt;p&gt;同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;monotonic-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Monotonic Consistency&lt;/h2&gt;
+&lt;h2 id=&#34;monotonic-consistency&#34;&gt;Monotonic Consistency&lt;/h2&gt;
 
 &lt;p&gt;あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。&lt;br /&gt;
 おそらく、値を参照したタイミングで最新かどうかは保証されないが、&lt;br /&gt;
 少なくとも古い値が読み込まれることはない、という状態だと思われます。&lt;/p&gt;
 
-&lt;h2 id=&#34;strong-consistency:a3afd0be767c5d82506ee68c700d83ee&#34;&gt;Strong Consistency&lt;/h2&gt;
+&lt;h2 id=&#34;strong-consistency&#34;&gt;Strong Consistency&lt;/h2&gt;
 
 &lt;p&gt;常に必ず最新の値が読み込めるという状態です。&lt;br /&gt;
 一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、&lt;br /&gt;
@@ -212,7 +211,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
       <guid>http://ota42y.com/blog/2014/09/01/mongodb-explain/</guid>
       <description>
 
-&lt;h1 id=&#34;事前データ準備:7c69230a45f10ec129d1ee4fa0ab55a3&#34;&gt;事前データ準備&lt;/h1&gt;
+&lt;h1 id=&#34;事前データ準備&#34;&gt;事前データ準備&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt; for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) }
  for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) }
@@ -221,7 +220,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 
 &lt;p&gt;stringは3種類100個ずつ、numはuniqueなオブジェクトを作成します。&lt;/p&gt;
 
-&lt;h1 id=&#34;インデックス作成:7c69230a45f10ec129d1ee4fa0ab55a3&#34;&gt;インデックス作成&lt;/h1&gt;
+&lt;h1 id=&#34;インデックス作成&#34;&gt;インデックス作成&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;db.test_object.ensureIndex({&amp;quot;name&amp;quot;: 1})
 &lt;/code&gt;&lt;/pre&gt;
@@ -238,7 +237,7 @@ sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin
 &lt;p&gt;なお、MongoDBのばあい、インデックスに使用したキーが存在しない場合もあります。
 そのような場合は、キーを持っていないものはNULLとして扱われます。&lt;/p&gt;
 
-&lt;h1 id=&#34;explain:7c69230a45f10ec129d1ee4fa0ab55a3&#34;&gt;explain&lt;/h1&gt;
+&lt;h1 id=&#34;explain&#34;&gt;explain&lt;/h1&gt;
 
 &lt;p&gt;検索したときにindexが使われているかはexplainで確認出来ます。&lt;/p&gt;
 

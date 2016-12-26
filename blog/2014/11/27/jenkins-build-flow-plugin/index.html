@@ -119,13 +119,13 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ:e43210b67d1ef6ec3aec4d3b4c38c191">まとめ</a></li>
-<li><a href="#jenkinsのjob設定問題:e43210b67d1ef6ec3aec4d3b4c38c191">Jenkinsのjob設定問題</a>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#jenkinsのjob設定問題">Jenkinsのjob設定問題</a>
 <ul>
-<li><a href="#全部スクリプトで処理する方法:e43210b67d1ef6ec3aec4d3b4c38c191">全部スクリプトで処理する方法</a></li>
-<li><a href="#新しいjobを作っていく方法:e43210b67d1ef6ec3aec4d3b4c38c191">新しいJobを作っていく方法</a></li>
+<li><a href="#全部スクリプトで処理する方法">全部スクリプトで処理する方法</a></li>
+<li><a href="#新しいjobを作っていく方法">新しいJobを作っていく方法</a></li>
 </ul></li>
-<li><a href="#build-flow-pluginでjobの関係をリポジトリに入れる:e43210b67d1ef6ec3aec4d3b4c38c191">build flow pluginでjobの関係をリポジトリに入れる</a></li>
+<li><a href="#build-flow-pluginでjobの関係をリポジトリに入れる">build flow pluginでjobの関係をリポジトリに入れる</a></li>
 </ul>
 </nav>
                 </div>
@@ -135,7 +135,7 @@
             <div class="article">
               
 
-<h1 id="まとめ:e43210b67d1ef6ec3aec4d3b4c38c191">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒</li>
@@ -144,7 +144,7 @@
 <li>これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る</li>
 </ul>
 
-<h1 id="jenkinsのjob設定問題:e43210b67d1ef6ec3aec4d3b4c38c191">Jenkinsのjob設定問題</h1>
+<h1 id="jenkinsのjob設定問題">Jenkinsのjob設定問題</h1>
 
 <p>Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。</p>
 
@@ -156,7 +156,7 @@
 
 <p>このような場合、二通りの解決方法が存在します。</p>
 
-<h2 id="全部スクリプトで処理する方法:e43210b67d1ef6ec3aec4d3b4c38c191">全部スクリプトで処理する方法</h2>
+<h2 id="全部スクリプトで処理する方法">全部スクリプトで処理する方法</h2>
 
 <p>一つ目が全部スクリプトでやってしまう方法です。<br />
 Jenkinsのjobからは単一のスクリプトだけを実行し、その中で全てを行います。</p>
@@ -167,7 +167,7 @@ Jenkinsのjobからは単一のスクリプトだけを実行し、その中で�
 <p>ですがこの方法では、プラグインや下流jobとの連携、特定の処理だけ別ノードで実行するなど、<br />
 Jenkinsの機能が使えなくなります。</p>
 
-<h2 id="新しいjobを作っていく方法:e43210b67d1ef6ec3aec4d3b4c38c191">新しいJobを作っていく方法</h2>
+<h2 id="新しいjobを作っていく方法">新しいJobを作っていく方法</h2>
 
 <p>これに対し、jobの変更管理を諦め、どんどん新しいjobを作ってく方法があります。<br />
 Jenkinsはjobのコピーが容易なため、後方互換性のない変更を加える段階で新しいjobに切り替え、<br />
@@ -179,7 +179,7 @@ Jenkinsはjobのコピーが容易なため、後方互換性のない変更を�
 <p>これに対し、build flow pluginを使う事で、どのjobでビルドするかといった情報を、<br />
 リポジトリ内に入れてバージョン管理することが出来ます。</p>
 
-<h1 id="build-flow-pluginでjobの関係をリポジトリに入れる:e43210b67d1ef6ec3aec4d3b4c38c191">build flow pluginでjobの関係をリポジトリに入れる</h1>
+<h1 id="build-flow-pluginでjobの関係をリポジトリに入れる">build flow pluginでjobの関係をリポジトリに入れる</h1>
 
 <p>Jenkinsのbuild flow pluginでは、複数のjobをスクリプトから実行することが出来ます。<br />
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/Build+Flow+Plugin">Build Flow Plugin</a></p>

@@ -119,13 +119,13 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#fork関数:7960c44eb9f1312bad029939fcc3410e">fork関数</a></li>
-<li><a href="#fork関数がプロセスの親子を区別する仕組み:7960c44eb9f1312bad029939fcc3410e">fork関数がプロセスの親子を区別する仕組み</a>
+<li><a href="#fork関数">fork関数</a></li>
+<li><a href="#fork関数がプロセスの親子を区別する仕組み">fork関数がプロセスの親子を区別する仕組み</a>
 <ul>
-<li><a href="#親による子プロセスの作成:7960c44eb9f1312bad029939fcc3410e">親による子プロセスの作成</a></li>
-<li><a href="#作成された子プロセス側の処理:7960c44eb9f1312bad029939fcc3410e">作成された子プロセス側の処理</a></li>
+<li><a href="#親による子プロセスの作成">親による子プロセスの作成</a></li>
+<li><a href="#作成された子プロセス側の処理">作成された子プロセス側の処理</a></li>
 </ul></li>
-<li><a href="#まとめ:7960c44eb9f1312bad029939fcc3410e">まとめ</a></li>
+<li><a href="#まとめ">まとめ</a></li>
 </ul>
 </nav>
                 </div>
@@ -144,7 +144,7 @@
 
 <p>以下にその概要をまとめました。</p>
 
-<h1 id="fork関数:7960c44eb9f1312bad029939fcc3410e">fork関数</h1>
+<h1 id="fork関数">fork関数</h1>
 
 <p>Cではfork関数を利用することで、子プロセスを作成することが出来ます。<br />
 コードとしてはこんな感じですね。</p>
@@ -180,9 +180,9 @@ int main() {
 
 <p>これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。</p>
 
-<h1 id="fork関数がプロセスの親子を区別する仕組み:7960c44eb9f1312bad029939fcc3410e">fork関数がプロセスの親子を区別する仕組み</h1>
+<h1 id="fork関数がプロセスの親子を区別する仕組み">fork関数がプロセスの親子を区別する仕組み</h1>
 
-<h2 id="親による子プロセスの作成:7960c44eb9f1312bad029939fcc3410e">親による子プロセスの作成</h2>
+<h2 id="親による子プロセスの作成">親による子プロセスの作成</h2>
 
 <p>ライブラリのfork関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/source/s4/fork.s">source/s4/fork.s</a>)を実行すると、<br />
 システムコールによってカーネルのfork関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/sys1.c">sys/ken/sys1.c</a>)が実行されます。</p>
@@ -220,7 +220,7 @@ out:
 その後、newproc関数は0を返すため、カーネルのfork関数で0で帰ってきた場合に、<br />
 作成した子プロセスのIDをレジスタに乗せ、ライブラリのfork関数で返すようにしています。</p>
 
-<h2 id="作成された子プロセス側の処理:7960c44eb9f1312bad029939fcc3410e">作成された子プロセス側の処理</h2>
+<h2 id="作成された子プロセス側の処理">作成された子プロセス側の処理</h2>
 
 <p>子プロセスは作成された後、実行順番が回ってきたタイミングでswitch関数(<a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6/usr/sys/ken/slp.c">sys/ken/slp.c</a>)により再開します。<br />
 この関数内では保存されたデータを復元し、最後にsavu関数を実行した関数の呼び出し元に、return 1で戻ります。</p>
@@ -233,7 +233,7 @@ switch関数はnewprocの呼び出し元であるfork関数に1で戻ります�
 親プロセスの場合は0が、子プロセスの場合は1が返るようになり、<br />
 その値を見て自身が親なのか子なのかを判断でき、別々の戻り値を返せるようになっています。</p>
 
-<h1 id="まとめ:7960c44eb9f1312bad029939fcc3410e">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>親プロセスはforkで子プロセスを作成してそのまま処理を継続</li>

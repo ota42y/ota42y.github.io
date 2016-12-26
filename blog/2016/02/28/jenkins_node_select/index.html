@@ -119,12 +119,12 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#概要:0be37591a98e09367cb74beb3aab8bdc">概要</a></li>
-<li><a href="#jenkinsのノード選択は柔軟性に欠ける:0be37591a98e09367cb74beb3aab8bdc">Jenkinsのノード選択は柔軟性に欠ける</a></li>
-<li><a href="#node-and-label-parameter-plugin:0be37591a98e09367cb74beb3aab8bdc">Node and Label parameter plugin</a></li>
-<li><a href="#該当するノード全てでビルドする:0be37591a98e09367cb74beb3aab8bdc">該当するノード全てでビルドする</a></li>
-<li><a href="#pipeline-pluginとの違い:0be37591a98e09367cb74beb3aab8bdc">Pipeline Pluginとの違い</a></li>
-<li><a href="#まとめ:0be37591a98e09367cb74beb3aab8bdc">まとめ</a></li>
+<li><a href="#概要">概要</a></li>
+<li><a href="#jenkinsのノード選択は柔軟性に欠ける">Jenkinsのノード選択は柔軟性に欠ける</a></li>
+<li><a href="#node-and-label-parameter-plugin">Node and Label parameter plugin</a></li>
+<li><a href="#該当するノード全てでビルドする">該当するノード全てでビルドする</a></li>
+<li><a href="#pipeline-pluginとの違い">Pipeline Pluginとの違い</a></li>
+<li><a href="#まとめ">まとめ</a></li>
 </ul>
 </nav>
                 </div>
@@ -134,11 +134,11 @@
             <div class="article">
               
 
-<h1 id="概要:0be37591a98e09367cb74beb3aab8bdc">概要</h1>
+<h1 id="概要">概要</h1>
 
 <p>Jenkinsのノード制御はあまりカスタマイズが効きません。そのため、ノードを細かく制御したい場合はジョブを分ける必要があり、ジョブ数が増えて管理コストが上がります。このプラグインはパラメーターでノードを選択できるので、一つのジョブでノードごとにジョブを動かせるようになります。</p>
 
-<h1 id="jenkinsのノード選択は柔軟性に欠ける:0be37591a98e09367cb74beb3aab8bdc">Jenkinsのノード選択は柔軟性に欠ける</h1>
+<h1 id="jenkinsのノード選択は柔軟性に欠ける">Jenkinsのノード選択は柔軟性に欠ける</h1>
 
 <p>Jenkinsのノード選択がパラメータでできるプラグインです。
 Jenkinsでは基本機能として、実行するノードを制限して特定ノードでだけジョブを実行できます。
@@ -146,7 +146,7 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 そのため、例えばgoでWindowsとMac両方でテストを実行したい場合、windows用とmac用というノードごとの個別のジョブを作る必要があります。
 しかし、それを続けるとJenkinsのジョブの数が際限なく増えていき、ジョブのメンテが大変になるという問題が出ます。</p>
 
-<h1 id="node-and-label-parameter-plugin:0be37591a98e09367cb74beb3aab8bdc">Node and Label parameter plugin</h1>
+<h1 id="node-and-label-parameter-plugin">Node and Label parameter plugin</h1>
 
 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin</a></p>
 
@@ -159,7 +159,7 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 そのため、ノードにwindowsやmac等の適切なラベルをつけることで、任意のノードでビルドすることができるようになります。
 また、全てのノードに共通のラベルを一つ定義しておくことで、どれでもいいからとりあえずビルドするといったこともできます。</p>
 
-<h1 id="該当するノード全てでビルドする:0be37591a98e09367cb74beb3aab8bdc">該当するノード全てでビルドする</h1>
+<h1 id="該当するノード全てでビルドする">該当するノード全てでビルドする</h1>
 
 <p>このプラグインは、特に設定がない場合は該当するノードのどれか一つでjobが実行されますが、以下のオプションをつけることで該当するノード全てで実行されるようになります。
 そのため、複数環境でテストしたい場合も１回ビルドを実行するだけで後は自動で全てのノードでビルドが実行されるようになります。
@@ -167,14 +167,14 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 
 <p><a href="/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png"><img src="/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png"  width="40%" /></a></p>
 
-<h1 id="pipeline-pluginとの違い:0be37591a98e09367cb74beb3aab8bdc">Pipeline Pluginとの違い</h1>
+<h1 id="pipeline-pluginとの違い">Pipeline Pluginとの違い</h1>
 
 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline Plugin</a>では、Jenkinsのジョブを丸ごとgroovyで書けるため、このプラグインよりもさらに柔軟に選択できます。
 ただ、こちらは本当にジョブの内容を全てgroovyで書く必要があり、既存のJenkinsの知見を活用できなかったり、他のプラグインとの相性はあまり良くないです。
 Node and Label parameter pluginはパラメータのみ変更されるため、標準的なジョブ構成であればとても簡単に導入できます。
 そのため、どうしても複雑な制御が必要な時にのみPipeline Pluginを使うべきだと思います。</p>
 
-<h1 id="まとめ:0be37591a98e09367cb74beb3aab8bdc">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>通常の機能だとノードをあまり制御するのは難しい</li>

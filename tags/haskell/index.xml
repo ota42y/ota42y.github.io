@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Haskell on おおたの物置</title>
-    <link>http://ota42y.com/tags/haskell/</link>
+    <link>http://ota42y.com/tags/haskell/index.xml</link>
     <description>Recent content in Haskell on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 07 Jan 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -25,7 +24,7 @@
 バージョン違いとの切り分けが大変でしたが、&lt;br /&gt;
 結果は残念な結果になりました…&lt;/p&gt;
 
-&lt;h1 id=&#34;まとめ:b90c21fa6dd1b7c0a62d4119617037c8&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;GHCではLF、CRLFは正しく動くがCRはダメ&lt;/li&gt;
@@ -37,7 +36,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;調査方法:b90c21fa6dd1b7c0a62d4119617037c8&#34;&gt;調査方法&lt;/h1&gt;
+&lt;h1 id=&#34;調査方法&#34;&gt;調査方法&lt;/h1&gt;
 
 &lt;p&gt;以下のファイルを改行コードLFで保存します。&lt;/p&gt;
 
@@ -77,7 +76,7 @@ runghc cr.hs
 
 &lt;p&gt;失敗しますね(´・_・`)&lt;/p&gt;
 
-&lt;h1 id=&#34;何故crが紛れ込んだか:b90c21fa6dd1b7c0a62d4119617037c8&#34;&gt;何故CRが紛れ込んだか&lt;/h1&gt;
+&lt;h1 id=&#34;何故crが紛れ込んだか&#34;&gt;何故CRが紛れ込んだか&lt;/h1&gt;
 
 &lt;p&gt;最近のmacは改行コードがLFですし、CRが混入するのは中々ありません。&lt;/p&gt;
 

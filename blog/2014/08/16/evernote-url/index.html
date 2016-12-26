@@ -123,15 +123,15 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ:b168c087bfcbe9dcf4a213cfde27f9b0">まとめ</a></li>
-<li><a href="#automatorでスクリプトを実行する:b168c087bfcbe9dcf4a213cfde27f9b0">Automatorでスクリプトを実行する</a></li>
-<li><a href="#automatorのワークフローを作る:b168c087bfcbe9dcf4a213cfde27f9b0">Automatorのワークフローを作る</a>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#automatorでスクリプトを実行する">Automatorでスクリプトを実行する</a></li>
+<li><a href="#automatorのワークフローを作る">Automatorのワークフローを作る</a>
 <ul>
-<li><a href="#実行ディレクトリの取得:b168c087bfcbe9dcf4a213cfde27f9b0">実行ディレクトリの取得</a></li>
-<li><a href="#自分自身のパスを求めるapple-script:b168c087bfcbe9dcf4a213cfde27f9b0">自分自身のパスを求めるApple Script</a></li>
-<li><a href="#evernote-urlを置換するスクリプト:b168c087bfcbe9dcf4a213cfde27f9b0">Evernote URLを置換するスクリプト</a></li>
+<li><a href="#実行ディレクトリの取得">実行ディレクトリの取得</a></li>
+<li><a href="#自分自身のパスを求めるapple-script">自分自身のパスを求めるApple Script</a></li>
+<li><a href="#evernote-urlを置換するスクリプト">Evernote URLを置換するスクリプト</a></li>
 </ul></li>
-<li><a href="#完成品:b168c087bfcbe9dcf4a213cfde27f9b0">完成品</a></li>
+<li><a href="#完成品">完成品</a></li>
 </ul>
 </nav>
                 </div>
@@ -141,14 +141,14 @@
             <div class="article">
               
 
-<h1 id="まとめ:b168c087bfcbe9dcf4a213cfde27f9b0">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる</li>
 <li>Automatorならターミナルを立ち上げずにスクリプトを実行できる</li>
 </ul>
 
-<h1 id="automatorでスクリプトを実行する:b168c087bfcbe9dcf4a213cfde27f9b0">Automatorでスクリプトを実行する</h1>
+<h1 id="automatorでスクリプトを実行する">Automatorでスクリプトを実行する</h1>
 
 <p>前回(<a href="http://ota42y.com/blog/2014/08/10/evernote-link/">Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</a>)
 では、<br />
@@ -157,12 +157,12 @@
 <p>結論としては、Macと標準で入っているAutomatorを使うことで、<br />
 ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。</p>
 
-<h1 id="automatorのワークフローを作る:b168c087bfcbe9dcf4a213cfde27f9b0">Automatorのワークフローを作る</h1>
+<h1 id="automatorのワークフローを作る">Automatorのワークフローを作る</h1>
 
 <p>単体のアプリケーションとして実行するため、<br />
 Automatorを立ち上げアプリケーションを選択します。</p>
 
-<h2 id="実行ディレクトリの取得:b168c087bfcbe9dcf4a213cfde27f9b0">実行ディレクトリの取得</h2>
+<h2 id="実行ディレクトリの取得">実行ディレクトリの取得</h2>
 
 <p>私の環境では、clipboardのインストール先はグローバルではなく、<br />
 スクリプトのあるフォルダにbundler専用のディレクトリを作り、<br />
@@ -178,7 +178,7 @@ Automatorを立ち上げアプリケーションを選択します。</p>
 Automatorの実行ファイルがあるパスを求め、<br />
 そこに移動するようにしています。</p>
 
-<h2 id="自分自身のパスを求めるapple-script:b168c087bfcbe9dcf4a213cfde27f9b0">自分自身のパスを求めるApple Script</h2>
+<h2 id="自分自身のパスを求めるapple-script">自分自身のパスを求めるApple Script</h2>
 
 <pre><code>on run {input, parameters}
 set p to POSIX path of (path to me)
@@ -192,7 +192,7 @@ end run
 このスクリプトを後述するシェルスクリプトの前に実行するようにします。<br />
 これでシェルスクリプトに引数としてパスを渡せます。</p>
 
-<h2 id="evernote-urlを置換するスクリプト:b168c087bfcbe9dcf4a213cfde27f9b0">Evernote URLを置換するスクリプト</h2>
+<h2 id="evernote-urlを置換するスクリプト">Evernote URLを置換するスクリプト</h2>
 
 <p>内容はほぼ前回と同じです。<br />
 ただし、各種環境設定は読み込んでくれないため、<br />
@@ -225,7 +225,7 @@ popd
 Alfredから実行することでターミナルを立ち上げることなく、<br />
 クリップボードのノートリンクを置換できます。</p>
 
-<h1 id="完成品:b168c087bfcbe9dcf4a213cfde27f9b0">完成品</h1>
+<h1 id="完成品">完成品</h1>
 
 <p>できあがったスクリプトは<br />
 <a href="https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace">https://github.com/ota42y/dotfiles/tree/master/home/.scripts/evernote_url_replace</a><br />

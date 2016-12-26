@@ -65,6 +65,8 @@
                       
 
                       
+                      class="active"
+                      
                       ><a href="/pages/">Pages</a></li>
                 </ul>
                 <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
@@ -106,13 +108,13 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#tmux環境を整えた:26038bc9325a7e1e74b9ae9d9fc662f9">tmux環境を整えた</a></li>
-<li><a href="#gemのannotateが便利:26038bc9325a7e1e74b9ae9d9fc662f9">gemのAnnotateが便利</a></li>
-<li><a href="#emacsのパッケージ管理:26038bc9325a7e1e74b9ae9d9fc662f9">emacsのパッケージ管理</a>
+<li><a href="#tmux環境を整えた">tmux環境を整えた</a></li>
+<li><a href="#gemのannotateが便利">gemのAnnotateが便利</a></li>
+<li><a href="#emacsのパッケージ管理">emacsのパッケージ管理</a>
 <ul>
-<li><a href="#パッケージ本体の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ本体の管理</a></li>
-<li><a href="#パッケージ設定の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ設定の管理</a></li>
-<li><a href="#まとめ:26038bc9325a7e1e74b9ae9d9fc662f9">まとめ</a></li>
+<li><a href="#パッケージ本体の管理">パッケージ本体の管理</a></li>
+<li><a href="#パッケージ設定の管理">パッケージ設定の管理</a></li>
+<li><a href="#まとめ">まとめ</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -123,7 +125,7 @@
             <div class="article">
               
 
-<h1 id="tmux環境を整えた:26038bc9325a7e1e74b9ae9d9fc662f9">tmux環境を整えた</h1>
+<h1 id="tmux環境を整えた">tmux環境を整えた</h1>
 
 <p>画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。<br />
 ただペインを分けているだけでなく、ペインの中身はウィンドウなので、<br />
@@ -135,7 +137,7 @@
 <p>入れ替えはswap-paneを利用しています。<br />
 <a href="https://github.com/abicky/swap-pane">https://github.com/abicky/swap-pane</a></p>
 
-<h1 id="gemのannotateが便利:26038bc9325a7e1e74b9ae9d9fc662f9">gemのAnnotateが便利</h1>
+<h1 id="gemのannotateが便利">gemのAnnotateが便利</h1>
 
 <p><a href="https://github.com/ctran/annotate_models">https://github.com/ctran/annotate_models</a></p>
 
@@ -143,7 +145,7 @@
 このモデルにどんなカラムがあったっけ？って時に、schemeファイルから探し出す必要がなくなるので大変便利です。<br />
 また、情報はコメントに追加されるため、既存のコードの邪魔になったり勝手にアクセサが追加されたりしないのも便利です。</p>
 
-<h1 id="emacsのパッケージ管理:26038bc9325a7e1e74b9ae9d9fc662f9">emacsのパッケージ管理</h1>
+<h1 id="emacsのパッケージ管理">emacsのパッケージ管理</h1>
 
 <p>現在私のemacsはpackage.el、el-get、init-loaderの3つを使ってパッケージ管理をしています。<br />
 package.el、el-getがパッケージのDLや読み込み、init-loaderが設定ファイルのロードをしています。</p>
@@ -153,7 +155,7 @@ package.el、el-getがパッケージのDLや読み込み、init-loaderが設定
 <p>なお、以下のリポジトリに設定ファイルが置いてあります。
 <a href="https://github.com/ota42y/dotfiles">https://github.com/ota42y/dotfiles</a></p>
 
-<h2 id="パッケージ本体の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ本体の管理</h2>
+<h2 id="パッケージ本体の管理">パッケージ本体の管理</h2>
 
 <p>まず、package.elはMELPA等専用なため、そこにあるパッケージはこちらで管理します。<br />
 一方で、githubや個別のgitリポジトリで管理されているものはel-getでrecipeを書いて管理しています。<br />
@@ -163,7 +165,7 @@ package.el、el-getがパッケージのDLや読み込み、init-loaderが設定
 <p>また、これらで管理されているものは自動でロードされるようになっているため、<br />
 設定ファイルに追加するだけでインストールが完了します。</p>
 
-<h2 id="パッケージ設定の管理:26038bc9325a7e1e74b9ae9d9fc662f9">パッケージ設定の管理</h2>
+<h2 id="パッケージ設定の管理">パッケージ設定の管理</h2>
 
 <p>init-loderを使うことで、特定フォルダ内の設定ファイルを一気に読み込むことが出来ます。<br />
 このため、気軽に設定ファイルを分割できます。</p>
@@ -175,7 +177,7 @@ package.elがダウンロードし、読み込みが終了してからパッケ�
 el-get&gt;init-loder&gt;package.el&gt;その他の設定ファイルの順で実行をしています。<br />
 el-getも自動インストールするようにしているため、設定ファイルを持って行くだけで全て自動でインストールできます。</p>
 
-<h2 id="まとめ:26038bc9325a7e1e74b9ae9d9fc662f9">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <ul>
 <li>recipeに追加（必要なら）</li>

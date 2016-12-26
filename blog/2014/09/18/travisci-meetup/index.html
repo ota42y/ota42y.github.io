@@ -121,13 +121,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#automated-releasing-ios-app-with-travis-ci:df0acc4cb2b4055628ad432a471de563">Automated releasing iOS app with Travis CI</a></li>
-<li><a href="#travis-ci-api-lt:df0acc4cb2b4055628ad432a471de563">Travis CI API LT</a></li>
-<li><a href="#qunit-on-travis-ci-shigemk2:df0acc4cb2b4055628ad432a471de563">QUnit on Travis CI @shigemk2</a></li>
-<li><a href="#when-was-the-build-passing:df0acc4cb2b4055628ad432a471de563">When was the build passing?</a></li>
-<li><a href="#testing-your-app-with-selenium-on-travis-ci-by-yusuke-ando:df0acc4cb2b4055628ad432a471de563">Testing your app with Selenium on Travis CI by Yusuke Ando</a></li>
+<li><a href="#automated-releasing-ios-app-with-travis-ci">Automated releasing iOS app with Travis CI</a></li>
+<li><a href="#travis-ci-api-lt">Travis CI API LT</a></li>
+<li><a href="#qunit-on-travis-ci-shigemk2">QUnit on Travis CI @shigemk2</a></li>
+<li><a href="#when-was-the-build-passing">When was the build passing?</a></li>
+<li><a href="#testing-your-app-with-selenium-on-travis-ci-by-yusuke-ando">Testing your app with Selenium on Travis CI by Yusuke Ando</a></li>
 </ul></li>
-<li><a href="#懇親会:df0acc4cb2b4055628ad432a471de563">懇親会</a></li>
+<li><a href="#懇親会">懇親会</a></li>
 </ul>
 </nav>
                 </div>
@@ -159,7 +159,7 @@
 <p>最後のLTではいろんな発表が行われました。<br />
 見つけた分だけまとめておきます。</p>
 
-<h2 id="automated-releasing-ios-app-with-travis-ci:df0acc4cb2b4055628ad432a471de563">Automated releasing iOS app with Travis CI</h2>
+<h2 id="automated-releasing-ios-app-with-travis-ci">Automated releasing iOS app with Travis CI</h2>
 
 <p><a href="https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci">https://speakerdeck.com/kishikawakatsumi/automated-releasing-ios-app-with-travis-ci</a><br />
 私はJenkinsを使っていますが、似たような構成でやってるので参考になりました。<br />
@@ -169,19 +169,19 @@ xcarchiveに書き出すと、申請用ビルドでテストフライトに出�
 <blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/ota42y">@ota42y</a> 僕の話し方が悪かったのですが、xcarchiveだから、というわけではなくて、AppStoreとAdHocのプロビジョニングは互換性があるので、xcarchiveからipaにするところでプロビジョニングをAdHocにしています。同じビルドで署名だけ変える方法です。</p>&mdash; kishikawa katsumi (@k_katsumi) <a href="https://twitter.com/k_katsumi/status/512399910176432130">2014, 9月 18</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 
-<h2 id="travis-ci-api-lt:df0acc4cb2b4055628ad432a471de563">Travis CI API LT</h2>
+<h2 id="travis-ci-api-lt">Travis CI API LT</h2>
 
 <p><a href="https://speakerdeck.com/pinzolo/travis-ci-api-lt">https://speakerdeck.com/pinzolo/travis-ci-api-lt</a><br />
 Travis CIのAPIと、gemの利用例です。<br />
 パッと見た限り、必要最低限は揃ってそうなので、hubotから叩くみたいなことが出来そうです。</p>
 
-<h2 id="qunit-on-travis-ci-shigemk2:df0acc4cb2b4055628ad432a471de563">QUnit on Travis CI @shigemk2</h2>
+<h2 id="qunit-on-travis-ci-shigemk2">QUnit on Travis CI @shigemk2</h2>
 
 <p><a href="https://shigemk2.github.io/travisci_jp/#/step-1">https://shigemk2.github.io/travisci_jp/#/step-1</a><br />
 jsのライブラリを作った際の利用例でした。<br />
 実際に作る際に参考に出来そうでした。</p>
 
-<h2 id="when-was-the-build-passing:df0acc4cb2b4055628ad432a471de563">When was the build passing?</h2>
+<h2 id="when-was-the-build-passing">When was the build passing?</h2>
 
 <p><a href="http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/">http://sanemat.github.io/talks/20140917-travis-ci-meetup-tachikoma-io/</a><br />
 依存してるライブラリが更新すると、いつの間にかテストが落ちるようになってるけど、<br />
@@ -190,14 +190,14 @@ jsのライブラリを作った際の利用例でした。<br />
 <p>これに対して、定期的にPRを送る<a href="http://tachikoma.io/">Tachikoma.io - Interval Pull Request App</a>というものを作ったそうです。<br />
 bundle updateをしてPR送るみたいなこともやってくれるため、とりあえず仕掛けておいて損は無さそうです。</p>
 
-<h2 id="testing-your-app-with-selenium-on-travis-ci-by-yusuke-ando:df0acc4cb2b4055628ad432a471de563">Testing your app with Selenium on Travis CI by Yusuke Ando</h2>
+<h2 id="testing-your-app-with-selenium-on-travis-ci-by-yusuke-ando">Testing your app with Selenium on Travis CI by Yusuke Ando</h2>
 
 <p><a href="https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1">https://speakerdeck.com/yandod/testing-your-app-with-selenium-on-travis-ci-1</a><br />
 Travis CIでのSelenium導入の話です。<br />
 FirefoxやX等ははじめから入っているため、立ち上げるだけでいいらしく、<br />
 面倒なインストールをしなくていいためとても楽そうでした。</p>
 
-<h1 id="懇親会:df0acc4cb2b4055628ad432a471de563">懇親会</h1>
+<h1 id="懇親会">懇親会</h1>
 
 <p>DeNAさんがお寿司を出してくれました！！！！！！！！
 <blockquote class="twitter-tweet" lang="ja"><p>お寿司だヽ( ･∀･)ﾉ <a href="https://twitter.com/hashtag/travisci_jp?src=hash">#travisci_jp</a> <a href="http://t.co/zrmrhO6WMw">pic.twitter.com/zrmrhO6WMw</a></p>&mdash; おおた (@ota42y) <a href="https://twitter.com/ota42y/status/512210649699463168">2014, 9月 17</a></blockquote>

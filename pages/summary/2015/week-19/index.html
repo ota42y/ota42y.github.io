@@ -65,6 +65,8 @@
                       
 
                       
+                      class="active"
+                      
                       ><a href="/pages/">Pages</a></li>
                 </ul>
                 <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
@@ -106,10 +108,10 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#atomicな処理でアライメントを揃える必要があるらしい:732daa6ed2fb5abdbd55e43c0c719906">atomicな処理でアライメントを揃える必要があるらしい</a></li>
-<li><a href="#android-触ってた:732daa6ed2fb5abdbd55e43c0c719906">Android 触ってた</a></li>
-<li><a href="#fluentdを触ってる:732daa6ed2fb5abdbd55e43c0c719906">fluentdを触ってる</a></li>
-<li><a href="#fluentd-forwarder-にpr送った:732daa6ed2fb5abdbd55e43c0c719906">fluentd-forwarder にPR送った</a></li>
+<li><a href="#atomicな処理でアライメントを揃える必要があるらしい">atomicな処理でアライメントを揃える必要があるらしい</a></li>
+<li><a href="#android-触ってた">Android 触ってた</a></li>
+<li><a href="#fluentdを触ってる">fluentdを触ってる</a></li>
+<li><a href="#fluentd-forwarder-にpr送った">fluentd-forwarder にPR送った</a></li>
 </ul>
 </nav>
                 </div>
@@ -119,7 +121,7 @@
             <div class="article">
               
 
-<h1 id="atomicな処理でアライメントを揃える必要があるらしい:732daa6ed2fb5abdbd55e43c0c719906">atomicな処理でアライメントを揃える必要があるらしい</h1>
+<h1 id="atomicな処理でアライメントを揃える必要があるらしい">atomicな処理でアライメントを揃える必要があるらしい</h1>
 
 <p>goのatomic.AddInt64や、<br />
 WindowsのInterlockedExchangeでは、<br />
@@ -135,7 +137,7 @@ goではロックしてからCMPXCHG8Bを実行しており、アトミックな
 
 <p>一応、64bit境界に無い場合は性能が低下する可能性があるそうですが…</p>
 
-<h1 id="android-触ってた:732daa6ed2fb5abdbd55e43c0c719906">Android 触ってた</h1>
+<h1 id="android-触ってた">Android 触ってた</h1>
 
 <ul>
 <li>string.xmlは同じフォルダに別の名前のxmlを作っても、勝手にまとめてくれるので同じようにアクセスできるみたい。</li>
@@ -153,7 +155,7 @@ goではロックしてからCMPXCHG8Bを実行しており、アトミックな
 </ul></li>
 </ul>
 
-<h1 id="fluentdを触ってる:732daa6ed2fb5abdbd55e43c0c719906">fluentdを触ってる</h1>
+<h1 id="fluentdを触ってる">fluentdを触ってる</h1>
 
 <ul>
 <li>自分用のアプリのログ処理を入れ換えた</li>
@@ -177,7 +179,7 @@ goではロックしてからCMPXCHG8Bを実行しており、アトミックな
 </ul></li>
 </ul>
 
-<h1 id="fluentd-forwarder-にpr送った:732daa6ed2fb5abdbd55e43c0c719906">fluentd-forwarder にPR送った</h1>
+<h1 id="fluentd-forwarder-にpr送った">fluentd-forwarder にPR送った</h1>
 
 <ul>
 <li>atomic処理のメモリアライメント的な問題でwindows 32bitだと動かなかったので直した

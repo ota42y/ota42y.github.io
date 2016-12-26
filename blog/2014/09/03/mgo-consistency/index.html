@@ -123,11 +123,11 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#一貫性制御:a3afd0be767c5d82506ee68c700d83ee">一貫性制御</a>
+<li><a href="#一貫性制御">一貫性制御</a>
 <ul>
-<li><a href="#eventual-consistency:a3afd0be767c5d82506ee68c700d83ee">Eventual Consistency</a></li>
-<li><a href="#monotonic-consistency:a3afd0be767c5d82506ee68c700d83ee">Monotonic Consistency</a></li>
-<li><a href="#strong-consistency:a3afd0be767c5d82506ee68c700d83ee">Strong Consistency</a></li>
+<li><a href="#eventual-consistency">Eventual Consistency</a></li>
+<li><a href="#monotonic-consistency">Monotonic Consistency</a></li>
+<li><a href="#strong-consistency">Strong Consistency</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -145,7 +145,7 @@
 <p>結論から書きますと、これは複数DBを利用した際の、<br />
 データの一貫性をどの程度保証するかの設定です。</p>
 
-<h1 id="一貫性制御:a3afd0be767c5d82506ee68c700d83ee">一貫性制御</h1>
+<h1 id="一貫性制御">一貫性制御</h1>
 
 <p>mgoには複数のDB間での一貫性を制御する３種類のモードがあります。</p>
 
@@ -161,7 +161,7 @@
 <p>それぞれの内容は以下の通りです。<br />
 おそらく一貫性がちゃんとしていくに従って、複雑化&amp;遅くなっていきます。</p>
 
-<h2 id="eventual-consistency:a3afd0be767c5d82506ee68c700d83ee">Eventual Consistency</h2>
+<h2 id="eventual-consistency">Eventual Consistency</h2>
 
 <p>最終的に辻褄が合えばいいよね設定です。<br />
 データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。</p>
@@ -173,13 +173,13 @@
 
 <p>同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。</p>
 
-<h2 id="monotonic-consistency:a3afd0be767c5d82506ee68c700d83ee">Monotonic Consistency</h2>
+<h2 id="monotonic-consistency">Monotonic Consistency</h2>
 
 <p>あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。<br />
 おそらく、値を参照したタイミングで最新かどうかは保証されないが、<br />
 少なくとも古い値が読み込まれることはない、という状態だと思われます。</p>
 
-<h2 id="strong-consistency:a3afd0be767c5d82506ee68c700d83ee">Strong Consistency</h2>
+<h2 id="strong-consistency">Strong Consistency</h2>
 
 <p>常に必ず最新の値が読み込めるという状態です。<br />
 一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、<br />

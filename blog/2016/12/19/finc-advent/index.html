@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="committee &#43; prmds でJSON Schemaをいい感じに運用する">
+    <meta name="description" content="committee &#43; prmd でJSON Schemaをいい感じに運用する">
     <meta name="author" content="ota42y">
 
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
@@ -22,7 +22,7 @@
     </script>
 
     
-    <title>committee &#43; prmds でJSON Schemaをいい感じに運用する | おおたの物置</title>
+    <title>committee &#43; prmd でJSON Schemaをいい感じに運用する | おおたの物置</title>
     
 </head>
 
@@ -89,7 +89,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
-              <h1 class="article_title"><a href="/blog/2016/12/19/finc-advent/">committee &#43; prmds でJSON Schemaをいい感じに運用する</a></h1>
+              <h1 class="article_title"><a href="/blog/2016/12/19/finc-advent/">committee &#43; prmd でJSON Schemaをいい感じに運用する</a></h1>
               <p class="post_detail">
     
     <time datetime="2016-12-19" class="post_data">
@@ -119,20 +119,20 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#要約:9a41655829cae90fa2773a6244b1f941">要約</a></li>
-<li><a href="#api作成時のリクエスト-レスポンス形式問題:9a41655829cae90fa2773a6244b1f941">API作成時のリクエスト・レスポンス形式問題</a></li>
-<li><a href="#json-schemaで仕様を定義する:9a41655829cae90fa2773a6244b1f941">JSON Schemaで仕様を定義する</a></li>
-<li><a href="#committee:9a41655829cae90fa2773a6244b1f941">committee</a></li>
-<li><a href="#json-schema-committeeの利点と問題点:9a41655829cae90fa2773a6244b1f941">JSON Schema+committeeの利点と問題点</a></li>
-<li><a href="#prmd:9a41655829cae90fa2773a6244b1f941">prmd</a></li>
-<li><a href="#実際の開発手順:9a41655829cae90fa2773a6244b1f941">実際の開発手順</a></li>
-<li><a href="#まとめ:9a41655829cae90fa2773a6244b1f941">まとめ</a>
+<li><a href="#要約">要約</a></li>
+<li><a href="#api作成時のリクエスト-レスポンス形式問題">API作成時のリクエスト・レスポンス形式問題</a></li>
+<li><a href="#json-schemaで仕様を定義する">JSON Schemaで仕様を定義する</a></li>
+<li><a href="#committee">committee</a></li>
+<li><a href="#json-schema-committeeの利点と問題点">JSON Schema+committeeの利点と問題点</a></li>
+<li><a href="#prmd">prmd</a></li>
+<li><a href="#実際の開発手順">実際の開発手順</a></li>
+<li><a href="#まとめ">まとめ</a>
 <ul>
-<li><a href="#解決すること:9a41655829cae90fa2773a6244b1f941">解決すること</a></li>
-<li><a href="#解決しないこと:9a41655829cae90fa2773a6244b1f941">解決しないこと</a></li>
-<li><a href="#未解決問題:9a41655829cae90fa2773a6244b1f941">未解決問題</a></li>
+<li><a href="#解決すること">解決すること</a></li>
+<li><a href="#解決しないこと">解決しないこと</a></li>
+<li><a href="#未解決問題">未解決問題</a></li>
 </ul></li>
-<li><a href="#最後に:9a41655829cae90fa2773a6244b1f941">最後に</a></li>
+<li><a href="#最後に">最後に</a></li>
 </ul>
 </nav>
                 </div>
@@ -144,7 +144,7 @@
 
 <p><a href="http://qiita.com/advent-calendar/2016/fincdevelopers">FiNC Developer Advent Calendar 2016</a>の19日目の記事です。</p>
 
-<h1 id="要約:9a41655829cae90fa2773a6244b1f941">要約</h1>
+<h1 id="要約">要約</h1>
 
 <ul>
 <li>リクエスト・レスポンス形式のドキュメントはメンテが大変</li>
@@ -154,7 +154,7 @@
 <li>メンテされていない事が検出できるので続く（はず</li>
 </ul>
 
-<h1 id="api作成時のリクエスト-レスポンス形式問題:9a41655829cae90fa2773a6244b1f941">API作成時のリクエスト・レスポンス形式問題</h1>
+<h1 id="api作成時のリクエスト-レスポンス形式問題">API作成時のリクエスト・レスポンス形式問題</h1>
 
 <p>サーバとクライアントで並行開発しながらAPIを作成する場合、以下のようにリクエスト・レスポンス形式を整えにくいという問題があります。</p>
 
@@ -185,7 +185,7 @@
 
 <p>そこで、今回話題にするJSON Schema+committee+prmdを導入することで、この問題を大幅に解決できます。</p>
 
-<h1 id="json-schemaで仕様を定義する:9a41655829cae90fa2773a6244b1f941">JSON Schemaで仕様を定義する</h1>
+<h1 id="json-schemaで仕様を定義する">JSON Schemaで仕様を定義する</h1>
 
 <p>JSON SchemaとはJSONを用いてデータを記述する際の形式の1つで、主にアノテーションやバリデーションを目的としているものらしいです。<br />
 詳しくはこちら<br />
@@ -231,7 +231,7 @@
 <p>JSON Schemaにそって定義を書くことで、形式が統一されプログラムから処理しやすくなるのと、他の場所の定義を共有できるため、<br />
 同じデータなのに人によって違う構造になるような問題をを解決しやすくなります。</p>
 
-<h1 id="committee:9a41655829cae90fa2773a6244b1f941">committee</h1>
+<h1 id="committee">committee</h1>
 
 <p>JSON Schema自体はただの形式なのでそれ自体は特に何も無いですが、統一された形式になるため、容易にプログラムから処理を行う事ができます。</p>
 
@@ -246,7 +246,7 @@ JSON Schemaの形式と実際の形式とがそろっていることを保証で
 <p>さらに、JSON Schemaには形情報も書けることを利用し、数値でくるべきところが文字列だった場合にエラーを返すことや、<br />
 日付フォーマットの文字列をdatetimeに変換、GETリクエストの時に文字列を数値に変換してくれたりと色々な便利機能があります。</p>
 
-<h1 id="json-schema-committeeの利点と問題点:9a41655829cae90fa2773a6244b1f941">JSON Schema+committeeの利点と問題点</h1>
+<h1 id="json-schema-committeeの利点と問題点">JSON Schema+committeeの利点と問題点</h1>
 
 <p>JSON Schemaとcommitteeを利用することで、以下が可能になります。</p>
 
@@ -267,7 +267,7 @@ JSON Schemaの形式と実際の形式とがそろっていることを保証で
 
 <p>それを解決するのが<a href="https://github.com/interagent/prmd">prmd</a>です。</p>
 
-<h1 id="prmd:9a41655829cae90fa2773a6244b1f941">prmd</h1>
+<h1 id="prmd">prmd</h1>
 
 <p><a href="https://github.com/interagent/prmd">prmd</a>はJSON SchemaをYAMLで定義することや、複数のファイルに分割して定義、<br />
 JSON Schemaを元に人間が読めるmarkdownドキュメントを生成できるgemです。</p>
@@ -304,7 +304,7 @@ s/blog/2016/2016-12-19-prmd_document.png"><img src="/images/blog/2016/2016-12-19
 
 <p>これにより、JSON Schemaを人間が読み書きできるようになります。</p>
 
-<h1 id="実際の開発手順:9a41655829cae90fa2773a6244b1f941">実際の開発手順</h1>
+<h1 id="実際の開発手順">実際の開発手順</h1>
 
 <p>以下のように進めると、JSON Schemaの利点を最大限活用できると思います。</p>
 
@@ -323,9 +323,9 @@ s/blog/2016/2016-12-19-prmd_document.png"><img src="/images/blog/2016/2016-12-19
 <p><a href="/image
 s/blog/2016/2016-12-19-committee_prmd.png"><img src="/images/blog/2016/2016-12-19-committee_prmd.png"  width="50%" /></a></p>
 
-<h1 id="まとめ:9a41655829cae90fa2773a6244b1f941">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
-<h2 id="解決すること:9a41655829cae90fa2773a6244b1f941">解決すること</h2>
+<h2 id="解決すること">解決すること</h2>
 
 <p>正しく導入することで以下の問題を解決できます。</p>
 
@@ -334,7 +334,7 @@ s/blog/2016/2016-12-19-committee_prmd.png"><img src="/images/blog/2016/2016-12-1
 <li>データ構造を揃えること</li>
 </ul>
 
-<h2 id="解決しないこと:9a41655829cae90fa2773a6244b1f941">解決しないこと</h2>
+<h2 id="解決しないこと">解決しないこと</h2>
 
 <p>今回のはあくまでリクエスト・レスポンス形式に絞られているため、
 以下の問題は解決しません。</p>
@@ -357,7 +357,7 @@ s/blog/2016/2016-12-19-committee_prmd.png"><img src="/images/blog/2016/2016-12-1
 </ul></li>
 </ul>
 
-<h2 id="未解決問題:9a41655829cae90fa2773a6244b1f941">未解決問題</h2>
+<h2 id="未解決問題">未解決問題</h2>
 
 <p>以下のような問題が出ており、解決方法を模索中です。</p>
 
@@ -367,7 +367,7 @@ s/blog/2016/2016-12-19-committee_prmd.png"><img src="/images/blog/2016/2016-12-1
 <li>バージョニング対応</li>
 </ul>
 
-<h1 id="最後に:9a41655829cae90fa2773a6244b1f941">最後に</h1>
+<h1 id="最後に">最後に</h1>
 
 <p>JSON Schema+committee+prmdは全てを解決するものではありませんが、クライアント・サーバ間の形式という、認識の齟齬が起こりやすい境界の部分にはとても効果がある組み合わせでした。</p>
 

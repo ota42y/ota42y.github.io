@@ -119,9 +119,9 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ:621f39d31cd5b5462567615247739831">まとめ</a></li>
-<li><a href="#mongodb-の-update-はレコードをほぼ全て置き換える:621f39d31cd5b5462567615247739831">MongoDB の update はレコードをほぼ全て置き換える</a></li>
-<li><a href="#回避方法:621f39d31cd5b5462567615247739831">回避方法</a></li>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#mongodb-の-update-はレコードをほぼ全て置き換える">MongoDB の update はレコードをほぼ全て置き換える</a></li>
+<li><a href="#回避方法">回避方法</a></li>
 </ul>
 </nav>
                 </div>
@@ -131,7 +131,7 @@
             <div class="article">
               
 
-<h1 id="まとめ:621f39d31cd5b5462567615247739831">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>MongoDB の update はレコードのID以外の要素を全て置き換える</li>
@@ -139,7 +139,7 @@
 <li>部分 update したい場合は専用の方法でクエリを作る</li>
 </ul>
 
-<h1 id="mongodb-の-update-はレコードをほぼ全て置き換える:621f39d31cd5b5462567615247739831">MongoDB の update はレコードをほぼ全て置き換える</h1>
+<h1 id="mongodb-の-update-はレコードをほぼ全て置き換える">MongoDB の update はレコードをほぼ全て置き換える</h1>
 
 <p>以下のように insert して update を実行します</p>
 
@@ -163,7 +163,7 @@ col.find(a: 1).replace_one({b:1})
 <p>このように、MongoDB の update はデータの全置き換えを実行します。<br />
 なお、ObjectId は変わらないため、消して再度 insert しているのではなく、ObjectId 以外のデータを全て変更しています。</p>
 
-<h1 id="回避方法:621f39d31cd5b5462567615247739831">回避方法</h1>
+<h1 id="回避方法">回避方法</h1>
 
 <p>もちろん毎度上書きだととても不便なため、回避方法が存在します。</p>
 

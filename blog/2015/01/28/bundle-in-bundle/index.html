@@ -119,11 +119,11 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ:bfa2b8729b2aee25617387a8cd02f953">まとめ</a></li>
-<li><a href="#問題:bfa2b8729b2aee25617387a8cd02f953">問題</a></li>
-<li><a href="#原因:bfa2b8729b2aee25617387a8cd02f953">原因</a></li>
-<li><a href="#解決策:bfa2b8729b2aee25617387a8cd02f953">解決策</a></li>
-<li><a href="#補足:bfa2b8729b2aee25617387a8cd02f953">補足</a></li>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#問題">問題</a></li>
+<li><a href="#原因">原因</a></li>
+<li><a href="#解決策">解決策</a></li>
+<li><a href="#補足">補足</a></li>
 </ul>
 </nav>
                 </div>
@@ -138,7 +138,7 @@
 別のbundleを呼び出せないという問題が起きました。<br />
 これはbundlerが設定する環境変数が原因でした。</p>
 
-<h1 id="まとめ:bfa2b8729b2aee25617387a8cd02f953">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>bundle exec中に、別のbundlerを実行するとおかしくなる
@@ -159,7 +159,7 @@
 </ul></li>
 </ul>
 
-<h1 id="問題:bfa2b8729b2aee25617387a8cd02f953">問題</h1>
+<h1 id="問題">問題</h1>
 
 <p>以下のような構成かつtestフォルダにいる状態で、<br />
 <code>bundle install --path vendor/bundle</code><br />
@@ -194,7 +194,7 @@ bundler: command not found: hello-world
 Install missing gem executables with `bundle install`
 </code></pre>
 
-<h1 id="原因:bfa2b8729b2aee25617387a8cd02f953">原因</h1>
+<h1 id="原因">原因</h1>
 
 <p>bundlerが実行時に、BUNDLE_GEMFILEやRUBYOPTといった環境変数をいじっており、<br />
 そこで指定されているbundlerから実行されていると見なされるため、<br />
@@ -205,7 +205,7 @@ bundle系のコマンドが全て元のbundlerに対して実行されてしま�
 1行目のhello_world_gemの呼び出しにbundle execが不要になっています。<br />
 このように必ずしも害となるものではありませんが、違うbundlerを呼び出せないのは不便です。</p>
 
-<h1 id="解決策:bfa2b8729b2aee25617387a8cd02f953">解決策</h1>
+<h1 id="解決策">解決策</h1>
 
 <p><a href="https://github.com/bundler/bundler/blob/a400c5ed9eca82598a76f9818a1bf7129515a2a0/lib/bundler.rb#L239">Bundler.with_clean_env</a>を利用することで、この問題を回避できます。<br />
 このメソッドは、実行時の環境変数にBUNDLE_という名前の環境変数を全て削除して渡されたブロックを実行します。<br />
@@ -222,7 +222,7 @@ Dir.chdir(&quot;../test2&quot;) do
 end
 </code></pre>
 
-<h1 id="補足:bfa2b8729b2aee25617387a8cd02f953">補足</h1>
+<h1 id="補足">補足</h1>
 
 <p>他にGEM_HOMEという環境変数を設定していますが、<br />
 これはbundler起動時に上書きされるらしく、with_clear_envで消さなくても良さそうです。<br />

@@ -119,12 +119,12 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#まとめ:b5ab9fb37652233f44e2716edb31652a">まとめ</a></li>
-<li><a href="#はじめに:b5ab9fb37652233f44e2716edb31652a">はじめに</a></li>
-<li><a href="#紹介する論文:b5ab9fb37652233f44e2716edb31652a">紹介する論文</a></li>
-<li><a href="#手法について:b5ab9fb37652233f44e2716edb31652a">手法について</a></li>
-<li><a href="#やってみた:b5ab9fb37652233f44e2716edb31652a">やってみた</a></li>
-<li><a href="#その他:b5ab9fb37652233f44e2716edb31652a">その他</a></li>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#はじめに">はじめに</a></li>
+<li><a href="#紹介する論文">紹介する論文</a></li>
+<li><a href="#手法について">手法について</a></li>
+<li><a href="#やってみた">やってみた</a></li>
+<li><a href="#その他">その他</a></li>
 </ul>
 </nav>
                 </div>
@@ -134,7 +134,7 @@
             <div class="article">
               
 
-<h1 id="まとめ:b5ab9fb37652233f44e2716edb31652a">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <ul>
 <li>BluetoothのRSSIだけで対象のデバイスがどこにいるかわかる
@@ -156,12 +156,12 @@
 </ul></li>
 </ul>
 
-<h1 id="はじめに:b5ab9fb37652233f44e2716edb31652a">はじめに</h1>
+<h1 id="はじめに">はじめに</h1>
 
 <p>このエントリは「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」の25日目のものです。<br />
 <a href="http://qiita.com/advent-calendar/2015/hci">http://qiita.com/advent-calendar/2015/hci</a></p>
 
-<h1 id="紹介する論文:b5ab9fb37652233f44e2716edb31652a">紹介する論文</h1>
+<h1 id="紹介する論文">紹介する論文</h1>
 
 <p>今回もUIST2015から、<a href="http://dl.acm.org/citation.cfm?doid=2807442.2807485">Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions</a>という論文を紹介します。<br />
 これはBluetoothのRSSIだけを利用し、デバイスの相対的な位置を検出する手法についての論文です。</p>
@@ -169,7 +169,7 @@
 <p>動画はこちらになります。<br />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VqAoxVhO4xA" frameborder="0" allowfullscreen></iframe></p>
 
-<h1 id="手法について:b5ab9fb37652233f44e2716edb31652a">手法について</h1>
+<h1 id="手法について">手法について</h1>
 
 <p>Bluetoothのチップの位置はデバイスの中心からずれたところに置かれているため、
 各辺からチップまでの距離はそれぞれ異なり、結果としてRSSIが異なってきます。この距離の違いから来るRSSIの違いを学習しておくことで、
@@ -182,7 +182,7 @@
 <p>実際、私の手元のタブレットでは左上にチップがあるため、右辺や下辺は遠く、上辺や左辺は近くなっており、RSSIも-40~-20までかなりの差が出ます。
 値は常に若干上下しますが直近数秒でまとめるとだいたい安定しているので、確かに識別に使えそうです。</p>
 
-<h1 id="やってみた:b5ab9fb37652233f44e2716edb31652a">やってみた</h1>
+<h1 id="やってみた">やってみた</h1>
 
 <p>RSSIだけで位置が測定できる！と聞いても半信半疑だったので、実際にやってみました。<br />
 (15秒あたりから開始)<br />
@@ -195,7 +195,7 @@
 動画の通り、かなり簡素化した状態でもわりといい精度でどの位置にあるかを識別できていますので、
 ちゃんとオリジナルのを実装すれば相当な精度になることが予想できます。</p>
 
-<h1 id="その他:b5ab9fb37652233f44e2716edb31652a">その他</h1>
+<h1 id="その他">その他</h1>
 
 <p>Bluetoothチップが中心からずれていることに依存しているので、今後中心や中心線上に乗ったデバイスに対しては識別できるのか心配です。
 たとえば横方向の中心線上（上辺と下辺から等距離）の場合、左右では距離が違いますが上下では距離が同じになります。

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on おおたの物置</title>
-    <link>http://ota42y.com/pages/</link>
+    <link>http://ota42y.com/pages/index.xml</link>
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
@@ -151,11 +151,11 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-34/</guid>
       <description>
 
-&lt;h1 id=&#34;毎週まとめはおしまい:d7f507d6eed5faf8097f3ede69217ef1&#34;&gt;毎週まとめはおしまい&lt;/h1&gt;
+&lt;h1 id=&#34;毎週まとめはおしまい&#34;&gt;毎週まとめはおしまい&lt;/h1&gt;
 
 &lt;p&gt;そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。&lt;/p&gt;
 
-&lt;h1 id=&#34;rsyncで特定フォルダをバックアップする:d7f507d6eed5faf8097f3ede69217ef1&#34;&gt;rsyncで特定フォルダをバックアップする&lt;/h1&gt;
+&lt;h1 id=&#34;rsyncで特定フォルダをバックアップする&#34;&gt;rsyncで特定フォルダをバックアップする&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;rsync -a --delete origin/ backup&lt;/code&gt;&lt;br /&gt;
 で、backupフォルダの中身をoriginと一緒になるように同期してくれるため、フォルダごとバックアップすることが出来ます。&lt;/p&gt;
@@ -173,7 +173,7 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-33/</guid>
       <description>
 
-&lt;h1 id=&#34;tmux-change-pane作った:757ce72f8f598825a7068b8bdeb98514&#34;&gt;tmux-change-pane作った&lt;/h1&gt;
+&lt;h1 id=&#34;tmux-change-pane作った&#34;&gt;tmux-change-pane作った&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;swap-pane&lt;/a&gt;は機能としてはとても便利なのですが、&lt;br /&gt;
 ショートカットからの切り替え時に画面全てを切り替えてしまい、&lt;br /&gt;
@@ -182,7 +182,7 @@ Qiitaを再開した。&lt;/p&gt;
 
 &lt;p&gt;いずれちゃんと記事を書く予定です…&lt;/p&gt;
 
-&lt;h1 id=&#34;c-03だとmapのatが無い:757ce72f8f598825a7068b8bdeb98514&#34;&gt;C++03だとmapのatが無い&lt;/h1&gt;
+&lt;h1 id=&#34;c-03だとmapのatが無い&#34;&gt;C++03だとmapのatが無い&lt;/h1&gt;
 
 &lt;p&gt;std::mapの[]は値が無い場合、その値を作ってしまうためconstではありません。&lt;br /&gt;
 &lt;a href=&#34;http://www.cplusplus.com/reference/map/map/operator[]/&#34;&gt;http://www.cplusplus.com/reference/map/map/operator[]/&lt;/a&gt;&lt;/p&gt;
@@ -219,12 +219,12 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-32/</guid>
       <description>
 
-&lt;h1 id=&#34;最近のhci研究を調べてる:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;最近のHCI研究を調べてる&lt;/h1&gt;
+&lt;h1 id=&#34;最近のhci研究を調べてる&#34;&gt;最近のHCI研究を調べてる&lt;/h1&gt;
 
 &lt;p&gt;とりあえずざっとアブストを見て良さそうなものをピックアップする作業。&lt;br /&gt;
 いくつかは昔読んだ奴をもう一度読んでいたりします。&lt;/p&gt;
 
-&lt;h2 id=&#34;jamsheets:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;jamSheets&lt;/h2&gt;
+&lt;h2 id=&#34;jamsheets&#34;&gt;jamSheets&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://tangible.media.mit.edu/project/jamsheets/&#34;&gt;http://tangible.media.mit.edu/project/jamsheets/&lt;/a&gt;&lt;/p&gt;
 
@@ -232,14 +232,14 @@ Qiitaを再開した。&lt;/p&gt;
 自由自在に過多さを変えられるシートを作ったみたい。&lt;br /&gt;
 どうなっているのかすごい気になる…&lt;/p&gt;
 
-&lt;h2 id=&#34;inverse-foley-animation:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;Inverse-Foley Animation&lt;/h2&gt;
+&lt;h2 id=&#34;inverse-foley-animation&#34;&gt;Inverse-Foley Animation&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.cs.cornell.edu/projects/Sound/ifa/&#34;&gt;http://www.cs.cornell.edu/projects/Sound/ifa/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;事前に音と3Dモデルを学習しておき、入力された音にマッチする映像を作成する。&lt;br /&gt;
 映像にマッチする音じゃなくて、音にマッチする映像を作るのがすごい…&lt;/p&gt;
 
-&lt;h2 id=&#34;afordance:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;afordance++&lt;/h2&gt;
+&lt;h2 id=&#34;afordance&#34;&gt;afordance++&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://hpi.de/baudisch/projects/affordance.html&#34;&gt;http://hpi.de/baudisch/projects/affordance.html&lt;/a&gt;&lt;/p&gt;
 
@@ -247,21 +247,21 @@ Qiitaを再開した。&lt;/p&gt;
 触れずとも熱いものがわかったり、どう扱えば良いかがわかるようになる。&lt;br /&gt;
 大体視覚と過去の経験に頼ってるアフォーダンスを大幅に拡張できて凄い。&lt;/p&gt;
 
-&lt;h2 id=&#34;3d-object-manipulation-in-a-single-photograph-using-stock-3d-models:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;3D Object Manipulation in a Single Photograph using Stock 3D Models&lt;/h2&gt;
+&lt;h2 id=&#34;3d-object-manipulation-in-a-single-photograph-using-stock-3d-models&#34;&gt;3D Object Manipulation in a Single Photograph using Stock 3D Models&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.cs.cmu.edu/~om3d/&#34;&gt;http://www.cs.cmu.edu/~om3d/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;一枚の画像から3Dオブジェクトを取り出し、写真と上手く合成してくれるっぽい。&lt;br /&gt;
 光の加減とかも調節してくれるため、凄く上手く合成出来ていて凄かった。&lt;/p&gt;
 
-&lt;h2 id=&#34;fluxpaper-reinventing-paper-with-dynamic-actuation-powered-by-magnetic-flux:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;FluxPaper: Reinventing Paper With Dynamic Actuation Powered by Magnetic Flux&lt;/h2&gt;
+&lt;h2 id=&#34;fluxpaper-reinventing-paper-with-dynamic-actuation-powered-by-magnetic-flux&#34;&gt;FluxPaper: Reinventing Paper With Dynamic Actuation Powered by Magnetic Flux&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://masaogata.com/projects/fluxpaper/&#34;&gt;http://masaogata.com/projects/fluxpaper/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;紙の裏に磁力を持つ物体を付け、磁界を制御することで紙の移動や検索などを可能にしたみたい。&lt;br /&gt;
 紙に付ける方のパターンを工夫してるっぽい。&lt;/p&gt;
 
-&lt;h2 id=&#34;scene-completion-using-millions-of-photographs:8b403c5bfb9fd83f3a0cc4f506e6cb85&#34;&gt;Scene Completion Using Millions of Photographs&lt;/h2&gt;
+&lt;h2 id=&#34;scene-completion-using-millions-of-photographs&#34;&gt;Scene Completion Using Millions of Photographs&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://graphics.cs.cmu.edu/projects/scene-completion/&#34;&gt;http://graphics.cs.cmu.edu/projects/scene-completion/&lt;/a&gt;&lt;/p&gt;
 
@@ -279,7 +279,7 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-31/</guid>
       <description>
 
-&lt;h1 id=&#34;エンジニアボドゲ会に参加しました:31b234e8f87a2f0e233edbe520beb73a&#34;&gt;エンジニアボドゲ会に参加しました&lt;/h1&gt;
+&lt;h1 id=&#34;エンジニアボドゲ会に参加しました&#34;&gt;エンジニアボドゲ会に参加しました&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://tgboardgame.connpass.com/event/17621/&#34;&gt;不思議な力によってエンジニアが多く集まる（エンジニア以外も集まる）ボードゲーム会&lt;/a&gt;に参加しました。&lt;br /&gt;
 想像以上にボードゲームがあって凄かったです。&lt;/p&gt;
@@ -371,7 +371,7 @@ Qiitaを再開した。&lt;/p&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;情報科学若手の会2015に参加します:31b234e8f87a2f0e233edbe520beb73a&#34;&gt;情報科学若手の会2015に参加します&lt;/h1&gt;
+&lt;h1 id=&#34;情報科学若手の会2015に参加します&#34;&gt;情報科学若手の会2015に参加します&lt;/h1&gt;
 
 &lt;p&gt;今回はショート発表でHCIについて話す予定です。&lt;br /&gt;
 おそらく基本的な研究から、最新動向ぐらいまでをざっと話せれば良いかなと思います。&lt;/p&gt;
@@ -388,17 +388,17 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-30/</guid>
       <description>
 
-&lt;h1 id=&#34;ブログ修正中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;ブログ修正中&lt;/h1&gt;
+&lt;h1 id=&#34;ブログ修正中&#34;&gt;ブログ修正中&lt;/h1&gt;
 
 &lt;p&gt;Bootstrapを使って構築し直してます。&lt;br /&gt;
 ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。&lt;/p&gt;
 
-&lt;h1 id=&#34;freeコマンドの出力が変わってる:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;freeコマンドの出力が変わってる&lt;/h1&gt;
+&lt;h1 id=&#34;freeコマンドの出力が変わってる&#34;&gt;freeコマンドの出力が変わってる&lt;/h1&gt;
 
 &lt;p&gt;freeするとavailableなる見慣れない出力が出ます…&lt;br /&gt;
 おそらく空きメモリを示しているようですが、ちょっと調べる必要がありそうです。&lt;/p&gt;
 
-&lt;h1 id=&#34;evernoteの代わりを探し中:83c0250635adb9b49b05de588a8ee0a4&#34;&gt;Evernoteの代わりを探し中&lt;/h1&gt;
+&lt;h1 id=&#34;evernoteの代わりを探し中&#34;&gt;Evernoteの代わりを探し中&lt;/h1&gt;
 
 &lt;p&gt;昨日ちょうどEvernoteプレミアムが切れてしまい、慌てて延長しました。&lt;/p&gt;
 
@@ -431,7 +431,7 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-29/</guid>
       <description>
 
-&lt;h1 id=&#34;cpuの特権レベルについて調べた:c2d0a3130aad94273f8f684d791e0140&#34;&gt;CPUの特権レベルについて調べた&lt;/h1&gt;
+&lt;h1 id=&#34;cpuの特権レベルについて調べた&#34;&gt;CPUの特権レベルについて調べた&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/CPU%E3%83%A2%E3%83%BC%E3%83%89&#34;&gt;CPUモード&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3&#34;&gt;リングプロテクション&lt;/a&gt;&lt;/p&gt;
@@ -442,7 +442,7 @@ Qiitaを再開した。&lt;/p&gt;
 ユーザのプログラムはレベル０で動いています。&lt;br /&gt;
 そのため、 レベル０用のリソースを使うためにはカーネルに処理をお願いする必要があるそうです。&lt;/p&gt;
 
-&lt;h1 id=&#34;goのビルドツールについて調べる:c2d0a3130aad94273f8f684d791e0140&#34;&gt;goのビルドツールについて調べる&lt;/h1&gt;
+&lt;h1 id=&#34;goのビルドツールについて調べる&#34;&gt;goのビルドツールについて調べる&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;go build&lt;/code&gt;を実行することで、コンパイルとリンクをまとめて行うことが出来ます。&lt;br /&gt;
 ですが、goではそれを別々に実行することも出来ます。&lt;/p&gt;
@@ -454,7 +454,7 @@ Qiitaを再開した。&lt;/p&gt;
 このファイルを&lt;code&gt;go tool 8l&lt;/code&gt;もしくは&lt;code&gt;go tool 6l&lt;/code&gt;を使ってリンクすることで、実行ファイルを作成できます。&lt;br /&gt;
 実行ファイルはファイル名を指定しない場合、8.outもしくは6.outになります。&lt;/p&gt;
 
-&lt;h1 id=&#34;レーベンシュタイン距離計算を実装した:c2d0a3130aad94273f8f684d791e0140&#34;&gt;レーベンシュタイン距離計算を実装した&lt;/h1&gt;
+&lt;h1 id=&#34;レーベンシュタイン距離計算を実装した&#34;&gt;レーベンシュタイン距離計算を実装した&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://gist.github.com/ota42y/29dc71841f4388957020&#34;&gt;https://gist.github.com/ota42y/29dc71841f4388957020&lt;/a&gt;&lt;/p&gt;
 
@@ -471,7 +471,7 @@ Qiitaを再開した。&lt;/p&gt;
       <guid>http://ota42y.com/pages/summary/2015/week-28/</guid>
       <description>
 
-&lt;h1 id=&#34;シェル環境を改善中:581fc548323f605be65cf3be104399ee&#34;&gt;シェル環境を改善中&lt;/h1&gt;
+&lt;h1 id=&#34;シェル環境を改善中&#34;&gt;シェル環境を改善中&lt;/h1&gt;
 
 &lt;p&gt;tmux plugin managerを導入しました。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/tmux-plugins/tpm&#34;&gt;https://github.com/tmux-plugins/tpm&lt;/a&gt;&lt;/p&gt;
@@ -481,7 +481,7 @@ Qiitaを再開した。&lt;/p&gt;
 公式でいくつか便利なものが提供されているので入れてみました。&lt;br /&gt;
 プラグインは自分で作れるので、swap-paneもこれで管理したいな…と思います。&lt;/p&gt;
 
-&lt;h1 id=&#34;pecoの導入:581fc548323f605be65cf3be104399ee&#34;&gt;pecoの導入&lt;/h1&gt;
+&lt;h1 id=&#34;pecoの導入&#34;&gt;pecoの導入&lt;/h1&gt;
 
 &lt;p&gt;入力からインクリメンタルに行を検索できるツールです。&lt;br /&gt;
 goなのでバイナリ単体で簡単に動き、インストールが簡単なのが特徴です。&lt;br /&gt;
@@ -490,7 +490,7 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 &lt;p&gt;&lt;a href=&#34;https://github.com/ota42y/dotfiles/commit/62ea2fa76cfa0fab8ee8076e0eb59f3b1421b42e&#34;&gt;前にいたディレクトリをたどる設定&lt;/a&gt;や、
 &lt;a href=&#34;https://github.com/ota42y/dotfiles/commit/2d16f36f14520862eb5292b05c278016d180bdf3&#34;&gt;git statusから指定したファイルをinsertする設定&lt;/a&gt;をしました。&lt;/p&gt;
 
-&lt;h1 id=&#34;markdown-modeが便利:581fc548323f605be65cf3be104399ee&#34;&gt;markdown-modeが便利&lt;/h1&gt;
+&lt;h1 id=&#34;markdown-modeが便利&#34;&gt;markdown-modeが便利&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://jblevins.org/projects/markdown-mode/&#34;&gt;http://jblevins.org/projects/markdown-mode/&lt;/a&gt;&lt;/p&gt;
 
@@ -498,11 +498,11 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 個人的には見出しをorg-modeのように折りたたみが出来るので、&lt;br /&gt;
 アウトラインエディタとしてものすごく便利です。&lt;/p&gt;
 
-&lt;h1 id=&#34;mecab-ipadicをいじっていた:581fc548323f605be65cf3be104399ee&#34;&gt;mecab-ipadicをいじっていた&lt;/h1&gt;
+&lt;h1 id=&#34;mecab-ipadicをいじっていた&#34;&gt;mecab-ipadicをいじっていた&lt;/h1&gt;
 
 &lt;p&gt;形態素解析をいじってみたくて、igoとmecab-ipadicについて調べていました。&lt;/p&gt;
 
-&lt;h2 id=&#34;igoとは:581fc548323f605be65cf3be104399ee&#34;&gt;igoとは&lt;/h2&gt;
+&lt;h2 id=&#34;igoとは&#34;&gt;igoとは&lt;/h2&gt;
 
 &lt;p&gt;igoとはjava製の形態素解析です。
 &lt;a href=&#34;http://igo.osdn.jp/&#34;&gt;http://igo.osdn.jp/&lt;/a&gt;&lt;/p&gt;
@@ -514,7 +514,7 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 &lt;p&gt;辞書が組み込みではないので普通に使う分にはちょっと面倒ですが、
 今回のように辞書をいじって動きを観察する用途にとても便利でした。&lt;/p&gt;
 
-&lt;h2 id=&#34;ipadicを変更してみる:581fc548323f605be65cf3be104399ee&#34;&gt;ipadicを変更してみる&lt;/h2&gt;
+&lt;h2 id=&#34;ipadicを変更してみる&#34;&gt;ipadicを変更してみる&lt;/h2&gt;
 
 &lt;p&gt;igoの動かし方はサイトの通りなので省略します。&lt;/p&gt;
 
@@ -536,7 +536,7 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
       <guid>http://ota42y.com/pages/summary/2015/week-27/</guid>
       <description>
 
-&lt;h1 id=&#34;tmux環境を整えた:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;tmux環境を整えた&lt;/h1&gt;
+&lt;h1 id=&#34;tmux環境を整えた&#34;&gt;tmux環境を整えた&lt;/h1&gt;
 
 &lt;p&gt;画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。&lt;br /&gt;
 ただペインを分けているだけでなく、ペインの中身はウィンドウなので、&lt;br /&gt;
@@ -548,7 +548,7 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 &lt;p&gt;入れ替えはswap-paneを利用しています。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;gemのannotateが便利:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;gemのAnnotateが便利&lt;/h1&gt;
+&lt;h1 id=&#34;gemのannotateが便利&#34;&gt;gemのAnnotateが便利&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/ctran/annotate_models&#34;&gt;https://github.com/ctran/annotate_models&lt;/a&gt;&lt;/p&gt;
 
@@ -556,7 +556,7 @@ goなのでバイナリ単体で簡単に動き、インストールが簡単な
 このモデルにどんなカラムがあったっけ？って時に、schemeファイルから探し出す必要がなくなるので大変便利です。&lt;br /&gt;
 また、情報はコメントに追加されるため、既存のコードの邪魔になったり勝手にアクセサが追加されたりしないのも便利です。&lt;/p&gt;
 
-&lt;h1 id=&#34;emacsのパッケージ管理:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;emacsのパッケージ管理&lt;/h1&gt;
+&lt;h1 id=&#34;emacsのパッケージ管理&#34;&gt;emacsのパッケージ管理&lt;/h1&gt;
 
 &lt;p&gt;現在私のemacsはpackage.el、el-get、init-loaderの3つを使ってパッケージ管理をしています。&lt;br /&gt;
 package.el、el-getがパッケージのDLや読み込み、init-loaderが設定ファイルのロードをしています。&lt;/p&gt;
@@ -566,7 +566,7 @@ package.el、el-getがパッケージのDLや読み込み、init-loaderが設定
 &lt;p&gt;なお、以下のリポジトリに設定ファイルが置いてあります。
 &lt;a href=&#34;https://github.com/ota42y/dotfiles&#34;&gt;https://github.com/ota42y/dotfiles&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;パッケージ本体の管理:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;パッケージ本体の管理&lt;/h2&gt;
+&lt;h2 id=&#34;パッケージ本体の管理&#34;&gt;パッケージ本体の管理&lt;/h2&gt;
 
 &lt;p&gt;まず、package.elはMELPA等専用なため、そこにあるパッケージはこちらで管理します。&lt;br /&gt;
 一方で、githubや個別のgitリポジトリで管理されているものはel-getでrecipeを書いて管理しています。&lt;br /&gt;
@@ -576,7 +576,7 @@ package.el、el-getがパッケージのDLや読み込み、init-loaderが設定
 &lt;p&gt;また、これらで管理されているものは自動でロードされるようになっているため、&lt;br /&gt;
 設定ファイルに追加するだけでインストールが完了します。&lt;/p&gt;
 
-&lt;h2 id=&#34;パッケージ設定の管理:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;パッケージ設定の管理&lt;/h2&gt;
+&lt;h2 id=&#34;パッケージ設定の管理&#34;&gt;パッケージ設定の管理&lt;/h2&gt;
 
 &lt;p&gt;init-loderを使うことで、特定フォルダ内の設定ファイルを一気に読み込むことが出来ます。&lt;br /&gt;
 このため、気軽に設定ファイルを分割できます。&lt;/p&gt;
@@ -588,7 +588,7 @@ package.elがダウンロードし、読み込みが終了してからパッケ�
 el-get&amp;gt;init-loder&amp;gt;package.el&amp;gt;その他の設定ファイルの順で実行をしています。&lt;br /&gt;
 el-getも自動インストールするようにしているため、設定ファイルを持って行くだけで全て自動でインストールできます。&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:26038bc9325a7e1e74b9ae9d9fc662f9&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;recipeに追加（必要なら）&lt;/li&gt;
@@ -621,7 +621,7 @@ el-getも自動インストールするようにしているため、設定フ�
       <guid>http://ota42y.com/pages/summary/2015/week-26/</guid>
       <description>
 
-&lt;h1 id=&#34;fluentd-forwarderのビルドの仕組み:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;fluentd-forwarderのビルドの仕組み&lt;/h1&gt;
+&lt;h1 id=&#34;fluentd-forwarderのビルドの仕組み&#34;&gt;fluentd-forwarderのビルドの仕組み&lt;/h1&gt;
 
 &lt;p&gt;基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/fluent/fluentd-forwarder&#34;&gt;https://github.com/fluent/fluentd-forwarder&lt;/a&gt;&lt;/p&gt;
@@ -644,14 +644,14 @@ entrypoints/build_fluentd_forwarder内のビルド作業用バイナリが作ら
 
 &lt;p&gt;という流れになっています。&lt;/p&gt;
 
-&lt;h1 id=&#34;fluentd-forwarderに手を加えてみる:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;fluentd-forwarderに手を加えてみる&lt;/h1&gt;
+&lt;h1 id=&#34;fluentd-forwarderに手を加えてみる&#34;&gt;fluentd-forwarderに手を加えてみる&lt;/h1&gt;
 
-&lt;h2 id=&#34;ローカルで変更する場合:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;ローカルで変更する場合&lt;/h2&gt;
+&lt;h2 id=&#34;ローカルで変更する場合&#34;&gt;ローカルで変更する場合&lt;/h2&gt;
 
 &lt;p&gt;fluentd-forwarderに手を加えたい場合、GOPATH下のfluent/fluentd-forwarderを書き換えてビルドするのが最も早い方法です。&lt;br /&gt;
 build_fluentd_forwarderがcloneしますが、変更はそのままでビルド出来ます。&lt;/p&gt;
 
-&lt;h2 id=&#34;forkしたリポジトリに変更を加える場合:fb0b111ab341d72273c19a831f63e0c6&#34;&gt;Forkしたリポジトリに変更を加える場合&lt;/h2&gt;
+&lt;h2 id=&#34;forkしたリポジトリに変更を加える場合&#34;&gt;Forkしたリポジトリに変更を加える場合&lt;/h2&gt;
 
 &lt;p&gt;Forkしてそこに対して変更をした場合、若干やっかいな事が起きます。&lt;/p&gt;
 
@@ -692,13 +692,13 @@ build_fluentd_forwarderがcloneしますが、変更はそのままでビルド�
       <guid>http://ota42y.com/pages/summary/2015/week-25/</guid>
       <description>
 
-&lt;h1 id=&#34;go-conに参加していた:4120373b776e428195f8931ca37ff809&#34;&gt;go conに参加していた&lt;/h1&gt;
+&lt;h1 id=&#34;go-conに参加していた&#34;&gt;go conに参加していた&lt;/h1&gt;
 
 &lt;p&gt;去年の秋と比べて、実際に使っている例が多くて、&lt;br /&gt;
 もうプロダクション投入されてるなーという印象でした。
 &lt;a href=&#34;http://ota42y.com/blog/2015/06/21/gocon-2015-summer/&#34;&gt;参加記録 Go Conference 2015 summer&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;atom-ioは辞めた:4120373b776e428195f8931ca37ff809&#34;&gt;atom.ioは辞めた&lt;/h1&gt;
+&lt;h1 id=&#34;atom-ioは辞めた&#34;&gt;atom.ioは辞めた&lt;/h1&gt;
 
 &lt;p&gt;Atom.ioの現状の仕様は、プロジェクトごとにウィンドウを割り当てて使うようになっています。&lt;br /&gt;
 ですが、MacではWindowsに比べて同じアプリ内のウィンドウを切り替えるのがとても大変であり、&lt;br /&gt;
@@ -710,7 +710,7 @@ Macのひどい仕様に負けるのはあまり良い気分ではないです�
 ビルド中はCPUをものすごく使っているおり、その状態でAtom.ioを立ち上げると起動まで十数秒かかります。&lt;br /&gt;
 ただこの点に関しては、ネィティブではなくwebエンジニアであれば問題にならないとは思います。&lt;/p&gt;
 
-&lt;h1 id=&#34;gosweepが便利そう:4120373b776e428195f8931ca37ff809&#34;&gt;gosweepが便利そう&lt;/h1&gt;
+&lt;h1 id=&#34;gosweepが便利そう&#34;&gt;gosweepが便利そう&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/hailiang/gosweep&#34;&gt;https://github.com/hailiang/gosweep&lt;/a&gt;&lt;br /&gt;
 gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です。&lt;br /&gt;
@@ -726,7 +726,7 @@ gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です�
       <guid>http://ota42y.com/pages/summary/2015/week-24/</guid>
       <description>
 
-&lt;h1 id=&#34;c-入出力の書式を制御する:b0204dc6a3868861d55079e7791d2606&#34;&gt;C++入出力の書式を制御する&lt;/h1&gt;
+&lt;h1 id=&#34;c-入出力の書式を制御する&#34;&gt;C++入出力の書式を制御する&lt;/h1&gt;
 
 &lt;p&gt;c++でstreamを使って出力する場合、iomanipに用意されているものを利用することで、&lt;br /&gt;
 入出力の書式を制御することが出来ます。&lt;/p&gt;
@@ -765,7 +765,7 @@ int main(void) {
       <guid>http://ota42y.com/pages/summary/2015/week-23/</guid>
       <description>
 
-&lt;h1 id=&#34;lock-freeって何:b762442d260e082e6120a3e456dc065a&#34;&gt;Lock Freeって何&lt;/h1&gt;
+&lt;h1 id=&#34;lock-freeって何&#34;&gt;Lock Freeって何&lt;/h1&gt;
 
 &lt;p&gt;複数スレッドや複数コアから同じデータを更新する場合、&lt;br /&gt;
 通常はlockをかけて排他制御を行いますが、lockをかけずに行う方法があるらしいです。&lt;/p&gt;

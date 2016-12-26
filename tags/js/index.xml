@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Js on おおたの物置</title>
-    <link>http://ota42y.com/tags/js/</link>
+    <link>http://ota42y.com/tags/js/index.xml</link>
     <description>Recent content in Js on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 23 Oct 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/js/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -110,7 +109,7 @@ test.call(test2)
 
 &lt;p&gt;試した結果をまとめます。&lt;/p&gt;
 
-&lt;h1 id=&#34;noduino:b54319c1aa56c9cb7b2ee92a8a3c9010&#34;&gt;noduino&lt;/h1&gt;
+&lt;h1 id=&#34;noduino&#34;&gt;noduino&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://semu.github.io/noduino/&#34;&gt;http://semu.github.io/noduino/&lt;/a&gt;&lt;br /&gt;
 Node.jsでArduinoを制御できます。
@@ -122,7 +121,7 @@ Webサーバとして扱えるようにしているものみたいです。&lt;/
 ですが、Node.jsで実行する前提ならば、&lt;br /&gt;
 簡単でいろいろなことができるため最適だと思います。&lt;/p&gt;
 
-&lt;h1 id=&#34;serialport-server:b54319c1aa56c9cb7b2ee92a8a3c9010&#34;&gt;Serialport-server&lt;/h1&gt;
+&lt;h1 id=&#34;serialport-server&#34;&gt;Serialport-server&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://shokai.github.io/serialport-server/&#34;&gt;http://shokai.github.io/serialport-server/&lt;/a&gt;&lt;br /&gt;
 RubyからArduinoにアクセスし、その結果を返すサーバです。&lt;br /&gt;
@@ -150,14 +149,14 @@ Serialport-serverが良さそうです。&lt;/p&gt;
 &lt;p&gt;javascriptでそれにあたるのがOptparse-jsですが、&lt;br /&gt;
 使い方がちょっと独特です。&lt;/p&gt;
 
-&lt;h1 id=&#34;インストール:69991f4bc87acfac541f5b8b32cae170&#34;&gt;インストール&lt;/h1&gt;
+&lt;h1 id=&#34;インストール&#34;&gt;インストール&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/jfd/optparse-js&#34;&gt;https://github.com/jfd/optparse-js&lt;/a&gt;からどうぞ。&lt;br /&gt;
 npmにも登録されているので、node.jsからも簡単に使えます。&lt;/p&gt;
 
-&lt;h1 id=&#34;使い方:69991f4bc87acfac541f5b8b32cae170&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
-&lt;h2 id=&#34;オプション指定:69991f4bc87acfac541f5b8b32cae170&#34;&gt;オプション指定&lt;/h2&gt;
+&lt;h2 id=&#34;オプション指定&#34;&gt;オプション指定&lt;/h2&gt;
 
 &lt;p&gt;どのようなオプションを宇受け取るかは配列で定義します。&lt;br /&gt;
 なお、短縮形も同時に定義できます。&lt;/p&gt;
@@ -176,7 +175,7 @@ typeを受け取る-tもしくは&amp;ndash;typeを定義しています。&lt;/
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var parser = new optparse.OptionParser(options);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;オプション処理:69991f4bc87acfac541f5b8b32cae170&#34;&gt;オプション処理&lt;/h2&gt;
+&lt;h2 id=&#34;オプション処理&#34;&gt;オプション処理&lt;/h2&gt;
 
 &lt;p&gt;オプションを受け取ったときの処理は、パーサーオブジェクトに関数を渡して登録します。&lt;br /&gt;
 第一引数にオプション名、第二引数にそのオプションがあったときの処理を渡します。&lt;/p&gt;
@@ -186,7 +185,7 @@ typeを受け取る-tもしくは&amp;ndash;typeを定義しています。&lt;/
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;パース実行:69991f4bc87acfac541f5b8b32cae170&#34;&gt;パース実行&lt;/h2&gt;
+&lt;h2 id=&#34;パース実行&#34;&gt;パース実行&lt;/h2&gt;
 
 &lt;p&gt;パーサーオブジェクトのparseメソッドでパースを実行できます。
 ただし、スペースを自分で区切ってはくれないため、&lt;br /&gt;
@@ -197,7 +196,7 @@ typeを受け取る-tもしくは&amp;ndash;typeを定義しています。&lt;/
 
 &lt;p&gt;(勝手にオプション足したり、区切り文字を自由に設定できる、こうしていると思われます)&lt;/p&gt;
 
-&lt;h1 id=&#34;サンプルコード:69991f4bc87acfac541f5b8b32cae170&#34;&gt;サンプルコード&lt;/h1&gt;
+&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var optparse = require(&#39;optparse&#39;);
 
@@ -236,7 +235,7 @@ console.log(parameter);
       <guid>http://ota42y.com/blog/2014/08/22/mocha-test/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Mochaではrspecっぽい感じにテストが書ける&lt;/li&gt;
@@ -244,11 +243,11 @@ console.log(parameter);
 &lt;li&gt;sinonにはいろいろ便利機能がある&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;mochaの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;Mochaの使い方&lt;/h1&gt;
+&lt;h1 id=&#34;mochaの使い方&#34;&gt;Mochaの使い方&lt;/h1&gt;
 
 &lt;p&gt;coffeescriptを前提にしています。&lt;/p&gt;
 
-&lt;h2 id=&#34;テストの書き方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;テストの書き方&lt;/h2&gt;
+&lt;h2 id=&#34;テストの書き方&#34;&gt;テストの書き方&lt;/h2&gt;
 
 &lt;p&gt;Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、&lt;br /&gt;
 そのitを呼び出す関数をdescribeに渡すしようです。&lt;/p&gt;
@@ -263,7 +262,7 @@ console.log(parameter);
 これを呼ばない場合は終了を待ち続け、&lt;br /&gt;
 一定時間後にタイムアウトしてテストが失敗した扱いになります。&lt;/p&gt;
 
-&lt;h2 id=&#34;beforeの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;beforeの使い方&lt;/h2&gt;
+&lt;h2 id=&#34;beforeの使い方&#34;&gt;beforeの使い方&lt;/h2&gt;
 
 &lt;p&gt;rspecのbeforeにあたるものは、beforeEachになります。&lt;br /&gt;
  なお、変数を他のブロックに渡したい場合、&lt;br /&gt;
@@ -286,7 +285,7 @@ console.log(parameter);
         done()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;pendingテストの作り方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;pendingテストの作り方&lt;/h2&gt;
+&lt;h2 id=&#34;pendingテストの作り方&#34;&gt;pendingテストの作り方&lt;/h2&gt;
 
 &lt;p&gt;テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。&lt;/p&gt;
 
@@ -299,7 +298,7 @@ console.log(parameter);
           done()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;外部ファイル読み込み:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;外部ファイル読み込み&lt;/h2&gt;
+&lt;h2 id=&#34;外部ファイル読み込み&#34;&gt;外部ファイル読み込み&lt;/h2&gt;
 
 &lt;p&gt;test.coffeeで&lt;/p&gt;
 
@@ -319,7 +318,7 @@ module.exports.Test = Test
 
 &lt;p&gt;#chaiの使い方&lt;/p&gt;
 
-&lt;h2 id=&#34;assertを使う:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;assertを使う&lt;/h2&gt;
+&lt;h2 id=&#34;assertを使う&#34;&gt;assertを使う&lt;/h2&gt;
 
 &lt;p&gt;前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、&lt;br /&gt;
 別ライブラリのchaiを読み込む必要があります。&lt;/p&gt;
@@ -329,9 +328,9 @@ module.exports.Test = Test
 
 &lt;p&gt;これで、 assert.equalや assert.notEqualが使えます。&lt;/p&gt;
 
-&lt;h1 id=&#34;sinonの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;sinonの使い方&lt;/h1&gt;
+&lt;h1 id=&#34;sinonの使い方&#34;&gt;sinonの使い方&lt;/h1&gt;
 
-&lt;h2 id=&#34;mockやstubを使う:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;mockやstubを使う&lt;/h2&gt;
+&lt;h2 id=&#34;mockやstubを使う&#34;&gt;mockやstubを使う&lt;/h2&gt;
 
 &lt;p&gt;Mochaにはmockやstubの為の物は含まれていないので、&lt;br /&gt;
 今度はsinonを読み込む必要があります。&lt;/p&gt;
@@ -357,7 +356,7 @@ module.exports.Test = Test
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;時間変更の仕方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;時間変更の仕方&lt;/h2&gt;
+&lt;h2 id=&#34;時間変更の仕方&#34;&gt;時間変更の仕方&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;new Date()&lt;/code&gt;などによって日付がちゃんと設定されたかどうかを確認したい場合、&lt;br /&gt;
 グローバルなDate()部分を置き換える必要があります。&lt;/p&gt;
@@ -375,7 +374,7 @@ module.exports.Test = Test
 指定したミリ秒だけ時間を進めることもできます。&lt;br /&gt;
 &lt;code&gt;@clock.tick(3600000)&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;sinonのその他の機能:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;sinonのその他の機能&lt;/h2&gt;
+&lt;h2 id=&#34;sinonのその他の機能&#34;&gt;sinonのその他の機能&lt;/h2&gt;
 
 &lt;p&gt;sinonに関しては他にもいろいろ有用なものがあります。&lt;br /&gt;
 ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。&lt;/p&gt;
@@ -395,13 +394,13 @@ module.exports.Test = Test
 &lt;p&gt;node.js+mocha+coffeescriptな環境で開発をしていたところ、&lt;br /&gt;
 IntelliJ IDEAの設定方法が調べても無かったのでメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;node-jsプラグインのインストール:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;Node.jsプラグインのインストール&lt;/h1&gt;
+&lt;h1 id=&#34;node-jsプラグインのインストール&#34;&gt;Node.jsプラグインのインストール&lt;/h1&gt;
 
 &lt;p&gt;Node.jsプラグインは公式から提供されています。&lt;br /&gt;
 そのため、IntelliJ のPreferences からPluginsを選び、&lt;br /&gt;
 NodeJSプラグインを選択するだけでインストール出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ビルド設定:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;ビルド設定&lt;/h1&gt;
+&lt;h1 id=&#34;ビルド設定&#34;&gt;ビルド設定&lt;/h1&gt;
 
 &lt;p&gt;以下の画像の通りです。&lt;/p&gt;
 
@@ -421,7 +420,7 @@ Mochaの設定を指定します
 Mochaのテストが入っている場所&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;mochaのオプション:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;Mochaのオプション&lt;/h1&gt;
+&lt;h1 id=&#34;mochaのオプション&#34;&gt;Mochaのオプション&lt;/h1&gt;
 
 &lt;p&gt;私の環境では主に次のような設定をしています、&lt;/p&gt;
 
@@ -444,7 +443,7 @@ test/test_helper.coffee
 --colors
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;問題点:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;問題点&lt;/h1&gt;
+&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
 
 &lt;p&gt;以上で設定は終わりですが、いくつか問題点があります。&lt;/p&gt;
 
@@ -478,7 +477,7 @@ coffeescriptから変換してるので、&lt;br /&gt;
 &lt;li&gt;DLは&lt;a href=&#34;https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;amp;authuser=1&#34;&gt;ここ&lt;/a&gt;から&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;pixivのイラスト検索でフォロワーを除外できない:fb50430d1383f76f5555f2225e4e2273&#34;&gt;Pixivのイラスト検索でフォロワーを除外できない&lt;/h1&gt;
+&lt;h1 id=&#34;pixivのイラスト検索でフォロワーを除外できない&#34;&gt;Pixivのイラスト検索でフォロワーを除外できない&lt;/h1&gt;
 
 &lt;p&gt;Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、&lt;br /&gt;
 検索結果にフォローしてる人とそうでない人が交じります。&lt;/p&gt;
@@ -491,7 +490,7 @@ coffeescriptから変換してるので、&lt;br /&gt;
 
 &lt;p&gt;というわけで、Chrome拡張で実現しました。&lt;/p&gt;
 
-&lt;h1 id=&#34;フィルタの基本機能:fb50430d1383f76f5555f2225e4e2273&#34;&gt;フィルタの基本機能&lt;/h1&gt;
+&lt;h1 id=&#34;フィルタの基本機能&#34;&gt;フィルタの基本機能&lt;/h1&gt;
 
 &lt;p&gt;DLは&lt;a href=&#34;https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;amp;authuser=1&#34;&gt;ここ&lt;/a&gt;から。&lt;/p&gt;
 
@@ -502,7 +501,7 @@ coffeescriptから変換してるので、&lt;br /&gt;
 事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。&lt;br /&gt;
 そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。&lt;/p&gt;
 
-&lt;h1 id=&#34;ソースコード:fb50430d1383f76f5555f2225e4e2273&#34;&gt;ソースコード&lt;/h1&gt;
+&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/ota42y/pixiv_follower_filter&#34;&gt;https://github.com/ota42y/pixiv_follower_filter&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -519,7 +518,7 @@ coffeescriptから変換してるので、&lt;br /&gt;
 &lt;p&gt;Chrome拡張でデータを保存しようとした場合に、&lt;br /&gt;
 最も簡単に扱えるのが、localStorageです。&lt;/p&gt;
 
-&lt;h1 id=&#34;manifest-jsonの設定:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;manifest.jsonの設定&lt;/h1&gt;
+&lt;h1 id=&#34;manifest-jsonの設定&#34;&gt;manifest.jsonの設定&lt;/h1&gt;
 
 &lt;p&gt;manifest.jsonに以下のパーミッションを追加してください&lt;/p&gt;
 
@@ -530,7 +529,7 @@ coffeescriptから変換してるので、&lt;br /&gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;使い方:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;localStorageという辞書型の変数が定義されるので、&lt;br /&gt;
 それに対して読み書きを行うだけで大丈夫です。&lt;/p&gt;
@@ -539,9 +538,9 @@ coffeescriptから変換してるので、&lt;br /&gt;
 var data = localStorage[‘data’]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;注意点:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;注意点&lt;/h1&gt;
+&lt;h1 id=&#34;注意点&#34;&gt;注意点&lt;/h1&gt;
 
-&lt;h2 id=&#34;保存形式の制約:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;保存形式の制約&lt;/h2&gt;
+&lt;h2 id=&#34;保存形式の制約&#34;&gt;保存形式の制約&lt;/h2&gt;
 
 &lt;p&gt;この方法で保存できるのは文字列だけになります。&lt;br /&gt;
 true/falseを保存しても文字列として出てきますし、&lt;br /&gt;
@@ -550,7 +549,7 @@ true/falseを保存しても文字列として出てきますし、&lt;br /&gt;
 &lt;p&gt;このような場合、JSON.stringifyとJSON.parseを使い、&lt;br /&gt;
 JSONに変換して保存すると解決します。&lt;/p&gt;
 
-&lt;h2 id=&#34;読み出せる場所の制約:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;読み出せる場所の制約&lt;/h2&gt;
+&lt;h2 id=&#34;読み出せる場所の制約&#34;&gt;読み出せる場所の制約&lt;/h2&gt;
 
 &lt;p&gt;localStorageはページごとに保存するデータがわかれているため、&lt;br /&gt;
 読み書きは同じ場所で行う必要があります。&lt;/p&gt;

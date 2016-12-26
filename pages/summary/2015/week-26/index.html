@@ -65,6 +65,8 @@
                       
 
                       
+                      class="active"
+                      
                       ><a href="/pages/">Pages</a></li>
                 </ul>
                 <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
@@ -106,11 +108,11 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#fluentd-forwarderのビルドの仕組み:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderのビルドの仕組み</a></li>
-<li><a href="#fluentd-forwarderに手を加えてみる:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderに手を加えてみる</a>
+<li><a href="#fluentd-forwarderのビルドの仕組み">fluentd-forwarderのビルドの仕組み</a></li>
+<li><a href="#fluentd-forwarderに手を加えてみる">fluentd-forwarderに手を加えてみる</a>
 <ul>
-<li><a href="#ローカルで変更する場合:fb0b111ab341d72273c19a831f63e0c6">ローカルで変更する場合</a></li>
-<li><a href="#forkしたリポジトリに変更を加える場合:fb0b111ab341d72273c19a831f63e0c6">Forkしたリポジトリに変更を加える場合</a></li>
+<li><a href="#ローカルで変更する場合">ローカルで変更する場合</a></li>
+<li><a href="#forkしたリポジトリに変更を加える場合">Forkしたリポジトリに変更を加える場合</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -121,7 +123,7 @@
             <div class="article">
               
 
-<h1 id="fluentd-forwarderのビルドの仕組み:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderのビルドの仕組み</h1>
+<h1 id="fluentd-forwarderのビルドの仕組み">fluentd-forwarderのビルドの仕組み</h1>
 
 <p>基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。<br />
 <a href="https://github.com/fluent/fluentd-forwarder">https://github.com/fluent/fluentd-forwarder</a></p>
@@ -144,14 +146,14 @@ entrypoints/build_fluentd_forwarder内のビルド作業用バイナリが作ら
 
 <p>という流れになっています。</p>
 
-<h1 id="fluentd-forwarderに手を加えてみる:fb0b111ab341d72273c19a831f63e0c6">fluentd-forwarderに手を加えてみる</h1>
+<h1 id="fluentd-forwarderに手を加えてみる">fluentd-forwarderに手を加えてみる</h1>
 
-<h2 id="ローカルで変更する場合:fb0b111ab341d72273c19a831f63e0c6">ローカルで変更する場合</h2>
+<h2 id="ローカルで変更する場合">ローカルで変更する場合</h2>
 
 <p>fluentd-forwarderに手を加えたい場合、GOPATH下のfluent/fluentd-forwarderを書き換えてビルドするのが最も早い方法です。<br />
 build_fluentd_forwarderがcloneしますが、変更はそのままでビルド出来ます。</p>
 
-<h2 id="forkしたリポジトリに変更を加える場合:fb0b111ab341d72273c19a831f63e0c6">Forkしたリポジトリに変更を加える場合</h2>
+<h2 id="forkしたリポジトリに変更を加える場合">Forkしたリポジトリに変更を加える場合</h2>
 
 <p>Forkしてそこに対して変更をした場合、若干やっかいな事が起きます。</p>
 

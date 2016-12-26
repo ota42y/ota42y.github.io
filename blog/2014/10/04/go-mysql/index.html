@@ -123,16 +123,16 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#db設定:c1b91fdc3f7e9d2301bbbb8b7cc11063">DB設定</a></li>
-<li><a href="#使い方:c1b91fdc3f7e9d2301bbbb8b7cc11063">使い方</a>
+<li><a href="#db設定">DB設定</a></li>
+<li><a href="#使い方">使い方</a>
 <ul>
-<li><a href="#前提条件:c1b91fdc3f7e9d2301bbbb8b7cc11063">前提条件</a></li>
-<li><a href="#insert:c1b91fdc3f7e9d2301bbbb8b7cc11063">INSERT</a></li>
-<li><a href="#update:c1b91fdc3f7e9d2301bbbb8b7cc11063">UPDATE</a></li>
-<li><a href="#select:c1b91fdc3f7e9d2301bbbb8b7cc11063">SELECT</a></li>
-<li><a href="#複数select:c1b91fdc3f7e9d2301bbbb8b7cc11063">複数SELECT</a></li>
+<li><a href="#前提条件">前提条件</a></li>
+<li><a href="#insert">INSERT</a></li>
+<li><a href="#update">UPDATE</a></li>
+<li><a href="#select">SELECT</a></li>
+<li><a href="#複数select">複数SELECT</a></li>
 </ul></li>
-<li><a href="#まとめ:c1b91fdc3f7e9d2301bbbb8b7cc11063">まとめ</a></li>
+<li><a href="#まとめ">まとめ</a></li>
 </ul>
 </nav>
                 </div>
@@ -152,7 +152,7 @@
 )
 </code></pre>
 
-<h1 id="db設定:c1b91fdc3f7e9d2301bbbb8b7cc11063">DB設定</h1>
+<h1 id="db設定">DB設定</h1>
 
 <p>以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。</p>
 
@@ -166,9 +166,9 @@ defer db.Close()
 <p>サーバやデータベース名などはDSN (Data Source Name)で指定するようです。<br />
 あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。</p>
 
-<h1 id="使い方:c1b91fdc3f7e9d2301bbbb8b7cc11063">使い方</h1>
+<h1 id="使い方">使い方</h1>
 
-<h2 id="前提条件:c1b91fdc3f7e9d2301bbbb8b7cc11063">前提条件</h2>
+<h2 id="前提条件">前提条件</h2>
 
 <p>上記の方法でsql.Openの結果を変数のdbに保存済み、<br />
 以下の構造体をDBに書き込むとします。</p>
@@ -183,7 +183,7 @@ defer db.Close()
 
 <p>また、tableNameに書き込むテーブル名が保存されているとします。</p>
 
-<h2 id="insert:c1b91fdc3f7e9d2301bbbb8b7cc11063">INSERT</h2>
+<h2 id="insert">INSERT</h2>
 
 <pre><code class="language-go">post := getPost()　// 書き込むためのデータを取得する
 
@@ -200,7 +200,7 @@ _, err = stmtIns.Exec(post.RoomName, post.Message, post.MessageId, post.IsSend)
 <p>db.PrepareでSQL文を用意し、Execの引数にプレースフォルダの数だけ書き込むデータを渡しています。<br />
 テーブル名をプレースホルダにするなど、SQLの文法的におかしい場合は、db.Prepareの戻り値がエラーになります。</p>
 
-<h2 id="update:c1b91fdc3f7e9d2301bbbb8b7cc11063">UPDATE</h2>
+<h2 id="update">UPDATE</h2>
 
 <pre><code class="language-go">stmtIns, err := db.Prepare(fmt.Sprintf(&quot;UPDATE %s SET is_send = 1 WHERE ( message_id = ?)&quot;, tableName))
 if err != nil {
@@ -213,7 +213,7 @@ _, err = stmtIns.Exec(post.MessageId)
 
 <p>INSERTとほぼ同じです。</p>
 
-<h2 id="select:c1b91fdc3f7e9d2301bbbb8b7cc11063">SELECT</h2>
+<h2 id="select">SELECT</h2>
 
 <pre><code class="language-go">stmtOut, err := db.Prepare(fmt.Sprintf(&quot;SELECT room_name, message, message_id, is_send FROM %s WHERE message_id = ? LIMIT 1&quot;, tableName))
 if err != nil {
@@ -237,7 +237,7 @@ postData.IsSend = is_send
 
 <p>ORマッパーではないので、一つ一つ取り出した値をオブジェクトにセットしていく必要があります。</p>
 
-<h2 id="複数select:c1b91fdc3f7e9d2301bbbb8b7cc11063">複数SELECT</h2>
+<h2 id="複数select">複数SELECT</h2>
 
 <p>上の例はLIMIT 1を設定して1件だけ取得していましたが、複数取得の場合はscanではうまきいきません。
 複数取り出す場合はこちらです。</p>
@@ -268,7 +268,7 @@ for rows.Next() {
 
 <p>Nextを利用して一件ずつScanしています。</p>
 
-<h1 id="まとめ:c1b91fdc3f7e9d2301bbbb8b7cc11063">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <p>dp.Prepareでプレースホルダー付きのSQL文を作成。<br />
 INSERTやUPDATEはExecで実行、SELECTはQueryやQueryRowで実行してScanでデータを取り出します。<br />

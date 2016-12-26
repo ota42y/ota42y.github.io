@@ -119,8 +119,8 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#hubot用パッケージの構成:bfa8cf9aa362df59d37114562a2d0a86">Hubot用パッケージの構成</a></li>
-<li><a href="#参考:bfa8cf9aa362df59d37114562a2d0a86">参考</a></li>
+<li><a href="#hubot用パッケージの構成">Hubot用パッケージの構成</a></li>
+<li><a href="#参考">参考</a></li>
 </ul>
 </nav>
                 </div>
@@ -141,7 +141,7 @@ Hubotに依存する部分をstubで置き換えるのはとても面倒な作�
 <p>そこで、作りたい機能をパッケージ化して作成することで、<br />
 トライアンドエラーをする部分を最低限に絞って開発することができました。</p>
 
-<h1 id="hubot用パッケージの構成:bfa8cf9aa362df59d37114562a2d0a86">Hubot用パッケージの構成</h1>
+<h1 id="hubot用パッケージの構成">Hubot用パッケージの構成</h1>
 
 <p>Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、<br />
 ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。</p>
@@ -181,7 +181,7 @@ Hubot固有の部分を最小限に減らし、通常のnpmパッケージのよ
 ですが、やっていることは正規表現の結果をクラスのメソッドに渡すだけなので、<br />
 手作業でやってしまう方が簡単で早いです。</p>
 
-<h1 id="参考:bfa8cf9aa362df59d37114562a2d0a86">参考</h1>
+<h1 id="参考">参考</h1>
 
 <p>hubot-scfesはこの方針に則って作ったため、参考になるかもしれません。<br />
 <a href="https://github.com/ota42y/hubot-scfes">https://github.com/ota42y/hubot-scfes</a></p>

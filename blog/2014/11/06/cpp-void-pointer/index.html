@@ -119,9 +119,9 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#汎用ポインタ:0786ea65f9d157fadc2353c5e96d356e">汎用ポインタ</a></li>
-<li><a href="#mallocの戻り値:0786ea65f9d157fadc2353c5e96d356e">mallocの戻り値</a></li>
-<li><a href="#ポインタを整数値として扱う:0786ea65f9d157fadc2353c5e96d356e">ポインタを整数値として扱う</a></li>
+<li><a href="#汎用ポインタ">汎用ポインタ</a></li>
+<li><a href="#mallocの戻り値">mallocの戻り値</a></li>
+<li><a href="#ポインタを整数値として扱う">ポインタを整数値として扱う</a></li>
 </ul>
 </nav>
                 </div>
@@ -141,7 +141,7 @@
 <p>ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。<br />
 C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。</p>
 
-<h1 id="汎用ポインタ:0786ea65f9d157fadc2353c5e96d356e">汎用ポインタ</h1>
+<h1 id="汎用ポインタ">汎用ポインタ</h1>
 
 <p>void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。<br />
 これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。</p>
@@ -176,14 +176,14 @@ printf(&quot;%d\n&quot;, ((Num*)con2.data)-&gt;n);
 <p>そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。<br />
 前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。</p>
 
-<h1 id="mallocの戻り値:0786ea65f9d157fadc2353c5e96d356e">mallocの戻り値</h1>
+<h1 id="mallocの戻り値">mallocの戻り値</h1>
 
 <p>void *はmallocの戻り値としても使われています。<br />
 <a href="http://www.cplusplus.com/reference/cstdlib/malloc/">http://www.cplusplus.com/reference/cstdlib/malloc/</a></p>
 
 <p>mallocの戻り値が何にでもキャスト出来るのは、この仕様によるものです。　</p>
 
-<h1 id="ポインタを整数値として扱う:0786ea65f9d157fadc2353c5e96d356e">ポインタを整数値として扱う</h1>
+<h1 id="ポインタを整数値として扱う">ポインタを整数値として扱う</h1>
 
 <p>ポインタを整数値として利用したい場合、intptr_tとuintptr_tが利用できます。<br />
 これはそれぞれ符号つき、符号なしの整数として扱うことができます。</p>

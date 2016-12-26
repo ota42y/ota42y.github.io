@@ -119,18 +119,18 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#dockerとは何か:fe3ec5b2de26a9c10e3aa43ace9c66a1">Dockerとは何か</a></li>
-<li><a href="#docker上のcent-osにjenkinsを立てる:fe3ec5b2de26a9c10e3aa43ace9c66a1">Docker上のCent OSにJenkinsを立てる</a>
+<li><a href="#dockerとは何か">Dockerとは何か</a></li>
+<li><a href="#docker上のcent-osにjenkinsを立てる">Docker上のCent OSにJenkinsを立てる</a>
 <ul>
-<li><a href="#dockerの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1">Dockerの起動</a></li>
-<li><a href="#cent-osの構築:fe3ec5b2de26a9c10e3aa43ace9c66a1">Cent OSの構築</a>
+<li><a href="#dockerの起動">Dockerの起動</a></li>
+<li><a href="#cent-osの構築">Cent OSの構築</a>
 <ul>
-<li><a href="#dockerfileの準備:fe3ec5b2de26a9c10e3aa43ace9c66a1">Dockerfileの準備</a></li>
-<li><a href="#コンテナの作成:fe3ec5b2de26a9c10e3aa43ace9c66a1">コンテナの作成</a></li>
-<li><a href="#コンテナの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1">コンテナの起動</a></li>
+<li><a href="#dockerfileの準備">Dockerfileの準備</a></li>
+<li><a href="#コンテナの作成">コンテナの作成</a></li>
+<li><a href="#コンテナの起動">コンテナの起動</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#その他:fe3ec5b2de26a9c10e3aa43ace9c66a1">その他</a></li>
+<li><a href="#その他">その他</a></li>
 </ul>
 </nav>
                 </div>
@@ -142,7 +142,7 @@
 
 <p>Dockerについて調べたので概要と簡単な使い方のメモ</p>
 
-<h1 id="dockerとは何か:fe3ec5b2de26a9c10e3aa43ace9c66a1">Dockerとは何か</h1>
+<h1 id="dockerとは何か">Dockerとは何か</h1>
 
 <p>いわゆるコンテナ型仮想化ツールの1つです。<br />
 VMwareやKVMのような完全仮想化と違い、<br />
@@ -159,9 +159,9 @@ VMwareやKVMのような完全仮想化と違い、<br />
 その設定を反映した状態のコンテナを作成することが出来ます。<br />
 そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。</p>
 
-<h1 id="docker上のcent-osにjenkinsを立てる:fe3ec5b2de26a9c10e3aa43ace9c66a1">Docker上のCent OSにJenkinsを立てる</h1>
+<h1 id="docker上のcent-osにjenkinsを立てる">Docker上のCent OSにJenkinsを立てる</h1>
 
-<h2 id="dockerの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1">Dockerの起動</h2>
+<h2 id="dockerの起動">Dockerの起動</h2>
 
 <p>Dockerコマンドを実行するためには、Macだとboot2dockerを<br />
 <code>boot2docker start</code>で起動し、そのとき提示された環境変数を設定する必要があります。</p>
@@ -171,9 +171,9 @@ VMwareやKVMのような完全仮想化と違い、<br />
 を実行し、コンテナに対してアクセスできるようにする必要があります。<br />
 なお、この時出たURLは後で使います。</p>
 
-<h2 id="cent-osの構築:fe3ec5b2de26a9c10e3aa43ace9c66a1">Cent OSの構築</h2>
+<h2 id="cent-osの構築">Cent OSの構築</h2>
 
-<h3 id="dockerfileの準備:fe3ec5b2de26a9c10e3aa43ace9c66a1">Dockerfileの準備</h3>
+<h3 id="dockerfileの準備">Dockerfileの準備</h3>
 
 <p>以下のファイルをDockerfileという名前で適当なディレクトリに保存します。</p>
 
@@ -186,13 +186,13 @@ RUN yum -y install java-1.7.0-openjdk jenkins
 
 <p>見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。</p>
 
-<h3 id="コンテナの作成:fe3ec5b2de26a9c10e3aa43ace9c66a1">コンテナの作成</h3>
+<h3 id="コンテナの作成">コンテナの作成</h3>
 
 <p>次に、Dockerfileを保存したディレクトリで<br />
 <code>docker build -t jenkins .</code>
 を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。</p>
 
-<h3 id="コンテナの起動:fe3ec5b2de26a9c10e3aa43ace9c66a1">コンテナの起動</h3>
+<h3 id="コンテナの起動">コンテナの起動</h3>
 
 <p><code>docker run -p 8080:8080 -i -t jenkins bash</code><br />
 を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、<br />
@@ -202,7 +202,7 @@ RUN yum -y install java-1.7.0-openjdk jenkins
 <p>この状態で、<code>boot2docker ip</code>で出てきたURLの8080ポートにブラウザでアクセスすると、<br />
 いつものJenkins画面が表示されます。</p>
 
-<h1 id="その他:fe3ec5b2de26a9c10e3aa43ace9c66a1">その他</h1>
+<h1 id="その他">その他</h1>
 
 <p>Dockerには他にも、VMのスナップショットのように作成したOSのイメージを保存しておき、<br />
 それを他のセットアップの下地にするといったことも出来るそうです。</p>

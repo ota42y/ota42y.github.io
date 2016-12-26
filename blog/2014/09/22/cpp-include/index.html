@@ -119,10 +119,10 @@
                     <div id="toc_index">目次</div>
                     <nav id="TableOfContents">
 <ul>
-<li><a href="#不要なinclude削除:0e527f0ffbbaaeb51ab52f1aa3a84d5a">不要なinclude削除</a></li>
-<li><a href="#クラスの前方宣言を活用する:0e527f0ffbbaaeb51ab52f1aa3a84d5a">クラスの前方宣言を活用する</a></li>
-<li><a href="#pimplイディオム:0e527f0ffbbaaeb51ab52f1aa3a84d5a">Pimplイディオム</a></li>
-<li><a href="#前方宣言を使えない場合:0e527f0ffbbaaeb51ab52f1aa3a84d5a">前方宣言を使えない場合</a></li>
+<li><a href="#不要なinclude削除">不要なinclude削除</a></li>
+<li><a href="#クラスの前方宣言を活用する">クラスの前方宣言を活用する</a></li>
+<li><a href="#pimplイディオム">Pimplイディオム</a></li>
+<li><a href="#前方宣言を使えない場合">前方宣言を使えない場合</a></li>
 </ul>
 </nav>
                 </div>
@@ -132,7 +132,7 @@
             <div class="article">
               
 
-<h1 id="不要なinclude削除:0e527f0ffbbaaeb51ab52f1aa3a84d5a">不要なinclude削除</h1>
+<h1 id="不要なinclude削除">不要なinclude削除</h1>
 
 <p>cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。<br />
 そのため、includeする量が増えるほどコンパイラが解析する量も増え、<br />
@@ -142,7 +142,7 @@
 includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、<br />
 不要なincludeを消すとよりキャッシュを活用できます。</p>
 
-<h1 id="クラスの前方宣言を活用する:0e527f0ffbbaaeb51ab52f1aa3a84d5a">クラスの前方宣言を活用する</h1>
+<h1 id="クラスの前方宣言を活用する">クラスの前方宣言を活用する</h1>
 
 <p>クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。<br />
 そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、<br />
@@ -224,7 +224,7 @@ TestAクラスだけをコンパイルすれば良くなります。</p>
 <p>ただし、メモリをきちんと確保しないと行けないため、デストラクタでの解放忘れなどに注意する必要があります。<br />
 また、最近の環境ではそれほど問題にはならないと思いますが、ヒープを確保するのでメモリが断片化します。</p>
 
-<h1 id="pimplイディオム:0e527f0ffbbaaeb51ab52f1aa3a84d5a">Pimplイディオム</h1>
+<h1 id="pimplイディオム">Pimplイディオム</h1>
 
 <p>classの前方宣言をさらに活用し、privateな物を全て別クラスにして持つ方法です。
 これにより、privateの変数を外から完全に見えなくしたり、<br />
@@ -318,7 +318,7 @@ int TestA::getWeight(int density){
 <p>ただし、一つのcppに複数のクラスが入り、さらに外から見える部分と実際の実装が離れるため、<br />
 かなりコードが読みにくくなります。</p>
 
-<h1 id="前方宣言を使えない場合:0e527f0ffbbaaeb51ab52f1aa3a84d5a">前方宣言を使えない場合</h1>
+<h1 id="前方宣言を使えない場合">前方宣言を使えない場合</h1>
 
 <p>クラスの実態を持つ場合や、継承したクラスの場合は前方宣言にすることはできません。<br />
 このような場合はポインタを持つようにしたり、<a href="http://ja.m.wikipedia.org/wiki/Decorator_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">Decorator パターン</a>によって、<br />

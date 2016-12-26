@@ -2,12 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ota42y.com/</loc>
-    <lastmod>2016-12-19T22:37:37+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ota42y.com/blog/2016/12/19/finc-advent/</loc>
     <lastmod>2016-12-19T22:37:37+09:00</lastmod>
   </url>
@@ -883,7 +877,299 @@
   </url>
   
   <url>
+    <loc>http://ota42y.com/tags/android/</loc>
+    <lastmod>2016-02-07T12:27:38+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/api/</loc>
+    <lastmod>2014-09-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/application/</loc>
+    <lastmod>2015-01-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/arduino/</loc>
+    <lastmod>2015-07-05T14:15:20+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/atom/</loc>
+    <lastmod>2014-04-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/blog/</loc>
+    <lastmod>2016-12-19T22:37:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/book/</loc>
+    <lastmod>2015-01-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/c/</loc>
+    <lastmod>2015-08-20T07:43:49+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/chrome/</loc>
+    <lastmod>2015-01-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/coffee/</loc>
+    <lastmod>2014-08-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/coffeescript/</loc>
+    <lastmod>2014-10-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/conference/</loc>
+    <lastmod>2016-10-27T15:37:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/cpp/</loc>
+    <lastmod>2016-01-31T14:45:49+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/debian/</loc>
+    <lastmod>2015-10-14T23:24:16+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/docker/</loc>
+    <lastmod>2016-02-25T22:44:10+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/evernote/</loc>
+    <lastmod>2015-01-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/git/</loc>
+    <lastmod>2014-09-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/golang/</loc>
+    <lastmod>2015-10-11T22:39:33+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/graphviz/</loc>
+    <lastmod>2014-12-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/haskell/</loc>
+    <lastmod>2015-01-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/hubot/</loc>
+    <lastmod>2014-11-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/hugo/</loc>
+    <lastmod>2015-07-29T23:25:20+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/ios/</loc>
+    <lastmod>2015-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/irc/</loc>
+    <lastmod>2014-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/javascript/</loc>
+    <lastmod>2014-04-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/jenkins/</loc>
+    <lastmod>2016-02-28T19:37:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/js/</loc>
+    <lastmod>2014-10-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/linux/</loc>
+    <lastmod>2016-02-07T12:27:38+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/mac/</loc>
+    <lastmod>2014-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/machine-learning/</loc>
+    <lastmod>2015-10-11T22:39:33+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/math/</loc>
+    <lastmod>2014-07-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/mongodb/</loc>
+    <lastmod>2015-12-02T07:25:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/mysql/</loc>
+    <lastmod>2014-10-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/network/</loc>
+    <lastmod>2014-11-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/node/</loc>
+    <lastmod>2014-09-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/octopress/</loc>
+    <lastmod>2014-11-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/pages/</loc>
+    <lastmod>2016-02-28T22:40:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/ruby/</loc>
+    <lastmod>2016-12-19T22:37:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/security/</loc>
+    <lastmod>2014-09-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/study/</loc>
+    <lastmod>2014-11-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/tech/</loc>
+    <lastmod>2016-02-25T22:44:10+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/categories/tech/</loc>
+    <lastmod>2015-07-05T14:15:20+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/text/</loc>
+    <lastmod>2016-09-15T19:45:49+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/categories/text/</loc>
+    <lastmod>2015-06-21T23:43:02+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/tool/</loc>
+    <lastmod>2016-01-26T22:24:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/tags/windows/</loc>
+    <lastmod>2014-10-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://ota42y.com/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/</loc>
+    <lastmod>2016-12-19T22:37:37+09:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

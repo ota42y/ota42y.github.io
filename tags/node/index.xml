@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Node on おおたの物置</title>
-    <link>http://ota42y.com/tags/node/</link>
+    <link>http://ota42y.com/tags/node/index.xml</link>
     <description>Recent content in Node on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 29 Sep 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -19,7 +18,7 @@
 
 &lt;p&gt;とても簡単でしたがつい忘れるのでメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;公開手順:9b9b8c7d435dd710d7718e3412443ac0&#34;&gt;公開手順&lt;/h1&gt;
+&lt;h1 id=&#34;公開手順&#34;&gt;公開手順&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;npmjsに開発者登録をします。&lt;br /&gt;
@@ -36,7 +35,7 @@
 (ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&#34;非公開手順:9b9b8c7d435dd710d7718e3412443ac0&#34;&gt;非公開手順&lt;/h1&gt;
+&lt;h1 id=&#34;非公開手順&#34;&gt;非公開手順&lt;/h1&gt;
 
 &lt;p&gt;間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、&lt;br /&gt;
 &lt;code&gt;npm unpublish パッケージ名前@バージョン&lt;/code&gt;で削除出来ます。&lt;br /&gt;
@@ -58,7 +57,7 @@ unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
       <guid>http://ota42y.com/blog/2014/08/22/mocha-test/</guid>
       <description>
 
-&lt;h1 id=&#34;まとめ:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Mochaではrspecっぽい感じにテストが書ける&lt;/li&gt;
@@ -66,11 +65,11 @@ unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
 &lt;li&gt;sinonにはいろいろ便利機能がある&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;mochaの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;Mochaの使い方&lt;/h1&gt;
+&lt;h1 id=&#34;mochaの使い方&#34;&gt;Mochaの使い方&lt;/h1&gt;
 
 &lt;p&gt;coffeescriptを前提にしています。&lt;/p&gt;
 
-&lt;h2 id=&#34;テストの書き方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;テストの書き方&lt;/h2&gt;
+&lt;h2 id=&#34;テストの書き方&#34;&gt;テストの書き方&lt;/h2&gt;
 
 &lt;p&gt;Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、&lt;br /&gt;
 そのitを呼び出す関数をdescribeに渡すしようです。&lt;/p&gt;
@@ -85,7 +84,7 @@ unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
 これを呼ばない場合は終了を待ち続け、&lt;br /&gt;
 一定時間後にタイムアウトしてテストが失敗した扱いになります。&lt;/p&gt;
 
-&lt;h2 id=&#34;beforeの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;beforeの使い方&lt;/h2&gt;
+&lt;h2 id=&#34;beforeの使い方&#34;&gt;beforeの使い方&lt;/h2&gt;
 
 &lt;p&gt;rspecのbeforeにあたるものは、beforeEachになります。&lt;br /&gt;
  なお、変数を他のブロックに渡したい場合、&lt;br /&gt;
@@ -108,7 +107,7 @@ unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
         done()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;pendingテストの作り方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;pendingテストの作り方&lt;/h2&gt;
+&lt;h2 id=&#34;pendingテストの作り方&#34;&gt;pendingテストの作り方&lt;/h2&gt;
 
 &lt;p&gt;テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。&lt;/p&gt;
 
@@ -121,7 +120,7 @@ unpublishは間違えて公開した場合用ですね。&lt;/p&gt;
           done()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;外部ファイル読み込み:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;外部ファイル読み込み&lt;/h2&gt;
+&lt;h2 id=&#34;外部ファイル読み込み&#34;&gt;外部ファイル読み込み&lt;/h2&gt;
 
 &lt;p&gt;test.coffeeで&lt;/p&gt;
 
@@ -141,7 +140,7 @@ module.exports.Test = Test
 
 &lt;p&gt;#chaiの使い方&lt;/p&gt;
 
-&lt;h2 id=&#34;assertを使う:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;assertを使う&lt;/h2&gt;
+&lt;h2 id=&#34;assertを使う&#34;&gt;assertを使う&lt;/h2&gt;
 
 &lt;p&gt;前述のテストではassertを使っていますが、Mochaにはassertは入っていないため、&lt;br /&gt;
 別ライブラリのchaiを読み込む必要があります。&lt;/p&gt;
@@ -151,9 +150,9 @@ module.exports.Test = Test
 
 &lt;p&gt;これで、 assert.equalや assert.notEqualが使えます。&lt;/p&gt;
 
-&lt;h1 id=&#34;sinonの使い方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;sinonの使い方&lt;/h1&gt;
+&lt;h1 id=&#34;sinonの使い方&#34;&gt;sinonの使い方&lt;/h1&gt;
 
-&lt;h2 id=&#34;mockやstubを使う:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;mockやstubを使う&lt;/h2&gt;
+&lt;h2 id=&#34;mockやstubを使う&#34;&gt;mockやstubを使う&lt;/h2&gt;
 
 &lt;p&gt;Mochaにはmockやstubの為の物は含まれていないので、&lt;br /&gt;
 今度はsinonを読み込む必要があります。&lt;/p&gt;
@@ -179,7 +178,7 @@ module.exports.Test = Test
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;時間変更の仕方:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;時間変更の仕方&lt;/h2&gt;
+&lt;h2 id=&#34;時間変更の仕方&#34;&gt;時間変更の仕方&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;new Date()&lt;/code&gt;などによって日付がちゃんと設定されたかどうかを確認したい場合、&lt;br /&gt;
 グローバルなDate()部分を置き換える必要があります。&lt;/p&gt;
@@ -197,7 +196,7 @@ module.exports.Test = Test
 指定したミリ秒だけ時間を進めることもできます。&lt;br /&gt;
 &lt;code&gt;@clock.tick(3600000)&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;sinonのその他の機能:3bae98bb6aa9abe8f0b8472a1492cace&#34;&gt;sinonのその他の機能&lt;/h2&gt;
+&lt;h2 id=&#34;sinonのその他の機能&#34;&gt;sinonのその他の機能&lt;/h2&gt;
 
 &lt;p&gt;sinonに関しては他にもいろいろ有用なものがあります。&lt;br /&gt;
 ちょっと古いですが、以下のmixiさんのブログ記事は参考になると思います。&lt;/p&gt;
@@ -217,13 +216,13 @@ module.exports.Test = Test
 &lt;p&gt;node.js+mocha+coffeescriptな環境で開発をしていたところ、&lt;br /&gt;
 IntelliJ IDEAの設定方法が調べても無かったのでメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;node-jsプラグインのインストール:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;Node.jsプラグインのインストール&lt;/h1&gt;
+&lt;h1 id=&#34;node-jsプラグインのインストール&#34;&gt;Node.jsプラグインのインストール&lt;/h1&gt;
 
 &lt;p&gt;Node.jsプラグインは公式から提供されています。&lt;br /&gt;
 そのため、IntelliJ のPreferences からPluginsを選び、&lt;br /&gt;
 NodeJSプラグインを選択するだけでインストール出来ます。&lt;/p&gt;
 
-&lt;h1 id=&#34;ビルド設定:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;ビルド設定&lt;/h1&gt;
+&lt;h1 id=&#34;ビルド設定&#34;&gt;ビルド設定&lt;/h1&gt;
 
 &lt;p&gt;以下の画像の通りです。&lt;/p&gt;
 
@@ -243,7 +242,7 @@ Mochaの設定を指定します
 Mochaのテストが入っている場所&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;mochaのオプション:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;Mochaのオプション&lt;/h1&gt;
+&lt;h1 id=&#34;mochaのオプション&#34;&gt;Mochaのオプション&lt;/h1&gt;
 
 &lt;p&gt;私の環境では主に次のような設定をしています、&lt;/p&gt;
 
@@ -266,7 +265,7 @@ test/test_helper.coffee
 --colors
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;問題点:e3fb602c4f14f4e7f9a5efde53d66faa&#34;&gt;問題点&lt;/h1&gt;
+&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
 
 &lt;p&gt;以上で設定は終わりですが、いくつか問題点があります。&lt;/p&gt;
 

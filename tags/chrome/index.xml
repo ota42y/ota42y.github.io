@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chrome on おおたの物置</title>
-    <link>http://ota42y.com/tags/chrome/</link>
+    <link>http://ota42y.com/tags/chrome/index.xml</link>
     <description>Recent content in Chrome on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://ota42y.com/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -43,7 +42,7 @@
 &lt;li&gt;DLは&lt;a href=&#34;https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;amp;authuser=1&#34;&gt;ここ&lt;/a&gt;から&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;pixivのイラスト検索でフォロワーを除外できない:fb50430d1383f76f5555f2225e4e2273&#34;&gt;Pixivのイラスト検索でフォロワーを除外できない&lt;/h1&gt;
+&lt;h1 id=&#34;pixivのイラスト検索でフォロワーを除外できない&#34;&gt;Pixivのイラスト検索でフォロワーを除外できない&lt;/h1&gt;
 
 &lt;p&gt;Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、&lt;br /&gt;
 検索結果にフォローしてる人とそうでない人が交じります。&lt;/p&gt;
@@ -56,7 +55,7 @@
 
 &lt;p&gt;というわけで、Chrome拡張で実現しました。&lt;/p&gt;
 
-&lt;h1 id=&#34;フィルタの基本機能:fb50430d1383f76f5555f2225e4e2273&#34;&gt;フィルタの基本機能&lt;/h1&gt;
+&lt;h1 id=&#34;フィルタの基本機能&#34;&gt;フィルタの基本機能&lt;/h1&gt;
 
 &lt;p&gt;DLは&lt;a href=&#34;https://chrome.google.com/webstore/detail/pixivfollowerfilter/oopgkhmlkjnooncplailjfanlichdalp?hl=ja&amp;amp;authuser=1&#34;&gt;ここ&lt;/a&gt;から。&lt;/p&gt;
 
@@ -67,7 +66,7 @@
 事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。&lt;br /&gt;
 そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。&lt;/p&gt;
 
-&lt;h1 id=&#34;ソースコード:fb50430d1383f76f5555f2225e4e2273&#34;&gt;ソースコード&lt;/h1&gt;
+&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/ota42y/pixiv_follower_filter&#34;&gt;https://github.com/ota42y/pixiv_follower_filter&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -84,7 +83,7 @@
 &lt;p&gt;Chrome拡張でデータを保存しようとした場合に、&lt;br /&gt;
 最も簡単に扱えるのが、localStorageです。&lt;/p&gt;
 
-&lt;h1 id=&#34;manifest-jsonの設定:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;manifest.jsonの設定&lt;/h1&gt;
+&lt;h1 id=&#34;manifest-jsonの設定&#34;&gt;manifest.jsonの設定&lt;/h1&gt;
 
 &lt;p&gt;manifest.jsonに以下のパーミッションを追加してください&lt;/p&gt;
 
@@ -95,7 +94,7 @@
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;使い方:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;使い方&lt;/h1&gt;
+&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
 
 &lt;p&gt;localStorageという辞書型の変数が定義されるので、&lt;br /&gt;
 それに対して読み書きを行うだけで大丈夫です。&lt;/p&gt;
@@ -104,9 +103,9 @@
 var data = localStorage[‘data’]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;注意点:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;注意点&lt;/h1&gt;
+&lt;h1 id=&#34;注意点&#34;&gt;注意点&lt;/h1&gt;
 
-&lt;h2 id=&#34;保存形式の制約:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;保存形式の制約&lt;/h2&gt;
+&lt;h2 id=&#34;保存形式の制約&#34;&gt;保存形式の制約&lt;/h2&gt;
 
 &lt;p&gt;この方法で保存できるのは文字列だけになります。&lt;br /&gt;
 true/falseを保存しても文字列として出てきますし、&lt;br /&gt;
@@ -115,7 +114,7 @@ true/falseを保存しても文字列として出てきますし、&lt;br /&gt;
 &lt;p&gt;このような場合、JSON.stringifyとJSON.parseを使い、&lt;br /&gt;
 JSONに変換して保存すると解決します。&lt;/p&gt;
 
-&lt;h2 id=&#34;読み出せる場所の制約:bd0bcec2c9ce117e634be75ae1170102&#34;&gt;読み出せる場所の制約&lt;/h2&gt;
+&lt;h2 id=&#34;読み出せる場所の制約&#34;&gt;読み出せる場所の制約&lt;/h2&gt;
 
 &lt;p&gt;localStorageはページごとに保存するデータがわかれているため、&lt;br /&gt;
 読み書きは同じ場所で行う必要があります。&lt;/p&gt;
