@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on おおたの物置</title>
-    <link>http://ota42y.com/tags/android/index.xml</link>
+    <link>http://ota42y.com/tags/android/</link>
     <description>Recent content in Android on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>dump/restoreコマンドでデータのバックアップ・リストアをする</title>
@@ -14,77 +17,14 @@
       <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;dump/restoreコマンドでパーティションごとバックアップ/リストアができる&lt;/li&gt;
-&lt;li&gt;SDカードの中身を移行するのに便利
-
-&lt;ul&gt;
-&lt;li&gt;もちろんHDDでもいける&lt;/li&gt;
-&lt;li&gt;Windowsは基本的にSDカードの第一パーティションしか認識できない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;sdカードのデータ移行がしたい&#34;&gt;SDカードのデータ移行がしたい&lt;/h1&gt;
-
-&lt;p&gt;Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。&lt;/p&gt;
-
-&lt;p&gt;ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2014/12/30/link2sd/&#34;&gt;ASUS MeMO Pad 7 ME572CでLink2SDを動かす&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、  HDDを対象としたバックアップも同じ手順で可能です。&lt;/p&gt;
-
-&lt;h1 id=&#34;sdカードの第二パーティションのマウント&#34;&gt;SDカードの第二パーティションのマウント&lt;/h1&gt;
-
-&lt;p&gt;Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。&lt;/p&gt;
-
-&lt;p&gt;なお、Windowsでは基本的にSDカードの第二パーティションはマウントできないため、Linux上で作業を行いました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 接続された位置をfdiskで調べる
-sudo fdisk -l
-
-# 以下のようにSDカードのパーティションの位置が表示される
-# /dev/sdc1 42 42424242 4242424242 42 HPFS/NTFS/exFAT
-# /dev/sdc2 4242 42424242 42424242 42 Linux
-
-# ext3でフォーマットしているのでマウントする
-# (どうフォーマットしているかはその人次第です)
-sudo mount -t ext3 /dev/sdc2 /mnt/sd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;dumpコマンドでバックアップ&#34;&gt;dumpコマンドでバックアップ&lt;/h1&gt;
-
-&lt;p&gt;dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。
-差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# mount先の/mnt/sd以下をバックアップ
-sudo dump -0 -f /data/sd.dump /mnt/sd
-
-# -0でダンプレベル0(フルバックアップ)
-# -fでバックアップしたデータのファイル名を指定
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;restoreコマンドでリストア&#34;&gt;restoreコマンドでリストア&lt;/h1&gt;
-
-&lt;p&gt;restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。
-バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、
-上記の手順で同じ場所にマウントしてあります。&lt;/p&gt;
-
-&lt;p&gt;なお、restoreコマンドはリストア先を指定できそうなオプションが存在します。
-ですが何故か上手く動かず、デフォルトの挙動であるカレントディレクトリにリストアされてしまうため、
-事前にマウント先に移動しています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /mnt/sd
-restore -r -f /data/sd.dump
-# -rでデータをフルリストア
-# -fでバックアップしたファイルを指定
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;時間がかかりますが、以上の手順でデータ移行が完了します。&lt;/p&gt;
-</description>
+      <description>まとめ  dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利  もちろんHDDでもいける Windowsは基本的にSDカードの第一パーティションしか認識できない   SDカードのデータ移行がしたい Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。
+ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。
+ASUS MeMO Pad 7 ME572CでLink2SDを動かす
+そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、 HDDを対象としたバックアップも同じ手順で可能です。
+SDカードの第二パーティションのマウント Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。
+なお、Windowsでは基本的にSDカードの第二パーティションはマウントできないため、Linux上で作業を行いました。
+# 接続された位置をfdiskで調べる sudo fdisk -l # 以下のようにSDカードのパーティションの位置が表示される # /dev/sdc1 42 42424242 4242424242 42 HPFS/NTFS/exFAT # /dev/sdc2 4242 42424242 42424242 42 Linux # ext3でフォーマットしているのでマウントする # (どうフォーマットしているかはその人次第です) sudo mount -t ext3 /dev/sdc2 /mnt/sd  dumpコマンドでバックアップ dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。 差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。
+# mount先の/mnt/sd以下をバックアップ sudo dump -0 -f /data/sd.dump /mnt/sd # -0でダンプレベル0(フルバックアップ) # -fでバックアップしたデータのファイル名を指定  restoreコマンドでリストア restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。 バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、 上記の手順で同じ場所にマウントしてあります。</description>
     </item>
     
     <item>
@@ -93,69 +33,34 @@ restore -r -f /data/sd.dump
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2015/01/21/android-dict/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;clip2dicを使うとクリップボード内を自動で辞書検索する&lt;/li&gt;
-&lt;li&gt;オフラインの別アプリからも検索可能&lt;/li&gt;
-&lt;li&gt;ColorDictとGolden Dictが連携先として優秀&lt;/li&gt;
-&lt;li&gt;英辞郎は形式が違うため辛い&lt;/li&gt;
-&lt;li&gt;Google Driveをビューワーとして使うといい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;ポップアップ辞書アプリ&#34;&gt;ポップアップ辞書アプリ&lt;/h1&gt;
-
-&lt;p&gt;iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。&lt;/p&gt;
-
-&lt;p&gt;Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、&lt;br /&gt;
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.jp.readers.clip2dic.lite&amp;amp;hl=ja&#34;&gt;clip2dic&lt;/a&gt;というアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。&lt;/p&gt;
-
-&lt;p&gt;私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、&lt;br /&gt;
-他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;clip2dictから使えるオフライン辞書アプリ&#34;&gt;clip2dictから使えるオフライン辞書アプリ&lt;/h1&gt;
-
-&lt;h2 id=&#34;colordict&#34;&gt;ColorDict&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&#34;&gt;https://play.google.com/store/apps/details?id=com.socialnmobile.colordict&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;無料の辞書ソフトです。&lt;br /&gt;
-初期状態では日英、英日辞書は入っていませんが、&lt;br /&gt;
-別アプリとして配布されている辞書アプリをインストールすることで、
-対応辞書を増やすことができます。
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict&#34;&gt;https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict&lt;/a&gt;&lt;br /&gt;
-(おそらく&lt;a href=&#34;https://code.google.com/p/stardict-3/&#34;&gt;こちらの辞書&lt;/a&gt;を使用しています)&lt;br /&gt;
-StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。&lt;/p&gt;
-
-&lt;h2 id=&#34;goldendict&#34;&gt;GoldenDict&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&#34;&gt;https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=mobi.goldendict.android.free&amp;amp;hl=ja&#34;&gt;Free版&lt;/a&gt;&lt;br /&gt;
-こちらもColorDictと同じく、辞書ファイルが必要になります。&lt;br /&gt;
-ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、&lt;br /&gt;
-より導入が簡単です（辞書としてはおそらく同じだと思います)。&lt;/p&gt;
-
-&lt;p&gt;このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）&lt;/p&gt;
-
-&lt;p&gt;複数の辞書ファイルを持っている場合は便利ですが、&lt;br /&gt;
-私はそんなに辞書ファイルを持っていないので無料で十分でした。&lt;/p&gt;
-
-&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
-
-&lt;p&gt;手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。&lt;br /&gt;
-pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br /&gt;
-古すぎてネット上にある手順では出来なさそうなので諦めました。&lt;/p&gt;
-
-&lt;p&gt;また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…&lt;br /&gt;
-いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、&lt;br /&gt;
-今のところ唯一出来たGoogle Driveをビューワーとして使っています。&lt;br /&gt;
-(オフラインでも別アプリからPDFビューワーとして呼び出せる)&lt;/p&gt;
-
-&lt;p&gt;辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。&lt;br /&gt;
-これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。&lt;/p&gt;
-</description>
+      <description>まとめ  clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dictが連携先として優秀 英辞郎は形式が違うため辛い Google Driveをビューワーとして使うといい  ポップアップ辞書アプリ iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。
+Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、
+clip2dicというアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。
+私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、
+他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。
+clip2dictから使えるオフライン辞書アプリ ColorDict https://play.google.com/store/apps/details?id=com.socialnmobile.colordict
+無料の辞書ソフトです。
+初期状態では日英、英日辞書は入っていませんが、
+別アプリとして配布されている辞書アプリをインストールすることで、 対応辞書を増やすことができます。 https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict
+(おそらくこちらの辞書を使用しています)
+StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。
+GoldenDict https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja
+Free版
+こちらもColorDictと同じく、辞書ファイルが必要になります。
+ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、
+より導入が簡単です（辞書としてはおそらく同じだと思います)。
+このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）
+複数の辞書ファイルを持っている場合は便利ですが、
+私はそんなに辞書ファイルを持っていないので無料で十分でした。
+その他 手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。
+pdicからStartDict形式の変換はとても手間がかかるのと、
+古すぎてネット上にある手順では出来なさそうなので諦めました。
+また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…
+いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、
+今のところ唯一出来たGoogle Driveをビューワーとして使っています。
+(オフラインでも別アプリからPDFビューワーとして呼び出せる)
+辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。
+これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。</description>
     </item>
     
     <item>
@@ -164,57 +69,35 @@ pdicからStartDict形式の変換はとても手間がかかるのと、&lt;br 
       <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/12/30/link2sd/</guid>
-      <description>
-
-&lt;p&gt;ME572CにはSDカードが挿せるため、&lt;br /&gt;
-本体の容量が足りなくなっても気軽に容量を追加できます。&lt;/p&gt;
-
-&lt;p&gt;ですが、対応しているアプリしかSDカードにデータが保存できず、&lt;br /&gt;
-対応しているアプリでも機種によっては、&lt;br /&gt;
-上手くSDカードに入らない場合があります。&lt;/p&gt;
-
-&lt;p&gt;実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、&lt;br /&gt;
-ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。&lt;/p&gt;
-
-&lt;p&gt;このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。&lt;br /&gt;
-ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。&lt;/p&gt;
-
-&lt;p&gt;なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。&lt;/p&gt;
-
-&lt;h1 id=&#34;link2sd&#34;&gt;Link2SD&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.Link2SD&amp;amp;hl=ja&#34;&gt;Link2SD&lt;/a&gt;は、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。&lt;br /&gt;
-おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、&lt;br /&gt;
-アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。&lt;/p&gt;
-
-&lt;h1 id=&#34;sdカードの準備&#34;&gt;SDカードの準備&lt;/h1&gt;
-
-&lt;p&gt;このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。&lt;/p&gt;
-
-&lt;p&gt;このうち1つめが普通のSDカード領域として認識され、&lt;br /&gt;
-2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。&lt;br /&gt;
-なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。&lt;/p&gt;
-
-&lt;p&gt;なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、&lt;br /&gt;
-&lt;a href=&#34;http://www.partitionwizard.com/download.html&#34;&gt;Mini Tool&lt;/a&gt;のような専用ソフトでパーティションを作る必要があります。&lt;br /&gt;
-このとき、どちらのパーティションもPrimaryに設定しておく必要があります。&lt;/p&gt;
-
-&lt;p&gt;パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。&lt;br /&gt;
-ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。&lt;br /&gt;
-fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、&lt;br /&gt;
-NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/p&gt;
-
-&lt;h1 id=&#34;アプリをsdカードに移す&#34;&gt;アプリをSDカードに移す&lt;/h1&gt;
-
-&lt;p&gt;Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。&lt;br /&gt;
-ただし、データをSDカードに移動する場合は&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.buak.link2sdplus&amp;amp;hl=ja&#34;&gt;有料アドオン&lt;/a&gt;が必要です。&lt;/p&gt;
-
-&lt;p&gt;Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-12-30-link2sd.png&#34; alt=&#34;Link2SD&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。&lt;br /&gt;
-ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。&lt;/p&gt;
-</description>
+      <description>ME572CにはSDカードが挿せるため、
+本体の容量が足りなくなっても気軽に容量を追加できます。
+ですが、対応しているアプリしかSDカードにデータが保存できず、
+対応しているアプリでも機種によっては、
+上手くSDカードに入らない場合があります。
+実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、
+ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。
+このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。
+ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。
+なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。
+Link2SD Link2SDは、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。
+おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、
+アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。
+SDカードの準備 このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。
+このうち1つめが普通のSDカード領域として認識され、
+2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。
+なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。
+なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、
+Mini Toolのような専用ソフトでパーティションを作る必要があります。
+このとき、どちらのパーティションもPrimaryに設定しておく必要があります。
+パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。
+ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。
+fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、
+NTFS/ext3だと両方上手く認識したためこれを利用します。
+アプリをSDカードに移す Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。
+ただし、データをSDカードに移動する場合は有料アドオンが必要です。
+Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。
+EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。
+ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。</description>
     </item>
     
     <item>
@@ -223,69 +106,20 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
       <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/12/28/memopad-root/</guid>
-      <description>
-
-&lt;p&gt;ASUS MeMO Pad 7 ME572Cを買いました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.asus.com/jp/Tablets/ASUS_MeMO_Pad_7_ME572CL/&#34;&gt;タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Nexus 9とかと迷いましたが、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;コストパフォーマンスがいい
-
-&lt;ul&gt;
-&lt;li&gt;安くてそこそこ高性能&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;SDカードが使える
-
-&lt;ul&gt;
-&lt;li&gt;気軽に容量増強出来る&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といった点から、これに決めました。&lt;/p&gt;
-
-&lt;p&gt;ですが実際に届いて起動してみたところ、&lt;br /&gt;
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。&lt;/p&gt;
-
-&lt;p&gt;特に「やることリスト」(&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.asus.task&amp;amp;hl=ja&#34;&gt;ASUS Do It Later&lt;/a&gt;)というアプリは、&lt;br /&gt;
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。&lt;/p&gt;
-
-&lt;p&gt;そのため、Rootを取って無効化することにしました。&lt;/p&gt;
-
-&lt;h1 id=&#34;root化手順&#34;&gt;Root化手順&lt;/h1&gt;
-
-&lt;p&gt;RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。&lt;br /&gt;
-(2014/12/28の最新版は1.4.6.8r)&lt;/p&gt;
-
-&lt;p&gt;手順としては以下の通りになります。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;RootZenFoneをインストール&lt;/li&gt;
-&lt;li&gt;Wifiと3Gを機内モードにして切る&lt;/li&gt;
-&lt;li&gt;RootZenFoneを起動&lt;/li&gt;
-&lt;li&gt;通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す&lt;/li&gt;
-&lt;li&gt;変化がなくなるまで待つ
-
-&lt;ul&gt;
-&lt;li&gt;色々ポップアップが出たりする&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動
-
-&lt;ul&gt;
-&lt;li&gt;この時点でRoot化出来ています&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;AsusLiveDemoというアカウントが追加されているため削除&lt;/li&gt;
-&lt;li&gt;RootZenFonを消す&lt;/li&gt;
-&lt;li&gt;通信を有効か&lt;/li&gt;
-&lt;li&gt;SuperSuが自動でインストールされているので、最新版に更新&lt;/li&gt;
-&lt;li&gt;SuperSuを起動し、データ更新後に再起動を促されるので再起動&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。&lt;br /&gt;
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。&lt;/p&gt;
-</description>
+      <description>ASUS MeMO Pad 7 ME572Cを買いました。
+タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS
+Nexus 9とかと迷いましたが、
+ コストパフォーマンスがいい  安くてそこそこ高性能  SDカードが使える  気軽に容量増強出来る   といった点から、これに決めました。
+ですが実際に届いて起動してみたところ、
+余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。
+特に「やることリスト」(ASUS Do It Later)というアプリは、
+定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。
+そのため、Rootを取って無効化することにしました。
+Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。
+(2014/12/28の最新版は1.4.6.8r)
+手順としては以下の通りになります。
+ RootZenFoneをインストール Wifiと3Gを機内モードにして切る RootZenFoneを起動 通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す 変化がなくなるまで待つ  色々ポップアップが出たりする  もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動  この時点でRoot化出来ています  AsusLiveDemoというアカウントが追加されているため削除 RootZenFonを消す 通信を有効か SuperSuが自動でインストールされているので、最新版に更新 SuperSuを起動し、データ更新後に再起動を促されるので再起動  Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。
+あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</description>
     </item>
     
     <item>
@@ -294,72 +128,21 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/12/21/abc2014w/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://abc.android-group.jp/2014w/&#34;&gt;Android Bazaar and Conference 2014 Winter&lt;/a&gt;に参加してきました。&lt;/p&gt;
-
-&lt;p&gt;なかなか興味深いお話を聞けたので、気になった部分を抜粋&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;携帯は９５％の人類が持ってる&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;インターネットを利用するのは４割&lt;/li&gt;
-&lt;li&gt;スマホ利用者は３２％&lt;/li&gt;
-&lt;li&gt;スマホは１０年前の携帯と同じ水準まで来てる
--１０年後は世界の携帯がスマホに置き換わる&lt;/li&gt;
-&lt;li&gt;今後１０年間で７０億人がインターネットに繋がる&lt;/li&gt;
-&lt;li&gt;Androidは今のところ全世界で84.4%のシェア&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;各国のもの作り政策&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ドイツのINDUSTRIE 4.0&lt;/li&gt;
-&lt;li&gt;第四次産業革命&lt;/li&gt;
-&lt;li&gt;多数の企業を結んだバリューネットワーク&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;工場内の結合されたネットワーク　は出来てる&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;アメリカ&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;AMP立ち上げ&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;アメリカで発明し、アメリカで製造する&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Made in Americaの復活&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;中国&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;2008年以降世界の製造業売り上げTop&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;EU全体を合わせて、ようやく中国をちょっと上回る&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;第１２期５カ年計画&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;５年で１６８兆円使う&lt;/li&gt;
-&lt;li&gt;IoTを重視する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Googleが買収したNest&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://japan.cnet.com/news/commentary/35042541/&#34;&gt;http://japan.cnet.com/news/commentary/35042541/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ネットに繋がるサーモスタット&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Android Wear&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WearのNotificationはアプリの顔になる&lt;/li&gt;
-&lt;li&gt;ノイジーな通知をするとアンインストールされる&lt;/li&gt;
-&lt;li&gt;リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する&lt;/li&gt;
-&lt;li&gt;わざわざ起動するのは減っていく&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Android Bazaar and Conference 2014 Winterに参加してきました。
+なかなか興味深いお話を聞けたので、気になった部分を抜粋
+ 携帯は９５％の人類が持ってる
+ インターネットを利用するのは４割 スマホ利用者は３２％ スマホは１０年前の携帯と同じ水準まで来てる -１０年後は世界の携帯がスマホに置き換わる 今後１０年間で７０億人がインターネットに繋がる Androidは今のところ全世界で84.4%のシェア  各国のもの作り政策
+ ドイツのINDUSTRIE 4.0 第四次産業革命 多数の企業を結んだバリューネットワーク 工場内の結合されたネットワーク　は出来てる
+ アメリカ
+ AMP立ち上げ
+ アメリカで発明し、アメリカで製造する
+ Made in Americaの復活
+ 中国
+ 2008年以降世界の製造業売り上げTop
+ EU全体を合わせて、ようやく中国をちょっと上回る  第１２期５カ年計画
+ ５年で１６８兆円使う IoTを重視する   Googleが買収したNest
+ http://japan.cnet.com/news/commentary/35042541/ ネットに繋がるサーモスタット  Android Wear
+ WearのNotificationはアプリの顔になる ノイジーな通知をするとアンインストールされる リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する わざわざ起動するのは減っていく   </description>
     </item>
     
     <item>
@@ -368,43 +151,19 @@ NTFS/ext3だと両方上手く認識したためこれを利用します。&lt;/
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/04/centos7-android-build/</guid>
-      <description>
-
-&lt;h1 id=&#34;環境設定&#34;&gt;環境設定&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip
-sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;他にもいくつかあった気がしますが、&lt;br /&gt;
-後はエラーとして出たコマンドをインストールするだけなので都度入れてください&lt;/p&gt;
-
-&lt;h1 id=&#34;android-sdkとndkのダウンロード&#34;&gt;Android SDKとNDKのダウンロード&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://developer.android.com/sdk/index.html&#34;&gt;http://developer.android.com/sdk/index.html&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://developer.android.com/tools/sdk/ndk/index.html&#34;&gt;https://developer.android.com/tools/sdk/ndk/index.html&lt;/a&gt;&lt;br /&gt;
-からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。&lt;br /&gt;
-その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。&lt;/p&gt;
-
-&lt;h1 id=&#34;sdk-platformのインストール&#34;&gt;SDK Platformのインストール&lt;/h1&gt;
-
-&lt;p&gt;Eclipseが使えないためSDK Managerは使えませんが、&lt;br /&gt;
-代わりにコマンドラインからインストールすることができます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;android update sdk -u -a -t tools,platform-tools
-android update sdk -u -a -t android-19
-android update sdk -u -a -t extra-google-google_play_services
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;後は通常のコマンドラインからビルドする方法でビルド可能です。&lt;/p&gt;
-
-&lt;h1 id=&#34;注意点&#34;&gt;注意点&lt;/h1&gt;
-
-&lt;p&gt;なお、MacやWindowsだとファイル名はcase insensitiveですが、&lt;br /&gt;
-CentOSだと普通はcase sensitiveなので注意です。&lt;br /&gt;
-特にCのincludeは大文字小文字を区別せずに動くため、&lt;br /&gt;
-case sensitiveな環境に持って行った場合に特に死にやすいです…(´・_・`)&lt;/p&gt;
-</description>
+      <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686  他にもいくつかあった気がしますが、
+後はエラーとして出たコマンドをインストールするだけなので都度入れてください
+Android SDKとNDKのダウンロード http://developer.android.com/sdk/index.html
+https://developer.android.com/tools/sdk/ndk/index.html
+からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。
+その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。
+SDK Platformのインストール Eclipseが使えないためSDK Managerは使えませんが、
+代わりにコマンドラインからインストールすることができます。
+android update sdk -u -a -t tools,platform-tools android update sdk -u -a -t android-19 android update sdk -u -a -t extra-google-google_play_services  後は通常のコマンドラインからビルドする方法でビルド可能です。
+注意点 なお、MacやWindowsだとファイル名はcase insensitiveですが、
+CentOSだと普通はcase sensitiveなので注意です。
+特にCのincludeは大文字小文字を区別せずに動くため、
+case sensitiveな環境に持って行った場合に特に死にやすいです…(´・_・`)</description>
     </item>
     
   </channel>

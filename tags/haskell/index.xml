@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Haskell on おおたの物置</title>
-    <link>http://ota42y.com/tags/haskell/index.xml</link>
+    <link>http://ota42y.com/tags/haskell/</link>
     <description>Recent content in Haskell on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Macのghcは改行コードがCRだと動かない</title>
@@ -14,78 +17,17 @@
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2015/01/07/mac-ghc-cr/</guid>
-      <description>
-
-&lt;p&gt;Haskellでどう見ても文法的に間違っていないのに、&lt;br /&gt;
-何故かコンパイルエラーになっていましたが、&lt;br /&gt;
-改行コードが原因でした。&lt;/p&gt;
-
-&lt;p&gt;ちょうど始めたばかりで、実は文法ミスや、&lt;br /&gt;
-バージョン違いとの切り分けが大変でしたが、&lt;br /&gt;
-結果は残念な結果になりました…&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;GHCではLF、CRLFは正しく動くがCRはダメ&lt;/li&gt;
-&lt;li&gt;PDFからサンプルコードをコピペしたらCRになっていた
-
-&lt;ul&gt;
-&lt;li&gt;Macのプレビューでいくつか試したが、現状全てCRになる&lt;/li&gt;
-&lt;li&gt;PDFが原因か、Preview.appがそういう仕様なのかは用検証&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;調査方法&#34;&gt;調査方法&lt;/h1&gt;
-
-&lt;p&gt;以下のファイルを改行コードLFで保存します。&lt;/p&gt;
-
-&lt;p&gt;lf.hs&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;plus :: Integer -&amp;gt; Integer -&amp;gt; Integer
-plus a b = a + b
-
-main = print (plus 40 2)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;LFのまま実行します&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;file lf.hs
-# lf.hs: ASCII text
-runghc lf.hs
-# 42
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;CRLFに変換して実行します&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nkf -Lw lf.hs &amp;gt; crlf.hs
-file crlf.hs
-# crlf.hs: ASCII text, with CRLF line terminators
-runghc crlf.hs
-42
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;CRに変換して実行します&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nkf -Lm lf.hs &amp;gt; cr.hs
-file cr.hs
-# cr.hs: ASCII text, with CR line terminators
-runghc cr.hs
-# cr.hs:1:62: parse error on input ‘=’
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;失敗しますね(´・_・`)&lt;/p&gt;
-
-&lt;h1 id=&#34;何故crが紛れ込んだか&#34;&gt;何故CRが紛れ込んだか&lt;/h1&gt;
-
-&lt;p&gt;最近のmacは改行コードがLFですし、CRが混入するのは中々ありません。&lt;/p&gt;
-
-&lt;p&gt;今回は、ちょうどサンプルに使っているPDFからコードをコピペしたところ、&lt;br /&gt;
-改行コードがCRになっていたのが原因でした。&lt;/p&gt;
-
-&lt;p&gt;いくつかのPDFでやってみましたが、全てCRになっており、&lt;br /&gt;
-Preview.appで必ずCRにされるのか、PDF自体がCRなのかは切り分けが必要です。&lt;/p&gt;
-</description>
+      <description>Haskellでどう見ても文法的に間違っていないのに、
+何故かコンパイルエラーになっていましたが、
+改行コードが原因でした。
+ちょうど始めたばかりで、実は文法ミスや、
+バージョン違いとの切り分けが大変でしたが、
+結果は残念な結果になりました…
+まとめ  GHCではLF、CRLFは正しく動くがCRはダメ PDFからサンプルコードをコピペしたらCRになっていた  Macのプレビューでいくつか試したが、現状全てCRになる PDFが原因か、Preview.appがそういう仕様なのかは用検証   調査方法 以下のファイルを改行コードLFで保存します。
+lf.hs
+plus :: Integer -&amp;gt; Integer -&amp;gt; Integer plus a b = a + b main = print (plus 40 2)  LFのまま実行します
+file lf.hs # lf.hs: ASCII text runghc lf.hs # 42  CRLFに変換して実行します
+nkf -Lw lf.hs &amp;gt; crlf.hs file crlf.hs # crlf.hs: ASCII text, with CRLF line terminators runghc crlf.hs 42  CRに変換して実行します</description>
     </item>
     
   </channel>

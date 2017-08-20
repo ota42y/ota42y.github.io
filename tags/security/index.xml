@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on おおたの物置</title>
-    <link>http://ota42y.com/tags/security/index.xml</link>
+    <link>http://ota42y.com/tags/security/</link>
     <description>Recent content in Security on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>パスワードの文字として避けた方がいい文字</title>
@@ -14,47 +17,21 @@
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/08/password-word/</guid>
-      <description>&lt;p&gt;ニンテンドー3DSのプリペイドカード入力画面を見て、&lt;br /&gt;
-見間違えやすい文字は使わないようにしてるんだーと気づいたので、&lt;br /&gt;
-他にもそういうのが無いかまとめました。&lt;/p&gt;
-
-&lt;p&gt;もちろんaやtに代表されるように、フォントによって形は全然違うため、&lt;br /&gt;
-全ての状況に対して当てはまるとは限りませんが、&lt;br /&gt;
-目安程度としては使えると思います。&lt;/p&gt;
-
-&lt;p&gt;横一列が間違える可能性の高い文字集合です。&lt;/p&gt;
-
-&lt;p&gt;|||||||
-|::|
-|0|o|O|Q|D|
-|1|7|i|I|l|
-|2|z|Z|
-|5|s|S|
-|6|b|
-|8|B|
-|9|q|g|
-|a|d|
-|c|C|
-|k|K|
-|u|U|v|V|
-|w|W|
-|x|X|
-|z|Z|&lt;/p&gt;
-
-&lt;p&gt;まとめると、&lt;/p&gt;
-
-&lt;p&gt;数字だけを扱う場合は&lt;br /&gt;
-&lt;code&gt;2 3 4 5 6 8 9 0&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;小文字大文字を区別する場合は&lt;br /&gt;
-&lt;code&gt;3 4 e f h j m n p r y A E F G H J L M N P R Y&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;小文字大文字を区別しない場合は&lt;br /&gt;
-&lt;code&gt;3 4 c e f h j k m n p r t w x w x y z&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;となります。&lt;br /&gt;
-思ったより少ないですね…&lt;/p&gt;
-</description>
+      <description>ニンテンドー3DSのプリペイドカード入力画面を見て、
+見間違えやすい文字は使わないようにしてるんだーと気づいたので、
+他にもそういうのが無いかまとめました。
+もちろんaやtに代表されるように、フォントによって形は全然違うため、
+全ての状況に対して当てはまるとは限りませんが、
+目安程度としては使えると思います。
+横一列が間違える可能性の高い文字集合です。
+||||||| |::| |0|o|O|Q|D| |1|7|i|I|l| |2|z|Z| |5|s|S| |6|b| |8|B| |9|q|g| |a|d| |c|C| |k|K| |u|U|v|V| |w|W| |x|X| |z|Z|
+まとめると、
+数字だけを扱う場合は
+2 3 4 5 6 8 9 0
+小文字大文字を区別する場合は
+3 4 e f h j m n p r y A E F G H J L M N P R Y
+小文字大文字を区別しない場合は
+3 4 c e f h j k m n p r t w x w x y z</description>
     </item>
     
   </channel>

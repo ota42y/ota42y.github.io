@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Arduino on おおたの物置</title>
-    <link>http://ota42y.com/tags/arduino/index.xml</link>
+    <link>http://ota42y.com/tags/arduino/</link>
     <description>Recent content in Arduino on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
@@ -14,80 +17,24 @@
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PCからArduinoを制御するのは面倒
-
-&lt;ul&gt;
-&lt;li&gt;作業量が多い&lt;/li&gt;
-&lt;li&gt;電子工作&lt;/li&gt;
-&lt;li&gt;Arduinoプログラミング&lt;/li&gt;
-&lt;li&gt;PCからArduinoを制御するプログラミング&lt;/li&gt;
-&lt;li&gt;Arduinoプログラミングは専用言語&lt;/li&gt;
-&lt;li&gt;学習コストがある&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dinoならrubyだけで全て完結できる
-
-&lt;ul&gt;
-&lt;li&gt;rubyからArduinoの全機能を制御するプログラムが付随&lt;/li&gt;
-&lt;li&gt;rubyのオブジェクト操作でArduinoを制御出来る&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;pcからarduinoを制御するのは面倒&#34;&gt;PCからArduinoを制御するのは面倒&lt;/h1&gt;
-
-&lt;p&gt;Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。&lt;br /&gt;
-ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。&lt;/p&gt;
-
-&lt;p&gt;PCとからArduinoを制御する場合、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;電子工作をしてArduinoと部品をつなげる&lt;/li&gt;
-&lt;li&gt;Arduinoを制御したり、PCに情報を送るプログラムを書く&lt;/li&gt;
-&lt;li&gt;PC側でArduinoからの情報を受け取って制御するプログラムを書く&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;の3種類の別々の作業が必要になります。&lt;/p&gt;
-
-&lt;p&gt;Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。&lt;br /&gt;
-ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、&lt;br /&gt;
-rubyプログラムを書くだけでArduinoの制御が全てできるようになります。&lt;/p&gt;
-
-&lt;p&gt;これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。&lt;/p&gt;
-
-&lt;h1 id=&#34;dino&#34;&gt;dino&lt;/h1&gt;
-
-&lt;p&gt;Arduinoをrubyから扱うライブラリです。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/austinbv/dino&#34;&gt;https://github.com/austinbv/dino&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Arduinoの全機能を外部から制御可能にするプログラムが付随しており、&lt;br /&gt;
-これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。&lt;/p&gt;
-
-&lt;h2 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h2&gt;
-
-&lt;p&gt;A0ポートに対する入力を拾うプログラムは以下の通りです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;board = Dino::Board.new(Dino::TxRx::Serial.new)
-sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board)
-
-sensor.when_data_received do |data|
-  puts &amp;quot;data=#{data.to_i}&amp;quot;
-end
-
-sleep
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ポートに対する入力があるたびにブロックが実行されます。&lt;/p&gt;
-
-&lt;p&gt;このように、arduinoをほぼrubyのオブジェクトのように扱えるため、&lt;br /&gt;
-PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。&lt;/p&gt;
-
-&lt;p&gt;ただし、当然ながらPCと接続して制御するものであり、&lt;br /&gt;
-Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。&lt;/p&gt;
-</description>
+      <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
+ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
+PCとからArduinoを制御する場合、
+ 電子工作をしてArduinoと部品をつなげる Arduinoを制御したり、PCに情報を送るプログラムを書く PC側でArduinoからの情報を受け取って制御するプログラムを書く  の3種類の別々の作業が必要になります。
+Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。
+ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、
+rubyプログラムを書くだけでArduinoの制御が全てできるようになります。
+これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。
+dino Arduinoをrubyから扱うライブラリです。
+https://github.com/austinbv/dino
+Arduinoの全機能を外部から制御可能にするプログラムが付随しており、
+これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。
+サンプルコード A0ポートに対する入力を拾うプログラムは以下の通りです。
+board = Dino::Board.new(Dino::TxRx::Serial.new) sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board) sensor.when_data_received do |data| puts &amp;quot;data=#{data.to_i}&amp;quot; end sleep  ポートに対する入力があるたびにブロックが実行されます。
+このように、arduinoをほぼrubyのオブジェクトのように扱えるため、
+PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。
+ただし、当然ながらPCと接続して制御するものであり、
+Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。</description>
     </item>
     
     <item>
@@ -96,40 +43,25 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/08/27/arduino-browser/</guid>
-      <description>
+      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
+当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
+そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
+そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？
+と考えたところ、既にそのようなものがありました。
+試した結果をまとめます。
+noduino http://semu.github.io/noduino/
+Node.jsでArduinoを制御できます。 duinoというNode.jsからArduinoに接続するライブラリを利用し、
+Webサーバとして扱えるようにしているものみたいです。
+かなりいろいろな事ができ、使いやすいように作られていますが、
+ブラウザから制御するのはかなり苦労します。 ですが、Node.jsで実行する前提ならば、
+簡単でいろいろなことができるため最適だと思います。
+Serialport-server http://shokai.github.io/serialport-server/
+RubyからArduinoにアクセスし、その結果を返すサーバです。
+noduinoに比べるとできることは少ないですが、
+サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。
 
-&lt;p&gt;Webブラウザから、接続されているArduinoの値を取りたいのですが、&lt;br /&gt;
-当然ながらブラウザ本体やJavascriptにはそんな機能はありません。&lt;/p&gt;
-
-&lt;p&gt;そこで、Arduinoの制御をやるWebサーバをローカルに立てて、&lt;br /&gt;
-そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？&lt;br /&gt;
-と考えたところ、既にそのようなものがありました。&lt;/p&gt;
-
-&lt;p&gt;試した結果をまとめます。&lt;/p&gt;
-
-&lt;h1 id=&#34;noduino&#34;&gt;noduino&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://semu.github.io/noduino/&#34;&gt;http://semu.github.io/noduino/&lt;/a&gt;&lt;br /&gt;
-Node.jsでArduinoを制御できます。
-&lt;a href=&#34;https://github.com/ecto/duino&#34;&gt;duino&lt;/a&gt;というNode.jsからArduinoに接続するライブラリを利用し、&lt;br /&gt;
-Webサーバとして扱えるようにしているものみたいです。&lt;/p&gt;
-
-&lt;p&gt;かなりいろいろな事ができ、使いやすいように作られていますが、&lt;br /&gt;
-ブラウザから制御するのはかなり苦労します。
-ですが、Node.jsで実行する前提ならば、&lt;br /&gt;
-簡単でいろいろなことができるため最適だと思います。&lt;/p&gt;
-
-&lt;h1 id=&#34;serialport-server&#34;&gt;Serialport-server&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://shokai.github.io/serialport-server/&#34;&gt;http://shokai.github.io/serialport-server/&lt;/a&gt;&lt;br /&gt;
-RubyからArduinoにアクセスし、その結果を返すサーバです。&lt;br /&gt;
-noduinoに比べるとできることは少ないですが、&lt;br /&gt;
-サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-というわけで、ブラウザからArduinoを制御する場合は、&lt;br /&gt;
-Serialport-serverが良さそうです。&lt;/p&gt;
-</description>
+というわけで、ブラウザからArduinoを制御する場合は、
+Serialport-serverが良さそうです。</description>
     </item>
     
   </channel>

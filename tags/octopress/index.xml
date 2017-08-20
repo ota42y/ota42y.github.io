@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octopress on おおたの物置</title>
-    <link>http://ota42y.com/tags/octopress/index.xml</link>
+    <link>http://ota42y.com/tags/octopress/</link>
     <description>Recent content in Octopress on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Nov 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Octopressのアップデート手順</title>
@@ -14,41 +17,24 @@
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/30/octopress-update/</guid>
-      <description>
-
-&lt;p&gt;見た目は変わっていませんが、このブログのOctopressをアップデートしました。&lt;br /&gt;
-だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、&lt;br /&gt;
-forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。&lt;/p&gt;
-
-&lt;h1 id=&#34;ブログ用リポジトリの状態&#34;&gt;ブログ用リポジトリの状態&lt;/h1&gt;
-
-&lt;p&gt;このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/ota42y.github.io&#34;&gt;https://github.com/ota42y/ota42y.github.io&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ですが、これはOctopressの出力先のリポジトリであり、&lt;br /&gt;
-bitbucket上にOctopress自体のリポジトリが存在します。&lt;br /&gt;
-このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。&lt;/p&gt;
-
-&lt;h1 id=&#34;octopressのアップデート&#34;&gt;Octopressのアップデート&lt;/h1&gt;
-
-&lt;p&gt;普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。&lt;br /&gt;
-その後、Octopress側のmasterとマージをするだけになります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git remote add octopress git@github.com:imathis/octopress.git
-git fetch octopress
-git merge octopress/master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;その後、bundle installすれば終了…のはずでしたが、1つ落とし穴がありました。&lt;br /&gt;
-Jekyllがアップデートされたため、日付を出力するdate_time_htmlが変更されていました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/imathis/octopress/pull/1643/files&#34;&gt;https://github.com/imathis/octopress/pull/1643/files&lt;/a&gt;&lt;br /&gt;
-そのため、これを直すことで、無事アップデートは終了になりました。&lt;/p&gt;
-
-&lt;p&gt;date_time_htmlが無くなったことはすぐに発見できましたが、&lt;br /&gt;
-このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。&lt;br /&gt;
-Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、&lt;br /&gt;
-その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…&lt;/p&gt;
-</description>
+      <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。
+だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、
+forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。
+ブログ用リポジトリの状態 このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。
+https://github.com/ota42y/ota42y.github.io
+ですが、これはOctopressの出力先のリポジトリであり、
+bitbucket上にOctopress自体のリポジトリが存在します。
+このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。
+Octopressのアップデート 普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。
+その後、Octopress側のmasterとマージをするだけになります。
+git remote add octopress git@github.com:imathis/octopress.git git fetch octopress git merge octopress/master  その後、bundle installすれば終了…のはずでしたが、1つ落とし穴がありました。
+Jekyllがアップデートされたため、日付を出力するdate_time_htmlが変更されていました。
+https://github.com/imathis/octopress/pull/1643/files
+そのため、これを直すことで、無事アップデートは終了になりました。
+date_time_htmlが無くなったことはすぐに発見できましたが、
+このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。
+Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、
+その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…</description>
     </item>
     
     <item>
@@ -57,35 +43,24 @@ Rubyの特徴上、変数にあらゆるオブジェクトが入る事がある�
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2013/09/25/octopress/</guid>
-      <description>&lt;p&gt;前までブログシステムにはWordpressを使っていたんですが、&lt;br /&gt;
-個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。&lt;/p&gt;
-
-&lt;p&gt;そこで、ちょっと話題になってる(らしい)&lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt;を導入してみました。&lt;/p&gt;
-
-&lt;p&gt;#Octopressって何？
-&lt;a href=&#34;http://jekyllrb.com/&#34;&gt;jekyll&lt;/a&gt;を使って、&lt;br /&gt;
-github pages上で簡単にブログを作れるシステムらしいです。&lt;/p&gt;
-
-&lt;p&gt;テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、&lt;br /&gt;
-githubのへデプロイすることでweb上に公開できるシステムになります。&lt;/p&gt;
-
-&lt;p&gt;そのため、gitを使ってブログのデプロイやバックアップを作れるという、&lt;br /&gt;
-まさにプログラマー向けなブログシステムです。&lt;br /&gt;
-公式サイトにも、A blogging framework for hackersって書いてありますしね。&lt;/p&gt;
-
-&lt;p&gt;インストールの仕方は&lt;a href=&#34;http://qiita.com/ota42y/items/dcb32930d1153aa9f452&#34;&gt;こっち&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;#運用方法
-デプロイする&lt;a href=&#34;https://github.com/ota42y/ota42y.github.io&#34;&gt;githubのリポジトリ&lt;/a&gt;には、このブログのファイルが全部入ってます。&lt;br /&gt;
-ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、&lt;br /&gt;
-このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。&lt;/p&gt;
-
-&lt;p&gt;そこで、公開用のリポジトリとは別に、&lt;br /&gt;
-Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。&lt;br /&gt;
-こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。&lt;/p&gt;
-
-&lt;p&gt;今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。&lt;/p&gt;
-</description>
+      <description>前までブログシステムにはWordpressを使っていたんですが、
+個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。
+そこで、ちょっと話題になってる(らしい)Octopressを導入してみました。
+#Octopressって何？ jekyllを使って、
+github pages上で簡単にブログを作れるシステムらしいです。
+テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、
+githubのへデプロイすることでweb上に公開できるシステムになります。
+そのため、gitを使ってブログのデプロイやバックアップを作れるという、
+まさにプログラマー向けなブログシステムです。
+公式サイトにも、A blogging framework for hackersって書いてありますしね。
+インストールの仕方はこっち
+#運用方法 デプロイするgithubのリポジトリには、このブログのファイルが全部入ってます。
+ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、
+このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。
+そこで、公開用のリポジトリとは別に、
+Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。
+こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。
+今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。</description>
     </item>
     
   </channel>

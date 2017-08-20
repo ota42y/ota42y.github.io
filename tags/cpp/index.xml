@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cpp on おおたの物置</title>
-    <link>http://ota42y.com/tags/cpp/index.xml</link>
+    <link>http://ota42y.com/tags/cpp/</link>
     <description>Recent content in Cpp on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jan 2016 14:45:49 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>オーバーライドとオーバーロードは全く別物</title>
@@ -14,201 +17,10 @@
       <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2016/01/31/override-overload/</guid>
-      <description>
-
-&lt;p&gt;EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;オーバーライドされたvirtualなメソッド呼び出しは実行時に決定
-
-&lt;ul&gt;
-&lt;li&gt;実態が子クラスなら、親クラスとして扱っても子クラスのメソッドが実行される&lt;/li&gt;
-&lt;li&gt;実態が孫クラスの場合は孫クラスのメソッドが呼ばれる&lt;/li&gt;
-&lt;li&gt;親から子、孫へと呼び出される関数が探されていく感じ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;オーバーロードされたメソッド呼び出しはコンパイル時に決定
-
-&lt;ul&gt;
-&lt;li&gt;virtual関数のように実態で切り替えが出来ない&lt;/li&gt;
-&lt;li&gt;実態が子クラスでも、親クラスとして扱うなら親クラスのメソッドが実行される&lt;/li&gt;
-&lt;li&gt;一致するものが無い場合は親クラスにキャストして一致するものを探す&lt;/li&gt;
-&lt;li&gt;子から親へと一致するものを探していく感じ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;オーバーライドとは&#34;&gt;オーバーライドとは&lt;/h1&gt;
-
-&lt;p&gt;メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。
-C++では親クラスでvirtualにされているメソッドをオーバーライドすると、
-子クラスのオブジェクトを親クラスにキャストしてメソッドを呼び出しても、再定義された子クラスのメソッドが呼ばれます。
-(virtualをつけないと親クラスのメソッドが呼ばれます)&lt;/p&gt;
-
-&lt;p&gt;たとえば以下のコードでは、オーバーライドされているためExtのshowメソッドが実行され、「show ext」が表示されます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;cstdio&amp;gt;
-
-class Base {
-public:
-  virtual void show() { printf(&amp;quot;show base\n&amp;quot;); }
-};
-
-class Ext: public Base {
-public:
-  virtual void show() { printf(&amp;quot;show ext\n&amp;quot;); }
-};
-
-int main() {
-    Ext *e = new Ext();
-    Base *b = static_cast&amp;lt;Base*&amp;gt;(e);
-    b-&amp;gt;show();
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このように、オーバーライドされたメソッドは実行時にどのメソッドが呼ばれるか決定されます。&lt;/p&gt;
-
-&lt;h1 id=&#34;オーバーロードとは&#34;&gt;オーバーロードとは&lt;/h1&gt;
-
-&lt;p&gt;一方、似たような名前でオーバーロードというものもあります。
-こちらは継承とは特に関係なく、同じメソッド名で引数の違うものを定義しておくと、
-引数の種類をみて自動的に一致するメソッドが実行されます。&lt;/p&gt;
-
-&lt;p&gt;たとえば以下の場合、呼び出しているのはprintという名前の関数ですが、
-それぞれ引数が一致する関数が呼ばれるため、base、extと表示されます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;cstdio&amp;gt;
-
-class Base { };
-
-class Ext: public Base { };
-
-void print(Base *b) {printf(&amp;quot;base\n&amp;quot;);}
-void print(Ext *b) {printf(&amp;quot;ext\n&amp;quot;);}
-
-int main() {
-    Ext *e = new Ext();
-    Base *b = new Base();
-    print(e);
-    print(b);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;オーバーロードはコンパイル時決定&#34;&gt;オーバーロードはコンパイル時決定&lt;/h2&gt;
-
-&lt;p&gt;オーバーライドを見ているとオーバーロードも実行時にどれを呼び出すか決定していそうですが、
-実際はコンパイル時にすでにどれが呼び出されるか決定しています。&lt;/p&gt;
-
-&lt;p&gt;そのため、以下のように実態が子クラスだとしても、親クラスとして引数に渡した場合、親クラスのメソッドが呼ばれます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;cstdio&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-class Base {
-public:
-  virtual void show() { printf(&amp;quot;show base\n&amp;quot;); }
-};
-
-class Ext: public Base {
-public:
-  virtual void show() { printf(&amp;quot;show ext\n&amp;quot;); }
-};
-
-void print(Base *b) {printf(&amp;quot;base\n&amp;quot;);}
-void print(Ext *b) {printf(&amp;quot;ext\n&amp;quot;);}
-
-
-int main() {
-std::vector&amp;lt;Base*&amp;gt; b;
-b.push_back(new Base());
-b.push_back(new Ext());
-
-for (int i=0; i &amp;lt; b.size(); ++i){
-  print(b.at(i));
-  b.at(i)-&amp;gt;show();
-  }
-
- return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;出力は以下の通りです&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;base
-show base
-base
-show ext
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;ただし親クラスは検索対象になる&#34;&gt;ただし親クラスは検索対象になる&lt;/h2&gt;
-
-&lt;p&gt;一方でオーバーロードは型が一致するものが無い場合は引数として渡されたクラスの継承ツリーをたどり、一致する親クラスを探してそれにキャストして実行してくれます。
-もちろん親クラスから子クラスへはコンパイル時にはわからないため、子クラスから親クラスに検索を行います。
-そのため、以下のコードは「ext」と表示されます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;cstdio&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-class Base {
-};
-
-class Ext: public Base {
-};
-
-class ExtExt: public Ext {
-};
-
-void print(Base *b) {printf(&amp;quot;base\n&amp;quot;);}
-void print(Ext *b) {printf(&amp;quot;ext\n&amp;quot;);}
-
-int main() {
-    ExtExt *b = new ExtExt();
-    print(b);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;一意に定まらない場合&#34;&gt;一意に定まらない場合&lt;/h2&gt;
-
-&lt;p&gt;なお、本当にどっちか決められない場合はambiguousというエラーになります&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;cstdio&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-class InterA{
-public:
-    virtual void interA() = 0;
-};
-
-class InterB{
-public:
-    virtual void interB() = 0;
-};
-
-class Base : public InterA, public InterB {
-public:
-  virtual void interA() { printf(&amp;quot;interA\n&amp;quot;); }
-  virtual void interB() { printf(&amp;quot;interB\n&amp;quot;); }
-};
-
-
-void print(InterA *i) { i-&amp;gt;interA(); }
-void print(InterB *i) { i-&amp;gt;interB(); }
-
-int main() {
-    Base *b = new Base();
-    print(b);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;test.cpp:26:5: error: call to &#39;print&#39; is ambiguous
-    print(b);
-    ^~~~~
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…
+まとめ  オーバーライドされたvirtualなメソッド呼び出しは実行時に決定  実態が子クラスなら、親クラスとして扱っても子クラスのメソッドが実行される 実態が孫クラスの場合は孫クラスのメソッドが呼ばれる 親から子、孫へと呼び出される関数が探されていく感じ  オーバーロードされたメソッド呼び出しはコンパイル時に決定  virtual関数のように実態で切り替えが出来ない 実態が子クラスでも、親クラスとして扱うなら親クラスのメソッドが実行される 一致するものが無い場合は親クラスにキャストして一致するものを探す 子から親へと一致するものを探していく感じ   オーバーライドとは メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。 C++では親クラスでvirtualにされているメソッドをオーバーライドすると、 子クラスのオブジェクトを親クラスにキャストしてメソッドを呼び出しても、再定義された子クラスのメソッドが呼ばれます。 (virtualをつけないと親クラスのメソッドが呼ばれます)
+たとえば以下のコードでは、オーバーライドされているためExtのshowメソッドが実行され、「show ext」が表示されます。
+#include &amp;lt;cstdio&amp;gt; class Base { public: virtual void show() { printf(&amp;quot;show base\n&amp;quot;); } }; class Ext: public Base { public: virtual void show() { printf(&amp;quot;show ext\n&amp;quot;); } }; int main() { Ext *e = new Ext(); Base *b = static_cast&amp;lt;Base*&amp;gt;(e); b-&amp;gt;show(); return 0; }  このように、オーバーライドされたメソッドは実行時にどのメソッドが呼ばれるか決定されます。</description>
     </item>
     
     <item>
@@ -217,148 +29,18 @@ int main() {
       <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
-      <description>
-
-&lt;p&gt;CEDEC2015では、&lt;a href=&#34;http://www.coverity.com/html_ja/&#34;&gt;Coverity社&lt;/a&gt;のブースでバグのあるコードが掲示されていました。&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;バグが入ったC++コードらしい。&lt;a href=&#34;https://twitter.com/hashtag/CEDEC2015?src=hash&#34;&gt;#CEDEC2015&lt;/a&gt; &lt;a href=&#34;http://t.co/ca9vb0emVT&#34;&gt;pic.twitter.com/ca9vb0emVT&lt;/a&gt;&lt;/p&gt;&amp;mdash; alwei (@aizen76) &lt;a href=&#34;https://twitter.com/aizen76/status/636434428563054593&#34;&gt;2015, 8月 26&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;バグがあるかどうかはCoverityが検出してくれるとして、じゃあどう解決すれば良いのか？を考えました。&lt;/p&gt;
-
-&lt;p&gt;コードを見る限り、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;配列の添え字と同じ値を入れたい&lt;/li&gt;
-&lt;li&gt;処理は2つのクラスで共通化したい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という要求があると考えます。&lt;br /&gt;
-(zに値を入れないが元コードもそうなのでよしとする)&lt;/p&gt;
-
-&lt;p&gt;また、簡単化のために与えられるデータは全て正しいと仮定します。&lt;br /&gt;
-(実際は適切な箇所でエラーチェックが必要)&lt;/p&gt;
-
-&lt;h1 id=&#34;テンプレートでキャストを回避する&#34;&gt;テンプレートでキャストを回避する&lt;/h1&gt;
-
-&lt;p&gt;今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、&lt;br /&gt;
-キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-
-class base_class {
-public:
-  base_class() { x = 0; y = 0; }
-
-public:
-  int x ;
-  int y;
-};
-
-class derived_class : public base_class {
-public:
-  derived_class() { z = 0; }
-
-public:
-  int z;
-};
-
-template &amp;lt;typename T&amp;gt;
-void calc_class_members(T b, int array_size)
-{
-  for(int i = 0; i &amp;lt; array_size; i++)
-  {
-    b[i].x = i;
-    b[i].y = i;
-  }
-}
-
-int update_class_members(
-  derived_class * class_array,
-  int num_array )
-{
-  if( class_array == NULL)
-    return -1;
-
-  calc_class_members(class_array, num_array);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;アドレス計算を先にする&#34;&gt;アドレス計算を先にする&lt;/h1&gt;
-
-&lt;p&gt;型が違う状態でアドレス計算しているのが問題なので、アドレス計算部分を外に出してしまう方法です。&lt;br /&gt;
-関数ではなくクラスにメソッドとして持たせるとより良さそうです。&lt;/p&gt;
-
-&lt;p&gt;ただしこの場合、他の誰かが元コードのような処理を書くことを防げません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void calc_class_member(base_class *b, int i)
-{
-  b-&amp;gt;x = i;
-  b-&amp;gt;y = i;
-}
-
-int update_class_members(
-  derived_class *class_array,
-  int num_array )
-{
-  if( class_array == NULL)
-    return -1;
-
-  for(int i = 0; i &amp;lt; num_array; i++){
-	calc_class_member(&amp;amp;class_array[i], i);
-  }
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;設計から変える&#34;&gt;設計から変える&lt;/h1&gt;
-
-&lt;p&gt;意図的にバグを入れているコードに対して、全体を書き換えるのはナンセンスな気がしますが、&lt;br /&gt;
-たぶんこういうことをする前提なら最も良い書き方はこうではないかと。&lt;/p&gt;
-
-&lt;p&gt;おおよそ上の通りですが、vectorの場合は中身の型が違うvectorにキャストされないため、&lt;br /&gt;
-型が違う状態でアドレス計算が行われることはありません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;vector&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
-
-class base_class {
-public:
-  base_class() { x = 0; y = 0; }
-
-  void calc_class_member(int i)
-  {
-    x = i;
-    y = i;
-  }
-
-public:
-  int x ;
-  int y;
-};
-
-class derived_class : public base_class {
-public:
-  derived_class() { z = 0; }
-
-public:
-  int z;
-};
-
-
-void update_class_members(std::vector&amp;lt;derived_class&amp;gt; &amp;amp;a)
-{
-  size_t size = a.size();
-  for(size_t i = 0; i &amp;lt; size; ++i)
-  {
-    a.at(i).calc_class_member(static_cast&amp;lt;int&amp;gt;(i));
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。
+バグが入ったC++コードらしい。#CEDEC2015 pic.twitter.com/ca9vb0emVT
+&amp;mdash; alwei (@aizen76) 2015, 8月 26 
+バグがあるかどうかはCoverityが検出してくれるとして、じゃあどう解決すれば良いのか？を考えました。
+コードを見る限り、
+ 配列の添え字と同じ値を入れたい 処理は2つのクラスで共通化したい  という要求があると考えます。
+(zに値を入れないが元コードもそうなのでよしとする)
+また、簡単化のために与えられるデータは全て正しいと仮定します。
+(実際は適切な箇所でエラーチェックが必要)
+テンプレートでキャストを回避する 今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、
+キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。
+#include &amp;lt;stdio.h&amp;gt; class base_class { public: base_class() { x = 0; y = 0; } public: int x ; int y; }; class derived_class : public base_class { public: derived_class() { z = 0; } public: int z; }; template &amp;lt;typename T&amp;gt; void calc_class_members(T b, int array_size) { for(int i = 0; i &amp;lt; array_size; i++) { b[i].</description>
     </item>
     
     <item>
@@ -367,61 +49,11 @@ void update_class_members(std::vector&amp;lt;derived_class&amp;gt; &amp;amp;a)
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/08/20/c-struct/</guid>
-      <description>
-
-&lt;p&gt;以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。&lt;br /&gt;
-ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
-
-struct St{
-	int a;
-	bool flag;
-	};
-
-struct StSt{
-	S s;
-	bool f;
-};
-
-int main(void) {
-	printf(&amp;quot;%lu\n&amp;quot;, sizeof(St));
-	printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt));
-	return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;原因&#34;&gt;原因&lt;/h1&gt;
-
-&lt;p&gt;Cでは構造体の後ろにパディングを追加できるようになっています。&lt;br /&gt;
-&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;6.7.2.1 Structure and union specifiers&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;13 Within a structure object, the non-bit-field members and the units in which bit-fields
-reside have addresses that increase in the order in which they are declared. A pointer to a
-structure object, suitably converted, points to its initial member (or if that member is a
-bit-field, then to the unit in which it resides), and vice versa. There may be unnamed
-padding within a structure object, but not at its beginning.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;そのため、sizeofがパディングを含めた値を返し、変数の合計とは違った値を返してきます。&lt;br /&gt;
-このように、Cの構造体の大きさはではメンバの合計とは違うため、ちゃんとsizeofを使って計算しないと大変な事になります。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;参考資料&#34;&gt;参考資料&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards.html&#34;&gt;ISO/IEC JTC1/SC22/WG14 - C: Approved standards&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;WG14 N1256&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://www.jpcert.or.jp/sc-rules/c-exp03-c.html&#34;&gt;EXP03-C. 構造体のサイズが構造体のメンバのサイズの和に等しいと決めてかからない&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。
+ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。
+#include &amp;quot;stdio.h&amp;quot; struct St{ int a; bool flag; }; struct StSt{ S s; bool f; }; int main(void) { printf(&amp;quot;%lu\n&amp;quot;, sizeof(St)); printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt)); return 0; }  原因 Cでは構造体の後ろにパディングを追加できるようになっています。
+6.7.2.1 Structure and union specifiers
+13 Within a structure object, the non-bit-field members and the units in which bit-fields reside have addresses that increase in the order in which they are declared. A pointer to a structure object, suitably converted, points to its initial member (or if that member is a bit-field, then to the unit in which it resides), and vice versa.</description>
     </item>
     
     <item>
@@ -430,195 +62,17 @@ padding within a structure object, but not at its beginning.
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
-      <description>
-
-&lt;p&gt;C言語でのスレッド処理と、ロックの仕方をまとめました。&lt;br /&gt;
-他の言語のようにスレッド用のクラスを継承するのでは無く、&lt;br /&gt;
-別スレッドで実行する関数のポインタと、&lt;br /&gt;
-その関数に渡すデータのポインタを指定して実行するようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;スレッドによる並行処理&#34;&gt;スレッドによる並行処理&lt;/h1&gt;
-
-&lt;h2 id=&#34;スレッドの作成-pthread-create&#34;&gt;スレッドの作成(pthread_create)&lt;/h2&gt;
-
-&lt;p&gt;Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_create(pthread_t * thread,
-	 pthread_attr_t * attr,
-	 void * (*start_routine)(void *),
-	 void * arg);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;thread
-
-&lt;ul&gt;
-&lt;li&gt;スレッド管理用のpthread_t型の変数&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;attr
-
-&lt;ul&gt;
-&lt;li&gt;スレッドの属性を指定する。&lt;/li&gt;
-&lt;li&gt;NULLの場合はデフォルトが使われる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;(*start_routine)(void *)
-
-&lt;ul&gt;
-&lt;li&gt;別スレッドから呼び出される関数へのポインタ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;arg
-
-&lt;ul&gt;
-&lt;li&gt;start_routineの引数として渡すデータのポインタ&lt;/li&gt;
-&lt;li&gt;元のスレッドからデータを送るのに使う&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;スレッドの終了を待つ-pthread-join&#34;&gt;スレッドの終了を待つ(pthread_join)&lt;/h2&gt;
-
-&lt;p&gt;pthread_joinで、指定したスレッドが終了するまで待機することができます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int pthread_join(pthread_t th, void **thread_return);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;th
-
-&lt;ul&gt;
-&lt;li&gt;待機するスレッドをpthread_t型の変数で指定する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;**thread_return
-
-&lt;ul&gt;
-&lt;li&gt;スレッドの戻り値を格納する領域&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h2&gt;
-
-&lt;p&gt;以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。&lt;br /&gt;
-排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。&lt;/p&gt;
-
-&lt;p&gt;実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。&lt;/p&gt;
-
-&lt;p&gt;なお、コンパイルする際はは-pthreadオプションを指定する必要があります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
-#include &amp;quot;pthread.h&amp;quot;
-
-int a = 0;
-
-void *func_thread(void *p) {
-  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-	int next = a + 1;
-	int now = a;
-	a = next;
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  return 0;
-}
-
-int main(void) {
-  printf(&amp;quot;test\n&amp;quot;);
-
-  int b = 42;
-
-  pthread_t pthread;
-  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-	int next = a + 1;
-	int now = a;
-	a = next;
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
-  printf(&amp;quot;a=%d\n&amp;quot;, a);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;mutexによるロック処理&#34;&gt;mutexによるロック処理&lt;/h1&gt;
-
-&lt;h2 id=&#34;排他制御を行う&#34;&gt;排他制御を行う&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数に対して、&lt;code&gt;pthread_mutex_lock&lt;/code&gt;、&lt;code&gt;pthread_mutex_unlock&lt;/code&gt;を実行することで、&lt;br /&gt;
-処理をロックすることができます。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pthread_mutex_t&lt;/code&gt;型の変数は&lt;code&gt;pthread_mutex_init&lt;/code&gt;で初期化することができます。&lt;br /&gt;
-このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。&lt;/p&gt;
-
-&lt;h2 id=&#34;サンプルコード-1&#34;&gt;サンプルコード&lt;/h2&gt;
-
-&lt;p&gt;上記の例にロックによる排他制御を入れました。&lt;br /&gt;
-そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdio.h&amp;quot;
-#include &amp;quot;pthread.h&amp;quot;
-
-int a = 0;
-pthread_mutex_t mutex;
-
-void *func_thread(void *p) {
-  printf(&amp;quot;start %d\n&amp;quot;, *(int*)p);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-    pthread_mutex_lock(&amp;amp;mutex);
-	int next = a + 1;
-	int now = a;
-	a = next;
-    pthread_mutex_unlock(&amp;amp;mutex);
-
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  return 0;
-}
-
-int main(void) {
-  pthread_mutex_init(&amp;amp;mutex, NULL);
-  
-  printf(&amp;quot;test\n&amp;quot;);
-
-  int b = 42;
-
-  pthread_t pthread;
-  pthread_create( &amp;amp;pthread, NULL, &amp;amp;func_thread, &amp;amp;b);
-
-  int i=0;
-  for(i=0; i &amp;lt; 10000; i++){
-    pthread_mutex_lock(&amp;amp;mutex);
-	int next = a + 1;
-	int now = a;
-	a = next;
-    pthread_mutex_unlock(&amp;amp;mutex);
-
-	if (now+1 != next) {
-	  printf(&amp;quot;other theard change %d %d\n&amp;quot;, a+1, next);
-	}
-  }
-
-  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
-  printf(&amp;quot;a=%d\n&amp;quot;, a);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。
+他の言語のようにスレッド用のクラスを継承するのでは無く、
+別スレッドで実行する関数のポインタと、
+その関数に渡すデータのポインタを指定して実行するようです。
+スレッドによる並行処理 スレッドの作成(pthread_create) Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。
+int pthread_create(pthread_t * thread, pthread_attr_t * attr, void * (*start_routine)(void *), void * arg);   thread  スレッド管理用のpthread_t型の変数  attr  スレッドの属性を指定する。 NULLの場合はデフォルトが使われる  (*start_routine)(void *)  別スレッドから呼び出される関数へのポインタ  arg  start_routineの引数として渡すデータのポインタ 元のスレッドからデータを送るのに使う   スレッドの終了を待つ(pthread_join) pthread_joinで、指定したスレッドが終了するまで待機することができます。
+int pthread_join(pthread_t th, void **thread_return);   th  待機するスレッドをpthread_t型の変数で指定する  **thread_return  スレッドの戻り値を格納する領域   サンプルコード 以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。
+排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。
+実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。
+なお、コンパイルする際はは-pthreadオプションを指定する必要があります。
+#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;pthread.</description>
     </item>
     
     <item>
@@ -627,126 +81,18 @@ int main(void) {
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
-      <description>
-
-&lt;p&gt;昨日の記事で、インライン展開について調べましたが、&lt;br /&gt;
-よくよく考えると片手落ちだったので追加調査しました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2015/01/05/c-inline/&#34;&gt;インライン展開がどう展開されるのかを調べた&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;調査内容&#34;&gt;調査内容&lt;/h1&gt;
-
-&lt;p&gt;昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、&lt;br /&gt;
-同じファイル内でどのようになるかは調べていませんでしたので、&lt;br /&gt;
-追加調査しました。&lt;/p&gt;
-
-&lt;p&gt;方法は昨日と同じく、-Sオプションをつけて結果を見ます。&lt;/p&gt;
-
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
-
-&lt;p&gt;以下のようなファイルを使います&lt;/p&gt;
-
-&lt;p&gt;test.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;quot;func.h&amp;quot;
-
-int main() {
-  TestA test;
-  int a = test.getDirect();
-  int b = test.getThrough();
-  printf(&amp;quot;%d %d\n&amp;quot;, a, b);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.h&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
-public:
-  int getDirect();
-  int getThrough();
-private:
-  int getPrivate();
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
-
-int TestA::getDirect(){
-  return 42;
-}
-
-int TestA::getThrough(){
-  return getDirect() + getPrivate();
-}
-
-int TestA::getPrivate(){
-  return 73;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cppのgetThrough関数に対して、インライン展開が行われる事が予想されますが、&lt;br /&gt;
-getDirect関数は外部からも呼ばれるため、展開しても関数そのものは必要です。&lt;br /&gt;
-getPrivate関数は外部から呼ばれないため、インライン展開後に消してしまう可能性があります。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化しない場合&#34;&gt;最適化しない場合&lt;/h1&gt;
-
-&lt;p&gt;3つの関数は全て普通にコンパイルされました。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化した場合&#34;&gt;最適化した場合&lt;/h1&gt;
-
-&lt;h2 id=&#34;同じファイル内のインライン展開&#34;&gt;同じファイル内のインライン展開&lt;/h2&gt;
-
-&lt;p&gt;getThrough関数は以下のようになりました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;__ZN5TestA10getThroughEv:               ## @_ZN5TestA10getThroughEv
-pushq	%rbp
-movq	%rsp, %rbp
-movl	$115, %eax
-popq	%rbp
-retq
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;42+73=115なので、インライン展開と最適化がされているのがわかります。&lt;br /&gt;
-そのため、同じファイル内なら、ヘッダに書いていなくても勝手にインライン展開されるみたいです。&lt;/p&gt;
-
-&lt;p&gt;よくよく考えると、includeが処理されるのはプリプロセスのタイミングで処理されます。&lt;br /&gt;
-そのため、コンパイラは全てのヘッダファイルが展開された状態のテキストしか受け取りません。&lt;br /&gt;
-なので、どのファイルに関数が書かれているかは関係ないと思われます。&lt;/p&gt;
-
-&lt;h2 id=&#34;インライン展開後の関数&#34;&gt;インライン展開後の関数&lt;/h2&gt;
-
-&lt;p&gt;getDirect関数とgetPrivate関数ですが、どちらも最適化していない場合と同じく、&lt;br /&gt;
-関数が出力されていました。&lt;/p&gt;
-
-&lt;p&gt;getDirect関数はpublic指定されているため、&lt;br /&gt;
-外部から参照される場合のために展開後も関数が残されるのは予想通りです。&lt;/p&gt;
-
-&lt;p&gt;getPrivate関数はprivate指定されているため継承先のクラスから呼ばれることはなく、&lt;br /&gt;
-かつこのクラスはfriend指定もされていないため、外部から呼び出されることはありません。&lt;br /&gt;
-そのため、インライン展開後をして同じクラス内から呼ばれないことが確定した時点で、&lt;br /&gt;
-この関数を出力する必要は無さそうなのですが、なぜ消さないのかは不明です。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;同じファイル内でもインライン展開は行われる
-
-&lt;ul&gt;
-&lt;li&gt;O3ならinline宣言とか要らない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;インライン展開しても、展開元の関数は残る
-
-&lt;ul&gt;
-&lt;li&gt;ヘッダファイルに書いた関数は展開元が消えたので挙動が違う&lt;/li&gt;
-&lt;li&gt;publicはリンクされるまで呼ばれるかわからないので消せない&lt;/li&gt;
-&lt;li&gt;privateは呼ばれない事が確定するはずだが何故か消さない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>昨日の記事で、インライン展開について調べましたが、
+よくよく考えると片手落ちだったので追加調査しました。
+インライン展開がどう展開されるのかを調べた
+調査内容 昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、
+同じファイル内でどのようになるかは調べていませんでしたので、
+追加調査しました。
+方法は昨日と同じく、-Sオプションをつけて結果を見ます。
+ソースコード 以下のようなファイルを使います
+test.cpp
+#include &amp;lt;stdio.h&amp;gt; #include &amp;quot;func.h&amp;quot; int main() { TestA test; int a = test.getDirect(); int b = test.getThrough(); printf(&amp;quot;%d %d\n&amp;quot;, a, b); return 0; }  func.h
+class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(); };  func.cpp
+#include &amp;quot;func.h&amp;quot; int TestA::getDirect(){ return 42; } int TestA::getThrough(){ return getDirect() + getPrivate(); } int TestA::getPrivate(){ return 73; }  func.</description>
     </item>
     
     <item>
@@ -755,230 +101,18 @@ retq
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2015/01/05/c-inline/</guid>
-      <description>
-
-&lt;p&gt;C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、&lt;br /&gt;
-関数呼び出しのオーバーヘッドを削減する、インライン展開をします。&lt;/p&gt;
-
-&lt;p&gt;インライン展開はコンパイル時にされるため、&lt;br /&gt;
-実際に行われたのか、どう行われているかは出力されません。&lt;/p&gt;
-
-&lt;p&gt;そのため、コンパイルたコードがどうなってるかを調べ、&lt;br /&gt;
-インライン展開がどう展開しているのかを調べました。&lt;/p&gt;
-
-&lt;p&gt;なお、アセンブラに関してはほとんど説明しません。&lt;br /&gt;
-「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。&lt;/p&gt;
-
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
-
-&lt;p&gt;以下のソースコードを使います&lt;/p&gt;
-
-&lt;p&gt;test.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;stdio.h&amp;quot;
-#include &amp;quot;func.h&amp;quot;
-
-int main(){
-  TestA test;
-  int a = test.getNumInCpp();
-  int b = test.getNumInH();
-  int c = test.getNumInline();
-  int d = test.getNumCallCpp();
-  printf(&amp;quot;%d %d %d %d\n&amp;quot;, a, b, c, d);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.h&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class TestA{
-  private:
-  int privateFunc();
-
-  public:
-  int getNumInCpp();
-
-  int getNumInH() {
-    return 42;
-  }
-
-  int getNumCallCpp(){
-    return privateFunc() + getNumInH();
-  }
-
-  int getNumInline();
-
-  //int getNumNormal();
-};
-
-inline int TestA::getNumInline(){return 321;}
-
-// そもそも定義できない
-// int TestA::getNumNormal(){return 111;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;func.cpp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;quot;func.h&amp;quot;
-
-int TestA::privateFunc(){
-  return 123;
-}
-
-int TestA::getNumInCpp() {
-  return 73 + getNumInH();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;内容としては、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;getNumInCpp()
-
-&lt;ul&gt;
-&lt;li&gt;cpp内に関数の中身が書かれている&lt;/li&gt;
-&lt;li&gt;cpp内のものはインライン展開されないはず&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;getNumInH()
-
-&lt;ul&gt;
-&lt;li&gt;ヘッダファイル内に関数の中身が置かれている&lt;/li&gt;
-&lt;li&gt;インライン展開される&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;getNumInline()
-
-&lt;ul&gt;
-&lt;li&gt;インライン不可能なprivateメソッドと、cpp内の関数を呼ぶ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;getNumCallCpp()
-
-&lt;ul&gt;
-&lt;li&gt;明示的にインライン展開指定をしたもの&lt;/li&gt;
-&lt;li&gt;インライン展開される&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;になります。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化しない場合&#34;&gt;最適化しない場合&lt;/h1&gt;
-
-&lt;p&gt;まずは最適化オプションをつけずにコンパイルしました。&lt;br /&gt;
-&lt;code&gt;g++ -S test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;そのため、インライン展開はされません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;subq	$32, %rsp
-leaq	-8(%rbp), %rdi
-movl	$0, -4(%rbp)
-callq	__ZN5TestA11getNumInCppEv # (変数aの計算)
-leaq	-8(%rbp), %rdi
-movl	%eax, -12(%rbp)
-callq	__ZN5TestA9getNumInHEv # (変数bの計算)
-leaq	-8(%rbp), %rdi
-movl	%eax, -16(%rbp)
-callq	__ZN5TestA12getNumInlineEv # (変数cの計算)
-leaq	-8(%rbp), %rdi
-movl	%eax, -20(%rbp)
-callq	__ZN5TestA13getNumCallCppEv # (変数dの計算)
-leaq	L_.str(%rip), %rdi
-movl	%eax, -24(%rbp)
-movl	-12(%rbp), %esi
-movl	-16(%rbp), %edx
-movl	-20(%rbp), %ecx
-movl	-24(%rbp), %r8d
-movb	$0, %al
-callq	_printf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;callqで4種類の関数を全て呼び出しているのがわかります。&lt;br /&gt;
-インライン展開はされていないため、func.hやfunc.cppで直接書いている数値はどこにも出てきません。&lt;/p&gt;
-
-&lt;h1 id=&#34;最適化した場合&#34;&gt;最適化した場合&lt;/h1&gt;
-
-&lt;p&gt;O3オプションをつけてインライン展開されるようにしました。&lt;br /&gt;
-&lt;code&gt;g++ -S -O3 test.cpp func.cpp&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;なお、#で注釈を入れています&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;leaq	-24(%rbp), %rbx
-movq	%rbx, %rdi
-
-# getNumInCppの呼び出し(変数aの計算)
-callq	__ZN5TestA11getNumInCppEv
-movl	%eax, %r14d
-movq	%rbx, %rdi
-# privateFuncの呼び出し(変数dの計算)
-callq	__ZN5TestA11privateFuncEv
-# getNumInHの結果が直接書かれている(変数dの計算)
-leal	42(%rax), %r8d
-leaq	L_.str(%rip), %rdi
-# getNumInHの結果が直接書かれている(変数bの計算)
-movl	$42, %edx
-# getNumInlineの結果が直接書かれている(変数cの計算)
-movl	$321, %ecx
-xorl	%eax, %eax
-movl	%r14d, %esi
-
-# printfの呼び出し
-callq	_printf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;最適化した場合、関数呼び出しの量も内容もかなり変化しています。&lt;/p&gt;
-
-&lt;p&gt;一番初めのgetNumInCpp関数はcppに書かれており、インライン展開が出来ないため、&lt;br /&gt;
-最適化しない場合と同じく関数呼び出しをしています。&lt;/p&gt;
-
-&lt;p&gt;次にprivateFunc関数の呼び出しを行っていますが、&lt;br /&gt;
-これはgetNumCallCpp関数が展開され、それ以上展開できないprivateFunc関数と、&lt;br /&gt;
-42を返すだけのgetNumInH関数がさらにインライン展開されたものと思われます。&lt;br /&gt;
-privateFunc関数はprivateメソッドですが、アセンブラではアクセス指定子は無視されます。&lt;/p&gt;
-
-&lt;p&gt;また、321を返すgetNumInline関数もインライン展開されて直接数値が書かれているのがわかります。&lt;/p&gt;
-
-&lt;p&gt;なお、ソースコード上で変数bやcに代入している部分は、&lt;br /&gt;
-直接値を書いてある状態と同じになるようにインライン展開されるため、&lt;br /&gt;
-コンパイラの最適化によって処理順番を入れ替えられ、printfへの呼び出し直前に移動させられています。&lt;/p&gt;
-
-&lt;h1 id=&#34;インライン指定しない場合のエラー&#34;&gt;インライン指定しない場合のエラー&lt;/h1&gt;
-
-&lt;p&gt;コメントアウトしてあるgetNumNormal関数は、ヘッダファイル内でインライン指定をせずに定義しています。&lt;br /&gt;
-このコメントアウトを戻すと、以下のエラーにより失敗します。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;duplicate symbol __ZN5TestA12getNumNormalEv in:
-/var/folders/md/b8zf203j65b0qt_t4439fdvm0000gp/T/test-837e1d.o
-/var/folders/md/b8zf203j65b0qt_t4439fdvm0000gp/T/func-c8b605.o
-ld: 1 duplicate symbol for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;sファイルの作成には成功するため調べてみたところ、
-getNumNormal関数がfunc.sとtest.s両方に定義されていました。&lt;/p&gt;
-
-&lt;p&gt;この関数はインライン展開されないため、func.hを読み込むtest.cppとfunc.cpp両方で定義されてしまい、&lt;br /&gt;
-duplicate symbolになっています。&lt;/p&gt;
-
-&lt;p&gt;インライン展開されるgetNumInline関数は、関数自体はどこにも定義されないため二重定義にはならず、&lt;br /&gt;
-問題なく動いているようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;最適化しないとインライン展開されない&lt;/li&gt;
-&lt;li&gt;hファイルの中に実装を書くとインライン展開される
-
-&lt;ul&gt;
-&lt;li&gt;そもそもインライン展開しないとduplicateになる&lt;/li&gt;
-&lt;li&gt;そのため、ヘッダに書いた関数は全てインライン展開されるはず?&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;cppファイルに実装を書くとインライン展開されない
-
-&lt;ul&gt;
-&lt;li&gt;include対象に入ってないのだからあたりまえ&lt;/li&gt;
-&lt;li&gt;複数のcppファイルに書かれた内容を繋げるのはリンク時なのでコンパイル後&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、
+関数呼び出しのオーバーヘッドを削減する、インライン展開をします。
+インライン展開はコンパイル時にされるため、
+実際に行われたのか、どう行われているかは出力されません。
+そのため、コンパイルたコードがどうなってるかを調べ、
+インライン展開がどう展開しているのかを調べました。
+なお、アセンブラに関してはほとんど説明しません。
+「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。
+ソースコード 以下のソースコードを使います
+test.cpp
+#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;func.h&amp;quot; int main(){ TestA test; int a = test.getNumInCpp(); int b = test.getNumInH(); int c = test.getNumInline(); int d = test.getNumCallCpp(); printf(&amp;quot;%d %d %d %d\n&amp;quot;, a, b, c, d); return 0; }  func.h
+class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumInH() { return 42; } int getNumCallCpp(){ return privateFunc() + getNumInH(); } int getNumInline(); //int getNumNormal(); }; inline int TestA::getNumInline(){return 321;} // そもそも定義できない // int TestA::getNumNormal(){return 111;}  func.</description>
     </item>
     
     <item>
@@ -987,50 +121,23 @@ duplicate symbolになっています。&lt;/p&gt;
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/08/size-t/</guid>
-      <description>&lt;p&gt;size_tが何bitになるかは環境によって定義が異なります。&lt;br /&gt;
-そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;string&amp;gt;
-
-int main () {
-  std::string test = &amp;quot;test text&amp;quot;;
-  unsigned int pos = 0;
-
-  printf(&amp;quot;size_t %lu\n&amp;quot;, sizeof(size_t));
-
-  pos = test.find(&amp;quot;ms&amp;quot;);
-  printf(&amp;quot;pos %lu, %lu\n&amp;quot;, (size_t)pos, std::string::npos);
-  if(pos != std::string::npos){
-    std::string text = test.substr(pos);
-    printf(&amp;quot;%s\n&amp;quot;, text.c_str());
-  }
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;std::stringのfindは引数の文字列が最初に出てくる位置か、見つからなかった場合にstd::string::nposを返します。&lt;br /&gt;
-この時、戻り値の型はsize_tになります。&lt;/p&gt;
-
-&lt;p&gt;size_tは32bit上ではunsigned intの別名として定義される事が多いため、上記のコードは問題なく動きます。&lt;br /&gt;
-ですが64bitにした場合、size_tはunsigned long(8bit)の別名として定義される事があるため、&lt;br /&gt;
-unsigned int(4bit)で表せない範囲の値だった場合はデータが一部消滅します。&lt;/p&gt;
-
-&lt;p&gt;さらに、std::string::nposは-1として定義されており、unsignedとして解釈した場合にはその値の最大値になります。&lt;br /&gt;
-size_tがunsigned intの場合、両者は同じ大きさのため特に意識する必要はありません。&lt;/p&gt;
-
-&lt;p&gt;ですが、size_tがunsigned longとして定義されている場合、その最大値はunsined intでは表せないため、&lt;br /&gt;
-データが消滅し、結果として比較に失敗するという事が起きます。&lt;/p&gt;
-
-&lt;p&gt;私の環境では、上記のコードは-1をunsigend intにした4294967295と,&lt;br /&gt;
--1をunsigend longにした18446744073709551615とを比較し、&lt;br /&gt;
-&lt;code&gt;test text&lt;/code&gt;の4294967295文字目にアクセスして異常終了します。&lt;/p&gt;
-
-&lt;p&gt;やっかいなことに、size_tをunsigned intではなくintに代入した場合、&lt;br /&gt;
--1は-1として解釈されるため、unsigend longと比較した際に最大値に変換されるため、上手くいってしまいます。&lt;/p&gt;
-
-&lt;p&gt;とはいえ、安全性を求めるならば、出来るだけsize_tはsize_tとして扱うようにした方がいいと思います。&lt;/p&gt;
-</description>
+      <description>size_tが何bitになるかは環境によって定義が異なります。
+そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。
+#include &amp;lt;string&amp;gt; int main () { std::string test = &amp;quot;test text&amp;quot;; unsigned int pos = 0; printf(&amp;quot;size_t %lu\n&amp;quot;, sizeof(size_t)); pos = test.find(&amp;quot;ms&amp;quot;); printf(&amp;quot;pos %lu, %lu\n&amp;quot;, (size_t)pos, std::string::npos); if(pos != std::string::npos){ std::string text = test.substr(pos); printf(&amp;quot;%s\n&amp;quot;, text.c_str()); } return 0; }  std::stringのfindは引数の文字列が最初に出てくる位置か、見つからなかった場合にstd::string::nposを返します。
+この時、戻り値の型はsize_tになります。
+size_tは32bit上ではunsigned intの別名として定義される事が多いため、上記のコードは問題なく動きます。
+ですが64bitにした場合、size_tはunsigned long(8bit)の別名として定義される事があるため、
+unsigned int(4bit)で表せない範囲の値だった場合はデータが一部消滅します。
+さらに、std::string::nposは-1として定義されており、unsignedとして解釈した場合にはその値の最大値になります。
+size_tがunsigned intの場合、両者は同じ大きさのため特に意識する必要はありません。
+ですが、size_tがunsigned longとして定義されている場合、その最大値はunsined intでは表せないため、
+データが消滅し、結果として比較に失敗するという事が起きます。
+私の環境では、上記のコードは-1をunsigend intにした4294967295と,
+-1をunsigend longにした18446744073709551615とを比較し、
+test textの4294967295文字目にアクセスして異常終了します。
+やっかいなことに、size_tをunsigned intではなくintに代入した場合、
+-1は-1として解釈されるため、unsigend longと比較した際に最大値に変換されるため、上手くいってしまいます。
+とはいえ、安全性を求めるならば、出来るだけsize_tはsize_tとして扱うようにした方がいいと思います。</description>
     </item>
     
     <item>
@@ -1039,88 +146,14 @@ size_tがunsigned intの場合、両者は同じ大きさのため特に意識�
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</guid>
-      <description>
-
-&lt;p&gt;int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、&lt;br /&gt;
-コンパイラもエラーにしない場合が多いです。&lt;br /&gt;
-ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、&lt;br /&gt;
-突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)&lt;/p&gt;
-
-&lt;h1 id=&#34;intからvoid型のポインタへの変換&#34;&gt;intからvoid型のポインタへの変換&lt;/h1&gt;
-
-&lt;p&gt;int型の値をvoid *を利用して保持したい場合、&lt;a href=&#34;http://ota42y.com/blog/2014/11/06/cpp-void-pointer/&#34;&gt;前の例&lt;/a&gt;のように、int型を保持するオブジェクトを作り、&lt;br /&gt;
-その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct Container{
-  void* data;
-};
-
-struct Num{
-  int n;
-};
-
-// int型を保存する
-Num* numPointer = new Num();
-numPointer-&amp;gt;n = 42;
-Container con;
-con.data = (void *)numPointer;
-
-
-// 42を取り出す
-int number = ((Num*)con.data)-&amp;gt;n;
-
-// newしたので必ず破棄する
-delete con.data;
-con.data = NULL;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ですが、世の中にはたまにvoid *にint型（やその他のプリミティブ型）を代入する不届き者がいます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int num = 42;
-
-Container con;
-con.data = (void*)num;
-
-// 42を取り出す
-int number = (int)con.data;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;void *はポインタのため、32bit環境ではvoid*は32bitであり、intも基本的には32bitで同じサイズのため、&lt;br /&gt;
-32bit環境に限れば問題なくコンパイル、実行が出来ます。&lt;br /&gt;
-(エラーになる場合は、g++ test.cpp -m32で32bitのみのコンパイルが出来ます)&lt;/p&gt;
-
-&lt;p&gt;ですが、当然ながら64bit環境ではvoid *は64bitのため、intが32bitの場合は足りない分が消滅します。&lt;br /&gt;
-多くのコンパイラでは64bitでコンパイルしようとしたときに、このキャストが行われるとエラーを出してくれますが、&lt;br /&gt;
-32bitのみコンパイルした場合は出してくれない場合があるため、&lt;br /&gt;
-対応しようとした時に大量のエラーに悩まされることになります…&lt;/p&gt;
-
-&lt;p&gt;このような場合は最初に述べたとおり、オブジェクトを作ってそのポインタを利用しましょう。&lt;/p&gt;
-
-&lt;h1 id=&#34;ポインタ型をint型に代入している場合&#34;&gt;ポインタ型をint型に代入している場合&lt;/h1&gt;
-
-&lt;p&gt;上記の例は32bitを64bitにしてから32bitに戻すため、キャストの仕様によっては問題なく動きます。&lt;br /&gt;
-ですが、以下のようにポインタをintにキャストした場合、64bit環境かつintが32bitの場合、&lt;br /&gt;
-intに入りきらない部分が消滅してしまうため、ポインタに戻しても正しく戻すことができません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;  char *str = &amp;quot;test&amp;quot;;
-  int a = (int)str;
-  const char *string = (char *)(a); // ここで不正なアドレスになる
-
-  printf(&amp;quot;%s\n&amp;quot;, string);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;この場合、メモリ破壊などといった特定しにくいエラーを引き起こすため、注意が必要です。&lt;br /&gt;
-ただし、例によってポインタとintサイズが同一の環境では問題なく動くため、&lt;br /&gt;
-そうでない環境に対応しようとした場合に悩まされる事になります。&lt;/p&gt;
-
-&lt;p&gt;一見するとあまり使わなそうな書き方ですが、フレームワークで用意されているクラスとかでvoid *が無い場合、&lt;br /&gt;
-クラスのポインタを持たせたいが為に、適当なint型に持たせる…みたいな事をやらかす輩がいますので、&lt;br /&gt;
-注意が必要です。&lt;/p&gt;
-
-&lt;p&gt;またそれ以外にも、ポインタに対して演算を行いたい場合に、int型に変換して計算をする場合があります。&lt;br /&gt;
-このような場合は、intptr_tかuintptr_tというポインタを扱う整数型が用意されており、&lt;br /&gt;
-こちらを使うことで32bitや64bitに適したサイズに変換されて扱うことができます。&lt;/p&gt;
-</description>
+      <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、
+コンパイラもエラーにしない場合が多いです。
+ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、
+突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)
+intからvoid型のポインタへの変換 int型の値をvoid *を利用して保持したい場合、前の例のように、int型を保持するオブジェクトを作り、
+その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。
+struct Container{ void* data; }; struct Num{ int n; }; // int型を保存する Num* numPointer = new Num(); numPointer-&amp;gt;n = 42; Container con; con.data = (void *)numPointer; // 42を取り出す int number = ((Num*)con.data)-&amp;gt;n; // newしたので必ず破棄する delete con.data; con.data = NULL;  ですが、世の中にはたまにvoid *にint型（やその他のプリミティブ型）を代入する不届き者がいます。
+int num = 42; Container con; con.data = (void*)num; // 42を取り出す int number = (int)con.data;  void *はポインタのため、32bit環境ではvoid*は32bitであり、intも基本的には32bitで同じサイズのため、</description>
     </item>
     
     <item>
@@ -1129,68 +162,22 @@ intに入りきらない部分が消滅してしまうため、ポインタに�
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</guid>
-      <description>
-
-&lt;p&gt;int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。&lt;br /&gt;
-ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、&lt;br /&gt;
-どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。&lt;br /&gt;
-（勿論、ポインタの示すアドレスに何があるかは異なります）&lt;/p&gt;
-
-&lt;p&gt;そのため、ポインタ専用の変数を利用することで、あらゆる型のポインタを同じ変数に代入することができます。&lt;/p&gt;
-
-&lt;p&gt;ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。&lt;br /&gt;
-C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。&lt;/p&gt;
-
-&lt;h1 id=&#34;汎用ポインタ&#34;&gt;汎用ポインタ&lt;/h1&gt;
-
-&lt;p&gt;void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。&lt;br /&gt;
-これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。&lt;/p&gt;
-
-&lt;p&gt;この場合、変数定義をvoid *型にしておき、使う前後に目的の型にキャストすることで、&lt;br /&gt;
-様々な型を1つの変数で扱うことが出来ます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct Container{
-  void* data;
-};
-
-struct Num{
-  int n;
-};
-
-const char* text = &amp;quot;text&amp;quot;;
-Container con1;
-con1.data = (void*)text; // dataにconst charのポインタを入れる
-
-Num* numPointer = new Num();
-numPointer-&amp;gt;n = 42;
-Container con2;
-con2.data = (void*)numPointer; // dataにNum型のポインタを入れる
-
-printf(&amp;quot;%s\n&amp;quot;, (const char*)con1.data); // 取り出す際にキャストする
-printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なお、違うポインタを違う型にキャストして使うと、メモリ破壊などの予期せぬエラーを引き起こしますが、&lt;br /&gt;
-構文上はvoid *から元の型に戻す際のキャストは全て正しいと処理されます。&lt;/p&gt;
-
-&lt;p&gt;そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。&lt;br /&gt;
-前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。&lt;/p&gt;
-
-&lt;h1 id=&#34;mallocの戻り値&#34;&gt;mallocの戻り値&lt;/h1&gt;
-
-&lt;p&gt;void *はmallocの戻り値としても使われています。&lt;br /&gt;
-&lt;a href=&#34;http://www.cplusplus.com/reference/cstdlib/malloc/&#34;&gt;http://www.cplusplus.com/reference/cstdlib/malloc/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;mallocの戻り値が何にでもキャスト出来るのは、この仕様によるものです。　&lt;/p&gt;
-
-&lt;h1 id=&#34;ポインタを整数値として扱う&#34;&gt;ポインタを整数値として扱う&lt;/h1&gt;
-
-&lt;p&gt;ポインタを整数値として利用したい場合、intptr_tとuintptr_tが利用できます。&lt;br /&gt;
-これはそれぞれ符号つき、符号なしの整数として扱うことができます。&lt;/p&gt;
-
-&lt;p&gt;間違ってもそのままintにキャスとして代入してはいけません。&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/&#34;&gt;void型のポインタとint型を相互変換するなという話&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。
+ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、
+どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。
+（勿論、ポインタの示すアドレスに何があるかは異なります）
+そのため、ポインタ専用の変数を利用することで、あらゆる型のポインタを同じ変数に代入することができます。
+ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。
+C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。
+汎用ポインタ void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。
+これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。
+この場合、変数定義をvoid *型にしておき、使う前後に目的の型にキャストすることで、
+様々な型を1つの変数で扱うことが出来ます。
+struct Container{ void* data; }; struct Num{ int n; }; const char* text = &amp;quot;text&amp;quot;; Container con1; con1.data = (void*)text; // dataにconst charのポインタを入れる Num* numPointer = new Num(); numPointer-&amp;gt;n = 42; Container con2; con2.data = (void*)numPointer; // dataにNum型のポインタを入れる printf(&amp;quot;%s\n&amp;quot;, (const char*)con1.data); // 取り出す際にキャストする printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);  なお、違うポインタを違う型にキャストして使うと、メモリ破壊などの予期せぬエラーを引き起こしますが、
+構文上はvoid *から元の型に戻す際のキャストは全て正しいと処理されます。
+そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。
+前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。
+mallocの戻り値 void *はmallocの戻り値としても使われています。</description>
     </item>
     
     <item>
@@ -1199,63 +186,27 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/23/cpp-build/</guid>
-      <description>
-
-&lt;h1 id=&#34;結論&#34;&gt;結論&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;キャッシュを使う&lt;/li&gt;
-&lt;li&gt;不要なinclude削除&lt;/li&gt;
-&lt;li&gt;static or dynamic library化する&lt;/li&gt;
-&lt;li&gt;並列コンパイルする&lt;/li&gt;
-&lt;li&gt;分散コンパイルする&lt;/li&gt;
-&lt;li&gt;いいパソコンを使う&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;C++のビルドをちょっとでも高速化したかったので、&lt;br /&gt;
-どうすれば早くなるのかを調べたのでまとめました。&lt;/p&gt;
-
-&lt;p&gt;どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。&lt;/p&gt;
-
-&lt;h1 id=&#34;キャッシュを使う&#34;&gt;キャッシュを使う&lt;/h1&gt;
-
-&lt;p&gt;ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、&lt;br /&gt;
-2回目以降のビルドは差分だけをコンパイルし直すため早くなります。&lt;br /&gt;
-といっても、多分使わない方が珍しいと思いますが。&lt;/p&gt;
-
-&lt;h1 id=&#34;不要なinclude削除&#34;&gt;不要なinclude削除&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/09/22/cpp-include/&#34;&gt;C++で不要なincludeを減らす&lt;/a&gt;のように、&lt;br /&gt;
-不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。&lt;/p&gt;
-
-&lt;h1 id=&#34;static-library-or-dynamic-library化する&#34;&gt;Static Library or Dynamic Library化する&lt;/h1&gt;
-
-&lt;p&gt;切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、&lt;br /&gt;
-本体のコンパイル時間が短縮されます。&lt;br /&gt;
-簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。&lt;/p&gt;
-
-&lt;p&gt;Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、&lt;br /&gt;
-コンパイル時間は省略できるため大幅に早くなります。&lt;/p&gt;
-
-&lt;p&gt;Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。&lt;br /&gt;
-代わりに、ライブラリの部分だけ入れ換えるといったことができます。&lt;br /&gt;
-ただし、iOSでは使えません…(´・_・`)　&lt;/p&gt;
-
-&lt;h1 id=&#34;並列コンパイルする&#34;&gt;並列コンパイルする&lt;/h1&gt;
-
-&lt;p&gt;makeにはjオプションがあり、指定した数だけ並列実行されます。&lt;br /&gt;
-多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。&lt;/p&gt;
-
-&lt;h1 id=&#34;分散コンパイルする&#34;&gt;分散コンパイルする&lt;/h1&gt;
-
-&lt;p&gt;distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。&lt;br /&gt;
-ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)&lt;/p&gt;
-
-&lt;h1 id=&#34;いいパソコンを使う&#34;&gt;いいパソコンを使う&lt;/h1&gt;
-
-&lt;p&gt;当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。&lt;br /&gt;
-ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。&lt;/p&gt;
-</description>
+      <description>結論  キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う  C++のビルドをちょっとでも高速化したかったので、
+どうすれば早くなるのかを調べたのでまとめました。
+どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。
+キャッシュを使う ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、
+2回目以降のビルドは差分だけをコンパイルし直すため早くなります。
+といっても、多分使わない方が珍しいと思いますが。
+不要なinclude削除 C++で不要なincludeを減らすのように、
+不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。
+Static Library or Dynamic Library化する 切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、
+本体のコンパイル時間が短縮されます。
+簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。
+Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、
+コンパイル時間は省略できるため大幅に早くなります。
+Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。
+代わりに、ライブラリの部分だけ入れ換えるといったことができます。
+ただし、iOSでは使えません…(´・_・`)　並列コンパイルする makeにはjオプションがあり、指定した数だけ並列実行されます。
+多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。
+分散コンパイルする distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。
+ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)
+いいパソコンを使う 当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。
+ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</description>
     </item>
     
     <item>
@@ -1264,202 +215,24 @@ printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/22/cpp-include/</guid>
-      <description>
-
-&lt;h1 id=&#34;不要なinclude削除&#34;&gt;不要なinclude削除&lt;/h1&gt;
-
-&lt;p&gt;cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。&lt;br /&gt;
-そのため、includeする量が増えるほどコンパイラが解析する量も増え、&lt;br /&gt;
-結果としてコンパイル時間が長くなります。&lt;/p&gt;
-
-&lt;p&gt;また、キャッシュを利用している場合、&lt;br /&gt;
-includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、&lt;br /&gt;
-不要なincludeを消すとよりキャッシュを活用できます。&lt;/p&gt;
-
-&lt;h1 id=&#34;クラスの前方宣言を活用する&#34;&gt;クラスの前方宣言を活用する&lt;/h1&gt;
-
-&lt;p&gt;クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。&lt;br /&gt;
-そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、&lt;br /&gt;
-ヘッダファイルにincludeを書く必要が無くなります。&lt;br /&gt;
-これにより、不要なincludeを減らすことができます。&lt;/p&gt;
-
-&lt;p&gt;例えば、以下のようなAクラスがあるとします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// TestA.h
-#include “InClass.h&amp;quot;
-
-class TestA{
-public:
-  TestA();
-  int getNumber();
-
-private:
-  InClass m_inclass;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;//TestA.cpp
-#include “TestA.h&amp;quot;
-
-TestA::TestA()
-{
-};
-
-int TestA::getNumber(){
-  return m_inclass.getNumber();
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このとき、TestAクラスをincludeするクラスは、InClassを使わない場合でも、&lt;br /&gt;
-TestA.hに書かれているために読み込んでしまいます。&lt;br /&gt;
-そのため、コンパイラが処理する量が増えるのと、&lt;br /&gt;
-InClass.hに変更があった場合に使っていないファイルまでコンパイルし直しになります。&lt;/p&gt;
-
-&lt;p&gt;ここで、以下のようにクラスの前方宣言を使い、&lt;br /&gt;
-cppファイル側で読み込むことで、includeをヘッダファイルから削除できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;//TestA.h
-class InClass;
-
-class TestA{
-public:
-  TestA();
-  ~TestA();
-  int getNumber();
-
-private:
-  InClass* m_inclass;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;//TestA.cpp
-#include “TestA.h&amp;quot;
-#include &amp;quot;InClass.h&amp;quot;
-
-TestA::TestA()
-{
-  m_inclass = new InClass();
-};
-
-TestA::~TestA()
-{
-  delete m_inclass;
-};
-
-int TestA::getNumber(){
-  return m_inclass-&amp;gt;getNumber();
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これにより、TestAクラスをincludeしているクラスは、InClass.hをincludeしなくなります。&lt;br /&gt;
-これにより、コンパイラが処理するコード量が減りますし、InClass.hに変更があった場合でも、&lt;br /&gt;
-TestAクラスだけをコンパイルすれば良くなります。&lt;/p&gt;
-
-&lt;p&gt;ただし、メモリをきちんと確保しないと行けないため、デストラクタでの解放忘れなどに注意する必要があります。&lt;br /&gt;
-また、最近の環境ではそれほど問題にはならないと思いますが、ヒープを確保するのでメモリが断片化します。&lt;/p&gt;
-
-&lt;h1 id=&#34;pimplイディオム&#34;&gt;Pimplイディオム&lt;/h1&gt;
-
-&lt;p&gt;classの前方宣言をさらに活用し、privateな物を全て別クラスにして持つ方法です。
-これにより、privateの変数を外から完全に見えなくしたり、&lt;br /&gt;
-内部実装の変更時に外への影響の抑止できます。&lt;/p&gt;
-
-&lt;p&gt;以下のようにprivateな変数を持つクラスがあるとします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;//TestA.h
-class InClass;
-class TestA{
-public:
-  TestA();
-  ~TestA();
-  int getNumber();
-  int getWeight(int density);
-
-private:
-  int height;
-  int width;
-  int depth;  
-  InClass* m_inclass;
-
-
-  int getVolume();
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;この中で、privateな部分を全て別クラスにしてしまい、メンバ変数をヘッダから消すことが出来ます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;//TestA.h
-class TestA{
-public:
-  TestA();
-  ~TestA();
-  int getNumber();
-  int getWeight(int density);
-
-private:
-  class TestApImpl;
-  TestApImpl* pImpl;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;//TestA.cpp
-#include &amp;quot;test.h&amp;quot;
-#include &amp;quot;InClass.h&amp;quot;
-
-class TestA::TestApImpl{
-public:
-  TestApImpl() : height(0), width(0), depth(0){
-    delete m_inclass;
-  }
-  ~TestApImpl(){
-    delete m_inclass;
-  }
-
-  int getVolume(){
-    return height*width*depth;
-  }
-
-  int height;
-  int width;
-  int depth;
-
-  InClass* m_inclass;
-};
-
-TestA::TestA()
-{
-  pImpl = new TestApImpl();
-};
-
-TestA::~TestA()
-{
-  delete pImpl;
-};
-
-int TestA::getNumber(){
-  return pImpl-&amp;gt;m_inclass-&amp;gt;getNumber();
-};
-
-int TestA::getWeight(int density){
-  return pImpl-&amp;gt;getVolume() * density;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これにより実装を外側から完全に隠せるのと、内部の実装変更時にヘッダファイルを変更する必要がなくなり、&lt;br /&gt;
-コンパイル時のキャッシュを最大限に活用できます。&lt;/p&gt;
-
-&lt;p&gt;ただし、一つのcppに複数のクラスが入り、さらに外から見える部分と実際の実装が離れるため、&lt;br /&gt;
-かなりコードが読みにくくなります。&lt;/p&gt;
-
-&lt;h1 id=&#34;前方宣言を使えない場合&#34;&gt;前方宣言を使えない場合&lt;/h1&gt;
-
-&lt;p&gt;クラスの実態を持つ場合や、継承したクラスの場合は前方宣言にすることはできません。&lt;br /&gt;
-このような場合はポインタを持つようにしたり、&lt;a href=&#34;http://ja.m.wikipedia.org/wiki/Decorator_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&#34;&gt;Decorator パターン&lt;/a&gt;によって、&lt;br /&gt;
-継承を使わなくすることで前方宣言を利用できます。&lt;/p&gt;
-
-&lt;p&gt;ただし、それによってコードが読みにくくなると別の問題を引き起こすので、ケースバイケースになります。&lt;/p&gt;
-</description>
+      <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。
+そのため、includeする量が増えるほどコンパイラが解析する量も増え、
+結果としてコンパイル時間が長くなります。
+また、キャッシュを利用している場合、
+includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、
+不要なincludeを消すとよりキャッシュを活用できます。
+クラスの前方宣言を活用する クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。
+そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、
+ヘッダファイルにincludeを書く必要が無くなります。
+これにより、不要なincludeを減らすことができます。
+例えば、以下のようなAクラスがあるとします。
+// TestA.h #include “InClass.h&amp;quot; class TestA{ public: TestA(); int getNumber(); private: InClass m_inclass; };  //TestA.cpp #include “TestA.h&amp;quot; TestA::TestA() { }; int TestA::getNumber(){ return m_inclass.getNumber(); };  このとき、TestAクラスをincludeするクラスは、InClassを使わない場合でも、
+TestA.hに書かれているために読み込んでしまいます。
+そのため、コンパイラが処理する量が増えるのと、
+InClass.hに変更があった場合に使っていないファイルまでコンパイルし直しになります。
+ここで、以下のようにクラスの前方宣言を使い、
+cppファイル側で読み込むことで、includeをヘッダファイルから削除できます。
+//TestA.h class InClass; class TestA{ public: TestA(); ~TestA(); int getNumber(); private: InClass* m_inclass; };  //TestA.cpp #include “TestA.h&amp;quot; #include &amp;quot;InClass.h&amp;quot; TestA::TestA() { m_inclass = new InClass(); }; TestA::~TestA() { delete m_inclass; }; int TestA::getNumber(){ return m_inclass-&amp;gt;getNumber(); };  これにより、TestAクラスをincludeしているクラスは、InClass.</description>
     </item>
     
     <item>
@@ -1468,139 +241,24 @@ int TestA::getWeight(int density){
       <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/16/stack-heap/</guid>
-      <description>
-
-&lt;p&gt;C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。&lt;br /&gt;
-rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。&lt;/p&gt;
-
-&lt;p&gt;例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。&lt;/p&gt;
-
-&lt;p&gt;以下に、関数の中で文字バッファをスタックに確保し、その参照を戻す関数の間違った例を上げます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;string&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
-
-char *getTextFilename(const char* basename){
-  char str[1024] = {0};
-  strncpy(str, basename, strlen(basename)+1);
-  strncat(str, &amp;quot;.txt&amp;quot;, 5);
-  return str;
-}
-int main(void){
-  char *test_filename = getTextFilename(&amp;quot;test&amp;quot;);
-  printf(&amp;quot;%s\n&amp;quot;, test_filename);
-
-  char *example_filename = getTextFilename(&amp;quot;example&amp;quot;);
-  printf(&amp;quot;%s\n&amp;quot;, example_filename);
-
-  printf(&amp;quot;%s\n&amp;quot;, test_filename);
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;環境によりますが、おそらく二回目のtest_filenameの出力がおかしくなると思います。&lt;br /&gt;
-私の場合は以下のように、test_filenameにexample_filenameの内容が書き込まれていました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;test.txt
-example.txt
-example.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;getTextFilename内のstrはスタックに確保されるので、関数終了時に解放されます。&lt;br /&gt;
-そのため、戻り値の指し示す文字列は解放済みメモリとなり、勝手に変更される可能性があります。&lt;/p&gt;
-
-&lt;p&gt;上の例ではたまたま同じアドレスが再利用されたため、同じ文字列が設定されました。&lt;br /&gt;
-ですが、間に様々な処理を実行した場合は、謎の値が書き込まれるなどがあり得るため注意が必要です。&lt;/p&gt;
-
-&lt;h1 id=&#34;対策&#34;&gt;対策&lt;/h1&gt;
-
-&lt;p&gt;このような場合、いくつかの対策があります。&lt;/p&gt;
-
-&lt;h2 id=&#34;引数で渡す&#34;&gt;引数で渡す&lt;/h2&gt;
-
-&lt;p&gt;1つ目が、strncpyやstrncatのように、メモリ利用域を引数として受け取る方法です。&lt;br /&gt;
-これにより、自分のスコープから外れても値を保持することができます。&lt;br /&gt;
-先ほどの例ですと、main側でcharの配列を確保して関数の引数でそれを受け取るといった形です。&lt;/p&gt;
-
-&lt;p&gt;確保したスコープを抜けるとやはり解放されますが、確実に解放されるためとても楽です。&lt;/p&gt;
-
-&lt;h2 id=&#34;ヒープに確保する&#34;&gt;ヒープに確保する&lt;/h2&gt;
-
-&lt;p&gt;2つ目はmallocやnewでヒープ領域に確保する方法です。&lt;br /&gt;
-以下はnewで配列を確保するように書き換えました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;string&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
-
-char *getTextFilename(const char* basename){
-  char *str = new char[1024];
-  strncpy(str, basename, strlen(basename)+1);
-  strncat(str, &amp;quot;.txt&amp;quot;, 5);
-  return str;
-}
-int main(void){
-  char *test_filename = getTextFilename(&amp;quot;test&amp;quot;);
-  printf(&amp;quot;%s\n&amp;quot;, test_filename);
-
-  char *example_filename = getTextFilename(&amp;quot;example&amp;quot;);
-  printf(&amp;quot;%s\n&amp;quot;, example_filename);
-
-  printf(&amp;quot;%s\n&amp;quot;, test_filename);
-
-　// 明示的に解放しないと絶対に解放されない
-  delete test_filename;
-  delete example_filename;
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;newやmallocでメモリ領域を確保した場合、ヒープ領域に確保され、スコープを超えてメモリを確保し続けられます。&lt;br /&gt;
-ただし、明示的に解放しないとメモリリークが起きるため、注意が必要です。&lt;/p&gt;
-
-&lt;h2 id=&#34;オブジェクトをコピーする&#34;&gt;オブジェクトをコピーする&lt;/h2&gt;
-
-&lt;p&gt;3つめがコピーを使う方法です。&lt;br /&gt;
-今回の関数では配列を使っていますが、コピーコンストラクタをもつstd::stringを使うと、&lt;br /&gt;
-スタック上の内容を関数の外に安全にコピー出来ます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;string&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
-
-std::string getTextFilename(const char* basename){
-  std::string text(basename);
-  text.append(&amp;quot;.txt&amp;quot;);
-  return text;
-}
-int main(void){
-  std::string test_filename = getTextFilename(&amp;quot;test&amp;quot;);
-  printf(&amp;quot;%s\n&amp;quot;, test_filename.c_str());
-
-  std::string example_filename = getTextFilename(&amp;quot;example&amp;quot;);
-  printf(&amp;quot;%s\n&amp;quot;, example_filename.c_str());
-
-  printf(&amp;quot;%s\n&amp;quot;, test_filename.c_str());
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;関数の戻り値は戻り先にコピーされるまでは保持されるという仕様があるらしく、&lt;br /&gt;
-コピー可能なものに関しては戻り値としてちゃんと返すことが出来ます。&lt;br /&gt;
-(これが無い場合、return 0の0も変更される可能性が出てきてしまうため、当然の仕様と言えます)&lt;/p&gt;
-
-&lt;p&gt;ただし、コピー処理が走るため、オブジェクトが巨大な場合、&lt;br /&gt;
-メモリ消費が増えたり、時間がかかる可能性があるので注意が必要です。&lt;/p&gt;
-
-&lt;p&gt;#　まとめ
-スタックで確保した場合、解放忘れ等がないためとても簡単ですが、&lt;br /&gt;
-スコープから抜けると解放されてしまうため、有効範囲を考えないといけません。&lt;/p&gt;
-
-&lt;p&gt;今回は文字列で例を挙げましたが、自作クラスなどでもほぼ同じ事がいえます。&lt;br /&gt;
-ただし、3つ目の方法はそのクラスと、メンバ変数として持ってるクラス全てにコピーコンストラクタを書いていないと、
-中途半端にコピーされ、ß予期せぬエラーに繋がります。　　&lt;/p&gt;
-</description>
+      <description>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。
+rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。
+例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。
+以下に、関数の中で文字バッファをスタックに確保し、その参照を戻す関数の間違った例を上げます。
+#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; char *getTextFilename(const char* basename){ char str[1024] = {0}; strncpy(str, basename, strlen(basename)+1); strncat(str, &amp;quot;.txt&amp;quot;, 5); return str; } int main(void){ char *test_filename = getTextFilename(&amp;quot;test&amp;quot;); printf(&amp;quot;%s\n&amp;quot;, test_filename); char *example_filename = getTextFilename(&amp;quot;example&amp;quot;); printf(&amp;quot;%s\n&amp;quot;, example_filename); printf(&amp;quot;%s\n&amp;quot;, test_filename); return 0; }  環境によりますが、おそらく二回目のtest_filenameの出力がおかしくなると思います。
+私の場合は以下のように、test_filenameにexample_filenameの内容が書き込まれていました。
+test.txt example.txt example.txt  getTextFilename内のstrはスタックに確保されるので、関数終了時に解放されます。
+そのため、戻り値の指し示す文字列は解放済みメモリとなり、勝手に変更される可能性があります。
+上の例ではたまたま同じアドレスが再利用されたため、同じ文字列が設定されました。
+ですが、間に様々な処理を実行した場合は、謎の値が書き込まれるなどがあり得るため注意が必要です。
+対策 このような場合、いくつかの対策があります。
+引数で渡す 1つ目が、strncpyやstrncatのように、メモリ利用域を引数として受け取る方法です。
+これにより、自分のスコープから外れても値を保持することができます。
+先ほどの例ですと、main側でcharの配列を確保して関数の引数でそれを受け取るといった形です。
+確保したスコープを抜けるとやはり解放されますが、確実に解放されるためとても楽です。
+ヒープに確保する 2つ目はmallocやnewでヒープ領域に確保する方法です。
+以下はnewで配列を確保するように書き換えました。
+#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; char *getTextFilename(const char* basename){ char *str = new char[1024]; strncpy(str, basename, strlen(basename)+1); strncat(str, &amp;quot;.</description>
     </item>
     
     <item>
@@ -1609,67 +267,15 @@ int main(void){
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/11/strncpy-bug/</guid>
-      <description>&lt;p&gt;strncpyは結構はまりどころがあります。&lt;/p&gt;
-
-&lt;p&gt;たとえば以下のコードは正しく動作しません。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;char str[100];
-const char * c = &amp;quot;test&amp;quot;;
-strncpy(str, c, strlen(c));
-printf(&amp;quot;%s\n&amp;quot;, str);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;strncpyはコピー先、コピー元、コピー長を引数で取ります。&lt;br /&gt;
-この際、strlen等でコピー元の文字長ぴったりを指定すると、&lt;br /&gt;
-終端文字がコピー先にコピーされません。&lt;/p&gt;
-
-&lt;p&gt;そのため、事前に終端文字を設定しておかないと、&lt;br /&gt;
-未初期化の部分まで文字列扱いになります。&lt;/p&gt;
-
-&lt;p&gt;以下のコードでその様子をうかがえます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;string&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
-
-int main(void){
-  char str[100] = {0};
-  str[0] = &#39;z&#39;;
-  str[1] = &#39;z&#39;;
-  str[2] = &#39;z&#39;;
-  str[3] = &#39;z&#39;;
-  str[4] = &#39;z&#39;;
-
-  const char * c = &amp;quot;test&amp;quot;;
-  strncpy(str, c, strlen(c));
-
-  printf(&amp;quot;%s\nlength %lu\noriginal length %lu\n&amp;quot;, str, strlen(str), strlen(c));
-
-  strcat(str, &amp;quot;.txt&amp;quot;);
-  printf(&amp;quot;%s\nlength %lu\n&amp;quot;, str, strlen(str));
-
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;testz
-length 5
-original length 4
-testz.txt
-length 9
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;testという文字列をコピーし、.txtという文字列を追加して、&lt;br /&gt;
-test.txt作る予定が、間に他の値が入っています。&lt;/p&gt;
-
-&lt;p&gt;strcatは第一引数の文字列の終わりに第二引数をつなげます。&lt;br /&gt;
-そのため、コピー時に終端文字を設定していなかったため、&lt;br /&gt;
-意図しない文字が間に挟まっています。&lt;br /&gt;
-特にバッファの初期化を忘れていた場合、終端文字がいつ現れるか確定しないため、&lt;br /&gt;
-注意が必要です。&lt;/p&gt;
-
-&lt;p&gt;この挙動は文字列の間に置換する場合には重宝しますが、&lt;br /&gt;
-文字列結合などをする場合は気をつける必要があります。&lt;/p&gt;
-</description>
+      <description>strncpyは結構はまりどころがあります。
+たとえば以下のコードは正しく動作しません。
+char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str);  strncpyはコピー先、コピー元、コピー長を引数で取ります。
+この際、strlen等でコピー元の文字長ぴったりを指定すると、
+終端文字がコピー先にコピーされません。
+そのため、事前に終端文字を設定しておかないと、
+未初期化の部分まで文字列扱いになります。
+以下のコードでその様子をうかがえます。
+#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; int main(void){ char str[100] = {0}; str[0] = &#39;z&#39;; str[1] = &#39;z&#39;; str[2] = &#39;z&#39;; str[3] = &#39;z&#39;; str[4] = &#39;z&#39;; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\nlength %lu\noriginal length %lu\n&amp;quot;, str, strlen(str), strlen(c)); strcat(str, &amp;quot;.txt&amp;quot;); printf(&amp;quot;%s\nlength %lu\n&amp;quot;, str, strlen(str)); return 0; }  testz length 5 original length 4 testz.</description>
     </item>
     
   </channel>

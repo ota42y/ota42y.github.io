@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on おおたの物置</title>
-    <link>http://ota42y.com/tags/golang/index.xml</link>
+    <link>http://ota42y.com/tags/golang/</link>
     <description>Recent content in Golang on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Oct 2015 22:39:33 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
@@ -14,112 +17,30 @@
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;AlchemyAPIに画像をアップロードすると識別結果を返してくれる&lt;/li&gt;
-&lt;li&gt;無料で使える&lt;/li&gt;
-&lt;li&gt;ライブラリも豊富&lt;/li&gt;
-&lt;li&gt;画像認識がAPIで呼び出せる世界の可能性凄い
-
-&lt;ul&gt;
-&lt;li&gt;画像認識ライブラリすら必要ない世界…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;alchemyapiで画像認識が凄い簡単にできる&#34;&gt;AlchemyAPIで画像認識が凄い簡単にできる&lt;/h1&gt;
-
-&lt;p&gt;先日のABPro2015でこんな&lt;a href=&#34;http://ota42y.com/blog/2015/10/10/abpro2015/&#34;&gt;発表をしました&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/39s0Ljtiud4tKP&#34; width=&#34;425&#34; height=&#34;355&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/ota42y/ss-53771391&#34; title=&#34;身近なサイバー攻撃から身を守る&#34; target=&#34;_blank&#34;&gt;身近なサイバー攻撃から身を守る&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&#34;//www.slideshare.net/ota42y&#34; target=&#34;_blank&#34;&gt;ota42y&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;ここで画像の判定にAlchemyAPIを利用しています。&lt;br /&gt;
-Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。&lt;/p&gt;
-
-&lt;h1 id=&#34;alchemyapiとは&#34;&gt;AlchemyAPIとは？&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.alchemyapi.com/&#34;&gt;http://www.alchemyapi.com/&lt;/a&gt;&lt;br /&gt;
-IBMが買収した機械学習によるデータ分析会社です。&lt;br /&gt;
-画像認識や自然言語処理に強い会社だったらしく、その一部を&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;で提供しています。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;は最小構成なら無料で使え、&lt;br /&gt;
-(おそらく)AlchemyAPIの使用権はアカウントを持っていれば1日1000件まで無料らしいので、&lt;br /&gt;
-回数は限られますが無料で画像認識ができます。&lt;/p&gt;
-
-&lt;p&gt;どうやらIBM Bluemixは単なるクラウドサービスではなく、&lt;br /&gt;
-音声認識や機械翻訳、データ処理等複雑な処理をサービスとして簡単にセットアップできるようになっているらしく、&lt;br /&gt;
-その中の1つにAlchemyAPIが含まれているようです。&lt;br /&gt;
-なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://console.ng.bluemix.net/home/&#34;&gt;IBM Bluemix&lt;/a&gt;のアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。&lt;br /&gt;
-その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。&lt;/p&gt;
-
-&lt;p&gt;登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、&lt;br /&gt;
-それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。&lt;/p&gt;
-
-&lt;h1 id=&#34;ライブラリ&#34;&gt;ライブラリ&lt;/h1&gt;
-
-&lt;p&gt;公式がいくつかの言語のライブラリを提供しています。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/AlchemyAPI&#34;&gt;https://github.com/AlchemyAPI&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;golangによる画像認識APIは無かったため、ライブラリを作りました。&lt;br /&gt;
-使いたい方はどうぞ。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/go-alchemyapi&#34;&gt;https://github.com/ota42y/go-alchemyapi&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;os&amp;quot;
-	&amp;quot;fmt&amp;quot;
-	
-	alchemyapi &amp;quot;github.com/ota42y/go-alchemyapi&amp;quot;
-)
-
-func main() {
-	token := os.Getenv(&amp;quot;ALCHEMYAPI_TOKEN&amp;quot;)
-	if token == &amp;quot;&amp;quot; {
-		fmt.Println(&amp;quot;skip this test because no token&amp;quot;)
-		return
-	}
-
-	client := alchemyapi.New(token)
-	res, err := client.URLGetRankedImageKeywords(&amp;quot;https://pbs.twimg.com/media/CQ7ENtOUwAAZyNF.jpg&amp;quot;, false, false)
-	if err == nil {
-		for _, keyword := range res.ImageKeywords {
-			fmt.Println(keyword.Text, keyword.Score)
-		}
-	} else {
-		fmt.Println(err)
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;結果&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% go run test.go
-food 0.832018
-sushi 0.5
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;感想&#34;&gt;感想&lt;/h1&gt;
-
-&lt;p&gt;件数は限定的とはいえ、投げるだけで画像認識できるとか相当凄いです。&lt;br /&gt;
-しかも食べ物かそうじゃないかだけでなく、寿司かどうかまで判定しているので、学習精度もかなり良いです。&lt;br /&gt;
-ここ1年ぐらいでディープラーニングによる画像識別が流行り、便利なライブラリがたくさん出た印象ですが、&lt;br /&gt;
-もう自前でやらずにAPIとして使うのが当たり前になってしまいそうです。&lt;/p&gt;
-
-&lt;p&gt;また、Bluemixについては初めて知りましたが、単にサーバを提供するだけでなく、&lt;br /&gt;
-こういった高度なサービスを提供するのは上手いなぁ…と思いました。&lt;br /&gt;
-使う側はセットアップや教師データの収集を考えずに使えてしまうので、&lt;br /&gt;
-画像認識を使う敷居がぐっと下がるのではないかと思います。&lt;br /&gt;
-(制限を超えたときの料金が書いてないのでお値段がどれくらいかはわかりませんが…)&lt;/p&gt;
-</description>
+      <description>まとめ  AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能性凄い  画像認識ライブラリすら必要ない世界…   AlchemyAPIで画像認識が凄い簡単にできる 先日のABPro2015でこんな発表をしました。
+  身近なサイバー攻撃から身を守る  from ota42y 
+ここで画像の判定にAlchemyAPIを利用しています。
+Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。
+AlchemyAPIとは？ http://www.alchemyapi.com/
+IBMが買収した機械学習によるデータ分析会社です。
+画像認識や自然言語処理に強い会社だったらしく、その一部をIBM Bluemixで提供しています。
+IBM Bluemixは最小構成なら無料で使え、
+(おそらく)AlchemyAPIの使用権はアカウントを持っていれば1日1000件まで無料らしいので、
+回数は限られますが無料で画像認識ができます。
+どうやらIBM Bluemixは単なるクラウドサービスではなく、
+音声認識や機械翻訳、データ処理等複雑な処理をサービスとして簡単にセットアップできるようになっているらしく、
+その中の1つにAlchemyAPIが含まれているようです。
+なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。
+使い方 IBM Bluemixのアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。
+その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。
+登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、
+それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。
+ライブラリ 公式がいくつかの言語のライブラリを提供しています。
+https://github.com/AlchemyAPI
+golangによる画像認識APIは無かったため、ライブラリを作りました。
+使いたい方はどうぞ。
+https://github.com/ota42y/go-alchemyapi
+サンプルコード package main import ( &amp;quot;os&amp;quot; &amp;quot;fmt&amp;quot; alchemyapi &amp;quot;github.com/ota42y/go-alchemyapi&amp;quot; ) func main() { token := os.Getenv(&amp;quot;ALCHEMYAPI_TOKEN&amp;quot;) if token == &amp;quot;&amp;quot; { fmt.Println(&amp;quot;skip this test because no token&amp;quot;) return } client := alchemyapi.</description>
     </item>
     
     <item>
@@ -128,238 +49,18 @@ sushi 0.5
       <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/05/06/go-struct-offset/</guid>
-      <description>
-
-&lt;p&gt;golangで構造体を定義した場合、
-メモリ上にどのように配置されるのでしょうか。&lt;/p&gt;
-
-&lt;p&gt;通常意識する必要はありませんが、32bitと64bitで挙動がおかしい場合など、&lt;br /&gt;
-ごく希に調べる必要に迫られる場合があります。&lt;br /&gt;
-そのような場合、各要素のサイズや、構造体先頭からのオフセットを調べることで、&lt;br /&gt;
-メモリ上に構造体がどう置かれるかを調べることができます。&lt;/p&gt;
-
-&lt;p&gt;C言語でのsizeofやoffsetofに対応する物が、golangのunsafeパッケージに用意されているため、&lt;br /&gt;
-これを利用することで構造体の様子を調べることができます。&lt;br /&gt;
-&lt;a href=&#34;https://golang.org/pkg/unsafe/&#34;&gt;https://golang.org/pkg/unsafe/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;今回は以下のようなテスト構造体を使い、メモリ上にどのように置かれるかを調べました。&lt;br /&gt;
-テスト環境はwindows7(32bit)とmac(64bit)になります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type A struct {
-  flag bool
-  num int64
-  ptr *int64
-  mini int32
-  str string
-  nums []int64
-  nums5 [5]int64
-  strs []string
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;要素のサイズ&#34;&gt;要素のサイズ&lt;/h1&gt;
-
-&lt;p&gt;unsafe.Sizeof関数は、引数の要素のサイズを調べ、バイト数をint型で返してくれます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;a := A{}
-log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括弧内は64bit
-log.Println(unsafe.Sizeof(a.flag)) // 1
-log.Println(unsafe.Sizeof(a.num)) // 8
-log.Println(unsafe.Sizeof(a.ptr)) // 4 (8)
-log.Println(unsafe.Sizeof(a.mini)) // 4
-log.Println(unsafe.Sizeof(a.str)) // 8 (16)
-log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
-log.Println(unsafe.Sizeof(a.nums5)) // 40
-log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
-
-a.nums = append(a.nums, 42)
-a.strs = append(a.strs, &amp;quot;デーデッデー&amp;quot;)
-log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
-log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
-
-log.Println(unsafe.Sizeof(&amp;amp;a)) // 4 (8)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;この関数は指定した要素のサイズを返します。
-そのため、32bit環境ではint64のポインタであるa.ptrは、&lt;br /&gt;
-ポインタのサイズである4byte(=32bit)を返します。&lt;/p&gt;
-
-&lt;p&gt;また、配列の場合は配列全体のサイズ(a.nums5 = 64 * 5)を返しますが、&lt;br /&gt;
-スライスの場合はスライス自身の値(12 or 24byte)を返し、スライス全体の値は返しません。&lt;br /&gt;
-そのため、要素を追加してもスライス自身の大きさは変化しません。&lt;/p&gt;
-
-&lt;h1 id=&#34;先頭からのオフセット&#34;&gt;先頭からのオフセット&lt;/h1&gt;
-
-&lt;p&gt;上記の例でbool値のa.flagが1byteかつ、ほかの要素がすべて偶数なのにもかかわらず、&lt;br /&gt;
-構造体全体の大きさが92byteの偶数になっています。&lt;br /&gt;
-このことから、golangの構造体はパディングされる場合があることがわかります。&lt;br /&gt;
-そのため、要素のサイズを足していったところが、実際にメモリ上に置かれる場所とは限りません。&lt;/p&gt;
-
-&lt;p&gt;構造体先頭からのオフセットが何byteかをint型で返す、unsafe.Offsetofを使うことで、&lt;br /&gt;
-実際にどの位置に配置されているかを確認できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;log.Println(unsafe.Offsetof(a.flag)) // 0
-log.Println(unsafe.Offsetof(a.num)) // 4 (8)
-log.Println(unsafe.Offsetof(a.ptr)) // 12 (16)
-log.Println(unsafe.Offsetof(a.mini)) // 16 (24)
-log.Println(unsafe.Offsetof(a.str)) // 20 (32)
-log.Println(unsafe.Offsetof(a.nums)) // 28 (48)
-log.Println(unsafe.Offsetof(a.nums5)) // 40 (72)
-log.Println(unsafe.Offsetof(a.strs)) // 80 (112)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;32bit環境ではa.flagの1byteの後に3byteパディングがされ、&lt;br /&gt;
-a.numが先頭から4byte(=32bit)の位置から始まっています。&lt;/p&gt;
-
-&lt;p&gt;64bit環境ではa.flagの後ろに7byteパディングされ、&lt;br /&gt;
-a.numが先頭から8byte(=64bit)の位置から始まっています。&lt;br /&gt;
-また、int32のa.miniも4byteパディングされ、a.strが32byte目から始まるようになっています。&lt;/p&gt;
-
-&lt;p&gt;このように、32bit環境では32bitに、64bit環境では64bitの倍数から始まるように、&lt;br /&gt;
-コンパイラが構造体にパディングをするようです。&lt;/p&gt;
-
-&lt;h1 id=&#34;構造体内の構造体の場合&#34;&gt;構造体内の構造体の場合&lt;/h1&gt;
-
-&lt;p&gt;以下のように構造体に実態を持つ場合、宣言したとおりに配置されます。&lt;br /&gt;
-そのためAの実態であるaの前後で、構造体のサイズ分だけオフセットが移動しています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type B struct {
-  bflag bool
-  intnum int64
-  a A
-  bflag2 bool
-  a2 *A
-  bflag3 bool
-  A
-  blfag4 bool
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;b := B{
-  a2: &amp;amp;A{},
-}
-log.Println(unsafe.Offsetof(b.bflag)) // 0
-log.Println(unsafe.Offsetof(b.intnum)) // 4
-log.Println(&amp;quot;b.a&amp;quot;)
-log.Println(unsafe.Offsetof(b.a.flag)) // 0
-log.Println(unsafe.Offsetof(b.a.strs)) // 80
-log.Println(&amp;quot;b.flag2&amp;quot;)
-log.Println(unsafe.Offsetof(b.bflag2)) // 104 (4 + 8 + 92)
-log.Println(&amp;quot;b.a2&amp;quot;) // a2 is pointer
-log.Println(unsafe.Offsetof(b.a2.flag)) // 0
-log.Println(unsafe.Offsetof(b.a2.strs)) // 80 (112)
-log.Println(&amp;quot;b.bflag3&amp;quot;)
-log.Println(unsafe.Offsetof(b.bflag3)) // 112 (104 + 8)
-log.Println(&amp;quot;b.flag&amp;quot;)
-log.Println(unsafe.Offsetof(b.flag)) // 116
-log.Println(unsafe.Offsetof(b.num)) // 120
-log.Println(unsafe.Offsetof(b.ptr)) // 128
-log.Println(unsafe.Offsetof(b.mini)) // 132
-log.Println(unsafe.Offsetof(b.strs)) // 196
-log.Println(&amp;quot;b.bflag4&amp;quot;)
-log.Println(unsafe.Offsetof(b.blfag4)) // 208 (112 + 92)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;unsafe.Offsetofは対象の要素を持つ構造体の先頭からのオフセットを指すため、&lt;br /&gt;
-構造体Bの中にあるAでも、Bからのオフセットではなく、Aの先頭からのオフセットを出力しています。&lt;/p&gt;
-
-&lt;p&gt;また、ポインタとして持つ場合、実態は別のところにあるため、a2のサイズはポインタ分のみになります。&lt;/p&gt;
-
-&lt;p&gt;構造体を埋め込んだ場合、それらの値がそのままそこに置かれたかのように置かれます。&lt;br /&gt;
-また、埋め込んだ構造体の値として扱われるらしく、&lt;br /&gt;
-実態として持っているときと違い、構造体Aの要素でもBの先頭からのオフセットを出力しています。&lt;/p&gt;
-
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-  &amp;quot;log&amp;quot;
-  &amp;quot;unsafe&amp;quot;
-)
-
-type A struct {
-  flag bool
-  num int64
-  ptr *int64
-  mini int32
-  str string
-  nums []int64
-  nums5 [5]int64
-  strs []string
-}
-
-type B struct {
-  bflag bool
-  intnum int64
-  a A
-  bflag2 bool
-  a2 *A
-  bflag3 bool
-  A
-  blfag4 bool
-}
-
-func main() {
-  log.Println(&amp;quot;sizeof&amp;quot;)
-  a := A{}
-  log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧内は64bit
-  log.Println(unsafe.Sizeof(a.flag)) // 1
-  log.Println(unsafe.Sizeof(a.num)) // 8
-  log.Println(unsafe.Sizeof(a.ptr)) // 4 (8)
-  log.Println(unsafe.Sizeof(a.mini)) // 4
-  log.Println(unsafe.Sizeof(a.str)) // 8 (16)
-  log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
-  log.Println(unsafe.Sizeof(a.nums5)) // 40
-  log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
-
-  a.nums = append(a.nums, 42)
-  a.strs = append(a.strs, &amp;quot;デーデッデー&amp;quot;)
-  log.Println(unsafe.Sizeof(a.nums)) // 12 (24)
-  log.Println(unsafe.Sizeof(a.strs)) // 12 (24)
-
-  log.Println(unsafe.Sizeof(&amp;amp;a)) // 4 (8)
-
-  log.Println(&amp;quot;offest&amp;quot;)
-  log.Println(unsafe.Offsetof(a.flag)) // 0
-  log.Println(unsafe.Offsetof(a.num)) // 4 (8)
-  log.Println(unsafe.Offsetof(a.ptr)) // 12 (16)
-  log.Println(unsafe.Offsetof(a.mini)) // 16 (24)
-  log.Println(unsafe.Offsetof(a.str)) // 20 (32)
-  log.Println(unsafe.Offsetof(a.nums)) // 28 (48)
-  log.Println(unsafe.Offsetof(a.nums5)) // 40 (72)
-  log.Println(unsafe.Offsetof(a.strs)) // 80 (112)
-
-
-
-  log.Println(&amp;quot;b&amp;quot;)
-  b := B{
-    a2: &amp;amp;A{},
-  }
-  log.Println(unsafe.Offsetof(b.bflag)) // 0
-  log.Println(unsafe.Offsetof(b.intnum)) // 4
-  log.Println(&amp;quot;b.a&amp;quot;)
-  log.Println(unsafe.Offsetof(b.a.flag)) // 0
-  log.Println(unsafe.Offsetof(b.a.strs)) // 80
-  log.Println(&amp;quot;b.flag2&amp;quot;)
-  log.Println(unsafe.Offsetof(b.bflag2)) // 104 (4 + 8 + 92)
-  log.Println(&amp;quot;b.a2&amp;quot;) // a2 is pointer
-  log.Println(unsafe.Offsetof(b.a2.flag)) // 0
-  log.Println(unsafe.Offsetof(b.a2.strs)) // 80 (112)
-  log.Println(&amp;quot;b.bflag3&amp;quot;)
-  log.Println(unsafe.Offsetof(b.bflag3)) // 112 (104 + 8)
-  log.Println(&amp;quot;b.flag&amp;quot;)
-  log.Println(unsafe.Offsetof(b.flag)) // 116
-  log.Println(unsafe.Offsetof(b.num)) // 120
-  log.Println(unsafe.Offsetof(b.ptr)) // 128
-  log.Println(unsafe.Offsetof(b.mini)) // 132
-  log.Println(unsafe.Offsetof(b.strs)) // 196
-  log.Println(&amp;quot;b.bflag4&amp;quot;)
-  log.Println(unsafe.Offsetof(b.blfag4)) // 208 (112 + 92)
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。
+通常意識する必要はありませんが、32bitと64bitで挙動がおかしい場合など、
+ごく希に調べる必要に迫られる場合があります。
+そのような場合、各要素のサイズや、構造体先頭からのオフセットを調べることで、
+メモリ上に構造体がどう置かれるかを調べることができます。
+C言語でのsizeofやoffsetofに対応する物が、golangのunsafeパッケージに用意されているため、
+これを利用することで構造体の様子を調べることができます。
+https://golang.org/pkg/unsafe/
+今回は以下のようなテスト構造体を使い、メモリ上にどのように置かれるかを調べました。
+テスト環境はwindows7(32bit)とmac(64bit)になります。
+type A struct { flag bool num int64 ptr *int64 mini int32 str string nums []int64 nums5 [5]int64 strs []string }  要素のサイズ unsafe.Sizeof関数は、引数の要素のサイズを調べ、バイト数をint型で返してくれます。
+a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括弧内は64bit log.Println(unsafe.Sizeof(a.flag)) // 1 log.Println(unsafe.Sizeof(a.num)) // 8 log.Println(unsafe.Sizeof(a.ptr)) // 4 (8) log.Println(unsafe.Sizeof(a.mini)) // 4 log.Println(unsafe.Sizeof(a.str)) // 8 (16) log.Println(unsafe.Sizeof(a.nums)) // 12 (24) log.Println(unsafe.Sizeof(a.nums5)) // 40 log.Println(unsafe.Sizeof(a.strs)) // 12 (24) a.</description>
     </item>
     
     <item>
@@ -368,131 +69,31 @@ func main() {
       <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
-      <description>
-
-&lt;p&gt;取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WindowsのGolang開発
-
-&lt;ul&gt;
-&lt;li&gt;IntelliJ便利
-
-&lt;ul&gt;
-&lt;li&gt;機能がとても豊富&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Windows上ではつらい
-
-&lt;ul&gt;
-&lt;li&gt;開発ツールが少ない&lt;/li&gt;
-&lt;li&gt;LinuxはGUI使いづらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;LinuxのファイルをWindowsから変更する
-
-&lt;ul&gt;
-&lt;li&gt;良いところ取り
-
-&lt;ul&gt;
-&lt;li&gt;開発はWindows&lt;/li&gt;
-&lt;li&gt;実行はLinux&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ファイルはSambaで共有
-
-&lt;ul&gt;
-&lt;li&gt;ネットワークドライブをマウント&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;IDEデバッグは使えなくなる
-
-&lt;ul&gt;
-&lt;li&gt;そのときだけWindowsで動かすとか&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;golang開発環境を整える&#34;&gt;Golang開発環境を整える&lt;/h1&gt;
-
-&lt;h2 id=&#34;intellijでのgo開発環境&#34;&gt;IntelliJでのGo開発環境&lt;/h2&gt;
-
-&lt;p&gt;IntelliJ IDEAとGolang pluginはとてもよく動くため、&lt;br /&gt;
-Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/kaiinui/items/433eb86c022ffcad0bea&#34;&gt;Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;vmwareに開発環境を整える&#34;&gt;VMwareに開発環境を整える&lt;/h2&gt;
-
-&lt;p&gt;IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。&lt;br /&gt;
-ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、&lt;br /&gt;
-Windows上で開発するのは細かいところで面倒になることが多いです。&lt;br /&gt;
-そのため、仮想マシンや別サーバにLinuxマシンを1台作り、&lt;br /&gt;
-その中で開発をした方が何かと便利です。&lt;/p&gt;
-
-&lt;p&gt;ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、&lt;br /&gt;
-開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。&lt;br /&gt;
-そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、&lt;br /&gt;
-それらをssh経由のCLIから操作するのが最も良い案になっています。&lt;/p&gt;
-
-&lt;p&gt;このような構成にすることで、Unixで動く便利なツールを利用しつつ、&lt;br /&gt;
-Windowsの快適なGUI環境を利用することができます。&lt;br /&gt;
-また、ファイルや実行環境と手元の環境とが切り離されるため、&lt;br /&gt;
-複数の実行環境を切り替えたり、&lt;br /&gt;
-マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。&lt;/p&gt;
-
-&lt;p&gt;なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。&lt;/p&gt;
-
-&lt;h2 id=&#34;intellijで別サーバのファイルにアクセスする&#34;&gt;IntelliJで別サーバのファイルにアクセスする&lt;/h2&gt;
-
-&lt;p&gt;残念ながらIntelliJはこのような用途を想定していないため、
-別マシンの環境下で作業できません。&lt;/p&gt;
-
-&lt;p&gt;幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、&lt;br /&gt;
-IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。&lt;/p&gt;
-
-&lt;p&gt;そこで、サーバ上の開発ディレクトリをSambaで共有し、&lt;br /&gt;
-Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、&lt;br /&gt;
-IntelliJで開発を行うことができます。&lt;/p&gt;
-
-&lt;p&gt;私の環境では、以下のような設定をsmb.confに追加しています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[global]
-map archive = no
-
-～中略～
-
-[workspace]
-   path = /home/username/workspace
-   writable = yes
-   guest ok = no
-   guest only = no
-   create mode = 0755
-   directory mode = 0755
-   share modes = yes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;map archiveについてはこちらを参照&lt;br /&gt;
-&lt;a href=&#34;http://qiita.com/haoling/items/b306b23c41c7110e9e35&#34;&gt;sambaでファイルを上書きすると実行属性が付いてしまう場合の対処&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;サーバと手元の環境を合わせる&#34;&gt;サーバと手元の環境を合わせる&lt;/h2&gt;
-
-&lt;p&gt;補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。&lt;br /&gt;
-ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、&lt;br /&gt;
-依存ライブラリ等に関しては意図的にそろえる必要があります。&lt;/p&gt;
-
-&lt;p&gt;幸いにも、私はgolangのパッケージ管理に&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;gom&lt;/a&gt;を利用しています。&lt;br /&gt;
-このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。&lt;/p&gt;
-
-&lt;p&gt;そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、&lt;br /&gt;
-依存パッケージの補完や、定義元ジャンプが効くようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;問題点&#34;&gt;問題点&lt;/h1&gt;
-
-&lt;p&gt;この手法ではIDEから実行することを想定していないため、&lt;br /&gt;
-IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。&lt;br /&gt;
-このような場合は常に同じ実行環境を維持しておき、&lt;br /&gt;
-必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…&lt;/p&gt;
-
-&lt;p&gt;ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、&lt;br /&gt;
-大きな問題にはなっていません。&lt;/p&gt;
-</description>
+      <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。
+ WindowsのGolang開発  IntelliJ便利  機能がとても豊富  Windows上ではつらい  開発ツールが少ない LinuxはGUI使いづらい  LinuxのファイルをWindowsから変更する  良いところ取り  開発はWindows 実行はLinux  ファイルはSambaで共有  ネットワークドライブをマウント  IDEデバッグは使えなくなる  そのときだけWindowsで動かすとか     Golang開発環境を整える IntelliJでのGo開発環境 IntelliJ IDEAとGolang pluginはとてもよく動くため、
+Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。
+Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった
+VMwareに開発環境を整える IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。
+ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、
+Windows上で開発するのは細かいところで面倒になることが多いです。
+そのため、仮想マシンや別サーバにLinuxマシンを1台作り、
+その中で開発をした方が何かと便利です。
+ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、
+開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。
+そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、
+それらをssh経由のCLIから操作するのが最も良い案になっています。
+このような構成にすることで、Unixで動く便利なツールを利用しつつ、
+Windowsの快適なGUI環境を利用することができます。
+また、ファイルや実行環境と手元の環境とが切り離されるため、
+複数の実行環境を切り替えたり、
+マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。
+なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。
+IntelliJで別サーバのファイルにアクセスする 残念ながらIntelliJはこのような用途を想定していないため、 別マシンの環境下で作業できません。
+幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、
+IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。
+そこで、サーバ上の開発ディレクトリをSambaで共有し、
+Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、
+IntelliJで開発を行うことができます。</description>
     </item>
     
     <item>
@@ -501,71 +102,11 @@ IDEデバッグなど、IDE経由で実行した際に動く機能が使えな�
       <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/04/18/go-package-management/</guid>
-      <description>
-
-&lt;p&gt;goでは標準でいろいろなツールが揃っていますが、&lt;br /&gt;
-npmやbundlerのようなパッケージの依存管理をするツールはありません。&lt;/p&gt;
-
-&lt;p&gt;これは、goでは公開されている物は後方互換性を守り、&lt;br /&gt;
-それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.
-&lt;a href=&#34;http://golang.org/doc/faq#get_version&#34;&gt;http://golang.org/doc/faq#get_version&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;そうはいっても、これに従うかどうかはパッケージの開発者の裁量によるため、&lt;br /&gt;
-自分が管理していないパッケージを利用する場合はどうしても管理が必要になります。&lt;/p&gt;
-
-&lt;p&gt;調べたところ、同じような問題に直面している人は多いらしく、いくつかツールがありました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/golang/go/wiki/PackageManagementTools&#34;&gt;PackageManagementTools&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;一応、go公式でもパッケージ管理ソフトを作るという噂を聞きましたが、1.5には入る気配がないので、&lt;br /&gt;
-とりあえずはこれらの中のどれかを使う必要があります。&lt;/p&gt;
-
-&lt;p&gt;そこで、この中で特にスターが多かったgodep、gom、goopについて調べました。&lt;/p&gt;
-
-&lt;h1 id=&#34;パッケージ管理ツール&#34;&gt;パッケージ管理ツール&lt;/h1&gt;
-
-&lt;p&gt;この3つに共通する物として、importしている物をリストアップし、ファイルに書き出す機能があるようです。&lt;br /&gt;
-また、gomとgoopはほぼ同じ機能を提供し、管理用のファイルの形式が違うようです。&lt;/p&gt;
-
-&lt;h2 id=&#34;godep&#34;&gt;godep&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/tools/godep&#34;&gt;https://github.com/tools/godep&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;こちらはかなりgoの思想に沿った作りをしているツールになります。&lt;/p&gt;
-
-&lt;p&gt;このツールはパッケージのインポート情報を保存しますが、バージョンまでは保存しません。&lt;br /&gt;
-そのため、依存しているパッケージを入れる際は、go getにより最新版をとってきます。&lt;/p&gt;
-
-&lt;p&gt;go getでとれないようなリポジトリ用に、プロジェクト内にワークスペースを作ってソースごと保存し、&lt;br /&gt;
-GOPATHでそこを見るようにしてコマンド実行することもできます。&lt;/p&gt;
-
-&lt;p&gt;つまり、常に最新のmasterを使うか、自分の手元で管理するかの二択です。&lt;br /&gt;
-基本的に全部管理下に置いてある前提の作りっぽいです。&lt;/p&gt;
-
-&lt;h2 id=&#34;gom-goop&#34;&gt;gom/goop&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/mattn/gom&#34;&gt;https://github.com/mattn/gom&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/nitrous-io/goop&#34;&gt;https://github.com/nitrous-io/goop&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;gomとgoopはほぼnpmのような使い勝手になるパッケージ管理ツールです。&lt;br /&gt;
-すなわち、使っているパッケージのバージョンまでも保存します。&lt;/p&gt;
-
-&lt;p&gt;依存するパッケージはローカルにフォルダを作ってそこに保存され、&lt;br /&gt;
-GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&gt;
-
-&lt;p&gt;gomはRakefileのような書式、goopは普通のテキストにちょっと書式が加わったようなものになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;gomが良さそう&#34;&gt;gomが良さそう&lt;/h1&gt;
-
-&lt;p&gt;godepはそういう環境やメンテナンスフローから作る必要があり、気軽に導入は難しそうです。&lt;br /&gt;
-そのため、npmやbundlerに似ているgomやgoopを使った方が楽そうです。&lt;/p&gt;
-
-&lt;p&gt;また、gomはRakefileっぽい書式のため、独自？のgoopよりかは使い勝手がよさそうなので、&lt;br /&gt;
-とりあえずはgomでやろうと思います。&lt;/p&gt;
-</description>
+      <description>goでは標準でいろいろなツールが揃っていますが、
+npmやbundlerのようなパッケージの依存管理をするツールはありません。
+これは、goでは公開されている物は後方互換性を守り、
+それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。
+ Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.</description>
     </item>
     
     <item>
@@ -574,162 +115,16 @@ GOPATHにローカルフォルダを含めた状態で実行します。&lt;/p&g
       <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/04/11/go-liner/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/peterh/liner&#34;&gt;peterh/liner&lt;/a&gt;&lt;br /&gt;
-golangでCLIを作る際に活用できるラインエディタです。&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;p&gt;liner.NewLinerで作成し、Prompt関数で入力を待機します。&lt;br /&gt;
-入力があると関数が入力を返してくるため、それによって処理を分岐します。&lt;/p&gt;
-
-&lt;p&gt;なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、&lt;br /&gt;
-エラー時に終了するようにしておくことでCtrl+dで終了できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/peterh/liner&amp;quot;
-)
-
-func main() {
-	line := liner.NewLiner()
-	defer line.Close()
-
-	for {
-		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
-		if err != nil {
-			fmt.Println(&amp;quot;error: &amp;quot;, err)
-		} else {
-			fmt.Println(&amp;quot;get: &amp;quot;, l)
-
-			if l == &amp;quot;exit&amp;quot; {
-				break
-			}
-		}
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;入力履歴を使う&#34;&gt;入力履歴を使う&lt;/h1&gt;
-
-&lt;p&gt;AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。&lt;br /&gt;
-&lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.AppendHistory&#34;&gt;State.AppendHistory&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/peterh/liner&amp;quot;
-	&amp;quot;os&amp;quot;
-)
-
-func main() {
-	line := liner.NewLiner()
-	defer line.Close()
-
-	f, err := os.Open(&amp;quot;inputs.log&amp;quot;)
-	if err == nil {
-		n, _ := line.ReadHistory(f)
-		fmt.Println(&amp;quot;load&amp;quot;, n, &amp;quot;history&amp;quot;)
-		f.Close()
-	}
-
-	for {
-		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
-		if err != nil {
-			fmt.Println(&amp;quot;error: &amp;quot;, err)
-		} else {
-			fmt.Println(&amp;quot;get: &amp;quot;, l)
-			line.AppendHistory(l)
-
-			if l == &amp;quot;exit&amp;quot; {
-				break
-			}
-		}
-	}
-
-	f, err = os.Create(&amp;quot;inputs.log&amp;quot;)
-	if err == nil {
-		fmt.Println(&amp;quot;write history&amp;quot;)
-
-		line.WriteHistory(f)
-		f.Close()
-	} else {
-		fmt.Println(&amp;quot;write history error: &amp;quot;, err)
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;タブ補完を使う&#34;&gt;タブ補完を使う&lt;/h1&gt;
-
-&lt;p&gt;SetCompleter関数に補完用の関数を登録することで、タブ補完も使えます。&lt;br /&gt;
-&lt;a href=&#34;http://godoc.org/github.com/peterh/liner#State.SetCompleter&#34;&gt;State.SetCompleter&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;引数として、現在入力中のstringを受け取り、tab候補をstringの配列で返す関数を渡します。&lt;br /&gt;
-入力中の文字が配列のはじめの要素で置き換えられ、以降tabを押すごとに次の要素と置き換えられます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/peterh/liner&amp;quot;
-	&amp;quot;strings&amp;quot;
-)
-
-func main() {
-	inputs := make([]string, 0)
-
-	line := liner.NewLiner()
-	defer line.Close()
-
-	line.SetCompleter(func(line string) (c []string) {
-		for _, n := range inputs {
-			if strings.HasPrefix(n, strings.ToLower(line)) {
-				c = append(c, n)
-			}
-		}
-		return
-	})
-
-	for {
-		l, err := line.Prompt(&amp;quot;Input: &amp;quot;)
-		if err != nil {
-			fmt.Println(&amp;quot;error: &amp;quot;, err)
-		} else {
-			fmt.Println(&amp;quot;get: &amp;quot;, l)
-			inputs = append(inputs, l)
-
-			if l == &amp;quot;exit&amp;quot; {
-				break
-			}
-		}
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ラインエディタに必要な物は大体揃っている
-
-&lt;ul&gt;
-&lt;li&gt;入力中の左右移動&lt;/li&gt;
-&lt;li&gt;履歴&lt;/li&gt;
-&lt;li&gt;補完&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;日本語入力はちょっとおかしい
-
-&lt;ul&gt;
-&lt;li&gt;日本語を入れて左右移動すると表示がおかしい&lt;/li&gt;
-&lt;li&gt;ターミナルの問題の可能性も&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>peterh/liner
+golangでCLIを作る際に活用できるラインエディタです。
+使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します。
+入力があると関数が入力を返してくるため、それによって処理を分岐します。
+なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、
+エラー時に終了するようにしておくことでCtrl+dで終了できます。
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&amp;quot; ) func main() { line := liner.NewLiner() defer line.Close() for { l, err := line.Prompt(&amp;quot;Input: &amp;quot;) if err != nil { fmt.Println(&amp;quot;error: &amp;quot;, err) } else { fmt.Println(&amp;quot;get: &amp;quot;, l) if l == &amp;quot;exit&amp;quot; { break } } } }  入力履歴を使う AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。
+State.AppendHistory
+また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&amp;quot; &amp;quot;os&amp;quot; ) func main() { line := liner.</description>
     </item>
     
     <item>
@@ -738,96 +133,27 @@ func main() {
       <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
-      <description>
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;fmt.Print等にちゃんと出力されるかテストしたい
-
-&lt;ul&gt;
-&lt;li&gt;結論としては直接は無理&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;io.Writerを利用するように変えることで簡単にテスト可能
-
-&lt;ul&gt;
-&lt;li&gt;渡されたio.Writerに書き込むようにする&lt;/li&gt;
-&lt;li&gt;通常はos.Stdout、テストの時はbytes.Bufferを渡す&lt;/li&gt;
-&lt;li&gt;どちらもio.Writerを実装している&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;標準出力への書き込みをテストしたい&#34;&gt;標準出力への書き込みをテストしたい&lt;/h1&gt;
-
-&lt;p&gt;fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。&lt;br /&gt;
-ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。&lt;/p&gt;
-
-&lt;p&gt;このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、&lt;br /&gt;
-テストの時は書き込み先を切り替えることで簡単にテストができるようになります。&lt;/p&gt;
-
-&lt;h2 id=&#34;fmt-fprintで出力先を指定する&#34;&gt;fmt.Fprintで出力先を指定する&lt;/h2&gt;
-
-&lt;p&gt;golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。&lt;br /&gt;
-この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。&lt;br /&gt;
-&lt;a href=&#34;https://golang.org/pkg/fmt/#Fprint&#34;&gt;https://golang.org/pkg/fmt/#Fprint&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;io.Writerは&lt;code&gt;Write(p []byte) (n int, err error)&lt;/code&gt;関数だけを持ったインターフェースです。&lt;br /&gt;
-そのため、これを実装していればfmt.Fprintの書き込み先として使えます。&lt;br /&gt;
-&lt;a href=&#34;http://golang.org/pkg/io/#Writer&#34;&gt;http://golang.org/pkg/io/#Writer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。&lt;br /&gt;
-そのため、os.Stdoutにfmt.Fprintで書き込むことにより、&lt;br /&gt;
-出力先を変更可能な状態で標準出力に出力できます。&lt;/p&gt;
-
-&lt;h2 id=&#34;メモリ上に出力する&#34;&gt;メモリ上に出力する&lt;/h2&gt;
-
-&lt;p&gt;golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。&lt;br /&gt;
-そして、String()関数により、書き込まれた文字列をstringとして取得できます。&lt;br /&gt;
-&lt;a href=&#34;http://golang.org/pkg/bytes/#Buffer&#34;&gt;http://golang.org/pkg/bytes/#Buffer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、&lt;br /&gt;
-標準出力に出力されたかどうかをテストすることができるようになります。&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
-
-&lt;p&gt;print.go&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-golang&#34;&gt;import (
-    &amp;quot;fmt&amp;quot;
-    &amp;quot;io&amp;quot;
-    &amp;quot;os&amp;quot;
-)
-
-func testPrint(w io.Writer) {
-    fmt.Fprint(w, &amp;quot;write test\n&amp;quot;)
-}
-
-func main() {
-    testPrint(os.Stdout)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;print_test.go&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-import (
-    &amp;quot;bytes&amp;quot;
-    &amp;quot;testing&amp;quot;
-)
-
-func TestPrint(t *testing.T) {
-    buf := &amp;amp;bytes.Buffer{}
-    testPrint(buf)
-    outputString := buf.String()
-    
-    correctString := &amp;quot;write test\n&amp;quot;
-    if correctString != outputString {
-        t.Errorf(&amp;quot;output string shud be %s but %s&amp;quot;, correctString, outputString)
-        t.FailNow()
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>まとめ  fmt.Print等にちゃんと出力されるかテストしたい  結論としては直接は無理  io.Writerを利用するように変えることで簡単にテスト可能  渡されたio.Writerに書き込むようにする 通常はos.Stdout、テストの時はbytes.Bufferを渡す どちらもio.Writerを実装している   標準出力への書き込みをテストしたい fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。
+ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。
+このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、
+テストの時は書き込み先を切り替えることで簡単にテストができるようになります。
+fmt.Fprintで出力先を指定する golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。
+この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。
+https://golang.org/pkg/fmt/#Fprint
+io.WriterはWrite(p []byte) (n int, err error)関数だけを持ったインターフェースです。
+そのため、これを実装していればfmt.Fprintの書き込み先として使えます。
+http://golang.org/pkg/io/#Writer
+golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。
+そのため、os.Stdoutにfmt.Fprintで書き込むことにより、
+出力先を変更可能な状態で標準出力に出力できます。
+メモリ上に出力する golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。
+そして、String()関数により、書き込まれた文字列をstringとして取得できます。
+http://golang.org/pkg/bytes/#Buffer
+これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、
+標準出力に出力されたかどうかをテストすることができるようになります。
+サンプルコード print.go
+import ( &amp;quot;fmt&amp;quot; &amp;quot;io&amp;quot; &amp;quot;os&amp;quot; ) func testPrint(w io.Writer) { fmt.Fprint(w, &amp;quot;write test\n&amp;quot;) } func main() { testPrint(os.Stdout) }  print_test.go
+package main import ( &amp;quot;bytes&amp;quot; &amp;quot;testing&amp;quot; ) func TestPrint(t *testing.</description>
     </item>
     
     <item>
@@ -836,104 +162,14 @@ func TestPrint(t *testing.T) {
       <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/03/28/go_interface/</guid>
-      <description>
-
-&lt;p&gt;C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。&lt;/p&gt;
-
-&lt;h1 id=&#34;goでインターフェースを実装したクラスのポインタを扱う&#34;&gt;Goでインターフェースを実装したクラスのポインタを扱う&lt;/h1&gt;
-
-&lt;p&gt;Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Node interface{
-  ToString() string
-}
-
-func Output(l Node) {
-  fmt.Println(l.ToString())
-}
-
-type NodeTest struct{
-}
-
-func (n NodeTest) ToString() string{
-  return &amp;quot;test&amp;quot;
-}
-
-func main(){
-  n := NodeTest{}
-  Output(n)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、
-インターフェースのポインタを渡すように変更します。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l *Node) {
-  fmt.Println((*l).ToString())
-}
-
-func (n *NodeTest) ToString() string{
-  return &amp;quot;test&amp;quot;
-}
-
-func main(){
-  n := &amp;amp;NodeTest{}
-  Output(n)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、
-関数の引数として渡すことができず、コンパイルが通りません。&lt;/p&gt;
-
-&lt;p&gt;そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、
-ちゃんとこのような場合も解決方法は存在します。&lt;/p&gt;
-
-&lt;h1 id=&#34;ポインタにインターフェースを実装する&#34;&gt;ポインタにインターフェースを実装する&lt;/h1&gt;
-
-&lt;p&gt;上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。&lt;br /&gt;
-そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Output(l Node) {
-  fmt.Println(l.ToString())
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これにより、Output関数にNodeインタフェースを実装したNodeTestのポインタがコピーして渡され、&lt;br /&gt;
-NodeTestオブジェクト自体はコピーされずに渡されます。&lt;/p&gt;
-
-&lt;p&gt;ここがC++とはだいぶ違う考え方が必要なので戸惑いました。&lt;br /&gt;
-C++では構造体にメソッドを実装し、ポインタからその構造体のメソッドを呼び出します。&lt;br /&gt;
-そのため、あくまでポインタの指しているオブジェクトのメソッド呼び出しであり、&lt;br /&gt;
-クラスのポインタそのものにメソッドが定義されている訳ではありません。&lt;/p&gt;
-
-&lt;p&gt;ですがGoのインターフェースを使った場合、前述の通り上手く動きません。&lt;br /&gt;
-そのため、型のポインタにメソッドを定義し、それをインターフェースとして扱う必要があります。&lt;/p&gt;
-
-&lt;p&gt;C++ではポインタに対して別名をつけることはできますが、メソッドの実装はできませんでした。&lt;br /&gt;
-ですがGoではポインタやint型といったほぼすべての型に対してメソッドを実装できます。&lt;/p&gt;
-
-&lt;p&gt;たとえば、以下のようにint型に対しても好きなメソッドを定義できます。&lt;br /&gt;
-(一応名前は変える必要があります)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-import (
-    &amp;quot;fmt&amp;quot;
-)
-
-type MyInt int
-
-func (i *MyInt) Out() {
-     fmt.Println(*i)
-}
-
-func main() {
-     var i MyInt = 1
-     (&amp;amp;i).Out()
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あらゆる型に関数をつけられるというのが、C++に染まった頭からだと理解できなくて手間取りました。&lt;/p&gt;
-</description>
+      <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。
+Goでインターフェースを実装したクラスのポインタを扱う Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。
+type Node interface{ ToString() string } func Output(l Node) { fmt.Println(l.ToString()) } type NodeTest struct{ } func (n NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := NodeTest{} Output(n) }  関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、 インターフェースのポインタを渡すように変更します。
+func Output(l *Node) { fmt.Println((*l).ToString()) } func (n *NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := &amp;amp;NodeTest{} Output(n) }  この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、 関数の引数として渡すことができず、コンパイルが通りません。
+そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、 ちゃんとこのような場合も解決方法は存在します。
+ポインタにインターフェースを実装する 上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。
+そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。
+func Output(l Node) { fmt.</description>
     </item>
     
     <item>
@@ -942,47 +178,21 @@ func main() {
       <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/03/22/gxui-install/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/google/gxui&#34;&gt;gxui&lt;/a&gt;は、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。&lt;br /&gt;
-WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。&lt;br /&gt;
-なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。&lt;/p&gt;
-
-&lt;h1 id=&#34;go言語の環境構築&#34;&gt;Go言語の環境構築&lt;/h1&gt;
-
-&lt;p&gt;Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。&lt;br /&gt;
-元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、&lt;br /&gt;
-mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。&lt;/p&gt;
-
-&lt;h2 id=&#34;vcsのインストール&#34;&gt;VCSのインストール&lt;/h2&gt;
-
-&lt;p&gt;git(&lt;a href=&#34;http://git-scm.com/&#34;&gt;http://git-scm.com/&lt;/a&gt;)とmercurial(&lt;a href=&#34;http://mercurial.selenic.com/&#34;&gt;http://mercurial.selenic.com/&lt;/a&gt;)をインストールします。&lt;br /&gt;
-gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください&lt;/p&gt;
-
-&lt;h2 id=&#34;mingwのインストール&#34;&gt;mingwのインストール&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://sourceforge.net/projects/mingw/&#34;&gt;http://sourceforge.net/projects/mingw/&lt;/a&gt;からmingwを入れ、&lt;br /&gt;
-mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。&lt;/p&gt;
-
-&lt;p&gt;なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。&lt;br /&gt;
-これは両方とも32bitに揃えることで回避できました。&lt;/p&gt;
-
-&lt;p&gt;コマンドラインからgccが使えるようになっていれば大丈夫です。&lt;/p&gt;
-
-&lt;h1 id=&#34;gxuiのインストール&#34;&gt;gxuiのインストール&lt;/h1&gt;
-
-&lt;p&gt;gxuiと4つの依存するパッケージをインストールします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get http://github.com/google/gxui
-go get http://code.google.com/p/freetype-go/freetype/raster
-go get http://code.google.com/p/freetype-go/freetype/truetype
-go get http://github.com/go-gl/gl/v3.2-core/gl
-go get http://github.com/go-gl/glfw/v3.1/glfw
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これだけでインストールはおしまいです。
-gxui内のsample/下にあるサンプルを動かして確認をしてください。&lt;/p&gt;
-</description>
+      <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。
+WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。
+なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。
+Go言語の環境構築 Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。
+元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、
+mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。
+VCSのインストール git(http://git-scm.com/)とmercurial(http://mercurial.selenic.com/)をインストールします。
+gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください
+mingwのインストール http://sourceforge.net/projects/mingw/からmingwを入れ、
+mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。
+なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。
+これは両方とも32bitに揃えることで回避できました。
+コマンドラインからgccが使えるようになっていれば大丈夫です。
+gxuiのインストール gxuiと4つの依存するパッケージをインストールします。
+go get http://github.com/google/gxui go get http://code.google.com/p/freetype-go/freetype/raster go get http://code.google.com/p/freetype-go/freetype/truetype go get http://github.com/go-gl/gl/v3.2-core/gl go get http://github.com/go-gl/glfw/v3.1/glfw  これだけでインストールはおしまいです。 gxui内のsample/下にあるサンプルを動かして確認をしてください。</description>
     </item>
     
     <item>
@@ -991,114 +201,27 @@ gxui内のsample/下にあるサンプルを動かして確認をしてくださ
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
-      <description>
-
-&lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
-サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Octopress
-
-&lt;ul&gt;
-&lt;li&gt;Ruby制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;大量の記事を扱うと遅くなっていく
-
-&lt;ul&gt;
-&lt;li&gt;100記事で新しい記事のHTML出力まで10秒ぐらいかかる&lt;/li&gt;
-&lt;li&gt;見た目を確認したいときなどにとても不便&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Hugo
-
-&lt;ul&gt;
-&lt;li&gt;Golang制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;利点&lt;/li&gt;
-&lt;li&gt;早い
-
-&lt;ul&gt;
-&lt;li&gt;100記事で200msぐらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;環境構築いらず
-
-&lt;ul&gt;
-&lt;li&gt;公式がバイナリ配布&lt;/li&gt;
-&lt;li&gt;手を加えないならそのまま使える&lt;/li&gt;
-&lt;li&gt;Win-Mac両方使う人にはとても楽&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;欠点
-
-&lt;ul&gt;
-&lt;li&gt;テーマが少ない
-
-&lt;ul&gt;
-&lt;li&gt;このサイトも自作&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;手を加えにくい
-
-&lt;ul&gt;
-&lt;li&gt;手を加えると環境構築いらずの利点が失われる&lt;/li&gt;
-&lt;li&gt;クロスコンパイルは楽なのでそれほどでもない？
-
-&lt;ul&gt;
-&lt;li&gt;手を加える必要が無いのでそのとき考える&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;octopressの問題点&#34;&gt;Octopressの問題点&lt;/h1&gt;
-
-&lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
-
-&lt;p&gt;Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。&lt;br /&gt;
-この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、&lt;br /&gt;
-表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。&lt;/p&gt;
-
-&lt;p&gt;現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。&lt;br /&gt;
-ちょっとした修正ごとに10秒待つのはなかなかにつらく、&lt;br /&gt;
-かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
-そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
-
-&lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
-&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの利点&#34;&gt;Hugoの利点&lt;/h1&gt;
-
-&lt;h2 id=&#34;htmlのレンダリングが早い&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
-
-&lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
-ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
-ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
-特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
-
-&lt;h2 id=&#34;環境構築いらず&#34;&gt;環境構築いらず&lt;/h2&gt;
-
-&lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
-環境構築でがんばる必要がありません。&lt;br /&gt;
-私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
-Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの問題点&#34;&gt;Hugoの問題点&lt;/h1&gt;
-
-&lt;h2 id=&#34;テーマがない&#34;&gt;テーマがない&lt;/h2&gt;
-
-&lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
-実際このサイトも自分でテーマを作りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;手を入れにくい&#34;&gt;手を入れにくい&lt;/h2&gt;
-
-&lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
-Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
-これは環境構築の手間とのトレードオフなので仕方ないことなのですが…&lt;/p&gt;
-
-&lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
-一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
-</description>
+      <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、
+サイト作成ツールの部分をGolangで作られたHugoに置き換えました。
+まとめ  Octopress  Ruby制の静的サイト作成ツール 大量の記事を扱うと遅くなっていく  100記事で新しい記事のHTML出力まで10秒ぐらいかかる 見た目を確認したいときなどにとても不便   Hugo  Golang制の静的サイト作成ツール 利点 早い  100記事で200msぐらい  環境構築いらず  公式がバイナリ配布 手を加えないならそのまま使える Win-Mac両方使う人にはとても楽  欠点  テーマが少ない  このサイトも自作 https://github.com/ota42y/orange42   手を加えにくい  手を加えると環境構築いらずの利点が失われる クロスコンパイルは楽なのでそれほどでもない？  手を加える必要が無いのでそのとき考える     Octopressの問題点 HTMLのレンダリングが遅いです。
+Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。
+この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、
+表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。
+現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。
+ちょっとした修正ごとに10秒待つのはなかなかにつらく、
+かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。
+そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました
+乗り換え方はこちらのサイトを参考にさせていただきました。
+OctopressからHugoへ移行した
+Hugoの利点 HTMLのレンダリングが早い Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、
+ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、
+ほとんど待ち時間が感じられないレベルになりました。
+特にチューニングとかを考えずにこの速度なので、とても助かります。
+環境構築いらず Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、
+環境構築でがんばる必要がありません。
+私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、
+Windows向けのバイナリをダウンロードするだけですむのは大変便利です。
+Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。</description>
     </item>
     
     <item>
@@ -1107,10 +230,8 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</guid>
-      <description>&lt;p&gt;こんな感じです。&lt;br /&gt;
-暗黙的にキャストしてくれないので若干面倒です。&lt;br /&gt;
-&lt;script src=&#34;https://gist.github.com/ota42y/db4ff0298d9c945cd261.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
+      <description>こんな感じです。
+暗黙的にキャストしてくれないので若干面倒です。</description>
     </item>
     
     <item>
@@ -1119,65 +240,18 @@ Octopressの場合は比較的簡単に機能追加ができたため、拡張�
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/12/19/gorm/</guid>
-      <description>&lt;p&gt;golangではmysqldriverでmysqlにアクセスできますが、&lt;br /&gt;
-一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。&lt;br /&gt;
-&lt;a href=&#34;http://ota42y.com/blog/2014/10/04/go-mysql/&#34;&gt;goでmysqlを使う&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;そこでいろいろ探していたところ、&lt;br /&gt;
-ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/jinzhu/gorm&#34;&gt;https://github.com/jinzhu/gorm&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。&lt;br /&gt;
-リレーションも勝手に貼ってくれるみたいです。&lt;br /&gt;
-ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、&lt;br /&gt;
-順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。&lt;br /&gt;
-(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-&amp;quot;fmt&amp;quot;
-&amp;quot;github.com/jinzhu/gorm&amp;quot;
-_ &amp;quot;github.com/lib/pq&amp;quot;
-_ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;
-)
-
-type User struct {
-  Id           int64
-  Name         string  `sql:&amp;quot;size:255&amp;quot;`
-  Emails            []Email         // One-To-Many relationship (has many)
-}
-
-type Email struct {
-  Id         int64
-  UserId     int64   // Foreign key for User (belongs to)
-  Email      string  `sql:&amp;quot;type:varchar(100);&amp;quot;` // Set field&#39;s type
-}
-
-func main(){
-  db, err := gorm.Open(&amp;quot;mysql&amp;quot;, &amp;quot;root@/testdb?charset=utf8&amp;amp;parseTime=True&amp;quot;)
-  fmt.Println(err)
-
-  db.DB()
-  db.AutoMigrate(&amp;amp;Email{})
-  db.AutoMigrate(&amp;amp;User{})
-
-  user := User{
-    Name:            &amp;quot;ota42y&amp;quot;,
-    Emails:          []Email{ {Email: &amp;quot;ota42y@example.com&amp;quot;}, {Email: &amp;quot;ota42y@example@example.com&amp;quot;} },
-  }
-  db.Create(&amp;amp;user)
-
-  var me User
-  db.Where(&amp;quot;name = ?&amp;quot;, &amp;quot;ota42y&amp;quot;).First(&amp;amp;me)
-  fmt.Println(me)
-
-  var emails []Email
-  db.Model(&amp;amp;me).Related(&amp;amp;emails)
-  fmt.Println(emails)
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>golangではmysqldriverでmysqlにアクセスできますが、
+一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。
+goでmysqlを使う
+そこでいろいろ探していたところ、
+ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。
+https://github.com/jinzhu/gorm
+自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。
+リレーションも勝手に貼ってくれるみたいです。
+ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、
+順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。
+(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/jinzhu/gorm&amp;quot; _ &amp;quot;github.com/lib/pq&amp;quot; _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) type User struct { Id int64 Name string `sql:&amp;quot;size:255&amp;quot;` Emails []Email // One-To-Many relationship (has many) } type Email struct { Id int64 UserId int64 // Foreign key for User (belongs to) Email string `sql:&amp;quot;type:varchar(100);&amp;quot;` // Set field&#39;s type } func main(){ db, err := gorm.Open(&amp;quot;mysql&amp;quot;, &amp;quot;root@/testdb?charset=utf8&amp;amp;parseTime=True&amp;quot;) fmt.Println(err) db.</description>
     </item>
     
     <item>
@@ -1186,107 +260,21 @@ func main(){
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/12/03/go-yaml-struct/</guid>
-      <description>
-
-&lt;p&gt;使い方がかなり特殊だったのでメモ&lt;br /&gt;
-(ドキュメントには書いてありますが…)&lt;/p&gt;
-
-&lt;p&gt;goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、&lt;br /&gt;
-データを構造体にセットした状態で読み込むことが出来ます。&lt;/p&gt;
-
-&lt;p&gt;特にGoでは構造体を使わない場合、&lt;a href=&#34;http://ota42y.com/blog/2014/11/13/go-yaml/&#34;&gt;interfaceへの変換を書きまくる事になる&lt;/a&gt;ので、&lt;br /&gt;
-できる限り構造体を利用した方がお勧めです。&lt;/p&gt;
-
-&lt;p&gt;以下のように、YAMLのキーとGoの構造体の名前を揃えることで、&lt;br /&gt;
-YAMLから構造体に直接データを代入できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Data struct {
-  UserId      int
-  UserName    string `yaml:&amp;quot;user_name&amp;quot;`
-  Follownum   int    `yaml:&amp;quot;followNum&amp;quot;`
-  MessageText string
-  invaliddata string
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;userid: 123
-user_name: name
-followNum: 42
-messageText: text
-invaliddata: data
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;後述するコードでYAMLを読み込むと、出力は以下の通りになります、&lt;br /&gt;
-&lt;code&gt;=&amp;gt; {123 name 42  }&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;UserIdに123、UserNameにname、Follownumに42、&lt;br /&gt;
-MessageTextとinvaliddataは空になっています。&lt;/p&gt;
-
-&lt;h1 id=&#34;構造体とyamlの対応付け仕様&#34;&gt;構造体とYAMLの対応付け仕様&lt;/h1&gt;
-
-&lt;p&gt;特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。&lt;br /&gt;
-対応するキーは以下のような仕様になっているようです。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける
-
-&lt;ul&gt;
-&lt;li&gt;UserIdはuseridと対応付けられます&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます
-
-&lt;ul&gt;
-&lt;li&gt;messageTextはダメで、messagetextでないといけません&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;構造体のメンバは大文字から始まる
-
-&lt;ul&gt;
-&lt;li&gt;そのため、invaliddataにはデータ入っていません&lt;/li&gt;
-&lt;li&gt;大文字から始まれば、途中が大文字でも大丈夫です&lt;/li&gt;
-&lt;li&gt;UserIdはuseridと対応付けられます&lt;/li&gt;
-&lt;li&gt;途中を大文字にしても、全て小文字のキーを見に行きます&lt;/li&gt;
-&lt;li&gt;MessageTextはmessagetextと対応付けられます&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;明示的に対応を設定することもできる
-
-&lt;ul&gt;
-&lt;li&gt;UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない)&lt;/li&gt;
-&lt;li&gt;Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-  &amp;quot;gopkg.in/yaml.v2&amp;quot;
-  &amp;quot;io/ioutil&amp;quot;
-  &amp;quot;fmt&amp;quot;
-)
-
-type Data struct {
-  UserId      int
-  UserName    string `yaml:&amp;quot;user_name&amp;quot;`
-  Follownum   int     `yaml:&amp;quot;followNum&amp;quot;`
-  MessageText string
-  invaliddata string
-}
-
-func main() {
-  buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;)
-  if err != nil {
-    panic(err)
-  }
-
-  var d Data
-  err = yaml.Unmarshal(buf, &amp;amp;d)
-  fmt.Println(d)
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>使い方がかなり特殊だったのでメモ
+(ドキュメントには書いてありますが…)
+goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、
+データを構造体にセットした状態で読み込むことが出来ます。
+特にGoでは構造体を使わない場合、interfaceへの変換を書きまくる事になるので、
+できる限り構造体を利用した方がお勧めです。
+以下のように、YAMLのキーとGoの構造体の名前を揃えることで、
+YAMLから構造体に直接データを代入できます。
+type Data struct { UserId int UserName string `yaml:&amp;quot;user_name&amp;quot;` Follownum int `yaml:&amp;quot;followNum&amp;quot;` MessageText string invaliddata string }  userid: 123 user_name: name followNum: 42 messageText: text invaliddata: data  後述するコードでYAMLを読み込むと、出力は以下の通りになります、
+=&amp;gt; {123 name 42 }
+UserIdに123、UserNameにname、Follownumに42、
+MessageTextとinvaliddataは空になっています。
+構造体とYAMLの対応付け仕様 特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。
+対応するキーは以下のような仕様になっているようです。
+ 指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける  UserIdはuseridと対応付けられます  後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます  messageTextはダメで、messagetextでないといけません  構造体のメンバは大文字から始まる  そのため、invaliddataにはデータ入っていません 大文字から始まれば、途中が大文字でも大丈夫です UserIdはuseridと対応付けられます 途中を大文字にしても、全て小文字のキーを見に行きます MessageTextはmessagetextと対応付けられます  明示的に対応を設定することもできる  UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない) Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる   暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。</description>
     </item>
     
     <item>
@@ -1295,177 +283,36 @@ func main() {
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://gocon.connpass.com/event/9748/&#34;&gt;Go Conference 2014 autumn&lt;/a&gt;に参加しました。&lt;br /&gt;
-&lt;a href=&#34;http://togetter.com/li/751700&#34;&gt;togetterまとめ&lt;/a&gt;&lt;br /&gt;
-大体スライドが公開されているので、正確な内容はそちらをどうぞ。&lt;/p&gt;
-
-&lt;p&gt;#まとめ
-- Go言語のシンプルさへのこだわりが凄い
-- 開発陣の徳の高さが凄い
-  - 難しい部分は俺らに任せておけ！的な
-- 明日から使えるGo言語的な情報が盛りだくさん
-  - エラーを_で無視して済みません…(´･_･`)
-- 椅子が痛い
-  - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです…
-- 英語頑張ろう
-  - 日本語スライドありがたや…&lt;/p&gt;
-
-&lt;p&gt;#Keynote1: Rob Pike (@rob_pike) (45min)
-スライドは未公開？&lt;/p&gt;
-
-&lt;p&gt;Go言語の設計者&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%83%91%E3%82%A4%E3%82%AF&#34;&gt;ロブ・パイク&lt;/a&gt;さんのGo言語の思想とかについての話です。&lt;/p&gt;
-
-&lt;p&gt;Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。&lt;br /&gt;
-他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、&lt;br /&gt;
-Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。&lt;br /&gt;
-書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。&lt;/p&gt;
-
-&lt;p&gt;プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。&lt;br /&gt;
-言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、&lt;br /&gt;
-必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。&lt;br /&gt;
-おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。&lt;/p&gt;
-
-&lt;p&gt;簡潔な記述でも理解するのが大変な複雑な事ができるため、&lt;br /&gt;
-簡潔なコード≠単純なコードと言えるのかなと思いました。&lt;/p&gt;
-
-&lt;p&gt;また、Goではコード側ができる限り簡単になるように、&lt;br /&gt;
-複雑な事を可能な限り言語側で隠蔽しているとも言われていました。&lt;br /&gt;
-実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、&lt;br /&gt;
-使う側からはそれほど大変さを感じることなく使えます。&lt;/p&gt;
-
-&lt;p&gt;ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…&lt;/p&gt;
-
-&lt;p&gt;#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)
-&lt;a href=&#34;http://ukai-go-talks.appspot.com/2014/gocon.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。&lt;/p&gt;
-
-&lt;p&gt;Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、&lt;br /&gt;
-ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。&lt;/p&gt;
-
-&lt;p&gt;これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、&lt;br /&gt;
-是非ともスライドが公開されるといいなーと思います。&lt;/p&gt;
-
-&lt;h1 id=&#34;lt1&#34;&gt;LT1&lt;/h1&gt;
-
-&lt;h2 id=&#34;gardener-go&#34;&gt;Gardener &amp;amp; Go&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1cPtFXGVgWcjG7qpwNz7jLbMh9BUW13dM_n1-ls-2u0s/edit#slide=id.p&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。&lt;br /&gt;
-&lt;a href=&#34;http://ec-mail.freegufo.com/items/910014&#34;&gt;GoCon 2014 Autumn Tシャツ | FreeGufo メール便対&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;セッション&#34;&gt;セッション&lt;/h1&gt;
-
-&lt;p&gt;##App Engine for Golang Performance
-&lt;a href=&#34;http://sinmetal-slide.appspot.com/2014/gocon1130/gaego.slide#1&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@sinmetalさんのGAEとMVM上でのGoとJavaの速度比較です。&lt;br /&gt;
-Goは基本的に倍ぐらい速く、JavaはJavaらしくJVMの起動に時間がかかるといった結果みたいです。&lt;/p&gt;
-
-&lt;p&gt;##Golang @ISUCON
-&lt;a href=&#34;https://speakerdeck.com/ymatsuwitter/golang-at-isucon&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@y_matsuwitterさんのISUCONでGo言語を使った話です。&lt;br /&gt;
-ISUCONでやった、Go言語の様々な効率化についてまとめられていました。&lt;/p&gt;
-
-&lt;p&gt;話を聞くとかなり複雑な事をしているようですが、スライドのコードだととても簡単そうで凄いです。&lt;/p&gt;
-
-&lt;p&gt;##mackerel-agent 徹底解説
-&lt;a href=&#34;http://songmu.github.io/slides/gocon2014-autumn/#0&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@Songmuさんによる、mackerel-agentのソースコード解説です。&lt;br /&gt;
-NewRelicっぽいサービスですが、OSSな分色々出来そうで夢が広がる感じです。&lt;/p&gt;
-
-&lt;p&gt;##Why my Go program is slow?
-&lt;a href=&#34;http://www.slideshare.net/InadaNaoki/gocon2014-pprof&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@methaneさんによるCPUプロファイリングについての発表です。&lt;br /&gt;
-アセンブラまで出してくれるpprofの凄さをひしひしと感じます…&lt;/p&gt;
-
-&lt;p&gt;また、Goでは他の関数呼び出しのない末端の関数をインライン展開してくれるので、&lt;br /&gt;
-関数に分けると早かったり、&lt;br /&gt;
-関数呼び出しで呼び出し側が使っているレジスタを全部待避するので、&lt;br /&gt;
-呼び出された側が使った分だけ待避する？Cよりも関数呼び出しは遅いなど、&lt;br /&gt;
-Goの速度についてしっかりと説明されています。&lt;/p&gt;
-
-&lt;p&gt;##Golang JP Community
-&lt;a href=&#34;https://docs.google.com/presentation/d/1UTi4uqt4sOrQ1dHJE0y8UB9BR9iqDK7dLP57QAfrOX4/pub?start=false&amp;amp;loop=false&amp;amp;delayms=3000&amp;amp;slide=id.g4f1d3881c_00&#34;&gt;資料&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.youtube.com/watch?v=LJvEIjRBSDA&#34;&gt;資料２&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@qt_luigiさんの日本のGo言語コミュニティの話でした。&lt;br /&gt;
-いくつか知っているものもありましたが、思った以上に大量にあって驚きました…&lt;/p&gt;
-
-&lt;p&gt;##(タイトルメモり損ねました…GengoでGoの利用事例なお話)
-PHPのAPIをGoに置き換えていったら、500msが10msになったというお話です。&lt;br /&gt;
-クリティカルな所ではなく影響の少ないところから、&lt;br /&gt;
-一気にではなく少しずつ置き換えていくといいそうです。&lt;/p&gt;
-
-&lt;p&gt;Goで作られたデプロイツールが便利そうでした。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/gengo/goship&#34;&gt;https://github.com/gengo/goship&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;##NSQ-Centric Architecture
-&lt;a href=&#34;http://www.slideshare.net/guregu/nsqcentric-architecture-gocon-autumn-2014&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/guregu&#34;&gt;gureguさん&lt;/a&gt;のNSQの話です。&lt;/p&gt;
-
-&lt;p&gt;bit.lyが作ったGo製のメッセージキューである&lt;a href=&#34;https://github.com/bitly/nsq&#34;&gt;NSQ&lt;/a&gt;を使って、&lt;br /&gt;
-チャットアプリを作った発表でした。&lt;/p&gt;
-
-&lt;p&gt;##(Go言語のコンパイラをハックした話)
-&lt;a href=&#34;http://moriyoshi.hatenablog.com/entry/2014/06/03/121728&#34;&gt;参考資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;@moriyoshitさんがGo言語で寿司関数を作りたいがために？w　Goのコンパイラをハックしたのと、&lt;br /&gt;
-コンパイラの中についてのお話でした。&lt;/p&gt;
-
-&lt;p&gt;教科書通りのコンパイラの作りしてるんだなーという印象でした。&lt;br /&gt;
-魔境と噂のGCCとかはどうなってるんだろう…と思いました。&lt;/p&gt;
-
-&lt;h1 id=&#34;lt&#34;&gt;LT&lt;/h1&gt;
-
-&lt;h2 id=&#34;nginx-build&#34;&gt;nginx-build&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/cubicdaiya/nginx-build&#34;&gt;https://speakerdeck.com/cubicdaiya/nginx-build&lt;/a&gt;&lt;br /&gt;
-NginxをビルドするためのツールのDLと、ビルドをやってくれるツールを書いたそうです。&lt;br /&gt;
-バイナリ単体で配布できますし、こういう用途には便利そうな感じ…&lt;/p&gt;
-
-&lt;h2 id=&#34;楽天でterraformを使てる話&#34;&gt;(楽天でTerraformを使てる話)&lt;/h2&gt;
-
-&lt;p&gt;AWSとかのインスタンスをコードから立ち上げられるTerraformを利用して、&lt;br /&gt;
-楽天社内でinfrastructure as codeを進めている話です。&lt;/p&gt;
-
-&lt;p&gt;##ビルドパイプラインツールをGoで作った話
-&lt;a href=&#34;https://speakerdeck.com/ainoya/birudopaipurainturuwogodezuo-tutahua&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;個人的にはJenkinsでビルドパイプラインっぽいのを作るのには、&lt;br /&gt;
-いろんな点からうんざりしていたので、なんか凄い便利そうで気になります！　　
-似たようなのを作ろうと画策していたので、先を越された感はありますが…&lt;/p&gt;
-
-&lt;p&gt;##go/parser, go/astの話
-&lt;a href=&#34;http://yuroyoro.net/gocon_2014_autumn_lt/#/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Goの抽象構文木を生成する標準パッケージの紹介と、可視化するツールを作ったお話です。&lt;br /&gt;
-Goの&lt;a href=&#34;http://ja.wikipedia.org/wiki/Lint&#34;&gt;lint&lt;/a&gt;ではここで紹介した技術を使って実装しているらしいです。&lt;/p&gt;
-
-&lt;p&gt;##Unit-testing programs depend on I/O in Go
-&lt;a href=&#34;https://yuya-takeyama.github.io/presentations/2014/11/30/gocon_2014_autumn/&#34;&gt;資料&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;表題の通り、I/Oに依存したテストについてのお話です。&lt;br /&gt;
-Keynote2の@fumitoshi_ukaiさんも言っていたように、&lt;br /&gt;
-データを読み書きするだけでファイルとしての挙動が不要な場合は、&lt;br /&gt;
-&lt;code&gt;os.File&lt;/code&gt;ではなく&lt;code&gt;io.Reader&lt;/code&gt;や&lt;code&gt;io.Writer&lt;/code&gt;を使うと、ファイル以外の引数も与えられるため、&lt;br /&gt;
-汎用性が上がり、テストもしやすいそうです。&lt;/p&gt;
-
-&lt;p&gt;##(consul.ioの話)
-&lt;a href=&#34;https://consul.io/&#34;&gt;https://consul.io/&lt;/a&gt;を使うと、色々はかどるらしいが…&lt;br /&gt;
-ごめんなさい理解できてないです(´･_･`)&lt;/p&gt;
-
-&lt;p&gt;##Togetterまとめ
-Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。&lt;br /&gt;
-振り返る際にとてもお世話になったので、感謝の限りです。&lt;/p&gt;
-</description>
+      <description>Go Conference 2014 autumnに参加しました。
+togetterまとめ
+大体スライドが公開されているので、正確な内容はそちらをどうぞ。
+#まとめ - Go言語のシンプルさへのこだわりが凄い - 開発陣の徳の高さが凄い - 難しい部分は俺らに任せておけ！的な - 明日から使えるGo言語的な情報が盛りだくさん - エラーを_で無視して済みません…(´･_･`) - 椅子が痛い - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです… - 英語頑張ろう - 日本語スライドありがたや…
+#Keynote1: Rob Pike (@rob_pike) (45min) スライドは未公開？
+Go言語の設計者ロブ・パイクさんのGo言語の思想とかについての話です。
+Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。
+他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、
+Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。
+書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。
+プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。
+言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、
+必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。
+おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。
+簡潔な記述でも理解するのが大変な複雑な事ができるため、
+簡潔なコード≠単純なコードと言えるのかなと思いました。
+また、Goではコード側ができる限り簡単になるように、
+複雑な事を可能な限り言語側で隠蔽しているとも言われていました。
+実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、
+使う側からはそれほど大変さを感じることなく使えます。
+ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…
+#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min) 資料
+Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。
+Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、
+ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。
+これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、
+是非ともスライドが公開されるといいなーと思います。
+LT1 Gardener &amp;amp; Go 資料
+@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。
+GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</description>
     </item>
     
     <item>
@@ -1474,55 +321,15 @@ Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれ�
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/13/go-yaml/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/go-yaml/yaml&#34;&gt;https://github.com/go-yaml/yaml&lt;/a&gt;を使う事で、
-goでYAMLを扱うことが出来ます。&lt;/p&gt;
-
-&lt;p&gt;サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、&lt;br /&gt;
-以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。&lt;/p&gt;
-
-&lt;p&gt;またExampleには型を決めて読み込む方法しか乗っていませんが、&lt;br /&gt;
-以下の例では、&lt;a href=&#34;http://qiita.com/yamasaki-masahide/items/d6e406c4c11d5870a1c6&#34;&gt;go で yaml 等を「map[interface{}]interface{}」型で読み込んだ際の動的型の参照方法&lt;/a&gt;&lt;br /&gt;
-を参考に型を決めずにMapで読み込んでいます。&lt;/p&gt;
-
-&lt;p&gt;かなり冗長な表現になっていますが…(´･_･`)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;a: Easy!
-b:
-  c: 2
-  d: [3, 4]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
-
-import (
-  &amp;quot;fmt&amp;quot;
-  &amp;quot;io/ioutil&amp;quot;
-  &amp;quot;gopkg.in/yaml.v2&amp;quot;
-)
-
-func main() {
-  buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;)
-  if err != nil {
-    return
-  }
-
-  m := make(map[interface{}]interface{})
-  err = yaml.Unmarshal(buf, &amp;amp;m)
-  if err != nil {
-    panic(err)
-  }
-
-  fmt.Printf(&amp;quot;%s\n&amp;quot;, m[&amp;quot;a&amp;quot;])
-  fmt.Printf(&amp;quot;%d\n&amp;quot;, m[&amp;quot;b&amp;quot;].(map[interface {}]interface {})[&amp;quot;c&amp;quot;])
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;出力結果&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Easy!
-2
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。
+サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、
+以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。
+またExampleには型を決めて読み込む方法しか乗っていませんが、
+以下の例では、go で yaml 等を「map[interface{}]interface{}」型で読み込んだ際の動的型の参照方法
+を参考に型を決めずにMapで読み込んでいます。
+かなり冗長な表現になっていますが…(´･_･`)
+a: Easy! b: c: 2 d: [3, 4]  package main import ( &amp;quot;fmt&amp;quot; &amp;quot;io/ioutil&amp;quot; &amp;quot;gopkg.in/yaml.v2&amp;quot; ) func main() { buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;) if err != nil { return } m := make(map[interface{}]interface{}) err = yaml.Unmarshal(buf, &amp;amp;m) if err != nil { panic(err) } fmt.Printf(&amp;quot;%s\n&amp;quot;, m[&amp;quot;a&amp;quot;]) fmt.Printf(&amp;quot;%d\n&amp;quot;, m[&amp;quot;b&amp;quot;].(map[interface {}]interface {})[&amp;quot;c&amp;quot;]) }  出力結果
+Easy! 2  </description>
     </item>
     
     <item>
@@ -1531,15 +338,111 @@ func main() {
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/10/08/go-mysql-time/</guid>
-      <description>&lt;p&gt;goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…&lt;br /&gt;
-&lt;code&gt;sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;どうやらDSNに&lt;code&gt;parseTime=true&lt;/code&gt;オプションをつける必要があるようです(何故かは不明)&lt;br /&gt;
-&lt;code&gt;db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;参考リンク&lt;br /&gt;
-&lt;a href=&#34;https://github.com/go-sql-driver/mysql#timetime-support&#34;&gt;https://github.com/go-sql-driver/mysql#timetime-support&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…
+sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time
+どうやらDSNにparseTime=trueオプションをつける必要があるようです(何故かは不明)
+db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)
+参考リンク
+https://github.com/go-sql-driver/mysql#timetime-support</description>
+    </item>
+    
+    <item>
+      <title>goでmysqlを使う</title>
+      <link>http://ota42y.com/blog/2014/10/04/go-mysql/</link>
+      <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2014/10/04/go-mysql/</guid>
+      <description>http://github.com/go-sql-driver/mysql
+がありましたので、それを使います。
+以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。
+import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; )  DB設定 以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。
+db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;user:password@/dbname&amp;quot;) if err != nil { panic(err.Error()) } defer db.Close()  サーバやデータベース名などはDSN (Data Source Name)で指定するようです。
+あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。
+使い方 前提条件 上記の方法でsql.Openの結果を変数のdbに保存済み、
+以下の構造体をDBに書き込むとします。
+type Post struct { RoomName string Message string MessageId string IsSend bool }  また、tableNameに書き込むテーブル名が保存されているとします。
+INSERT post := getPost()　// 書き込むためのデータを取得する stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?</description>
+    </item>
+    
+    <item>
+      <title>go runしても分割したファイルが認識されない</title>
+      <link>http://ota42y.com/blog/2014/09/10/golang-file-split/</link>
+      <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2014/09/10/golang-file-split/</guid>
+      <description> Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。
+ Goコードの書き方
+とのことなので、試しに以下のようにmainパッケージを分割してコンパイルしたところ、上手くいきませんでした(´･_･`)
+// main.go package main import ( &amp;quot;fmt&amp;quot; ) func main() { fmt.Println(&amp;quot;main file&amp;quot;) OutputDiv() }  // div.go package main import ( &amp;quot;fmt&amp;quot; ) func OutputDiv() { fmt.Println(&amp;quot;div file&amp;quot;) }  go runの結果、分割したファイルにある関数を見つけられないエラーになります。
+go run main.go # command-line-arguments ./main.go:9: undefined: OutputDiv  どうやら、go runした場合は引数のファイルのみがコンパイル対象になるため、
+go run *.goか、必要なファイルを全てオプションとして渡す必要があるようです。
+go run main.go div.go main file div file  </description>
+    </item>
+    
+    <item>
+      <title>golangでcronを使う</title>
+      <link>http://ota42y.com/blog/2014/09/09/golang-cron/</link>
+      <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2014/09/09/golang-cron/</guid>
+      <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止めておく必要があります。
+ </description>
+    </item>
+    
+    <item>
+      <title>mgoのConsistencyについて</title>
+      <link>http://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
+      <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
+      <description>mgoのサンプルにあった
+session.SetMode(mgo.Monotonic, true)
+の意味がよくわからないので調べてみました。
+結論から書きますと、これは複数DBを利用した際の、
+データの一貫性をどの程度保証するかの設定です。
+一貫性制御 mgoには複数のDB間での一貫性を制御する３種類のモードがあります。
+const ( Eventual mode = 0 Monotonic mode = 1 Strong mode = 2 )  SetModeにこれを渡すことで、モードを切り替えられます。
+それぞれの内容は以下の通りです。
+おそらく一貫性がちゃんとしていくに従って、複雑化&amp;amp;遅くなっていきます。
+Eventual Consistency 最終的に辻褄が合えばいいよね設定です。
+データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。
+更新済みのノードと、そうでないノードが混在する可能性があるため、
+どのノードから読み込むのかが固定されない場合、
+新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…
+といったことが起きる可能性があるはずです。
+同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。
+Monotonic Consistency あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。
+おそらく、値を参照したタイミングで最新かどうかは保証されないが、
+少なくとも古い値が読み込まれることはない、という状態だと思われます。
+Strong Consistency 常に必ず最新の値が読み込めるという状態です。
+一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、
+注意が必要です。</description>
+    </item>
+    
+    <item>
+      <title>golangでmongodbを使う</title>
+      <link>http://ota42y.com/blog/2014/09/02/go-mongodb/</link>
+      <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
+      <description>mgoというライブラリが便利そうです。
+http://labix.org/mgo
+以下はtwitterからツイートを取ってきて、
+未登録のツイートをmongodbに保存するスクリプトです。
+今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、
+件数を数えてその結果をチェックしています。
+ </description>
+    </item>
+    
+    <item>
+      <title>golangでtwitter APIを使う</title>
+      <link>http://ota42y.com/blog/2014/08/31/go-anaconda/</link>
+      <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2014/08/31/go-anaconda/</guid>
+      <description>anacondaが良さそう(ただしストリーミングAPI非対応)
+go get github.com/ChimeraCoder/anaconda
+ </description>
     </item>
     
   </channel>

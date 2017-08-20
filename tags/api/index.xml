@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Api on おおたの物置</title>
-    <link>http://ota42y.com/tags/api/index.xml</link>
+    <link>http://ota42y.com/tags/api/</link>
     <description>Recent content in Api on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Twitterのoath_callbackは設定していないと上書きできない</title>
@@ -14,29 +17,15 @@
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/09/19/twitter-callback/</guid>
-      <description>&lt;p&gt;Twitterは&lt;a href=&#34;https://dev.twitter.com/oauth/reference/post/oauth/request_token&#34;&gt;oauth/request_token&lt;/a&gt;へのアクセス時に、&lt;br /&gt;
-認証後のコールバック先をoauth_callbackパラメータで上書きできます。&lt;/p&gt;
-
-&lt;p&gt;Twitterの開発者画面からは独自スキーマは登録できませんが、&lt;br /&gt;
-この機能で上書きをすると任意のスキーマをコールバックに設定できます。&lt;/p&gt;
-
-&lt;p&gt;ただし、Twitterに何らかのURL(ダミーでも可)を設定してないと上書きできないようです。&lt;/p&gt;
-
-&lt;p&gt;たとえば以下のようなコードを書いた場合、Twitterの開発者画面でURLを登録していないと、&lt;br /&gt;
-&lt;code&gt;401 Authorization Required (OAuth::Unauthorized)&lt;/code&gt;が帰ってきますが、&lt;br /&gt;
-&lt;code&gt;http://example.com&lt;/code&gt;のようにダミーURLを登録すると認証画面用のURLが帰ってきます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &amp;quot;oauth&amp;quot;
-
-consumer_key = &amp;quot;&amp;quot;
-consumer_secret = &amp;quot;&amp;quot;
-consumer = OAuth::Consumer.new consumer_key, consumer_secret, site: &amp;quot;https://api.twitter.com&amp;quot;
-request_token = consumer.get_request_token  oauth_callback: &amp;quot;ota42y://test&amp;quot;
-puts &amp;quot;Please visit here: #{request_token.authorize_url}&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;参考: &lt;a href=&#34;http://qiita.com/johnny-miyake/items/a432cc4fea3b1b8c6b1e&#34;&gt;Twitter の AccessToken と AccessTokenSecret を Ruby で取得する&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Twitterはoauth/request_tokenへのアクセス時に、
+認証後のコールバック先をoauth_callbackパラメータで上書きできます。
+Twitterの開発者画面からは独自スキーマは登録できませんが、
+この機能で上書きをすると任意のスキーマをコールバックに設定できます。
+ただし、Twitterに何らかのURL(ダミーでも可)を設定してないと上書きできないようです。
+たとえば以下のようなコードを書いた場合、Twitterの開発者画面でURLを登録していないと、
+401 Authorization Required (OAuth::Unauthorized)が帰ってきますが、
+http://example.comのようにダミーURLを登録すると認証画面用のURLが帰ってきます。
+require &amp;quot;oauth&amp;quot; consumer_key = &amp;quot;&amp;quot; consumer_secret = &amp;quot;&amp;quot; consumer = OAuth::Consumer.new consumer_key, consumer_secret, site: &amp;quot;https://api.twitter.com&amp;quot; request_token = consumer.get_request_token oauth_callback: &amp;quot;ota42y://test&amp;quot; puts &amp;quot;Please visit here: #{request_token.authorize_url}&amp;quot;  参考: Twitter の AccessToken と AccessTokenSecret を Ruby で取得する</description>
     </item>
     
   </channel>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on おおたの物置</title>
+    <link>http://ota42y.com/tags/</link>
+    <description>Recent content in Tags on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android</title>
+      <link>http://ota42y.com/tags/android/</link>
+      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Api</title>
+      <link>http://ota42y.com/tags/api/</link>
+      <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application</title>
+      <link>http://ota42y.com/tags/application/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/application/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arduino</title>
+      <link>http://ota42y.com/tags/arduino/</link>
+      <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Atom</title>
+      <link>http://ota42y.com/tags/atom/</link>
+      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/atom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Book</title>
+      <link>http://ota42y.com/tags/book/</link>
+      <pubDate>Sun, 04 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>http://ota42y.com/tags/c/</link>
+      <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chrome</title>
+      <link>http://ota42y.com/tags/chrome/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coffee</title>
+      <link>http://ota42y.com/tags/coffee/</link>
+      <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/coffee/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coffeescript</title>
+      <link>http://ota42y.com/tags/coffeescript/</link>
+      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/coffeescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conference</title>
+      <link>http://ota42y.com/tags/conference/</link>
+      <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/conference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cpp</title>
+      <link>http://ota42y.com/tags/cpp/</link>
+      <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>http://ota42y.com/tags/debian/</link>
+      <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://ota42y.com/tags/docker/</link>
+      <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Evernote</title>
+      <link>http://ota42y.com/tags/evernote/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/evernote/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gem</title>
+      <link>http://ota42y.com/tags/gem/</link>
+      <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/gem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>http://ota42y.com/tags/git/</link>
+      <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>http://ota42y.com/tags/golang/</link>
+      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graphviz</title>
+      <link>http://ota42y.com/tags/graphviz/</link>
+      <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/graphviz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Haskell</title>
+      <link>http://ota42y.com/tags/haskell/</link>
+      <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/haskell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hubot</title>
+      <link>http://ota42y.com/tags/hubot/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/hubot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>http://ota42y.com/tags/hugo/</link>
+      <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ios</title>
+      <link>http://ota42y.com/tags/ios/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Irc</title>
+      <link>http://ota42y.com/tags/irc/</link>
+      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/irc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>http://ota42y.com/tags/javascript/</link>
+      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>http://ota42y.com/tags/jenkins/</link>
+      <pubDate>Sun, 28 Feb 2016 19:37:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Js</title>
+      <link>http://ota42y.com/tags/js/</link>
+      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://ota42y.com/tags/linux/</link>
+      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>http://ota42y.com/tags/mac/</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>http://ota42y.com/tags/machine-learning/</link>
+      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Math</title>
+      <link>http://ota42y.com/tags/math/</link>
+      <pubDate>Fri, 18 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mongodb</title>
+      <link>http://ota42y.com/tags/mongodb/</link>
+      <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>http://ota42y.com/tags/mysql/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>http://ota42y.com/tags/network/</link>
+      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Node</title>
+      <link>http://ota42y.com/tags/node/</link>
+      <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Octopress</title>
+      <link>http://ota42y.com/tags/octopress/</link>
+      <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/octopress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ruby</title>
+      <link>http://ota42y.com/tags/ruby/</link>
+      <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://ota42y.com/tags/security/</link>
+      <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Study</title>
+      <link>http://ota42y.com/tags/study/</link>
+      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/study/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tech</title>
+      <link>http://ota42y.com/tags/tech/</link>
+      <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Text</title>
+      <link>http://ota42y.com/tags/text/</link>
+      <pubDate>Thu, 15 Sep 2016 19:45:49 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/text/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tool</title>
+      <link>http://ota42y.com/tags/tool/</link>
+      <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
+      
+      <guid>http://ota42y.com/tags/tool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>http://ota42y.com/tags/windows/</link>
+      <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

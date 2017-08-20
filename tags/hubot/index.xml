@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hubot on おおたの物置</title>
-    <link>http://ota42y.com/tags/hubot/index.xml</link>
+    <link>http://ota42y.com/tags/hubot/</link>
     <description>Recent content in Hubot on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Nov 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>スクフェス用パッケージの更新</title>
@@ -14,24 +17,12 @@
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/12/scfes-update/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://ota42y.com/blog/2014/10/28/hubot-scfes/&#34;&gt;前に作った&lt;/a&gt;スクフェス用パッケージを更新しました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。&lt;br /&gt;
-真夜中にレベルアップが起きたりすると面倒なので、これを見て事前に石を使うなり、&lt;br /&gt;
-別の難易度をやって遅らせるなりして、レベルアップのタイミング調整をすることが簡単になります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;# 次のレベルアップまでexを何回プレイするか
-hubot scfes levelup count 830 ex
-=&amp;gt; 10
-
-# 次のレベルアップはいつか
-hubot scfes levelup time 830 ex
-=&amp;gt; next levelup is Sun Aug 3 2014 2:52:52 GMT+0900 (JST)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。&lt;/p&gt;
-</description>
+      <description>前に作ったスクフェス用パッケージを更新しました。
+https://github.com/ota42y/hubot-scfes
+今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。
+真夜中にレベルアップが起きたりすると面倒なので、これを見て事前に石を使うなり、
+別の難易度をやって遅らせるなりして、レベルアップのタイミング調整をすることが簡単になります。
+# 次のレベルアップまでexを何回プレイするか hubot scfes levelup count 830 ex =&amp;gt; 10 # 次のレベルアップはいつか hubot scfes levelup time 830 ex =&amp;gt; next levelup is Sun Aug 3 2014 2:52:52 GMT+0900 (JST)  なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。</description>
     </item>
     
     <item>
@@ -40,64 +31,22 @@ hubot scfes levelup time 830 ex
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/10/hubot-test/</guid>
-      <description>
-
-&lt;p&gt;Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。&lt;br /&gt;
-普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、&lt;br /&gt;
-面倒な手順を踏むことになります。&lt;br /&gt;
-また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。&lt;/p&gt;
-
-&lt;p&gt;しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、&lt;br /&gt;
-Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。&lt;/p&gt;
-
-&lt;p&gt;そこで、作りたい機能をパッケージ化して作成することで、&lt;br /&gt;
-トライアンドエラーをする部分を最低限に絞って開発することができました。&lt;/p&gt;
-
-&lt;h1 id=&#34;hubot用パッケージの構成&#34;&gt;Hubot用パッケージの構成&lt;/h1&gt;
-
-&lt;p&gt;Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、&lt;br /&gt;
-ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。&lt;/p&gt;
-
-&lt;p&gt;さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、&lt;br /&gt;
-Hubotの連携部分と実際の処理を分けることができます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;PackageClass = require(&#39;./package-name/package-class.coffee&#39;).PackageClass
-module.exports = (robot) -&amp;gt;
-  package_class = new PackageClass
-  robot.respond /test call (\d+)( \w+)?/, (msg) -&amp;gt;
-    arg1 = parseInt msg.match[1]
-    arg2 = msg.match[2]
-
-    msg.reply package_class.testCall(arg1, arg2)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;フォルダ構成は以下のようになります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;parkage-root/
- ├ package.json
- │
- ├ src/
- │  ├ hubot-command.coffee
- │  └ package-name/
- │     └ package-class.coffee
- │
- └ test/
-    ├ test-helper.coffee
-    └ test-package-class.coffee
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このように構成し、package-classに対してテストを作成することで、&lt;br /&gt;
-Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。&lt;/p&gt;
-
-&lt;p&gt;前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。&lt;br /&gt;
-ですが、やっていることは正規表現の結果をクラスのメソッドに渡すだけなので、&lt;br /&gt;
-手作業でやってしまう方が簡単で早いです。&lt;/p&gt;
-
-&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
-
-&lt;p&gt;hubot-scfesはこの方針に則って作ったため、参考になるかもしれません。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
+普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、
+面倒な手順を踏むことになります。
+また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。
+しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、
+Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。
+そこで、作りたい機能をパッケージ化して作成することで、
+トライアンドエラーをする部分を最低限に絞って開発することができました。
+Hubot用パッケージの構成 Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、
+ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。
+さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、
+Hubotの連携部分と実際の処理を分けることができます。
+PackageClass = require(&#39;./package-name/package-class.coffee&#39;).PackageClass module.exports = (robot) -&amp;gt; package_class = new PackageClass robot.respond /test call (\d+)( \w+)?/, (msg) -&amp;gt; arg1 = parseInt msg.match[1] arg2 = msg.match[2] msg.reply package_class.testCall(arg1, arg2)  フォルダ構成は以下のようになります。
+parkage-root/ ├ package.json │ ├ src/ │ ├ hubot-command.coffee │ └ package-name/ │ └ package-class.coffee │ └ test/ ├ test-helper.coffee └ test-package-class.coffee  このように構成し、package-classに対してテストを作成することで、
+Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。
+前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。</description>
     </item>
     
     <item>
@@ -106,205 +55,16 @@ Hubot固有の部分を最小限に減らし、通常のnpmパッケージのよ
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/11/01/hubot-reply/</guid>
-      <description>
-
-&lt;p&gt;hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、&lt;br /&gt;
-replyしてるのに発言元とは別のチャットに送信してしまうという問題が起きました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;robot.respond /進捗 start/i, (msg) -&amp;gt;
-  setTimeout(-&amp;gt;
-    msg.reply &amp;quot;進捗どうですか？&amp;quot;
-    return
-  , 30 * 60 * 1000)
-
-  msg.send &amp;quot;進捗 start&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、&lt;br /&gt;
-そのユーザがreplyする時に最後に発言したチャットに対して行われるらしく、&lt;br /&gt;
-メッセージが作られた後に別のチャットに発言した場合、そちらに送られてしまうようです。&lt;/p&gt;
-
-&lt;p&gt;そのため、以下のように送信先を待避することで回避できます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;robot.respond /進捗 start/i, (msg) -&amp;gt;
-  user = msg.message.user.name
-  room = msg.message.user.room
-
-  setTimeout(-&amp;gt;
-    robot.send {room: room}, &amp;quot;#{user} 進捗どうですか？&amp;quot;
-    return
-  , 30 * 60 * 1000)
-
-  msg.send &amp;quot;進捗 start&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;原因となるコードを捜す&#34;&gt;原因となるコードを捜す&lt;/h1&gt;
-
-&lt;p&gt;というのは振る舞いから推測したものなので、実際にコードを追ってみます。&lt;/p&gt;
-
-&lt;h2 id=&#34;hubot-irc-reply&#34;&gt;hubot-irc.reply&lt;/h2&gt;
-
-&lt;p&gt;まずはhubot-ircのmsg.replyの中を見ます。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78&#34;&gt;https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;reply: (envelope, strings...) -&amp;gt;
-  for str in strings
-    @send envelope.user, &amp;quot;#{envelope.user.name}: #{str}&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;メッセージをユーザ宛に変換し、sendメソッドにenvelope.userと一緒に渡しています。&lt;/p&gt;
-
-&lt;h2 id=&#34;hubot-irc-send&#34;&gt;hubot-irc.send&lt;/h2&gt;
-
-&lt;p&gt;次にsendメソッドの中身を見ます。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L16&#34;&gt;https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L16&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;send: (envelope, strings...) -&amp;gt;
-  # Use @notice if SEND_NOTICE_MODE is set
-  return @notice envelope, strings if process.env.HUBOT_IRC_SEND_NOTICE_MODE?
-
-  target = @_getTargetFromEnvelope envelope
-
-  unless target
-    return logger.error &amp;quot;ERROR: Not sure who to send to. envelope=&amp;quot;, envelope
-
-  for str in strings
-    @bot.say target, str
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;envelope&lt;/code&gt;（replyメソッドのenvelope.user）から&lt;code&gt;_getTargetFromEnvelope&lt;/code&gt;でターゲットを取り出し、&lt;br /&gt;
-&lt;code&gt;@bot.say&lt;/code&gt;で発言をしています。&lt;/p&gt;
-
-&lt;p&gt;このとき、@botはnodeのircパッケージのオブジェクトで、&lt;br /&gt;
-sayメソッドはtargetに対してメッセージを送るようになっています。&lt;br /&gt;
-そのため、このtargetに設定される返信先が変更される可能性が高そうです。&lt;/p&gt;
-
-&lt;h1 id=&#34;hubt-irc-gettargetfromenvelope&#34;&gt;hubt-irc._getTargetFromEnvelope&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L336&#34;&gt;https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L336&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;_getTargetFromEnvelope: (envelope) -&amp;gt;
-  user = null
-  room = null
-  target = null
-
-  # as of hubot 2.4.2, the first param to send() is an object with &#39;user&#39;
-  # and &#39;room&#39; data inside. detect the old style here.
-  if envelope.reply_to
-    user = envelope
-  else
-    # expand envelope
-    user = envelope.user
-    room = envelope.room
-
-  if user
-    # most common case - we&#39;re replying to a user in a room
-    if user.room
-      target = user.room
-    # reply directly
-    else if user.name
-      target = user.name
-    # replying to pm
-    else if user.reply_to
-      target = user.reply_to
-    # allows user to be an id string
-    else if user.search?(/@/) != -1
-      target = user
-  else if room
-    # this will happen if someone uses robot.messageRoom(jid, ...)
-    target = room
-
-  target
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ユーザの情報を使ってリプライ先を決定しているようです。&lt;br /&gt;
-この中で、envelope.roomが存在すれば、それをtargetとして設定するようになっています。&lt;br /&gt;
-なお、このメソッド内のenvelopeは、replyメソッドのenvelope.userを差しています。&lt;/p&gt;
-
-&lt;p&gt;そのため、次はreplyメソッドのenvelope.user.roomが書き換わるかどうかを調べていきます。&lt;/p&gt;
-
-&lt;h2 id=&#34;replyメソッドの呼ばれ方&#34;&gt;replyメソッドの呼ばれ方&lt;/h2&gt;
-
-&lt;p&gt;コールスタックをさかのぼっていくと、以下のメソッドが順に呼ばれていました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22&#34;&gt;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/listener.coffee#L22&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/robot.coffee#L192&#34;&gt;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/robot.coffee#L192&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/adapter.coffee#L65&#34;&gt;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/adapter.coffee#L65&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L237&#34;&gt;https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L237&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;この中で、最後のhubt-ircの以下の部分で、nodeのircがメッセージを受信した場合に、&lt;br /&gt;
-メッセージから特定されたuserオブジェクトが、replyメソッドのenvelope.userになっていました。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;bot.addListener &#39;message&#39;, (from, to, message) -&amp;gt;
-  if options.nick.toLowerCase() == to.toLowerCase()
-    # this is a private message, let the &#39;pm&#39; listener handle it
-    return
-
-  if from in options.ignoreUsers
-    logger.info(&#39;Ignoring user: %s&#39;, from)
-    # we&#39;ll ignore this message if it&#39;s from someone we want to ignore
-    return
-
-  logger.debug &amp;quot;From #{from} to #{to}: #{message}&amp;quot;
-
-  user = self.createUser to, from
-  if user.room
-    logger.info &amp;quot;#{to} &amp;lt;#{from}&amp;gt; #{message}&amp;quot;
-  else
-    unless message.indexOf(to) == 0
-      message = &amp;quot;#{to}: #{message}&amp;quot;
-    logger.debug &amp;quot;msg &amp;lt;#{from}&amp;gt; #{message}&amp;quot;
-
-  self.receive new TextMessage(user, message)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;userオブジェクトは、受け取ったメッセージからcreateUserを使って求めているようです&lt;/p&gt;
-
-&lt;h2 id=&#34;hubot-irc-createuser&#34;&gt;hubot-irc.createUser&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L111&#34;&gt;https://github.com/nandub/hubot-irc/blob/522c50166f15e57ada0c10f181d4de26b4349717/src/irc.coffee#L111&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt;  createUser: (channel, from) -&amp;gt;
-    user = @getUserFromId from
-    user.name = from
-
-    if channel.match(/^[&amp;amp;#]/)
-      user.room = channel
-    else
-      user.room = null
-    user
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここで、user.roomに最新のメッセージが送られたchannelをセットしています。&lt;br /&gt;
-そのため、getUserFromIdが返すuserオブジェクトがメッセージごとに共通なら、&lt;br /&gt;
-replyメソッドに渡された後に別のメッセージによって書き換わる可能性があると言えます。&lt;/p&gt;
-
-&lt;h2 id=&#34;hubot-getuserfromid&#34;&gt;hubot.getUserFromId&lt;/h2&gt;
-
-&lt;p&gt;getUserFromIdはhubot.getUserFromIdを呼び出しているだけでした。&lt;br /&gt;
-（HubotのAPIが変わったため、一手間挟んでいる）&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/brain.coffee#L103&#34;&gt;https://github.com/github/hubot/blob/39681ea35de6375154748418e11f533ef51c3340/src/brain.coffee#L103&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffeescript&#34;&gt; userForId: (id, options) -&amp;gt;
-    user = @data.users[id]
-    unless user
-      user = new User id, options
-      @data.users[id] = user
-
-    if options and options.room and (!user.room or user.room isnt options.room)
-      user = new User id, options
-      @data.users[id] = user
-
-    user
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;@data内に保存されているユーザを帰しています。&lt;br /&gt;
-そのため、各メッセージ毎に共通のuserオブジェクトが返されます。&lt;/p&gt;
-
-&lt;p&gt;hubot-irc.createUser内でこのオブジェクトのroomを書き換えているため、&lt;br /&gt;
-ユーザが発言を行うと、robot.replyの時に使用するuserオブジェクトが変更され、&lt;br /&gt;
-慈顔をおいて発言しようとすると別のチャットに発言していたようです。&lt;/p&gt;
-</description>
+      <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、
+replyしてるのに発言元とは別のチャットに送信してしまうという問題が起きました。
+robot.respond /進捗 start/i, (msg) -&amp;gt; setTimeout(-&amp;gt; msg.reply &amp;quot;進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、
+そのユーザがreplyする時に最後に発言したチャットに対して行われるらしく、
+メッセージが作られた後に別のチャットに発言した場合、そちらに送られてしまうようです。
+そのため、以下のように送信先を待避することで回避できます。
+robot.respond /進捗 start/i, (msg) -&amp;gt; user = msg.message.user.name room = msg.message.user.room setTimeout(-&amp;gt; robot.send {room: room}, &amp;quot;#{user} 進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  原因となるコードを捜す というのは振る舞いから推測したものなので、実際にコードを追ってみます。
+hubot-irc.reply まずはhubot-ircのmsg.replyの中を見ます。
+https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78
+reply: (envelope, strings...) -&amp;gt; for str in strings @send envelope.user, &amp;quot;#{envelope.user.name}: #{str}&amp;quot;  メッセージをユーザ宛に変換し、sendメソッドにenvelope.</description>
     </item>
     
     <item>
@@ -313,34 +73,20 @@ replyメソッドに渡された後に別のメッセージによって書き換
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/10/28/hubot-scfes/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://lovelive.bushimo.jp/&#34;&gt;スクフェス&lt;/a&gt;用の色々便利な機能が入ったHubotパッケージを作りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/hubot-scfes&#34;&gt;https://github.com/ota42y/hubot-scfes&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;今のところ主な機能は2つです。&lt;/p&gt;
-
-&lt;h2 id=&#34;スタミナがmaxになる時間になったら通知する&#34;&gt;スタミナがMaxになる時間になったら通知する&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;hubot scfes remind stamina 10 50&lt;/code&gt;&lt;br /&gt;
-で、スタミナの現在値が10、最大値が50の場合に、Maxになる時刻に通知してくれます。&lt;br /&gt;
-それ以外の値の場合は調節してください。&lt;/p&gt;
-
-&lt;h2 id=&#34;スタミナがnの倍数になったときに通知する&#34;&gt;スタミナがnの倍数になったときに通知する&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;hubot scfes remind stamina 10 50 25&lt;/code&gt;&lt;br /&gt;
-で、スタミナの現在値が10、最大値が50として、25の倍数の時に通知してくれます。&lt;br /&gt;
-EXでちょうど使い切れるタイミングで通知するといった使い方を想定しています。&lt;/p&gt;
-
-&lt;h2 id=&#34;未実装機能&#34;&gt;未実装機能&lt;/h2&gt;
-
-&lt;p&gt;イベント終了までにどれくらいスタミナが回復するかとか、&lt;br /&gt;
-レベルアップするのはいつぐらいになるかとか、&lt;br /&gt;
-そういった頭の中で適当に計算してる奴を機能化していこうと思います。&lt;/p&gt;
-
-&lt;p&gt;ちなみにこいつは前に作った&lt;a href=&#34;https://github.com/ota42y/stamina-calculator&#34;&gt;stamina-calculator&lt;/a&gt;を内部で使用しています。&lt;br /&gt;
-node.jsで細かくパッケージに分けて開発ってどうやるんだろうなーと思って、実益と練習がてら作った感じです。&lt;/p&gt;
-</description>
+      <description>スクフェス用の色々便利な機能が入ったHubotパッケージを作りました。
+https://github.com/ota42y/hubot-scfes
+今のところ主な機能は2つです。
+スタミナがMaxになる時間になったら通知する hubot scfes remind stamina 10 50
+で、スタミナの現在値が10、最大値が50の場合に、Maxになる時刻に通知してくれます。
+それ以外の値の場合は調節してください。
+スタミナがnの倍数になったときに通知する hubot scfes remind stamina 10 50 25
+で、スタミナの現在値が10、最大値が50として、25の倍数の時に通知してくれます。
+EXでちょうど使い切れるタイミングで通知するといった使い方を想定しています。
+未実装機能 イベント終了までにどれくらいスタミナが回復するかとか、
+レベルアップするのはいつぐらいになるかとか、
+そういった頭の中で適当に計算してる奴を機能化していこうと思います。
+ちなみにこいつは前に作ったstamina-calculatorを内部で使用しています。
+node.jsで細かくパッケージに分けて開発ってどうやるんだろうなーと思って、実益と練習がてら作った感じです。</description>
     </item>
     
     <item>
@@ -349,28 +95,14 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/10/05/shinchoku/</guid>
-      <description>
-
-&lt;p&gt;作りました。&lt;br /&gt;
-30分ごとに進捗どうですか？と聞いてきます。&lt;/p&gt;
-
-&lt;p&gt;何をやったかを計測するために定期的にログを残そうと思うのですが、&lt;br /&gt;
-大体忘れるので、こうやって適度に通知することで思いだそう！という試みです。&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;進捗 start&lt;/code&gt;で30分ごとに進捗どうですか？と聞いてきます。&lt;br /&gt;
-&lt;code&gt;進捗 stop&lt;/code&gt;でストップします。&lt;/p&gt;
-
-&lt;h1 id=&#34;ホラー体験&#34;&gt;ホラー体験&lt;/h1&gt;
-
-&lt;p&gt;setTimeoutが秒設定だと間違えて…(´･_･`)&lt;br /&gt;
-&lt;img src=&#34;http://ota42y.com/images/blog/2014/2014-10-05-shinchok.png&#34; alt=&#34;ホラー体験&#34; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;コード&#34;&gt;コード&lt;/h1&gt;
-
-&lt;script src=&#34;https://gist.github.com/ota42y/41fed7d94c23836f3440.js&#34;&gt;&lt;/script&gt;
-</description>
+      <description> 作りました。
+30分ごとに進捗どうですか？と聞いてきます。
+何をやったかを計測するために定期的にログを残そうと思うのですが、
+大体忘れるので、こうやって適度に通知することで思いだそう！という試みです。
+使い方 進捗 startで30分ごとに進捗どうですか？と聞いてきます。
+進捗 stopでストップします。
+ホラー体験 setTimeoutが秒設定だと間違えて…(´･_･`)
+コード  </description>
     </item>
     
     <item>
@@ -379,55 +111,23 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</guid>
-      <description>
-
-&lt;p&gt;作りました。&lt;/p&gt;
-
-&lt;p&gt;スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー&lt;br /&gt;
-みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;h2 id=&#34;初期化&#34;&gt;初期化&lt;/h2&gt;
-
-&lt;p&gt;スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。&lt;br /&gt;
-なお、指定は秒で行います。&lt;br /&gt;
-&lt;code&gt;stamina_calculator = new StaminaCalculator 6*60&lt;/code&gt;&lt;br /&gt;
-この例ですと、6分で1スタミナ回復するゲームになります。&lt;/p&gt;
-
-&lt;h2 id=&#34;指定した値までの回復時間-getnextmaxstaminatime&#34;&gt;指定した値までの回復時間(getNextMaxStaminaTime)&lt;/h2&gt;
-
-&lt;p&gt;現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。&lt;br /&gt;
-Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。&lt;br /&gt;
-&lt;code&gt;stamina_calculator.getNextMaxStaminaTime(10, 60)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;指定した倍数の値まで回復する時間-getmultiplerecoverytime&#34;&gt;指定した倍数の値まで回復する時間(getMultipleRecoveryTime)&lt;/h2&gt;
-
-&lt;p&gt;現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。&lt;br /&gt;
-今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。&lt;br /&gt;
-&lt;code&gt;next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;結果をdateオブジェクトにする&#34;&gt;結果をDateオブジェクトにする&lt;/h2&gt;
-
-&lt;p&gt;メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。&lt;br /&gt;
-Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。&lt;br /&gt;
-&lt;code&gt;stamina_calculator.convertToDate(second)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;サンプルコード&#34;&gt;サンプルコード&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;StaminaCalculator = require(&#39;stamina-calculator&#39;).StaminaCalculator;
-
+      <description> 作りました。
+スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー
+みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。
+使い方 初期化 スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。
+なお、指定は秒で行います。
 stamina_calculator = new StaminaCalculator 6*60
-
-second = stamina_calculator.getNextMaxStaminaTime(10, 60)
-
-console.log second
-# 今から何秒後にスタミナが５０回復するか
-
-console.log stamina_calculator.convertToDate(second)
-# 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+この例ですと、6分で1スタミナ回復するゲームになります。
+指定した値までの回復時間(getNextMaxStaminaTime) 現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。
+Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。
+stamina_calculator.getNextMaxStaminaTime(10, 60)
+指定した倍数の値まで回復する時間(getMultipleRecoveryTime) 現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。
+今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。
+next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)
+結果をDateオブジェクトにする メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。
+Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。
+stamina_calculator.convertToDate(second)
+サンプルコード StaminaCalculator = require(&#39;stamina-calculator&#39;).StaminaCalculator; stamina_calculator = new StaminaCalculator 6*60 second = stamina_calculator.getNextMaxStaminaTime(10, 60) console.log second # 今から何秒後にスタミナが５０回復するか console.log stamina_calculator.convertToDate(second) # 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる  </description>
     </item>
     
   </channel>

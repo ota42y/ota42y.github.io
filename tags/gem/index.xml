@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gem on おおたの物置</title>
+    <link>http://ota42y.com/tags/gem/</link>
+    <description>Recent content in Gem on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 20 Aug 2017 22:44:10 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/gem/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ゼロから始めるgem生活</title>
+      <link>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</link>
+      <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</guid>
+      <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを下げるために30分程度で0からgemを作るハンズオンをやりました。
+これはそのときにやったことのメモで、現状これに沿って行っていけば簡単なgemを公開できるようになります。
+ゴール  簡単なgemを作成してrubygemsで公開するまで  事前準備  githubにアカウント作る git pushで自分のリポジトリにpushできる状態 ruby 2.0以上 gem install bundler 済み gem update &amp;ndash;system 済み  名前決め まずgemの名前を決めます。
+他のgemと名前が被ってはいけないので、
+https://rubygems.org/ で検索して無い名前をつける必要があります。
+面倒な場合は、 nickname-hellor-world とかなら被りません。
+今回は ota42y_test_gem で作るので、後は適度に読み替えてください。
+namespaceの階層を合わせるため、区切り文字は_ではなく-を使ってください。
+ひな形作成 bundle gem ota42y_test_gem -t Creating gem &#39;ota42y_test_gem&#39;... Code of conduct enabled in config create ota42y_test_gem/Gemfile create ota42y_test_gem/lib/ota42y_test_gem.rb create ota42y_test_gem/lib/ota42y_test_gem/version.rb create ota42y_test_gem/ota42y_test_gem.gemspec create ota42y_test_gem/Rakefile create ota42y_test_gem/README.md create ota42y_test_gem/bin/console create ota42y_test_gem/bin/setup create ota42y_test_gem/.gitignore create ota42y_test_gem/.travis.yml create ota42y_test_gem/.</description>
+    </item>
+    
+  </channel>
+</rss>

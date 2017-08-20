@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on おおたの物置</title>
-    <link>http://ota42y.com/tags/hugo/index.xml</link>
+    <link>http://ota42y.com/tags/hugo/</link>
     <description>Recent content in Hugo on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Jul 2015 23:25:20 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Hugoのブログテーマを作った</title>
@@ -14,16 +17,13 @@
       <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/07/29/blog_theme/</guid>
-      <description>&lt;p&gt;ブログテーマ更新を更新しました。&lt;br /&gt;
-今回は、Bootstrapを元にした&lt;a href=&#34;http://honokak.osaka/&#34;&gt;Honoka&lt;/a&gt;を利用して作りました。&lt;/p&gt;
-
-&lt;p&gt;リポジトリはこちら&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/honokichi&#34;&gt;https://github.com/ota42y/honokichi&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Bootstrapの作りにあったHTMLを出力するようにテンプレートを作ると、&lt;br /&gt;
-ほぼそれっぽいデザインになったためとても楽でした。&lt;br /&gt;
-一応、ブログでよく使う見出し間の間隔や、記事一覧画面でのマージンをちょっと変更しています。&lt;/p&gt;
-</description>
+      <description>ブログテーマ更新を更新しました。
+今回は、Bootstrapを元にしたHonokaを利用して作りました。
+リポジトリはこちら
+https://github.com/ota42y/honokichi
+Bootstrapの作りにあったHTMLを出力するようにテンプレートを作ると、
+ほぼそれっぽいデザインになったためとても楽でした。
+一応、ブログでよく使う見出し間の間隔や、記事一覧画面でのマージンをちょっと変更しています。</description>
     </item>
     
     <item>
@@ -32,114 +32,27 @@
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
-      <description>
-
-&lt;p&gt;このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、&lt;br /&gt;
-サイト作成ツールの部分をGolangで作られたHugoに置き換えました。&lt;/p&gt;
-
-&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Octopress
-
-&lt;ul&gt;
-&lt;li&gt;Ruby制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;大量の記事を扱うと遅くなっていく
-
-&lt;ul&gt;
-&lt;li&gt;100記事で新しい記事のHTML出力まで10秒ぐらいかかる&lt;/li&gt;
-&lt;li&gt;見た目を確認したいときなどにとても不便&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Hugo
-
-&lt;ul&gt;
-&lt;li&gt;Golang制の静的サイト作成ツール&lt;/li&gt;
-&lt;li&gt;利点&lt;/li&gt;
-&lt;li&gt;早い
-
-&lt;ul&gt;
-&lt;li&gt;100記事で200msぐらい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;環境構築いらず
-
-&lt;ul&gt;
-&lt;li&gt;公式がバイナリ配布&lt;/li&gt;
-&lt;li&gt;手を加えないならそのまま使える&lt;/li&gt;
-&lt;li&gt;Win-Mac両方使う人にはとても楽&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;欠点
-
-&lt;ul&gt;
-&lt;li&gt;テーマが少ない
-
-&lt;ul&gt;
-&lt;li&gt;このサイトも自作&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;手を加えにくい
-
-&lt;ul&gt;
-&lt;li&gt;手を加えると環境構築いらずの利点が失われる&lt;/li&gt;
-&lt;li&gt;クロスコンパイルは楽なのでそれほどでもない？
-
-&lt;ul&gt;
-&lt;li&gt;手を加える必要が無いのでそのとき考える&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;octopressの問題点&#34;&gt;Octopressの問題点&lt;/h1&gt;
-
-&lt;p&gt;HTMLのレンダリングが遅いです。&lt;/p&gt;
-
-&lt;p&gt;Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。&lt;br /&gt;
-この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、&lt;br /&gt;
-表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。&lt;/p&gt;
-
-&lt;p&gt;現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。&lt;br /&gt;
-ちょっとした修正ごとに10秒待つのはなかなかにつらく、&lt;br /&gt;
-かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。&lt;br /&gt;
-そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました&lt;/p&gt;
-
-&lt;p&gt;乗り換え方はこちらのサイトを参考にさせていただきました。&lt;br /&gt;
-&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの利点&#34;&gt;Hugoの利点&lt;/h1&gt;
-
-&lt;h2 id=&#34;htmlのレンダリングが早い&#34;&gt;HTMLのレンダリングが早い&lt;/h2&gt;
-
-&lt;p&gt;Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、&lt;br /&gt;
-ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、&lt;br /&gt;
-ほとんど待ち時間が感じられないレベルになりました。&lt;br /&gt;
-特にチューニングとかを考えずにこの速度なので、とても助かります。&lt;/p&gt;
-
-&lt;h2 id=&#34;環境構築いらず&#34;&gt;環境構築いらず&lt;/h2&gt;
-
-&lt;p&gt;Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、&lt;br /&gt;
-環境構築でがんばる必要がありません。&lt;br /&gt;
-私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、&lt;br /&gt;
-Windows向けのバイナリをダウンロードするだけですむのは大変便利です。&lt;/p&gt;
-
-&lt;h1 id=&#34;hugoの問題点&#34;&gt;Hugoの問題点&lt;/h1&gt;
-
-&lt;h2 id=&#34;テーマがない&#34;&gt;テーマがない&lt;/h2&gt;
-
-&lt;p&gt;テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。&lt;br /&gt;
-実際このサイトも自分でテーマを作りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/orange42&#34;&gt;https://github.com/ota42y/orange42&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;手を入れにくい&#34;&gt;手を入れにくい&lt;/h2&gt;
-
-&lt;p&gt;公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。&lt;br /&gt;
-Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。&lt;br /&gt;
-これは環境構築の手間とのトレードオフなので仕方ないことなのですが…&lt;/p&gt;
-
-&lt;p&gt;最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。&lt;br /&gt;
-一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。&lt;/p&gt;
-</description>
+      <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、
+サイト作成ツールの部分をGolangで作られたHugoに置き換えました。
+まとめ  Octopress  Ruby制の静的サイト作成ツール 大量の記事を扱うと遅くなっていく  100記事で新しい記事のHTML出力まで10秒ぐらいかかる 見た目を確認したいときなどにとても不便   Hugo  Golang制の静的サイト作成ツール 利点 早い  100記事で200msぐらい  環境構築いらず  公式がバイナリ配布 手を加えないならそのまま使える Win-Mac両方使う人にはとても楽  欠点  テーマが少ない  このサイトも自作 https://github.com/ota42y/orange42   手を加えにくい  手を加えると環境構築いらずの利点が失われる クロスコンパイルは楽なのでそれほどでもない？  手を加える必要が無いのでそのとき考える     Octopressの問題点 HTMLのレンダリングが遅いです。
+Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。
+この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、
+表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。
+現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。
+ちょっとした修正ごとに10秒待つのはなかなかにつらく、
+かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。
+そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました
+乗り換え方はこちらのサイトを参考にさせていただきました。
+OctopressからHugoへ移行した
+Hugoの利点 HTMLのレンダリングが早い Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、
+ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、
+ほとんど待ち時間が感じられないレベルになりました。
+特にチューニングとかを考えずにこの速度なので、とても助かります。
+環境構築いらず Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、
+環境構築でがんばる必要がありません。
+私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、
+Windows向けのバイナリをダウンロードするだけですむのは大変便利です。
+Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。</description>
     </item>
     
   </channel>

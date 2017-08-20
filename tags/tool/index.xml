@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tool on おおたの物置</title>
-    <link>http://ota42y.com/tags/tool/index.xml</link>
+    <link>http://ota42y.com/tags/tool/</link>
     <description>Recent content in Tool on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <atom:link href="http://ota42y.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2016 22:24:44 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>tmux-change-paneというコマンドを作った</title>
@@ -14,20 +17,13 @@
       <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</guid>
-      <description>&lt;p&gt;tmux-change-paneというコマンドを作りました。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/ota42y/tmux-change-pane&#34;&gt;https://github.com/ota42y/tmux-change-pane&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://ota42y.com/images/blog/2016/2016-01-26-tmux_change_pane.gif&#34; alt=&#34;&amp;lt;img src=&amp;quot;/images/blog/2016/2016-01-26-tmux_change_pane.gif&amp;quot;  width=&amp;quot;100%&amp;quot; /&amp;gt;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;似たようなものでswap-paneというものがすでにあります。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/abicky/swap-pane&#34;&gt;https://github.com/abicky/swap-pane&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;swap-paneでは複数画面に分割している際に、全ての分割をいったん消して選択画面を表示します。そのため、切り替えのたびに画面が一度フラッシュし、かつ必ず左上に作業領域が移ります。そのため、右下で作業してるような場合にかなり視線の操作が強制的に発生してとても面倒でした。&lt;/p&gt;
-
-&lt;p&gt;tmux-change-paneでは今いる分割領域しか使わないため、作業する位置が大きく変わることがなく、また切り替え中も他の領域の情報を参考にすることができます。&lt;/p&gt;
-</description>
+      <description>tmux-change-paneというコマンドを作りました。
+https://github.com/ota42y/tmux-change-pane
+tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。
+似たようなものでswap-paneというものがすでにあります。
+https://github.com/abicky/swap-pane
+swap-paneでは複数画面に分割している際に、全ての分割をいったん消して選択画面を表示します。そのため、切り替えのたびに画面が一度フラッシュし、かつ必ず左上に作業領域が移ります。そのため、右下で作業してるような場合にかなり視線の操作が強制的に発生してとても面倒でした。
+tmux-change-paneでは今いる分割領域しか使わないため、作業する位置が大きく変わることがなく、また切り替え中も他の領域の情報を参考にすることができます。</description>
     </item>
     
     <item>
@@ -36,50 +32,20 @@
       <pubDate>Tue, 08 Dec 2015 07:58:08 +0900</pubDate>
       
       <guid>http://ota42y.com/blog/2015/12/08/wl_report/</guid>
-      <description>
-
-&lt;p&gt;最近知った&lt;a href=&#34;https://www.wunderlist.com&#34;&gt;Wunderlist&lt;/a&gt;が、全プラットフォーム使えたり、
-モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。&lt;/p&gt;
-
-&lt;p&gt;ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。
-たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。&lt;/p&gt;
-
-&lt;p&gt;すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/robdimsdale/wl&#34;&gt;https://github.com/robdimsdale/wl&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;使い方&#34;&gt;使い方&lt;/h1&gt;
-
-&lt;p&gt;以下のように利用します。&lt;br /&gt;
-&lt;code&gt;
-wl tasks --completed true -j | go run report.go
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;こんな感じに日ごとに終了したタスクがリスト化されていきます。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;2015-11-30 10 tasks completed&lt;br /&gt;
-07:37:51 mail check&lt;br /&gt;
-07:59:23 review PR&lt;br /&gt;
-22:06:09 create blog entry&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&#34;コード&#34;&gt;コード&lt;/h1&gt;
-
-&lt;p&gt;コードはこれです。
-&lt;script src=&#34;https://gist.github.com/ota42y/f40dd18687d3bd5350d8.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;全部のタスクを並べるのはつらいので、3日以前は終了タスク数のみとかにしたい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;コマンドが面倒なので、単体で完結したい
-
-&lt;ul&gt;
-&lt;li&gt;単体で完結するようになったらgithubのリポジトリ作るかも&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;もうちょっと見やすくしたい&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> 最近知ったWunderlistが、全プラットフォーム使えたり、 モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。
+ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。 たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。
+すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。
+https://github.com/robdimsdale/wl
+使い方 以下のように利用します。
+ wl tasks --completed true -j | go run report.go 
+こんな感じに日ごとに終了したタスクがリスト化されていきます。
+ 2015-11-30 10 tasks completed
+07:37:51 mail check
+07:59:23 review PR
+22:06:09 create blog entry
+ コード コードはこれです。 
+その他  全部のタスクを並べるのはつらいので、3日以前は終了タスク数のみとかにしたい
+ コマンドが面倒なので、単体で完結したい  単体で完結するようになったらgithubのリポジトリ作るかも  もうちょっと見やすくしたい  </description>
     </item>
     
   </channel>
