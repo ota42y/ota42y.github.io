@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</loc>
+    <lastmod>2018-03-01T15:17:35+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</loc>
     <lastmod>2017-08-20T22:44:10+09:00</lastmod>
   </url>
@@ -914,7 +919,7 @@
   
   <url>
     <loc>http://ota42y.com/blog/</loc>
-    <lastmod>2017-08-20T22:44:10+09:00</lastmod>
+    <lastmod>2018-03-01T15:17:35+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1117,13 +1122,13 @@
   
   <url>
     <loc>http://ota42y.com/tags/ruby/</loc>
-    <lastmod>2017-08-20T22:44:10+09:00</lastmod>
+    <lastmod>2018-03-01T15:17:35+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://ota42y.com/tags/security/</loc>
-    <lastmod>2014-09-08T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-01T15:17:35+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1181,7 +1186,7 @@
   
   <url>
     <loc>http://ota42y.com/</loc>
-    <lastmod>2017-08-20T22:44:10+09:00</lastmod>
+    <lastmod>2018-03-01T15:17:35+00:00</lastmod>
     <priority>0</priority>
   </url>
   

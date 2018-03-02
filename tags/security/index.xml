@@ -6,10 +6,43 @@
     <description>Recent content in Security on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Mar 2018 15:17:35 +0000</lastBuildDate>
     
 	<atom:link href="http://ota42y.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一部のSAMLライブラリの脆弱性の詳細</title>
+      <link>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</link>
+      <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</guid>
+      <description>複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。
+JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性
+どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。
+Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security
+要約 簡単に説明すると、認証した結果のデータを改ざんすることで別のユーザになりすませてしまう問題です。
+本来なら署名が存在するため改ざんしても検出されてしまいます。
+ただし、XMLの署名には意味的に同じであれば表現方法が違うデータであっても同じとして見なす仕様があります。
+そのため、問題のあるライブラリでただしく取り出せないような表現方法にデータを改ざんすることで、別のデータをライブラリに読み込ませることができてしまうと言う問題です。
+SAMLの署名 SAMLの認証の流れで、認証した結果誰なのかを認証する側のサービスが認証をお願いした側のサービスに送ってきます。
+この中には以下のように認証したユーザの情報と、改ざん防止のために署名が含まれています。
+この例ではNameIDの値に入っているota42y@ota42y.caが認証に成功したというデータになります。
+&amp;lt;!-- これは階層構造とかを大幅に省略しています --&amp;gt; &amp;lt;SAMLResponse&amp;gt; &amp;lt;NameID&amp;gt;ota42y@ota42y.ca&amp;lt;/NameID&amp;gt; &amp;lt;SignatureValue&amp;gt;BASE64_TEXT&amp;lt;/SignatureValue&amp;gt; &amp;lt;/SAMLResponse&amp;gt;  ここでNameIDの値を書き換えたとしても、署名した結果がSignatureValueにあるため、それを検証すれば書き換えられたとわかります。
+そのため、別のユーザへのなりすましを回避できています。
+XMLの正規化 XMLは以下のように、意味を変えずに属性の順番を変えたり空白やコメントを入れられます。
+&amp;lt;A C=&amp;quot;2&amp;quot; B=&amp;quot;1&amp;quot;&amp;gt;text&amp;lt;/A&amp;gt; &amp;lt;A B=&amp;quot;1&amp;quot; C=&amp;quot;2&amp;quot; &amp;gt;te&amp;lt;!-- comment--&amp;gt;xt&amp;lt;/ A &amp;gt;  この2つのXMLはハッシュ値が違いますが実際には同じ内容であり、これで署名が一致しなくなるのは困る場合があります。
+そのため、XMLの署名では正規化(canonicalization)を定義しています。
+正規化によって形式をそろえた状態で署名を検証することで、予期せぬ表現の違いで署名が一致しなくなるという事を防いでいます。
+一般的には以下のURLの方法で正規化が行われるそうです。
+この正規化ではコメントを削除しない仕様であり、例に挙げたXMLは同一とはみなされません。
+しかし、一般的にはだいたいの場合コメントも削除するようです。
+（今回の問題はこの違いも影響している）
+Exclusive XML Canonicalization Version 1.0
+問題となるライブラリの挙動 例えば以下のNameIDのユーザAとユーザBがいたとします
+ユーザA &amp;lt;NameID&amp;gt;ota42y@ota42y.ca&amp;lt;/NameID&amp;gt; ユーザB(.calはgoogleが持っているトップレベルドメインで実在します) &amp;lt;NameID&amp;gt;ota42y@ota42y.cal&amp;lt;/NameID&amp;gt;  このとき、ユーザBが以下のようにNameIDを書き換えます
+&amp;lt;NameID&amp;gt;ota42y@ota42y.co&amp;lt;!-- comment --&amp;gt;l&amp;lt;/NameID&amp;gt;</description>
+    </item>
     
     <item>
       <title>パスワードの文字として避けた方がいい文字</title>
