@@ -6,10 +6,29 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 01 Mar 2018 15:17:35 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Mar 2018 09:10:37 +0900</lastBuildDate>
     
 	<atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Globalizeを使ったRailsを5系対応する際にはまった</title>
+      <link>http://ota42y.com/blog/2018/03/28/globalize_5/</link>
+      <pubDate>Wed, 28 Mar 2018 09:10:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/03/28/globalize_5/</guid>
+      <description>要約  columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい チェックして消す&amp;amp;今後増えないようにするgemを作った  問題  GlobalizeをRails5対応版(5.1.0.beta2)にあげる 一部の処理が落ちる(´・_・`)  原因 News.columns_hash.keysは、そのモデルのカラム名を配列で返します。
+GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。
+しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。
+そのため返ってくる値がバージョンによって代わり、それに依存している処理がおかしくなります。
+ただし、この影響を受けるカラムは多くの場合参照できないため、通常は仕様ミスや顕在化してないバグの可能性が高いです。
+解説 Globalize gemでは、あるモデルのカラムに対してtranslate指定をすることで、translate用のテーブルの同名カラムを参照するようになります。
+例えば以下のようなNewsモデルがある場合を考えます。
+# == Schema Information # # Table name: news # # id :integer not null, primary key # title :string(255) # description :string(255) class News translate :title, :description end  このモデルのtitleとdescriptionはtranslateされているので、newsテーブルの同名のカラムは使われません。 Globalizeによって、I18n対応した別テーブル(news_translates)の該当するlocaleのデータを取ってくるように変更されます。 そのため、translateによって処理が上書きされたカラムと同じ名前のカラムが元のテーブルにあっても、アクセスすることは出来ません。
+ですが、Globalize 5.0系ではcolumns_hash等で全てのカラムの一覧を取得した場合、このアクセス不能なカラムが一覧に入っています。 そのため、上書き前のカラムがあるという前提のコードを書けてしまいます。
+News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;title&amp;quot;, &amp;quot;description&amp;quot;, &amp;quot;created_at&amp;quot;, &amp;quot;updated_at&amp;quot;]  Globalizeの5.1系では、内部的に以下の方法でtranslateに設定されたカラム名が除外されるため、columns_hash等を使っても上書き前のカラムにアクセスできなくなります。
+News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&amp;quot;, &amp;quot;updated_at&amp;quot;]   Rails4系の場合  もとのcolumns_hashからtranslateしたカラムを消している。 Globalize::ActiveRecord::ClassMethods#columns_hash  Rails5系の場合  ignored_columnsでActiveRecord的にカラムを無効化 Rails5から追加されたメソッド Globalize::ActiveRecord::ActMacro#allow_translation_of_attributes   そのため、 columns_hash を利用して上書き前のカラムがあることを前提としたコードを書いている場合、処理が失敗します。</description>
+    </item>
     
     <item>
       <title>一部のSAMLライブラリの脆弱性の詳細</title>
