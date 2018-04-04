@@ -6,10 +6,36 @@
     <description>Recent content in Ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 28 Mar 2018 09:10:37 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 04 Apr 2018 00:10:37 +0900</lastBuildDate>
     
 	<atom:link href="http://ota42y.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gemのバージョンアップで依存関係が壊れるのを調べやすくした</title>
+      <link>http://ota42y.com/blog/2018/04/04/virtual_gem/</link>
+      <pubDate>Wed, 04 Apr 2018 00:10:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/04/04/virtual_gem/</guid>
+      <description>要約  gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる  5.2.0がリリースするまでインストールできないと気がつきにくい  任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った  https://github.com/ota42y/virtual_gem 5.2.0.rc2を元に5.2.0のgemを作れる 任意のgemの依存関係を書き換えられる 事前に依存関係が壊れるのを調べやすくなる   gemの依存関係によるインストール失敗 現在、Rails 5.2.0.rc2がリリースされています。
+ですが、仮に現状で上手く動いていたとしても5.2.0のリリース時に一部のgemの依存関係が5.2.0.rc2までしか受け入れておらず、インストールできなくなる可能性があります。
+gemには依存関係を設定できますが、&#39;&amp;lt; 5.2.0&#39; と書いた場合は5.2.0未満のgemを指定したこととなるため、5.2.0.rc2は対象となります。
+ですが、5.2.0は範囲外となるため、5.2.0をインストールすることはできません。
+そのため、rc版で問題なく動いていたとしても正式リリースされると依存関係を解決できずにアップデートできず、依存するgemの更新を待たないといけません。
+依存するgemが依存しているgemが同じような問題を含んでいた場合は、それらが全て解決するのを待つ必要があります。
+事前に依存関係を修正しておくことでこの問題を回避できますが、事前に全てのgemの依存関係を調べることはかなり難しいです。 かつ正式リリースされるまで問題は起こらないため先に対策するのは困難です。
+また、gemによっては正式リリースまで依存関係を修正しないポリシーもあり得るため、複雑な依存関係の場合には調べるのがいっそう困難になります。
+この問題は2つの原因から成り立っています。
+ gemが正式リリースされるまでbundle installで新しいバージョンを試せない bundle install時の依存関係の解消にはgemの設定を直す必要がある  問題のあるgemを全てforkして、バージョンを書き換えた上でそれを使うことでこれらの問題は解決できます。
+ですが、継続的にmasterを追従していくことや、変更をするgemが大量にあった場合はそれを続けるのは困難です。
+virtual gemによる解決 この問題に対して、bundle install/update時にgemのバージョンと依存関係を書き換え、問題のある設定になっていないかを調べられるgemを作りました。 https://github.com/ota42y/virtual_gem
+仮想的なgemを作る 以下のようにGemfileで設定を行うと、特定バージョンのgemとして振る舞う仮想的なgemを作成して、依存関係の解決を行えます。
+require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42y_test_gem&#39;,new_version: &#39;0.3.0&#39;, original_version: &#39;0.2.0&#39;) source &amp;quot;https://rubygems.org&amp;quot; gem &#39;ota42y_test_gem&#39;, &#39;0.3.0&#39;  この例では、&amp;rsquo;ota42y_test_gem&amp;rsquo;のバージョン0.2.0を元に、バージョン0.3.0として振る舞う仮想的なgemを作成しています。
+0.3.0はこの世に存在していないので、通常ではbundlerは見つけられずに失敗します。
+ですが、virtual_gemによって仮想的なgemがインストールされている状態になるため、bundle installは成功します。
+これにより、rails 5.2.0.rc2をrails 5.2.0として扱うことができるため、依存関係の解決を試せます。
+依存関係を書き換える virtual_gemではまだ存在しないgemで依存関係の解決を試して見ることができますが、依存関係が衝突する可能性は十分にあります。 例えばrails 5.</description>
+    </item>
     
     <item>
       <title>Globalizeを使ったRailsを5系対応する際にはまった</title>
