@@ -1160,26 +1160,26 @@
   </url>
   
   <url>
-    <loc>http://ota42y.com/categories/tech/</loc>
-    <lastmod>2015-07-05T14:15:20+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ota42y.com/tags/tech/</loc>
     <lastmod>2016-02-25T22:44:10+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ota42y.com/categories/text/</loc>
-    <lastmod>2015-06-21T23:43:02+09:00</lastmod>
+    <loc>http://ota42y.com/categories/tech/</loc>
+    <lastmod>2015-07-05T14:15:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://ota42y.com/tags/text/</loc>
     <lastmod>2016-09-15T19:45:49+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ota42y.com/categories/text/</loc>
+    <lastmod>2015-06-21T23:43:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
