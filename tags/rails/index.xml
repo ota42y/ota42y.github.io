@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rails on おおたの物置</title>
+    <link>http://ota42y.com/tags/rails/</link>
+    <description>Recent content in Rails on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 04 Jun 2018 09:10:37 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/rails/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bootsnapの速度計測</title>
+      <link>http://ota42y.com/blog/2018/06/04/bootsnap/</link>
+      <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/06/04/bootsnap/</guid>
+      <description>shinjuku.rbで話した内容です。
+資料あげようと思って完全に忘れていたので上げます…
+要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
+資料 ここです。
+  bootsnapはどれくらい早くなるのか  from ota42y</description>
+    </item>
+    
+  </channel>
+</rss>
