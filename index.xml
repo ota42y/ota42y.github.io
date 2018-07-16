@@ -6,10 +6,39 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 04 Jun 2018 09:10:37 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jul 2018 08:00:37 +0900</lastBuildDate>
     
 	<atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>goroutineの動き方を調べた</title>
+      <link>http://ota42y.com/blog/2018/07/17/goroutine/</link>
+      <pubDate>Tue, 17 Jul 2018 08:00:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/07/17/goroutine/</guid>
+      <description>shinjuku.rbで話した内容です。
+が、スライドだけだとよくわからないのでもう少し文章を補足した版を上げておきます。
+  goroutineはどうやって動いているのか  from ota42y 
+要約  goroutineの実態はスレッド go xxxした関数はプロセッサ数に応じて適切なスレッドに割り振られて処理される work-stealingアルゴリズムで処理のスケジューリングをする  goroutineとは何か 以下のように書くと、非同期でgo xxxに渡した関数が実行されます。
+ 実態はスレッドらしいのですが、基本的にはうまく覆い隠されており、以下のような細かい点は意識しなくてよいようになっています。
+ 実行までの手順はどうなってるのか 非同期処理の管理はどうしているのか スレッド数の調節はどう行われているのか  今回は、goはこれらの点をどう解決しているのかを調べました。
+goroutineの登録 上記のコードのうち、go xxxの部分をコンパイルした結果は以下のようになっています。
+ go xxxと書いた場合、コンパイルした結果を見る限り、runtime.newprocに関数ポインタ(?)を渡しています。
+newprocは実質newproc1を読んでいるだけなので、newproc1で関数の非同期処理を始めていそうです。
+newproc1の中身 newproc1の中身はかなり巨大なため、ここから攻めるのは用意ではありません。
+https://github.com/golang/go/blob/99e9be804379d0607de4a322353b317aa087073d/src/runtime/proc.go#L3316
+幸いにもおそらくgo1.1の頃のDesign docが存在しています。
+現在の実装を見る限り大きく変わってはいないので、これベースで見ていきます。
+https://golang.org/s/go11sched
+goroutineの処理フロー goroutineの処理において関わる要素は以下の3つです。
+ P  Processor Gを処理していくプロセッサ GOMAXPROCSの数だけPがある  M  Thread 特定のPに紐付く  G  gorutineに渡された関数 Mに紐付けられて実行される   goroutineの登録 Gは作成されるとキューに積まれます。
+PはGを取り出して、Mにくっつけて関数を実行します。
+Mがsyscallとかロックとかで待ち状態になると、別のMを作りGを処理します。
+Mのロックが解除されたらまた実行を始めます。
+goroutineのスケジュール 複数Pが存在する場合、キューが１つだと取り出し時に競合が発生します。
+そのため、このままだと並列数を上げても速度が上がりません。</description>
+    </item>
     
     <item>
       <title>bootsnapの速度計測</title>
