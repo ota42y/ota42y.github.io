@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on おおたの物置</title>
+    <link>http://ota42y.com/tags/rust/</link>
+    <description>Recent content in Rust on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 01 Aug 2018 09:55:37 +0900</lastBuildDate>
+    
+	<atom:link href="http://ota42y.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RustでGyazoクローンを作った</title>
+      <link>http://ota42y.com/blog/2018/08/01/ryazo/</link>
+      <pubDate>Wed, 01 Aug 2018 09:55:37 +0900</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/08/01/ryazo/</guid>
+      <description>RustでGyazoのサーバ側と同じ機能を有するRyazoを作りました。リポジトリはここです。
+https://github.com/ota42y/ryazo
+オリジナルのGyazoと比べてDBにSQLiteを使っているところが若干違いがあります。
+使い方 サーバを立てる docker hub にpushしてあるので、pullするだけで使えます。
+ただし、DBファイルを先に作る必要があります。
+mkdir data cargo install diesel_cli --no-default-features --features sqlite export DATABASE_URL=./data/ryazo.db diesel setup docker run -v `pwd`/data:/app/data -p 8888:8888 -e SERVER_ADDRESS=localhost:8888 -e BIND_ADDRESS=0.0.0.0:8888 -e SAVE_FOLDER=/app/data -e DATABASE_URL=/app/data/ryazo.db -it ota42y/ryazo /app/ryazo  Gyazoのアプリをビルドする 今回作ったのはサーバ側だけなので、アップロードするアプリはありません。
+Gyazoのアプリをcloneして向き先をサーバに変えます
+git clone https://github.com/gyazo/Gyazo.git # open ./Gyazo/script # change HOST (line 50) to your ryazo host. # if you change port, change 80 (line 72) to your port # build by xcode  オリジナルとの相違点 DBがSQLite オリジナルのgyazoはSDBMを使っていますが、こちらはSQLiteを使っています。</description>
+    </item>
+    
+  </channel>
+</rss>
