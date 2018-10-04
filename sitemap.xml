@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://ota42y.com/blog/2018/10/04/2018-10-04/</loc>
+    <lastmod>2018-10-04T00:21:50+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ota42y.com/blog/2018/08/01/ryazo/</loc>
     <lastmod>2018-08-01T09:55:37+09:00</lastmod>
   </url>
@@ -953,14 +958,20 @@
   </url>
   
   <url>
+    <loc>http://ota42y.com/tags/aws/</loc>
+    <lastmod>2018-10-04T00:21:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://ota42y.com/blog/</loc>
-    <lastmod>2018-08-01T09:55:37+09:00</lastmod>
+    <lastmod>2018-10-04T00:21:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://ota42y.com/tags/book/</loc>
-    <lastmod>2018-04-23T10:00:50+00:00</lastmod>
+    <lastmod>2018-10-04T00:21:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1037,7 +1048,7 @@
   
   <url>
     <loc>http://ota42y.com/tags/golang/</loc>
-    <lastmod>2018-07-17T08:00:37+09:00</lastmod>
+    <lastmod>2018-10-04T00:21:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1233,7 +1244,7 @@
   
   <url>
     <loc>http://ota42y.com/</loc>
-    <lastmod>2018-08-01T09:55:37+09:00</lastmod>
+    <lastmod>2018-10-04T00:21:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   

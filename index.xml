@@ -6,10 +6,32 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 01 Aug 2018 09:55:37 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 04 Oct 2018 00:21:50 +0000</lastBuildDate>
     
 	<atom:link href="http://ota42y.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Amazon Web Servicesサーバーレスレシピ という本を出します</title>
+      <link>http://ota42y.com/blog/2018/10/04/2018-10-04/</link>
+      <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/10/04/2018-10-04/</guid>
+      <description>Amazon Web Servicesサーバーレスレシピ という本が明日10/5に出ます。
+元々技術書典で書いた本を更に加筆修正したものになります。
+どんな本 この本は元々技術書典4で私も記事を書いた「Amazon Web Services サーバーレスレシピ 2018.04」がベースになっています。
+技術書典4でAWSサーバーレス本出します！
+実際にサーバレスアプリケーションを組み立てる上で、こういうふうに組み合わせればいいんだよみたいな例を乗っけたものになります。
+私は主にAWS Serverless Application Model(SAM)でECサイトを作るみたいなことを書きました。
+技術書典版との差分 技術書典版ではNode.jsでコードを書いていましたが、Go言語ですべて書き直しました。
+冗長な部分を削ったり、薄かった本番デプロイの説明を暑くするなど、ほぼ同じテーマで書いたの別の本みたいな感じになっています。
+Diffはこのぐらいですね…
+さらに、Vue.jsでSPAを作って実際にサーバレスアプリケーションにアクセスしてみるといった部分を加筆しています。
+また、湊川あいさんに、とても素晴らしい表紙も書いていただきました！
+その他 技術書典4で本を出していたところ、お声がかかりこのような運びになり、大変うれしいです。
+Amazon以外でも色んな所で売っているので是非！！！！
+Amazon Web Servicesサーバーレスレシピ | 電子書籍とプリントオンデマンド（POD） | NextPublishing（ネクストパブリッシング）</description>
+    </item>
     
     <item>
       <title>RustでGyazoクローンを作った</title>
