@@ -68,7 +68,7 @@
     <item>
       <title>Book</title>
       <link>http://ota42y.com/tags/book/</link>
-      <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
+      <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>http://ota42y.com/tags/book/</guid>
       <description></description>
@@ -147,11 +147,29 @@
     </item>
     
     <item>
+      <title>Elasticsearch</title>
+      <link>http://ota42y.com/tags/elasticsearch/</link>
+      <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Evernote</title>
       <link>http://ota42y.com/tags/evernote/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://ota42y.com/tags/evernote/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter</title>
+      <link>http://ota42y.com/tags/flutter/</link>
+      <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>http://ota42y.com/tags/flutter/</guid>
       <description></description>
     </item>
     
@@ -356,7 +374,7 @@
     <item>
       <title>Ruby</title>
       <link>http://ota42y.com/tags/ruby/</link>
-      <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
+      <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>http://ota42y.com/tags/ruby/</guid>
       <description></description>

@@ -6,10 +6,49 @@
     <description>Recent content in Book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 04 Oct 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Oct 2018 00:21:50 +0000</lastBuildDate>
     
 	<atom:link href="http://ota42y.com/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技術書典５で本が３冊出ます</title>
+      <link>http://ota42y.com/blog/2018/10/06/techbook_5/</link>
+      <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>http://ota42y.com/blog/2018/10/06/techbook_5/</guid>
+      <description>10/8の技術書典５で関わった本が３冊でます。
+技術書典５で私が何故か３サークルの運営に関与していたので…
+Microservices architecture よろず本 その二 か１３「すべてがM(icro)になる」でマイクロサービスよろず本その二を頒布します！
+https://techbookfest.org/event/tbf05/circle/28570001
+この本はマイクロサービスアーキテクチャに関する実践を元にした本になります。
+インフラから概念的なレイヤーまで幅広く扱っています。
+また、食べログさんやQuipperさんにインタビューした記事があったりとかなり充実した内容になっています。
+私はPub/Subメッセージと冪等性について書いてます。
+既刊の販売もあり、どれも電子版も用意しています。
+こんな感じです
+How to Develop Flutter Apps う７０「牛だけどなんか質問ある？」でFlutterアプリに関する本を出します！
+https://techbookfest.org/event/tbf05/circle/26810001
+この本はFlutter開発の基礎的な所からFirebaseとの連携、Flutter Pluginを使ったアプリ開発について触れており、
+初心者から中級者まで幅広く使える内容になっています。
+今回私はFlutterでFirebaseを使ったログイン機能の実装みたいなのを書いてます。
+最近どうもFlutterの流れがもの凄いですし、Googleの推し方的にすぐに主流になるのでは…
+っていう感じなので今から始めるのはとてもオススメします。
+こんな感じです
+FiNC Technologies TECH BOOK EDITION ＃1 き40「謎のヘルスケアベンチャーFiNC（公式）」で会社公式の本が出ます！
+https://techbookfest.org/event/tbf05/circle/26870008
+内容は会社で行っている実装や組織の話、はてはボドゲを業務でやる話など様々です。
+今回私は、検索機能の改善を定量的に計りつつ行う記事を書いてます。
+まず、過去の検索ログから検索機能の精度がどれくらいなのかを数値化します。
+これでパラメータを変更してどれだけ精度が上がったかを計れるようになるので、
+精度が一番上がるようなパラメータに調整でき、検索結果がどれくらい良くなったかを計測できるようになります。
+こんな感じです。
+技術書展で出した本が商業出版されます！！ 前回の技術書典で出した本が商業で出版されます！
+詳しくはこちら。
+Amazon Web Servicesサーバーレスレシピ という本を出します
+なんで３サークルで書いてるの？ 詳しくはこちらを見てください(´・_・`)
+  なぜか技術書典５で ３サークルの運営をやってた話  from ota42y</description>
+    </item>
     
     <item>
       <title>Amazon Web Servicesサーバーレスレシピ という本を出します</title>
