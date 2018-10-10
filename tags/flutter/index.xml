@@ -2,21 +2,55 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flutter on おおたの物置</title>
-    <link>http://ota42y.com/tags/flutter/</link>
+    <link>/tags/flutter/</link>
     <description>Recent content in Flutter on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 06 Oct 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>技術書典５で本を３冊出しました</title>
+      <link>/blog/2018/10/07/techbook_5_result/</link>
+      <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/10/07/techbook_5_result/</guid>
+      <description>10/8の技術書典５で関わった本を３冊出しました。
+お買い求めくださった方、ありがとうございます。
+また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。
+Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）
+How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）
+また、既刊のマイクロサービス本もBOOTHで販売中です。
+Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
+なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。
+販売結果 マイクロサービス本は新刊３００、既刊１００冊＋αを持って行きましたが、どちらもほとんど残っておらず、多少残る予定で刷ったので非常に驚いています。
+Flutter本は１００冊全部売り切れました。
+こちらは被チェック数の時点で既に上回っており、手に取れなかった方には申し訳ないです。
+会社本も予想を超えて売れるなど大盛況でした。
+重ね重ねお買い求めいただきありがとうございます。
+今回３サークル併せて720冊ぐらい持ち込みましたが、そのうち600冊は売れているので本当にびっくりです…
+また、マイクロサービス本は新刊既刊共に売り切れず、かつ大量に残らずといった、ほぼ頒布数どおりの数を刷れたので、とてもいい結果になったと思います。
+販売数の推移 マイクロサービス本はそこそこの精度で販売冊数の推移を記録しており、以下のようになります。
+開始２時間で１５０冊ぐらい、残りの時間でもう１５０冊ぐらいなイメージです。
+なお、一部記録に失敗した本があるため、売れた冊数と上のグラフは微妙に違います…
+やはり最初の1時間の売り上げは凄い量になっています。
+Flutter本に関しては以下の通りです。
+13時の売り上げが0冊となっていますが、おそらく14時の売り上げにマージされていそうです。
+今回、わりとこういうのが多かったので次は売り上げ管理をやりやすい物にしたいと思います…
+被チェック数の推移 マイクロサービス本に関してはerukiti/techbookfest-circle-botを使わせて頂き、被チェック数を社内Slackに流していました。
+(共著者は全て社内の人間なので…)
+かいつまんでだすと以下になります。
+   日付 被チェック数     9/ 17 20:00 22   9/ 24 20:00 30   10/ 1 20:00 49   10/ 2 20:00 52   10/ 3 20:00 62   10/ 4 20:00 76   10/ 5 20:00 90   10/ 6 20:00 112   10/ 7 20:00 136   10/ 8 08:00 186   10/ 8 14:00 235    グラフとしてはこんな感じです。</description>
+    </item>
+    
+    <item>
       <title>技術書典５で本が３冊出ます</title>
-      <link>http://ota42y.com/blog/2018/10/06/techbook_5/</link>
+      <link>/blog/2018/10/06/techbook_5/</link>
       <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/06/techbook_5/</guid>
+      <guid>/blog/2018/10/06/techbook_5/</guid>
       <description>10/8の技術書典５で関わった本が３冊でます。
 技術書典５で私が何故か３サークルの運営に関与していたので…
 Microservices architecture よろず本 その二 か１３「すべてがM(icro)になる」でマイクロサービスよろず本その二を頒布します！

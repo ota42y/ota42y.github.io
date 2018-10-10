@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Arduino on おおたの物置</title>
-    <link>http://ota42y.com/tags/arduino/</link>
+    <link>/tags/arduino/</link>
     <description>Recent content in Arduino on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
-      <link>http://ota42y.com/blog/2015/07/05/dino/</link>
+      <link>/blog/2015/07/05/dino/</link>
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
+      <guid>/blog/2015/07/05/dino/</guid>
       <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
 ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
 PCとからArduinoを制御する場合、
@@ -39,10 +39,10 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
     
     <item>
       <title>ブラウザからArduinoを制御する</title>
-      <link>http://ota42y.com/blog/2014/08/27/arduino-browser/</link>
+      <link>/blog/2014/08/27/arduino-browser/</link>
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/27/arduino-browser/</guid>
+      <guid>/blog/2014/08/27/arduino-browser/</guid>
       <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
 当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
 そこで、Arduinoの制御をやるWebサーバをローカルに立てて、

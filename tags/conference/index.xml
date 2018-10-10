@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conference on おおたの物置</title>
-    <link>http://ota42y.com/tags/conference/</link>
+    <link>/tags/conference/</link>
     <description>Recent content in Conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 27 Oct 2016 15:37:37 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Shinjuku.rb #42でRubocopについて話した</title>
-      <link>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</link>
+      <link>/blog/2016/10/27/shinjuku-rb-42/</link>
       <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</guid>
+      <guid>/blog/2016/10/27/shinjuku-rb-42/</guid>
       <description> Shinjuku.rb #42に行ってきました。
 http://shinjukurb.connpass.com/event/42245/
 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。
@@ -33,10 +33,10 @@ soutaro/querly: Query Method Calls from Ruby Programs
     
     <item>
       <title>Ginza.rb 第40回でprmdについて話した</title>
-      <link>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</link>
+      <link>/blog/2016/10/22/ginza-rb-40/</link>
       <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</guid>
+      <guid>/blog/2016/10/22/ginza-rb-40/</guid>
       <description> Ginza.rb 第40回に行ってきました。
 https://ginzarb.doorkeeper.jp/events/52895
 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。
@@ -50,10 +50,10 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
     
     <item>
       <title>バッカソン（おばかハック）! #MA11 に参加してきた</title>
-      <link>http://ota42y.com/blog/2015/10/18/ma11/</link>
+      <link>/blog/2015/10/18/ma11/</link>
       <pubDate>Sun, 18 Oct 2015 22:23:57 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/18/ma11/</guid>
+      <guid>/blog/2015/10/18/ma11/</guid>
       <description>http://hacklog.jp/events/view/61
 こんなの(バッカライザー)を作ったところ、Microsoft賞を頂きましたヽ(´ー｀)ノ
 
@@ -64,10 +64,10 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
     
     <item>
       <title>ABPro2015で発表してきた</title>
-      <link>http://ota42y.com/blog/2015/10/10/abpro2015/</link>
+      <link>/blog/2015/10/10/abpro2015/</link>
       <pubDate>Sat, 10 Oct 2015 23:58:16 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/10/abpro2015/</guid>
+      <guid>/blog/2015/10/10/abpro2015/</guid>
       <description>togetterまとめ
   身近なサイバー攻撃から身を守る  from ota42y 
 ディープラーニングによる画像認識でTL上の飯テロ画像を判定しています。
@@ -78,10 +78,10 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
     
     <item>
       <title>第48回情報科学若手の会2015に参加してきた</title>
-      <link>http://ota42y.com/blog/2015/09/22/wakate2015/</link>
+      <link>/blog/2015/09/22/wakate2015/</link>
       <pubDate>Tue, 22 Sep 2015 00:45:03 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/09/22/wakate2015/</guid>
+      <guid>/blog/2015/09/22/wakate2015/</guid>
       <description>2015年9月19日(土)〜21日(月)に静岡県伊東市の山喜旅館で開催された、
 第48回情報科学若手の会2015に参加してきました。
 四回目の参加で、ショートで発表を行いました。
@@ -97,10 +97,10 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
     
     <item>
       <title>第48回情報科学若手の会2015で発表してきた</title>
-      <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
+      <link>/blog/2015/09/20/wakate2015-hci/</link>
       <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</guid>
+      <guid>/blog/2015/09/20/wakate2015-hci/</guid>
       <description>というわけで発表しました。
 発表資料はこちら。
 実際は動画で紹介していますが、めっちゃ重くなったのでそれは外した軽量版になります。
@@ -133,10 +133,10 @@ HCI系のトップカンファレンスACM CHIの自主勉強会が毎年東京�
     
     <item>
       <title>参加記録 Go Conference 2015 summer</title>
-      <link>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</link>
+      <link>/blog/2015/06/21/gocon-2015-summer/</link>
       <pubDate>Sun, 21 Jun 2015 23:43:02 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</guid>
+      <guid>/blog/2015/06/21/gocon-2015-summer/</guid>
       <description>今回は日経さんとCAさんがスポンサーとのことですが、
 かなりの人がいるのにwifiが普通に繋がっていて凄かったです…
 なんか機械も見たことも無い凄い奴でしたし。
@@ -151,10 +151,10 @@ Gaurun〜A general push notification server in Go〜  https://speakerdeck.com/cu
     
     <item>
       <title>参加記録 BPStudy#92</title>
-      <link>http://ota42y.com/blog/2015/04/29/bpstudy92/</link>
+      <link>/blog/2015/04/29/bpstudy92/</link>
       <pubDate>Wed, 29 Apr 2015 13:49:43 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/29/bpstudy92/</guid>
+      <guid>/blog/2015/04/29/bpstudy92/</guid>
       <description>BPStudy#92に参加しました。
 今回は経営やお金の話でした。
 お金って資本主義社会のベースとなる概念ですし、
@@ -167,10 +167,10 @@ Gaurun〜A general push notification server in Go〜  https://speakerdeck.com/cu
     
     <item>
       <title>参加記録 DroidKaigi</title>
-      <link>http://ota42y.com/blog/2015/04/26/droidkaigi/</link>
+      <link>/blog/2015/04/26/droidkaigi/</link>
       <pubDate>Sun, 26 Apr 2015 12:49:12 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/26/droidkaigi/</guid>
+      <guid>/blog/2015/04/26/droidkaigi/</guid>
       <description>DroidKaigiに参加してきたのでメモ。
 Twitterで流れてくる情報によると、あっちのセッションもおもしろそう…
 みたいなのがあったので、ちゃんとセッションの概要も読んで天秤にかけるべきでした。
@@ -185,10 +185,10 @@ Twitterで流れてくる情報によると、あっちのセッションもお�
     
     <item>
       <title>参加記録 第四回　ゲームサーバ勉強会</title>
-      <link>http://ota42y.com/blog/2015/04/19/game-server-4/</link>
+      <link>/blog/2015/04/19/game-server-4/</link>
       <pubDate>Sun, 19 Apr 2015 11:03:24 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/19/game-server-4/</guid>
+      <guid>/blog/2015/04/19/game-server-4/</guid>
       <description>第四回　ゲームサーバ勉強会に参加しました。
 サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。
 特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。
@@ -199,10 +199,10 @@ IDC Frontierさんの話  IDCクラウドの話
     
     <item>
       <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
-      <link>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</link>
+      <link>/blog/2015/04/14/golang-no-http-night/</link>
       <pubDate>Tue, 14 Apr 2015 22:39:40 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</guid>
+      <guid>/blog/2015/04/14/golang-no-http-night/</guid>
       <description>GolangNotHttpNight（Gunosy.go#12）
 に参加しました。
 ほぼ周りにgolangを使っている人がほとんどおらず、
@@ -213,20 +213,20 @@ gomaについて  https://speakerdeck.com/kyokomi/gomanituite https://github.com
     
     <item>
       <title>参加記録 第6回ニコニコ学会β　データ研究会</title>
-      <link>http://ota42y.com/blog/2015/04/12/niconico_data_6/</link>
+      <link>/blog/2015/04/12/niconico_data_6/</link>
       <pubDate>Sun, 12 Apr 2015 21:03:35 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/12/niconico_data_6/</guid>
+      <guid>/blog/2015/04/12/niconico_data_6/</guid>
       <description>第6回ニコニコ学会β　データ研究会に参加しました。
 基調講演  日立のH  スペシャリストのデータに基づいた施策より、超詳細なデータから計算した施策の方が有効  http://web-tan.forum.impressrd.jp/e/2015/03/06/19423  人間では見つけられない要因を特定できる  スキルより休憩中の雑談の盛り上がりが重要だったり 膨大なデータの因果関係を調べ上げるのは人間には無理   ウェアラブルハピネスメーター  人は動き続けているほど止まらなくなる  T時間動き続けると、止まる確率が1/T  実際のデータと1/Tとの乖離が高くなると、集団の幸福度が低下する  1/Tに近いほど集団が幸福度が高くなる  幸福度と業務の生産性は直結する  1/Tを上げることが生産性を上げることになる 生産性や幸福度に関連するデータを短いスパンで計測することができる  日々のKPIとして利用できそうなところが革新的っぽい 日立、集団の幸福感を測定する技術を開発 - PC Watch    参考  データの見えざる手: ウエアラブルセンサが明かす人間・組織・社会の法則  後で買う    人狼知能  脱初心者！経験は人狼力を向上させるのか？～データから見るベテランの実力～  http://www.slideshare.net/toritorix/ss-46899953 人狼BBSの分析 陣営ごとの平均プレイ回数が多い方が勝率が高い  運ゲーじゃなかった  経験によるスキル向上  占い師  的中率は変化なし  狩人  上級者ほど護衛成功しやすい  人狼への投票率  ちょっとだけ高い 上級者が複数人の陣営はわりと高くなる  個人の経験より集団の経験の方が強い  人狼知能プロジェクト  人狼BBSのデータセットとか公開するらしい http://www.</description>
     </item>
     
     <item>
       <title>参加記録 情報科学若手の会冬の陣2015</title>
-      <link>http://ota42y.com/blog/2015/01/25/wakate2015w/</link>
+      <link>/blog/2015/01/25/wakate2015w/</link>
       <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/25/wakate2015w/</guid>
+      <guid>/blog/2015/01/25/wakate2015w/</guid>
       <description>情報科学若手の会冬の陣2015 #wakate2015wに参加しました
 Togetterまとめ
 会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした
@@ -242,10 +242,10 @@ Togetterまとめ
     
     <item>
       <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
-      <link>http://ota42y.com/blog/2015/01/11/jenkins-conference/</link>
+      <link>/blog/2015/01/11/jenkins-conference/</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/11/jenkins-conference/</guid>
+      <guid>/blog/2015/01/11/jenkins-conference/</guid>
       <description>Jenkins ユーザ・カンファレンス 2015 東京に参加しました。
 Togetterまとめ
 発表まとめ アンケート結果  参加申し込み時のアンケート結果 多くの人のjobの数が1〜数個程度 Jenkins無くても生きていける人が30％ぐらい
@@ -254,10 +254,10 @@ Togetterまとめ
     
     <item>
       <title>大晦日ハッカソン2014&amp;正月ハッカソン2015に参加した</title>
-      <link>http://ota42y.com/blog/2015/01/01/1231-hackathon/</link>
+      <link>/blog/2015/01/01/1231-hackathon/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/01/1231-hackathon/</guid>
+      <guid>/blog/2015/01/01/1231-hackathon/</guid>
       <description>2014/12/31にオンラインで行われた、
 大晦日ハッカソン2014に参加しました。
 Evernoteのリンクをアプリで直接開くChrome拡張を作りました。
@@ -284,10 +284,10 @@ Evernoteアプリが立ち上がり、そのノートを開いてくれます。
     
     <item>
       <title>参加記録 Android Bazaar and Conference 2014 Winter</title>
-      <link>http://ota42y.com/blog/2014/12/21/abc2014w/</link>
+      <link>/blog/2014/12/21/abc2014w/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/21/abc2014w/</guid>
+      <guid>/blog/2014/12/21/abc2014w/</guid>
       <description>Android Bazaar and Conference 2014 Winterに参加してきました。
 なかなか興味深いお話を聞けたので、気になった部分を抜粋
  携帯は９５％の人類が持ってる
@@ -307,10 +307,10 @@ Evernoteアプリが立ち上がり、そのノートを開いてくれます。
     
     <item>
       <title>参加記録 Go Conference 2014 autumn</title>
-      <link>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</link>
+      <link>/blog/2014/12/01/gocon-2014-autumn/</link>
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</guid>
+      <guid>/blog/2014/12/01/gocon-2014-autumn/</guid>
       <description>Go Conference 2014 autumnに参加しました。
 togetterまとめ
 大体スライドが公開されているので、正確な内容はそちらをどうぞ。
@@ -345,10 +345,10 @@ GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</description>
     
     <item>
       <title>参加記録 BPStudy ♯87</title>
-      <link>http://ota42y.com/blog/2014/11/29/bpstudy-87/</link>
+      <link>/blog/2014/11/29/bpstudy-87/</link>
       <pubDate>Sat, 29 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/29/bpstudy-87/</guid>
+      <guid>/blog/2014/11/29/bpstudy-87/</guid>
       <description>BPStudy#87に参加しました。
 togetterまとめ
 じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？ http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6
@@ -374,10 +374,10 @@ LT 一件目はiOS7と8で遭遇したブラウザバグの紹介でした。
     
     <item>
       <title>Travis CI Meetup Tokyoに行ってきた</title>
-      <link>http://ota42y.com/blog/2014/09/18/travisci-meetup/</link>
+      <link>/blog/2014/09/18/travisci-meetup/</link>
       <pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/18/travisci-meetup/</guid>
+      <guid>/blog/2014/09/18/travisci-meetup/</guid>
       <description>前半はTravis CIのデモ、真ん中てCEOのお話、最後にLTと三部構成でした。
 こちらに動画があるそうです。
 http://www.ustream.tv/recorded/52769967
@@ -415,10 +415,10 @@ When was the build passing? http://sanemat.github.io/talks/20140917-travis-ci-me
     
     <item>
       <title>第47回情報科学若手の会2014に参加してきた</title>
-      <link>http://ota42y.com/blog/2014/09/15/wakate2014/</link>
+      <link>/blog/2014/09/15/wakate2014/</link>
       <pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/15/wakate2014/</guid>
+      <guid>/blog/2014/09/15/wakate2014/</guid>
       <description>2014年9月13日(土)〜15日(月)に静岡県伊東市の山喜旅館で開催された、
 第47回情報科学若手の会2014に参加してきました。
 二年ぶり三回目の参加です。
@@ -470,10 +470,10 @@ When was the build passing? http://sanemat.github.io/talks/20140917-travis-ci-me
     
     <item>
       <title>情報科学若手の会2014で発表してきた</title>
-      <link>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</link>
+      <link>/blog/2014/09/14/wakate2014-presentation/</link>
       <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</guid>
+      <guid>/blog/2014/09/14/wakate2014-presentation/</guid>
       <description> LT発表してきました。
 最近CIとか継続的デリバリーとか流行ってるけど、
 ネット上にあふれている事例は、テスト(ビルド)が頑張れば5分程度で出来たり、
@@ -495,10 +495,10 @@ When was the build passing? http://sanemat.github.io/talks/20140917-travis-ci-me
     
     <item>
       <title>CEDEC2014 9月3日まとめ</title>
-      <link>http://ota42y.com/blog/2014/09/06/cedec2014-09-03/</link>
+      <link>/blog/2014/09/06/cedec2014-09-03/</link>
       <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/06/cedec2014-09-03/</guid>
+      <guid>/blog/2014/09/06/cedec2014-09-03/</guid>
       <description>この日だけ参加したのでまとめ
 ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開  ウェアラブルの特徴
  コンピュータを服のように着る 常時ON 生活密着 ハンズフリー Occlusは基本的にウェアラブルではない  ウェアラブルは実は難しい
@@ -513,10 +513,10 @@ When was the build passing? http://sanemat.github.io/talks/20140917-travis-ci-me
     
     <item>
       <title>GitHub Kaigiに行ってきた</title>
-      <link>http://ota42y.com/blog/2014/06/03/github-kaigi/</link>
+      <link>/blog/2014/06/03/github-kaigi/</link>
       <pubDate>Tue, 03 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/06/03/github-kaigi/</guid>
+      <guid>/blog/2014/06/03/github-kaigi/</guid>
       <description>スライドまとめ  GitHub実践入門は活用するためのガイドブック
  はてなブログチームの開発フローとGitHub
  OSS と GitHub

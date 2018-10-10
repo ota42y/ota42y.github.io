@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Js on おおたの物置</title>
-    <link>http://ota42y.com/tags/js/</link>
+    <link>/tags/js/</link>
     <description>Recent content in Js on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 23 Oct 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/js/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/js/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>javascriptの関数リテラルではインスタンス変数にアクセスできない</title>
-      <link>http://ota42y.com/blog/2014/10/23/javascript-callback/</link>
+      <link>/blog/2014/10/23/javascript-callback/</link>
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/23/javascript-callback/</guid>
+      <guid>/blog/2014/10/23/javascript-callback/</guid>
       <description>関数リテラルではローカル変数には自由にアクセスできるので、
 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。
 以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、
@@ -32,10 +32,10 @@ class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num c
     
     <item>
       <title>ブラウザからArduinoを制御する</title>
-      <link>http://ota42y.com/blog/2014/08/27/arduino-browser/</link>
+      <link>/blog/2014/08/27/arduino-browser/</link>
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/27/arduino-browser/</guid>
+      <guid>/blog/2014/08/27/arduino-browser/</guid>
       <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
 当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
 そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
@@ -59,10 +59,10 @@ Serialport-serverが良さそうです。</description>
     
     <item>
       <title>JavascriptでオプションのパースをするOptparse-js</title>
-      <link>http://ota42y.com/blog/2014/08/26/optparse/</link>
+      <link>/blog/2014/08/26/optparse/</link>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/26/optparse/</guid>
+      <guid>/blog/2014/08/26/optparse/</guid>
       <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、
 各言語でそれをやってくれるライブラリが作られています。
 javascriptでそれにあたるのがOptparse-jsですが、
@@ -84,10 +84,10 @@ parser.parse(command_str.split(&amp;quot; &amp;quot;));  (勝手にオプショ�
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>http://ota42y.com/blog/2014/08/22/mocha-test/</link>
+      <link>/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/22/mocha-test/</guid>
+      <guid>/blog/2014/08/22/mocha-test/</guid>
       <description>まとめ  Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ便利機能がある  Mochaの使い方 coffeescriptを前提にしています。
 テストの書き方 Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、
 そのitを呼び出す関数をdescribeに渡すしようです。
@@ -105,10 +105,10 @@ describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>http://ota42y.com/blog/2014/08/21/intellij-node/</link>
+      <link>/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/21/intellij-node/</guid>
+      <guid>/blog/2014/08/21/intellij-node/</guid>
       <description> node.js+mocha+coffeescriptな環境で開発をしていたところ、
 IntelliJ IDEAの設定方法が調べても無かったのでメモ。
 Node.jsプラグインのインストール Node.jsプラグインは公式から提供されています。
@@ -134,10 +134,10 @@ coffeescriptから変換してるので、
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>まとめ
  Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人を非表示にする拡張作った DLはここから  Pixivのイラスト検索でフォロワーを除外できない Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、
 検索結果にフォローしてる人とそうでない人が交じります。
@@ -157,10 +157,10 @@ coffeescriptから変換してるので、
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>http://ota42y.com/blog/2014/08/17/local-storage/</link>
+      <link>/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/17/local-storage/</guid>
+      <guid>/blog/2014/08/17/local-storage/</guid>
       <description>Chrome拡張でデータを保存しようとした場合に、
 最も簡単に扱えるのが、localStorageです。
 manifest.jsonの設定 manifest.jsonに以下のパーミッションを追加してください

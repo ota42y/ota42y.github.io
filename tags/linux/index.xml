@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on おおたの物置</title>
-    <link>http://ota42y.com/tags/linux/</link>
+    <link>/tags/linux/</link>
     <description>Recent content in Linux on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>dump/restoreコマンドでデータのバックアップ・リストアをする</title>
-      <link>http://ota42y.com/blog/2016/02/07/dump_restore_command/</link>
+      <link>/blog/2016/02/07/dump_restore_command/</link>
       <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
+      <guid>/blog/2016/02/07/dump_restore_command/</guid>
       <description>まとめ  dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利  もちろんHDDでもいける Windowsは基本的にSDカードの第一パーティションしか認識できない   SDカードのデータ移行がしたい Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。
 ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。
 ASUS MeMO Pad 7 ME572CでLink2SDを動かす
@@ -29,10 +29,10 @@ SDカードの第二パーティションのマウント Link2SDを使ってい�
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
-      <link>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</link>
+      <link>/blog/2015/10/14/mongodb3-debian7-32bit/</link>
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
+      <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>まとめ  Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違うので注意 面倒ならdbファイルを/data/dbに移動してしまうのが楽そう  Debian 7 32bitのmongodb Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)
 Install MongoDB on Debian
@@ -56,10 +56,10 @@ sudo -u mongodb mongod --dbpath /var/lib/mongodb  まとめ 起動が面倒な�
     
     <item>
       <title>freeコマンドに新しく追加されたavailableについて</title>
-      <link>http://ota42y.com/blog/2015/09/09/free-command/</link>
+      <link>/blog/2015/09/09/free-command/</link>
       <pubDate>Wed, 09 Sep 2015 21:53:07 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/09/09/free-command/</guid>
+      <guid>/blog/2015/09/09/free-command/</guid>
       <description>freeコマンドに追加されたavailable 3.14および2.6.27から、freeコマンドの書式が変わり、
 -/+ buffers/cacheが消えてavailableという項目が増えました。
 availableは/proc/meminfoの中にあるMemAvailablの値を参照しています。
@@ -69,10 +69,10 @@ available Estimation of how much memory is available for starting new applicatio
     
     <item>
       <title>Linuxのlocaleがおかしくなっていた</title>
-      <link>http://ota42y.com/blog/2015/06/03/linux_local/</link>
+      <link>/blog/2015/06/03/linux_local/</link>
       <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/06/03/linux_local/</guid>
+      <guid>/blog/2015/06/03/linux_local/</guid>
       <description>突然プログラムが起動しなくなったため、
 原因を探ったところ、localesが壊れていました。
 そのため、再インストールすることで直りました。
@@ -88,10 +88,10 @@ locale -a locale: Cannot set LC_CTYPE to default locale: No such file or directo
     
     <item>
       <title>fork関数がどうやってプロセスを分割しているか</title>
-      <link>http://ota42y.com/blog/2015/01/03/unix-fork/</link>
+      <link>/blog/2015/01/03/unix-fork/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/03/unix-fork/</guid>
+      <guid>/blog/2015/01/03/unix-fork/</guid>
       <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ
 という本を読んでいます。
 この中で、fork関数がどうやって子プロセスを作り、
@@ -113,10 +113,10 @@ fork() { register struct proc *p1, *p2; p1 = u.u_procp; for(p2 = &amp;amp;proc[0
     
     <item>
       <title>Debian squeezeでShellShock対策</title>
-      <link>http://ota42y.com/blog/2014/09/26/shell-shock/</link>
+      <link>/blog/2014/09/26/shell-shock/</link>
       <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/26/shell-shock/</guid>
+      <guid>/blog/2014/09/26/shell-shock/</guid>
       <description>Debianは探しても見つからなかったので…(´･_･`)
 ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三者から任意のコードが実行される脆弱性が見つかりました。
 GNU bash の脆弱性に関する注意喚起
@@ -139,10 +139,10 @@ deb http://security.debian.org/ wheezy/updates main deb-src http://security.debi
     
     <item>
       <title>cronやinit.dでsudoを実行するとエラーになって実行できない</title>
-      <link>http://ota42y.com/blog/2014/09/13/sudo-error/</link>
+      <link>/blog/2014/09/13/sudo-error/</link>
       <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/13/sudo-error/</guid>
+      <guid>/blog/2014/09/13/sudo-error/</guid>
       <description>cronやinit.d以下に置いたスクリプトで、
 別の以外のユーザで作業しようと思い、sudoを実行したところ、
 以下のようなエラーが出て実行できませんでした。
@@ -156,10 +156,10 @@ Defaults requiretty
     
     <item>
       <title>Linux起動時に特定のシェルスクリプトを実行する</title>
-      <link>http://ota42y.com/blog/2014/09/12/init-d/</link>
+      <link>/blog/2014/09/12/init-d/</link>
       <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/12/init-d/</guid>
+      <guid>/blog/2014/09/12/init-d/</guid>
       <description>hubotを自動で実行してほしいなーと思ったので、
 OSの起動時にスクリプトを自動実行する方法を調べました。
 まず、/etc/init.d/ に実行可能なスクリプトを置きます。

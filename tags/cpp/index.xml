@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cpp on おおたの物置</title>
-    <link>http://ota42y.com/tags/cpp/</link>
+    <link>/tags/cpp/</link>
     <description>Recent content in Cpp on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 31 Jan 2016 14:45:49 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>オーバーライドとオーバーロードは全く別物</title>
-      <link>http://ota42y.com/blog/2016/01/31/override-overload/</link>
+      <link>/blog/2016/01/31/override-overload/</link>
       <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/01/31/override-overload/</guid>
+      <guid>/blog/2016/01/31/override-overload/</guid>
       <description>EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…
 まとめ  オーバーライドされたvirtualなメソッド呼び出しは実行時に決定  実態が子クラスなら、親クラスとして扱っても子クラスのメソッドが実行される 実態が孫クラスの場合は孫クラスのメソッドが呼ばれる 親から子、孫へと呼び出される関数が探されていく感じ  オーバーロードされたメソッド呼び出しはコンパイル時に決定  virtual関数のように実態で切り替えが出来ない 実態が子クラスでも、親クラスとして扱うなら親クラスのメソッドが実行される 一致するものが無い場合は親クラスにキャストして一致するものを探す 子から親へと一致するものを探していく感じ   オーバーライドとは メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。 C++では親クラスでvirtualにされているメソッドをオーバーライドすると、 子クラスのオブジェクトを親クラスにキャストしてメソッドを呼び出しても、再定義された子クラスのメソッドが呼ばれます。 (virtualをつけないと親クラスのメソッドが呼ばれます)
 たとえば以下のコードでは、オーバーライドされているためExtのshowメソッドが実行され、「show ext」が表示されます。
@@ -25,10 +25,10 @@
     
     <item>
       <title>CEDEC2015のCoverityクイズをどう直すか</title>
-      <link>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</link>
+      <link>/blog/2015/08/29/cedec2015-coverity/</link>
       <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
+      <guid>/blog/2015/08/29/cedec2015-coverity/</guid>
       <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。
 バグが入ったC++コードらしい。#CEDEC2015 pic.twitter.com/ca9vb0emVT
 &amp;mdash; alwei (@aizen76) 2015, 8月 26 
@@ -45,10 +45,10 @@
     
     <item>
       <title>構造体のサイズはsizeofをちゃんと使うべき</title>
-      <link>http://ota42y.com/blog/2015/08/20/c-struct/</link>
+      <link>/blog/2015/08/20/c-struct/</link>
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/08/20/c-struct/</guid>
+      <guid>/blog/2015/08/20/c-struct/</guid>
       <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。
 ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。
 #include &amp;quot;stdio.h&amp;quot; struct St{ int a; bool flag; }; struct StSt{ S s; bool f; }; int main(void) { printf(&amp;quot;%lu\n&amp;quot;, sizeof(St)); printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt)); return 0; }  原因 Cでは構造体の後ろにパディングを追加できるようになっています。
@@ -58,10 +58,10 @@
     
     <item>
       <title>C言語でのスレッド処理</title>
-      <link>http://ota42y.com/blog/2015/06/18/c-thread/</link>
+      <link>/blog/2015/06/18/c-thread/</link>
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
+      <guid>/blog/2015/06/18/c-thread/</guid>
       <description>C言語でのスレッド処理と、ロックの仕方をまとめました。
 他の言語のようにスレッド用のクラスを継承するのでは無く、
 別スレッドで実行する関数のポインタと、
@@ -77,10 +77,10 @@ int pthread_join(pthread_t th, void **thread_return);   th  待機するスレ�
     
     <item>
       <title>インライン展開についての追加調査</title>
-      <link>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
+      <link>/blog/2015/01/06/c-inline-postscript/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
+      <guid>/blog/2015/01/06/c-inline-postscript/</guid>
       <description>昨日の記事で、インライン展開について調べましたが、
 よくよく考えると片手落ちだったので追加調査しました。
 インライン展開がどう展開されるのかを調べた
@@ -97,10 +97,10 @@ class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(
     
     <item>
       <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>http://ota42y.com/blog/2015/01/05/c-inline/</link>
+      <link>/blog/2015/01/05/c-inline/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/05/c-inline/</guid>
+      <guid>/blog/2015/01/05/c-inline/</guid>
       <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、
 関数呼び出しのオーバーヘッドを削減する、インライン展開をします。
 インライン展開はコンパイル時にされるため、
@@ -117,10 +117,10 @@ class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumIn
     
     <item>
       <title>size_tは環境によって定義が変わるという話</title>
-      <link>http://ota42y.com/blog/2014/11/08/size-t/</link>
+      <link>/blog/2014/11/08/size-t/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/08/size-t/</guid>
+      <guid>/blog/2014/11/08/size-t/</guid>
       <description>size_tが何bitになるかは環境によって定義が異なります。
 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。
 #include &amp;lt;string&amp;gt; int main () { std::string test = &amp;quot;test text&amp;quot;; unsigned int pos = 0; printf(&amp;quot;size_t %lu\n&amp;quot;, sizeof(size_t)); pos = test.find(&amp;quot;ms&amp;quot;); printf(&amp;quot;pos %lu, %lu\n&amp;quot;, (size_t)pos, std::string::npos); if(pos != std::string::npos){ std::string text = test.substr(pos); printf(&amp;quot;%s\n&amp;quot;, text.c_str()); } return 0; }  std::stringのfindは引数の文字列が最初に出てくる位置か、見つからなかった場合にstd::string::nposを返します。
@@ -142,10 +142,10 @@ test textの4294967295文字目にアクセスして異常終了します。
     
     <item>
       <title>void型のポインタとint型を相互変換するなという話</title>
-      <link>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</link>
+      <link>/blog/2014/11/07/cpp-64bit-cast/</link>
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</guid>
+      <guid>/blog/2014/11/07/cpp-64bit-cast/</guid>
       <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、
 コンパイラもエラーにしない場合が多いです。
 ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、
@@ -158,10 +158,10 @@ int num = 42; Container con; con.data = (void*)num; // 42を取り出す int num
     
     <item>
       <title>汎用ポインタを使う</title>
-      <link>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</link>
+      <link>/blog/2014/11/06/cpp-void-pointer/</link>
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</guid>
+      <guid>/blog/2014/11/06/cpp-void-pointer/</guid>
       <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。
 ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、
 どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。
@@ -182,10 +182,10 @@ mallocの戻り値 void *はmallocの戻り値としても使われています�
     
     <item>
       <title>C&#43;&#43;で少しでもビルド速度を速くする方法</title>
-      <link>http://ota42y.com/blog/2014/09/23/cpp-build/</link>
+      <link>/blog/2014/09/23/cpp-build/</link>
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/23/cpp-build/</guid>
+      <guid>/blog/2014/09/23/cpp-build/</guid>
       <description>結論  キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う  C++のビルドをちょっとでも高速化したかったので、
 どうすれば早くなるのかを調べたのでまとめました。
 どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。
@@ -211,10 +211,10 @@ Dynamic Libraryはリンク時間が不要になりますが、その分実際�
     
     <item>
       <title>C&#43;&#43;で不要なincludeを減らす</title>
-      <link>http://ota42y.com/blog/2014/09/22/cpp-include/</link>
+      <link>/blog/2014/09/22/cpp-include/</link>
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/22/cpp-include/</guid>
+      <guid>/blog/2014/09/22/cpp-include/</guid>
       <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。
 そのため、includeする量が増えるほどコンパイラが解析する量も増え、
 結果としてコンパイル時間が長くなります。
@@ -237,10 +237,10 @@ cppファイル側で読み込むことで、includeをヘッダファイルか�
     
     <item>
       <title>スタックに確保した変数の有効範囲に気をつける</title>
-      <link>http://ota42y.com/blog/2014/09/16/stack-heap/</link>
+      <link>/blog/2014/09/16/stack-heap/</link>
       <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/16/stack-heap/</guid>
+      <guid>/blog/2014/09/16/stack-heap/</guid>
       <description>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。
 rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。
 例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。
@@ -263,10 +263,10 @@ test.txt example.txt example.txt  getTextFilename内のstrはスタックに確�
     
     <item>
       <title>strncpyははまりやすい</title>
-      <link>http://ota42y.com/blog/2014/09/11/strncpy-bug/</link>
+      <link>/blog/2014/09/11/strncpy-bug/</link>
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/11/strncpy-bug/</guid>
+      <guid>/blog/2014/09/11/strncpy-bug/</guid>
       <description>strncpyは結構はまりどころがあります。
 たとえば以下のコードは正しく動作しません。
 char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str);  strncpyはコピー先、コピー元、コピー長を引数で取ります。

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Node on おおたの物置</title>
-    <link>http://ota42y.com/tags/node/</link>
+    <link>/tags/node/</link>
     <description>Recent content in Node on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 29 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/node/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>npmにパッケージを公開する手順</title>
-      <link>http://ota42y.com/blog/2014/09/29/npm-publish/</link>
+      <link>/blog/2014/09/29/npm-publish/</link>
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/29/npm-publish/</guid>
+      <guid>/blog/2014/09/29/npm-publish/</guid>
       <description>とても簡単でしたがつい忘れるのでメモ。
 公開手順  npmjsに開発者登録をします。
 https://www.npmjs.org/
@@ -37,10 +37,10 @@ unpublishは間違えて公開した場合用ですね。
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>http://ota42y.com/blog/2014/08/22/mocha-test/</link>
+      <link>/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/22/mocha-test/</guid>
+      <guid>/blog/2014/08/22/mocha-test/</guid>
       <description>まとめ  Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ便利機能がある  Mochaの使い方 coffeescriptを前提にしています。
 テストの書き方 Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、
 そのitを呼び出す関数をdescribeに渡すしようです。
@@ -58,10 +58,10 @@ describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>http://ota42y.com/blog/2014/08/21/intellij-node/</link>
+      <link>/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/21/intellij-node/</guid>
+      <guid>/blog/2014/08/21/intellij-node/</guid>
       <description> node.js+mocha+coffeescriptな環境で開発をしていたところ、
 IntelliJ IDEAの設定方法が調べても無かったのでメモ。
 Node.jsプラグインのインストール Node.jsプラグインは公式から提供されています。

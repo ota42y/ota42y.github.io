@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Application on おおたの物置</title>
-    <link>http://ota42y.com/tags/application/</link>
+    <link>/tags/application/</link>
     <description>Recent content in Application on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/application/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/application/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
+      <link>/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>/blog/2015/01/31/evernote-opener-update/</guid>
       <description>evernote url openerを更新しました。
 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、
 ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。
@@ -27,10 +27,10 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
     
     <item>
       <title>大晦日ハッカソン2014&amp;正月ハッカソン2015に参加した</title>
-      <link>http://ota42y.com/blog/2015/01/01/1231-hackathon/</link>
+      <link>/blog/2015/01/01/1231-hackathon/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/01/1231-hackathon/</guid>
+      <guid>/blog/2015/01/01/1231-hackathon/</guid>
       <description>2014/12/31にオンラインで行われた、
 大晦日ハッカソン2014に参加しました。
 Evernoteのリンクをアプリで直接開くChrome拡張を作りました。
@@ -57,10 +57,10 @@ Evernoteアプリが立ち上がり、そのノートを開いてくれます。
     
     <item>
       <title>スクフェス用パッケージの更新</title>
-      <link>http://ota42y.com/blog/2014/11/12/scfes-update/</link>
+      <link>/blog/2014/11/12/scfes-update/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/12/scfes-update/</guid>
+      <guid>/blog/2014/11/12/scfes-update/</guid>
       <description>前に作ったスクフェス用パッケージを更新しました。
 https://github.com/ota42y/hubot-scfes
 今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。
@@ -71,10 +71,10 @@ https://github.com/ota42y/hubot-scfes
     
     <item>
       <title>スクフェス用の機能が詰まったHubotパッケージを作った</title>
-      <link>http://ota42y.com/blog/2014/10/28/hubot-scfes/</link>
+      <link>/blog/2014/10/28/hubot-scfes/</link>
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/28/hubot-scfes/</guid>
+      <guid>/blog/2014/10/28/hubot-scfes/</guid>
       <description>スクフェス用の色々便利な機能が入ったHubotパッケージを作りました。
 https://github.com/ota42y/hubot-scfes
 今のところ主な機能は2つです。
@@ -93,10 +93,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>進捗どうですか？を訪ねるhubotスクリプトを作った</title>
-      <link>http://ota42y.com/blog/2014/10/05/shinchoku/</link>
+      <link>/blog/2014/10/05/shinchoku/</link>
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/05/shinchoku/</guid>
+      <guid>/blog/2014/10/05/shinchoku/</guid>
       <description> 作りました。
 30分ごとに進捗どうですか？と聞いてきます。
 何をやったかを計測するために定期的にログを残そうと思うのですが、
@@ -109,10 +109,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>ソシャゲ用のスタミナ計算機を作った</title>
-      <link>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</link>
+      <link>/blog/2014/10/02/social-game-stamina-calc/</link>
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</guid>
+      <guid>/blog/2014/10/02/social-game-stamina-calc/</guid>
       <description> 作りました。
 スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー
 みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。
@@ -134,10 +134,10 @@ stamina_calculator.convertToDate(second)
     
     <item>
       <title>受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った</title>
-      <link>http://ota42y.com/blog/2014/08/29/hubot-post-server/</link>
+      <link>/blog/2014/08/29/hubot-post-server/</link>
       <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/29/hubot-post-server/</guid>
+      <guid>/blog/2014/08/29/hubot-post-server/</guid>
       <description>実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、
 Webサーバへのアクセスに対して反応することができます。
 例: scripts/httpd.coffee
@@ -149,10 +149,10 @@ Hubot以外のアプリからこのURLを叩くことで、hubotの接続して�
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
+      <link>/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
+      <guid>/blog/2014/08/10/evernote-link/</guid>
       <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
 この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
 そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。

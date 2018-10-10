@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ios on おおたの物置</title>
-    <link>http://ota42y.com/tags/ios/</link>
+    <link>/tags/ios/</link>
     <description>Recent content in Ios on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>http://ota42y.com/blog/2015/01/23/ram-disk/</link>
+      <link>/blog/2015/01/23/ram-disk/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/23/ram-disk/</guid>
+      <guid>/blog/2015/01/23/ram-disk/</guid>
       <description>まとめ  RAMディスクを作ってビルドすると早くなる  SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思われる  Macだととても簡単にRAMディスクが作れる Jenkins等、ビルドが主目的の場合に有効と思われる メモリが余っているならやる価値はある  Mac OS XでのRAMディスク作成 Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。
 メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。
 また、rootでなくても作成できるため、非常に便利です
@@ -30,10 +30,10 @@ hdid -nomount ram://4096000 # 指定した容量でRAMディスクが作成さ�
     
     <item>
       <title>コマンドラインからiOSアプリをビルドする</title>
-      <link>http://ota42y.com/blog/2014/08/28/ios-build/</link>
+      <link>/blog/2014/08/28/ios-build/</link>
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/28/ios-build/</guid>
+      <guid>/blog/2014/08/28/ios-build/</guid>
       <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、
 普通にコマンドラインからビルドを実行していただけなので、 使っているコマンドをまとめました。
 なお、以下のサンプルプロジェクトを使って確認しました。

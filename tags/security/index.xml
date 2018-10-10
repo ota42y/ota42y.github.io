@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on おおたの物置</title>
-    <link>http://ota42y.com/tags/security/</link>
+    <link>/tags/security/</link>
     <description>Recent content in Security on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 01 Mar 2018 15:17:35 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>一部のSAMLライブラリの脆弱性の詳細</title>
-      <link>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</link>
+      <link>/blog/2018/03/01/saml_vulnerability/</link>
       <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</guid>
+      <guid>/blog/2018/03/01/saml_vulnerability/</guid>
       <description>複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。
 JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性
 どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。
@@ -46,10 +46,10 @@ Exclusive XML Canonicalization Version 1.0
     
     <item>
       <title>パスワードの文字として避けた方がいい文字</title>
-      <link>http://ota42y.com/blog/2014/09/08/password-word/</link>
+      <link>/blog/2014/09/08/password-word/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/08/password-word/</guid>
+      <guid>/blog/2014/09/08/password-word/</guid>
       <description>ニンテンドー3DSのプリペイドカード入力画面を見て、
 見間違えやすい文字は使わないようにしてるんだーと気づいたので、
 他にもそういうのが無いかまとめました。

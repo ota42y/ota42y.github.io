@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coffee on おおたの物置</title>
-    <link>http://ota42y.com/tags/coffee/</link>
+    <link>/tags/coffee/</link>
     <description>Recent content in Coffee on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 29 Aug 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/coffee/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/coffee/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った</title>
-      <link>http://ota42y.com/blog/2014/08/29/hubot-post-server/</link>
+      <link>/blog/2014/08/29/hubot-post-server/</link>
       <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/29/hubot-post-server/</guid>
+      <guid>/blog/2014/08/29/hubot-post-server/</guid>
       <description>実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、
 Webサーバへのアクセスに対して反応することができます。
 例: scripts/httpd.coffee

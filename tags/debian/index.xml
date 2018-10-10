@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Debian on おおたの物置</title>
-    <link>http://ota42y.com/tags/debian/</link>
+    <link>/tags/debian/</link>
     <description>Recent content in Debian on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 14 Oct 2015 23:24:16 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
-      <link>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</link>
+      <link>/blog/2015/10/14/mongodb3-debian7-32bit/</link>
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
+      <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>まとめ  Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違うので注意 面倒ならdbファイルを/data/dbに移動してしまうのが楽そう  Debian 7 32bitのmongodb Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)
 Install MongoDB on Debian

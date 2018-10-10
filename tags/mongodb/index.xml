@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mongodb on おおたの物置</title>
-    <link>http://ota42y.com/tags/mongodb/</link>
+    <link>/tags/mongodb/</link>
     <description>Recent content in Mongodb on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 02 Dec 2015 07:25:25 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MongoDB の update は部分 update ではない</title>
-      <link>http://ota42y.com/blog/2015/12/02/mongodb_update/</link>
+      <link>/blog/2015/12/02/mongodb_update/</link>
       <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
+      <guid>/blog/2015/12/02/mongodb_update/</guid>
       <description>まとめ  MongoDB の update はレコードのID以外の要素を全て置き換える 指定したカラムだけ置き換えてはくれない 部分 update したい場合は専用の方法でクエリを作る  MongoDB の update はレコードをほぼ全て置き換える 以下のように insert して update を実行します
 db.test.insert({a: 1}) db.test.update({a:1}, {b: 1})  # ruby版 mongo = Mongo::Client.new(&amp;quot;mongodb://localhost&amp;quot;) col = mongo[:test] col.insert_one({ a: 1 }) col.find(a: 1).replace_one({b:1})  insert と update とでキーが違うため、指定した部分だけが書き換わり
 {a:1, b:1}
@@ -33,10 +33,10 @@ db.test.update({a:1}, {$set:{b: 1}})  # ruby版 col.</description>
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
-      <link>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</link>
+      <link>/blog/2015/10/14/mongodb3-debian7-32bit/</link>
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
+      <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>まとめ  Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違うので注意 面倒ならdbファイルを/data/dbに移動してしまうのが楽そう  Debian 7 32bitのmongodb Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)
 Install MongoDB on Debian
@@ -60,10 +60,10 @@ sudo -u mongodb mongod --dbpath /var/lib/mongodb  まとめ 起動が面倒な�
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>http://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
+      <link>/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>/blog/2014/09/03/mgo-consistency/</guid>
       <description>mgoのサンプルにあった
 session.SetMode(mgo.Monotonic, true)
 の意味がよくわからないので調べてみました。
@@ -90,10 +90,10 @@ Strong Consistency 常に必ず最新の値が読み込めるという状態で�
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>http://ota42y.com/blog/2014/09/02/go-mongodb/</link>
+      <link>/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
+      <guid>/blog/2014/09/02/go-mongodb/</guid>
       <description>mgoというライブラリが便利そうです。
 http://labix.org/mgo
 以下はtwitterからツイートを取ってきて、
@@ -105,10 +105,10 @@ http://labix.org/mgo
     
     <item>
       <title>MongoDBでインデックスとexplainを使う</title>
-      <link>http://ota42y.com/blog/2014/09/01/mongodb-explain/</link>
+      <link>/blog/2014/09/01/mongodb-explain/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/01/mongodb-explain/</guid>
+      <guid>/blog/2014/09/01/mongodb-explain/</guid>
       <description>事前データ準備  for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test3&amp;quot;, num: i*10000}) }  stringは3種類100個ずつ、numはuniqueなオブジェクトを作成します。
 インデックス作成 db.test_object.ensureIndex({&amp;quot;name&amp;quot;: 1})  で、test_objectコレクションのnameに対してインデックスを作成できます。
 また、

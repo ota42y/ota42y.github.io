@@ -2,21 +2,55 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on おおたの物置</title>
-    <link>http://ota42y.com/blog/</link>
+    <link>/blog/</link>
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 06 Oct 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>技術書典５で本を３冊出しました</title>
+      <link>/blog/2018/10/07/techbook_5_result/</link>
+      <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/10/07/techbook_5_result/</guid>
+      <description>10/8の技術書典５で関わった本を３冊出しました。
+お買い求めくださった方、ありがとうございます。
+また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。
+Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）
+How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）
+また、既刊のマイクロサービス本もBOOTHで販売中です。
+Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
+なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。
+販売結果 マイクロサービス本は新刊３００、既刊１００冊＋αを持って行きましたが、どちらもほとんど残っておらず、多少残る予定で刷ったので非常に驚いています。
+Flutter本は１００冊全部売り切れました。
+こちらは被チェック数の時点で既に上回っており、手に取れなかった方には申し訳ないです。
+会社本も予想を超えて売れるなど大盛況でした。
+重ね重ねお買い求めいただきありがとうございます。
+今回３サークル併せて720冊ぐらい持ち込みましたが、そのうち600冊は売れているので本当にびっくりです…
+また、マイクロサービス本は新刊既刊共に売り切れず、かつ大量に残らずといった、ほぼ頒布数どおりの数を刷れたので、とてもいい結果になったと思います。
+販売数の推移 マイクロサービス本はそこそこの精度で販売冊数の推移を記録しており、以下のようになります。
+開始２時間で１５０冊ぐらい、残りの時間でもう１５０冊ぐらいなイメージです。
+なお、一部記録に失敗した本があるため、売れた冊数と上のグラフは微妙に違います…
+やはり最初の1時間の売り上げは凄い量になっています。
+Flutter本に関しては以下の通りです。
+13時の売り上げが0冊となっていますが、おそらく14時の売り上げにマージされていそうです。
+今回、わりとこういうのが多かったので次は売り上げ管理をやりやすい物にしたいと思います…
+被チェック数の推移 マイクロサービス本に関してはerukiti/techbookfest-circle-botを使わせて頂き、被チェック数を社内Slackに流していました。
+(共著者は全て社内の人間なので…)
+かいつまんでだすと以下になります。
+   日付 被チェック数     9/ 17 20:00 22   9/ 24 20:00 30   10/ 1 20:00 49   10/ 2 20:00 52   10/ 3 20:00 62   10/ 4 20:00 76   10/ 5 20:00 90   10/ 6 20:00 112   10/ 7 20:00 136   10/ 8 08:00 186   10/ 8 14:00 235    グラフとしてはこんな感じです。</description>
+    </item>
+    
+    <item>
       <title>技術書典５で本が３冊出ます</title>
-      <link>http://ota42y.com/blog/2018/10/06/techbook_5/</link>
+      <link>/blog/2018/10/06/techbook_5/</link>
       <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/06/techbook_5/</guid>
+      <guid>/blog/2018/10/06/techbook_5/</guid>
       <description>10/8の技術書典５で関わった本が３冊でます。
 技術書典５で私が何故か３サークルの運営に関与していたので…
 Microservices architecture よろず本 その二 か１３「すべてがM(icro)になる」でマイクロサービスよろず本その二を頒布します！
@@ -52,10 +86,10 @@ Amazon Web Servicesサーバーレスレシピ という本を出します
     
     <item>
       <title>Amazon Web Servicesサーバーレスレシピ という本を出します</title>
-      <link>http://ota42y.com/blog/2018/10/04/2018-10-04/</link>
+      <link>/blog/2018/10/04/2018-10-04/</link>
       <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/04/2018-10-04/</guid>
+      <guid>/blog/2018/10/04/2018-10-04/</guid>
       <description>Amazon Web Servicesサーバーレスレシピ という本が明日10/5に出ます。
 元々技術書典で書いた本を更に加筆修正したものになります。
 どんな本 この本は元々技術書典4で私も記事を書いた「Amazon Web Services サーバーレスレシピ 2018.04」がベースになっています。
@@ -74,10 +108,10 @@ Amazon Web Servicesサーバーレスレシピ | 電子書籍とプリントオ�
     
     <item>
       <title>RustでGyazoクローンを作った</title>
-      <link>http://ota42y.com/blog/2018/08/01/ryazo/</link>
+      <link>/blog/2018/08/01/ryazo/</link>
       <pubDate>Wed, 01 Aug 2018 09:55:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/08/01/ryazo/</guid>
+      <guid>/blog/2018/08/01/ryazo/</guid>
       <description>RustでGyazoのサーバ側と同じ機能を有するRyazoを作りました。リポジトリはここです。
 https://github.com/ota42y/ryazo
 オリジナルのGyazoと比べてDBにSQLiteを使っているところが若干違いがあります。
@@ -90,10 +124,10 @@ git clone https://github.com/gyazo/Gyazo.git # open ./Gyazo/script # change HOST
     
     <item>
       <title>goroutineの動き方を調べた</title>
-      <link>http://ota42y.com/blog/2018/07/17/goroutine/</link>
+      <link>/blog/2018/07/17/goroutine/</link>
       <pubDate>Tue, 17 Jul 2018 08:00:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/07/17/goroutine/</guid>
+      <guid>/blog/2018/07/17/goroutine/</guid>
       <description>shinjuku.rbで話した内容です。
 が、スライドだけだとよくわからないのでもう少し文章を補足した版を上げておきます。
   goroutineはどうやって動いているのか  from ota42y 
@@ -119,10 +153,10 @@ goroutineのスケジュール 複数Pが存在する場合、キューが１つ
     
     <item>
       <title>bootsnapの速度計測</title>
-      <link>http://ota42y.com/blog/2018/06/04/bootsnap/</link>
+      <link>/blog/2018/06/04/bootsnap/</link>
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/06/04/bootsnap/</guid>
+      <guid>/blog/2018/06/04/bootsnap/</guid>
       <description>shinjuku.rbで話した内容です。
 資料あげようと思って完全に忘れていたので上げます…
 要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
@@ -132,10 +166,10 @@ goroutineのスケジュール 複数Pが存在する場合、キューが１つ
     
     <item>
       <title>技術書展4でMicroservices architecture よろず本を出した</title>
-      <link>http://ota42y.com/blog/2018/04/23/techbookfest_4/</link>
+      <link>/blog/2018/04/23/techbookfest_4/</link>
       <pubDate>Mon, 23 Apr 2018 10:00:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/23/techbookfest_4/</guid>
+      <guid>/blog/2018/04/23/techbookfest_4/</guid>
       <description>先日行われた技術書典4で、 Microservices architecture よろず本 を出しました。
 足を伸ばして頂いた方、ありがとうございます。
 #技術書典4 設営完了！！！ pic.twitter.com/7YawpUZrLw
@@ -164,10 +198,10 @@ Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダ
     
     <item>
       <title>技術書典4でMicroservices architectureよろず本を出します</title>
-      <link>http://ota42y.com/blog/2018/04/10/microservices_yorozu_book/</link>
+      <link>/blog/2018/04/10/microservices_yorozu_book/</link>
       <pubDate>Tue, 10 Apr 2018 04:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/10/microservices_yorozu_book/</guid>
+      <guid>/blog/2018/04/10/microservices_yorozu_book/</guid>
       <description>Boothで電子版の販売をしています
 Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
 技術書典4の&amp;rdquo;か13&amp;rdquo;、「すべてがM(icro)になる」で、 Microservices architecture よろず本 を出します。
@@ -182,10 +216,10 @@ https://techbookfest.org/event/tbf04/circle/16650003
     
     <item>
       <title>gemのバージョンアップで依存関係が壊れるのを調べやすくした</title>
-      <link>http://ota42y.com/blog/2018/04/04/virtual_gem/</link>
+      <link>/blog/2018/04/04/virtual_gem/</link>
       <pubDate>Wed, 04 Apr 2018 00:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/04/virtual_gem/</guid>
+      <guid>/blog/2018/04/04/virtual_gem/</guid>
       <description>要約  gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる  5.2.0がリリースするまでインストールできないと気がつきにくい  任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った  https://github.com/ota42y/virtual_gem 5.2.0.rc2を元に5.2.0のgemを作れる 任意のgemの依存関係を書き換えられる 事前に依存関係が壊れるのを調べやすくなる   gemの依存関係によるインストール失敗 現在、Rails 5.2.0.rc2がリリースされています。
 ですが、仮に現状で上手く動いていたとしても5.2.0のリリース時に一部のgemの依存関係が5.2.0.rc2までしか受け入れておらず、インストールできなくなる可能性があります。
 gemには依存関係を設定できますが、&#39;&amp;lt; 5.2.0&#39; と書いた場合は5.2.0未満のgemを指定したこととなるため、5.2.0.rc2は対象となります。
@@ -208,10 +242,10 @@ require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42
     
     <item>
       <title>Globalizeを使ったRailsを5系対応する際にはまった</title>
-      <link>http://ota42y.com/blog/2018/03/28/globalize_5/</link>
+      <link>/blog/2018/03/28/globalize_5/</link>
       <pubDate>Wed, 28 Mar 2018 09:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/03/28/globalize_5/</guid>
+      <guid>/blog/2018/03/28/globalize_5/</guid>
       <description>要約  columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい チェックして消す&amp;amp;今後増えないようにするgemを作った  問題  GlobalizeをRails5対応版(5.1.0.beta2)にあげる 一部の処理が落ちる(´・_・`)  原因 News.columns_hash.keysは、そのモデルのカラム名を配列で返します。
 GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。
 しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。
@@ -227,10 +261,10 @@ News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&a
     
     <item>
       <title>一部のSAMLライブラリの脆弱性の詳細</title>
-      <link>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</link>
+      <link>/blog/2018/03/01/saml_vulnerability/</link>
       <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</guid>
+      <guid>/blog/2018/03/01/saml_vulnerability/</guid>
       <description>複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。
 JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性
 どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。
@@ -260,10 +294,10 @@ Exclusive XML Canonicalization Version 1.0
     
     <item>
       <title>ゼロから始めるgem生活</title>
-      <link>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</link>
+      <link>/blog/2017/08/20/rubygem-tutorial/</link>
       <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</guid>
+      <guid>/blog/2017/08/20/rubygem-tutorial/</guid>
       <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを下げるために30分程度で0からgemを作るハンズオンをやりました。
 これはそのときにやったことのメモで、現状これに沿って行っていけば簡単なgemを公開できるようになります。
 ゴール  簡単なgemを作成してrubygemsで公開するまで  事前準備  githubにアカウント作る git pushで自分のリポジトリにpushできる状態 ruby 2.0以上 gem install bundler 済み gem update &amp;ndash;system 済み  名前決め まずgemの名前を決めます。
@@ -277,10 +311,10 @@ namespaceの階層を合わせるため、区切り文字は_ではなく-を使
     
     <item>
       <title>committee &#43; prmd でJSON Schemaをいい感じに運用する</title>
-      <link>http://ota42y.com/blog/2016/12/19/finc-advent/</link>
+      <link>/blog/2016/12/19/finc-advent/</link>
       <pubDate>Mon, 19 Dec 2016 22:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/12/19/finc-advent/</guid>
+      <guid>/blog/2016/12/19/finc-advent/</guid>
       <description>FiNC Developer Advent Calendar 2016の19日目の記事です。
 要約  リクエスト・レスポンス形式のドキュメントはメンテが大変 メンテされていなくても気がつかないため放置され気味 committeeでJSON Schemaに実装が沿っているかを確認可能 prmdでJSON Schemaを楽に書ける＋人が読めるドキュメントが生成できる メンテされていない事が検出できるので続く（はず  API作成時のリクエスト・レスポンス形式問題 サーバとクライアントで並行開発しながらAPIを作成する場合、以下のようにリクエスト・レスポンス形式を整えにくいという問題があります。
  リクエストの形式が想定と違う  想定外のキーを送ってくる 構造が想定していない構造  レスポンスに知らないキーが含まれている 同じデータなのにエンドポイントによって形式が違う  enumの数値だったり、対応する文字列だったり カテゴリ名を返していたりカテゴリIDを返していたり   コミュニケーションや、APIに関するドキュメントをきちんとメンテしていれば回避可能な問題ですが、
@@ -295,10 +329,10 @@ http://json-schema.org/
     
     <item>
       <title>Shinjuku.rb #42でRubocopについて話した</title>
-      <link>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</link>
+      <link>/blog/2016/10/27/shinjuku-rb-42/</link>
       <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</guid>
+      <guid>/blog/2016/10/27/shinjuku-rb-42/</guid>
       <description> Shinjuku.rb #42に行ってきました。
 http://shinjukurb.connpass.com/event/42245/
 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。
@@ -315,10 +349,10 @@ soutaro/querly: Query Method Calls from Ruby Programs
     
     <item>
       <title>Ginza.rb 第40回でprmdについて話した</title>
-      <link>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</link>
+      <link>/blog/2016/10/22/ginza-rb-40/</link>
       <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</guid>
+      <guid>/blog/2016/10/22/ginza-rb-40/</guid>
       <description> Ginza.rb 第40回に行ってきました。
 https://ginzarb.doorkeeper.jp/events/52895
 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。
@@ -332,10 +366,10 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
     
     <item>
       <title>前職を退職しました</title>
-      <link>http://ota42y.com/blog/2016/09/15/sea-bream-shock/</link>
+      <link>/blog/2016/09/15/sea-bream-shock/</link>
       <pubDate>Thu, 15 Sep 2016 19:45:49 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/09/15/sea-bream-shock/</guid>
+      <guid>/blog/2016/09/15/sea-bream-shock/</guid>
       <description>6月末に前職のソーシャルゲーム会社を退職しました。
 今はRoRエンジニアとして、ヘルスケアベンチャーで働いてます(｀・∀・´≡｀・∀・´)
 欲しい物リストは以下になります。
@@ -344,10 +378,10 @@ https://www.amazon.co.jp/registry/wishlist/11D376T6XISM6/ref=cm_sw_r_tw_ws_HMYox
     
     <item>
       <title>恋になりたいAQUARIUMの聖地、伊豆・三津シーパラダイスに行ってきた</title>
-      <link>http://ota42y.com/blog/2016/04/28/lovelive-sun-aquarium/</link>
+      <link>/blog/2016/04/28/lovelive-sun-aquarium/</link>
       <pubDate>Thu, 28 Apr 2016 00:21:46 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/04/28/lovelive-sun-aquarium/</guid>
+      <guid>/blog/2016/04/28/lovelive-sun-aquarium/</guid>
       <description>恋になりたいAQUARIUMの聖地、伊豆・三津シーパラダイスに行って来ました。
 発売日当日に行きましたが、平日なので他に同じ目的で来ている人は見かけませんでした。
 
@@ -406,10 +440,10 @@ https://www.amazon.co.jp/registry/wishlist/11D376T6XISM6/ref=cm_sw_r_tw_ws_HMYox
     
     <item>
       <title>ラブライブ！ありがとうトラックの軌跡をまとめた</title>
-      <link>http://ota42y.com/blog/2016/03/16/lovelive-truck/</link>
+      <link>/blog/2016/03/16/lovelive-truck/</link>
       <pubDate>Wed, 16 Mar 2016 00:33:01 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/03/16/lovelive-truck/</guid>
+      <guid>/blog/2016/03/16/lovelive-truck/</guid>
       <description>ラブライブ！μ’sありがとうProjectの一環として、ありがとうトラックが日本全国を巡っているそうです。
 http://news.lovelive-anime.jp/app-def/S-102/news/?p=11201
 公式Twitterで毎日どこにいるかがツイートされており、3/14に折り返しに入ったとのことですが、 実際どのくらい回ったのかが細切れになっていてわからなかったので、地図上にまとめました。
@@ -447,10 +481,10 @@ https://twitter.com/LoveLive_staff/status/711555116457992192 https://twitter.com
     
     <item>
       <title>うるう日に1番なりやすい曜日は？</title>
-      <link>http://ota42y.com/blog/2016/03/01/leap-day/</link>
+      <link>/blog/2016/03/01/leap-day/</link>
       <pubDate>Tue, 01 Mar 2016 22:43:14 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/03/01/leap-day/</guid>
+      <guid>/blog/2016/03/01/leap-day/</guid>
       <description>今年はうるう年のため、昨日の2016-02-29はうるう日でした。 うるう年は4年に一回かつ干支は12種類のため、うるう年になる干支は子と辰と申しかありません。
 さて、うるう年にならない干支が存在しますが、うるう日にならない曜日というのは存在するのでしょうか？ 存在しないなら、うるう日になりやすい曜日というのは存在するのでしょうか？
 気になったので調べました。
@@ -471,10 +505,10 @@ Sunday:13 Monday:15 Tuesday:13 Wednesday:15 Thursday:13 Friday:14 Saturday:14  �
     
     <item>
       <title>Jenkinsのノード選択をNode and Label parameter pluginでやる</title>
-      <link>http://ota42y.com/blog/2016/02/28/jenkins_node_select/</link>
+      <link>/blog/2016/02/28/jenkins_node_select/</link>
       <pubDate>Sun, 28 Feb 2016 19:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/28/jenkins_node_select/</guid>
+      <guid>/blog/2016/02/28/jenkins_node_select/</guid>
       <description> 概要 Jenkinsのノード制御はあまりカスタマイズが効きません。そのため、ノードを細かく制御したい場合はジョブを分ける必要があり、ジョブ数が増えて管理コストが上がります。このプラグインはパラメーターでノードを選択できるので、一つのジョブでノードごとにジョブを動かせるようになります。
 Jenkinsのノード選択は柔軟性に欠ける Jenkinsのノード選択がパラメータでできるプラグインです。 Jenkinsでは基本機能として、実行するノードを制限して特定ノードでだけジョブを実行できます。 ですが、この設定項目は柔軟性に欠け、パラメータでノードを切り替えたり、該当するノード全てでビルドするといったことができません。 そのため、例えばgoでWindowsとMac両方でテストを実行したい場合、windows用とmac用というノードごとの個別のジョブを作る必要があります。 しかし、それを続けるとJenkinsのジョブの数が際限なく増えていき、ジョブのメンテが大変になるという問題が出ます。
 Node and Label parameter plugin https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin
@@ -489,10 +523,10 @@ Pipeline Pluginとの違い Pipeline Pluginでは、Jenkinsのジョブを丸ご
     
     <item>
       <title>開発・実行環境をDockerで整える</title>
-      <link>http://ota42y.com/blog/2016/02/25/docker_develop/</link>
+      <link>/blog/2016/02/25/docker_develop/</link>
       <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/25/docker_develop/</guid>
+      <guid>/blog/2016/02/25/docker_develop/</guid>
       <description>概要 開発環境構築はだいたい辛い作業ですが、Dockerを使うことで構築がとても楽になります。もちろん銀の弾丸ではないので別のつらさは存在します。 しかし一歩も進まずに時間だけが過ぎることはなくなるため精神衛生上良く、開発を始める段階においてはとても効果的です。
 開発環境構築が辛い 開発環境構築はプログラミングをする上で必須の作業ですが、依存関係など非常に多くの落とし穴があることが多いです。 また、環境構築そのものが目的ということは少なく、その先に別にやりたい事が控えていることが多いと思います。 そのため、とりあえずやってみようと思った際に、その試してみるべき部分にたどり着けずに時間を浪費していくのはかなり辛いです…
 設定自動化スクリプトでは足りない 環境構築の手順が煩雑な問題に対しては、chefやAnsible等、自動で環境を構築する方法はいくつかあります。 これらは一度作れば同じ環境を何度でも作ることが出来ますが、2回目以降を楽にするものであるため初回はそれほど楽になりません。 また、すでに入っているものとの依存関係の問題などはこれらのツールでは解決しないため、 複雑な環境になればなるほど環境構築の難易度は上がります。
@@ -505,10 +539,10 @@ FROM cellofellow/ffmpeg:latest RUN apt-get -y update &amp;amp;&amp;amp; apt-get 
     
     <item>
       <title>dump/restoreコマンドでデータのバックアップ・リストアをする</title>
-      <link>http://ota42y.com/blog/2016/02/07/dump_restore_command/</link>
+      <link>/blog/2016/02/07/dump_restore_command/</link>
       <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
+      <guid>/blog/2016/02/07/dump_restore_command/</guid>
       <description>まとめ  dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利  もちろんHDDでもいける Windowsは基本的にSDカードの第一パーティションしか認識できない   SDカードのデータ移行がしたい Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。
 ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。
 ASUS MeMO Pad 7 ME572CでLink2SDを動かす
@@ -521,10 +555,10 @@ SDカードの第二パーティションのマウント Link2SDを使ってい�
     
     <item>
       <title>2015年のpixiv内ラブライブイラストの分析</title>
-      <link>http://ota42y.com/blog/2016/02/04/lovelive-pixiv-character-2016/</link>
+      <link>/blog/2016/02/04/lovelive-pixiv-character-2016/</link>
       <pubDate>Thu, 04 Feb 2016 21:27:18 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/04/lovelive-pixiv-character-2016/</guid>
+      <guid>/blog/2016/02/04/lovelive-pixiv-character-2016/</guid>
       <description>HP先行の結果が出ましたね。
 …………ご察しください。
 さて、前回(2015年のpixiv内ラブライブイラストの推移 )に引き続き、pixiv内のラブライブイラストについて見ていきます。
@@ -556,10 +590,10 @@ Aqoursキャラごとの投稿数推移 Aqoursメンバーのキャラごとに�
     
     <item>
       <title>オーバーライドとオーバーロードは全く別物</title>
-      <link>http://ota42y.com/blog/2016/01/31/override-overload/</link>
+      <link>/blog/2016/01/31/override-overload/</link>
       <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/01/31/override-overload/</guid>
+      <guid>/blog/2016/01/31/override-overload/</guid>
       <description>EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…
 まとめ  オーバーライドされたvirtualなメソッド呼び出しは実行時に決定  実態が子クラスなら、親クラスとして扱っても子クラスのメソッドが実行される 実態が孫クラスの場合は孫クラスのメソッドが呼ばれる 親から子、孫へと呼び出される関数が探されていく感じ  オーバーロードされたメソッド呼び出しはコンパイル時に決定  virtual関数のように実態で切り替えが出来ない 実態が子クラスでも、親クラスとして扱うなら親クラスのメソッドが実行される 一致するものが無い場合は親クラスにキャストして一致するものを探す 子から親へと一致するものを探していく感じ   オーバーライドとは メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。 C++では親クラスでvirtualにされているメソッドをオーバーライドすると、 子クラスのオブジェクトを親クラスにキャストしてメソッドを呼び出しても、再定義された子クラスのメソッドが呼ばれます。 (virtualをつけないと親クラスのメソッドが呼ばれます)
 たとえば以下のコードでは、オーバーライドされているためExtのshowメソッドが実行され、「show ext」が表示されます。
@@ -568,10 +602,10 @@ Aqoursキャラごとの投稿数推移 Aqoursメンバーのキャラごとに�
     
     <item>
       <title>tmux-change-paneというコマンドを作った</title>
-      <link>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</link>
+      <link>/blog/2016/01/26/tmux-change-pane/</link>
       <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</guid>
+      <guid>/blog/2016/01/26/tmux-change-pane/</guid>
       <description>tmux-change-paneというコマンドを作りました。
 https://github.com/ota42y/tmux-change-pane
 tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。
@@ -583,10 +617,10 @@ tmux-change-paneでは今いる分割領域しか使わないため、作業す�
     
     <item>
       <title>2015年のpixiv内ラブライブイラストの推移</title>
-      <link>http://ota42y.com/blog/2016/01/22/lovelive-pixiv-illust-2015/</link>
+      <link>/blog/2016/01/22/lovelive-pixiv-illust-2015/</link>
       <pubDate>Fri, 22 Jan 2016 14:14:08 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/01/22/lovelive-pixiv-illust-2015/</guid>
+      <guid>/blog/2016/01/22/lovelive-pixiv-illust-2015/</guid>
       <description>「はぁい！楽しい人生送ってる？」
 私はファイナルライブ落ちたので楽しい人生は送れてません…
 さてーーー
@@ -628,10 +662,10 @@ tmux-change-paneでは今いる分割領域しか使わないため、作業す�
     
     <item>
       <title>論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」</title>
-      <link>http://ota42y.com/blog/2015/12/25/hci_advent_25/</link>
+      <link>/blog/2015/12/25/hci_advent_25/</link>
       <pubDate>Fri, 25 Dec 2015 00:39:52 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/25/hci_advent_25/</guid>
+      <guid>/blog/2015/12/25/hci_advent_25/</guid>
       <description>まとめ  BluetoothのRSSIだけで対象のデバイスがどこにいるかわかる  動画を見るのが手っ取り早い https://www.youtube.com/watch?v=VqAoxVhO4xA  BluetoothのRSSIが位置によって違うことを利用している  RSSIを学習すれば、どこにあるか予測可能  オリジナルより精度が悪いて実装をしてみたが、それでも結構ちゃんと動く  https://github.com/ota42y/corona-clone https://youtu.be/wsglHEhtYCM   はじめに このエントリは「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」の25日目のものです。
 http://qiita.com/advent-calendar/2015/hci
 紹介する論文 今回もUIST2015から、Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributionsという論文を紹介します。
@@ -655,10 +689,10 @@ https://github.com/ota42y/corona-clone
     
     <item>
       <title>論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」</title>
-      <link>http://ota42y.com/blog/2015/12/13/hci_advent_13/</link>
+      <link>/blog/2015/12/13/hci_advent_13/</link>
       <pubDate>Sun, 13 Dec 2015 07:01:33 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/13/hci_advent_13/</guid>
+      <guid>/blog/2015/12/13/hci_advent_13/</guid>
       <description>まとめ  Webページのリバースエンジニアリングの支援をする研究 コール情報やDOMの変化を記録、閲覧可能に 該当のソースを見つけるまでの時間が早くなる chrome拡張が公開されているので実際に試せる  はじめに このエントリは「ヒューマンコンピュータインタラクション論文紹介 Advent Calendar 2015」の13日目のものです。
 今回はUIST20015からWeb系の論文でいいのがあったので紹介します。
 実は昨日のUIST勉強会で読んだので、参加してる人にとってはまたかよ…ってなりますが、
@@ -681,10 +715,10 @@ https://github.com/NUDelta/Unravel
     
     <item>
       <title>GithubのContributionsを使ってアウトプットを500日続ける</title>
-      <link>http://ota42y.com/blog/2015/12/09/500_output/</link>
+      <link>/blog/2015/12/09/500_output/</link>
       <pubDate>Wed, 09 Dec 2015 07:00:01 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/09/500_output/</guid>
+      <guid>/blog/2015/12/09/500_output/</guid>
       <description>前からGithubのContributionsを使ってアウトプットを150日続けるというものを続けていましたが、ついに500日たちました。ちょうどいい区切りなので振り返ってみようと思います。
 
 良かったこと  常にプログラムを書いたり、物事を調べてまとめる習慣が出来た 「いつかやろう」を放置せずに取りかかるようになった  およそ前に考えたとおり、アウトプット量を確保するために色々なことに手を出し、良い習慣になっていたと思います。
@@ -699,10 +733,10 @@ https://github.com/NUDelta/Unravel
     
     <item>
       <title>Wunderlistでサマリー出力をする</title>
-      <link>http://ota42y.com/blog/2015/12/08/wl_report/</link>
+      <link>/blog/2015/12/08/wl_report/</link>
       <pubDate>Tue, 08 Dec 2015 07:58:08 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/08/wl_report/</guid>
+      <guid>/blog/2015/12/08/wl_report/</guid>
       <description> 最近知ったWunderlistが、全プラットフォーム使えたり、 モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。
 ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。 たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。
 すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。
@@ -721,10 +755,10 @@ https://github.com/robdimsdale/wl
     
     <item>
       <title>MongoDB の update は部分 update ではない</title>
-      <link>http://ota42y.com/blog/2015/12/02/mongodb_update/</link>
+      <link>/blog/2015/12/02/mongodb_update/</link>
       <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
+      <guid>/blog/2015/12/02/mongodb_update/</guid>
       <description>まとめ  MongoDB の update はレコードのID以外の要素を全て置き換える 指定したカラムだけ置き換えてはくれない 部分 update したい場合は専用の方法でクエリを作る  MongoDB の update はレコードをほぼ全て置き換える 以下のように insert して update を実行します
 db.test.insert({a: 1}) db.test.update({a:1}, {b: 1})  # ruby版 mongo = Mongo::Client.new(&amp;quot;mongodb://localhost&amp;quot;) col = mongo[:test] col.insert_one({ a: 1 }) col.find(a: 1).replace_one({b:1})  insert と update とでキーが違うため、指定した部分だけが書き換わり
 {a:1, b:1}
@@ -741,10 +775,10 @@ db.test.update({a:1}, {$set:{b: 1}})  # ruby版 col.</description>
     
     <item>
       <title>バッカソン（おばかハック）! #MA11 に参加してきた</title>
-      <link>http://ota42y.com/blog/2015/10/18/ma11/</link>
+      <link>/blog/2015/10/18/ma11/</link>
       <pubDate>Sun, 18 Oct 2015 22:23:57 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/18/ma11/</guid>
+      <guid>/blog/2015/10/18/ma11/</guid>
       <description>http://hacklog.jp/events/view/61
 こんなの(バッカライザー)を作ったところ、Microsoft賞を頂きましたヽ(´ー｀)ノ
 
@@ -755,10 +789,10 @@ db.test.update({a:1}, {$set:{b: 1}})  # ruby版 col.</description>
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
-      <link>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</link>
+      <link>/blog/2015/10/14/mongodb3-debian7-32bit/</link>
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
+      <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>まとめ  Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違うので注意 面倒ならdbファイルを/data/dbに移動してしまうのが楽そう  Debian 7 32bitのmongodb Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、
 3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)
 Install MongoDB on Debian
@@ -782,10 +816,10 @@ sudo -u mongodb mongod --dbpath /var/lib/mongodb  まとめ 起動が面倒な�
     
     <item>
       <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
-      <link>http://ota42y.com/blog/2015/10/11/alchemyapi/</link>
+      <link>/blog/2015/10/11/alchemyapi/</link>
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
+      <guid>/blog/2015/10/11/alchemyapi/</guid>
       <description>まとめ  AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能性凄い  画像認識ライブラリすら必要ない世界…   AlchemyAPIで画像認識が凄い簡単にできる 先日のABPro2015でこんな発表をしました。
   身近なサイバー攻撃から身を守る  from ota42y 
 ここで画像の判定にAlchemyAPIを利用しています。
@@ -814,10 +848,10 @@ https://github.com/ota42y/go-alchemyapi
     
     <item>
       <title>ABPro2015で発表してきた</title>
-      <link>http://ota42y.com/blog/2015/10/10/abpro2015/</link>
+      <link>/blog/2015/10/10/abpro2015/</link>
       <pubDate>Sat, 10 Oct 2015 23:58:16 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/10/abpro2015/</guid>
+      <guid>/blog/2015/10/10/abpro2015/</guid>
       <description>togetterまとめ
   身近なサイバー攻撃から身を守る  from ota42y 
 ディープラーニングによる画像認識でTL上の飯テロ画像を判定しています。
@@ -828,10 +862,10 @@ https://github.com/ota42y/go-alchemyapi
     
     <item>
       <title>第48回情報科学若手の会2015に参加してきた</title>
-      <link>http://ota42y.com/blog/2015/09/22/wakate2015/</link>
+      <link>/blog/2015/09/22/wakate2015/</link>
       <pubDate>Tue, 22 Sep 2015 00:45:03 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/09/22/wakate2015/</guid>
+      <guid>/blog/2015/09/22/wakate2015/</guid>
       <description>2015年9月19日(土)〜21日(月)に静岡県伊東市の山喜旅館で開催された、
 第48回情報科学若手の会2015に参加してきました。
 四回目の参加で、ショートで発表を行いました。
@@ -847,10 +881,10 @@ https://github.com/ota42y/go-alchemyapi
     
     <item>
       <title>第48回情報科学若手の会2015で発表してきた</title>
-      <link>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</link>
+      <link>/blog/2015/09/20/wakate2015-hci/</link>
       <pubDate>Sun, 20 Sep 2015 17:10:23 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/09/20/wakate2015-hci/</guid>
+      <guid>/blog/2015/09/20/wakate2015-hci/</guid>
       <description>というわけで発表しました。
 発表資料はこちら。
 実際は動画で紹介していますが、めっちゃ重くなったのでそれは外した軽量版になります。
@@ -883,10 +917,10 @@ HCI系のトップカンファレンスACM CHIの自主勉強会が毎年東京�
     
     <item>
       <title>freeコマンドに新しく追加されたavailableについて</title>
-      <link>http://ota42y.com/blog/2015/09/09/free-command/</link>
+      <link>/blog/2015/09/09/free-command/</link>
       <pubDate>Wed, 09 Sep 2015 21:53:07 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/09/09/free-command/</guid>
+      <guid>/blog/2015/09/09/free-command/</guid>
       <description>freeコマンドに追加されたavailable 3.14および2.6.27から、freeコマンドの書式が変わり、
 -/+ buffers/cacheが消えてavailableという項目が増えました。
 availableは/proc/meminfoの中にあるMemAvailablの値を参照しています。
@@ -896,10 +930,10 @@ available Estimation of how much memory is available for starting new applicatio
     
     <item>
       <title>CEDEC2015のCoverityクイズをどう直すか</title>
-      <link>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</link>
+      <link>/blog/2015/08/29/cedec2015-coverity/</link>
       <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
+      <guid>/blog/2015/08/29/cedec2015-coverity/</guid>
       <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。
 バグが入ったC++コードらしい。#CEDEC2015 pic.twitter.com/ca9vb0emVT
 &amp;mdash; alwei (@aizen76) 2015, 8月 26 
@@ -916,10 +950,10 @@ available Estimation of how much memory is available for starting new applicatio
     
     <item>
       <title>構造体のサイズはsizeofをちゃんと使うべき</title>
-      <link>http://ota42y.com/blog/2015/08/20/c-struct/</link>
+      <link>/blog/2015/08/20/c-struct/</link>
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/08/20/c-struct/</guid>
+      <guid>/blog/2015/08/20/c-struct/</guid>
       <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。
 ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。
 #include &amp;quot;stdio.h&amp;quot; struct St{ int a; bool flag; }; struct StSt{ S s; bool f; }; int main(void) { printf(&amp;quot;%lu\n&amp;quot;, sizeof(St)); printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt)); return 0; }  原因 Cでは構造体の後ろにパディングを追加できるようになっています。
@@ -929,10 +963,10 @@ available Estimation of how much memory is available for starting new applicatio
     
     <item>
       <title>Hugoのブログテーマを作った</title>
-      <link>http://ota42y.com/blog/2015/07/29/blog_theme/</link>
+      <link>/blog/2015/07/29/blog_theme/</link>
       <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/07/29/blog_theme/</guid>
+      <guid>/blog/2015/07/29/blog_theme/</guid>
       <description>ブログテーマ更新を更新しました。
 今回は、Bootstrapを元にしたHonokaを利用して作りました。
 リポジトリはこちら
@@ -944,10 +978,10 @@ Bootstrapの作りにあったHTMLを出力するようにテンプレートを�
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
-      <link>http://ota42y.com/blog/2015/07/05/dino/</link>
+      <link>/blog/2015/07/05/dino/</link>
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
+      <guid>/blog/2015/07/05/dino/</guid>
       <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
 ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
 PCとからArduinoを制御する場合、
@@ -970,10 +1004,10 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
     
     <item>
       <title>参加記録 Go Conference 2015 summer</title>
-      <link>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</link>
+      <link>/blog/2015/06/21/gocon-2015-summer/</link>
       <pubDate>Sun, 21 Jun 2015 23:43:02 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/06/21/gocon-2015-summer/</guid>
+      <guid>/blog/2015/06/21/gocon-2015-summer/</guid>
       <description>今回は日経さんとCAさんがスポンサーとのことですが、
 かなりの人がいるのにwifiが普通に繋がっていて凄かったです…
 なんか機械も見たことも無い凄い奴でしたし。
@@ -988,10 +1022,10 @@ Gaurun〜A general push notification server in Go〜  https://speakerdeck.com/cu
     
     <item>
       <title>C言語でのスレッド処理</title>
-      <link>http://ota42y.com/blog/2015/06/18/c-thread/</link>
+      <link>/blog/2015/06/18/c-thread/</link>
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/06/18/c-thread/</guid>
+      <guid>/blog/2015/06/18/c-thread/</guid>
       <description>C言語でのスレッド処理と、ロックの仕方をまとめました。
 他の言語のようにスレッド用のクラスを継承するのでは無く、
 別スレッドで実行する関数のポインタと、
@@ -1007,10 +1041,10 @@ int pthread_join(pthread_t th, void **thread_return);   th  待機するスレ�
     
     <item>
       <title>Linuxのlocaleがおかしくなっていた</title>
-      <link>http://ota42y.com/blog/2015/06/03/linux_local/</link>
+      <link>/blog/2015/06/03/linux_local/</link>
       <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/06/03/linux_local/</guid>
+      <guid>/blog/2015/06/03/linux_local/</guid>
       <description>突然プログラムが起動しなくなったため、
 原因を探ったところ、localesが壊れていました。
 そのため、再インストールすることで直りました。
@@ -1026,10 +1060,10 @@ locale -a locale: Cannot set LC_CTYPE to default locale: No such file or directo
     
     <item>
       <title>Go言語でメモリ上の大きさや配置を調べる</title>
-      <link>http://ota42y.com/blog/2015/05/06/go-struct-offset/</link>
+      <link>/blog/2015/05/06/go-struct-offset/</link>
       <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/05/06/go-struct-offset/</guid>
+      <guid>/blog/2015/05/06/go-struct-offset/</guid>
       <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。
 通常意識する必要はありませんが、32bitと64bitで挙動がおかしい場合など、
 ごく希に調べる必要に迫られる場合があります。
@@ -1046,10 +1080,10 @@ a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括
     
     <item>
       <title>参加記録 BPStudy#92</title>
-      <link>http://ota42y.com/blog/2015/04/29/bpstudy92/</link>
+      <link>/blog/2015/04/29/bpstudy92/</link>
       <pubDate>Wed, 29 Apr 2015 13:49:43 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/29/bpstudy92/</guid>
+      <guid>/blog/2015/04/29/bpstudy92/</guid>
       <description>BPStudy#92に参加しました。
 今回は経営やお金の話でした。
 お金って資本主義社会のベースとなる概念ですし、
@@ -1062,10 +1096,10 @@ a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括
     
     <item>
       <title>参加記録 DroidKaigi</title>
-      <link>http://ota42y.com/blog/2015/04/26/droidkaigi/</link>
+      <link>/blog/2015/04/26/droidkaigi/</link>
       <pubDate>Sun, 26 Apr 2015 12:49:12 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/26/droidkaigi/</guid>
+      <guid>/blog/2015/04/26/droidkaigi/</guid>
       <description>DroidKaigiに参加してきたのでメモ。
 Twitterで流れてくる情報によると、あっちのセッションもおもしろそう…
 みたいなのがあったので、ちゃんとセッションの概要も読んで天秤にかけるべきでした。
@@ -1080,10 +1114,10 @@ Twitterで流れてくる情報によると、あっちのセッションもお�
     
     <item>
       <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
-      <link>http://ota42y.com/blog/2015/04/24/go-windows-development/</link>
+      <link>/blog/2015/04/24/go-windows-development/</link>
       <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
+      <guid>/blog/2015/04/24/go-windows-development/</guid>
       <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。
  WindowsのGolang開発  IntelliJ便利  機能がとても豊富  Windows上ではつらい  開発ツールが少ない LinuxはGUI使いづらい  LinuxのファイルをWindowsから変更する  良いところ取り  開発はWindows 実行はLinux  ファイルはSambaで共有  ネットワークドライブをマウント  IDEデバッグは使えなくなる  そのときだけWindowsで動かすとか     Golang開発環境を整える IntelliJでのGo開発環境 IntelliJ IDEAとGolang pluginはとてもよく動くため、
 Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。
@@ -1113,10 +1147,10 @@ IntelliJで開発を行うことができます。</description>
     
     <item>
       <title>参加記録 第四回　ゲームサーバ勉強会</title>
-      <link>http://ota42y.com/blog/2015/04/19/game-server-4/</link>
+      <link>/blog/2015/04/19/game-server-4/</link>
       <pubDate>Sun, 19 Apr 2015 11:03:24 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/19/game-server-4/</guid>
+      <guid>/blog/2015/04/19/game-server-4/</guid>
       <description>第四回　ゲームサーバ勉強会に参加しました。
 サーバにはあんまり詳しくないですが、そういう人向けの勉強会なので助かりました。
 特に名前は聞いたことがあるけど使ったことないorちょっと触ったぐらいの物の理解がある程度深まりました。
@@ -1127,10 +1161,10 @@ IDC Frontierさんの話  IDCクラウドの話
     
     <item>
       <title>golangのパッケージ管理</title>
-      <link>http://ota42y.com/blog/2015/04/18/go-package-management/</link>
+      <link>/blog/2015/04/18/go-package-management/</link>
       <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/18/go-package-management/</guid>
+      <guid>/blog/2015/04/18/go-package-management/</guid>
       <description>goでは標準でいろいろなツールが揃っていますが、
 npmやbundlerのようなパッケージの依存管理をするツールはありません。
 これは、goでは公開されている物は後方互換性を守り、
@@ -1140,10 +1174,10 @@ npmやbundlerのようなパッケージの依存管理をするツールはあ�
     
     <item>
       <title>参加記録 GolangNotHttpNight（Gunosy.go#12）</title>
-      <link>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</link>
+      <link>/blog/2015/04/14/golang-no-http-night/</link>
       <pubDate>Tue, 14 Apr 2015 22:39:40 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/14/golang-no-http-night/</guid>
+      <guid>/blog/2015/04/14/golang-no-http-night/</guid>
       <description>GolangNotHttpNight（Gunosy.go#12）
 に参加しました。
 ほぼ周りにgolangを使っている人がほとんどおらず、
@@ -1154,20 +1188,20 @@ gomaについて  https://speakerdeck.com/kyokomi/gomanituite https://github.com
     
     <item>
       <title>参加記録 第6回ニコニコ学会β　データ研究会</title>
-      <link>http://ota42y.com/blog/2015/04/12/niconico_data_6/</link>
+      <link>/blog/2015/04/12/niconico_data_6/</link>
       <pubDate>Sun, 12 Apr 2015 21:03:35 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/12/niconico_data_6/</guid>
+      <guid>/blog/2015/04/12/niconico_data_6/</guid>
       <description>第6回ニコニコ学会β　データ研究会に参加しました。
 基調講演  日立のH  スペシャリストのデータに基づいた施策より、超詳細なデータから計算した施策の方が有効  http://web-tan.forum.impressrd.jp/e/2015/03/06/19423  人間では見つけられない要因を特定できる  スキルより休憩中の雑談の盛り上がりが重要だったり 膨大なデータの因果関係を調べ上げるのは人間には無理   ウェアラブルハピネスメーター  人は動き続けているほど止まらなくなる  T時間動き続けると、止まる確率が1/T  実際のデータと1/Tとの乖離が高くなると、集団の幸福度が低下する  1/Tに近いほど集団が幸福度が高くなる  幸福度と業務の生産性は直結する  1/Tを上げることが生産性を上げることになる 生産性や幸福度に関連するデータを短いスパンで計測することができる  日々のKPIとして利用できそうなところが革新的っぽい 日立、集団の幸福感を測定する技術を開発 - PC Watch    参考  データの見えざる手: ウエアラブルセンサが明かす人間・組織・社会の法則  後で買う    人狼知能  脱初心者！経験は人狼力を向上させるのか？～データから見るベテランの実力～  http://www.slideshare.net/toritorix/ss-46899953 人狼BBSの分析 陣営ごとの平均プレイ回数が多い方が勝率が高い  運ゲーじゃなかった  経験によるスキル向上  占い師  的中率は変化なし  狩人  上級者ほど護衛成功しやすい  人狼への投票率  ちょっとだけ高い 上級者が複数人の陣営はわりと高くなる  個人の経験より集団の経験の方が強い  人狼知能プロジェクト  人狼BBSのデータセットとか公開するらしい http://www.</description>
     </item>
     
     <item>
       <title>golangのラインエディタはlinerが便利</title>
-      <link>http://ota42y.com/blog/2015/04/11/go-liner/</link>
+      <link>/blog/2015/04/11/go-liner/</link>
       <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/11/go-liner/</guid>
+      <guid>/blog/2015/04/11/go-liner/</guid>
       <description>peterh/liner
 golangでCLIを作る際に活用できるラインエディタです。
 使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します。
@@ -1182,10 +1216,10 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&
     
     <item>
       <title>golangでIOへのテストを行う</title>
-      <link>http://ota42y.com/blog/2015/04/01/go-io-test/</link>
+      <link>/blog/2015/04/01/go-io-test/</link>
       <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/04/01/go-io-test/</guid>
+      <guid>/blog/2015/04/01/go-io-test/</guid>
       <description>まとめ  fmt.Print等にちゃんと出力されるかテストしたい  結論としては直接は無理  io.Writerを利用するように変えることで簡単にテスト可能  渡されたio.Writerに書き込むようにする 通常はos.Stdout、テストの時はbytes.Bufferを渡す どちらもio.Writerを実装している   標準出力への書き込みをテストしたい fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。
 ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。
 このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、
@@ -1211,10 +1245,10 @@ package main import ( &amp;quot;bytes&amp;quot; &amp;quot;testing&amp;quot; ) fu
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
-      <link>http://ota42y.com/blog/2015/03/28/go_interface/</link>
+      <link>/blog/2015/03/28/go_interface/</link>
       <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/03/28/go_interface/</guid>
+      <guid>/blog/2015/03/28/go_interface/</guid>
       <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。
 Goでインターフェースを実装したクラスのポインタを扱う Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。
 type Node interface{ ToString() string } func Output(l Node) { fmt.Println(l.ToString()) } type NodeTest struct{ } func (n NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := NodeTest{} Output(n) }  関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、 インターフェースのポインタを渡すように変更します。
@@ -1227,10 +1261,10 @@ func Output(l Node) { fmt.</description>
     
     <item>
       <title>Windowsにgxuiをインストールする</title>
-      <link>http://ota42y.com/blog/2015/03/22/gxui-install/</link>
+      <link>/blog/2015/03/22/gxui-install/</link>
       <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/03/22/gxui-install/</guid>
+      <guid>/blog/2015/03/22/gxui-install/</guid>
       <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。
 WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。
 なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。
@@ -1250,10 +1284,10 @@ go get http://github.com/google/gxui go get http://code.google.com/p/freetype-go
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
-      <link>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
+      <link>/blog/2015/03/16/octopress_to_hugo/</link>
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
+      <guid>/blog/2015/03/16/octopress_to_hugo/</guid>
       <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、
 サイト作成ツールの部分をGolangで作られたHugoに置き換えました。
 まとめ  Octopress  Ruby制の静的サイト作成ツール 大量の記事を扱うと遅くなっていく  100記事で新しい記事のHTML出力まで10秒ぐらいかかる 見た目を確認したいときなどにとても不便   Hugo  Golang制の静的サイト作成ツール 利点 早い  100記事で200msぐらい  環境構築いらず  公式がバイナリ配布 手を加えないならそのまま使える Win-Mac両方使う人にはとても楽  欠点  テーマが少ない  このサイトも自作 https://github.com/ota42y/orange42   手を加えにくい  手を加えると環境構築いらずの利点が失われる クロスコンパイルは楽なのでそれほどでもない？  手を加える必要が無いのでそのとき考える     Octopressの問題点 HTMLのレンダリングが遅いです。
@@ -1279,10 +1313,10 @@ Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、�
     
     <item>
       <title>JenkinsをHTTP経由で叩く</title>
-      <link>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
+      <link>/blog/2015/02/27/jenkins-remote-api/</link>
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
+      <guid>/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>まとめ  JenkinsはWebベースのUI  操作の敷居が低い 使い込むと使いづらくなる 反応速度 複数のビルド実行  Remote access API  HTTP経由でJobを実行できる ページ表示を待たなくていいため高速 プログラムから実行可能 ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない
    JenkinsのJob実行は大変 JenkinsはWebブラウザを使ってGUIで操作するため、
 操作の敷居が低く、簡単に扱えるようになっています。
@@ -1308,10 +1342,10 @@ require &#39;open-uri&#39; require &#39;net/http&#39; platforms = [&amp;quot;ios
     
     <item>
       <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
+      <link>/blog/2015/02/11/jenkins-workflow/</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
+      <guid>/blog/2015/02/11/jenkins-workflow/</guid>
       <description>まとめ  ブランチをパラメーターにするとスクリプトを読めない  中身ではなく変数名のブランチを探しに行く 多分バグ  ファイルから読み込むるスクリプトを書けば解決  公式のflow.groovyを参考に 変数を使おうとすると面倒 java.io.Serializableを実装する必要あり   gitリポジトリ内のスクリプトを指定できない (以下に用意されているdocker上のJenkinsで確認しました)
 https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md
 Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込んで実行する機能があります。
@@ -1329,10 +1363,10 @@ Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込�
     
     <item>
       <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
-      <link>http://ota42y.com/blog/2015/02/10/workflow-plugin/</link>
+      <link>/blog/2015/02/10/workflow-plugin/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
+      <guid>/blog/2015/02/10/workflow-plugin/</guid>
       <description>まとめ  Jenkinsはjob単位でしかノードに割り振れない  複数ノードで分散ビルドするには設定を駆使する必要がある 結果としてjobの数が増えて管理コストが増大する  Workflow Pluginで大幅に改善する  スクリプトからノードを指定してコマンドを実行できる 複数のjobを組み合わせていたのが一つのスクリプトですむ スクリプトをVCSに入れればビルド設定のバージョン管理も可能   複数ノードをコントロールするのは難しい Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、
 複数のノードで、jobの一部の部分だけを別のノードで実行するなど、
 ある程度複雑な分散をやろうとすると、Jenkins本体の機能では不足してきます。
@@ -1361,20 +1395,20 @@ node(&amp;quot;master&amp;quot;){ sh &amp;quot;rake config&amp;quot; archive &am
     
     <item>
       <title>Go言語で一次の最小二乗法を実装した</title>
-      <link>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</link>
+      <link>/blog/2015/02/03/leastsquaresmethod/</link>
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/03/leastsquaresmethod/</guid>
+      <guid>/blog/2015/02/03/leastsquaresmethod/</guid>
       <description>こんな感じです。
 暗黙的にキャストしてくれないので若干面倒です。</description>
     </item>
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
+      <link>/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>/blog/2015/01/31/evernote-opener-update/</guid>
       <description>evernote url openerを更新しました。
 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、
 ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。
@@ -1385,10 +1419,10 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
     
     <item>
       <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
+      <link>/blog/2015/01/28/bundle-in-bundle/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
+      <guid>/blog/2015/01/28/bundle-in-bundle/</guid>
       <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、
 一回目のbundlerに対してbundleが実行されてしまい、
 別のbundleを呼び出せないという問題が起きました。
@@ -1403,10 +1437,10 @@ oh hai thar Using hello_world_gem 0.</description>
     
     <item>
       <title>参加記録 情報科学若手の会冬の陣2015</title>
-      <link>http://ota42y.com/blog/2015/01/25/wakate2015w/</link>
+      <link>/blog/2015/01/25/wakate2015w/</link>
       <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/25/wakate2015w/</guid>
+      <guid>/blog/2015/01/25/wakate2015w/</guid>
       <description>情報科学若手の会冬の陣2015 #wakate2015wに参加しました
 Togetterまとめ
 会場は電源完備＆大きめの机が椅子に着いているという豪華仕様でした
@@ -1422,10 +1456,10 @@ Togetterまとめ
     
     <item>
       <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>http://ota42y.com/blog/2015/01/23/ram-disk/</link>
+      <link>/blog/2015/01/23/ram-disk/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/23/ram-disk/</guid>
+      <guid>/blog/2015/01/23/ram-disk/</guid>
       <description>まとめ  RAMディスクを作ってビルドすると早くなる  SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思われる  Macだととても簡単にRAMディスクが作れる Jenkins等、ビルドが主目的の場合に有効と思われる メモリが余っているならやる価値はある  Mac OS XでのRAMディスク作成 Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。
 メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。
 また、rootでなくても作成できるため、非常に便利です
@@ -1439,10 +1473,10 @@ hdid -nomount ram://4096000 # 指定した容量でRAMディスクが作成さ�
     
     <item>
       <title>Androidでクリップボードの中身を自動で辞書検索</title>
-      <link>http://ota42y.com/blog/2015/01/21/android-dict/</link>
+      <link>/blog/2015/01/21/android-dict/</link>
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/21/android-dict/</guid>
+      <guid>/blog/2015/01/21/android-dict/</guid>
       <description>まとめ  clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dictが連携先として優秀 英辞郎は形式が違うため辛い Google Driveをビューワーとして使うといい  ポップアップ辞書アプリ iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。
 Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、
 clip2dicというアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。
@@ -1475,10 +1509,10 @@ pdicからStartDict形式の変換はとても手間がかかるのと、
     
     <item>
       <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
-      <link>http://ota42y.com/blog/2015/01/11/jenkins-conference/</link>
+      <link>/blog/2015/01/11/jenkins-conference/</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/11/jenkins-conference/</guid>
+      <guid>/blog/2015/01/11/jenkins-conference/</guid>
       <description>Jenkins ユーザ・カンファレンス 2015 東京に参加しました。
 Togetterまとめ
 発表まとめ アンケート結果  参加申し込み時のアンケート結果 多くの人のjobの数が1〜数個程度 Jenkins無くても生きていける人が30％ぐらい
@@ -1487,10 +1521,10 @@ Togetterまとめ
     
     <item>
       <title>Macのghcは改行コードがCRだと動かない</title>
-      <link>http://ota42y.com/blog/2015/01/07/mac-ghc-cr/</link>
+      <link>/blog/2015/01/07/mac-ghc-cr/</link>
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/07/mac-ghc-cr/</guid>
+      <guid>/blog/2015/01/07/mac-ghc-cr/</guid>
       <description>Haskellでどう見ても文法的に間違っていないのに、
 何故かコンパイルエラーになっていましたが、
 改行コードが原因でした。
@@ -1506,10 +1540,10 @@ nkf -Lw lf.hs &amp;gt; crlf.hs file crlf.hs # crlf.hs: ASCII text, with CRLF lin
     
     <item>
       <title>インライン展開についての追加調査</title>
-      <link>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
+      <link>/blog/2015/01/06/c-inline-postscript/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
+      <guid>/blog/2015/01/06/c-inline-postscript/</guid>
       <description>昨日の記事で、インライン展開について調べましたが、
 よくよく考えると片手落ちだったので追加調査しました。
 インライン展開がどう展開されるのかを調べた
@@ -1526,10 +1560,10 @@ class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(
     
     <item>
       <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>http://ota42y.com/blog/2015/01/05/c-inline/</link>
+      <link>/blog/2015/01/05/c-inline/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/05/c-inline/</guid>
+      <guid>/blog/2015/01/05/c-inline/</guid>
       <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、
 関数呼び出しのオーバーヘッドを削減する、インライン展開をします。
 インライン展開はコンパイル時にされるため、
@@ -1546,10 +1580,10 @@ class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumIn
     
     <item>
       <title>UNIXという考え方という本を読んだ</title>
-      <link>http://ota42y.com/blog/2015/01/04/unix-boox/</link>
+      <link>/blog/2015/01/04/unix-boox/</link>
       <pubDate>Sun, 04 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/04/unix-boox/</guid>
+      <guid>/blog/2015/01/04/unix-boox/</guid>
       <description>UNIXという考え方という本を読みました。
 原著は1994年に書かれている本で、 UNIXの哲学を一つ一つ、その意味と利点について解説しています。
 「一つのことを、うまくやれ」や「小さいものは美しい」等、ある程度ハッカー文化に詳しい人ならばどれかは聞いたことがあるぐらい有名な哲学です。
@@ -1564,10 +1598,10 @@ class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumIn
     
     <item>
       <title>fork関数がどうやってプロセスを分割しているか</title>
-      <link>http://ota42y.com/blog/2015/01/03/unix-fork/</link>
+      <link>/blog/2015/01/03/unix-fork/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/03/unix-fork/</guid>
+      <guid>/blog/2015/01/03/unix-fork/</guid>
       <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ
 という本を読んでいます。
 この中で、fork関数がどうやって子プロセスを作り、
@@ -1589,10 +1623,10 @@ fork() { register struct proc *p1, *p2; p1 = u.u_procp; for(p2 = &amp;amp;proc[0
     
     <item>
       <title>大晦日ハッカソン2014&amp;正月ハッカソン2015に参加した</title>
-      <link>http://ota42y.com/blog/2015/01/01/1231-hackathon/</link>
+      <link>/blog/2015/01/01/1231-hackathon/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/01/1231-hackathon/</guid>
+      <guid>/blog/2015/01/01/1231-hackathon/</guid>
       <description>2014/12/31にオンラインで行われた、
 大晦日ハッカソン2014に参加しました。
 Evernoteのリンクをアプリで直接開くChrome拡張を作りました。
@@ -1619,10 +1653,10 @@ Evernoteアプリが立ち上がり、そのノートを開いてくれます。
     
     <item>
       <title>GithubのContributionsを使ってアウトプットを150日続ける</title>
-      <link>http://ota42y.com/blog/2014/12/31/150-output/</link>
+      <link>/blog/2014/12/31/150-output/</link>
       <pubDate>Wed, 31 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/31/150-output/</guid>
+      <guid>/blog/2014/12/31/150-output/</guid>
       <description>というわけで、GithubのContributionsを利用して、
 毎日何かしらのアウトプットを150日続けるということをやりました。
 何故こんな事をしたのか 私はまじめ系クズな上に意志薄弱なので、やった方がいいようなことでも、
@@ -1682,10 +1716,10 @@ gitだと別の日のコミットも、git rebase &amp;ndash;ignore-dateでそ�
     
     <item>
       <title>ASUS MeMO Pad 7 ME572CでLink2SDを動かす</title>
-      <link>http://ota42y.com/blog/2014/12/30/link2sd/</link>
+      <link>/blog/2014/12/30/link2sd/</link>
       <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/30/link2sd/</guid>
+      <guid>/blog/2014/12/30/link2sd/</guid>
       <description>ME572CにはSDカードが挿せるため、
 本体の容量が足りなくなっても気軽に容量を追加できます。
 ですが、対応しているアプリしかSDカードにデータが保存できず、
@@ -1719,10 +1753,10 @@ EvernoteやKindleではこのデータ部分が大きくなっていくため、
     
     <item>
       <title>ASUS MeMO Pad 7 ME572CをRoot化した</title>
-      <link>http://ota42y.com/blog/2014/12/28/memopad-root/</link>
+      <link>/blog/2014/12/28/memopad-root/</link>
       <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/28/memopad-root/</guid>
+      <guid>/blog/2014/12/28/memopad-root/</guid>
       <description>ASUS MeMO Pad 7 ME572Cを買いました。
 タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS
 Nexus 9とかと迷いましたが、
@@ -1741,10 +1775,10 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
     
     <item>
       <title>pixivのタグから読み解くラブライブイラスト投稿者分析</title>
-      <link>http://ota42y.com/blog/2014/12/27/lovelive-age/</link>
+      <link>/blog/2014/12/27/lovelive-age/</link>
       <pubDate>Sat, 27 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/27/lovelive-age/</guid>
+      <guid>/blog/2014/12/27/lovelive-age/</guid>
       <description> この記事は2014年版で、2015年をまとめた版があります
 (2015年のpixiv内ラブライブイラストの推移)
 昨日、一昨日とラブライブイラストについて見ていきましたが、
@@ -1789,10 +1823,10 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
     
     <item>
       <title>pixivのタグから読み解くラブライブカップリング傾向(2014年11月現在)</title>
-      <link>http://ota42y.com/blog/2014/12/26/lovelive-cp/</link>
+      <link>/blog/2014/12/26/lovelive-cp/</link>
       <pubDate>Fri, 26 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/26/lovelive-cp/</guid>
+      <guid>/blog/2014/12/26/lovelive-cp/</guid>
       <description>この記事は2014年版で、2015年をまとめた版があります
 (2015年のpixiv内ラブライブイラストの推移)
 昨日はラブライブタグ全体と、各キャラについて見ていきましたが、
@@ -1850,10 +1884,10 @@ pixiv のタグ情報を用いた「ラブライブ！ School idol project」の
     
     <item>
       <title>pixivのタグから読み解くラブライブイラストの歩み</title>
-      <link>http://ota42y.com/blog/2014/12/25/lovelive/</link>
+      <link>/blog/2014/12/25/lovelive/</link>
       <pubDate>Thu, 25 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/25/lovelive/</guid>
+      <guid>/blog/2014/12/25/lovelive/</guid>
       <description>この記事は2014年版で、2015年をまとめた版があります
 (2015年のpixiv内ラブライブイラストの推移)
 ⊂(・8・)⊃＜776O776J7722776B772s772n772n772n776dIQ==
@@ -1911,10 +1945,10 @@ pixiv上のラブライブのイラストについて見ていこうと思いま
     
     <item>
       <title>Graphvizを使うと、グラフ描画がとても楽になる</title>
-      <link>http://ota42y.com/blog/2014/12/22/graphviz/</link>
+      <link>/blog/2014/12/22/graphviz/</link>
       <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/22/graphviz/</guid>
+      <guid>/blog/2014/12/22/graphviz/</guid>
       <description>こんな感じの画像を作る際に
 これまではパワポの図形機能とかペイントで頑張って作っていましたが、
 Graphvizを使うと自動で出力できます。
@@ -1930,10 +1964,10 @@ digraph G { Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quo
     
     <item>
       <title>参加記録 Android Bazaar and Conference 2014 Winter</title>
-      <link>http://ota42y.com/blog/2014/12/21/abc2014w/</link>
+      <link>/blog/2014/12/21/abc2014w/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/21/abc2014w/</guid>
+      <guid>/blog/2014/12/21/abc2014w/</guid>
       <description>Android Bazaar and Conference 2014 Winterに参加してきました。
 なかなか興味深いお話を聞けたので、気になった部分を抜粋
  携帯は９５％の人類が持ってる
@@ -1953,10 +1987,10 @@ digraph G { Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quo
     
     <item>
       <title>GoのORマッパーGORMが便利</title>
-      <link>http://ota42y.com/blog/2014/12/19/gorm/</link>
+      <link>/blog/2014/12/19/gorm/</link>
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/19/gorm/</guid>
+      <guid>/blog/2014/12/19/gorm/</guid>
       <description>golangではmysqldriverでmysqlにアクセスできますが、
 一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。
 goでmysqlを使う
@@ -1973,10 +2007,10 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/jinzhu/gorm&a
     
     <item>
       <title>golangでYAMLファイルを読み込んで構造体に入れる</title>
-      <link>http://ota42y.com/blog/2014/12/03/go-yaml-struct/</link>
+      <link>/blog/2014/12/03/go-yaml-struct/</link>
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/03/go-yaml-struct/</guid>
+      <guid>/blog/2014/12/03/go-yaml-struct/</guid>
       <description>使い方がかなり特殊だったのでメモ
 (ドキュメントには書いてありますが…)
 goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、
@@ -1996,10 +2030,10 @@ MessageTextとinvaliddataは空になっています。
     
     <item>
       <title>参加記録 Go Conference 2014 autumn</title>
-      <link>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</link>
+      <link>/blog/2014/12/01/gocon-2014-autumn/</link>
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</guid>
+      <guid>/blog/2014/12/01/gocon-2014-autumn/</guid>
       <description>Go Conference 2014 autumnに参加しました。
 togetterまとめ
 大体スライドが公開されているので、正確な内容はそちらをどうぞ。
@@ -2034,10 +2068,10 @@ GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</description>
     
     <item>
       <title>Octopressのアップデート手順</title>
-      <link>http://ota42y.com/blog/2014/11/30/octopress-update/</link>
+      <link>/blog/2014/11/30/octopress-update/</link>
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/30/octopress-update/</guid>
+      <guid>/blog/2014/11/30/octopress-update/</guid>
       <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。
 だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、
 forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。
@@ -2060,10 +2094,10 @@ Rubyの特徴上、変数にあらゆるオブジェクトが入る事がある�
     
     <item>
       <title>参加記録 BPStudy ♯87</title>
-      <link>http://ota42y.com/blog/2014/11/29/bpstudy-87/</link>
+      <link>/blog/2014/11/29/bpstudy-87/</link>
       <pubDate>Sat, 29 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/29/bpstudy-87/</guid>
+      <guid>/blog/2014/11/29/bpstudy-87/</guid>
       <description>BPStudy#87に参加しました。
 togetterまとめ
 じっくりと把握する iOS8 / iPhone6 最前線〜ユーザーにとって、開発者にとって何が変わったのか？ http://www.slideshare.net/yukio.andoh/bpstudy-87-ios8-iphone6
@@ -2089,10 +2123,10 @@ LT 一件目はiOS7と8で遭遇したブラウザバグの紹介でした。
     
     <item>
       <title>Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる</title>
-      <link>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</link>
+      <link>/blog/2014/11/27/jenkins-build-flow-plugin/</link>
       <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
+      <guid>/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
       <description>まとめ  Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒 全てをスクリプトで実行するのが理想だが、本体の機能を使いたい場合は対応できない build flow pluginがファイルを読み込んで実行できるようになった これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る  Jenkinsのjob設定問題 Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。
 例えばビルド手順を変更する場合、プラグイン設定に後方互換性がないような変更を行うと、
 前のバージョンをビルドしたときにエラーになります。
@@ -2120,10 +2154,10 @@ Build Flow Plugin
     
     <item>
       <title>Dockerとは何か</title>
-      <link>http://ota42y.com/blog/2014/11/26/docker/</link>
+      <link>/blog/2014/11/26/docker/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/26/docker/</guid>
+      <guid>/blog/2014/11/26/docker/</guid>
       <description>Dockerについて調べたので概要と簡単な使い方のメモ
 Dockerとは何か いわゆるコンテナ型仮想化ツールの1つです。
 VMwareやKVMのような完全仮想化と違い、
@@ -2152,10 +2186,10 @@ docker build -t jenkins . を実行し、カレントディレクトリのDocker
     
     <item>
       <title>YAMLでnilをキーにしたハッシュを扱う</title>
-      <link>http://ota42y.com/blog/2014/11/25/ruby-hash/</link>
+      <link>/blog/2014/11/25/ruby-hash/</link>
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/25/ruby-hash/</guid>
+      <guid>/blog/2014/11/25/ruby-hash/</guid>
       <description>例は全てRuby 2.0を利用しています
 nilをキーとした値を持つハッシュをYAMLに書きたい場合、
 以下のように書いても&amp;rdquo;nil&amp;rdquo;という文字列として認識されます。
@@ -2175,10 +2209,10 @@ require &#39;yaml&#39; def mkhash(k,v) h = {} h[k] = v h end long = &amp;quot;a&
     
     <item>
       <title>Github Pagesの新しいIPアドレス対応</title>
-      <link>http://ota42y.com/blog/2014/11/20/github-pages-new-ip/</link>
+      <link>/blog/2014/11/20/github-pages-new-ip/</link>
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/20/github-pages-new-ip/</guid>
+      <guid>/blog/2014/11/20/github-pages-new-ip/</guid>
       <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、
 新しいIDアドレスを利用するようにとのwarningが来るようになりました。
 そのときに解消方法を調べたのですが、よくわからず放置していたところ、
@@ -2200,10 +2234,10 @@ Github Pagesにコミットしても警告メールが飛ばなくなります�
     
     <item>
       <title>golangでYAMLファイルを読み込む</title>
-      <link>http://ota42y.com/blog/2014/11/13/go-yaml/</link>
+      <link>/blog/2014/11/13/go-yaml/</link>
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/13/go-yaml/</guid>
+      <guid>/blog/2014/11/13/go-yaml/</guid>
       <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。
 サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、
 以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。
@@ -2217,10 +2251,10 @@ Easy! 2  </description>
     
     <item>
       <title>スクフェス用パッケージの更新</title>
-      <link>http://ota42y.com/blog/2014/11/12/scfes-update/</link>
+      <link>/blog/2014/11/12/scfes-update/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/12/scfes-update/</guid>
+      <guid>/blog/2014/11/12/scfes-update/</guid>
       <description>前に作ったスクフェス用パッケージを更新しました。
 https://github.com/ota42y/hubot-scfes
 今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。
@@ -2231,10 +2265,10 @@ https://github.com/ota42y/hubot-scfes
     
     <item>
       <title>Hubotの追加機能作成をテストで楽にする</title>
-      <link>http://ota42y.com/blog/2014/11/10/hubot-test/</link>
+      <link>/blog/2014/11/10/hubot-test/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/10/hubot-test/</guid>
+      <guid>/blog/2014/11/10/hubot-test/</guid>
       <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
 普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、
 面倒な手順を踏むことになります。
@@ -2255,10 +2289,10 @@ Hubot固有の部分を最小限に減らし、通常のnpmパッケージのよ
     
     <item>
       <title>size_tは環境によって定義が変わるという話</title>
-      <link>http://ota42y.com/blog/2014/11/08/size-t/</link>
+      <link>/blog/2014/11/08/size-t/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/08/size-t/</guid>
+      <guid>/blog/2014/11/08/size-t/</guid>
       <description>size_tが何bitになるかは環境によって定義が異なります。
 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。
 #include &amp;lt;string&amp;gt; int main () { std::string test = &amp;quot;test text&amp;quot;; unsigned int pos = 0; printf(&amp;quot;size_t %lu\n&amp;quot;, sizeof(size_t)); pos = test.find(&amp;quot;ms&amp;quot;); printf(&amp;quot;pos %lu, %lu\n&amp;quot;, (size_t)pos, std::string::npos); if(pos != std::string::npos){ std::string text = test.substr(pos); printf(&amp;quot;%s\n&amp;quot;, text.c_str()); } return 0; }  std::stringのfindは引数の文字列が最初に出てくる位置か、見つからなかった場合にstd::string::nposを返します。
@@ -2280,10 +2314,10 @@ test textの4294967295文字目にアクセスして異常終了します。
     
     <item>
       <title>void型のポインタとint型を相互変換するなという話</title>
-      <link>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</link>
+      <link>/blog/2014/11/07/cpp-64bit-cast/</link>
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</guid>
+      <guid>/blog/2014/11/07/cpp-64bit-cast/</guid>
       <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、
 コンパイラもエラーにしない場合が多いです。
 ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、
@@ -2296,10 +2330,10 @@ int num = 42; Container con; con.data = (void*)num; // 42を取り出す int num
     
     <item>
       <title>汎用ポインタを使う</title>
-      <link>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</link>
+      <link>/blog/2014/11/06/cpp-void-pointer/</link>
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/06/cpp-void-pointer/</guid>
+      <guid>/blog/2014/11/06/cpp-void-pointer/</guid>
       <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。
 ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、
 どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。
@@ -2320,10 +2354,10 @@ mallocの戻り値 void *はmallocの戻り値としても使われています�
     
     <item>
       <title>hubot-ircではmsg.replyのリプライ先が変わるので注意</title>
-      <link>http://ota42y.com/blog/2014/11/01/hubot-reply/</link>
+      <link>/blog/2014/11/01/hubot-reply/</link>
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/01/hubot-reply/</guid>
+      <guid>/blog/2014/11/01/hubot-reply/</guid>
       <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、
 replyしてるのに発言元とは別のチャットに送信してしまうという問題が起きました。
 robot.respond /進捗 start/i, (msg) -&amp;gt; setTimeout(-&amp;gt; msg.reply &amp;quot;進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、
@@ -2338,10 +2372,10 @@ reply: (envelope, strings...) -&amp;gt; for str in strings @send envelope.user, 
     
     <item>
       <title>スクフェス用の機能が詰まったHubotパッケージを作った</title>
-      <link>http://ota42y.com/blog/2014/10/28/hubot-scfes/</link>
+      <link>/blog/2014/10/28/hubot-scfes/</link>
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/28/hubot-scfes/</guid>
+      <guid>/blog/2014/10/28/hubot-scfes/</guid>
       <description>スクフェス用の色々便利な機能が入ったHubotパッケージを作りました。
 https://github.com/ota42y/hubot-scfes
 今のところ主な機能は2つです。
@@ -2360,10 +2394,10 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
     
     <item>
       <title>Linux上でrubyのPTYを使うと、Errno::EIOが出る</title>
-      <link>http://ota42y.com/blog/2014/10/26/pty-ieo-error/</link>
+      <link>/blog/2014/10/26/pty-ieo-error/</link>
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/26/pty-ieo-error/</guid>
+      <guid>/blog/2014/10/26/pty-ieo-error/</guid>
       <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと
 Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。
 require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end  どうやら、読み込んだ際にBSDだとnilになりますが、GNU/LinuxだとErrno::EIOが発生する仕様らしいです。
@@ -2373,10 +2407,10 @@ Ruby on Linux PTY goes away without EOF, raises Errno::EIO
     
     <item>
       <title>javascriptの関数リテラルではインスタンス変数にアクセスできない</title>
-      <link>http://ota42y.com/blog/2014/10/23/javascript-callback/</link>
+      <link>/blog/2014/10/23/javascript-callback/</link>
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/23/javascript-callback/</guid>
+      <guid>/blog/2014/10/23/javascript-callback/</guid>
       <description>関数リテラルではローカル変数には自由にアクセスできるので、
 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。
 以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、
@@ -2392,10 +2426,10 @@ class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num c
     
     <item>
       <title>goでtime.Timeをmysqlから読む</title>
-      <link>http://ota42y.com/blog/2014/10/08/go-mysql-time/</link>
+      <link>/blog/2014/10/08/go-mysql-time/</link>
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/08/go-mysql-time/</guid>
+      <guid>/blog/2014/10/08/go-mysql-time/</guid>
       <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…
 sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time
 どうやらDSNにparseTime=trueオプションをつける必要があるようです(何故かは不明)
@@ -2406,10 +2440,10 @@ https://github.com/go-sql-driver/mysql#timetime-support</description>
     
     <item>
       <title>進捗どうですか？を訪ねるhubotスクリプトを作った</title>
-      <link>http://ota42y.com/blog/2014/10/05/shinchoku/</link>
+      <link>/blog/2014/10/05/shinchoku/</link>
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/05/shinchoku/</guid>
+      <guid>/blog/2014/10/05/shinchoku/</guid>
       <description> 作りました。
 30分ごとに進捗どうですか？と聞いてきます。
 何をやったかを計測するために定期的にログを残そうと思うのですが、
@@ -2422,10 +2456,10 @@ https://github.com/go-sql-driver/mysql#timetime-support</description>
     
     <item>
       <title>goでmysqlを使う</title>
-      <link>http://ota42y.com/blog/2014/10/04/go-mysql/</link>
+      <link>/blog/2014/10/04/go-mysql/</link>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/04/go-mysql/</guid>
+      <guid>/blog/2014/10/04/go-mysql/</guid>
       <description>http://github.com/go-sql-driver/mysql
 がありましたので、それを使います。
 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。
@@ -2440,10 +2474,10 @@ INSERT post := getPost()　// 書き込むためのデータを取得する stmt
     
     <item>
       <title>HDDのパーティションテーブルが消えてからのデータ復旧</title>
-      <link>http://ota42y.com/blog/2014/10/03/hdd-post/</link>
+      <link>/blog/2014/10/03/hdd-post/</link>
       <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/03/hdd-post/</guid>
+      <guid>/blog/2014/10/03/hdd-post/</guid>
       <description>先日デスクトップPCのデータ用HDDが吹っ飛びました。
 原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。
 復旧に成功したのでその手順をメモっておきます。
@@ -2481,10 +2515,10 @@ Macからデータを読み出すことができたために難を逃れまし�
     
     <item>
       <title>ソシャゲ用のスタミナ計算機を作った</title>
-      <link>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</link>
+      <link>/blog/2014/10/02/social-game-stamina-calc/</link>
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</guid>
+      <guid>/blog/2014/10/02/social-game-stamina-calc/</guid>
       <description> 作りました。
 スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー
 みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。
@@ -2506,10 +2540,10 @@ stamina_calculator.convertToDate(second)
     
     <item>
       <title>npmにパッケージを公開する手順</title>
-      <link>http://ota42y.com/blog/2014/09/29/npm-publish/</link>
+      <link>/blog/2014/09/29/npm-publish/</link>
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/29/npm-publish/</guid>
+      <guid>/blog/2014/09/29/npm-publish/</guid>
       <description>とても簡単でしたがつい忘れるのでメモ。
 公開手順  npmjsに開発者登録をします。
 https://www.npmjs.org/
@@ -2530,10 +2564,10 @@ unpublishは間違えて公開した場合用ですね。
     
     <item>
       <title>Debian squeezeでShellShock対策</title>
-      <link>http://ota42y.com/blog/2014/09/26/shell-shock/</link>
+      <link>/blog/2014/09/26/shell-shock/</link>
       <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/26/shell-shock/</guid>
+      <guid>/blog/2014/09/26/shell-shock/</guid>
       <description>Debianは探しても見つからなかったので…(´･_･`)
 ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三者から任意のコードが実行される脆弱性が見つかりました。
 GNU bash の脆弱性に関する注意喚起
@@ -2556,10 +2590,10 @@ deb http://security.debian.org/ wheezy/updates main deb-src http://security.debi
     
     <item>
       <title>C&#43;&#43;で少しでもビルド速度を速くする方法</title>
-      <link>http://ota42y.com/blog/2014/09/23/cpp-build/</link>
+      <link>/blog/2014/09/23/cpp-build/</link>
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/23/cpp-build/</guid>
+      <guid>/blog/2014/09/23/cpp-build/</guid>
       <description>結論  キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う  C++のビルドをちょっとでも高速化したかったので、
 どうすれば早くなるのかを調べたのでまとめました。
 どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。
@@ -2585,10 +2619,10 @@ Dynamic Libraryはリンク時間が不要になりますが、その分実際�
     
     <item>
       <title>C&#43;&#43;で不要なincludeを減らす</title>
-      <link>http://ota42y.com/blog/2014/09/22/cpp-include/</link>
+      <link>/blog/2014/09/22/cpp-include/</link>
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/22/cpp-include/</guid>
+      <guid>/blog/2014/09/22/cpp-include/</guid>
       <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。
 そのため、includeする量が増えるほどコンパイラが解析する量も増え、
 結果としてコンパイル時間が長くなります。
@@ -2611,10 +2645,10 @@ cppファイル側で読み込むことで、includeをヘッダファイルか�
     
     <item>
       <title>Twitterのoath_callbackは設定していないと上書きできない</title>
-      <link>http://ota42y.com/blog/2014/09/19/twitter-callback/</link>
+      <link>/blog/2014/09/19/twitter-callback/</link>
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/19/twitter-callback/</guid>
+      <guid>/blog/2014/09/19/twitter-callback/</guid>
       <description>Twitterはoauth/request_tokenへのアクセス時に、
 認証後のコールバック先をoauth_callbackパラメータで上書きできます。
 Twitterの開発者画面からは独自スキーマは登録できませんが、
@@ -2628,10 +2662,10 @@ require &amp;quot;oauth&amp;quot; consumer_key = &amp;quot;&amp;quot; consumer_s
     
     <item>
       <title>Travis CI Meetup Tokyoに行ってきた</title>
-      <link>http://ota42y.com/blog/2014/09/18/travisci-meetup/</link>
+      <link>/blog/2014/09/18/travisci-meetup/</link>
       <pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/18/travisci-meetup/</guid>
+      <guid>/blog/2014/09/18/travisci-meetup/</guid>
       <description>前半はTravis CIのデモ、真ん中てCEOのお話、最後にLTと三部構成でした。
 こちらに動画があるそうです。
 http://www.ustream.tv/recorded/52769967
@@ -2669,10 +2703,10 @@ When was the build passing? http://sanemat.github.io/talks/20140917-travis-ci-me
     
     <item>
       <title>スタックに確保した変数の有効範囲に気をつける</title>
-      <link>http://ota42y.com/blog/2014/09/16/stack-heap/</link>
+      <link>/blog/2014/09/16/stack-heap/</link>
       <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/16/stack-heap/</guid>
+      <guid>/blog/2014/09/16/stack-heap/</guid>
       <description>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。
 rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。
 例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。
@@ -2695,10 +2729,10 @@ test.txt example.txt example.txt  getTextFilename内のstrはスタックに確�
     
     <item>
       <title>第47回情報科学若手の会2014に参加してきた</title>
-      <link>http://ota42y.com/blog/2014/09/15/wakate2014/</link>
+      <link>/blog/2014/09/15/wakate2014/</link>
       <pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/15/wakate2014/</guid>
+      <guid>/blog/2014/09/15/wakate2014/</guid>
       <description>2014年9月13日(土)〜15日(月)に静岡県伊東市の山喜旅館で開催された、
 第47回情報科学若手の会2014に参加してきました。
 二年ぶり三回目の参加です。
@@ -2750,10 +2784,10 @@ test.txt example.txt example.txt  getTextFilename内のstrはスタックに確�
     
     <item>
       <title>情報科学若手の会2014で発表してきた</title>
-      <link>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</link>
+      <link>/blog/2014/09/14/wakate2014-presentation/</link>
       <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/14/wakate2014-presentation/</guid>
+      <guid>/blog/2014/09/14/wakate2014-presentation/</guid>
       <description> LT発表してきました。
 最近CIとか継続的デリバリーとか流行ってるけど、
 ネット上にあふれている事例は、テスト(ビルド)が頑張れば5分程度で出来たり、
@@ -2775,10 +2809,10 @@ test.txt example.txt example.txt  getTextFilename内のstrはスタックに確�
     
     <item>
       <title>cronやinit.dでsudoを実行するとエラーになって実行できない</title>
-      <link>http://ota42y.com/blog/2014/09/13/sudo-error/</link>
+      <link>/blog/2014/09/13/sudo-error/</link>
       <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/13/sudo-error/</guid>
+      <guid>/blog/2014/09/13/sudo-error/</guid>
       <description>cronやinit.d以下に置いたスクリプトで、
 別の以外のユーザで作業しようと思い、sudoを実行したところ、
 以下のようなエラーが出て実行できませんでした。
@@ -2792,10 +2826,10 @@ Defaults requiretty
     
     <item>
       <title>Linux起動時に特定のシェルスクリプトを実行する</title>
-      <link>http://ota42y.com/blog/2014/09/12/init-d/</link>
+      <link>/blog/2014/09/12/init-d/</link>
       <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/12/init-d/</guid>
+      <guid>/blog/2014/09/12/init-d/</guid>
       <description>hubotを自動で実行してほしいなーと思ったので、
 OSの起動時にスクリプトを自動実行する方法を調べました。
 まず、/etc/init.d/ に実行可能なスクリプトを置きます。
@@ -2811,10 +2845,10 @@ OSの起動時にスクリプトを自動実行する方法を調べました。
     
     <item>
       <title>strncpyははまりやすい</title>
-      <link>http://ota42y.com/blog/2014/09/11/strncpy-bug/</link>
+      <link>/blog/2014/09/11/strncpy-bug/</link>
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/11/strncpy-bug/</guid>
+      <guid>/blog/2014/09/11/strncpy-bug/</guid>
       <description>strncpyは結構はまりどころがあります。
 たとえば以下のコードは正しく動作しません。
 char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str);  strncpyはコピー先、コピー元、コピー長を引数で取ります。
@@ -2828,10 +2862,10 @@ char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen
     
     <item>
       <title>go runしても分割したファイルが認識されない</title>
-      <link>http://ota42y.com/blog/2014/09/10/golang-file-split/</link>
+      <link>/blog/2014/09/10/golang-file-split/</link>
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/10/golang-file-split/</guid>
+      <guid>/blog/2014/09/10/golang-file-split/</guid>
       <description> Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。
  Goコードの書き方
 とのことなので、試しに以下のようにmainパッケージを分割してコンパイルしたところ、上手くいきませんでした(´･_･`)
@@ -2843,20 +2877,20 @@ go run main.go div.go main file div file  </description>
     
     <item>
       <title>golangでcronを使う</title>
-      <link>http://ota42y.com/blog/2014/09/09/golang-cron/</link>
+      <link>/blog/2014/09/09/golang-cron/</link>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/09/golang-cron/</guid>
+      <guid>/blog/2014/09/09/golang-cron/</guid>
       <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止めておく必要があります。
  </description>
     </item>
     
     <item>
       <title>パスワードの文字として避けた方がいい文字</title>
-      <link>http://ota42y.com/blog/2014/09/08/password-word/</link>
+      <link>/blog/2014/09/08/password-word/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/08/password-word/</guid>
+      <guid>/blog/2014/09/08/password-word/</guid>
       <description>ニンテンドー3DSのプリペイドカード入力画面を見て、
 見間違えやすい文字は使わないようにしてるんだーと気づいたので、
 他にもそういうのが無いかまとめました。
@@ -2876,10 +2910,10 @@ go run main.go div.go main file div file  </description>
     
     <item>
       <title>gitで現在のブランチ名をクリップボードにコピーする</title>
-      <link>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</link>
+      <link>/blog/2014/09/07/git-copy-current-branch/</link>
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</guid>
+      <guid>/blog/2014/09/07/git-copy-current-branch/</guid>
       <description># copy current branch ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot;  Jenkinsでブランチ○○をビルドしたいような場合に、
 jenkinsに渡すために現在のブランチを調べるのが面倒だったので、
 簡単にコピペできるようにしました。
@@ -2888,10 +2922,10 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
     
     <item>
       <title>CEDEC2014 9月3日まとめ</title>
-      <link>http://ota42y.com/blog/2014/09/06/cedec2014-09-03/</link>
+      <link>/blog/2014/09/06/cedec2014-09-03/</link>
       <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/06/cedec2014-09-03/</guid>
+      <guid>/blog/2014/09/06/cedec2014-09-03/</guid>
       <description>この日だけ参加したのでまとめ
 ウェアラブルコンピューティングの動向とウェアラブルゲームへの展開  ウェアラブルの特徴
  コンピュータを服のように着る 常時ON 生活密着 ハンズフリー Occlusは基本的にウェアラブルではない  ウェアラブルは実は難しい
@@ -2906,10 +2940,10 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
     
     <item>
       <title>CentOS7でAndroid SDKとNDKを使う</title>
-      <link>http://ota42y.com/blog/2014/09/04/centos7-android-build/</link>
+      <link>/blog/2014/09/04/centos7-android-build/</link>
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/04/centos7-android-build/</guid>
+      <guid>/blog/2014/09/04/centos7-android-build/</guid>
       <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686  他にもいくつかあった気がしますが、
 後はエラーとして出たコマンドをインストールするだけなので都度入れてください
 Android SDKとNDKのダウンロード http://developer.android.com/sdk/index.html
@@ -2927,10 +2961,10 @@ case sensitiveな環境に持って行った場合に特に死にやすいです
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>http://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
+      <link>/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>/blog/2014/09/03/mgo-consistency/</guid>
       <description>mgoのサンプルにあった
 session.SetMode(mgo.Monotonic, true)
 の意味がよくわからないので調べてみました。
@@ -2957,10 +2991,10 @@ Strong Consistency 常に必ず最新の値が読み込めるという状態で�
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>http://ota42y.com/blog/2014/09/02/go-mongodb/</link>
+      <link>/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
+      <guid>/blog/2014/09/02/go-mongodb/</guid>
       <description>mgoというライブラリが便利そうです。
 http://labix.org/mgo
 以下はtwitterからツイートを取ってきて、
@@ -2972,10 +3006,10 @@ http://labix.org/mgo
     
     <item>
       <title>MongoDBでインデックスとexplainを使う</title>
-      <link>http://ota42y.com/blog/2014/09/01/mongodb-explain/</link>
+      <link>/blog/2014/09/01/mongodb-explain/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/01/mongodb-explain/</guid>
+      <guid>/blog/2014/09/01/mongodb-explain/</guid>
       <description>事前データ準備  for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test3&amp;quot;, num: i*10000}) }  stringは3種類100個ずつ、numはuniqueなオブジェクトを作成します。
 インデックス作成 db.test_object.ensureIndex({&amp;quot;name&amp;quot;: 1})  で、test_objectコレクションのnameに対してインデックスを作成できます。
 また、
@@ -2987,10 +3021,10 @@ db.test_object.find({&amp;quot;name&amp;quot;: &amp;quot;test1&amp;quot;, &amp;q
     
     <item>
       <title>golangでtwitter APIを使う</title>
-      <link>http://ota42y.com/blog/2014/08/31/go-anaconda/</link>
+      <link>/blog/2014/08/31/go-anaconda/</link>
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/31/go-anaconda/</guid>
+      <guid>/blog/2014/08/31/go-anaconda/</guid>
       <description>anacondaが良さそう(ただしストリーミングAPI非対応)
 go get github.com/ChimeraCoder/anaconda
  </description>
@@ -2998,10 +3032,10 @@ go get github.com/ChimeraCoder/anaconda
     
     <item>
       <title>sending authentication information</title>
-      <link>http://ota42y.com/blog/2014/08/30/sending-authentication-information/</link>
+      <link>/blog/2014/08/30/sending-authentication-information/</link>
       <pubDate>Sat, 30 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/30/sending-authentication-information/</guid>
+      <guid>/blog/2014/08/30/sending-authentication-information/</guid>
       <description>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、
 &#39;sending authentication information&#39;, system error: 32&amp;quot;.
 といったエラーが出て、mysqlへのログインすら不可能になってしまいました。
@@ -3015,10 +3049,10 @@ innodb_file_per_table = OFF
     
     <item>
       <title>受け取ったPOSTデータをチャットに送信するHubotスクリプトを作った</title>
-      <link>http://ota42y.com/blog/2014/08/29/hubot-post-server/</link>
+      <link>/blog/2014/08/29/hubot-post-server/</link>
       <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/29/hubot-post-server/</guid>
+      <guid>/blog/2014/08/29/hubot-post-server/</guid>
       <description>実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、
 Webサーバへのアクセスに対して反応することができます。
 例: scripts/httpd.coffee
@@ -3030,10 +3064,10 @@ Hubot以外のアプリからこのURLを叩くことで、hubotの接続して�
     
     <item>
       <title>コマンドラインからiOSアプリをビルドする</title>
-      <link>http://ota42y.com/blog/2014/08/28/ios-build/</link>
+      <link>/blog/2014/08/28/ios-build/</link>
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/28/ios-build/</guid>
+      <guid>/blog/2014/08/28/ios-build/</guid>
       <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、
 普通にコマンドラインからビルドを実行していただけなので、 使っているコマンドをまとめました。
 なお、以下のサンプルプロジェクトを使って確認しました。
@@ -3049,10 +3083,10 @@ xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更で�
     
     <item>
       <title>ブラウザからArduinoを制御する</title>
-      <link>http://ota42y.com/blog/2014/08/27/arduino-browser/</link>
+      <link>/blog/2014/08/27/arduino-browser/</link>
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/27/arduino-browser/</guid>
+      <guid>/blog/2014/08/27/arduino-browser/</guid>
       <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
 当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
 そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
@@ -3076,10 +3110,10 @@ Serialport-serverが良さそうです。</description>
     
     <item>
       <title>JavascriptでオプションのパースをするOptparse-js</title>
-      <link>http://ota42y.com/blog/2014/08/26/optparse/</link>
+      <link>/blog/2014/08/26/optparse/</link>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/26/optparse/</guid>
+      <guid>/blog/2014/08/26/optparse/</guid>
       <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、
 各言語でそれをやってくれるライブラリが作られています。
 javascriptでそれにあたるのがOptparse-jsですが、
@@ -3101,10 +3135,10 @@ parser.parse(command_str.split(&amp;quot; &amp;quot;));  (勝手にオプショ�
     
     <item>
       <title>スマホアプリ開発でgit-new-workdirがとても便利だった</title>
-      <link>http://ota42y.com/blog/2014/08/25/git-new-workdir/</link>
+      <link>/blog/2014/08/25/git-new-workdir/</link>
       <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/25/git-new-workdir/</guid>
+      <guid>/blog/2014/08/25/git-new-workdir/</guid>
       <description>まとめ  ビルドに時間がかかる環境下では、ビルドのキャッシュが重要 ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる 別ブランチでちょっとした修正を行おうとすると、移動と戻りとで二回ビルドし直しが起きる リポジトリを複数cloneすると、管理が面倒 git-new-workdirなら、.gitを共用しつつ、別々のフォルダで作業できる そのため、ビルドのキャッシュを最大限活用できる スマホアプリじゃなくても便利  ビルドのキャッシュ Objective-cやJava、C++でスマホアプリを作成する場合、
 どの言語もコンパイルが必要になります。
 このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。
@@ -3143,10 +3177,10 @@ main/subといった使い方や、develop/releaseといった風に分けたり
     
     <item>
       <title>selenium-webdriverでRuby からブラウザを操作する</title>
-      <link>http://ota42y.com/blog/2014/08/24/selenium/</link>
+      <link>/blog/2014/08/24/selenium/</link>
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/24/selenium/</guid>
+      <guid>/blog/2014/08/24/selenium/</guid>
       <description>まとめ  selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 rubyのgemがあり、簡単に導入できる Firefoxならgemを入れるだけで動かせる  Rubyのスクレイピング方法 Rubyでスクレイピングする方法としては、 NokogiriやMechanizeが存在します。
 どちらもHTMLを解析してページの要素にアクセスします。
 ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、
@@ -3168,10 +3202,10 @@ require &amp;quot;selenium-webdriver&amp;quot; profile = Selenium::WebDriver::Fi
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>http://ota42y.com/blog/2014/08/22/mocha-test/</link>
+      <link>/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/22/mocha-test/</guid>
+      <guid>/blog/2014/08/22/mocha-test/</guid>
       <description>まとめ  Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ便利機能がある  Mochaの使い方 coffeescriptを前提にしています。
 テストの書き方 Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、
 そのitを呼び出す関数をdescribeに渡すしようです。
@@ -3189,10 +3223,10 @@ describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>http://ota42y.com/blog/2014/08/21/intellij-node/</link>
+      <link>/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/21/intellij-node/</guid>
+      <guid>/blog/2014/08/21/intellij-node/</guid>
       <description> node.js+mocha+coffeescriptな環境で開発をしていたところ、
 IntelliJ IDEAの設定方法が調べても無かったのでメモ。
 Node.jsプラグインのインストール Node.jsプラグインは公式から提供されています。
@@ -3218,10 +3252,10 @@ coffeescriptから変換してるので、
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>まとめ
  Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人を非表示にする拡張作った DLはここから  Pixivのイラスト検索でフォロワーを除外できない Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、
 検索結果にフォローしてる人とそうでない人が交じります。
@@ -3241,10 +3275,10 @@ coffeescriptから変換してるので、
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>http://ota42y.com/blog/2014/08/17/local-storage/</link>
+      <link>/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/17/local-storage/</guid>
+      <guid>/blog/2014/08/17/local-storage/</guid>
       <description>Chrome拡張でデータを保存しようとした場合に、
 最も簡単に扱えるのが、localStorageです。
 manifest.jsonの設定 manifest.jsonに以下のパーミッションを追加してください
@@ -3274,10 +3308,10 @@ chrome.runtime.sendMessage({method: &amp;quot;getUser&amp;quot;, user_id: user_i
     
     <item>
       <title>AutomatorでEvernoteのノートリンクを置き換える</title>
-      <link>http://ota42y.com/blog/2014/08/16/evernote-url/</link>
+      <link>/blog/2014/08/16/evernote-url/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/16/evernote-url/</guid>
+      <guid>/blog/2014/08/16/evernote-url/</guid>
       <description>まとめ  シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを実行できる  Automatorでスクリプトを実行する 前回(Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした) では、
 スクリプトの実行方法が微妙たったのでもう少し修正してみました。
 結論としては、Macと標準で入っているAutomatorを使うことで、
@@ -3308,10 +3342,10 @@ source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;cl
     
     <item>
       <title>sortやfind_ifの条件指定はどういう動きをしているのか</title>
-      <link>http://ota42y.com/blog/2014/08/11/find-if/</link>
+      <link>/blog/2014/08/11/find-if/</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/11/find-if/</guid>
+      <guid>/blog/2014/08/11/find-if/</guid>
       <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、
 関数orオブジェクトを渡すことで条件を自由に設定できます。
 参考
@@ -3324,10 +3358,10 @@ template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt; void
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
+      <link>/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
+      <guid>/blog/2014/08/10/evernote-link/</guid>
       <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
 この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
 そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。
@@ -3359,10 +3393,10 @@ Macでは残念ながらまともな物はありませんでした。
     
     <item>
       <title>IRCはCL-LFでメッセージを区切る</title>
-      <link>http://ota42y.com/blog/2014/08/09/irc/</link>
+      <link>/blog/2014/08/09/irc/</link>
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/09/irc/</guid>
+      <guid>/blog/2014/08/09/irc/</guid>
       <description>IRCのプロトコルはRFCで決められていて、
 一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。
 http://tools.ietf.org/html/rfc1459.html#section-2.3
@@ -3377,10 +3411,10 @@ https://github.com/martynsmith/node-irc/pull/246</description>
     
     <item>
       <title>MessagePack って何？</title>
-      <link>http://ota42y.com/blog/2014/08/05/msgpack/</link>
+      <link>/blog/2014/08/05/msgpack/</link>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/05/msgpack/</guid>
+      <guid>/blog/2014/08/05/msgpack/</guid>
       <description>最近よく聞くMessagePackとは何かを調べたのでメモ。
 MessagePackとは バイナリでデータを保存するフォーマットです。
 JSONと比べると、保存した状態の可読性を犠牲にする代わりに、
@@ -3401,10 +3435,10 @@ MSGPACK_DEFINEマクロに入れると、
     
     <item>
       <title>Jenkinsで複雑な処理をするときのjob構成について</title>
-      <link>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</link>
+      <link>/blog/2014/07/21/jenkins-architecture/</link>
       <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</guid>
+      <guid>/blog/2014/07/21/jenkins-architecture/</guid>
       <description>変数やビルド後の通知設定等が違うために、
 ほぼ同じ内容のjobを15個ぐらい使っていたら、
 だんだんと運用が死んできたのでメモ。
@@ -3457,10 +3491,10 @@ SCMのポーリング&amp;amp;チェックアウトだけを行うjobから、
     
     <item>
       <title>2進数の引き算で補数を使う</title>
-      <link>http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/</link>
+      <link>/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/</link>
       <pubDate>Fri, 18 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/</guid>
+      <guid>/blog/2014/07/18/2jin-shu-falseyin-kisuan-debu-shu-woshi-u/</guid>
       <description>2進数の引き算で補数表現を使うと足し算にできることの説明が見あたら無かったのでやってみる
 ここでは2の補数表現の求め方がすでに解っている前提で進める、
 (要するに1000-101=010+1=011は相互に変換可能ということ)
@@ -3471,10 +3505,10 @@ x = 2 - 5 (10進数) x = 010 - 101 (2進数に変換) x + 1000 = 010 - 101 + 100
     
     <item>
       <title>GitHub Kaigiに行ってきた</title>
-      <link>http://ota42y.com/blog/2014/06/03/github-kaigi/</link>
+      <link>/blog/2014/06/03/github-kaigi/</link>
       <pubDate>Tue, 03 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/06/03/github-kaigi/</guid>
+      <guid>/blog/2014/06/03/github-kaigi/</guid>
       <description>スライドまとめ  GitHub実践入門は活用するためのガイドブック
  はてなブログチームの開発フローとGitHub
  OSS と GitHub
@@ -3506,10 +3540,10 @@ Developer Toolsを使ってWebサイトのように、Atomのデザインを変�
     
     <item>
       <title>Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング</title>
-      <link>http://ota42y.com/blog/2014/05/13/browser-networking/</link>
+      <link>/blog/2014/05/13/browser-networking/</link>
       <pubDate>Tue, 13 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/05/13/browser-networking/</guid>
+      <guid>/blog/2014/05/13/browser-networking/</guid>
       <description>丸一日かけて読んだので書評っぽいのを。
 Webで何かしようとする人はどのレイヤの人も必読だと思います。
 インフラはもちろんのこと、アプリを作っている人も知らないでは済まされません。
@@ -3536,10 +3570,10 @@ Webで何かしようとする人はどのレイヤの人も必読だと思い�
     
     <item>
       <title>Atomのプラグイン作の作り方その１</title>
-      <link>http://ota42y.com/blog/2014/04/08/atom-plugin1/</link>
+      <link>/blog/2014/04/08/atom-plugin1/</link>
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/04/08/atom-plugin1/</guid>
+      <guid>/blog/2014/04/08/atom-plugin1/</guid>
       <description>Github製のエディタAtomの招待が来ました。
 簡単なプラグインの作り方が公開されていましたので、 自分でも作ってみました。
 [Create Your First Package]https://atom.io/docs/latest/your-first-package)
@@ -3568,10 +3602,10 @@ Window:Reload を実行します。
     
     <item>
       <title>Railsはアクセスをどう処理しているのか(1)</title>
-      <link>http://ota42y.com/blog/2013/11/10/rails-trace-1/</link>
+      <link>/blog/2013/11/10/rails-trace-1/</link>
       <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2013/11/10/rails-trace-1/</guid>
+      <guid>/blog/2013/11/10/rails-trace-1/</guid>
       <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。
 まだ全部追い切れてないですが、思った以上に長くなったのでとりあえずメモとして出 してみます。
 一部Rails力やRuby力が足りなくて追い切れない部分がありますが(´･_･`)
@@ -3584,10 +3618,10 @@ Started GET &amp;quot;/trace/index&amp;quot; for 127.0.0.1 at 2013-11-02 20:22:1
     
     <item>
       <title>WordpressからOctopressへ</title>
-      <link>http://ota42y.com/blog/2013/09/25/octopress/</link>
+      <link>/blog/2013/09/25/octopress/</link>
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2013/09/25/octopress/</guid>
+      <guid>/blog/2013/09/25/octopress/</guid>
       <description>前までブログシステムにはWordpressを使っていたんですが、
 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。
 そこで、ちょっと話題になってる(らしい)Octopressを導入してみました。

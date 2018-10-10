@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on おおたの物置</title>
-    <link>http://ota42y.com/tags/mac/</link>
+    <link>/tags/mac/</link>
     <description>Recent content in Mac on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 16 Aug 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>AutomatorでEvernoteのノートリンクを置き換える</title>
-      <link>http://ota42y.com/blog/2014/08/16/evernote-url/</link>
+      <link>/blog/2014/08/16/evernote-url/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/16/evernote-url/</guid>
+      <guid>/blog/2014/08/16/evernote-url/</guid>
       <description>まとめ  シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを実行できる  Automatorでスクリプトを実行する 前回(Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした) では、
 スクリプトの実行方法が微妙たったのでもう少し修正してみました。
 結論としては、Macと標準で入っているAutomatorを使うことで、
@@ -47,10 +47,10 @@ source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;cl
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
+      <link>/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
+      <guid>/blog/2014/08/10/evernote-link/</guid>
       <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
 この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
 そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。

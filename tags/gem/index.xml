@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gem on おおたの物置</title>
-    <link>http://ota42y.com/tags/gem/</link>
+    <link>/tags/gem/</link>
     <description>Recent content in Gem on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 04 Jun 2018 09:10:37 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/gem/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/gem/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>bootsnapの速度計測</title>
-      <link>http://ota42y.com/blog/2018/06/04/bootsnap/</link>
+      <link>/blog/2018/06/04/bootsnap/</link>
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/06/04/bootsnap/</guid>
+      <guid>/blog/2018/06/04/bootsnap/</guid>
       <description>shinjuku.rbで話した内容です。
 資料あげようと思って完全に忘れていたので上げます…
 要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
@@ -26,10 +26,10 @@
     
     <item>
       <title>gemのバージョンアップで依存関係が壊れるのを調べやすくした</title>
-      <link>http://ota42y.com/blog/2018/04/04/virtual_gem/</link>
+      <link>/blog/2018/04/04/virtual_gem/</link>
       <pubDate>Wed, 04 Apr 2018 00:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/04/virtual_gem/</guid>
+      <guid>/blog/2018/04/04/virtual_gem/</guid>
       <description>要約  gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる  5.2.0がリリースするまでインストールできないと気がつきにくい  任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った  https://github.com/ota42y/virtual_gem 5.2.0.rc2を元に5.2.0のgemを作れる 任意のgemの依存関係を書き換えられる 事前に依存関係が壊れるのを調べやすくなる   gemの依存関係によるインストール失敗 現在、Rails 5.2.0.rc2がリリースされています。
 ですが、仮に現状で上手く動いていたとしても5.2.0のリリース時に一部のgemの依存関係が5.2.0.rc2までしか受け入れておらず、インストールできなくなる可能性があります。
 gemには依存関係を設定できますが、&#39;&amp;lt; 5.2.0&#39; と書いた場合は5.2.0未満のgemを指定したこととなるため、5.2.0.rc2は対象となります。
@@ -52,10 +52,10 @@ require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42
     
     <item>
       <title>Globalizeを使ったRailsを5系対応する際にはまった</title>
-      <link>http://ota42y.com/blog/2018/03/28/globalize_5/</link>
+      <link>/blog/2018/03/28/globalize_5/</link>
       <pubDate>Wed, 28 Mar 2018 09:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/03/28/globalize_5/</guid>
+      <guid>/blog/2018/03/28/globalize_5/</guid>
       <description>要約  columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい チェックして消す&amp;amp;今後増えないようにするgemを作った  問題  GlobalizeをRails5対応版(5.1.0.beta2)にあげる 一部の処理が落ちる(´・_・`)  原因 News.columns_hash.keysは、そのモデルのカラム名を配列で返します。
 GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。
 しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。
@@ -71,10 +71,10 @@ News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&a
     
     <item>
       <title>ゼロから始めるgem生活</title>
-      <link>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</link>
+      <link>/blog/2017/08/20/rubygem-tutorial/</link>
       <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</guid>
+      <guid>/blog/2017/08/20/rubygem-tutorial/</guid>
       <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを下げるために30分程度で0からgemを作るハンズオンをやりました。
 これはそのときにやったことのメモで、現状これに沿って行っていけば簡単なgemを公開できるようになります。
 ゴール  簡単なgemを作成してrubygemsで公開するまで  事前準備  githubにアカウント作る git pushで自分のリポジトリにpushできる状態 ruby 2.0以上 gem install bundler 済み gem update &amp;ndash;system 済み  名前決め まずgemの名前を決めます。

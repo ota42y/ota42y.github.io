@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tool on おおたの物置</title>
-    <link>http://ota42y.com/tags/tool/</link>
+    <link>/tags/tool/</link>
     <description>Recent content in Tool on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 26 Jan 2016 22:24:44 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/tool/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>tmux-change-paneというコマンドを作った</title>
-      <link>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</link>
+      <link>/blog/2016/01/26/tmux-change-pane/</link>
       <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/01/26/tmux-change-pane/</guid>
+      <guid>/blog/2016/01/26/tmux-change-pane/</guid>
       <description>tmux-change-paneというコマンドを作りました。
 https://github.com/ota42y/tmux-change-pane
 tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。
@@ -28,10 +28,10 @@ tmux-change-paneでは今いる分割領域しか使わないため、作業す�
     
     <item>
       <title>Wunderlistでサマリー出力をする</title>
-      <link>http://ota42y.com/blog/2015/12/08/wl_report/</link>
+      <link>/blog/2015/12/08/wl_report/</link>
       <pubDate>Tue, 08 Dec 2015 07:58:08 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/12/08/wl_report/</guid>
+      <guid>/blog/2015/12/08/wl_report/</guid>
       <description> 最近知ったWunderlistが、全プラットフォーム使えたり、 モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。
 ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。 たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。
 すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。

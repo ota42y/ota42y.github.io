@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aws on おおたの物置</title>
-    <link>http://ota42y.com/tags/aws/</link>
+    <link>/tags/aws/</link>
     <description>Recent content in Aws on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 04 Oct 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Amazon Web Servicesサーバーレスレシピ という本を出します</title>
-      <link>http://ota42y.com/blog/2018/10/04/2018-10-04/</link>
+      <link>/blog/2018/10/04/2018-10-04/</link>
       <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/04/2018-10-04/</guid>
+      <guid>/blog/2018/10/04/2018-10-04/</guid>
       <description>Amazon Web Servicesサーバーレスレシピ という本が明日10/5に出ます。
 元々技術書典で書いた本を更に加筆修正したものになります。
 どんな本 この本は元々技術書典4で私も記事を書いた「Amazon Web Services サーバーレスレシピ 2018.04」がベースになっています。

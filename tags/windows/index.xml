@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on おおたの物置</title>
-    <link>http://ota42y.com/tags/windows/</link>
+    <link>/tags/windows/</link>
     <description>Recent content in Windows on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 03 Oct 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HDDのパーティションテーブルが消えてからのデータ復旧</title>
-      <link>http://ota42y.com/blog/2014/10/03/hdd-post/</link>
+      <link>/blog/2014/10/03/hdd-post/</link>
       <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/03/hdd-post/</guid>
+      <guid>/blog/2014/10/03/hdd-post/</guid>
       <description>先日デスクトップPCのデータ用HDDが吹っ飛びました。
 原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。
 復旧に成功したのでその手順をメモっておきます。

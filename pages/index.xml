@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on おおたの物置</title>
-    <link>http://ota42y.com/pages/</link>
+    <link>/pages/</link>
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 28 Feb 2016 22:40:59 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/pages/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/pages/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2016年02月まとめ</title>
-      <link>http://ota42y.com/pages/summary/2016/2016-02/</link>
+      <link>/pages/summary/2016/2016-02/</link>
       <pubDate>Sun, 28 Feb 2016 22:40:59 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2016/2016-02/</guid>
+      <guid>/pages/summary/2016/2016-02/</guid>
       <description>まとめ。
 ぎりぎりに一気に書くスタイル…
  2015年のpixiv内ラブライブイラストの分析  去年との違いを意識したまとめ サンシャインのこれからには期待  dump/restoreコマンドでデータのバックアップ・リストアをする  思った以上に簡単で便利  開発・実行環境をDockerで整える  開発環境構築に時間かけるの人生の無駄なので凄くいい 遅いのは何とかしたい  Jenkinsのノード選択をNode and Label parameter pluginでやる  Pipeline Pluginは自分で道を開かないといけないので大変 こっちはできる事に限界があるが標準的なジョブ構成で使える  MacのDocker上で動くMongoDBのデータを永続化するの大変そう  凄くいいと思ったら意外な落とし穴が とりあえずMongoDBは外部に立てて凌いでます   </description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>2016年01月まとめ</title>
-      <link>http://ota42y.com/pages/summary/2016/2016-01/</link>
+      <link>/pages/summary/2016/2016-01/</link>
       <pubDate>Sun, 31 Jan 2016 16:54:04 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2016/2016-01/</guid>
+      <guid>/pages/summary/2016/2016-01/</guid>
       <description>まとめ。
 Qiitaを再開した。
  Centos7でsquidを立てる  必要なときにサクっと作れるの便利 実際はプロキシサーバはVPNでつないで内部ネットワークにしているので、外部からのアクセスを想定した制限は不要  2015年のpixiv内ラブライブイラストの推移   全落ちつらい… サンシャインに関して取り直してるので次はもうちょっと時間かかる  tmux-change-paneというコマンドを作った  便利 CLIでもUIは大事  The innodb_system data file~でmacのmysqlが動かない場合の対処法  どのタイミングから動かなくなったのかは不明 無駄に時間を浪費した…  オーバーライドとオーバーロードは全く別物  そもそもオーバーロードは必要なのか？という疑問もある。 動的に切り替わるわけではないので、メソッド名が統一されるという利点があるけど… 暗黙的にキャストされるので、ビルドは通るけど意図した動作でない事が起きそう 内容が同じメソッドならいいけど、処理を振り分けるなら危なそう   </description>
@@ -35,10 +35,10 @@ Qiitaを再開した。
     
     <item>
       <title>2015年12月まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/2015-12/</link>
+      <link>/pages/summary/2015/2015-12/</link>
       <pubDate>Sun, 31 Jan 2016 16:36:57 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/2015-12/</guid>
+      <guid>/pages/summary/2015/2015-12/</guid>
       <description>まとめ忘れていたけどまとめ。
 月5本以上何らかのアウトプットするのは達成。
  MongoDB の update は部分 update ではない  基本部分updateでいい気がするけど、なんでキーを置き換えるようにしているんだろう…？ MySQLと違ってどんな列があるか明確じゃないし、データを消すのが難しいからとか？  Wunderlistでサマリー出力をする  まだ使ってる。便利。  GithubのContributionsを使ってアウトプットを500日続ける  どうも表示される最大長しかカウントされないらしく、今見たらLongestが500より減っていた 常に手を動かし続ける習慣はできたし、良かったと思う  論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」  めっちゃ便利。早く標準搭載されて欲しい。 普通のデバッガはわかっているコードに対してバグ調査に使えるけど、コード理解のお供としては使えないよね。  論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」  Bluetoothだけで距離計測ができるとか凄い 実際適当に追実装してもいい精度になるので、ちゃんと作れば凄い良さそう。 ボードゲームの一部として使えそう   </description>
@@ -46,10 +46,10 @@ Qiitaを再開した。
     
     <item>
       <title>2015年34週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-34/</link>
+      <link>/pages/summary/2015/week-34/</link>
       <pubDate>Mon, 24 Aug 2015 07:34:15 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-34/</guid>
+      <guid>/pages/summary/2015/week-34/</guid>
       <description>毎週まとめはおしまい そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。
 rsyncで特定フォルダをバックアップする rsync -a --delete origin/ backup
 で、backupフォルダの中身をoriginと一緒になるように同期してくれるため、フォルダごとバックアップすることが出来ます。
@@ -59,10 +59,10 @@ rsync -a --delete origin backup
     
     <item>
       <title>2015年33週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-33/</link>
+      <link>/pages/summary/2015/week-33/</link>
       <pubDate>Mon, 17 Aug 2015 22:08:50 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-33/</guid>
+      <guid>/pages/summary/2015/week-33/</guid>
       <description> tmux-change-pane作った swap-paneは機能としてはとても便利なのですが、
 ショートカットからの切り替え時に画面全てを切り替えてしまい、
 とても使いづらかったので現在のパネル上で切り替える版を作りました。
@@ -78,10 +78,10 @@ void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &am
     
     <item>
       <title>2015年32週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-32/</link>
+      <link>/pages/summary/2015/week-32/</link>
       <pubDate>Mon, 10 Aug 2015 21:50:30 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-32/</guid>
+      <guid>/pages/summary/2015/week-32/</guid>
       <description>最近のHCI研究を調べてる とりあえずざっとアブストを見て良さそうなものをピックアップする作業。
 いくつかは昔読んだ奴をもう一度読んでいたりします。
 jamSheets http://tangible.media.mit.edu/project/jamsheets/
@@ -109,10 +109,10 @@ Scene Completion Using Millions of Photographs http://graphics.cs.cmu.edu/projec
     
     <item>
       <title>2015年31週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-31/</link>
+      <link>/pages/summary/2015/week-31/</link>
       <pubDate>Mon, 03 Aug 2015 22:21:40 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-31/</guid>
+      <guid>/pages/summary/2015/week-31/</guid>
       <description>エンジニアボドゲ会に参加しました 不思議な力によってエンジニアが多く集まる（エンジニア以外も集まる）ボードゲーム会に参加しました。
 想像以上にボードゲームがあって凄かったです。
 プレイしたゲームは
@@ -121,10 +121,10 @@ Scene Completion Using Millions of Photographs http://graphics.cs.cmu.edu/projec
     
     <item>
       <title>2015年30週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-30/</link>
+      <link>/pages/summary/2015/week-30/</link>
       <pubDate>Mon, 27 Jul 2015 23:09:42 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-30/</guid>
+      <guid>/pages/summary/2015/week-30/</guid>
       <description>ブログ修正中 Bootstrapを使って構築し直してます。
 ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。
 freeコマンドの出力が変わってる freeするとavailableなる見慣れない出力が出ます…
@@ -147,10 +147,10 @@ Evernoteはオフラインでもそこに保存しておけば次にオンライ
     
     <item>
       <title>2015年29週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-29/</link>
+      <link>/pages/summary/2015/week-29/</link>
       <pubDate>Tue, 21 Jul 2015 17:56:49 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-29/</guid>
+      <guid>/pages/summary/2015/week-29/</guid>
       <description>CPUの特権レベルについて調べた CPUモード
 リングプロテクション
 CPUには複数のモードが存在し、特定の機能やメモリ領域にアクセスできるかどうかがこのモードで制御されるらしいです。
@@ -171,10 +171,10 @@ go tool 8gもしくはgo tool 6gを使うことで、goのソースコードか�
     
     <item>
       <title>2015年28週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-28/</link>
+      <link>/pages/summary/2015/week-28/</link>
       <pubDate>Mon, 13 Jul 2015 23:25:27 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-28/</guid>
+      <guid>/pages/summary/2015/week-28/</guid>
       <description>シェル環境を改善中 tmux plugin managerを導入しました。
 https://github.com/tmux-plugins/tpm
 tmuxのconfファイルでやる設定をある程度共通化し、 プラグインのインストールだけで使えるようにするものです。
@@ -205,10 +205,10 @@ ipadicから解析用のバイナリ辞書を生成する手順があります�
     
     <item>
       <title>2015年27週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-27/</link>
+      <link>/pages/summary/2015/week-27/</link>
       <pubDate>Mon, 06 Jul 2015 22:42:53 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-27/</guid>
+      <guid>/pages/summary/2015/week-27/</guid>
       <description> tmux環境を整えた 画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。
 ただペインを分けているだけでなく、ペインの中身はウィンドウなので、
 ウィンドウを作って入れ換えたり、左右の中身を入れ換えたり出来ます。
@@ -240,10 +240,10 @@ el-getも自動インストールするようにしているため、設定フ�
     
     <item>
       <title>2015年26週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-26/</link>
+      <link>/pages/summary/2015/week-26/</link>
       <pubDate>Mon, 29 Jun 2015 22:17:29 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-26/</guid>
+      <guid>/pages/summary/2015/week-26/</guid>
       <description>fluentd-forwarderのビルドの仕組み 基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。
 https://github.com/fluent/fluentd-forwarder
 READMEに書いてある一つ目の手順の、
@@ -270,10 +270,10 @@ Forkしたリポジトリに変更を加える場合 Forkしてそこに対し�
     
     <item>
       <title>2015年25週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-25/</link>
+      <link>/pages/summary/2015/week-25/</link>
       <pubDate>Mon, 22 Jun 2015 22:09:20 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-25/</guid>
+      <guid>/pages/summary/2015/week-25/</guid>
       <description>go conに参加していた 去年の秋と比べて、実際に使っている例が多くて、
 もうプロダクション投入されてるなーという印象でした。 参加記録 Go Conference 2015 summer
 atom.ioは辞めた Atom.ioの現状の仕様は、プロジェクトごとにウィンドウを割り当てて使うようになっています。
@@ -291,10 +291,10 @@ gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です�
     
     <item>
       <title>2015年24週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-24/</link>
+      <link>/pages/summary/2015/week-24/</link>
       <pubDate>Mon, 15 Jun 2015 22:37:01 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-24/</guid>
+      <guid>/pages/summary/2015/week-24/</guid>
       <description> C++入出力の書式を制御する c++でstreamを使って出力する場合、iomanipに用意されているものを利用することで、
 入出力の書式を制御することが出来ます。
 設定はstreamに対して設定用のオブジェクトを送るように設定するみたいです。
@@ -304,10 +304,10 @@ gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です�
     
     <item>
       <title>2015年23週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-23/</link>
+      <link>/pages/summary/2015/week-23/</link>
       <pubDate>Mon, 08 Jun 2015 23:41:38 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-23/</guid>
+      <guid>/pages/summary/2015/week-23/</guid>
       <description>Lock Freeって何 複数スレッドや複数コアから同じデータを更新する場合、
 通常はlockをかけて排他制御を行いますが、lockをかけずに行う方法があるらしいです。
 lockをかける場合、その間そのデータにはアクセスできず、並列処理を止めてしまうため、
@@ -328,10 +328,10 @@ https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34</descript
     
     <item>
       <title>2015年22週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-22/</link>
+      <link>/pages/summary/2015/week-22/</link>
       <pubDate>Mon, 01 Jun 2015 22:00:39 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-22/</guid>
+      <guid>/pages/summary/2015/week-22/</guid>
       <description>今週まとめ
 Cでのマルチスレッド処理を調べてる Cにはクラスが無いので、Threadクラスを継承し、
 runメソッドをオーバーライドするといった、いろんな言語でよくあるパターンは使えません。
@@ -354,10 +354,10 @@ http://en.cppreference.com/w/cpp/language/operator_member_access</description>
     
     <item>
       <title>2015年21週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-21/</link>
+      <link>/pages/summary/2015/week-21/</link>
       <pubDate>Mon, 25 May 2015 22:09:32 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-21/</guid>
+      <guid>/pages/summary/2015/week-21/</guid>
       <description> 体調を崩した 体調を崩して週の半分は倒れてた。
 3日倒れるとやることリストが大変なことになるので、
 体調がおかしい場合は速やかに医者に行って、薬をもらうべきだと再認識した。
@@ -370,10 +370,10 @@ struct A { A() : A(0) {} A(int num) : a(num) {} int a; };  </description>
     
     <item>
       <title>2015年20週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-20/</link>
+      <link>/pages/summary/2015/week-20/</link>
       <pubDate>Mon, 18 May 2015 21:40:28 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-20/</guid>
+      <guid>/pages/summary/2015/week-20/</guid>
       <description>一週間何もしていないことが可視化される 毎週先週やったことをまとめているので、
 先週何もしていないのが可視化される…
 PRマージされた fluentd-forwarderに送っていたPRがマージされた。
@@ -384,10 +384,10 @@ https://github.com/fluent/fluentd-forwarder/pull/10
     
     <item>
       <title>2015年19週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-19/</link>
+      <link>/pages/summary/2015/week-19/</link>
       <pubDate>Mon, 11 May 2015 21:55:04 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-19/</guid>
+      <guid>/pages/summary/2015/week-19/</guid>
       <description> atomicな処理でアライメントを揃える必要があるらしい goのatomic.AddInt64や、
 WindowsのInterlockedExchangeでは、
 32bit環境で64bitの値をアトミックに変更する場合、
@@ -403,10 +403,10 @@ Android 触ってた  string.xmlは同じフォルダに別の名前のxmlを作
     
     <item>
       <title>2015年18週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-18/</link>
+      <link>/pages/summary/2015/week-18/</link>
       <pubDate>Mon, 04 May 2015 11:27:52 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-18/</guid>
+      <guid>/pages/summary/2015/week-18/</guid>
       <description>goのテストはクラス設計がとても大事っぽい まだこうした方が良いんじゃないか？ぐらいなので、
 ベストプラクティスは他にありそうです…
 rubyで関数の差し替え Rubyだと以下のように、
@@ -420,10 +420,10 @@ goで関数の差し替え 埋め込みによる差し替え（できない） g
     
     <item>
       <title>2015年17週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-17/</link>
+      <link>/pages/summary/2015/week-17/</link>
       <pubDate>Mon, 27 Apr 2015 11:58:59 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-17/</guid>
+      <guid>/pages/summary/2015/week-17/</guid>
       <description>cpplintが便利そう AtomLinter/linter-cpplint
 Google Style Guideに沿っているかをチェックしてくれるcpplintを、
 Atom.ioから使えるようにしているPluginです。
@@ -442,10 +442,10 @@ Windowsのサーバで動かしているやつのログをとってくるの面�
     
     <item>
       <title>2015年16週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-16/</link>
+      <link>/pages/summary/2015/week-16/</link>
       <pubDate>Mon, 20 Apr 2015 07:36:53 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-16/</guid>
+      <guid>/pages/summary/2015/week-16/</guid>
       <description> goの開発環境充実中  go fmt  goのフォーマットをぱぱっと修正してくれます。  golint  動作に影響ないが推奨されないような部分を指摘し、何をすべきかを教えてくれます。 goのコーディング規約に沿っていないチェックが主です IntelliJから使えれば最高なんですが…   また、goの公式ではないですが、以下のテスティングツールが便利そうです。
  goconvey  テストの自動実行 go testの結果をブラウザで見やすくしてくれる 標準のテストを拡張したテストライブラリとしての機能もある  IntelliJ IDEA  go pluginを入れると凄い便利 Windowsの場合はVM上のLinuxに立てて、ネットワークドライブでアクセスするといい  goconveyをLinuxで動かしてブラウザで見る    勉強会参加 家にこもると良いことないので、わりと勉強会に出てました。
 だいたい行く前はめんどくさいなーとか、行っても意味ないんじゃ…みたいになるけど、
@@ -457,10 +457,10 @@ Windowsのサーバで動かしているやつのログをとってくるの面�
     
     <item>
       <title>2015年15週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-15/</link>
+      <link>/pages/summary/2015/week-15/</link>
       <pubDate>Mon, 13 Apr 2015 11:53:02 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-15/</guid>
+      <guid>/pages/summary/2015/week-15/</guid>
       <description>Atom.ioのstarでパッケージ管理 Atom.ioでは、パッケージのページ上でそのパッケージにスターをつけることができます。
 https://atom.io/packages/project-manager
 ここでスターをつけたパッケージはユーザのお気に入り扱いになり、
@@ -484,10 +484,10 @@ deviantARTは存在を知らなかったので、いろいろ調べてみたい�
     
     <item>
       <title>2015年14週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-14/</link>
+      <link>/pages/summary/2015/week-14/</link>
       <pubDate>Mon, 06 Apr 2015 07:37:34 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-14/</guid>
+      <guid>/pages/summary/2015/week-14/</guid>
       <description>pitが便利 cho45/pit
 ユーザ名やキー等が必要な場合に、pitからロードするコードを書くことで、
 保存されていればそれをロード、保存されていなければエディタを立ち上げて入力を促し、
@@ -507,10 +507,10 @@ google/go-github</description>
     
     <item>
       <title>2015年13週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-13/</link>
+      <link>/pages/summary/2015/week-13/</link>
       <pubDate>Sun, 29 Mar 2015 10:37:34 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-13/</guid>
+      <guid>/pages/summary/2015/week-13/</guid>
       <description> プロトタイプ展に行きました 東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;に行きました。
 全く同じ素材でも構造を変えることで、握ったり持ったりしたときの感触が全く違うのはおもしろかったです。
 現代アートっぽいやつはよくわからなかったですが…
@@ -520,10 +520,10 @@ Goについて理解が深まった Golangを多く触った一週間でした�
     
     <item>
       <title>2015年12週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-12/</link>
+      <link>/pages/summary/2015/week-12/</link>
       <pubDate>Mon, 23 Mar 2015 07:34:46 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-12/</guid>
+      <guid>/pages/summary/2015/week-12/</guid>
       <description>gxuiを触ってた https://github.com/google/gxui
 GoogleによるGolang制のクロスプラットフォームなGUIライブラリです。
 クロスコンパイルは難しそうだけど、同じソースでビルドは普通にできそうです。
@@ -540,10 +540,10 @@ Hugoの場合、特にそんなコマンドはないようです。
     
     <item>
       <title>2015年11週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-11/</link>
+      <link>/pages/summary/2015/week-11/</link>
       <pubDate>Mon, 16 Mar 2015 07:34:46 +0900</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-11/</guid>
+      <guid>/pages/summary/2015/week-11/</guid>
       <description> Hugoに移行した このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。
 OctopressからHugoに乗り換えた
 GoのWindows開発環境を整えた IntelliJを使うとWindowsでも問題なく扱えます。
@@ -560,10 +560,10 @@ xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configura
     
     <item>
       <title>2015年10週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-10/</link>
+      <link>/pages/summary/2015/week-10/</link>
       <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-10/</guid>
+      <guid>/pages/summary/2015/week-10/</guid>
       <description>Hugoを実験中 今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。
 ゼロから作ると、テンプレート作成の大変さが身にしみます…
 デザインを考える部分はもちろんのこと、CSSとの格闘や、
@@ -585,10 +585,10 @@ xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configura
     
     <item>
       <title>2015年09週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-09/</link>
+      <link>/pages/summary/2015/week-09/</link>
       <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-09/</guid>
+      <guid>/pages/summary/2015/week-09/</guid>
       <description>今年も15%が終わった…
 GoのcronにPR送った Goのcronとしてhttps://github.com/robfig/cronを使ってますが、
 実行中か否かを取得できずに不便でした。
@@ -613,10 +613,10 @@ https://github.com/ota42y/plaintodo
     
     <item>
       <title>2015年08週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-08/</link>
+      <link>/pages/summary/2015/week-08/</link>
       <pubDate>Sun, 22 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-08/</guid>
+      <guid>/pages/summary/2015/week-08/</guid>
       <description>Todo.txtは思想は良いけど実際使うと微妙 Todo.txt テキストオンリーでTodo管理ができる手法です。
 ファイルをDropboxに置くことで、
 どこでも同期してTodo管理ができるようになります。
@@ -639,10 +639,10 @@ Windows上で開発するよりかは幾分マシになっていると思いま�
     
     <item>
       <title>2015年07週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-07/</link>
+      <link>/pages/summary/2015/week-07/</link>
       <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-07/</guid>
+      <guid>/pages/summary/2015/week-07/</guid>
       <description>既に今年の1/8が終わっているという事実…
 JenkinsのWorkflow Pluginがとても便利 Jenkins Workflow Pluginで複数slaveを扱うのが楽になる
 Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点 
@@ -660,10 +660,10 @@ Remember The Milkが使いにくく感じる  良い点
     
     <item>
       <title>2015年06週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-06/</link>
+      <link>/pages/summary/2015/week-06/</link>
       <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-06/</guid>
+      <guid>/pages/summary/2015/week-06/</guid>
       <description>ちゃんとその週に何をやったかをまとめると、
 今週はあんまり活動していない事がよくわかりますね…
 Jenkins Workflow Pluginが素晴らしそう Jenkins ユーザ・カンファレンス 2015 東京で知った、Workflow Pluginが思った以上に良さそうです。
@@ -680,10 +680,10 @@ twieveでツイートをevernoteに保存 twieveを使って、ツイートをev
     
     <item>
       <title>2015年05週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-05/</link>
+      <link>/pages/summary/2015/week-05/</link>
       <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-05/</guid>
+      <guid>/pages/summary/2015/week-05/</guid>
       <description>今週は二日ほど有給を取っていました。
 家で引きこもっていましたが、かなり有効に引きこもれたと思います。
 毎日色々していますが、やりたいことがどんどん増えてきます…
@@ -712,10 +712,10 @@ LVよりも会場の方が何十倍も凄かったです。
     
     <item>
       <title>2015年04週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-04/</link>
+      <link>/pages/summary/2015/week-04/</link>
       <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-04/</guid>
+      <guid>/pages/summary/2015/week-04/</guid>
       <description>先週やったことまとめ
 以外とあまりやってない。
 作りたいものは増えていくけど時間は無い。
@@ -738,10 +738,10 @@ URLをショートカットから開けなかったり、ヘッダー画像が�
     
     <item>
       <title>2015年03週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-03/</link>
+      <link>/pages/summary/2015/week-03/</link>
       <pubDate>Sat, 17 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-03/</guid>
+      <guid>/pages/summary/2015/week-03/</guid>
       <description>Jenkins ユーザ・カンファレンス 2015 東京 参加しました
 Workflow Plugin等を導入したいのですが、
 現在クリティカルパス上の作業をしているために手が回りません…
@@ -775,10 +775,10 @@ UIと強結合しているテスト cocos2d-xを使ってiPhoneアプリを作�
     
     <item>
       <title>2015年02週目まとめ</title>
-      <link>http://ota42y.com/pages/summary/2015/week-02/</link>
+      <link>/pages/summary/2015/week-02/</link>
       <pubDate>Sat, 10 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/pages/summary/2015/week-02/</guid>
+      <guid>/pages/summary/2015/week-02/</guid>
       <description>毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。
 主に1記事にするには難しいものや、失敗してダメだったものをまとめていく予定です。
 思った以上に面倒なので、来週はしないかもしれません…

@@ -2,21 +2,55 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Book on おおたの物置</title>
-    <link>http://ota42y.com/tags/book/</link>
+    <link>/tags/book/</link>
     <description>Recent content in Book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 06 Oct 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/book/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>技術書典５で本を３冊出しました</title>
+      <link>/blog/2018/10/07/techbook_5_result/</link>
+      <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/10/07/techbook_5_result/</guid>
+      <description>10/8の技術書典５で関わった本を３冊出しました。
+お買い求めくださった方、ありがとうございます。
+また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。
+Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）
+How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）
+また、既刊のマイクロサービス本もBOOTHで販売中です。
+Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
+なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。
+販売結果 マイクロサービス本は新刊３００、既刊１００冊＋αを持って行きましたが、どちらもほとんど残っておらず、多少残る予定で刷ったので非常に驚いています。
+Flutter本は１００冊全部売り切れました。
+こちらは被チェック数の時点で既に上回っており、手に取れなかった方には申し訳ないです。
+会社本も予想を超えて売れるなど大盛況でした。
+重ね重ねお買い求めいただきありがとうございます。
+今回３サークル併せて720冊ぐらい持ち込みましたが、そのうち600冊は売れているので本当にびっくりです…
+また、マイクロサービス本は新刊既刊共に売り切れず、かつ大量に残らずといった、ほぼ頒布数どおりの数を刷れたので、とてもいい結果になったと思います。
+販売数の推移 マイクロサービス本はそこそこの精度で販売冊数の推移を記録しており、以下のようになります。
+開始２時間で１５０冊ぐらい、残りの時間でもう１５０冊ぐらいなイメージです。
+なお、一部記録に失敗した本があるため、売れた冊数と上のグラフは微妙に違います…
+やはり最初の1時間の売り上げは凄い量になっています。
+Flutter本に関しては以下の通りです。
+13時の売り上げが0冊となっていますが、おそらく14時の売り上げにマージされていそうです。
+今回、わりとこういうのが多かったので次は売り上げ管理をやりやすい物にしたいと思います…
+被チェック数の推移 マイクロサービス本に関してはerukiti/techbookfest-circle-botを使わせて頂き、被チェック数を社内Slackに流していました。
+(共著者は全て社内の人間なので…)
+かいつまんでだすと以下になります。
+   日付 被チェック数     9/ 17 20:00 22   9/ 24 20:00 30   10/ 1 20:00 49   10/ 2 20:00 52   10/ 3 20:00 62   10/ 4 20:00 76   10/ 5 20:00 90   10/ 6 20:00 112   10/ 7 20:00 136   10/ 8 08:00 186   10/ 8 14:00 235    グラフとしてはこんな感じです。</description>
+    </item>
+    
+    <item>
       <title>技術書典５で本が３冊出ます</title>
-      <link>http://ota42y.com/blog/2018/10/06/techbook_5/</link>
+      <link>/blog/2018/10/06/techbook_5/</link>
       <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/06/techbook_5/</guid>
+      <guid>/blog/2018/10/06/techbook_5/</guid>
       <description>10/8の技術書典５で関わった本が３冊でます。
 技術書典５で私が何故か３サークルの運営に関与していたので…
 Microservices architecture よろず本 その二 か１３「すべてがM(icro)になる」でマイクロサービスよろず本その二を頒布します！
@@ -52,10 +86,10 @@ Amazon Web Servicesサーバーレスレシピ という本を出します
     
     <item>
       <title>Amazon Web Servicesサーバーレスレシピ という本を出します</title>
-      <link>http://ota42y.com/blog/2018/10/04/2018-10-04/</link>
+      <link>/blog/2018/10/04/2018-10-04/</link>
       <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/04/2018-10-04/</guid>
+      <guid>/blog/2018/10/04/2018-10-04/</guid>
       <description>Amazon Web Servicesサーバーレスレシピ という本が明日10/5に出ます。
 元々技術書典で書いた本を更に加筆修正したものになります。
 どんな本 この本は元々技術書典4で私も記事を書いた「Amazon Web Services サーバーレスレシピ 2018.04」がベースになっています。
@@ -74,10 +108,10 @@ Amazon Web Servicesサーバーレスレシピ | 電子書籍とプリントオ�
     
     <item>
       <title>技術書展4でMicroservices architecture よろず本を出した</title>
-      <link>http://ota42y.com/blog/2018/04/23/techbookfest_4/</link>
+      <link>/blog/2018/04/23/techbookfest_4/</link>
       <pubDate>Mon, 23 Apr 2018 10:00:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/23/techbookfest_4/</guid>
+      <guid>/blog/2018/04/23/techbookfest_4/</guid>
       <description>先日行われた技術書典4で、 Microservices architecture よろず本 を出しました。
 足を伸ばして頂いた方、ありがとうございます。
 #技術書典4 設営完了！！！ pic.twitter.com/7YawpUZrLw
@@ -106,10 +140,10 @@ Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダ
     
     <item>
       <title>技術書典4でMicroservices architectureよろず本を出します</title>
-      <link>http://ota42y.com/blog/2018/04/10/microservices_yorozu_book/</link>
+      <link>/blog/2018/04/10/microservices_yorozu_book/</link>
       <pubDate>Tue, 10 Apr 2018 04:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/10/microservices_yorozu_book/</guid>
+      <guid>/blog/2018/04/10/microservices_yorozu_book/</guid>
       <description>Boothで電子版の販売をしています
 Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
 技術書典4の&amp;rdquo;か13&amp;rdquo;、「すべてがM(icro)になる」で、 Microservices architecture よろず本 を出します。
@@ -124,10 +158,10 @@ https://techbookfest.org/event/tbf04/circle/16650003
     
     <item>
       <title>UNIXという考え方という本を読んだ</title>
-      <link>http://ota42y.com/blog/2015/01/04/unix-boox/</link>
+      <link>/blog/2015/01/04/unix-boox/</link>
       <pubDate>Sun, 04 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/04/unix-boox/</guid>
+      <guid>/blog/2015/01/04/unix-boox/</guid>
       <description>UNIXという考え方という本を読みました。
 原著は1994年に書かれている本で、 UNIXの哲学を一つ一つ、その意味と利点について解説しています。
 「一つのことを、うまくやれ」や「小さいものは美しい」等、ある程度ハッカー文化に詳しい人ならばどれかは聞いたことがあるぐらい有名な哲学です。
@@ -142,10 +176,10 @@ https://techbookfest.org/event/tbf04/circle/16650003
     
     <item>
       <title>Webで何かを作る人誰もが読むべき本だった - ハイパフォーマンス ブラウザネットワーキング</title>
-      <link>http://ota42y.com/blog/2014/05/13/browser-networking/</link>
+      <link>/blog/2014/05/13/browser-networking/</link>
       <pubDate>Tue, 13 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/05/13/browser-networking/</guid>
+      <guid>/blog/2014/05/13/browser-networking/</guid>
       <description>丸一日かけて読んだので書評っぽいのを。
 Webで何かしようとする人はどのレイヤの人も必読だと思います。
 インフラはもちろんのこと、アプリを作っている人も知らないでは済まされません。

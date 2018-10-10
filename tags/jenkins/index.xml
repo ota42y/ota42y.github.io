@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jenkins on おおたの物置</title>
-    <link>http://ota42y.com/tags/jenkins/</link>
+    <link>/tags/jenkins/</link>
     <description>Recent content in Jenkins on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 28 Feb 2016 19:37:37 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Jenkinsのノード選択をNode and Label parameter pluginでやる</title>
-      <link>http://ota42y.com/blog/2016/02/28/jenkins_node_select/</link>
+      <link>/blog/2016/02/28/jenkins_node_select/</link>
       <pubDate>Sun, 28 Feb 2016 19:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/28/jenkins_node_select/</guid>
+      <guid>/blog/2016/02/28/jenkins_node_select/</guid>
       <description> 概要 Jenkinsのノード制御はあまりカスタマイズが効きません。そのため、ノードを細かく制御したい場合はジョブを分ける必要があり、ジョブ数が増えて管理コストが上がります。このプラグインはパラメーターでノードを選択できるので、一つのジョブでノードごとにジョブを動かせるようになります。
 Jenkinsのノード選択は柔軟性に欠ける Jenkinsのノード選択がパラメータでできるプラグインです。 Jenkinsでは基本機能として、実行するノードを制限して特定ノードでだけジョブを実行できます。 ですが、この設定項目は柔軟性に欠け、パラメータでノードを切り替えたり、該当するノード全てでビルドするといったことができません。 そのため、例えばgoでWindowsとMac両方でテストを実行したい場合、windows用とmac用というノードごとの個別のジョブを作る必要があります。 しかし、それを続けるとJenkinsのジョブの数が際限なく増えていき、ジョブのメンテが大変になるという問題が出ます。
 Node and Label parameter plugin https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin
@@ -31,10 +31,10 @@ Pipeline Pluginとの違い Pipeline Pluginでは、Jenkinsのジョブを丸ご
     
     <item>
       <title>JenkinsをHTTP経由で叩く</title>
-      <link>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
+      <link>/blog/2015/02/27/jenkins-remote-api/</link>
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
+      <guid>/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>まとめ  JenkinsはWebベースのUI  操作の敷居が低い 使い込むと使いづらくなる 反応速度 複数のビルド実行  Remote access API  HTTP経由でJobを実行できる ページ表示を待たなくていいため高速 プログラムから実行可能 ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない
    JenkinsのJob実行は大変 JenkinsはWebブラウザを使ってGUIで操作するため、
 操作の敷居が低く、簡単に扱えるようになっています。
@@ -60,10 +60,10 @@ require &#39;open-uri&#39; require &#39;net/http&#39; platforms = [&amp;quot;ios
     
     <item>
       <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
+      <link>/blog/2015/02/11/jenkins-workflow/</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
+      <guid>/blog/2015/02/11/jenkins-workflow/</guid>
       <description>まとめ  ブランチをパラメーターにするとスクリプトを読めない  中身ではなく変数名のブランチを探しに行く 多分バグ  ファイルから読み込むるスクリプトを書けば解決  公式のflow.groovyを参考に 変数を使おうとすると面倒 java.io.Serializableを実装する必要あり   gitリポジトリ内のスクリプトを指定できない (以下に用意されているdocker上のJenkinsで確認しました)
 https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md
 Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込んで実行する機能があります。
@@ -81,10 +81,10 @@ Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込�
     
     <item>
       <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
-      <link>http://ota42y.com/blog/2015/02/10/workflow-plugin/</link>
+      <link>/blog/2015/02/10/workflow-plugin/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
+      <guid>/blog/2015/02/10/workflow-plugin/</guid>
       <description>まとめ  Jenkinsはjob単位でしかノードに割り振れない  複数ノードで分散ビルドするには設定を駆使する必要がある 結果としてjobの数が増えて管理コストが増大する  Workflow Pluginで大幅に改善する  スクリプトからノードを指定してコマンドを実行できる 複数のjobを組み合わせていたのが一つのスクリプトですむ スクリプトをVCSに入れればビルド設定のバージョン管理も可能   複数ノードをコントロールするのは難しい Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、
 複数のノードで、jobの一部の部分だけを別のノードで実行するなど、
 ある程度複雑な分散をやろうとすると、Jenkins本体の機能では不足してきます。
@@ -113,10 +113,10 @@ node(&amp;quot;master&amp;quot;){ sh &amp;quot;rake config&amp;quot; archive &am
     
     <item>
       <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
-      <link>http://ota42y.com/blog/2015/01/11/jenkins-conference/</link>
+      <link>/blog/2015/01/11/jenkins-conference/</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/11/jenkins-conference/</guid>
+      <guid>/blog/2015/01/11/jenkins-conference/</guid>
       <description>Jenkins ユーザ・カンファレンス 2015 東京に参加しました。
 Togetterまとめ
 発表まとめ アンケート結果  参加申し込み時のアンケート結果 多くの人のjobの数が1〜数個程度 Jenkins無くても生きていける人が30％ぐらい
@@ -125,10 +125,10 @@ Togetterまとめ
     
     <item>
       <title>Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる</title>
-      <link>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</link>
+      <link>/blog/2014/11/27/jenkins-build-flow-plugin/</link>
       <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
+      <guid>/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
       <description>まとめ  Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒 全てをスクリプトで実行するのが理想だが、本体の機能を使いたい場合は対応できない build flow pluginがファイルを読み込んで実行できるようになった これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る  Jenkinsのjob設定問題 Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。
 例えばビルド手順を変更する場合、プラグイン設定に後方互換性がないような変更を行うと、
 前のバージョンをビルドしたときにエラーになります。
@@ -156,10 +156,10 @@ Build Flow Plugin
     
     <item>
       <title>Jenkinsで複雑な処理をするときのjob構成について</title>
-      <link>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</link>
+      <link>/blog/2014/07/21/jenkins-architecture/</link>
       <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/07/21/jenkins-architecture/</guid>
+      <guid>/blog/2014/07/21/jenkins-architecture/</guid>
       <description>変数やビルド後の通知設定等が違うために、
 ほぼ同じ内容のjobを15個ぐらい使っていたら、
 だんだんと運用が死んできたのでメモ。

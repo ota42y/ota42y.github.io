@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Api on おおたの物置</title>
-    <link>http://ota42y.com/tags/api/</link>
+    <link>/tags/api/</link>
     <description>Recent content in Api on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 19 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/api/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Twitterのoath_callbackは設定していないと上書きできない</title>
-      <link>http://ota42y.com/blog/2014/09/19/twitter-callback/</link>
+      <link>/blog/2014/09/19/twitter-callback/</link>
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/19/twitter-callback/</guid>
+      <guid>/blog/2014/09/19/twitter-callback/</guid>
       <description>Twitterはoauth/request_tokenへのアクセス時に、
 認証後のコールバック先をoauth_callbackパラメータで上書きできます。
 Twitterの開発者画面からは独自スキーマは登録できませんが、

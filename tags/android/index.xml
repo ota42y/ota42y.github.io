@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on おおたの物置</title>
-    <link>http://ota42y.com/tags/android/</link>
+    <link>/tags/android/</link>
     <description>Recent content in Android on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>dump/restoreコマンドでデータのバックアップ・リストアをする</title>
-      <link>http://ota42y.com/blog/2016/02/07/dump_restore_command/</link>
+      <link>/blog/2016/02/07/dump_restore_command/</link>
       <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/02/07/dump_restore_command/</guid>
+      <guid>/blog/2016/02/07/dump_restore_command/</guid>
       <description>まとめ  dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利  もちろんHDDでもいける Windowsは基本的にSDカードの第一パーティションしか認識できない   SDカードのデータ移行がしたい Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。
 ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。
 ASUS MeMO Pad 7 ME572CでLink2SDを動かす
@@ -29,10 +29,10 @@ SDカードの第二パーティションのマウント Link2SDを使ってい�
     
     <item>
       <title>Androidでクリップボードの中身を自動で辞書検索</title>
-      <link>http://ota42y.com/blog/2015/01/21/android-dict/</link>
+      <link>/blog/2015/01/21/android-dict/</link>
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/21/android-dict/</guid>
+      <guid>/blog/2015/01/21/android-dict/</guid>
       <description>まとめ  clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dictが連携先として優秀 英辞郎は形式が違うため辛い Google Driveをビューワーとして使うといい  ポップアップ辞書アプリ iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。
 Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、
 clip2dicというアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。
@@ -65,10 +65,10 @@ pdicからStartDict形式の変換はとても手間がかかるのと、
     
     <item>
       <title>ASUS MeMO Pad 7 ME572CでLink2SDを動かす</title>
-      <link>http://ota42y.com/blog/2014/12/30/link2sd/</link>
+      <link>/blog/2014/12/30/link2sd/</link>
       <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/30/link2sd/</guid>
+      <guid>/blog/2014/12/30/link2sd/</guid>
       <description>ME572CにはSDカードが挿せるため、
 本体の容量が足りなくなっても気軽に容量を追加できます。
 ですが、対応しているアプリしかSDカードにデータが保存できず、
@@ -102,10 +102,10 @@ EvernoteやKindleではこのデータ部分が大きくなっていくため、
     
     <item>
       <title>ASUS MeMO Pad 7 ME572CをRoot化した</title>
-      <link>http://ota42y.com/blog/2014/12/28/memopad-root/</link>
+      <link>/blog/2014/12/28/memopad-root/</link>
       <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/28/memopad-root/</guid>
+      <guid>/blog/2014/12/28/memopad-root/</guid>
       <description>ASUS MeMO Pad 7 ME572Cを買いました。
 タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS
 Nexus 9とかと迷いましたが、
@@ -124,10 +124,10 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
     
     <item>
       <title>参加記録 Android Bazaar and Conference 2014 Winter</title>
-      <link>http://ota42y.com/blog/2014/12/21/abc2014w/</link>
+      <link>/blog/2014/12/21/abc2014w/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/12/21/abc2014w/</guid>
+      <guid>/blog/2014/12/21/abc2014w/</guid>
       <description>Android Bazaar and Conference 2014 Winterに参加してきました。
 なかなか興味深いお話を聞けたので、気になった部分を抜粋
  携帯は９５％の人類が持ってる
@@ -147,10 +147,10 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
     
     <item>
       <title>CentOS7でAndroid SDKとNDKを使う</title>
-      <link>http://ota42y.com/blog/2014/09/04/centos7-android-build/</link>
+      <link>/blog/2014/09/04/centos7-android-build/</link>
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/04/centos7-android-build/</guid>
+      <guid>/blog/2014/09/04/centos7-android-build/</guid>
       <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686  他にもいくつかあった気がしますが、
 後はエラーとして出たコマンドをインストールするだけなので都度入れてください
 Android SDKとNDKのダウンロード http://developer.android.com/sdk/index.html

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on おおたの物置</title>
-    <link>http://ota42y.com/tags/machine-learning/</link>
+    <link>/tags/machine-learning/</link>
     <description>Recent content in Machine Learning on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 11 Oct 2015 22:39:33 +0900</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
-      <link>http://ota42y.com/blog/2015/10/11/alchemyapi/</link>
+      <link>/blog/2015/10/11/alchemyapi/</link>
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
+      <guid>/blog/2015/10/11/alchemyapi/</guid>
       <description>まとめ  AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能性凄い  画像認識ライブラリすら必要ない世界…   AlchemyAPIで画像認識が凄い簡単にできる 先日のABPro2015でこんな発表をしました。
   身近なサイバー攻撃から身を守る  from ota42y 
 ここで画像の判定にAlchemyAPIを利用しています。

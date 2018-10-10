@@ -2,21 +2,55 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on おおたの物置</title>
-    <link>http://ota42y.com/tags/ruby/</link>
+    <link>/tags/ruby/</link>
     <description>Recent content in Ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 06 Oct 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>技術書典５で本を３冊出しました</title>
+      <link>/blog/2018/10/07/techbook_5_result/</link>
+      <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/10/07/techbook_5_result/</guid>
+      <description>10/8の技術書典５で関わった本を３冊出しました。
+お買い求めくださった方、ありがとうございます。
+また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。
+Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）
+How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）
+また、既刊のマイクロサービス本もBOOTHで販売中です。
+Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
+なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。
+販売結果 マイクロサービス本は新刊３００、既刊１００冊＋αを持って行きましたが、どちらもほとんど残っておらず、多少残る予定で刷ったので非常に驚いています。
+Flutter本は１００冊全部売り切れました。
+こちらは被チェック数の時点で既に上回っており、手に取れなかった方には申し訳ないです。
+会社本も予想を超えて売れるなど大盛況でした。
+重ね重ねお買い求めいただきありがとうございます。
+今回３サークル併せて720冊ぐらい持ち込みましたが、そのうち600冊は売れているので本当にびっくりです…
+また、マイクロサービス本は新刊既刊共に売り切れず、かつ大量に残らずといった、ほぼ頒布数どおりの数を刷れたので、とてもいい結果になったと思います。
+販売数の推移 マイクロサービス本はそこそこの精度で販売冊数の推移を記録しており、以下のようになります。
+開始２時間で１５０冊ぐらい、残りの時間でもう１５０冊ぐらいなイメージです。
+なお、一部記録に失敗した本があるため、売れた冊数と上のグラフは微妙に違います…
+やはり最初の1時間の売り上げは凄い量になっています。
+Flutter本に関しては以下の通りです。
+13時の売り上げが0冊となっていますが、おそらく14時の売り上げにマージされていそうです。
+今回、わりとこういうのが多かったので次は売り上げ管理をやりやすい物にしたいと思います…
+被チェック数の推移 マイクロサービス本に関してはerukiti/techbookfest-circle-botを使わせて頂き、被チェック数を社内Slackに流していました。
+(共著者は全て社内の人間なので…)
+かいつまんでだすと以下になります。
+   日付 被チェック数     9/ 17 20:00 22   9/ 24 20:00 30   10/ 1 20:00 49   10/ 2 20:00 52   10/ 3 20:00 62   10/ 4 20:00 76   10/ 5 20:00 90   10/ 6 20:00 112   10/ 7 20:00 136   10/ 8 08:00 186   10/ 8 14:00 235    グラフとしてはこんな感じです。</description>
+    </item>
+    
+    <item>
       <title>技術書典５で本が３冊出ます</title>
-      <link>http://ota42y.com/blog/2018/10/06/techbook_5/</link>
+      <link>/blog/2018/10/06/techbook_5/</link>
       <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/10/06/techbook_5/</guid>
+      <guid>/blog/2018/10/06/techbook_5/</guid>
       <description>10/8の技術書典５で関わった本が３冊でます。
 技術書典５で私が何故か３サークルの運営に関与していたので…
 Microservices architecture よろず本 その二 か１３「すべてがM(icro)になる」でマイクロサービスよろず本その二を頒布します！
@@ -52,10 +86,10 @@ Amazon Web Servicesサーバーレスレシピ という本を出します
     
     <item>
       <title>bootsnapの速度計測</title>
-      <link>http://ota42y.com/blog/2018/06/04/bootsnap/</link>
+      <link>/blog/2018/06/04/bootsnap/</link>
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/06/04/bootsnap/</guid>
+      <guid>/blog/2018/06/04/bootsnap/</guid>
       <description>shinjuku.rbで話した内容です。
 資料あげようと思って完全に忘れていたので上げます…
 要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
@@ -65,10 +99,10 @@ Amazon Web Servicesサーバーレスレシピ という本を出します
     
     <item>
       <title>gemのバージョンアップで依存関係が壊れるのを調べやすくした</title>
-      <link>http://ota42y.com/blog/2018/04/04/virtual_gem/</link>
+      <link>/blog/2018/04/04/virtual_gem/</link>
       <pubDate>Wed, 04 Apr 2018 00:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/04/04/virtual_gem/</guid>
+      <guid>/blog/2018/04/04/virtual_gem/</guid>
       <description>要約  gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる  5.2.0がリリースするまでインストールできないと気がつきにくい  任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った  https://github.com/ota42y/virtual_gem 5.2.0.rc2を元に5.2.0のgemを作れる 任意のgemの依存関係を書き換えられる 事前に依存関係が壊れるのを調べやすくなる   gemの依存関係によるインストール失敗 現在、Rails 5.2.0.rc2がリリースされています。
 ですが、仮に現状で上手く動いていたとしても5.2.0のリリース時に一部のgemの依存関係が5.2.0.rc2までしか受け入れておらず、インストールできなくなる可能性があります。
 gemには依存関係を設定できますが、&#39;&amp;lt; 5.2.0&#39; と書いた場合は5.2.0未満のgemを指定したこととなるため、5.2.0.rc2は対象となります。
@@ -91,10 +125,10 @@ require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42
     
     <item>
       <title>Globalizeを使ったRailsを5系対応する際にはまった</title>
-      <link>http://ota42y.com/blog/2018/03/28/globalize_5/</link>
+      <link>/blog/2018/03/28/globalize_5/</link>
       <pubDate>Wed, 28 Mar 2018 09:10:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/03/28/globalize_5/</guid>
+      <guid>/blog/2018/03/28/globalize_5/</guid>
       <description>要約  columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい チェックして消す&amp;amp;今後増えないようにするgemを作った  問題  GlobalizeをRails5対応版(5.1.0.beta2)にあげる 一部の処理が落ちる(´・_・`)  原因 News.columns_hash.keysは、そのモデルのカラム名を配列で返します。
 GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。
 しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。
@@ -110,10 +144,10 @@ News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&a
     
     <item>
       <title>一部のSAMLライブラリの脆弱性の詳細</title>
-      <link>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</link>
+      <link>/blog/2018/03/01/saml_vulnerability/</link>
       <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2018/03/01/saml_vulnerability/</guid>
+      <guid>/blog/2018/03/01/saml_vulnerability/</guid>
       <description>複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。
 JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性
 どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。
@@ -143,10 +177,10 @@ Exclusive XML Canonicalization Version 1.0
     
     <item>
       <title>ゼロから始めるgem生活</title>
-      <link>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</link>
+      <link>/blog/2017/08/20/rubygem-tutorial/</link>
       <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2017/08/20/rubygem-tutorial/</guid>
+      <guid>/blog/2017/08/20/rubygem-tutorial/</guid>
       <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを下げるために30分程度で0からgemを作るハンズオンをやりました。
 これはそのときにやったことのメモで、現状これに沿って行っていけば簡単なgemを公開できるようになります。
 ゴール  簡単なgemを作成してrubygemsで公開するまで  事前準備  githubにアカウント作る git pushで自分のリポジトリにpushできる状態 ruby 2.0以上 gem install bundler 済み gem update &amp;ndash;system 済み  名前決め まずgemの名前を決めます。
@@ -160,10 +194,10 @@ namespaceの階層を合わせるため、区切り文字は_ではなく-を使
     
     <item>
       <title>committee &#43; prmd でJSON Schemaをいい感じに運用する</title>
-      <link>http://ota42y.com/blog/2016/12/19/finc-advent/</link>
+      <link>/blog/2016/12/19/finc-advent/</link>
       <pubDate>Mon, 19 Dec 2016 22:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/12/19/finc-advent/</guid>
+      <guid>/blog/2016/12/19/finc-advent/</guid>
       <description>FiNC Developer Advent Calendar 2016の19日目の記事です。
 要約  リクエスト・レスポンス形式のドキュメントはメンテが大変 メンテされていなくても気がつかないため放置され気味 committeeでJSON Schemaに実装が沿っているかを確認可能 prmdでJSON Schemaを楽に書ける＋人が読めるドキュメントが生成できる メンテされていない事が検出できるので続く（はず  API作成時のリクエスト・レスポンス形式問題 サーバとクライアントで並行開発しながらAPIを作成する場合、以下のようにリクエスト・レスポンス形式を整えにくいという問題があります。
  リクエストの形式が想定と違う  想定外のキーを送ってくる 構造が想定していない構造  レスポンスに知らないキーが含まれている 同じデータなのにエンドポイントによって形式が違う  enumの数値だったり、対応する文字列だったり カテゴリ名を返していたりカテゴリIDを返していたり   コミュニケーションや、APIに関するドキュメントをきちんとメンテしていれば回避可能な問題ですが、
@@ -178,10 +212,10 @@ http://json-schema.org/
     
     <item>
       <title>Shinjuku.rb #42でRubocopについて話した</title>
-      <link>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</link>
+      <link>/blog/2016/10/27/shinjuku-rb-42/</link>
       <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/10/27/shinjuku-rb-42/</guid>
+      <guid>/blog/2016/10/27/shinjuku-rb-42/</guid>
       <description> Shinjuku.rb #42に行ってきました。
 http://shinjukurb.connpass.com/event/42245/
 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。
@@ -198,10 +232,10 @@ soutaro/querly: Query Method Calls from Ruby Programs
     
     <item>
       <title>Ginza.rb 第40回でprmdについて話した</title>
-      <link>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</link>
+      <link>/blog/2016/10/22/ginza-rb-40/</link>
       <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2016/10/22/ginza-rb-40/</guid>
+      <guid>/blog/2016/10/22/ginza-rb-40/</guid>
       <description> Ginza.rb 第40回に行ってきました。
 https://ginzarb.doorkeeper.jp/events/52895
 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。
@@ -215,10 +249,10 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
-      <link>http://ota42y.com/blog/2015/07/05/dino/</link>
+      <link>/blog/2015/07/05/dino/</link>
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/07/05/dino/</guid>
+      <guid>/blog/2015/07/05/dino/</guid>
       <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
 ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
 PCとからArduinoを制御する場合、
@@ -241,10 +275,10 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
     
     <item>
       <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
+      <link>/blog/2015/01/28/bundle-in-bundle/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
+      <guid>/blog/2015/01/28/bundle-in-bundle/</guid>
       <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、
 一回目のbundlerに対してbundleが実行されてしまい、
 別のbundleを呼び出せないという問題が起きました。
@@ -259,10 +293,10 @@ oh hai thar Using hello_world_gem 0.</description>
     
     <item>
       <title>YAMLでnilをキーにしたハッシュを扱う</title>
-      <link>http://ota42y.com/blog/2014/11/25/ruby-hash/</link>
+      <link>/blog/2014/11/25/ruby-hash/</link>
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/25/ruby-hash/</guid>
+      <guid>/blog/2014/11/25/ruby-hash/</guid>
       <description>例は全てRuby 2.0を利用しています
 nilをキーとした値を持つハッシュをYAMLに書きたい場合、
 以下のように書いても&amp;rdquo;nil&amp;rdquo;という文字列として認識されます。
@@ -282,10 +316,10 @@ require &#39;yaml&#39; def mkhash(k,v) h = {} h[k] = v h end long = &amp;quot;a&
     
     <item>
       <title>Linux上でrubyのPTYを使うと、Errno::EIOが出る</title>
-      <link>http://ota42y.com/blog/2014/10/26/pty-ieo-error/</link>
+      <link>/blog/2014/10/26/pty-ieo-error/</link>
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/10/26/pty-ieo-error/</guid>
+      <guid>/blog/2014/10/26/pty-ieo-error/</guid>
       <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと
 Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。
 require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end  どうやら、読み込んだ際にBSDだとnilになりますが、GNU/LinuxだとErrno::EIOが発生する仕様らしいです。
@@ -295,10 +329,10 @@ Ruby on Linux PTY goes away without EOF, raises Errno::EIO
     
     <item>
       <title>selenium-webdriverでRuby からブラウザを操作する</title>
-      <link>http://ota42y.com/blog/2014/08/24/selenium/</link>
+      <link>/blog/2014/08/24/selenium/</link>
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/24/selenium/</guid>
+      <guid>/blog/2014/08/24/selenium/</guid>
       <description>まとめ  selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 rubyのgemがあり、簡単に導入できる Firefoxならgemを入れるだけで動かせる  Rubyのスクレイピング方法 Rubyでスクレイピングする方法としては、 NokogiriやMechanizeが存在します。
 どちらもHTMLを解析してページの要素にアクセスします。
 ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、
@@ -320,10 +354,10 @@ require &amp;quot;selenium-webdriver&amp;quot; profile = Selenium::WebDriver::Fi
     
     <item>
       <title>AutomatorでEvernoteのノートリンクを置き換える</title>
-      <link>http://ota42y.com/blog/2014/08/16/evernote-url/</link>
+      <link>/blog/2014/08/16/evernote-url/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/16/evernote-url/</guid>
+      <guid>/blog/2014/08/16/evernote-url/</guid>
       <description>まとめ  シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを実行できる  Automatorでスクリプトを実行する 前回(Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした) では、
 スクリプトの実行方法が微妙たったのでもう少し修正してみました。
 結論としては、Macと標準で入っているAutomatorを使うことで、
@@ -354,10 +388,10 @@ source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;cl
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>http://ota42y.com/blog/2014/08/10/evernote-link/</link>
+      <link>/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/10/evernote-link/</guid>
+      <guid>/blog/2014/08/10/evernote-link/</guid>
       <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
 この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
 そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。
@@ -389,10 +423,10 @@ Macでは残念ながらまともな物はありませんでした。
     
     <item>
       <title>Railsはアクセスをどう処理しているのか(1)</title>
-      <link>http://ota42y.com/blog/2013/11/10/rails-trace-1/</link>
+      <link>/blog/2013/11/10/rails-trace-1/</link>
       <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2013/11/10/rails-trace-1/</guid>
+      <guid>/blog/2013/11/10/rails-trace-1/</guid>
       <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。
 まだ全部追い切れてないですが、思った以上に長くなったのでとりあえずメモとして出 してみます。
 一部Rails力やRuby力が足りなくて追い切れない部分がありますが(´･_･`)

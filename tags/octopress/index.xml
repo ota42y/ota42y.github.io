@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octopress on おおたの物置</title>
-    <link>http://ota42y.com/tags/octopress/</link>
+    <link>/tags/octopress/</link>
     <description>Recent content in Octopress on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 30 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Octopressのアップデート手順</title>
-      <link>http://ota42y.com/blog/2014/11/30/octopress-update/</link>
+      <link>/blog/2014/11/30/octopress-update/</link>
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/30/octopress-update/</guid>
+      <guid>/blog/2014/11/30/octopress-update/</guid>
       <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。
 だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、
 forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。
@@ -39,10 +39,10 @@ Rubyの特徴上、変数にあらゆるオブジェクトが入る事がある�
     
     <item>
       <title>WordpressからOctopressへ</title>
-      <link>http://ota42y.com/blog/2013/09/25/octopress/</link>
+      <link>/blog/2013/09/25/octopress/</link>
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2013/09/25/octopress/</guid>
+      <guid>/blog/2013/09/25/octopress/</guid>
       <description>前までブログシステムにはWordpressを使っていたんですが、
 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。
 そこで、ちょっと話題になってる(らしい)Octopressを導入してみました。

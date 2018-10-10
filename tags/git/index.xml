@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on おおたの物置</title>
-    <link>http://ota42y.com/tags/git/</link>
+    <link>/tags/git/</link>
     <description>Recent content in Git on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 07 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>gitで現在のブランチ名をクリップボードにコピーする</title>
-      <link>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</link>
+      <link>/blog/2014/09/07/git-copy-current-branch/</link>
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/09/07/git-copy-current-branch/</guid>
+      <guid>/blog/2014/09/07/git-copy-current-branch/</guid>
       <description># copy current branch ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot;  Jenkinsでブランチ○○をビルドしたいような場合に、
 jenkinsに渡すために現在のブランチを調べるのが面倒だったので、
 簡単にコピペできるようにしました。
@@ -25,10 +25,10 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
     
     <item>
       <title>スマホアプリ開発でgit-new-workdirがとても便利だった</title>
-      <link>http://ota42y.com/blog/2014/08/25/git-new-workdir/</link>
+      <link>/blog/2014/08/25/git-new-workdir/</link>
       <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/25/git-new-workdir/</guid>
+      <guid>/blog/2014/08/25/git-new-workdir/</guid>
       <description>まとめ  ビルドに時間がかかる環境下では、ビルドのキャッシュが重要 ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる 別ブランチでちょっとした修正を行おうとすると、移動と戻りとで二回ビルドし直しが起きる リポジトリを複数cloneすると、管理が面倒 git-new-workdirなら、.gitを共用しつつ、別々のフォルダで作業できる そのため、ビルドのキャッシュを最大限活用できる スマホアプリじゃなくても便利  ビルドのキャッシュ Objective-cやJava、C++でスマホアプリを作成する場合、
 どの言語もコンパイルが必要になります。
 このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。

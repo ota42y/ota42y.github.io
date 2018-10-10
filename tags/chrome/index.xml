@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chrome on おおたの物置</title>
-    <link>http://ota42y.com/tags/chrome/</link>
+    <link>/tags/chrome/</link>
     <description>Recent content in Chrome on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
+      <link>/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>/blog/2015/01/31/evernote-opener-update/</guid>
       <description>evernote url openerを更新しました。
 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、
 ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。
@@ -27,10 +27,10 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>まとめ
  Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人を非表示にする拡張作った DLはここから  Pixivのイラスト検索でフォロワーを除外できない Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、
 検索結果にフォローしてる人とそうでない人が交じります。
@@ -50,10 +50,10 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>http://ota42y.com/blog/2014/08/17/local-storage/</link>
+      <link>/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/17/local-storage/</guid>
+      <guid>/blog/2014/08/17/local-storage/</guid>
       <description>Chrome拡張でデータを保存しようとした場合に、
 最も簡単に扱えるのが、localStorageです。
 manifest.jsonの設定 manifest.jsonに以下のパーミッションを追加してください

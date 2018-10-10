@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Study on おおたの物置</title>
-    <link>http://ota42y.com/tags/study/</link>
+    <link>/tags/study/</link>
     <description>Recent content in Study on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/study/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/study/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dockerとは何か</title>
-      <link>http://ota42y.com/blog/2014/11/26/docker/</link>
+      <link>/blog/2014/11/26/docker/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/26/docker/</guid>
+      <guid>/blog/2014/11/26/docker/</guid>
       <description>Dockerについて調べたので概要と簡単な使い方のメモ
 Dockerとは何か いわゆるコンテナ型仮想化ツールの1つです。
 VMwareやKVMのような完全仮想化と違い、
@@ -45,10 +45,10 @@ docker build -t jenkins . を実行し、カレントディレクトリのDocker
     
     <item>
       <title>sortやfind_ifの条件指定はどういう動きをしているのか</title>
-      <link>http://ota42y.com/blog/2014/08/11/find-if/</link>
+      <link>/blog/2014/08/11/find-if/</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/11/find-if/</guid>
+      <guid>/blog/2014/08/11/find-if/</guid>
       <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、
 関数orオブジェクトを渡すことで条件を自由に設定できます。
 参考
@@ -61,10 +61,10 @@ template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt; void
     
     <item>
       <title>MessagePack って何？</title>
-      <link>http://ota42y.com/blog/2014/08/05/msgpack/</link>
+      <link>/blog/2014/08/05/msgpack/</link>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/08/05/msgpack/</guid>
+      <guid>/blog/2014/08/05/msgpack/</guid>
       <description>最近よく聞くMessagePackとは何かを調べたのでメモ。
 MessagePackとは バイナリでデータを保存するフォーマットです。
 JSONと比べると、保存した状態の可読性を犠牲にする代わりに、

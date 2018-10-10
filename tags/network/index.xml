@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network on おおたの物置</title>
-    <link>http://ota42y.com/tags/network/</link>
+    <link>/tags/network/</link>
     <description>Recent content in Network on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 20 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ota42y.com/tags/network/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/network/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Github Pagesの新しいIPアドレス対応</title>
-      <link>http://ota42y.com/blog/2014/11/20/github-pages-new-ip/</link>
+      <link>/blog/2014/11/20/github-pages-new-ip/</link>
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ota42y.com/blog/2014/11/20/github-pages-new-ip/</guid>
+      <guid>/blog/2014/11/20/github-pages-new-ip/</guid>
       <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、
 新しいIDアドレスを利用するようにとのwarningが来るようになりました。
 そのときに解消方法を調べたのですが、よくわからず放置していたところ、
