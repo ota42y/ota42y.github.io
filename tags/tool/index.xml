@@ -17,13 +17,7 @@
       <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
       
       <guid>/blog/2016/01/26/tmux-change-pane/</guid>
-      <description>tmux-change-paneというコマンドを作りました。
-https://github.com/ota42y/tmux-change-pane
-tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り込んで任意のタブに切り替えるアプリです。
-似たようなものでswap-paneというものがすでにあります。
-https://github.com/abicky/swap-pane
-swap-paneでは複数画面に分割している際に、全ての分割をいったん消して選択画面を表示します。そのため、切り替えのたびに画面が一度フラッシュし、かつ必ず左上に作業領域が移ります。そのため、右下で作業してるような場合にかなり視線の操作が強制的に発生してとても面倒でした。
-tmux-change-paneでは今いる分割領域しか使わないため、作業する位置が大きく変わることがなく、また切り替え中も他の領域の情報を参考にすることができます。</description>
+      <description>tmux-change-paneというコマンドを作りました。 https://github.com/ota42y/tmux-change-pane tmuxで現在開いているウィンドウの一覧を表示し、peco(pecol)で絞り</description>
     </item>
     
     <item>
@@ -32,20 +26,7 @@ tmux-change-paneでは今いる分割領域しか使わないため、作業す�
       <pubDate>Tue, 08 Dec 2015 07:58:08 +0900</pubDate>
       
       <guid>/blog/2015/12/08/wl_report/</guid>
-      <description> 最近知ったWunderlistが、全プラットフォーム使えたり、 モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトップアプリがあったりと、なかなか便利そうなので今試しに使っています。
-ただ、終了したタスク一覧をさっと見られないため、あれやったっけ？とか、今週疲れ気味かも…とか、がんばり具合とかがわかりません。 たぶんあった方が良さそうな気がしたので、過去一週間に完了したタスクを日ごとに分けてレポート出力するやつを作りました。
-すでにCLIから一覧を取ってJSONで書き出せるものがあるので、これの出力を利用します。
-https://github.com/robdimsdale/wl
-使い方 以下のように利用します。
- wl tasks --completed true -j | go run report.go 
-こんな感じに日ごとに終了したタスクがリスト化されていきます。
- 2015-11-30 10 tasks completed
-07:37:51 mail check
-07:59:23 review PR
-22:06:09 create blog entry
- コード コードはこれです。 
-その他  全部のタスクを並べるのはつらいので、3日以前は終了タスク数のみとかにしたい
- コマンドが面倒なので、単体で完結したい  単体で完結するようになったらgithubのリポジトリ作るかも  もうちょっと見やすくしたい  </description>
+      <description>最近知ったWunderlistが、全プラットフォーム使えたり、 モバイルアプリが使いやすかったり、タスクがショートカットで追加できるデスクトッ</description>
     </item>
     
   </channel>

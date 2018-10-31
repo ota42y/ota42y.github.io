@@ -17,14 +17,7 @@
       <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
       
       <guid>/blog/2016/02/07/dump_restore_command/</guid>
-      <description>まとめ  dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利  もちろんHDDでもいける Windowsは基本的にSDカードの第一パーティションしか認識できない   SDカードのデータ移行がしたい Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。
-ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。
-ASUS MeMO Pad 7 ME572CでLink2SDを動かす
-そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、 HDDを対象としたバックアップも同じ手順で可能です。
-SDカードの第二パーティションのマウント Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。
-なお、Windowsでは基本的にSDカードの第二パーティションはマウントできないため、Linux上で作業を行いました。
-# 接続された位置をfdiskで調べる sudo fdisk -l # 以下のようにSDカードのパーティションの位置が表示される # /dev/sdc1 42 42424242 4242424242 42 HPFS/NTFS/exFAT # /dev/sdc2 4242 42424242 42424242 42 Linux # ext3でフォーマットしているのでマウントする # (どうフォーマットしているかはその人次第です) sudo mount -t ext3 /dev/sdc2 /mnt/sd  dumpコマンドでバックアップ dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。 差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。
-# mount先の/mnt/sd以下をバックアップ sudo dump -0 -f /data/sd.dump /mnt/sd # -0でダンプレベル0(フルバックアップ) # -fでバックアップしたデータのファイル名を指定  restoreコマンドでリストア restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。 バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、 上記の手順で同じ場所にマウントしてあります。</description>
+      <description>まとめ dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利 もちろんHDDでも</description>
     </item>
     
     <item>
@@ -33,25 +26,7 @@ SDカードの第二パーティションのマウント Link2SDを使ってい�
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
       <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
-      <description>まとめ  Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違うので注意 面倒ならdbファイルを/data/dbに移動してしまうのが楽そう  Debian 7 32bitのmongodb Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、
-3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)
-Install MongoDB on Debian
-mongodbのaptのリポジトリを見ると、amd64版にはたくさんありますが、
-i386版のリポジトリは空です。
-このため、apt-getでmongodb3.0系を入れるのはできないらしく、
-tarballからインストールする必要があります。
-ただし、aptで入れた2.6からアップデートし、既存のDBファイルを使う場合は若干面倒になります。
-aptからのアップグレード時の注意点 新規に入れる場合は公式サイトの手順通りですが、aptからのアップグレードの場合は問題が起きます。
-公式サイトの手順では、ログインユーザで/data/dbをDB書き込み先として使いますが、
-aptで入れた2.6系統は特に設定しない場合、mongodbユーザで/var/lib/mongodbにdbファイルを書き込んでいるため、
-そのままですと前のDBが読み込めません。
-そのため、/usr/bin以下にmongodbを展開し、mongodbユーザで実行可能にするか、
-mongodbユーザがtarballの解凍と実行をする必要があります。
-今回は後者の方式をとります。
-インストール手順 公式サイトの手順からインストール先を変え、実行時にオプションを指定しているだけです。
-Install MongoDB From Tarbal
-wget http://downloads.mongodb.org/linux/mongodb-linux-i686-3.0.6.tgz tar zxvf mongodb-linux-i686-3.0.6.tgz sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin  起動は以下のようにユーザとdb位置を指定します
-sudo -u mongodb mongod --dbpath /var/lib/mongodb  まとめ 起動が面倒なら、/var/lib/mongodbを/data/dbに移動して所有権を書き換えるのもいいと思います。</description>
+      <description>まとめ Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違</description>
     </item>
     
     <item>
@@ -60,11 +35,7 @@ sudo -u mongodb mongod --dbpath /var/lib/mongodb  まとめ 起動が面倒な�
       <pubDate>Wed, 09 Sep 2015 21:53:07 +0900</pubDate>
       
       <guid>/blog/2015/09/09/free-command/</guid>
-      <description>freeコマンドに追加されたavailable 3.14および2.6.27から、freeコマンドの書式が変わり、
--/+ buffers/cacheが消えてavailableという項目が増えました。
-availableは/proc/meminfoの中にあるMemAvailablの値を参照しています。
-この値は、新しいアプリがスワップせずに使える容量はどれくらいか。といった値を示しているようです
-available Estimation of how much memory is available for starting new applications, without swapping. Unlike the data provided by the cache or free fields, this field takes into account page cache and also that not all reclaimable memory slabs will be reclaimed due to items being in use (MemAvailable in /proc/meminfo, avail‐ able on kernels 3.14, emulated on kernels 2.6.27+, otherwise the same as free)  コード /proc/meminfoは以下のコードによって作成されるようです。</description>
+      <description>freeコマンドに追加されたavailable 3.14および2.6.27から、freeコマンドの書式が変わり、 -/+ buffers/cacheが</description>
     </item>
     
     <item>
@@ -73,17 +44,7 @@ available Estimation of how much memory is available for starting new applicatio
       <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
       
       <guid>/blog/2015/06/03/linux_local/</guid>
-      <description>突然プログラムが起動しなくなったため、
-原因を探ったところ、localesが壊れていました。
-そのため、再インストールすることで直りました。
-言語取得部分は動くけど、おかしい結果を返す壊れ方のため、
-発見にわりと手間取りました。
-まとめ  プログラム上でlocaleを参照する部分がおかしい結果を返す  常にANSI_X3.4-1968 Debian 7.8  dpkg-reconfigure localesが何か壊れているメッセージを出す  localeをアップデートすると直る apt-get install locales   localeの取得がおかしい pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。 ですが、
-LANG=&#39;ja_JP.UTF-8&#39; echo &#39;import locale; print locale.getpreferredencoding()&#39; | python
-を実行しても、ANSI_X3.4-1968が返ってきてしまい、日本語処理の部分でおかしくなっていました。
-(前にそのプログラムは動いていたので、気がついたらおかしくなっていました)
-localeを実行してみたところ、以下のように表示されました。
-locale -a locale: Cannot set LC_CTYPE to default locale: No such file or directory locale: Cannot set LC_MESSAGES to default locale: No such file or directory locale: Cannot set LC_COLLATE to default locale: No such file or directory C C.</description>
+      <description>突然プログラムが起動しなくなったため、 原因を探ったところ、localesが壊れていました。 そのため、再インストールすることで直りました。 言語</description>
     </item>
     
     <item>
@@ -92,23 +53,7 @@ locale -a locale: Cannot set LC_CTYPE to default locale: No such file or directo
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/03/unix-fork/</guid>
-      <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ
-という本を読んでいます。
-この中で、fork関数がどうやって子プロセスを作り、
-親子かを識別して別の値を返しているのかが解説されており、
-とても興味深かったです。
-以下にその概要をまとめました。
-fork関数 Cではfork関数を利用することで、子プロセスを作成することが出来ます。
-コードとしてはこんな感じですね。
-#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;sys/wait.h&amp;gt; int main() { pid_t pid = fork(); if (pid == 0) { sleep(1); printf(&amp;quot;child!\n&amp;quot;); return 0; } printf(&amp;quot;parent!\n&amp;quot;); int status; waitpid(pid, &amp;amp;status, 0); printf(&amp;quot;parent end\n&amp;quot;); return 0; }  子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。
-ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、
-ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。
-では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、
-別の値を返しているのでしょうか。
-これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。
-fork関数がプロセスの親子を区別する仕組み 親による子プロセスの作成 ライブラリのfork関数(source/s4/fork.s)を実行すると、
-システムコールによってカーネルのfork関数(sys/ken/sys1.c)が実行されます。
-fork() { register struct proc *p1, *p2; p1 = u.u_procp; for(p2 = &amp;amp;proc[0]; p2 &amp;lt; &amp;amp;proc[NPROC]; p2++) if(p2-&amp;gt;p_stat == NULL) goto found; u.</description>
+      <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ という本を読んでいます。 この中で、fork関数がどうやって子プロセスを作り、 親子</description>
     </item>
     
     <item>
@@ -117,24 +62,7 @@ fork() { register struct proc *p1, *p2; p1 = u.u_procp; for(p2 = &amp;amp;proc[0
       <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/26/shell-shock/</guid>
-      <description>Debianは探しても見つからなかったので…(´･_･`)
-ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三者から任意のコードが実行される脆弱性が見つかりました。
-GNU bash の脆弱性に関する注意喚起
-bashの脆弱性(CVE-2014-6271) #ShellShock の関連リンクをまとめてみた
-Blog: bashの脆弱性がヤバすぎる件 – x86-64.jp - くりす研
-bashで以下のスクリプトを実行し、出力文字列にvulnerableが出てきたらまずい状態です。
-env x=&#39;() { :;}; echo vulnerable&#39; bash -c &#39;echo hello&#39;  修正パッチ状況 この問題に対しては(まだ不十分ですが)修正パッチが公開されており、また各ディストリビューションでも修正したbashが配布されています。
-Redhad系の対策はこちら
-2014/09/24に発表されたBash脆弱性と解決法(RedHat系)
-Mac OS X系の対策はこちら
-CVE-2014-6271のbashの脆弱性に対応する方法　私の使っているDebian(squeeze)でも、パッチが適応されたbashを配布しています。
-https://security-tracker.debian.org/tracker/CVE-2014-6271
-修正版へのアップデート 修正されたbashはsqueezeの通常のリポジトリには修正版は公開されておらず、
-ltsリポジトリを参照する必要があります。(2014/09/26 7:00現在)
-LTS/Using - Debian Wikiにリポジトリが書いてあるので、それをapt-getの参照先に追加します。
-/etc/apt/sources.list.d`に、lts.listを作り、以下のように書き込みます。
-deb http://http.debian.net/debian/ squeeze-lts main contrib non-free deb-src http://http.debian.net/debian/ squeeze-lts main contrib non-free  (手元に環境がないので確認できませんが、おそらくWheezyでは以下のリポジトリで行けると思います)
-deb http://security.debian.org/ wheezy/updates main deb-src http://security.debian.org/ wheezy/updates main  この状態で</description>
+      <description>Debianは探しても見つからなかったので…(´･_･`) ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三</description>
     </item>
     
     <item>
@@ -143,15 +71,7 @@ deb http://security.debian.org/ wheezy/updates main deb-src http://security.debi
       <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/13/sudo-error/</guid>
-      <description>cronやinit.d以下に置いたスクリプトで、
-別の以外のユーザで作業しようと思い、sudoを実行したところ、
-以下のようなエラーが出て実行できませんでした。
-sudo: sorry, you must have a tty to run sudo
-どうやら、ttyを使わない場合、sudoは権限に関係なく実行できないようです。
-sudoersにある
-Defaults requiretty
-をコメントアウトすることで解決しました。
-参考</description>
+      <description>cronやinit.d以下に置いたスクリプトで、 別の以外のユーザで作業しようと思い、sudoを実行したところ、 以下のようなエラーが出て実行で</description>
     </item>
     
     <item>
@@ -160,17 +80,7 @@ Defaults requiretty
       <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/12/init-d/</guid>
-      <description>hubotを自動で実行してほしいなーと思ったので、
-OSの起動時にスクリプトを自動実行する方法を調べました。
-まず、/etc/init.d/ に実行可能なスクリプトを置きます。
-次に、スクリプトの二行目に、起動設定を書きます。
-# chkconfig: 345 99 01
-一つ目がランレベル、二つ目が起動順番、三つ目が終了順番になります。
-起動・終了は小さい数値から行われるため、
-前述の例ですと一番最後に起動し、一番最初に終了します。
-ランレベルについては Wikipediaの記事 を参考にしてください
-最後に、chkconfig --add (init.dに置いたスクリプト名)を実行して登録を行います。
-これで、起動時にスクリプトが実行されます。</description>
+      <description>hubotを自動で実行してほしいなーと思ったので、 OSの起動時にスクリプトを自動実行する方法を調べました。 まず、/etc/init.d/ に実</description>
     </item>
     
   </channel>

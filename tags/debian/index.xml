@@ -17,25 +17,7 @@
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
       <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
-      <description>まとめ  Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違うので注意 面倒ならdbファイルを/data/dbに移動してしまうのが楽そう  Debian 7 32bitのmongodb Debian 7 のmongodbを以下の公式サイトの手順で入れようとしても、
-3.0が見つからず最高でも2.6までしか入れる事ができません(2015/10/12現在)
-Install MongoDB on Debian
-mongodbのaptのリポジトリを見ると、amd64版にはたくさんありますが、
-i386版のリポジトリは空です。
-このため、apt-getでmongodb3.0系を入れるのはできないらしく、
-tarballからインストールする必要があります。
-ただし、aptで入れた2.6からアップデートし、既存のDBファイルを使う場合は若干面倒になります。
-aptからのアップグレード時の注意点 新規に入れる場合は公式サイトの手順通りですが、aptからのアップグレードの場合は問題が起きます。
-公式サイトの手順では、ログインユーザで/data/dbをDB書き込み先として使いますが、
-aptで入れた2.6系統は特に設定しない場合、mongodbユーザで/var/lib/mongodbにdbファイルを書き込んでいるため、
-そのままですと前のDBが読み込めません。
-そのため、/usr/bin以下にmongodbを展開し、mongodbユーザで実行可能にするか、
-mongodbユーザがtarballの解凍と実行をする必要があります。
-今回は後者の方式をとります。
-インストール手順 公式サイトの手順からインストール先を変え、実行時にオプションを指定しているだけです。
-Install MongoDB From Tarbal
-wget http://downloads.mongodb.org/linux/mongodb-linux-i686-3.0.6.tgz tar zxvf mongodb-linux-i686-3.0.6.tgz sudo cp mongodb-linux-i686-3.0.6/bin/* /usr/bin  起動は以下のようにユーザとdb位置を指定します
-sudo -u mongodb mongod --dbpath /var/lib/mongodb  まとめ 起動が面倒なら、/var/lib/mongodbを/data/dbに移動して所有権を書き換えるのもいいと思います。</description>
+      <description>まとめ Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違</description>
     </item>
     
   </channel>

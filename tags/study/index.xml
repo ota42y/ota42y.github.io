@@ -17,30 +17,7 @@
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/26/docker/</guid>
-      <description>Dockerについて調べたので概要と簡単な使い方のメモ
-Dockerとは何か いわゆるコンテナ型仮想化ツールの1つです。
-VMwareやKVMのような完全仮想化と違い、
-ユーザや、ネットワーク、ファイルシステムなどを隔離した環境を作ってそこで動くらしいです。
-あくまで隔離された環境のため、環境ごと作る完全仮想化に比べてオーバーヘッドが少なく、
-手元の数年前のmac book airでもかなり快適に動いています。
-あくまでゲストOSを隔離環境に置いただけのため 、
-ファイルシステムは分離されておらず、ホストからは中身が見えるのも特徴らしいです。
-(ゲストからはホストの中身は当然見えない)
-また、DockerではDockerfileというファイルに設定を書くことで、
-その設定を反映した状態のコンテナを作成することが出来ます。
-そのため、OSの状態をDockerfileとして管理でき、いわゆるimmutable infrastructureと相性がいいみたいです。
-Docker上のCent OSにJenkinsを立てる Dockerの起動 Dockerコマンドを実行するためには、Macだとboot2dockerを
-boot2docker startで起動し、そのとき提示された環境変数を設定する必要があります。
-また、
-boot2docker ip
-を実行し、コンテナに対してアクセスできるようにする必要があります。
-なお、この時出たURLは後で使います。
-Cent OSの構築 Dockerfileの準備 以下のファイルをDockerfileという名前で適当なディレクトリに保存します。
-FROM centos:centos6 RUN curl -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key RUN yum -y install java-1.7.0-openjdk jenkins  見ての通り、Jenkins公式の入れ方のコマンドを実行しているだけです。
-コンテナの作成 次に、Dockerfileを保存したディレクトリで
-docker build -t jenkins . を実行し、カレントディレクトリのDockerfileを使って、jenkinsというタグをつけてコンテナを作成させます。
-コンテナの起動 docker run -p 8080:8080 -i -t jenkins bash
-を実行してホストの8080とコンテナの8080を結びつけ、先ほど作ったjenkinsコンテナにbashで入り、</description>
+      <description>Dockerについて調べたので概要と簡単な使い方のメモ Dockerとは何か いわゆるコンテナ型仮想化ツールの1つです。 VMwareやKVMのよ</description>
     </item>
     
     <item>
@@ -49,14 +26,7 @@ docker build -t jenkins . を実行し、カレントディレクトリのDocker
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/11/find-if/</guid>
-      <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、
-関数orオブジェクトを渡すことで条件を自由に設定できます。
-参考
-このとき内部がどういう処理をして渡した関数を呼び出しているのかが気になったので調べました。
-特に、第三引数にクラスを渡す場合、何故()オペレータに条件を書く必要があるのかが気になりました。
-結論としては、実装を見れば簡単に解決しました。
-内部実装 find_ifの場合 template &amp;lt;class _InputIter, class _Predicate&amp;gt; inline _InputIter find_if(_InputIter __first, _InputIter __last, _Predicate __pred, input_iterator_tag) { while (__first != __last &amp;amp;&amp;amp; !__pred(*__first)) ++__first; return __first; }  ソートの場合 ソートは少々複雑なので、該当部分だけ抜き出します。
-template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt; void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp) { _RandomAccessIter __next = __last; --__next; while (__comp(__val, *__next)) { *__last = *__next; __last = __next; --__next; } *__last = __val; }  まとめ 動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。</description>
+      <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、 関数orオブジェクトを渡すことで条件を自由に設定できます。 参考</description>
     </item>
     
     <item>
@@ -65,22 +35,7 @@ template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt; void
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/05/msgpack/</guid>
-      <description>最近よく聞くMessagePackとは何かを調べたのでメモ。
-MessagePackとは バイナリでデータを保存するフォーマットです。
-JSONと比べると、保存した状態の可読性を犠牲にする代わりに、
-より早くて小さいフォーマットになっています。
-また、汎用的なフォーマットのため、
-いろんな言語(nodeとかrubyとかcppとか) で相互にデータを使えます。
-他のバイナリシリアライズフォーマットとの差 MessagePackはバッファをうまく使って早かったり、 読み込み途中でもデシリアライズできるとか、
-結構いろいろと高速化のための工夫がされています。
-(ただし、実装によって若干違いがあるようです)
-使い方 rubyならgem install msgpackで、 MacのC++ならbrew install msgpackで使えるようになります。
-なお、C++はgccに以下のオプションをつける必要があります。
-g++ test.cpp -lmsgpack -o test
-また、基本型は全てシリアライズ可能で、保存したいクラスのメンバ変数を、
-MSGPACK_DEFINEマクロに入れると、
-自動でシリアライズ/デシリアライズできるみたいです。
-コード C++ #include &amp;lt;msgpack.hpp&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iostream&amp;gt; using namespace std; struct User { User(std::string name, int id, std::vector&amp;lt;int&amp;gt; follower) : name(name) , id(id) , follower_id(follower) {} // 引数なしのコンストラクタは必須 User() : id(0) {} MSGPACK_DEFINE(name, id, follower_id); std::string name; int id; std::vector&amp;lt;int&amp;gt; follower_id; string toString(){ string ret = &amp;quot;name: &amp;quot;; ret += name; ret += &amp;quot; id: &amp;quot;; ret += std::to_string(id); ret += &amp;quot; follower: &amp;quot;; for(int i=0; i&amp;lt;follower_id.</description>
+      <description>最近よく聞くMessagePackとは何かを調べたのでメモ。 MessagePackとは バイナリでデータを保存するフォーマットです。 JSONと</description>
     </item>
     
   </channel>

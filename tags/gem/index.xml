@@ -17,11 +17,9 @@
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
-      <description>shinjuku.rbで話した内容です。
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
 資料あげようと思って完全に忘れていたので上げます…
-要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
-資料 ここです。
-  bootsnapはどれくらい早くなるのか  from ota42y</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,24 +28,25 @@
       <pubDate>Wed, 04 Apr 2018 00:10:37 +0900</pubDate>
       
       <guid>/blog/2018/04/04/virtual_gem/</guid>
-      <description>要約  gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる  5.2.0がリリースするまでインストールできないと気がつきにくい  任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った  https://github.com/ota42y/virtual_gem 5.2.0.rc2を元に5.2.0のgemを作れる 任意のgemの依存関係を書き換えられる 事前に依存関係が壊れるのを調べやすくなる   gemの依存関係によるインストール失敗 現在、Rails 5.2.0.rc2がリリースされています。
-ですが、仮に現状で上手く動いていたとしても5.2.0のリリース時に一部のgemの依存関係が5.2.0.rc2までしか受け入れておらず、インストールできなくなる可能性があります。
-gemには依存関係を設定できますが、&#39;&amp;lt; 5.2.0&#39; と書いた場合は5.2.0未満のgemを指定したこととなるため、5.2.0.rc2は対象となります。
-ですが、5.2.0は範囲外となるため、5.2.0をインストールすることはできません。
-そのため、rc版で問題なく動いていたとしても正式リリースされると依存関係を解決できずにアップデートできず、依存するgemの更新を待たないといけません。
-依存するgemが依存しているgemが同じような問題を含んでいた場合は、それらが全て解決するのを待つ必要があります。
-事前に依存関係を修正しておくことでこの問題を回避できますが、事前に全てのgemの依存関係を調べることはかなり難しいです。 かつ正式リリースされるまで問題は起こらないため先に対策するのは困難です。
-また、gemによっては正式リリースまで依存関係を修正しないポリシーもあり得るため、複雑な依存関係の場合には調べるのがいっそう困難になります。
-この問題は2つの原因から成り立っています。
- gemが正式リリースされるまでbundle installで新しいバージョンを試せない bundle install時の依存関係の解消にはgemの設定を直す必要がある  問題のあるgemを全てforkして、バージョンを書き換えた上でそれを使うことでこれらの問題は解決できます。
-ですが、継続的にmasterを追従していくことや、変更をするgemが大量にあった場合はそれを続けるのは困難です。
-virtual gemによる解決 この問題に対して、bundle install/update時にgemのバージョンと依存関係を書き換え、問題のある設定になっていないかを調べられるgemを作りました。 https://github.com/ota42y/virtual_gem
-仮想的なgemを作る 以下のようにGemfileで設定を行うと、特定バージョンのgemとして振る舞う仮想的なgemを作成して、依存関係の解決を行えます。
-require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42y_test_gem&#39;,new_version: &#39;0.3.0&#39;, original_version: &#39;0.2.0&#39;) source &amp;quot;https://rubygems.org&amp;quot; gem &#39;ota42y_test_gem&#39;, &#39;0.3.0&#39;  この例では、&amp;rsquo;ota42y_test_gem&amp;rsquo;のバージョン0.2.0を元に、バージョン0.3.0として振る舞う仮想的なgemを作成しています。
-0.3.0はこの世に存在していないので、通常ではbundlerは見つけられずに失敗します。
-ですが、virtual_gemによって仮想的なgemがインストールされている状態になるため、bundle installは成功します。
-これにより、rails 5.2.0.rc2をrails 5.2.0として扱うことができるため、依存関係の解決を試せます。
-依存関係を書き換える virtual_gemではまだ存在しないgemで依存関係の解決を試して見ることができますが、依存関係が衝突する可能性は十分にあります。 例えばrails 5.</description>
+      <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる
+
+&lt;ul&gt;
+&lt;li&gt;5.2.0がリリースするまでインストールできないと気がつきにくい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/virtual_gem&#34;&gt;https://github.com/ota42y/virtual_gem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5.2.0.rc2を元に5.2.0のgemを作れる&lt;/li&gt;
+&lt;li&gt;任意のgemの依存関係を書き換えられる&lt;/li&gt;
+&lt;li&gt;事前に依存関係が壊れるのを調べやすくなる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -56,17 +55,15 @@ require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42
       <pubDate>Wed, 28 Mar 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/03/28/globalize_5/</guid>
-      <description>要約  columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい チェックして消す&amp;amp;今後増えないようにするgemを作った  問題  GlobalizeをRails5対応版(5.1.0.beta2)にあげる 一部の処理が落ちる(´・_・`)  原因 News.columns_hash.keysは、そのモデルのカラム名を配列で返します。
-GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。
-しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。
-そのため返ってくる値がバージョンによって代わり、それに依存している処理がおかしくなります。
-ただし、この影響を受けるカラムは多くの場合参照できないため、通常は仕様ミスや顕在化してないバグの可能性が高いです。
-解説 Globalize gemでは、あるモデルのカラムに対してtranslate指定をすることで、translate用のテーブルの同名カラムを参照するようになります。
-例えば以下のようなNewsモデルがある場合を考えます。
-# == Schema Information # # Table name: news # # id :integer not null, primary key # title :string(255) # description :string(255) class News translate :title, :description end  このモデルのtitleとdescriptionはtranslateされているので、newsテーブルの同名のカラムは使われません。 Globalizeによって、I18n対応した別テーブル(news_translates)の該当するlocaleのデータを取ってくるように変更されます。 そのため、translateによって処理が上書きされたカラムと同じ名前のカラムが元のテーブルにあっても、アクセスすることは出来ません。
-ですが、Globalize 5.0系ではcolumns_hash等で全てのカラムの一覧を取得した場合、このアクセス不能なカラムが一覧に入っています。 そのため、上書き前のカラムがあるという前提のコードを書けてしまいます。
-News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;title&amp;quot;, &amp;quot;description&amp;quot;, &amp;quot;created_at&amp;quot;, &amp;quot;updated_at&amp;quot;]  Globalizeの5.1系では、内部的に以下の方法でtranslateに設定されたカラム名が除外されるため、columns_hash等を使っても上書き前のカラムにアクセスできなくなります。
-News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&amp;quot;, &amp;quot;updated_at&amp;quot;]   Rails4系の場合  もとのcolumns_hashからtranslateしたカラムを消している。 Globalize::ActiveRecord::ClassMethods#columns_hash  Rails5系の場合  ignored_columnsでActiveRecord的にカラムを無効化 Rails5から追加されたメソッド Globalize::ActiveRecord::ActMacro#allow_translation_of_attributes   そのため、 columns_hash を利用して上書き前のカラムがあることを前提としたコードを書いている場合、処理が失敗します。</description>
+      <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる&lt;/li&gt;
+&lt;li&gt;だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい&lt;/li&gt;
+&lt;li&gt;チェックして消す&amp;amp;今後増えないようにするgemを作った&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -75,15 +72,7 @@ News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&a
       <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
       
       <guid>/blog/2017/08/20/rubygem-tutorial/</guid>
-      <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを下げるために30分程度で0からgemを作るハンズオンをやりました。
-これはそのときにやったことのメモで、現状これに沿って行っていけば簡単なgemを公開できるようになります。
-ゴール  簡単なgemを作成してrubygemsで公開するまで  事前準備  githubにアカウント作る git pushで自分のリポジトリにpushできる状態 ruby 2.0以上 gem install bundler 済み gem update &amp;ndash;system 済み  名前決め まずgemの名前を決めます。
-他のgemと名前が被ってはいけないので、
-https://rubygems.org/ で検索して無い名前をつける必要があります。
-面倒な場合は、 nickname-hellor-world とかなら被りません。
-今回は ota42y_test_gem で作るので、後は適度に読み替えてください。
-namespaceの階層を合わせるため、区切り文字は_ではなく-を使ってください。
-ひな形作成 bundle gem ota42y_test_gem -t Creating gem &#39;ota42y_test_gem&#39;... Code of conduct enabled in config create ota42y_test_gem/Gemfile create ota42y_test_gem/lib/ota42y_test_gem.rb create ota42y_test_gem/lib/ota42y_test_gem/version.rb create ota42y_test_gem/ota42y_test_gem.gemspec create ota42y_test_gem/Rakefile create ota42y_test_gem/README.md create ota42y_test_gem/bin/console create ota42y_test_gem/bin/setup create ota42y_test_gem/.gitignore create ota42y_test_gem/.travis.yml create ota42y_test_gem/.</description>
+      <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを</description>
     </item>
     
   </channel>

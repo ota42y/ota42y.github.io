@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Jenkinsで複雑な処理をするときのjob構成について">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>Jenkinsで複雑な処理をするときのjob構成について | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2014/jenkins-architecture/">Jenkinsで複雑な処理をするときのjob構成について</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-07-21" class="post_data">
+    2014-07-21
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/jenkins">jenkins</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>変数やビルド後の通知設定等が違うために、<br />
+ほぼ同じ内容のjobを15個ぐらい使っていたら、<br />
+だんだんと運用が死んできたのでメモ。</p>
+
+<h1 id="まとめ">まとめ</h1>
+
+<p>Jenkinsはプラグインの挙動を変えるのが難しいため、<br />
+ほぼ同じだけれど若干違う手順を行う必要がある場合、<br />
+似たようなjobが大量に並び、<br />
+手順の変更時などに全てのjobを変えきるのが辛くなります。</p>
+
+<p>そこで、可能な限りビルド手順はスクリプトにするのと、<br />
+jobを種類別に細かく分け、<br />
+最上位のjobにはどの下流jobを実行するかだけを管理させることで、<br />
+複雑なjobでも変更に強くすることができるようになります。</p>
+
+<h1 id="前提条件">前提条件</h1>
+
+<ul>
+<li>設定が全部で7種類ぐらいある</li>
+<li>1ビルドはCPUをフルパワーで使って30分程度</li>
+<li>一部の設定は定期実行やマージ毎でもビルドしたい</li>
+<li>設定ごとに用途や使う頻度が違う為、定期実行タイミングは個別に設定したい</li>
+<li>ビルド後のデプロイ先や通知先、通知条件がいくつかある</li>
+<li>ビルド手順はバージョン/デプロイ先によって変化する</li>
+</ul>
+
+<h1 id="問題点">問題点</h1>
+
+<p>大きな問題として、<br />
+Jenkins pulginで提供されている機能を切り替えるのが難しいという問題があります。</p>
+
+<p>たとえば、Jenkinsの拡張メールプラグインでは、<br />
+そのjobの結果によって通知先や通知内容等を変更することができます。<br />
+ですが、その定義自体を切り替えることが難しく、<br />
+この場合は成功時にメールしないけど、<br />
+この場合は成功時にメールするといった切り替えができませんでした。</p>
+
+<p>また、定期的に変更チェックするブランチや、チェックする間隔が設定毎に異なりますが、<br />
+JenkinsのGit プラグインではそのあたりをうまく設定することが難しいようです。</p>
+
+<p>他にもdeploy先によって使うプラグインが微妙に違うなどの問題があり、<br />
+ほぼ同じだけれど若干違うjobを15個並べるといった運用をしていました。</p>
+
+<p>こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。<br />
+<img src="/images/blog/2014/2014-07-21-jenkins-1.png" alt="こんな感じ" /></p>
+
+<p>結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、<br />
+古い手順のバージョンのマイクロアップデートと、<br />
+新しい手順のメジャーアップデートが重なったときに、<br />
+ビルド前にJenkinsの設定を必ず変更する必要がある等、<br />
+運用がかなり辛くなってきました。</p>
+
+<p>これに対する対策を考えましたが、あまり良いのが無い感じですが、<br />
+とりあえずまとまったのでメモをしておきます。</p>
+
+<h1 id="解決案">解決案</h1>
+
+<h2 id="1-ビルド手順や通知を全てをシェルスクリプトにし-jenkinsはシェルを叩くだけにする">1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする</h2>
+
+<p>Jenkinsのプラグインをほぼ使用せず、全てスクリプトで解決する手法です。<br />
+ ビルド手順や通知がSCMに保存されるため、ビルド手順とバージョンが完全に紐付き、<br />
+ 常に正しい手順で実行できるという利点があります。</p>
+
+<p>だだし、Jenkinsプラグインの恩恵を得られないため、<br />
+ 今プラグインでやっている処理を全て置き換える必要があります。<br />
+ また、新たな手順の追加が大変と言った問題もあります。</p>
+
+<h2 id="2-ワークスペース共有を使ってうまくやる">2.ワークスペース共有を使ってうまくやる</h2>
+
+<p>チェックアウトとビルドジョブを切り離し、<br />
+  SCMのポーリング&amp;チェックアウトだけを行うjobから、<br />
+  ビルドジョブを下流ビルドとして呼び出す方式です。</p>
+
+<p>こんな感じですね。<br />
+  <img src="/images/blog/2014/2014-07-21-jenkins-2.png" alt="ワークスペース共有" /></p>
+
+<p>ワークスペース共有を使い、<br />
+  下流ビルドは上流のワークスペース上でビルド作業を行うようにすることで、<br />
+  ビルドjobの数を大幅に減らすことができます。</p>
+
+<p>だだし、下流が実行中は上流ビルドが動かない事を保証しなければなりません。<br />
+  (ビルド途中に次のキューによってワークスペースが書き換えられる可能性がある)
+  Parameterize pluginで下流が終わるまで終了を待つ事ができますが、<br />
+  複数のビルドが同時に走った場合にデッドロックに陥る可能性があります。
+  - A-Cとビルドするjobと、B-Cとビルドするjobがあり、jenkinsの同時実行が2の場合、<br />
+   2つのビルドを同時に実行するとCが2つともキューに積まれて進まない場合がある</p>
+
+<h2 id="3-jobを疎結合にして成果物を使ってうまくやる">3.jobを疎結合にして成果物を使ってうまくやる</h2>
+
+<p>2のデッドロックを回避するために、疎結合にした版になります。<br />
+  この方式ではワークスペースを共有せず、<br />
+  コミットのSHA1を渡してビルドジョブ側でcheckout, buildします。<br />
+  また、Remote APIを利用することで、シェルスクリプトから次に実行するビルドの指定もできます。</p>
+
+<p>2の利点をそのまま受け継ぎ、ワークスペース共有しないのでブロックしなくなります。<br />
+  ビルド結果などは成果物の保存と、Copy Artifact Pluginを利用して受け渡します。<br />
+  そのため、後続のjobの実行前にワークスペースが変更されても問題なく進められます。</p>
+
+<p>ただし、ポーリング用とビルド用とで二重にSCMをチェックアウトする必要があるのと、<br />
+  ビルドログが完全に細切れになるため追いにくく、<br />
+  またいつ何が正常に終了したかを把握しにくいという問題があります。</p>
+
+<h2 id="4-master-slaveにして-masterからslaveのjobを呼び出すようにする">4.master-slaveにして、masterからslaveのjobを呼び出すようにする</h2>
+
+<p>3のやりかたを踏まえつつ、個別のjobでは無く下流のjobとして運用する方法です。<br />
+ そのために、2で問題となっていたキューが埋まる問題への解決策を入れました。</p>
+
+<p>具体的には、ポーリング等を実行する最上流のjobをJenkinsのmasterでのみ実行し、<br />
+ ビルドや通知を下流jobとしてslaveでビルドするようにします。<br />
+ このように設定することで、masterが全て上流jobで埋まったとしても、<br />
+ slaveで下流jobが実行されるため、デッドロックが発生しません。</p>
+
+<p>これにより、上流jobはビルドが完全に終了するまで終了を待つことができ、<br />
+ 終了タイミングを把握しやすくなります。</p>
+
+<p>だたし、問題点としてmaster-slave構成にするため、稼働するマシンが増える、<br />
+ jobをmasterとslaveどっちでやるかを考えないといけない、<br />
+ 下流jobとして紐付けはされるが、ログはまだ細切れになっているといった問題があります。</p>
+
+<h1 id="おわりに">おわりに</h1>
+
+<p>とりあえず今のところは、4番が一番いい方法ではないかと考えています。<br />
+そのためしばらくこれで運用し、また問題が起きた場合、<br />
+次なる手を考えるとして、今のところは4番で行く予定です。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#前提条件">前提条件</a></li>
+<li><a href="#問題点">問題点</a></li>
+<li><a href="#解決案">解決案</a>
+<ul>
+<li><a href="#1-ビルド手順や通知を全てをシェルスクリプトにし-jenkinsはシェルを叩くだけにする">1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする</a></li>
+<li><a href="#2-ワークスペース共有を使ってうまくやる">2.ワークスペース共有を使ってうまくやる</a></li>
+<li><a href="#3-jobを疎結合にして成果物を使ってうまくやる">3.jobを疎結合にして成果物を使ってうまくやる</a></li>
+<li><a href="#4-master-slaveにして-masterからslaveのjobを呼び出すようにする">4.master-slaveにして、masterからslaveのjobを呼び出すようにする</a></li>
+</ul></li>
+<li><a href="#おわりに">おわりに</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="参加記録 Go Conference 2014 autumn">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>参加記録 Go Conference 2014 autumn | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2014/gocon-2014-autumn/">参加記録 Go Conference 2014 autumn</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-12-01" class="post_data">
+    2014-12-01
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/conference">conference</a>
+    </span>
+    
+    <span class="post_data">
+        <a href="/tags/golang">golang</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p><a href="http://gocon.connpass.com/event/9748/">Go Conference 2014 autumn</a>に参加しました。<br />
+<a href="http://togetter.com/li/751700">togetterまとめ</a><br />
+大体スライドが公開されているので、正確な内容はそちらをどうぞ。</p>
+
+<p>#まとめ
+- Go言語のシンプルさへのこだわりが凄い
+- 開発陣の徳の高さが凄い
+  - 難しい部分は俺らに任せておけ！的な
+- 明日から使えるGo言語的な情報が盛りだくさん
+  - エラーを_で無視して済みません…(´･_･`)
+- 椅子が痛い
+  - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです…
+- 英語頑張ろう
+  - 日本語スライドありがたや…</p>
+
+<p>#Keynote1: Rob Pike (@rob_pike) (45min)
+スライドは未公開？</p>
+
+<p>Go言語の設計者<a href="http://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%83%91%E3%82%A4%E3%82%AF">ロブ・パイク</a>さんのGo言語の思想とかについての話です。</p>
+
+<p>Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。<br />
+他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、<br />
+Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。<br />
+書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。</p>
+
+<p>プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。<br />
+言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、<br />
+必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。<br />
+おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。</p>
+
+<p>簡潔な記述でも理解するのが大変な複雑な事ができるため、<br />
+簡潔なコード≠単純なコードと言えるのかなと思いました。</p>
+
+<p>また、Goではコード側ができる限り簡単になるように、<br />
+複雑な事を可能な限り言語側で隠蔽しているとも言われていました。<br />
+実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、<br />
+使う側からはそれほど大変さを感じることなく使えます。</p>
+
+<p>ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…</p>
+
+<p>#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min)
+<a href="http://ukai-go-talks.appspot.com/2014/gocon.slide#1">資料</a></p>
+
+<p>Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。</p>
+
+<p>Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、<br />
+ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。</p>
+
+<p>これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、<br />
+是非ともスライドが公開されるといいなーと思います。</p>
+
+<h1 id="lt1">LT1</h1>
+
+<h2 id="gardener-go">Gardener &amp; Go</h2>
+
+<p><a href="https://docs.google.com/presentation/d/1cPtFXGVgWcjG7qpwNz7jLbMh9BUW13dM_n1-ls-2u0s/edit#slide=id.p">資料</a></p>
+
+<p>@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。<br />
+<a href="http://ec-mail.freegufo.com/items/910014">GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</a></p>
+
+<h1 id="セッション">セッション</h1>
+
+<p>##App Engine for Golang Performance
+<a href="http://sinmetal-slide.appspot.com/2014/gocon1130/gaego.slide#1">資料</a></p>
+
+<p>@sinmetalさんのGAEとMVM上でのGoとJavaの速度比較です。<br />
+Goは基本的に倍ぐらい速く、JavaはJavaらしくJVMの起動に時間がかかるといった結果みたいです。</p>
+
+<p>##Golang @ISUCON
+<a href="https://speakerdeck.com/ymatsuwitter/golang-at-isucon">資料</a></p>
+
+<p>@y_matsuwitterさんのISUCONでGo言語を使った話です。<br />
+ISUCONでやった、Go言語の様々な効率化についてまとめられていました。</p>
+
+<p>話を聞くとかなり複雑な事をしているようですが、スライドのコードだととても簡単そうで凄いです。</p>
+
+<p>##mackerel-agent 徹底解説
+<a href="http://songmu.github.io/slides/gocon2014-autumn/#0">資料</a></p>
+
+<p>@Songmuさんによる、mackerel-agentのソースコード解説です。<br />
+NewRelicっぽいサービスですが、OSSな分色々出来そうで夢が広がる感じです。</p>
+
+<p>##Why my Go program is slow?
+<a href="http://www.slideshare.net/InadaNaoki/gocon2014-pprof">資料</a></p>
+
+<p>@methaneさんによるCPUプロファイリングについての発表です。<br />
+アセンブラまで出してくれるpprofの凄さをひしひしと感じます…</p>
+
+<p>また、Goでは他の関数呼び出しのない末端の関数をインライン展開してくれるので、<br />
+関数に分けると早かったり、<br />
+関数呼び出しで呼び出し側が使っているレジスタを全部待避するので、<br />
+呼び出された側が使った分だけ待避する？Cよりも関数呼び出しは遅いなど、<br />
+Goの速度についてしっかりと説明されています。</p>
+
+<p>##Golang JP Community
+<a href="https://docs.google.com/presentation/d/1UTi4uqt4sOrQ1dHJE0y8UB9BR9iqDK7dLP57QAfrOX4/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g4f1d3881c_00">資料</a><br />
+<a href="https://www.youtube.com/watch?v=LJvEIjRBSDA">資料２</a></p>
+
+<p>@qt_luigiさんの日本のGo言語コミュニティの話でした。<br />
+いくつか知っているものもありましたが、思った以上に大量にあって驚きました…</p>
+
+<p>##(タイトルメモり損ねました…GengoでGoの利用事例なお話)
+PHPのAPIをGoに置き換えていったら、500msが10msになったというお話です。<br />
+クリティカルな所ではなく影響の少ないところから、<br />
+一気にではなく少しずつ置き換えていくといいそうです。</p>
+
+<p>Goで作られたデプロイツールが便利そうでした。<br />
+<a href="https://github.com/gengo/goship">https://github.com/gengo/goship</a></p>
+
+<p>##NSQ-Centric Architecture
+<a href="http://www.slideshare.net/guregu/nsqcentric-architecture-gocon-autumn-2014">資料</a></p>
+
+<p><a href="https://github.com/guregu">gureguさん</a>のNSQの話です。</p>
+
+<p>bit.lyが作ったGo製のメッセージキューである<a href="https://github.com/bitly/nsq">NSQ</a>を使って、<br />
+チャットアプリを作った発表でした。</p>
+
+<p>##(Go言語のコンパイラをハックした話)
+<a href="http://moriyoshi.hatenablog.com/entry/2014/06/03/121728">参考資料</a></p>
+
+<p>@moriyoshitさんがGo言語で寿司関数を作りたいがために？w　Goのコンパイラをハックしたのと、<br />
+コンパイラの中についてのお話でした。</p>
+
+<p>教科書通りのコンパイラの作りしてるんだなーという印象でした。<br />
+魔境と噂のGCCとかはどうなってるんだろう…と思いました。</p>
+
+<h1 id="lt">LT</h1>
+
+<h2 id="nginx-build">nginx-build</h2>
+
+<p><a href="https://speakerdeck.com/cubicdaiya/nginx-build">https://speakerdeck.com/cubicdaiya/nginx-build</a><br />
+NginxをビルドするためのツールのDLと、ビルドをやってくれるツールを書いたそうです。<br />
+バイナリ単体で配布できますし、こういう用途には便利そうな感じ…</p>
+
+<h2 id="楽天でterraformを使てる話">(楽天でTerraformを使てる話)</h2>
+
+<p>AWSとかのインスタンスをコードから立ち上げられるTerraformを利用して、<br />
+楽天社内でinfrastructure as codeを進めている話です。</p>
+
+<p>##ビルドパイプラインツールをGoで作った話
+<a href="https://speakerdeck.com/ainoya/birudopaipurainturuwogodezuo-tutahua">資料</a></p>
+
+<p>個人的にはJenkinsでビルドパイプラインっぽいのを作るのには、<br />
+いろんな点からうんざりしていたので、なんか凄い便利そうで気になります！　　
+似たようなのを作ろうと画策していたので、先を越された感はありますが…</p>
+
+<p>##go/parser, go/astの話
+<a href="http://yuroyoro.net/gocon_2014_autumn_lt/#/">資料</a></p>
+
+<p>Goの抽象構文木を生成する標準パッケージの紹介と、可視化するツールを作ったお話です。<br />
+Goの<a href="http://ja.wikipedia.org/wiki/Lint">lint</a>ではここで紹介した技術を使って実装しているらしいです。</p>
+
+<p>##Unit-testing programs depend on I/O in Go
+<a href="https://yuya-takeyama.github.io/presentations/2014/11/30/gocon_2014_autumn/">資料</a></p>
+
+<p>表題の通り、I/Oに依存したテストについてのお話です。<br />
+Keynote2の@fumitoshi_ukaiさんも言っていたように、<br />
+データを読み書きするだけでファイルとしての挙動が不要な場合は、<br />
+<code>os.File</code>ではなく<code>io.Reader</code>や<code>io.Writer</code>を使うと、ファイル以外の引数も与えられるため、<br />
+汎用性が上がり、テストもしやすいそうです。</p>
+
+<p>##(consul.ioの話)
+<a href="https://consul.io/">https://consul.io/</a>を使うと、色々はかどるらしいが…<br />
+ごめんなさい理解できてないです(´･_･`)</p>
+
+<p>##Togetterまとめ
+Togetterは遙か彼方の地から遠隔で@yukotanさんがまとめてくれたそうです。<br />
+振り返る際にとてもお世話になったので、感謝の限りです。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#lt1">LT1</a>
+<ul>
+<li><a href="#gardener-go">Gardener &amp; Go</a></li>
+</ul></li>
+<li><a href="#セッション">セッション</a></li>
+<li><a href="#lt">LT</a>
+<ul>
+<li><a href="#nginx-build">nginx-build</a></li>
+<li><a href="#楽天でterraformを使てる話">(楽天でTerraformを使てる話)</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

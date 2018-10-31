@@ -17,24 +17,7 @@
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
       <guid>/blog/2015/07/05/dino/</guid>
-      <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
-ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
-PCとからArduinoを制御する場合、
- 電子工作をしてArduinoと部品をつなげる Arduinoを制御したり、PCに情報を送るプログラムを書く PC側でArduinoからの情報を受け取って制御するプログラムを書く  の3種類の別々の作業が必要になります。
-Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。
-ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、
-rubyプログラムを書くだけでArduinoの制御が全てできるようになります。
-これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。
-dino Arduinoをrubyから扱うライブラリです。
-https://github.com/austinbv/dino
-Arduinoの全機能を外部から制御可能にするプログラムが付随しており、
-これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。
-サンプルコード A0ポートに対する入力を拾うプログラムは以下の通りです。
-board = Dino::Board.new(Dino::TxRx::Serial.new) sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board) sensor.when_data_received do |data| puts &amp;quot;data=#{data.to_i}&amp;quot; end sleep  ポートに対する入力があるたびにブロックが実行されます。
-このように、arduinoをほぼrubyのオブジェクトのように扱えるため、
-PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。
-ただし、当然ながらPCと接続して制御するものであり、
-Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。</description>
+      <description>まとめ PCからArduinoを制御するのは面倒 作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング</description>
     </item>
     
     <item>
@@ -43,25 +26,7 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/27/arduino-browser/</guid>
-      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
-当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
-そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
-そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？
-と考えたところ、既にそのようなものがありました。
-試した結果をまとめます。
-noduino http://semu.github.io/noduino/
-Node.jsでArduinoを制御できます。 duinoというNode.jsからArduinoに接続するライブラリを利用し、
-Webサーバとして扱えるようにしているものみたいです。
-かなりいろいろな事ができ、使いやすいように作られていますが、
-ブラウザから制御するのはかなり苦労します。 ですが、Node.jsで実行する前提ならば、
-簡単でいろいろなことができるため最適だと思います。
-Serialport-server http://shokai.github.io/serialport-server/
-RubyからArduinoにアクセスし、その結果を返すサーバです。
-noduinoに比べるとできることは少ないですが、
-サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。
-
-というわけで、ブラウザからArduinoを制御する場合は、
-Serialport-serverが良さそうです。</description>
+      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、 当然ながらブラウザ本体やJavascriptにはそんな機能はありませ</description>
     </item>
     
   </channel>

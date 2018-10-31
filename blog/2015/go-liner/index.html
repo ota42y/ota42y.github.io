@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="golangのラインエディタはlinerが便利">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>golangのラインエディタはlinerが便利 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/go-liner/">golangのラインエディタはlinerが便利</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-04-11" class="post_data">
+    2015-04-11
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/golang">golang</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p><a href="https://github.com/peterh/liner">peterh/liner</a><br />
+golangでCLIを作る際に活用できるラインエディタです。</p>
+
+<h1 id="使い方">使い方</h1>
+
+<p>liner.NewLinerで作成し、Prompt関数で入力を待機します。<br />
+入力があると関数が入力を返してくるため、それによって処理を分岐します。</p>
+
+<p>なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、<br />
+エラー時に終了するようにしておくことでCtrl+dで終了できます。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;github.com/peterh/liner&quot;
+)
+
+func main() {
+	line := liner.NewLiner()
+	defer line.Close()
+
+	for {
+		l, err := line.Prompt(&quot;Input: &quot;)
+		if err != nil {
+			fmt.Println(&quot;error: &quot;, err)
+		} else {
+			fmt.Println(&quot;get: &quot;, l)
+
+			if l == &quot;exit&quot; {
+				break
+			}
+		}
+	}
+}
+</code></pre>
+
+<h1 id="入力履歴を使う">入力履歴を使う</h1>
+
+<p>AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。<br />
+<a href="http://godoc.org/github.com/peterh/liner#State.AppendHistory">State.AppendHistory</a></p>
+
+<p>また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;github.com/peterh/liner&quot;
+	&quot;os&quot;
+)
+
+func main() {
+	line := liner.NewLiner()
+	defer line.Close()
+
+	f, err := os.Open(&quot;inputs.log&quot;)
+	if err == nil {
+		n, _ := line.ReadHistory(f)
+		fmt.Println(&quot;load&quot;, n, &quot;history&quot;)
+		f.Close()
+	}
+
+	for {
+		l, err := line.Prompt(&quot;Input: &quot;)
+		if err != nil {
+			fmt.Println(&quot;error: &quot;, err)
+		} else {
+			fmt.Println(&quot;get: &quot;, l)
+			line.AppendHistory(l)
+
+			if l == &quot;exit&quot; {
+				break
+			}
+		}
+	}
+
+	f, err = os.Create(&quot;inputs.log&quot;)
+	if err == nil {
+		fmt.Println(&quot;write history&quot;)
+
+		line.WriteHistory(f)
+		f.Close()
+	} else {
+		fmt.Println(&quot;write history error: &quot;, err)
+	}
+}
+</code></pre>
+
+<h1 id="タブ補完を使う">タブ補完を使う</h1>
+
+<p>SetCompleter関数に補完用の関数を登録することで、タブ補完も使えます。<br />
+<a href="http://godoc.org/github.com/peterh/liner#State.SetCompleter">State.SetCompleter</a></p>
+
+<p>引数として、現在入力中のstringを受け取り、tab候補をstringの配列で返す関数を渡します。<br />
+入力中の文字が配列のはじめの要素で置き換えられ、以降tabを押すごとに次の要素と置き換えられます。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;github.com/peterh/liner&quot;
+	&quot;strings&quot;
+)
+
+func main() {
+	inputs := make([]string, 0)
+
+	line := liner.NewLiner()
+	defer line.Close()
+
+	line.SetCompleter(func(line string) (c []string) {
+		for _, n := range inputs {
+			if strings.HasPrefix(n, strings.ToLower(line)) {
+				c = append(c, n)
+			}
+		}
+		return
+	})
+
+	for {
+		l, err := line.Prompt(&quot;Input: &quot;)
+		if err != nil {
+			fmt.Println(&quot;error: &quot;, err)
+		} else {
+			fmt.Println(&quot;get: &quot;, l)
+			inputs = append(inputs, l)
+
+			if l == &quot;exit&quot; {
+				break
+			}
+		}
+	}
+}
+</code></pre>
+
+<h1 id="まとめ">まとめ</h1>
+
+<ul>
+<li>ラインエディタに必要な物は大体揃っている
+
+<ul>
+<li>入力中の左右移動</li>
+<li>履歴</li>
+<li>補完</li>
+</ul></li>
+<li>日本語入力はちょっとおかしい
+
+<ul>
+<li>日本語を入れて左右移動すると表示がおかしい</li>
+<li>ターミナルの問題の可能性も</li>
+</ul></li>
+</ul>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#使い方">使い方</a></li>
+<li><a href="#入力履歴を使う">入力履歴を使う</a></li>
+<li><a href="#タブ補完を使う">タブ補完を使う</a></li>
+<li><a href="#まとめ">まとめ</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

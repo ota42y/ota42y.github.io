@@ -17,11 +17,9 @@
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
-      <description>shinjuku.rbで話した内容です。
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
 資料あげようと思って完全に忘れていたので上げます…
-要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
-資料 ここです。
-  bootsnapはどれくらい早くなるのか  from ota42y</description>
+&lt;/p&gt;</description>
     </item>
     
   </channel>

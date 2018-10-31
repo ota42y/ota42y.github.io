@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="うるう日に1番なりやすい曜日は？">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>うるう日に1番なりやすい曜日は？ | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2016/leap-day/">うるう日に1番なりやすい曜日は？</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2016-03-01" class="post_data">
+    2016-03-01
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/text">text</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>今年はうるう年のため、昨日の2016-02-29はうるう日でした。
+うるう年は4年に一回かつ干支は12種類のため、うるう年になる干支は子と辰と申しかありません。</p>
+
+<p>さて、うるう年にならない干支が存在しますが、うるう日にならない曜日というのは存在するのでしょうか？
+存在しないなら、うるう日になりやすい曜日というのは存在するのでしょうか？<br />
+気になったので調べました。</p>
+
+<h1 id="うるう年のルール">うるう年のルール</h1>
+
+<p>うるう年は4年に一回、ただし100で割り切れて400で割り切れない年は来ないというルールになっており、400年間で97回うるう年がおきて一周します。
+そのため、一周する400年間の傾向を調べれば、後はその繰り返しなので変化がなく、うるう日の傾向をすべて調べたと言えます。
+今回は2000年から2399年までのうるう年を調べました。</p>
+
+<h1 id="うるう日になりやすい曜日は何曜日か">うるう日になりやすい曜日は何曜日か</h1>
+
+<p>97は7で割り切れず、6余るため、全ての曜日が均等にうるう日になることはありません。
+数学が得意な人ならば数式でぱっと曜日計算ができそうですが、私は得意ではないのでプログラムで全列挙して集計します。</p>
+
+<h2 id="うるう日カウントプログラム">うるう日カウントプログラム</h2>
+
+<p>以下のrubyスクリプトを実行する2ことで、2000年から2399年までのうるう日の曜日をカウントして集計します。</p>
+
+<pre><code class="language-ruby">require 'date'
+
+w = Hash.new(0)
+2000.step(2399, 4) do |year|
+    if Date::valid_date?(year, 2, 29)
+        d = Date.new(year, 2, 29)
+        w[d.wday] += 1        
+    end
+end
+
+7.times {|wday| puts &quot;#{Date::DAYNAMES[wday]}:#{w[wday]}&quot;}
+</code></pre>
+
+<h2 id="結果">結果</h2>
+
+<p>結果は以下のようになりました。</p>
+
+<pre><code>Sunday:13
+Monday:15
+Tuesday:13
+Wednesday:15
+Thursday:13
+Friday:14
+Saturday:14
+</code></pre>
+
+<p>月曜日と水曜日がうるう日になりやすく、日曜と火曜と木曜がうるう日になりにくい結果になりました。
+もっと差が出るかと思いましたが、均等に起きた場合に比べて一回少ない程度に収まり、思った以上に偏りはないようです。</p>
+
+<h1 id="うるう日の偏りの原因">うるう日の偏りの原因</h1>
+
+<p>どうしてこのような偏りができるのでしょうか。
+どうやら100年に一度のうるう年にならない年が影響していそうです。</p>
+
+<p>うるう日は基本的に以下の順に曜日が変わっていきます。<br />
+火→日→金→水→月→土→木→火（2000年をスタートとした場合)</p>
+
+<p>ですが、100で割り切れて400で割り切れない年はうるう年では無いため、曜日がずれてしまいます。
+このとき、次のうるう日まで一日少なくなるため、次のうるう日の曜日は一日前の曜日になります（土曜日なら金曜日になる）</p>
+
+<p>例えば、100年に一度のスキップが無い場合、2104年のうるう日は土曜日になりますが、2100年がスキップされたため一日前の金曜日になります。
+これにより、火→日→金→水→金→水→月→土→木→火と、うるう日のループでは3つ前の曜日に戻ります。</p>
+
+<p>これにより、2092年、2096年に金曜日と水曜日がうるう日になりましたが、2104年と2108年もまた金曜日と水曜日がうるう日になり、他の曜日より2回多くなります。同じように2204年は木曜日になるはずですが2200年の影響により水曜日になり、水曜日と月曜日が、2304年は木曜日になるはずが月曜日になり、月曜日と土曜日が多くうるう日になります。</p>
+
+<p>まとめると、2100年の影響で金曜日と水曜日が、2200年の影響で水曜日と月曜日が、2300年の影響で月曜日と土曜日が多くうるう日になります。
+そのため、400年間で多くならなかった日火木が13回うるう日になり、1回多くなる金土が14回、2回多くなる月水が15回うるう日になるようです。</p>
+
+<h1 id="次にうるう日が月曜日になるのはいつか">次にうるう日が月曜日になるのはいつか？</h1>
+
+<p>今年と同じく、月曜日がうるう日になるのは最速で28年後の2044年です。
+例外でスキップされる場合を除けば28年後になります。</p>
+
+<p>なお、私は1988年生まれであり、その年のうるう日は月曜日でした。
+2000年は例外スキップが無いため、ことしは生まれ年とうるう日が一致する年になります。</p>
+
+<p>なお、2400年までに月曜日がうるう日になるのは以下の通りです。</p>
+
+<pre><code>2016-02-29 2044-02-29 2072-02-29 2112-02-29 2140-02-29
+2168-02-29 2196-02-29 2208-02-29 2236-02-29 2264-02-29
+2292-02-29 2304-02-29 2332-02-29 2360-02-29 2388-02-29
+</code></pre>
+
+<p>私が生きている間にはあと2回くるか、人類が老いを克服して無限に生きられるようになり、数えるのが無意味になるかのどっちかですね。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#うるう年のルール">うるう年のルール</a></li>
+<li><a href="#うるう日になりやすい曜日は何曜日か">うるう日になりやすい曜日は何曜日か</a>
+<ul>
+<li><a href="#うるう日カウントプログラム">うるう日カウントプログラム</a></li>
+<li><a href="#結果">結果</a></li>
+</ul></li>
+<li><a href="#うるう日の偏りの原因">うるう日の偏りの原因</a></li>
+<li><a href="#次にうるう日が月曜日になるのはいつか">次にうるう日が月曜日になるのはいつか？</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

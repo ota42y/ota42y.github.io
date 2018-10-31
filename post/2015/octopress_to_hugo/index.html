@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="OctopressからHugoに乗り換えた">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>OctopressからHugoに乗り換えた | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2015/octopress_to_hugo/">OctopressからHugoに乗り換えた</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-03-16" class="post_data">
+    2015-03-16
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/golang">golang</a>
+    </span>
+    
+    <span class="post_data">
+        <a href="/tags/hugo">hugo</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、<br />
+サイト作成ツールの部分をGolangで作られたHugoに置き換えました。</p>
+
+<h1 id="まとめ">まとめ</h1>
+
+<ul>
+<li>Octopress
+
+<ul>
+<li>Ruby制の静的サイト作成ツール</li>
+<li>大量の記事を扱うと遅くなっていく
+
+<ul>
+<li>100記事で新しい記事のHTML出力まで10秒ぐらいかかる</li>
+<li>見た目を確認したいときなどにとても不便</li>
+</ul></li>
+</ul></li>
+<li>Hugo
+
+<ul>
+<li>Golang制の静的サイト作成ツール</li>
+<li>利点</li>
+<li>早い
+
+<ul>
+<li>100記事で200msぐらい</li>
+</ul></li>
+<li>環境構築いらず
+
+<ul>
+<li>公式がバイナリ配布</li>
+<li>手を加えないならそのまま使える</li>
+<li>Win-Mac両方使う人にはとても楽</li>
+</ul></li>
+<li>欠点
+
+<ul>
+<li>テーマが少ない
+
+<ul>
+<li>このサイトも自作</li>
+<li><a href="https://github.com/ota42y/orange42">https://github.com/ota42y/orange42</a></li>
+</ul></li>
+</ul></li>
+<li>手を加えにくい
+
+<ul>
+<li>手を加えると環境構築いらずの利点が失われる</li>
+<li>クロスコンパイルは楽なのでそれほどでもない？
+
+<ul>
+<li>手を加える必要が無いのでそのとき考える</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="octopressの問題点">Octopressの問題点</h1>
+
+<p>HTMLのレンダリングが遅いです。</p>
+
+<p>Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。<br />
+この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、<br />
+表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。</p>
+
+<p>現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。<br />
+ちょっとした修正ごとに10秒待つのはなかなかにつらく、<br />
+かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。<br />
+そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました</p>
+
+<p>乗り換え方はこちらのサイトを参考にさせていただきました。<br />
+<a href="http://deeeet.com/writing/2014/12/25/hugo/">OctopressからHugoへ移行した</a></p>
+
+<h1 id="hugoの利点">Hugoの利点</h1>
+
+<h2 id="htmlのレンダリングが早い">HTMLのレンダリングが早い</h2>
+
+<p>Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、<br />
+ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、<br />
+ほとんど待ち時間が感じられないレベルになりました。<br />
+特にチューニングとかを考えずにこの速度なので、とても助かります。</p>
+
+<h2 id="環境構築いらず">環境構築いらず</h2>
+
+<p>Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、<br />
+環境構築でがんばる必要がありません。<br />
+私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、<br />
+Windows向けのバイナリをダウンロードするだけですむのは大変便利です。</p>
+
+<h1 id="hugoの問題点">Hugoの問題点</h1>
+
+<h2 id="テーマがない">テーマがない</h2>
+
+<p>テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。<br />
+実際このサイトも自分でテーマを作りました。<br />
+<a href="https://github.com/ota42y/orange42">https://github.com/ota42y/orange42</a></p>
+
+<h2 id="手を入れにくい">手を入れにくい</h2>
+
+<p>公式サイトのバイナリだけで運用を考える場合、新しい機能を追加することがとても難しいです。<br />
+Octopressの場合は比較的簡単に機能追加ができたため、拡張したくなった場合に手がかかりそうです。<br />
+これは環境構築の手間とのトレードオフなので仕方ないことなのですが…</p>
+
+<p>最も、Hugoには十分な機能が備わっているため、今のところ問題にはなっていません。<br />
+一応Golangならクロスコンパイルは簡単なため、一カ所で開発してそれを使い回せるようになるはずです。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#octopressの問題点">Octopressの問題点</a></li>
+<li><a href="#hugoの利点">Hugoの利点</a>
+<ul>
+<li><a href="#htmlのレンダリングが早い">HTMLのレンダリングが早い</a></li>
+<li><a href="#環境構築いらず">環境構築いらず</a></li>
+</ul></li>
+<li><a href="#hugoの問題点">Hugoの問題点</a>
+<ul>
+<li><a href="#テーマがない">テーマがない</a></li>
+<li><a href="#手を入れにくい">手を入れにくい</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

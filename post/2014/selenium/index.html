@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="selenium-webdriverでRuby からブラウザを操作する">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>selenium-webdriverでRuby からブラウザを操作する | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2014/selenium/">selenium-webdriverでRuby からブラウザを操作する</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-08-24" class="post_data">
+    2014-08-24
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/ruby">ruby</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<h1 id="まとめ">まとめ</h1>
+
+<ul>
+<li>selenium-webdriverでプログラムからブラウザを制御できる</li>
+<li>ページのロードをまったり、ページ内のJSを実行したりできる。</li>
+<li>rubyのgemがあり、簡単に導入できる</li>
+<li>Firefoxならgemを入れるだけで動かせる</li>
+</ul>
+
+<h1 id="rubyのスクレイピング方法">Rubyのスクレイピング方法</h1>
+
+<p>Rubyでスクレイピングする方法としては、
+NokogiriやMechanizeが存在します。</p>
+
+<p>どちらもHTMLを解析してページの要素にアクセスします。<br />
+ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、<br />
+Javascriptで動的に変化するページなどにちゃんと対応するのはとても大変です。</p>
+
+<p>そこで、Webブラウザを直接操作してスクレイピングするライブラリの一つが、<br />
+selenium-webdriverになります。</p>
+
+<h1 id="selenium-webdriverのインストール">selenium-webdriverのインストール</h1>
+
+<p>Rubyではselenium-webdrierのgemをインストールするだけで完了です。</p>
+
+<p>なお、Google Chromeだとgem以外にもう一つインストールするものがありますが、<br />
+今回は説明が面倒なので省略し、Firefoxで動かします。</p>
+
+<h1 id="使い方">使い方</h1>
+
+<p><code>Selenium::WebDriver.for :firefox</code>
+で、firefoxのウインドウに対応するWebDriverオブジェクトが取得できます。<br />
+このWebDriverに対して、移動先のURLやDOM要素の取得などを行えます。</p>
+
+<p>また、細かい設定などの変更のために、Profileというものが用意されています。<br />
+これに対して様々な設定をし、WebDriver作成時に設定することで、<br />
+ブラウザの挙動を変更出来ます。</p>
+
+<p>以下は、pdfを開いたときに特定のフォルダに保存する設定がされた状態で、<br />
+Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロードするコードになります。</p>
+
+<pre><code class="language-ruby">require &quot;selenium-webdriver&quot;
+
+profile = Selenium::WebDriver::Firefox::Profile.new
+profile['browser.download.dir'] = &quot;#{File.expand_path(File.dirname(__FILE__))}/down&quot;
+profile['browser.download.folderList'] = 2
+profile['browser.download.useDownloadDir'] = true
+profile['browser.helperApps.neverAsk.saveToDisk'] = &quot;application/pdf&quot;
+profile['pdfjs.disabled'] = true
+
+driver = Selenium::WebDriver.for :firefox, :profile =&gt; profile
+driver.navigate.to &quot;https://www.google.com/search?as_q=&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_nlo=&amp;as_nhi=&amp;lr=&amp;cr=&amp;as_qdr=all&amp;as_sitesearch=&amp;as_occt=any&amp;safe=images&amp;as_filetype=pdf&amp;as_rights=&amp;gws_rd=ssl&quot;
+
+links = driver.find_element(:class, 'r').find_elements(:tag_name, 'a')
+if links
+  links.each do |element|
+    if element.displayed?
+      element.click
+      exit 0
+    end
+  end
+end
+</code></pre>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#rubyのスクレイピング方法">Rubyのスクレイピング方法</a></li>
+<li><a href="#selenium-webdriverのインストール">selenium-webdriverのインストール</a></li>
+<li><a href="#使い方">使い方</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

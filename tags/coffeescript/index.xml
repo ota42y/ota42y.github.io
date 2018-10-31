@@ -17,17 +17,7 @@
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/23/javascript-callback/</guid>
-      <description>関数リテラルではローカル変数には自由にアクセスできるので、
-ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。
-以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、
-実行時にエラーになります。
-(coffeescriptで書いていますがjavascriptと同じ結果です)
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @hello(1) test2.call( -&amp;gt; @hello(2) ) class Test2 call: (callback) -&amp;gt; callback()  関数リテラルはそれを作ったオブジェクトとは別のオブジェクトから呼び出されるらしく、
-またその時のthis(coffeescriptなので@hello(2)はthis.hello(2)と等価です)は、
-そのオブジェクトになり、メソッドがないため失敗するようです。
-以下のように、一度thisを待避させることで呼び出すことが出来ます。
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @hello(1) self = this test2.call( -&amp;gt; self.hello(2) ) class Test2 call: (callback) -&amp;gt; callback()  完全なコードはこちら
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @test = &amp;quot;test&amp;quot; @hello(1) self = this test2.</description>
+      <description>関数リテラルではローカル変数には自由にアクセスできるので、 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</description>
     </item>
     
     <item>
@@ -36,30 +26,7 @@ class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num c
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/04/08/atom-plugin1/</guid>
-      <description>Github製のエディタAtomの招待が来ました。
-簡単なプラグインの作り方が公開されていましたので、 自分でも作ってみました。
-[Create Your First Package]https://atom.io/docs/latest/your-first-package)
-#テンプレート作成 Atomはプラグインのテンプレートを作る仕組みが入っています。 コマンドパレットから
-Generate Package  を選択して実行します。
-するとパッケージ名を聞かれます。
-適当に入力すると(ここではデフォルトのmy-package)、 ひな形がエディタで開きます。
-#コマンドを作る コマンドパレットに表示されて実行可能なコマンドを作ります。
-Atomの処理はCoffeeScriptで書きます。
-メイン部分はlib/my-package.coffeeなので、 このファイルを編集します。
-基本的に、module.exports =以降を書き換えればいいみたいです。
-この中にはテンプレートを作った段階でいろいろ書いてありますが、
-基本的に全部削除して大丈夫です。
-module.exports = activate: -&amp;gt; # コマンドと実行する関数を登録する atom.workspaceView.command &amp;quot;my-package:hello&amp;quot;, =&amp;gt; @hello() hello: -&amp;gt; # 今いるパネルを得る editor = atom.workspace.activePaneItem # 文字の挿入 editor.insertText(&#39;Hello, World!&#39;)  package jsonに &amp;ldquo;activationEvents&amp;rdquo;が存在するので、
-その値をさっき登録したコマンドを入れた配列 [&amp;quot;my-package:hello&amp;quot;] に変更します。
- チュートリアルにはこれをしないと、
-コマンドパレットに出ないと書いてありますが、
-atom.workspaceView.command &amp;quot;test-pkg:test&amp;quot;, =&amp;gt; @test()
-を実行するだけで出てくるので、必ずしも必要ではなさそうです
-(ただし、書いてあった方が安心できそう)
- 変更を反映するために、コマンドパレットから
-Window:Reload を実行します。
-そうすると、コマンドパレットにmy-package:helloが出てくるので、
-実行すると、今のカーソルの部分にHello, World!が挿入されます。</description>
+      <description>Github製のエディタAtomの招待が来ました。 簡単なプラグインの作り方が公開されていましたので、 自分でも作ってみました。 [Create Your First Package]https://atom.io/docs/latest/your-first-package) #テンプ</description>
     </item>
     
   </channel>

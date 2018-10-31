@@ -17,12 +17,7 @@
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/31/evernote-opener-update/</guid>
-      <description>evernote url openerを更新しました。
-使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、
-ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。
-Evernoteからコピーできる、
-https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
-といった形式のリンクを張ることで、USER_SHARDとUSER_IDを保存します。</description>
+      <description>evernote url openerを更新しました。 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、 ちょっと面倒だったので、ユー</description>
     </item>
     
     <item>
@@ -31,21 +26,7 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
-      <description>まとめ
- Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人を非表示にする拡張作った DLはここから  Pixivのイラスト検索でフォロワーを除外できない Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、
-検索結果にフォローしてる人とそうでない人が交じります。
-私の場合、フォロー新着作品を全てチェックしているため、
-検索をする場合は、このイラスト書いてる新しい人を見つけたい！といった目的で行うことがほとんどです。
-そのため、フォロワー以外からの検索を行いたいのですが、
-残念ながらPixivにそのような機能はありませんでした。
-というわけで、Chrome拡張で実現しました。
-フィルタの基本機能 DLはここから。
-検索結果にはユーザのユニークIDが含まれているため、
-自分のフォローしている人と一致していれば非表示にしています。
-また、毎回通信するのは無駄が多いため、
-事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。
-そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。
-ソースコード https://github.com/ota42y/pixiv_follower_filter</description>
+      <description>まとめ Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人</description>
     </item>
     
     <item>
@@ -54,31 +35,7 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/17/local-storage/</guid>
-      <description>Chrome拡張でデータを保存しようとした場合に、
-最も簡単に扱えるのが、localStorageです。
-manifest.jsonの設定 manifest.jsonに以下のパーミッションを追加してください
-&amp;quot;permissions&amp;quot;: [ &amp;quot;storage&amp;quot;, &amp;quot;unlimitedStorage&amp;quot; ],  使い方 localStorageという辞書型の変数が定義されるので、
-それに対して読み書きを行うだけで大丈夫です。
-localStorage[‘data’] = ‘aaa&#39; var data = localStorage[‘data’]  注意点 保存形式の制約 この方法で保存できるのは文字列だけになります。
-true/falseを保存しても文字列として出てきますし、
-オブジェクトを入れても正しく保存されません。
-このような場合、JSON.stringifyとJSON.parseを使い、
-JSONに変換して保存すると解決します。
-読み出せる場所の制約 localStorageはページごとに保存するデータがわかれているため、
-読み書きは同じ場所で行う必要があります。
-基本的にはbackgruond.jsで読み書きを行い、
-content_scriptsやpopupからbackground.jsを呼び出すのがいいと思います。
-popupからは以下のように、background.jsの関数を簡単に呼び出すことができます。
-// background.jsのgetDataを呼び出す var data = chrome.extension.getBackgroundPage().getData();  content_scriptsからは直接アクセスできないため、
-メッセージを通して呼び出す必要があり、少々面倒です。
-まず、background側にメッセージ受け取りと、コールバックを定義します。
-content_scriptsからのメッセージ内容がrequestに入っているので、
-それによって処理を分けています。
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) { if (request.method == &amp;quot;getUser&amp;quot;){ sendResponse({user_id: localStorage[request.user_id]}); }else{ sendResponse({}); } });  content_scriptから呼び出す場合は以下のように、
-データとコールバックを渡します。
-受け取り側でsendResponse()を読んだときの引数がresponseに入るので、
-それを利用してデータを取り出します。
-chrome.runtime.sendMessage({method: &amp;quot;getUser&amp;quot;, user_id: user_id}, function(response) { if(response.</description>
+      <description>Chrome拡張でデータを保存しようとした場合に、 最も簡単に扱えるのが、localStorageです。 manifest.jsonの設定 man</description>
     </item>
     
   </channel>

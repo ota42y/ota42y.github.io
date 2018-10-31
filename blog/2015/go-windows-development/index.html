@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="LinuxとIntelliJを使ったWindowsでのプログラミング環境">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/go-windows-development/">LinuxとIntelliJを使ったWindowsでのプログラミング環境</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-04-24" class="post_data">
+    2015-04-24
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/golang">golang</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。</p>
+
+<ul>
+<li>WindowsのGolang開発
+
+<ul>
+<li>IntelliJ便利
+
+<ul>
+<li>機能がとても豊富</li>
+</ul></li>
+<li>Windows上ではつらい
+
+<ul>
+<li>開発ツールが少ない</li>
+<li>LinuxはGUI使いづらい</li>
+</ul></li>
+<li>LinuxのファイルをWindowsから変更する
+
+<ul>
+<li>良いところ取り
+
+<ul>
+<li>開発はWindows</li>
+<li>実行はLinux</li>
+</ul></li>
+<li>ファイルはSambaで共有
+
+<ul>
+<li>ネットワークドライブをマウント</li>
+</ul></li>
+<li>IDEデバッグは使えなくなる
+
+<ul>
+<li>そのときだけWindowsで動かすとか</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="golang開発環境を整える">Golang開発環境を整える</h1>
+
+<h2 id="intellijでのgo開発環境">IntelliJでのGo開発環境</h2>
+
+<p>IntelliJ IDEAとGolang pluginはとてもよく動くため、<br />
+Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。<br />
+<a href="http://qiita.com/kaiinui/items/433eb86c022ffcad0bea">Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった</a></p>
+
+<h2 id="vmwareに開発環境を整える">VMwareに開発環境を整える</h2>
+
+<p>IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。<br />
+ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、<br />
+Windows上で開発するのは細かいところで面倒になることが多いです。<br />
+そのため、仮想マシンや別サーバにLinuxマシンを1台作り、<br />
+その中で開発をした方が何かと便利です。</p>
+
+<p>ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、<br />
+開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。<br />
+そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、<br />
+それらをssh経由のCLIから操作するのが最も良い案になっています。</p>
+
+<p>このような構成にすることで、Unixで動く便利なツールを利用しつつ、<br />
+Windowsの快適なGUI環境を利用することができます。<br />
+また、ファイルや実行環境と手元の環境とが切り離されるため、<br />
+複数の実行環境を切り替えたり、<br />
+マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。</p>
+
+<p>なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。</p>
+
+<h2 id="intellijで別サーバのファイルにアクセスする">IntelliJで別サーバのファイルにアクセスする</h2>
+
+<p>残念ながらIntelliJはこのような用途を想定していないため、
+別マシンの環境下で作業できません。</p>
+
+<p>幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、<br />
+IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。</p>
+
+<p>そこで、サーバ上の開発ディレクトリをSambaで共有し、<br />
+Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、<br />
+IntelliJで開発を行うことができます。</p>
+
+<p>私の環境では、以下のような設定をsmb.confに追加しています。</p>
+
+<pre><code>[global]
+map archive = no
+
+～中略～
+
+[workspace]
+   path = /home/username/workspace
+   writable = yes
+   guest ok = no
+   guest only = no
+   create mode = 0755
+   directory mode = 0755
+   share modes = yes
+</code></pre>
+
+<p>map archiveについてはこちらを参照<br />
+<a href="http://qiita.com/haoling/items/b306b23c41c7110e9e35">sambaでファイルを上書きすると実行属性が付いてしまう場合の対処</a></p>
+
+<h2 id="サーバと手元の環境を合わせる">サーバと手元の環境を合わせる</h2>
+
+<p>補完機能を有効に活用するためにはサーバと手元に同じソースを持っておく必要があります。<br />
+ファイルを共有している場合、自分のプロジェクトに関しては問題ありませんが、<br />
+依存ライブラリ等に関しては意図的にそろえる必要があります。</p>
+
+<p>幸いにも、私はgolangのパッケージ管理に<a href="https://github.com/mattn/gom">gom</a>を利用しています。<br />
+このツールはプロジェクト内に_vendorフォルダを作り、そこに依存パッケージを保存します。</p>
+
+<p>そのため、IntelliJのProject StructureのGOPATHに_vendor/srcを追加することで、<br />
+依存パッケージの補完や、定義元ジャンプが効くようになります。</p>
+
+<h1 id="問題点">問題点</h1>
+
+<p>この手法ではIDEから実行することを想定していないため、<br />
+IDEデバッグなど、IDE経由で実行した際に動く機能が使えなくなってしまいます。<br />
+このような場合は常に同じ実行環境を維持しておき、<br />
+必要な時にIDEが実行することで回避できますが、あまり良い方法ではないです…</p>
+
+<p>ですが、そもそもGolangのプラグインはそもそもまだデバッガに対応していないので、<br />
+大きな問題にはなっていません。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#golang開発環境を整える">Golang開発環境を整える</a>
+<ul>
+<li><a href="#intellijでのgo開発環境">IntelliJでのGo開発環境</a></li>
+<li><a href="#vmwareに開発環境を整える">VMwareに開発環境を整える</a></li>
+<li><a href="#intellijで別サーバのファイルにアクセスする">IntelliJで別サーバのファイルにアクセスする</a></li>
+<li><a href="#サーバと手元の環境を合わせる">サーバと手元の環境を合わせる</a></li>
+</ul></li>
+<li><a href="#問題点">問題点</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

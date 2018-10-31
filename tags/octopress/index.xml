@@ -17,24 +17,7 @@
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/30/octopress-update/</guid>
-      <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。
-だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、
-forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。
-ブログ用リポジトリの状態 このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。
-https://github.com/ota42y/ota42y.github.io
-ですが、これはOctopressの出力先のリポジトリであり、
-bitbucket上にOctopress自体のリポジトリが存在します。
-このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。
-Octopressのアップデート 普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。
-その後、Octopress側のmasterとマージをするだけになります。
-git remote add octopress git@github.com:imathis/octopress.git git fetch octopress git merge octopress/master  その後、bundle installすれば終了…のはずでしたが、1つ落とし穴がありました。
-Jekyllがアップデートされたため、日付を出力するdate_time_htmlが変更されていました。
-https://github.com/imathis/octopress/pull/1643/files
-そのため、これを直すことで、無事アップデートは終了になりました。
-date_time_htmlが無くなったことはすぐに発見できましたが、
-このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。
-Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、
-その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…</description>
+      <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。 だいぶ前のOctopressをforkして、このブログ用の</description>
     </item>
     
     <item>
@@ -43,24 +26,7 @@ Rubyの特徴上、変数にあらゆるオブジェクトが入る事がある�
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>/blog/2013/09/25/octopress/</guid>
-      <description>前までブログシステムにはWordpressを使っていたんですが、
-個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。
-そこで、ちょっと話題になってる(らしい)Octopressを導入してみました。
-#Octopressって何？ jekyllを使って、
-github pages上で簡単にブログを作れるシステムらしいです。
-テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、
-githubのへデプロイすることでweb上に公開できるシステムになります。
-そのため、gitを使ってブログのデプロイやバックアップを作れるという、
-まさにプログラマー向けなブログシステムです。
-公式サイトにも、A blogging framework for hackersって書いてありますしね。
-インストールの仕方はこっち
-#運用方法 デプロイするgithubのリポジトリには、このブログのファイルが全部入ってます。
-ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、
-このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。
-そこで、公開用のリポジトリとは別に、
-Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。
-こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。
-今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。</description>
+      <description>前までブログシステムにはWordpressを使っていたんですが、 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。 そこ</description>
     </item>
     
   </channel>

@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Globalizeを使ったRailsを5系対応する際にはまった">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>Globalizeを使ったRailsを5系対応する際にはまった | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2018/globalize_5/">Globalizeを使ったRailsを5系対応する際にはまった</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2018-03-28" class="post_data">
+    2018-03-28
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/ruby">ruby</a>
+    </span>
+    
+    <span class="post_data">
+        <a href="/tags/gem">gem</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<h1 id="要約">要約</h1>
+
+<ul>
+<li>columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる</li>
+<li>だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい</li>
+<li>チェックして消す&amp;今後増えないようにするgemを作った</li>
+</ul>
+
+<h1 id="問題">問題</h1>
+
+<ul>
+<li>GlobalizeをRails5対応版(5.1.0.beta2)にあげる</li>
+<li>一部の処理が落ちる(´・_・`)</li>
+</ul>
+
+<h1 id="原因">原因</h1>
+
+<p><code>News.columns_hash.keys</code>は、そのモデルのカラム名を配列で返します。<br />
+GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。<br />
+しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。<br />
+そのため返ってくる値がバージョンによって代わり、それに依存している処理がおかしくなります。<br />
+ただし、この影響を受けるカラムは多くの場合参照できないため、通常は仕様ミスや顕在化してないバグの可能性が高いです。</p>
+
+<h1 id="解説">解説</h1>
+
+<p>Globalize gemでは、あるモデルのカラムに対してtranslate指定をすることで、translate用のテーブルの同名カラムを参照するようになります。</p>
+
+<p>例えば以下のようなNewsモデルがある場合を考えます。</p>
+
+<pre><code># == Schema Information
+#
+# Table name: news
+#
+#  id                     :integer          not null, primary key
+#  title                  :string(255)
+#  description            :string(255)
+class News
+  translate :title, :description
+end
+</code></pre>
+
+<p>このモデルのtitleとdescriptionはtranslateされているので、newsテーブルの同名のカラムは使われません。
+Globalizeによって、I18n対応した別テーブル(news_translates)の該当するlocaleのデータを取ってくるように変更されます。
+そのため、translateによって処理が上書きされたカラムと同じ名前のカラムが元のテーブルにあっても、アクセスすることは出来ません。</p>
+
+<p>ですが、Globalize 5.0系ではcolumns_hash等で全てのカラムの一覧を取得した場合、このアクセス不能なカラムが一覧に入っています。
+そのため、上書き前のカラムがあるという前提のコードを書けてしまいます。</p>
+
+<pre><code>News.columns_hash.keys
+=&gt; [&quot;id&quot;, &quot;title&quot;, &quot;description&quot;, &quot;created_at&quot;, &quot;updated_at&quot;]
+</code></pre>
+
+<p>Globalizeの5.1系では、内部的に以下の方法でtranslateに設定されたカラム名が除外されるため、columns_hash等を使っても上書き前のカラムにアクセスできなくなります。</p>
+
+<pre><code>News.columns_hash.keys
+=&gt; [&quot;id&quot;, &quot;created_at&quot;, &quot;updated_at&quot;]
+</code></pre>
+
+<ul>
+<li>Rails4系の場合
+
+<ul>
+<li>もとのcolumns_hashからtranslateしたカラムを消している。</li>
+<li><code>Globalize::ActiveRecord::ClassMethods#columns_hash</code></li>
+</ul></li>
+<li>Rails5系の場合
+
+<ul>
+<li><code>ignored_columns</code>でActiveRecord的にカラムを無効化</li>
+<li>Rails5から追加されたメソッド</li>
+<li><code>Globalize::ActiveRecord::ActMacro#allow_translation_of_attributes</code></li>
+</ul></li>
+</ul>
+
+<p>そのため、 <code>columns_hash</code> を利用して上書き前のカラムがあることを前提としたコードを書いている場合、処理が失敗します。</p>
+
+<h1 id="対策">対策</h1>
+
+<p>おそらくGlobalizeの意図している挙動は、translate設定したカラムは全てI18n対応のテーブルのものに完全に上書きするものです。
+そのため、 <code>columns_hash</code> でアクセス出来てしまうのは予期せぬ事であり、上書き元にはアクセスしないようにするのが正しそうです。</p>
+
+<p>また、上書き元のカラムへのアクセスは普通に使っていると出来ません。
+そのため、<code>columns_hash</code> でtranslateしたカラムに対して処理を行っている場合は高確率で無駄な挙動かバグの可能性が高いです。
+これらのカラムはそもそもremove_columnsするべきですし、今後も増えないようにしていく必要があります。</p>
+
+<p>ただし、既存のカラムをtranslateしたような場合にtranslate前のカラムを消さずにそのまま残してしまうということはありえるため、増えないように注意するのは大変です。</p>
+
+<h1 id="対策をgem化した">対策をgem化した</h1>
+
+<p>毎回レビューでtranslateによって上書きされるカラムをチェックしするのは大変なため、そういったことをしてくれるgemを作りました。<br />
+<a href="https://github.com/ota42y/globalize_overlap_checker">https://github.com/ota42y/globalize_overlap_checker</a></p>
+
+<p>このgemではglobalizeによって上書きされるカラムを探しだし、remove_columnsのmigrationを作るrake taskを提供します。</p>
+
+<pre><code class="language-ruby">rake globalize_overlap_checker:generate_remove_overlap_migration
+</code></pre>
+
+<p>これにより、translateで上書きされるカラムの一覧と、それを消すmigrationを生成できます。</p>
+
+<p>また、initalizerの中で以下のように設定をする事で、この問題を避けることができます。</p>
+
+<pre><code>GlobalizeOverlapChecker.prohibition_overlap!
+</code></pre>
+
+<p>RAILS_ENV=testでこのメソッドを読ぶと、migration実行時にtranslateによって消えるカラムを見つけてエラーを起こしてくれます。
+これにより、translateしたのに残っているカラムの存在を検知出来るため、レビュー時に気をつける必要がなくなります。
+これらの機能により、今あるおかしいカラムを全部消すのと、今後増えるのを止めることが出来ます。</p>
+
+<p>Globalize 5.1系にあげることでcolumns_hashを使っても上書き元のカラムにアクセスできなくなるため大きな問題は起きません。
+しかし、アクセスできないカラムは結局残るので、謎のカラムが増えることを防ぐのには依然として機能します。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#要約">要約</a></li>
+<li><a href="#問題">問題</a></li>
+<li><a href="#原因">原因</a></li>
+<li><a href="#解説">解説</a></li>
+<li><a href="#対策">対策</a></li>
+<li><a href="#対策をgem化した">対策をgem化した</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

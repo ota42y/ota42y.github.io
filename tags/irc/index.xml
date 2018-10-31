@@ -17,16 +17,7 @@
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/09/irc/</guid>
-      <description>IRCのプロトコルはRFCで決められていて、
-一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。
-http://tools.ietf.org/html/rfc1459.html#section-2.3
-が、古いやつとかは対応してない場合もあるらしく、
-メッセージを受け取る部分は両方に対応できるようにした方がいいとのことです。
-http://tools.ietf.org/html/rfc1459.html#section-8
-と、ちょうどLFしか送ってこないIRCサーバに、
-node-ircで接続したらはまったのでメモ。
-修正プルリクは出したけど、メンテ止まってる予感が…
-https://github.com/martynsmith/node-irc/pull/246</description>
+      <description>IRCのプロトコルはRFCで決められていて、 一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。 http://tools.ietf.org/html/rfc1459.html#section-2.3 が、古いやつとかは</description>
     </item>
     
   </channel>

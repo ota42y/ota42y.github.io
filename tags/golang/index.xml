@@ -17,20 +17,13 @@
       <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>/blog/2018/10/04/2018-10-04/</guid>
-      <description>Amazon Web Servicesサーバーレスレシピ という本が明日10/5に出ます。
-元々技術書典で書いた本を更に加筆修正したものになります。
-どんな本 この本は元々技術書典4で私も記事を書いた「Amazon Web Services サーバーレスレシピ 2018.04」がベースになっています。
-技術書典4でAWSサーバーレス本出します！
-実際にサーバレスアプリケーションを組み立てる上で、こういうふうに組み合わせればいいんだよみたいな例を乗っけたものになります。
-私は主にAWS Serverless Application Model(SAM)でECサイトを作るみたいなことを書きました。
-技術書典版との差分 技術書典版ではNode.jsでコードを書いていましたが、Go言語ですべて書き直しました。
-冗長な部分を削ったり、薄かった本番デプロイの説明を暑くするなど、ほぼ同じテーマで書いたの別の本みたいな感じになっています。
-Diffはこのぐらいですね…
-さらに、Vue.jsでSPAを作って実際にサーバレスアプリケーションにアクセスしてみるといった部分を加筆しています。
-また、湊川あいさんに、とても素晴らしい表紙も書いていただきました！
-その他 技術書典4で本を出していたところ、お声がかかりこのような運びになり、大変うれしいです。
-Amazon以外でも色んな所で売っているので是非！！！！
-Amazon Web Servicesサーバーレスレシピ | 電子書籍とプリントオンデマンド（POD） | NextPublishing（ネクストパブリッシング）</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B07HXW1MJW/ref=as_li_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=1211&amp;amp;creativeASIN=B07HXW1MJW&amp;amp;linkCode=as2&amp;amp;tag=ota42y-22&amp;amp;linkId=5174f8f30bb21372de55744805a36ad8&#34;&gt;Amazon Web Servicesサーバーレスレシピ&lt;/a&gt; という本が明日10/5に出ます。&lt;/p&gt;
+
+&lt;p&gt;&lt;a target=&#34;_blank&#34;  href=&#34;https://www.amazon.co.jp/gp/product/B07HXW1MJW/ref=as_li_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B07HXW1MJW&amp;linkCode=as2&amp;tag=ota42y-22&amp;linkId=5174f8f30bb21372de55744805a36ad8&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=JP&amp;ASIN=B07HXW1MJW&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=ota42y-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;//ir-jp.amazon-adsystem.com/e/ir?t=ota42y-22&amp;l=am2&amp;o=9&amp;a=B07HXW1MJW&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;元々技術書典で書いた本を更に加筆修正したものになります。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -39,27 +32,10 @@ Amazon Web Servicesサーバーレスレシピ | 電子書籍とプリントオ�
       <pubDate>Tue, 17 Jul 2018 08:00:37 +0900</pubDate>
       
       <guid>/blog/2018/07/17/goroutine/</guid>
-      <description>shinjuku.rbで話した内容です。
-が、スライドだけだとよくわからないのでもう少し文章を補足した版を上げておきます。
-  goroutineはどうやって動いているのか  from ota42y 
-要約  goroutineの実態はスレッド go xxxした関数はプロセッサ数に応じて適切なスレッドに割り振られて処理される work-stealingアルゴリズムで処理のスケジューリングをする  goroutineとは何か 以下のように書くと、非同期でgo xxxに渡した関数が実行されます。
- 実態はスレッドらしいのですが、基本的にはうまく覆い隠されており、以下のような細かい点は意識しなくてよいようになっています。
- 実行までの手順はどうなってるのか 非同期処理の管理はどうしているのか スレッド数の調節はどう行われているのか  今回は、goはこれらの点をどう解決しているのかを調べました。
-goroutineの登録 上記のコードのうち、go xxxの部分をコンパイルした結果は以下のようになっています。
- go xxxと書いた場合、コンパイルした結果を見る限り、runtime.newprocに関数ポインタ(?)を渡しています。
-newprocは実質newproc1を読んでいるだけなので、newproc1で関数の非同期処理を始めていそうです。
-newproc1の中身 newproc1の中身はかなり巨大なため、ここから攻めるのは用意ではありません。
-https://github.com/golang/go/blob/99e9be804379d0607de4a322353b317aa087073d/src/runtime/proc.go#L3316
-幸いにもおそらくgo1.1の頃のDesign docが存在しています。
-現在の実装を見る限り大きく変わってはいないので、これベースで見ていきます。
-https://golang.org/s/go11sched
-goroutineの処理フロー goroutineの処理において関わる要素は以下の3つです。
- P  Processor Gを処理していくプロセッサ GOMAXPROCSの数だけPがある  M  Thread 特定のPに紐付く  G  gorutineに渡された関数 Mに紐付けられて実行される   goroutineの登録 Gは作成されるとキューに積まれます。
-PはGを取り出して、Mにくっつけて関数を実行します。
-Mがsyscallとかロックとかで待ち状態になると、別のMを作りGを処理します。
-Mのロックが解除されたらまた実行を始めます。
-goroutineのスケジュール 複数Pが存在する場合、キューが１つだと取り出し時に競合が発生します。
-そのため、このままだと並列数を上げても速度が上がりません。</description>
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
+が、スライドだけだとよくわからないのでもう少し文章を補足した版を上げておきます。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -68,30 +44,7 @@ goroutineのスケジュール 複数Pが存在する場合、キューが１つ
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
       <guid>/blog/2015/10/11/alchemyapi/</guid>
-      <description>まとめ  AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能性凄い  画像認識ライブラリすら必要ない世界…   AlchemyAPIで画像認識が凄い簡単にできる 先日のABPro2015でこんな発表をしました。
-  身近なサイバー攻撃から身を守る  from ota42y 
-ここで画像の判定にAlchemyAPIを利用しています。
-Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。
-AlchemyAPIとは？ http://www.alchemyapi.com/
-IBMが買収した機械学習によるデータ分析会社です。
-画像認識や自然言語処理に強い会社だったらしく、その一部をIBM Bluemixで提供しています。
-IBM Bluemixは最小構成なら無料で使え、
-(おそらく)AlchemyAPIの使用権はアカウントを持っていれば1日1000件まで無料らしいので、
-回数は限られますが無料で画像認識ができます。
-どうやらIBM Bluemixは単なるクラウドサービスではなく、
-音声認識や機械翻訳、データ処理等複雑な処理をサービスとして簡単にセットアップできるようになっているらしく、
-その中の1つにAlchemyAPIが含まれているようです。
-なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。
-使い方 IBM Bluemixのアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。
-その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。
-登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、
-それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。
-ライブラリ 公式がいくつかの言語のライブラリを提供しています。
-https://github.com/AlchemyAPI
-golangによる画像認識APIは無かったため、ライブラリを作りました。
-使いたい方はどうぞ。
-https://github.com/ota42y/go-alchemyapi
-サンプルコード package main import ( &amp;quot;os&amp;quot; &amp;quot;fmt&amp;quot; alchemyapi &amp;quot;github.com/ota42y/go-alchemyapi&amp;quot; ) func main() { token := os.Getenv(&amp;quot;ALCHEMYAPI_TOKEN&amp;quot;) if token == &amp;quot;&amp;quot; { fmt.Println(&amp;quot;skip this test because no token&amp;quot;) return } client := alchemyapi.</description>
+      <description>まとめ AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能</description>
     </item>
     
     <item>
@@ -100,18 +53,7 @@ https://github.com/ota42y/go-alchemyapi
       <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
       
       <guid>/blog/2015/05/06/go-struct-offset/</guid>
-      <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。
-通常意識する必要はありませんが、32bitと64bitで挙動がおかしい場合など、
-ごく希に調べる必要に迫られる場合があります。
-そのような場合、各要素のサイズや、構造体先頭からのオフセットを調べることで、
-メモリ上に構造体がどう置かれるかを調べることができます。
-C言語でのsizeofやoffsetofに対応する物が、golangのunsafeパッケージに用意されているため、
-これを利用することで構造体の様子を調べることができます。
-https://golang.org/pkg/unsafe/
-今回は以下のようなテスト構造体を使い、メモリ上にどのように置かれるかを調べました。
-テスト環境はwindows7(32bit)とmac(64bit)になります。
-type A struct { flag bool num int64 ptr *int64 mini int32 str string nums []int64 nums5 [5]int64 strs []string }  要素のサイズ unsafe.Sizeof関数は、引数の要素のサイズを調べ、バイト数をint型で返してくれます。
-a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括弧内は64bit log.Println(unsafe.Sizeof(a.flag)) // 1 log.Println(unsafe.Sizeof(a.num)) // 8 log.Println(unsafe.Sizeof(a.ptr)) // 4 (8) log.Println(unsafe.Sizeof(a.mini)) // 4 log.Println(unsafe.Sizeof(a.str)) // 8 (16) log.Println(unsafe.Sizeof(a.nums)) // 12 (24) log.Println(unsafe.Sizeof(a.nums5)) // 40 log.Println(unsafe.Sizeof(a.strs)) // 12 (24) a.</description>
+      <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。 通常意識する必要はありませんが、32bitと64bitで挙動</description>
     </item>
     
     <item>
@@ -120,31 +62,7 @@ a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括
       <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
       
       <guid>/blog/2015/04/24/go-windows-development/</guid>
-      <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。
- WindowsのGolang開発  IntelliJ便利  機能がとても豊富  Windows上ではつらい  開発ツールが少ない LinuxはGUI使いづらい  LinuxのファイルをWindowsから変更する  良いところ取り  開発はWindows 実行はLinux  ファイルはSambaで共有  ネットワークドライブをマウント  IDEデバッグは使えなくなる  そのときだけWindowsで動かすとか     Golang開発環境を整える IntelliJでのGo開発環境 IntelliJ IDEAとGolang pluginはとてもよく動くため、
-Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。
-Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった
-VMwareに開発環境を整える IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。
-ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、
-Windows上で開発するのは細かいところで面倒になることが多いです。
-そのため、仮想マシンや別サーバにLinuxマシンを1台作り、
-その中で開発をした方が何かと便利です。
-ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、
-開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。
-そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、
-それらをssh経由のCLIから操作するのが最も良い案になっています。
-このような構成にすることで、Unixで動く便利なツールを利用しつつ、
-Windowsの快適なGUI環境を利用することができます。
-また、ファイルや実行環境と手元の環境とが切り離されるため、
-複数の実行環境を切り替えたり、
-マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。
-なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。
-IntelliJで別サーバのファイルにアクセスする 残念ながらIntelliJはこのような用途を想定していないため、 別マシンの環境下で作業できません。
-幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、
-IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。
-そこで、サーバ上の開発ディレクトリをSambaで共有し、
-Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、
-IntelliJで開発を行うことができます。</description>
+      <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。 WindowsのGolang開発 IntelliJ便利 機能が</description>
     </item>
     
     <item>
@@ -153,11 +71,7 @@ IntelliJで開発を行うことができます。</description>
       <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
       
       <guid>/blog/2015/04/18/go-package-management/</guid>
-      <description>goでは標準でいろいろなツールが揃っていますが、
-npmやbundlerのようなパッケージの依存管理をするツールはありません。
-これは、goでは公開されている物は後方互換性を守り、
-それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。
- Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.</description>
+      <description>goでは標準でいろいろなツールが揃っていますが、 npmやbundlerのようなパッケージの依存管理をするツールはありません。 これは、goでは</description>
     </item>
     
     <item>
@@ -166,16 +80,7 @@ npmやbundlerのようなパッケージの依存管理をするツールはあ�
       <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
       
       <guid>/blog/2015/04/11/go-liner/</guid>
-      <description>peterh/liner
-golangでCLIを作る際に活用できるラインエディタです。
-使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します。
-入力があると関数が入力を返してくるため、それによって処理を分岐します。
-なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、
-エラー時に終了するようにしておくことでCtrl+dで終了できます。
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&amp;quot; ) func main() { line := liner.NewLiner() defer line.Close() for { l, err := line.Prompt(&amp;quot;Input: &amp;quot;) if err != nil { fmt.Println(&amp;quot;error: &amp;quot;, err) } else { fmt.Println(&amp;quot;get: &amp;quot;, l) if l == &amp;quot;exit&amp;quot; { break } } } }  入力履歴を使う AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。
-State.AppendHistory
-また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&amp;quot; &amp;quot;os&amp;quot; ) func main() { line := liner.</description>
+      <description>peterh/liner golangでCLIを作る際に活用できるラインエディタです。 使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します</description>
     </item>
     
     <item>
@@ -184,27 +89,7 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&
       <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
       
       <guid>/blog/2015/04/01/go-io-test/</guid>
-      <description>まとめ  fmt.Print等にちゃんと出力されるかテストしたい  結論としては直接は無理  io.Writerを利用するように変えることで簡単にテスト可能  渡されたio.Writerに書き込むようにする 通常はos.Stdout、テストの時はbytes.Bufferを渡す どちらもio.Writerを実装している   標準出力への書き込みをテストしたい fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。
-ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。
-このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、
-テストの時は書き込み先を切り替えることで簡単にテストができるようになります。
-fmt.Fprintで出力先を指定する golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。
-この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。
-https://golang.org/pkg/fmt/#Fprint
-io.WriterはWrite(p []byte) (n int, err error)関数だけを持ったインターフェースです。
-そのため、これを実装していればfmt.Fprintの書き込み先として使えます。
-http://golang.org/pkg/io/#Writer
-golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。
-そのため、os.Stdoutにfmt.Fprintで書き込むことにより、
-出力先を変更可能な状態で標準出力に出力できます。
-メモリ上に出力する golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。
-そして、String()関数により、書き込まれた文字列をstringとして取得できます。
-http://golang.org/pkg/bytes/#Buffer
-これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、
-標準出力に出力されたかどうかをテストすることができるようになります。
-サンプルコード print.go
-import ( &amp;quot;fmt&amp;quot; &amp;quot;io&amp;quot; &amp;quot;os&amp;quot; ) func testPrint(w io.Writer) { fmt.Fprint(w, &amp;quot;write test\n&amp;quot;) } func main() { testPrint(os.Stdout) }  print_test.go
-package main import ( &amp;quot;bytes&amp;quot; &amp;quot;testing&amp;quot; ) func TestPrint(t *testing.</description>
+      <description>まとめ fmt.Print等にちゃんと出力されるかテストしたい 結論としては直接は無理 io.Writerを利用するように変えることで簡単にテスト</description>
     </item>
     
     <item>
@@ -213,14 +98,7 @@ package main import ( &amp;quot;bytes&amp;quot; &amp;quot;testing&amp;quot; ) fu
       <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
       
       <guid>/blog/2015/03/28/go_interface/</guid>
-      <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。
-Goでインターフェースを実装したクラスのポインタを扱う Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。
-type Node interface{ ToString() string } func Output(l Node) { fmt.Println(l.ToString()) } type NodeTest struct{ } func (n NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := NodeTest{} Output(n) }  関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、 インターフェースのポインタを渡すように変更します。
-func Output(l *Node) { fmt.Println((*l).ToString()) } func (n *NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := &amp;amp;NodeTest{} Output(n) }  この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、 関数の引数として渡すことができず、コンパイルが通りません。
-そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、 ちゃんとこのような場合も解決方法は存在します。
-ポインタにインターフェースを実装する 上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。
-そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。
-func Output(l Node) { fmt.</description>
+      <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。 Goでインターフェースを実装したクラスのポインタを扱う</description>
     </item>
     
     <item>
@@ -229,21 +107,7 @@ func Output(l Node) { fmt.</description>
       <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
       
       <guid>/blog/2015/03/22/gxui-install/</guid>
-      <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。
-WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。
-なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。
-Go言語の環境構築 Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。
-元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、
-mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。
-VCSのインストール git(http://git-scm.com/)とmercurial(http://mercurial.selenic.com/)をインストールします。
-gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください
-mingwのインストール http://sourceforge.net/projects/mingw/からmingwを入れ、
-mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。
-なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。
-これは両方とも32bitに揃えることで回避できました。
-コマンドラインからgccが使えるようになっていれば大丈夫です。
-gxuiのインストール gxuiと4つの依存するパッケージをインストールします。
-go get http://github.com/google/gxui go get http://code.google.com/p/freetype-go/freetype/raster go get http://code.google.com/p/freetype-go/freetype/truetype go get http://github.com/go-gl/gl/v3.2-core/gl go get http://github.com/go-gl/glfw/v3.1/glfw  これだけでインストールはおしまいです。 gxui内のsample/下にあるサンプルを動かして確認をしてください。</description>
+      <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。 WindowsへのインストールはGoの環境を整えるところ</description>
     </item>
     
     <item>
@@ -252,27 +116,7 @@ go get http://github.com/google/gxui go get http://code.google.com/p/freetype-go
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
       <guid>/blog/2015/03/16/octopress_to_hugo/</guid>
-      <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、
-サイト作成ツールの部分をGolangで作られたHugoに置き換えました。
-まとめ  Octopress  Ruby制の静的サイト作成ツール 大量の記事を扱うと遅くなっていく  100記事で新しい記事のHTML出力まで10秒ぐらいかかる 見た目を確認したいときなどにとても不便   Hugo  Golang制の静的サイト作成ツール 利点 早い  100記事で200msぐらい  環境構築いらず  公式がバイナリ配布 手を加えないならそのまま使える Win-Mac両方使う人にはとても楽  欠点  テーマが少ない  このサイトも自作 https://github.com/ota42y/orange42   手を加えにくい  手を加えると環境構築いらずの利点が失われる クロスコンパイルは楽なのでそれほどでもない？  手を加える必要が無いのでそのとき考える     Octopressの問題点 HTMLのレンダリングが遅いです。
-Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。
-この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、
-表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。
-現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。
-ちょっとした修正ごとに10秒待つのはなかなかにつらく、
-かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。
-そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました
-乗り換え方はこちらのサイトを参考にさせていただきました。
-OctopressからHugoへ移行した
-Hugoの利点 HTMLのレンダリングが早い Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、
-ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、
-ほとんど待ち時間が感じられないレベルになりました。
-特にチューニングとかを考えずにこの速度なので、とても助かります。
-環境構築いらず Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、
-環境構築でがんばる必要がありません。
-私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、
-Windows向けのバイナリをダウンロードするだけですむのは大変便利です。
-Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。</description>
+      <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、 サイト作成ツールの部分をGol</description>
     </item>
     
     <item>
@@ -281,8 +125,7 @@ Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、�
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/02/03/leastsquaresmethod/</guid>
-      <description>こんな感じです。
-暗黙的にキャストしてくれないので若干面倒です。</description>
+      <description>こんな感じです。 暗黙的にキャストしてくれないので若干面倒です。</description>
     </item>
     
     <item>
@@ -291,18 +134,7 @@ Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、�
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/19/gorm/</guid>
-      <description>golangではmysqldriverでmysqlにアクセスできますが、
-一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。
-goでmysqlを使う
-そこでいろいろ探していたところ、
-ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。
-https://github.com/jinzhu/gorm
-自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。
-リレーションも勝手に貼ってくれるみたいです。
-ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、
-順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。
-(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/jinzhu/gorm&amp;quot; _ &amp;quot;github.com/lib/pq&amp;quot; _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) type User struct { Id int64 Name string `sql:&amp;quot;size:255&amp;quot;` Emails []Email // One-To-Many relationship (has many) } type Email struct { Id int64 UserId int64 // Foreign key for User (belongs to) Email string `sql:&amp;quot;type:varchar(100);&amp;quot;` // Set field&#39;s type } func main(){ db, err := gorm.Open(&amp;quot;mysql&amp;quot;, &amp;quot;root@/testdb?charset=utf8&amp;amp;parseTime=True&amp;quot;) fmt.Println(err) db.</description>
+      <description>golangではmysqldriverでmysqlにアクセスできますが、 一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがありま</description>
     </item>
     
     <item>
@@ -311,21 +143,7 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/jinzhu/gorm&a
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/03/go-yaml-struct/</guid>
-      <description>使い方がかなり特殊だったのでメモ
-(ドキュメントには書いてありますが…)
-goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、
-データを構造体にセットした状態で読み込むことが出来ます。
-特にGoでは構造体を使わない場合、interfaceへの変換を書きまくる事になるので、
-できる限り構造体を利用した方がお勧めです。
-以下のように、YAMLのキーとGoの構造体の名前を揃えることで、
-YAMLから構造体に直接データを代入できます。
-type Data struct { UserId int UserName string `yaml:&amp;quot;user_name&amp;quot;` Follownum int `yaml:&amp;quot;followNum&amp;quot;` MessageText string invaliddata string }  userid: 123 user_name: name followNum: 42 messageText: text invaliddata: data  後述するコードでYAMLを読み込むと、出力は以下の通りになります、
-=&amp;gt; {123 name 42 }
-UserIdに123、UserNameにname、Follownumに42、
-MessageTextとinvaliddataは空になっています。
-構造体とYAMLの対応付け仕様 特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。
-対応するキーは以下のような仕様になっているようです。
- 指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける  UserIdはuseridと対応付けられます  後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます  messageTextはダメで、messagetextでないといけません  構造体のメンバは大文字から始まる  そのため、invaliddataにはデータ入っていません 大文字から始まれば、途中が大文字でも大丈夫です UserIdはuseridと対応付けられます 途中を大文字にしても、全て小文字のキーを見に行きます MessageTextはmessagetextと対応付けられます  明示的に対応を設定することもできる  UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない) Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる   暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。</description>
+      <description>使い方がかなり特殊だったのでメモ (ドキュメントには書いてありますが…) goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、 デ</description>
     </item>
     
     <item>
@@ -334,36 +152,7 @@ MessageTextとinvaliddataは空になっています。
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/01/gocon-2014-autumn/</guid>
-      <description>Go Conference 2014 autumnに参加しました。
-togetterまとめ
-大体スライドが公開されているので、正確な内容はそちらをどうぞ。
-#まとめ - Go言語のシンプルさへのこだわりが凄い - 開発陣の徳の高さが凄い - 難しい部分は俺らに任せておけ！的な - 明日から使えるGo言語的な情報が盛りだくさん - エラーを_で無視して済みません…(´･_･`) - 椅子が痛い - 1時間半じゃなくて、1時間ごとぐらいに休憩を挟んでほしかったです… - 英語頑張ろう - 日本語スライドありがたや…
-#Keynote1: Rob Pike (@rob_pike) (45min) スライドは未公開？
-Go言語の設計者ロブ・パイクさんのGo言語の思想とかについての話です。
-Go言語がいかに単純さ(≒簡潔さ)を重要視しているかについてとても示唆のある話をしていただけました。
-他の言語が相互に機能を取り込み、ほぼ同じ機能を持つように進化していっているのに対し、
-Goは1.0の時点で言語の機能を固定し、機能をとても少なく持つようにしたそうです。
-書く楽しさはなくなるけど、代わりに保守のしやすさを選んだとのことです。
-プレゼンの中で特にハッとさせられたのは、単純なコードと簡潔なコードとは異なるということです。
-言語の機能を使って、数行程度でいろんな事に対応しようとすると、コードの量自体は少なくて済みますが、
-必要とする前提知識が増え、かつその数行を完全に理解するのにとても時間がかかります。
-おそらく、適当な言語のワンライナーを理解するのに必要な知識と時間を想像すれば大体わかると思います。
-簡潔な記述でも理解するのが大変な複雑な事ができるため、
-簡潔なコード≠単純なコードと言えるのかなと思いました。
-また、Goではコード側ができる限り簡単になるように、
-複雑な事を可能な限り言語側で隠蔽しているとも言われていました。
-実際、GoのGCや並行処理、パッケージなどは設計や実装自体は凄く複雑にも関わらず、
-使う側からはそれほど大変さを感じることなく使えます。
-ここ（複雑な部分）は俺にまかせろーといった感じで、開発者の方々には頭が下がります…
-#Keynote2: Goに入ってはGoに従え @fumitoshi_ukai (45min) 資料
-Google社内でGo Readability Approverをされている@fumitoshi_ukaiさんの発表です。
-Go言語らしく書くにはどうすればいいのか？といった思想的な部分と、
-ダメな例と良い例を挙げてひたすら赤ペン先生をする発表でした。
-これがGo言語のやり方か！となりっぱなしで、まさに明日から使えるGo言語といった感じなので、
-是非ともスライドが公開されるといいなーと思います。
-LT1 Gardener &amp;amp; Go 資料
-@nuki_ponさんが某位置情報ゲームの色をした、GoCon Tシャツを作ってくださったそうです。
-GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</description>
+      <description>Go Conference 2014 autumnに参加しました。 togetterまとめ 大体スライドが公開されているので、正確な内容はそちらをどうぞ。 #まとめ - Go言語のシ</description>
     </item>
     
     <item>
@@ -372,15 +161,7 @@ GoCon 2014 Autumn Tシャツ | FreeGufo メール便対</description>
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/13/go-yaml/</guid>
-      <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。
-サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、
-以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。
-またExampleには型を決めて読み込む方法しか乗っていませんが、
-以下の例では、go で yaml 等を「map[interface{}]interface{}」型で読み込んだ際の動的型の参照方法
-を参考に型を決めずにMapで読み込んでいます。
-かなり冗長な表現になっていますが…(´･_･`)
-a: Easy! b: c: 2 d: [3, 4]  package main import ( &amp;quot;fmt&amp;quot; &amp;quot;io/ioutil&amp;quot; &amp;quot;gopkg.in/yaml.v2&amp;quot; ) func main() { buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;) if err != nil { return } m := make(map[interface{}]interface{}) err = yaml.Unmarshal(buf, &amp;amp;m) if err != nil { panic(err) } fmt.Printf(&amp;quot;%s\n&amp;quot;, m[&amp;quot;a&amp;quot;]) fmt.Printf(&amp;quot;%d\n&amp;quot;, m[&amp;quot;b&amp;quot;].(map[interface {}]interface {})[&amp;quot;c&amp;quot;]) }  出力結果
-Easy! 2  </description>
+      <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。 サイトにはメモリ上のデータに対</description>
     </item>
     
     <item>
@@ -389,12 +170,7 @@ Easy! 2  </description>
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/08/go-mysql-time/</guid>
-      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…
-sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time
-どうやらDSNにparseTime=trueオプションをつける必要があるようです(何故かは不明)
-db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)
-参考リンク
-https://github.com/go-sql-driver/mysql#timetime-support</description>
+      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します… sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair:</description>
     </item>
     
     <item>
@@ -403,16 +179,7 @@ https://github.com/go-sql-driver/mysql#timetime-support</description>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/04/go-mysql/</guid>
-      <description>http://github.com/go-sql-driver/mysql
-がありましたので、それを使います。
-以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。
-import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; )  DB設定 以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。
-db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;user:password@/dbname&amp;quot;) if err != nil { panic(err.Error()) } defer db.Close()  サーバやデータベース名などはDSN (Data Source Name)で指定するようです。
-あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。
-使い方 前提条件 上記の方法でsql.Openの結果を変数のdbに保存済み、
-以下の構造体をDBに書き込むとします。
-type Post struct { RoomName string Message string MessageId string IsSend bool }  また、tableNameに書き込むテーブル名が保存されているとします。
-INSERT post := getPost()　// 書き込むためのデータを取得する stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?</description>
+      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) DB設定 以下の用</description>
     </item>
     
     <item>
@@ -421,13 +188,7 @@ INSERT post := getPost()　// 書き込むためのデータを取得する stmt
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/10/golang-file-split/</guid>
-      <description> Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。
- Goコードの書き方
-とのことなので、試しに以下のようにmainパッケージを分割してコンパイルしたところ、上手くいきませんでした(´･_･`)
-// main.go package main import ( &amp;quot;fmt&amp;quot; ) func main() { fmt.Println(&amp;quot;main file&amp;quot;) OutputDiv() }  // div.go package main import ( &amp;quot;fmt&amp;quot; ) func OutputDiv() { fmt.Println(&amp;quot;div file&amp;quot;) }  go runの結果、分割したファイルにある関数を見つけられないエラーになります。
-go run main.go # command-line-arguments ./main.go:9: undefined: OutputDiv  どうやら、go runした場合は引数のファイルのみがコンパイル対象になるため、
-go run *.goか、必要なファイルを全てオプションとして渡す必要があるようです。
-go run main.go div.go main file div file  </description>
+      <description>Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別フ</description>
     </item>
     
     <item>
@@ -436,8 +197,7 @@ go run main.go div.go main file div file  </description>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/09/golang-cron/</guid>
-      <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止めておく必要があります。
- </description>
+      <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止め</description>
     </item>
     
     <item>
@@ -446,28 +206,7 @@ go run main.go div.go main file div file  </description>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/03/mgo-consistency/</guid>
-      <description>mgoのサンプルにあった
-session.SetMode(mgo.Monotonic, true)
-の意味がよくわからないので調べてみました。
-結論から書きますと、これは複数DBを利用した際の、
-データの一貫性をどの程度保証するかの設定です。
-一貫性制御 mgoには複数のDB間での一貫性を制御する３種類のモードがあります。
-const ( Eventual mode = 0 Monotonic mode = 1 Strong mode = 2 )  SetModeにこれを渡すことで、モードを切り替えられます。
-それぞれの内容は以下の通りです。
-おそらく一貫性がちゃんとしていくに従って、複雑化&amp;amp;遅くなっていきます。
-Eventual Consistency 最終的に辻褄が合えばいいよね設定です。
-データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。
-更新済みのノードと、そうでないノードが混在する可能性があるため、
-どのノードから読み込むのかが固定されない場合、
-新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…
-といったことが起きる可能性があるはずです。
-同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。
-Monotonic Consistency あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。
-おそらく、値を参照したタイミングで最新かどうかは保証されないが、
-少なくとも古い値が読み込まれることはない、という状態だと思われます。
-Strong Consistency 常に必ず最新の値が読み込めるという状態です。
-一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、
-注意が必要です。</description>
+      <description>mgoのサンプルにあった session.SetMode(mgo.Monotonic, true) の意味がよくわからないので調べてみました。 結論から書きますと、これは複数DBを利用した際の、 データの一貫性をどの</description>
     </item>
     
     <item>
@@ -476,13 +215,7 @@ Strong Consistency 常に必ず最新の値が読み込めるという状態で�
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/02/go-mongodb/</guid>
-      <description>mgoというライブラリが便利そうです。
-http://labix.org/mgo
-以下はtwitterからツイートを取ってきて、
-未登録のツイートをmongodbに保存するスクリプトです。
-今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、
-件数を数えてその結果をチェックしています。
- </description>
+      <description>mgoというライブラリが便利そうです。 http://labix.org/mgo 以下はtwitterからツイートを取ってきて、 未登録のツイートをmongodbに保存するスクリプトで</description>
     </item>
     
     <item>
@@ -491,9 +224,7 @@ http://labix.org/mgo
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/31/go-anaconda/</guid>
-      <description>anacondaが良さそう(ただしストリーミングAPI非対応)
-go get github.com/ChimeraCoder/anaconda
- </description>
+      <description>anacondaが良さそう(ただしストリーミングAPI非対応) go get github.com/ChimeraCoder/anaconda</description>
     </item>
     
   </channel>

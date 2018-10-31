@@ -17,15 +17,7 @@
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/19/twitter-callback/</guid>
-      <description>Twitterはoauth/request_tokenへのアクセス時に、
-認証後のコールバック先をoauth_callbackパラメータで上書きできます。
-Twitterの開発者画面からは独自スキーマは登録できませんが、
-この機能で上書きをすると任意のスキーマをコールバックに設定できます。
-ただし、Twitterに何らかのURL(ダミーでも可)を設定してないと上書きできないようです。
-たとえば以下のようなコードを書いた場合、Twitterの開発者画面でURLを登録していないと、
-401 Authorization Required (OAuth::Unauthorized)が帰ってきますが、
-http://example.comのようにダミーURLを登録すると認証画面用のURLが帰ってきます。
-require &amp;quot;oauth&amp;quot; consumer_key = &amp;quot;&amp;quot; consumer_secret = &amp;quot;&amp;quot; consumer = OAuth::Consumer.new consumer_key, consumer_secret, site: &amp;quot;https://api.twitter.com&amp;quot; request_token = consumer.get_request_token oauth_callback: &amp;quot;ota42y://test&amp;quot; puts &amp;quot;Please visit here: #{request_token.authorize_url}&amp;quot;  参考: Twitter の AccessToken と AccessTokenSecret を Ruby で取得する</description>
+      <description>Twitterはoauth/request_tokenへのアクセス時に、 認証後のコールバック先をoauth_callbackパラメータで上書</description>
     </item>
     
   </channel>

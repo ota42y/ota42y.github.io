@@ -17,22 +17,7 @@
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/29/npm-publish/</guid>
-      <description>とても簡単でしたがつい忘れるのでメモ。
-公開手順  npmjsに開発者登録をします。
-https://www.npmjs.org/
- npm adduserで~/.npmrcにnpmへのログイントークンを保存します。
- package.jsonに必要事項を書きます。
-こんな感じですね。
- npm publishで公開
- アップグレード版の配布もnpm publishで可能です。
-(ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)
-  非公開手順 間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、
-npm unpublish パッケージ名前@バージョンで削除出来ます。
-何も指定しない場合全てのバージョンが対象になりますが、--forceをつける必要があります。
-ただし、削除してしまうので、そのパッケージに依存しているパッケージが悲惨なことになります。
-そのため、npm deprecateの方がアップグレードを促せるし推奨すると公式サイトには書いてあります。
-unpublishは間違えて公開した場合用ですね。
-なお、全てのバージョンを削除するとnpmからパッケージの情報も削除されます。</description>
+      <description>とても簡単でしたがつい忘れるのでメモ。 公開手順 npmjsに開発者登録をします。 https://www.npmjs.org/ npm adduserで~/.npmrcにnpmへのログイントーク</description>
     </item>
     
     <item>
@@ -41,19 +26,7 @@ unpublishは間違えて公開した場合用ですね。
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/22/mocha-test/</guid>
-      <description>まとめ  Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ便利機能がある  Mochaの使い方 coffeescriptを前提にしています。
-テストの書き方 Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、
-そのitを呼び出す関数をdescribeに渡すしようです。
-describe &amp;quot;test root&amp;quot;, -&amp;gt; it &amp;quot;name&amp;quot;, (done) -&amp;gt; assert.equal getUserName, &amp;quot;user&amp;quot; done()  ただし、it関数では必ずdone()を呼び出す必要があります。
-これを呼ばない場合は終了を待ち続け、
-一定時間後にタイムアウトしてテストが失敗した扱いになります。
-beforeの使い方 rspecのbeforeにあたるものは、beforeEachになります。
-なお、変数を他のブロックに渡したい場合、
-以下のようにdescribeの中に変数名を書いておいて、
-beforeEachのなかで設定する必要があるみたいです。
-参考
-describe &amp;quot;test&amp;quot;, -&amp;gt; room_name = undefined beforeEach (done) -&amp;gt; room_name = &amp;quot;test_room&amp;quot; done() describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;executeNoteShow&amp;quot;, (done) -&amp;gt; assert.equal getRoomName(room_name), room_name done()  pendingテストの作り方 テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。
-describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;quot; // 関数を渡さない場合 // it.</description>
+      <description>まとめ Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ</description>
     </item>
     
     <item>
@@ -62,27 +35,7 @@ describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/21/intellij-node/</guid>
-      <description> node.js+mocha+coffeescriptな環境で開発をしていたところ、
-IntelliJ IDEAの設定方法が調べても無かったのでメモ。
-Node.jsプラグインのインストール Node.jsプラグインは公式から提供されています。
-そのため、IntelliJ のPreferences からPluginsを選び、
-NodeJSプラグインを選択するだけでインストール出来ます。
-ビルド設定 以下の画像の通りです。
- Node interpreter
-node.jsの実行ファイルの位置を設定します。 working directory
-対象のディレクトリ Mocha package
-Mochaの実行ファイルの位置 Extra Mocha options
-Mochaの設定を指定します 詳しくは後述 Test Directory
-Mochaのテストが入っている場所  Mochaのオプション 私の環境では主に次のような設定をしています、
- coffeescriptを利用している spec形式で出力 共通で読み込むファイルがある  これは、以下のオプションを入れることで実現できます。
---compilers coffee:coffee-script/register --reporter spec --require coffee-script --require test/test_helper.coffee --colors  問題点 以上で設定は終わりですが、いくつか問題点があります。
- デバッガが動かない
-coffeescriptから変換してるので、
-ブレークポイントがうまく動きません エラーになったテストに飛べない
-テストがエラーになったとしても、そのテストの位置に飛ぶ機能がありません。
-最も、IDEを使わずに開発している時と同じく、
-テストメッセージを頼りにテストファイルに移動すればいいので、
-大きな問題ではありませんが。  </description>
+      <description>node.js+mocha+coffeescriptな環境で開発をしていたところ、 IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.</description>
     </item>
     
   </channel>

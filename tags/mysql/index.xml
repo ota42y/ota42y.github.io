@@ -17,12 +17,7 @@
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/08/go-mysql-time/</guid>
-      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…
-sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time
-どうやらDSNにparseTime=trueオプションをつける必要があるようです(何故かは不明)
-db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)
-参考リンク
-https://github.com/go-sql-driver/mysql#timetime-support</description>
+      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します… sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair:</description>
     </item>
     
     <item>
@@ -31,16 +26,7 @@ https://github.com/go-sql-driver/mysql#timetime-support</description>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/04/go-mysql/</guid>
-      <description>http://github.com/go-sql-driver/mysql
-がありましたので、それを使います。
-以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。
-import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; )  DB設定 以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。
-db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;user:password@/dbname&amp;quot;) if err != nil { panic(err.Error()) } defer db.Close()  サーバやデータベース名などはDSN (Data Source Name)で指定するようです。
-あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。
-使い方 前提条件 上記の方法でsql.Openの結果を変数のdbに保存済み、
-以下の構造体をDBに書き込むとします。
-type Post struct { RoomName string Message string MessageId string IsSend bool }  また、tableNameに書き込むテーブル名が保存されているとします。
-INSERT post := getPost()　// 書き込むためのデータを取得する stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?</description>
+      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) DB設定 以下の用</description>
     </item>
     
     <item>
@@ -49,15 +35,7 @@ INSERT post := getPost()　// 書き込むためのデータを取得する stmt
       <pubDate>Sat, 30 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/30/sending-authentication-information/</guid>
-      <description>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、
-&#39;sending authentication information&#39;, system error: 32&amp;quot;.
-といったエラーが出て、mysqlへのログインすら不可能になってしまいました。
-どうやら、MySQL5.6から
-innodb_file_per_tableのデフォルト値が変わったのが原因みたいです。
-my.cnfに
-innodb_file_per_table = OFF
-を書くことでで解決します。
-参考</description>
+      <description>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、 &#39;sending authentication information&#39;, system error: 32&amp;quot;. といったエラーが出て、mysqlへのログイン</description>
     </item>
     
   </channel>

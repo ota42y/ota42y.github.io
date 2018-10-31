@@ -17,17 +17,7 @@
       <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/22/graphviz/</guid>
-      <description>こんな感じの画像を作る際に
-これまではパワポの図形機能とかペイントで頑張って作っていましたが、
-Graphvizを使うと自動で出力できます。
-Graphvizとは AT&amp;amp;Tが作ったグラフ描画のツールパッケージです。
-http://ja.wikipedia.org/wiki/Graphviz
-DOT言語というグラフ記述言語で記述されたグラフを、画像ファイル等に変換することができます。
-グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、
-SVGで出力できるため、他のソフトで調整ができます。
-使い方 インストール brew gts graphviz
-dotファイルの作成 最初に見せたグラフは以下のように作ります。
-digraph G { Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Koto[image=&amp;quot;th_koto.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Umi[image=&amp;quot;th_umi.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Maki[image=&amp;quot;th_maki.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Rin[image=&amp;quot;th_rin.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Pana[image=&amp;quot;th_pana.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Nico[image=&amp;quot;th_nico.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Nozo[image=&amp;quot;th_nozo.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Eli[image=&amp;quot;th_eli.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Yuki[label=&amp;quot;雪穂&amp;quot;]; Nico -&amp;gt; Maki; Koto -&amp;gt; Umi; Rin -&amp;gt; Pana; Rin -&amp;gt; Maki; Nozo -&amp;gt; Eli; Nozo -&amp;gt; Nico; Koto -&amp;gt; Hono[dir = none]; Hono -&amp;gt; Umi; Hono -&amp;gt; Nico; Hono -&amp;gt; Maki; Hono -&amp;gt; Yuki; Hono -&amp;gt; Eli; Hono -&amp;gt; Rin; }  初めにレイアウトに使うアルゴリズムを書きます。</description>
+      <description>こんな感じの画像を作る際に これまではパワポの図形機能とかペイントで頑張って作っていましたが、 Graphvizを使うと自動で出力できます。 Gr</description>
     </item>
     
   </channel>

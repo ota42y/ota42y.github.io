@@ -17,10 +17,7 @@
       <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
       
       <guid>/blog/2016/01/31/override-overload/</guid>
-      <description>EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので…
-まとめ  オーバーライドされたvirtualなメソッド呼び出しは実行時に決定  実態が子クラスなら、親クラスとして扱っても子クラスのメソッドが実行される 実態が孫クラスの場合は孫クラスのメソッドが呼ばれる 親から子、孫へと呼び出される関数が探されていく感じ  オーバーロードされたメソッド呼び出しはコンパイル時に決定  virtual関数のように実態で切り替えが出来ない 実態が子クラスでも、親クラスとして扱うなら親クラスのメソッドが実行される 一致するものが無い場合は親クラスにキャストして一致するものを探す 子から親へと一致するものを探していく感じ   オーバーライドとは メソッドのオーバーライドとは、親クラスのメソッドを子クラスで再定義することです。 C++では親クラスでvirtualにされているメソッドをオーバーライドすると、 子クラスのオブジェクトを親クラスにキャストしてメソッドを呼び出しても、再定義された子クラスのメソッドが呼ばれます。 (virtualをつけないと親クラスのメソッドが呼ばれます)
-たとえば以下のコードでは、オーバーライドされているためExtのshowメソッドが実行され、「show ext」が表示されます。
-#include &amp;lt;cstdio&amp;gt; class Base { public: virtual void show() { printf(&amp;quot;show base\n&amp;quot;); } }; class Ext: public Base { public: virtual void show() { printf(&amp;quot;show ext\n&amp;quot;); } }; int main() { Ext *e = new Ext(); Base *b = static_cast&amp;lt;Base*&amp;gt;(e); b-&amp;gt;show(); return 0; }  このように、オーバーライドされたメソッドは実行時にどのメソッドが呼ばれるか決定されます。</description>
+      <description>EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので… まとめ オーバーライドされたvirtu</description>
     </item>
     
     <item>
@@ -29,18 +26,7 @@
       <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
       
       <guid>/blog/2015/08/29/cedec2015-coverity/</guid>
-      <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。
-バグが入ったC++コードらしい。#CEDEC2015 pic.twitter.com/ca9vb0emVT
-&amp;mdash; alwei (@aizen76) 2015, 8月 26 
-バグがあるかどうかはCoverityが検出してくれるとして、じゃあどう解決すれば良いのか？を考えました。
-コードを見る限り、
- 配列の添え字と同じ値を入れたい 処理は2つのクラスで共通化したい  という要求があると考えます。
-(zに値を入れないが元コードもそうなのでよしとする)
-また、簡単化のために与えられるデータは全て正しいと仮定します。
-(実際は適切な箇所でエラーチェックが必要)
-テンプレートでキャストを回避する 今回のバグは暗黙的キャストが行われ、かつキャストした状態でアドレス計算をするのが問題のため、
-キャストされないように、テンプレートを使って両方のクラス用の関数を用意する事で回避する方法です。
-#include &amp;lt;stdio.h&amp;gt; class base_class { public: base_class() { x = 0; y = 0; } public: int x ; int y; }; class derived_class : public base_class { public: derived_class() { z = 0; } public: int z; }; template &amp;lt;typename T&amp;gt; void calc_class_members(T b, int array_size) { for(int i = 0; i &amp;lt; array_size; i++) { b[i].</description>
+      <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。 バグが入ったC++コードらしい。#CEDEC201</description>
     </item>
     
     <item>
@@ -49,11 +35,7 @@
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
       <guid>/blog/2015/08/20/c-struct/</guid>
-      <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。
-ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。
-#include &amp;quot;stdio.h&amp;quot; struct St{ int a; bool flag; }; struct StSt{ S s; bool f; }; int main(void) { printf(&amp;quot;%lu\n&amp;quot;, sizeof(St)); printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt)); return 0; }  原因 Cでは構造体の後ろにパディングを追加できるようになっています。
-6.7.2.1 Structure and union specifiers
-13 Within a structure object, the non-bit-field members and the units in which bit-fields reside have addresses that increase in the order in which they are declared. A pointer to a structure object, suitably converted, points to its initial member (or if that member is a bit-field, then to the unit in which it resides), and vice versa.</description>
+      <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。 ですが、intは4byte、boolは1byteなので</description>
     </item>
     
     <item>
@@ -62,17 +44,7 @@
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
       <guid>/blog/2015/06/18/c-thread/</guid>
-      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。
-他の言語のようにスレッド用のクラスを継承するのでは無く、
-別スレッドで実行する関数のポインタと、
-その関数に渡すデータのポインタを指定して実行するようです。
-スレッドによる並行処理 スレッドの作成(pthread_create) Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。
-int pthread_create(pthread_t * thread, pthread_attr_t * attr, void * (*start_routine)(void *), void * arg);   thread  スレッド管理用のpthread_t型の変数  attr  スレッドの属性を指定する。 NULLの場合はデフォルトが使われる  (*start_routine)(void *)  別スレッドから呼び出される関数へのポインタ  arg  start_routineの引数として渡すデータのポインタ 元のスレッドからデータを送るのに使う   スレッドの終了を待つ(pthread_join) pthread_joinで、指定したスレッドが終了するまで待機することができます。
-int pthread_join(pthread_t th, void **thread_return);   th  待機するスレッドをpthread_t型の変数で指定する  **thread_return  スレッドの戻り値を格納する領域   サンプルコード 以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。
-排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。
-実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。
-なお、コンパイルする際はは-pthreadオプションを指定する必要があります。
-#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;pthread.</description>
+      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。 他の言語のようにスレッド用のクラスを継承するのでは無く、 別スレッドで実行する関数のポイ</description>
     </item>
     
     <item>
@@ -81,18 +53,7 @@ int pthread_join(pthread_t th, void **thread_return);   th  待機するスレ�
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/06/c-inline-postscript/</guid>
-      <description>昨日の記事で、インライン展開について調べましたが、
-よくよく考えると片手落ちだったので追加調査しました。
-インライン展開がどう展開されるのかを調べた
-調査内容 昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、
-同じファイル内でどのようになるかは調べていませんでしたので、
-追加調査しました。
-方法は昨日と同じく、-Sオプションをつけて結果を見ます。
-ソースコード 以下のようなファイルを使います
-test.cpp
-#include &amp;lt;stdio.h&amp;gt; #include &amp;quot;func.h&amp;quot; int main() { TestA test; int a = test.getDirect(); int b = test.getThrough(); printf(&amp;quot;%d %d\n&amp;quot;, a, b); return 0; }  func.h
-class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(); };  func.cpp
-#include &amp;quot;func.h&amp;quot; int TestA::getDirect(){ return 42; } int TestA::getThrough(){ return getDirect() + getPrivate(); } int TestA::getPrivate(){ return 73; }  func.</description>
+      <description>昨日の記事で、インライン展開について調べましたが、 よくよく考えると片手落ちだったので追加調査しました。 インライン展開がどう展開されるのかを調</description>
     </item>
     
     <item>
@@ -101,18 +62,7 @@ class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/05/c-inline/</guid>
-      <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、
-関数呼び出しのオーバーヘッドを削減する、インライン展開をします。
-インライン展開はコンパイル時にされるため、
-実際に行われたのか、どう行われているかは出力されません。
-そのため、コンパイルたコードがどうなってるかを調べ、
-インライン展開がどう展開しているのかを調べました。
-なお、アセンブラに関してはほとんど説明しません。
-「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。
-ソースコード 以下のソースコードを使います
-test.cpp
-#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;func.h&amp;quot; int main(){ TestA test; int a = test.getNumInCpp(); int b = test.getNumInH(); int c = test.getNumInline(); int d = test.getNumCallCpp(); printf(&amp;quot;%d %d %d %d\n&amp;quot;, a, b, c, d); return 0; }  func.h
-class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumInH() { return 42; } int getNumCallCpp(){ return privateFunc() + getNumInH(); } int getNumInline(); //int getNumNormal(); }; inline int TestA::getNumInline(){return 321;} // そもそも定義できない // int TestA::getNumNormal(){return 111;}  func.</description>
+      <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、 関数呼び出しのオーバーヘッドを削減する、インライン展開をします。 インライン展開</description>
     </item>
     
     <item>
@@ -121,23 +71,7 @@ class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumIn
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/08/size-t/</guid>
-      <description>size_tが何bitになるかは環境によって定義が異なります。
-そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。
-#include &amp;lt;string&amp;gt; int main () { std::string test = &amp;quot;test text&amp;quot;; unsigned int pos = 0; printf(&amp;quot;size_t %lu\n&amp;quot;, sizeof(size_t)); pos = test.find(&amp;quot;ms&amp;quot;); printf(&amp;quot;pos %lu, %lu\n&amp;quot;, (size_t)pos, std::string::npos); if(pos != std::string::npos){ std::string text = test.substr(pos); printf(&amp;quot;%s\n&amp;quot;, text.c_str()); } return 0; }  std::stringのfindは引数の文字列が最初に出てくる位置か、見つからなかった場合にstd::string::nposを返します。
-この時、戻り値の型はsize_tになります。
-size_tは32bit上ではunsigned intの別名として定義される事が多いため、上記のコードは問題なく動きます。
-ですが64bitにした場合、size_tはunsigned long(8bit)の別名として定義される事があるため、
-unsigned int(4bit)で表せない範囲の値だった場合はデータが一部消滅します。
-さらに、std::string::nposは-1として定義されており、unsignedとして解釈した場合にはその値の最大値になります。
-size_tがunsigned intの場合、両者は同じ大きさのため特に意識する必要はありません。
-ですが、size_tがunsigned longとして定義されている場合、その最大値はunsined intでは表せないため、
-データが消滅し、結果として比較に失敗するという事が起きます。
-私の環境では、上記のコードは-1をunsigend intにした4294967295と,
--1をunsigend longにした18446744073709551615とを比較し、
-test textの4294967295文字目にアクセスして異常終了します。
-やっかいなことに、size_tをunsigned intではなくintに代入した場合、
--1は-1として解釈されるため、unsigend longと比較した際に最大値に変換されるため、上手くいってしまいます。
-とはいえ、安全性を求めるならば、出来るだけsize_tはsize_tとして扱うようにした方がいいと思います。</description>
+      <description>size_tが何bitになるかは環境によって定義が異なります。 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化など</description>
     </item>
     
     <item>
@@ -146,14 +80,7 @@ test textの4294967295文字目にアクセスして異常終了します。
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/07/cpp-64bit-cast/</guid>
-      <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、
-コンパイラもエラーにしない場合が多いです。
-ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、
-突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)
-intからvoid型のポインタへの変換 int型の値をvoid *を利用して保持したい場合、前の例のように、int型を保持するオブジェクトを作り、
-その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。
-struct Container{ void* data; }; struct Num{ int n; }; // int型を保存する Num* numPointer = new Num(); numPointer-&amp;gt;n = 42; Container con; con.data = (void *)numPointer; // 42を取り出す int number = ((Num*)con.data)-&amp;gt;n; // newしたので必ず破棄する delete con.data; con.data = NULL;  ですが、世の中にはたまにvoid *にint型（やその他のプリミティブ型）を代入する不届き者がいます。
-int num = 42; Container con; con.data = (void*)num; // 42を取り出す int number = (int)con.data;  void *はポインタのため、32bit環境ではvoid*は32bitであり、intも基本的には32bitで同じサイズのため、</description>
+      <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、 コンパイラもエラーにしない場合が多いです。 で</description>
     </item>
     
     <item>
@@ -162,22 +89,7 @@ int num = 42; Container con; con.data = (void*)num; // 42を取り出す int num
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/06/cpp-void-pointer/</guid>
-      <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。
-ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、
-どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。
-（勿論、ポインタの示すアドレスに何があるかは異なります）
-そのため、ポインタ専用の変数を利用することで、あらゆる型のポインタを同じ変数に代入することができます。
-ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。
-C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。
-汎用ポインタ void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。
-これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。
-この場合、変数定義をvoid *型にしておき、使う前後に目的の型にキャストすることで、
-様々な型を1つの変数で扱うことが出来ます。
-struct Container{ void* data; }; struct Num{ int n; }; const char* text = &amp;quot;text&amp;quot;; Container con1; con1.data = (void*)text; // dataにconst charのポインタを入れる Num* numPointer = new Num(); numPointer-&amp;gt;n = 42; Container con2; con2.data = (void*)numPointer; // dataにNum型のポインタを入れる printf(&amp;quot;%s\n&amp;quot;, (const char*)con1.data); // 取り出す際にキャストする printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);  なお、違うポインタを違う型にキャストして使うと、メモリ破壊などの予期せぬエラーを引き起こしますが、
-構文上はvoid *から元の型に戻す際のキャストは全て正しいと処理されます。
-そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。
-前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。
-mallocの戻り値 void *はmallocの戻り値としても使われています。</description>
+      <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。 ですが、実際にはポインタ型はメモリ上の特定アドレ</description>
     </item>
     
     <item>
@@ -186,27 +98,7 @@ mallocの戻り値 void *はmallocの戻り値としても使われています�
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/23/cpp-build/</guid>
-      <description>結論  キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う  C++のビルドをちょっとでも高速化したかったので、
-どうすれば早くなるのかを調べたのでまとめました。
-どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。
-キャッシュを使う ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、
-2回目以降のビルドは差分だけをコンパイルし直すため早くなります。
-といっても、多分使わない方が珍しいと思いますが。
-不要なinclude削除 C++で不要なincludeを減らすのように、
-不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。
-Static Library or Dynamic Library化する 切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、
-本体のコンパイル時間が短縮されます。
-簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。
-Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、
-コンパイル時間は省略できるため大幅に早くなります。
-Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。
-代わりに、ライブラリの部分だけ入れ換えるといったことができます。
-ただし、iOSでは使えません…(´・_・`)　並列コンパイルする makeにはjオプションがあり、指定した数だけ並列実行されます。
-多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。
-分散コンパイルする distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。
-ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)
-いいパソコンを使う 当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。
-ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</description>
+      <description>結論 キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う C++のビルドを</description>
     </item>
     
     <item>
@@ -215,24 +107,7 @@ Dynamic Libraryはリンク時間が不要になりますが、その分実際�
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/22/cpp-include/</guid>
-      <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。
-そのため、includeする量が増えるほどコンパイラが解析する量も増え、
-結果としてコンパイル時間が長くなります。
-また、キャッシュを利用している場合、
-includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、
-不要なincludeを消すとよりキャッシュを活用できます。
-クラスの前方宣言を活用する クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。
-そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、
-ヘッダファイルにincludeを書く必要が無くなります。
-これにより、不要なincludeを減らすことができます。
-例えば、以下のようなAクラスがあるとします。
-// TestA.h #include “InClass.h&amp;quot; class TestA{ public: TestA(); int getNumber(); private: InClass m_inclass; };  //TestA.cpp #include “TestA.h&amp;quot; TestA::TestA() { }; int TestA::getNumber(){ return m_inclass.getNumber(); };  このとき、TestAクラスをincludeするクラスは、InClassを使わない場合でも、
-TestA.hに書かれているために読み込んでしまいます。
-そのため、コンパイラが処理する量が増えるのと、
-InClass.hに変更があった場合に使っていないファイルまでコンパイルし直しになります。
-ここで、以下のようにクラスの前方宣言を使い、
-cppファイル側で読み込むことで、includeをヘッダファイルから削除できます。
-//TestA.h class InClass; class TestA{ public: TestA(); ~TestA(); int getNumber(); private: InClass* m_inclass; };  //TestA.cpp #include “TestA.h&amp;quot; #include &amp;quot;InClass.h&amp;quot; TestA::TestA() { m_inclass = new InClass(); }; TestA::~TestA() { delete m_inclass; }; int TestA::getNumber(){ return m_inclass-&amp;gt;getNumber(); };  これにより、TestAクラスをincludeしているクラスは、InClass.</description>
+      <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。 そのため、includ</description>
     </item>
     
     <item>
@@ -241,24 +116,7 @@ cppファイル側で読み込むことで、includeをヘッダファイルか�
       <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/16/stack-heap/</guid>
-      <description>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。
-rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。
-例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。
-以下に、関数の中で文字バッファをスタックに確保し、その参照を戻す関数の間違った例を上げます。
-#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; char *getTextFilename(const char* basename){ char str[1024] = {0}; strncpy(str, basename, strlen(basename)+1); strncat(str, &amp;quot;.txt&amp;quot;, 5); return str; } int main(void){ char *test_filename = getTextFilename(&amp;quot;test&amp;quot;); printf(&amp;quot;%s\n&amp;quot;, test_filename); char *example_filename = getTextFilename(&amp;quot;example&amp;quot;); printf(&amp;quot;%s\n&amp;quot;, example_filename); printf(&amp;quot;%s\n&amp;quot;, test_filename); return 0; }  環境によりますが、おそらく二回目のtest_filenameの出力がおかしくなると思います。
-私の場合は以下のように、test_filenameにexample_filenameの内容が書き込まれていました。
-test.txt example.txt example.txt  getTextFilename内のstrはスタックに確保されるので、関数終了時に解放されます。
-そのため、戻り値の指し示す文字列は解放済みメモリとなり、勝手に変更される可能性があります。
-上の例ではたまたま同じアドレスが再利用されたため、同じ文字列が設定されました。
-ですが、間に様々な処理を実行した場合は、謎の値が書き込まれるなどがあり得るため注意が必要です。
-対策 このような場合、いくつかの対策があります。
-引数で渡す 1つ目が、strncpyやstrncatのように、メモリ利用域を引数として受け取る方法です。
-これにより、自分のスコープから外れても値を保持することができます。
-先ほどの例ですと、main側でcharの配列を確保して関数の引数でそれを受け取るといった形です。
-確保したスコープを抜けるとやはり解放されますが、確実に解放されるためとても楽です。
-ヒープに確保する 2つ目はmallocやnewでヒープ領域に確保する方法です。
-以下はnewで配列を確保するように書き換えました。
-#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; char *getTextFilename(const char* basename){ char *str = new char[1024]; strncpy(str, basename, strlen(basename)+1); strncat(str, &amp;quot;.</description>
+      <description>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。 rubyとかjavaではこのような違いは基本的に意識する必要が無いため</description>
     </item>
     
     <item>
@@ -267,15 +125,7 @@ test.txt example.txt example.txt  getTextFilename内のstrはスタックに確�
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/11/strncpy-bug/</guid>
-      <description>strncpyは結構はまりどころがあります。
-たとえば以下のコードは正しく動作しません。
-char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str);  strncpyはコピー先、コピー元、コピー長を引数で取ります。
-この際、strlen等でコピー元の文字長ぴったりを指定すると、
-終端文字がコピー先にコピーされません。
-そのため、事前に終端文字を設定しておかないと、
-未初期化の部分まで文字列扱いになります。
-以下のコードでその様子をうかがえます。
-#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; int main(void){ char str[100] = {0}; str[0] = &#39;z&#39;; str[1] = &#39;z&#39;; str[2] = &#39;z&#39;; str[3] = &#39;z&#39;; str[4] = &#39;z&#39;; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\nlength %lu\noriginal length %lu\n&amp;quot;, str, strlen(str), strlen(c)); strcat(str, &amp;quot;.txt&amp;quot;); printf(&amp;quot;%s\nlength %lu\n&amp;quot;, str, strlen(str)); return 0; }  testz length 5 original length 4 testz.</description>
+      <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str); strncpyはコピー先、コ</description>
     </item>
     
   </channel>

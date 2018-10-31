@@ -17,9 +17,7 @@
       <pubDate>Sun, 28 Feb 2016 22:40:59 +0900</pubDate>
       
       <guid>/pages/summary/2016/2016-02/</guid>
-      <description>まとめ。
-ぎりぎりに一気に書くスタイル…
- 2015年のpixiv内ラブライブイラストの分析  去年との違いを意識したまとめ サンシャインのこれからには期待  dump/restoreコマンドでデータのバックアップ・リストアをする  思った以上に簡単で便利  開発・実行環境をDockerで整える  開発環境構築に時間かけるの人生の無駄なので凄くいい 遅いのは何とかしたい  Jenkinsのノード選択をNode and Label parameter pluginでやる  Pipeline Pluginは自分で道を開かないといけないので大変 こっちはできる事に限界があるが標準的なジョブ構成で使える  MacのDocker上で動くMongoDBのデータを永続化するの大変そう  凄くいいと思ったら意外な落とし穴が とりあえずMongoDBは外部に立てて凌いでます   </description>
+      <description>まとめ。 ぎりぎりに一気に書くスタイル… 2015年のpixiv内ラブライブイラストの分析 去年との違いを意識したまとめ サンシャインのこれからには</description>
     </item>
     
     <item>
@@ -28,9 +26,7 @@
       <pubDate>Sun, 31 Jan 2016 16:54:04 +0900</pubDate>
       
       <guid>/pages/summary/2016/2016-01/</guid>
-      <description>まとめ。
-Qiitaを再開した。
- Centos7でsquidを立てる  必要なときにサクっと作れるの便利 実際はプロキシサーバはVPNでつないで内部ネットワークにしているので、外部からのアクセスを想定した制限は不要  2015年のpixiv内ラブライブイラストの推移   全落ちつらい… サンシャインに関して取り直してるので次はもうちょっと時間かかる  tmux-change-paneというコマンドを作った  便利 CLIでもUIは大事  The innodb_system data file~でmacのmysqlが動かない場合の対処法  どのタイミングから動かなくなったのかは不明 無駄に時間を浪費した…  オーバーライドとオーバーロードは全く別物  そもそもオーバーロードは必要なのか？という疑問もある。 動的に切り替わるわけではないので、メソッド名が統一されるという利点があるけど… 暗黙的にキャストされるので、ビルドは通るけど意図した動作でない事が起きそう 内容が同じメソッドならいいけど、処理を振り分けるなら危なそう   </description>
+      <description>まとめ。 Qiitaを再開した。 Centos7でsquidを立てる 必要なときにサクっと作れるの便利 実際はプロキシサーバはVPNでつないで内部ネ</description>
     </item>
     
     <item>
@@ -39,9 +35,7 @@ Qiitaを再開した。
       <pubDate>Sun, 31 Jan 2016 16:36:57 +0900</pubDate>
       
       <guid>/pages/summary/2015/2015-12/</guid>
-      <description>まとめ忘れていたけどまとめ。
-月5本以上何らかのアウトプットするのは達成。
- MongoDB の update は部分 update ではない  基本部分updateでいい気がするけど、なんでキーを置き換えるようにしているんだろう…？ MySQLと違ってどんな列があるか明確じゃないし、データを消すのが難しいからとか？  Wunderlistでサマリー出力をする  まだ使ってる。便利。  GithubのContributionsを使ってアウトプットを500日続ける  どうも表示される最大長しかカウントされないらしく、今見たらLongestが500より減っていた 常に手を動かし続ける習慣はできたし、良かったと思う  論文紹介「Unravel: Rapid Web Application Reverse Engineering via Interaction Recording, Source Tracing, and Library Detection」  めっちゃ便利。早く標準搭載されて欲しい。 普通のデバッガはわかっているコードに対してバグ調査に使えるけど、コード理解のお供としては使えないよね。  論文紹介「Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions」  Bluetoothだけで距離計測ができるとか凄い 実際適当に追実装してもいい精度になるので、ちゃんと作れば凄い良さそう。 ボードゲームの一部として使えそう   </description>
+      <description>まとめ忘れていたけどまとめ。 月5本以上何らかのアウトプットするのは達成。 MongoDB の update は部分 update ではない 基本部分updateでいい気がするけど、なんで</description>
     </item>
     
     <item>
@@ -50,11 +44,7 @@ Qiitaを再開した。
       <pubDate>Mon, 24 Aug 2015 07:34:15 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-34/</guid>
-      <description>毎週まとめはおしまい そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。
-rsyncで特定フォルダをバックアップする rsync -a --delete origin/ backup
-で、backupフォルダの中身をoriginと一緒になるように同期してくれるため、フォルダごとバックアップすることが出来ます。
-rsync -a --delete origin backup
-と、スラッシュを外すと、backupフォルダ内にoriginフォルダを作って同期します。</description>
+      <description>毎週まとめはおしまい そもそも自作のTODOアプリで、やったことを見返す習慣が付いたので、やったことを各週ごとにまとめるのはおしまい。 rsyn</description>
     </item>
     
     <item>
@@ -63,17 +53,7 @@ rsync -a --delete origin backup
       <pubDate>Mon, 17 Aug 2015 22:08:50 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-33/</guid>
-      <description> tmux-change-pane作った swap-paneは機能としてはとても便利なのですが、
-ショートカットからの切り替え時に画面全てを切り替えてしまい、
-とても使いづらかったので現在のパネル上で切り替える版を作りました。
-tmux-change-pane
-いずれちゃんと記事を書く予定です…
-C++03だとmapのatが無い std::mapの[]は値が無い場合、その値を作ってしまうためconstではありません。
-http://www.cplusplus.com/reference/map/map/operator[]/
-そのため、以下のように配列内の要素を参照する場合、たとえ100％あることがわかっていても、constにすることは出来ません。
-void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) { printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName[unique_id].c_str()); }  そのため、以下のようにfindして要素を取り出す必要があります。
-void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) { std::map&amp;lt;int, std::string&amp;gt;::const_iterator it = uniqueIdToName.find(unique_id); printf(&amp;quot;%s\n&amp;quot;, it-&amp;gt;second.c_str()); }  C++11からだとconstでも使えるatメソッドが用意されているため、これを利用することで、以下のようにかなりすっきりと書くことができます。
-void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &amp;amp;uniqueIdToName) { printf(&amp;quot;%s\n&amp;quot;, uniqueIdToName.at(unique_id).c_str()); }  </description>
+      <description>tmux-change-pane作った swap-paneは機能としてはとても便利なのですが、 ショートカットからの切り替え時に画面全てを切り替</description>
     </item>
     
     <item>
@@ -82,29 +62,7 @@ void printName(int unique_id, const std::map&amp;lt;int, std::string&amp;gt; &am
       <pubDate>Mon, 10 Aug 2015 21:50:30 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-32/</guid>
-      <description>最近のHCI研究を調べてる とりあえずざっとアブストを見て良さそうなものをピックアップする作業。
-いくつかは昔読んだ奴をもう一度読んでいたりします。
-jamSheets http://tangible.media.mit.edu/project/jamsheets/
-一枚のシートを、人が座れるぐらい堅くしたり、毛布みたいにまで柔らかくしたり、
-自由自在に過多さを変えられるシートを作ったみたい。
-どうなっているのかすごい気になる…
-Inverse-Foley Animation http://www.cs.cornell.edu/projects/Sound/ifa/
-事前に音と3Dモデルを学習しておき、入力された音にマッチする映像を作成する。
-映像にマッチする音じゃなくて、音にマッチする映像を作るのがすごい…
-afordance++ http://hpi.de/baudisch/projects/affordance.html
-ものを持ったときや触れる前に、そのものの情報にあった動きを腕に提示することで、
-触れずとも熱いものがわかったり、どう扱えば良いかがわかるようになる。
-大体視覚と過去の経験に頼ってるアフォーダンスを大幅に拡張できて凄い。
-3D Object Manipulation in a Single Photograph using Stock 3D Models http://www.cs.cmu.edu/~om3d/
-一枚の画像から3Dオブジェクトを取り出し、写真と上手く合成してくれるっぽい。
-光の加減とかも調節してくれるため、凄く上手く合成出来ていて凄かった。
-FluxPaper: Reinventing Paper With Dynamic Actuation Powered by Magnetic Flux http://masaogata.com/projects/fluxpaper/
-紙の裏に磁力を持つ物体を付け、磁界を制御することで紙の移動や検索などを可能にしたみたい。
-紙に付ける方のパターンを工夫してるっぽい。
-Scene Completion Using Millions of Photographs http://graphics.cs.cmu.edu/projects/scene-completion/
-従来の写真の中の一部分を削除する技術に加え、
-大量の画像の中から似た画像を探し出してくることで、
-消した部分を正しく補完できるみたい。</description>
+      <description>最近のHCI研究を調べてる とりあえずざっとアブストを見て良さそうなものをピックアップする作業。 いくつかは昔読んだ奴をもう一度読んでいたりしま</description>
     </item>
     
     <item>
@@ -113,10 +71,7 @@ Scene Completion Using Millions of Photographs http://graphics.cs.cmu.edu/projec
       <pubDate>Mon, 03 Aug 2015 22:21:40 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-31/</guid>
-      <description>エンジニアボドゲ会に参加しました 不思議な力によってエンジニアが多く集まる（エンジニア以外も集まる）ボードゲーム会に参加しました。
-想像以上にボードゲームがあって凄かったです。
-プレイしたゲームは
- 王たちの同人誌  同人誌即売会をネタにしたゲーム カードの引きにかなり左右される イベントあるあるネタが多数  枯山水  徳を高めて庭を造る 中々思い通りにならなくて面白い  Splendor  拡大再生産を繰り返していく 素材を元に素材を生み出すカードを買うのでインフレしていく インフレさせすぎると他の人にゲームクリアされるので、バランス大事  エセ芸術家ニューヨークへ行く  お題の絵を一筆ずつ書いていく 一人だけいる、お題を知らない人（エセ芸術家）を見つける  ピクテル  出されたお題をピクトグラムで表現してあててもらうゲーム 限られたピクトグラムを組み合わせてお題を表現するのがとても面白い  init  変数の初期化を元にしたゲーム ルールがよくわからず、おかしい状態に陥った…  CV 履歴書  自分の履歴書を作っていくゲーム さいころ運が全てを左右する 勝敗もそうだけど、どんな履歴書になったかを見るのも面白い  羊と狼のピースフルワールド  カードを自分で見えないように掲げ、自分以外の番号から自分のの番号を推理するゲーム 頭の体操に良さそう 番号が書かれていないカードもある  お蜜柑様  指定された動きを取り入れた踊りをするゲーム 他のチームの動きが何かを推理して、それも踊りに入れる 1度やってみたいけど2回目以降はやってるのを見ていたいゲーム  お邪魔無視  お宝まで通路を延ばしていくゲーム チームに分かれてたり、お宝を取らせなかったら勝つ人がいたり お互い仲間なのか敵なのかわからずに進む感じが面白い  なつのたからもの  なつのたからものを集めるゲーム 金魚すくい、かき氷、花火大会、etc&amp;hellip; カードを集めて合計得点を競う 欲張りすぎると何も手に入らない等バランス大事 精神的ダメージが大きい あの頃のあの夏は2度と来ない…(´・_・`)  ディクシット  出されたお題に最も近いものを手札のカードから選ぶ かなり抽象的なカードばかりで、ぴったりのを考えるのが面白い   情報科学若手の会2015に参加します 今回はショート発表でHCIについて話す予定です。</description>
+      <description>エンジニアボドゲ会に参加しました 不思議な力によってエンジニアが多く集まる（エンジニア以外も集まる）ボードゲーム会に参加しました。 想像以上にボ</description>
     </item>
     
     <item>
@@ -125,24 +80,7 @@ Scene Completion Using Millions of Photographs http://graphics.cs.cmu.edu/projec
       <pubDate>Mon, 27 Jul 2015 23:09:42 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-30/</guid>
-      <description>ブログ修正中 Bootstrapを使って構築し直してます。
-ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていたので修正してます。
-freeコマンドの出力が変わってる freeするとavailableなる見慣れない出力が出ます…
-おそらく空きメモリを示しているようですが、ちょっと調べる必要がありそうです。
-Evernoteの代わりを探し中 昨日ちょうどEvernoteプレミアムが切れてしまい、慌てて延長しました。
-このとき、一時的に容量超過状態になったため、説明には「コンテンツのアップロードが出来ません」と出ていましたが、
-ローカルのEvernoteクライアント上での編集や新規ノートの作成など、アップロード以外の作業が全て出来なくなっていました。
-また、その際の挙動も編集できないのでは無く、従来通り編集可能ですが保存されないため、
-別の操作をしたタイミングでデータが消滅するというかなり危険な挙動をしていました。
-今回はたまたまオンラインに繋げる環境にいたので大事には至りませんでしたが、
-もしオフライン環境だったらと思うと一大事です…
-Evernoteはオフラインでもそこに保存しておけば次にオンラインになった時に同期されるという仕様のため、
-オフライン環境で特によく使い、その上プレミアムを戻しても非プレミアム中にやった変更は消滅するため、かなり被害が大きいです。
-というわけで、Evernoteは参照オンリーの情報だけ保存するようにし、
-変更が必要なノートなどは別の方式で管理しようと思います。
-元々ノートの容量増加に伴って、Evernoteクライアントの反応速度が低下しつつありましたし、 良い頃合いかと思います。
-おそらくDropbox内に置いたファイルを上手く閲覧するような感じになると思います。
-此方の場合は最悪でもローカルファイルになるだけなので、Evernoteのように変更不可能になることはないため、何かあった場合でも大丈夫です。</description>
+      <description>ブログ修正中 Bootstrapを使って構築し直してます。 ついでにHugoをv0.14に上げたところ、いくつかdeprecatedになっていた</description>
     </item>
     
     <item>
@@ -151,22 +89,7 @@ Evernoteはオフラインでもそこに保存しておけば次にオンライ
       <pubDate>Tue, 21 Jul 2015 17:56:49 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-29/</guid>
-      <description>CPUの特権レベルについて調べた CPUモード
-リングプロテクション
-CPUには複数のモードが存在し、特定の機能やメモリ領域にアクセスできるかどうかがこのモードで制御されるらしいです。
-通常、ユーザのプログラムはレベル３、カーネルがレベル０で動いており、
-ユーザのプログラムはレベル０で動いています。
-そのため、 レベル０用のリソースを使うためにはカーネルに処理をお願いする必要があるそうです。
-goのビルドツールについて調べる go buildを実行することで、コンパイルとリンクをまとめて行うことが出来ます。
-ですが、goではそれを別々に実行することも出来ます。
-go tool 8gもしくはgo tool 6gを使うことで、goのソースコードからオブジェクトファイルを作成できます。
-(どちらかは使用しているマシンのアーキテクチャによります)
-生成されるオブジェクトファイルは.8もしくは.6の拡張子になります。
-このファイルをgo tool 8lもしくはgo tool 6lを使ってリンクすることで、実行ファイルを作成できます。
-実行ファイルはファイル名を指定しない場合、8.outもしくは6.outになります。
-レーベンシュタイン距離計算を実装した https://gist.github.com/ota42y/29dc71841f4388957020
-二つの文字列のうち、片方をどれくらい編集したらもう片方の文字列に出来るかを求めるやつです。
-アルゴリズム的には凄い簡単ですね。</description>
+      <description>CPUの特権レベルについて調べた CPUモード リングプロテクション CPUには複数のモードが存在し、特定の機能やメモリ領域にアクセスできるかどう</description>
     </item>
     
     <item>
@@ -175,32 +98,7 @@ go tool 8gもしくはgo tool 6gを使うことで、goのソースコードか�
       <pubDate>Mon, 13 Jul 2015 23:25:27 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-28/</guid>
-      <description>シェル環境を改善中 tmux plugin managerを導入しました。
-https://github.com/tmux-plugins/tpm
-tmuxのconfファイルでやる設定をある程度共通化し、 プラグインのインストールだけで使えるようにするものです。
-公式でいくつか便利なものが提供されているので入れてみました。
-プラグインは自分で作れるので、swap-paneもこれで管理したいな…と思います。
-pecoの導入 入力からインクリメンタルに行を検索できるツールです。
-goなのでバイナリ単体で簡単に動き、インストールが簡単なのが特徴です。
-https://github.com/peco/peco
-前にいたディレクトリをたどる設定や、 git statusから指定したファイルをinsertする設定をしました。
-markdown-modeが便利 http://jblevins.org/projects/markdown-mode/
-emacs上でmarkdownのハイライトやスニペット入力が出来る便利モードです。
-個人的には見出しをorg-modeのように折りたたみが出来るので、
-アウトラインエディタとしてものすごく便利です。
-mecab-ipadicをいじっていた 形態素解析をいじってみたくて、igoとmecab-ipadicについて調べていました。
-igoとは igoとはjava製の形態素解析です。 http://igo.osdn.jp/
-javaとantがあれば直ぐに使えるため、インストールがとても楽です。
-なお、辞書は同梱されていないため、mecabの辞書を取ってくる必要があります。
-http://taku910.github.io/mecab/
-辞書が組み込みではないので普通に使う分にはちょっと面倒ですが、 今回のように辞書をいじって動きを観察する用途にとても便利でした。
-ipadicを変更してみる igoの動かし方はサイトの通りなので省略します。
-ipadicから解析用のバイナリ辞書を生成する手順がありますが、
-このときipadicのフォルダに辞書ファイルを追加する事で、新たな辞書を追加する事が出来ます。
-また、既存のファイルを削除することで単語の登録をさせないことが出来るため、
-自分が作った辞書だけにすることで、正しく使えるかどうかを調べることが出来ます。
-なお、バイナリ辞書作成時はフォルダの中のcsvを全て読み込むらしく、
-追加時に必要な設定などは無いようです。</description>
+      <description>シェル環境を改善中 tmux plugin managerを導入しました。 https://github.com/tmux-plugins/tpm tmuxのconfファイルでやる設定をある程度共通化し、 プラグインのインストールだけで</description>
     </item>
     
     <item>
@@ -209,33 +107,7 @@ ipadicから解析用のバイナリ辞書を生成する手順があります�
       <pubDate>Mon, 06 Jul 2015 22:42:53 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-27/</guid>
-      <description> tmux環境を整えた 画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。
-ただペインを分けているだけでなく、ペインの中身はウィンドウなので、
-ウィンドウを作って入れ換えたり、左右の中身を入れ換えたり出来ます。
-具体的にはこんな感じで、分割を維持したまま各シェルを入れ換え可能です。 入れ替えはswap-paneを利用しています。
-https://github.com/abicky/swap-pane
-gemのAnnotateが便利 https://github.com/ctran/annotate_models
-DBからSchemaを読み取り、対応するモデルが書かれたファイルにその情報を書き込むgemです。
-このモデルにどんなカラムがあったっけ？って時に、schemeファイルから探し出す必要がなくなるので大変便利です。
-また、情報はコメントに追加されるため、既存のコードの邪魔になったり勝手にアクセサが追加されたりしないのも便利です。
-emacsのパッケージ管理 現在私のemacsはpackage.el、el-get、init-loaderの3つを使ってパッケージ管理をしています。
-package.el、el-getがパッケージのDLや読み込み、init-loaderが設定ファイルのロードをしています。
-具体的な使い方はググれば解るので省略するとして、使い分けとこの構成になった理由は以下の通りです。
-なお、以下のリポジトリに設定ファイルが置いてあります。 https://github.com/ota42y/dotfiles
-パッケージ本体の管理 まず、package.elはMELPA等専用なため、そこにあるパッケージはこちらで管理します。
-一方で、githubや個別のgitリポジトリで管理されているものはel-getでrecipeを書いて管理しています。
-機能的にはel-getだけで完結しますが、package.elの方が楽なので基本はpackage.el、
-そこでカバーできないものをel-getで管理させています。
-また、これらで管理されているものは自動でロードされるようになっているため、
-設定ファイルに追加するだけでインストールが完了します。
-パッケージ設定の管理 init-loderを使うことで、特定フォルダ内の設定ファイルを一気に読み込むことが出来ます。
-このため、気軽に設定ファイルを分割できます。
-ファイル名に数字を入れる事で読み込む順番の設定も出来るため、
-package.elがダウンロードし、読み込みが終了してからパッケージの設定ファイルを読み込むように設定しています。
-また、私の環境では、el-getでinit-loaderを管理しているため、
-el-get&amp;gt;init-loder&amp;gt;package.el&amp;gt;その他の設定ファイルの順で実行をしています。
-el-getも自動インストールするようにしているため、設定ファイルを持って行くだけで全て自動でインストールできます。
-まとめ  recipeに追加（必要なら） 使用するパッケージを追加する  package.elの場合 init-loderから読まれるpackage.el用の設定ファイル 無ければ自動で読み込む el-getの場合 emacs.dのinit.elに名前を書く recipeを元にDLする 自動で読み込みも行われる  設定をconf下に書く  init-loderが読み込む カスタマイズが必要ならば   </description>
+      <description>tmux環境を整えた 画像のように、tmux内でemacsを開きつつ、zshを表示するようにしました。 ただペインを分けているだけでなく、ペイン</description>
     </item>
     
     <item>
@@ -244,28 +116,7 @@ el-getも自動インストールするようにしているため、設定フ�
       <pubDate>Mon, 29 Jun 2015 22:17:29 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-26/</guid>
-      <description>fluentd-forwarderのビルドの仕組み 基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。
-https://github.com/fluent/fluentd-forwarder
-READMEに書いてある一つ目の手順の、
-go get github.com/fluent/fluentd-forwarder/entrypoints/build_fluentd_forwarder
-で、GOPATH以下にリポジトリがcloneし、
-entrypoints/build_fluentd_forwarder内のビルド作業用バイナリが作られます。
-次に、bin/build_fluentd_forwarder fluentd_forwarderを実行することで、
-さっき作ったbuild_fluentd_forwarderがgo get -uを実行し、
-リポジトリをcloneして(既にしているけど)、entrypoints/fluentd_forwarder下をビルドします。
-というわけで、
- go getでbuild_fluentd_forwarderをビルドする build_fluentd_forwarderがgo getでfluentd_forwarderをビルドする。  という流れになっています。
-fluentd-forwarderに手を加えてみる ローカルで変更する場合 fluentd-forwarderに手を加えたい場合、GOPATH下のfluent/fluentd-forwarderを書き換えてビルドするのが最も早い方法です。
-build_fluentd_forwarderがcloneしますが、変更はそのままでビルド出来ます。
-Forkしたリポジトリに変更を加える場合 Forkしてそこに対して変更をした場合、若干やっかいな事が起きます。
-前述したように、build_fluentd_forwarderはgo getを使い、リポジトリをクローンしてビルドします。
-そのため、build_fluentd_forwarderの中に書いてあるリポジトリを書き換え、自分のリポジトリに変更する必要があります。
-また、entrypoints/fluentd_forwarderはリポジトリルートのファイルを外部ライブラリとしてインポートしています。
-そのため、main.goでfluent/fluentd_folwarderをインポートしている部分も、自分のリポジトリに変更する必要があります。
-以上の変更を加えることで、Forkした自分のリポジトリからビルドすることが出来ます。
-まとめると以下のの2ステップになります。
- build_fluentd_forwarder内のリポジトリを書き換える  https://github.com/fluent/fluentd-forwarder/blob/master/entrypoints/build_fluentd_forwarder/main.go ImportPathBaseを書き換える  fluent/fluentd_forwarderをインポートしている部分を書き換える  entrypoints/fluentd_forwarder以下の2ファイル共   前者はbueild_fluentd_forwarderを変えれば何とかなりそうですが、
-後者はgoのimportの仕組みがリポジトリ名まで指定する仕組みのため、書き換える以外に良い解決方法が思いつきません。</description>
+      <description>fluentd-forwarderのビルドの仕組み 基本はREADMEの通りにすればビルド出来ますが、やっていることがちょっと複雑なのでメモ。</description>
     </item>
     
     <item>
@@ -274,19 +125,7 @@ Forkしたリポジトリに変更を加える場合 Forkしてそこに対し�
       <pubDate>Mon, 22 Jun 2015 22:09:20 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-25/</guid>
-      <description>go conに参加していた 去年の秋と比べて、実際に使っている例が多くて、
-もうプロダクション投入されてるなーという印象でした。 参加記録 Go Conference 2015 summer
-atom.ioは辞めた Atom.ioの現状の仕様は、プロジェクトごとにウィンドウを割り当てて使うようになっています。
-ですが、MacではWindowsに比べて同じアプリ内のウィンドウを切り替えるのがとても大変であり、
-このようにウィンドウを細かく分けられると著しく不便です。
-Macのひどい仕様に負けるのはあまり良い気分ではないですが、
-このあたりの仕様が変わるまでは私の使い方では使い物になりません…
-また、立ち上がりが重いのも大きな問題の1つです。
-ビルド中はCPUをものすごく使っているおり、その状態でAtom.ioを立ち上げると起動まで十数秒かかります。
-ただこの点に関しては、ネィティブではなくwebエンジニアであれば問題にならないとは思います。
-gosweepが便利そう https://github.com/hailiang/gosweep
-gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です。
-便利＆go vetやgoimports等知らないのもあったので有用そうです。</description>
+      <description>go conに参加していた 去年の秋と比べて、実際に使っている例が多くて、 もうプロダクション投入されてるなーという印象でした。 参加記録 Go Conference 2015 summer at</description>
     </item>
     
     <item>
@@ -295,11 +134,7 @@ gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です�
       <pubDate>Mon, 15 Jun 2015 22:37:01 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-24/</guid>
-      <description> C++入出力の書式を制御する c++でstreamを使って出力する場合、iomanipに用意されているものを利用することで、
-入出力の書式を制御することが出来ます。
-設定はstreamに対して設定用のオブジェクトを送るように設定するみたいです。
-なお、以下は出力の例です。
-#include &amp;lt;iostream&amp;gt; #include &amp;lt;iomanip&amp;gt; int main(void) { double a = 25252; int p = 2; std::cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; std::endl; // 25252 std::cout &amp;lt;&amp;lt; std::setprecision(p); //浮動小数点の有効桁数を指定する std::cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; std::endl; // 2.5e+04 std::cout &amp;lt;&amp;lt; std::oct; // 8進数表示 std::cout &amp;lt;&amp;lt; 874 &amp;lt;&amp;lt; std::endl; // 1552 std::cout &amp;lt;&amp;lt; std::showbase; // 基数を表示する std::cout &amp;lt;&amp;lt; std::hex; // 16進数表示 std::cout &amp;lt;&amp;lt; 874 &amp;lt;&amp;lt; std::endl; // 0x36a return 0; }  </description>
+      <description>C++入出力の書式を制御する c++でstreamを使って出力する場合、iomanipに用意されているものを利用することで、 入出力の書式を制御</description>
     </item>
     
     <item>
@@ -308,22 +143,7 @@ gofmtやgolint等のgoの便利ツールを全て実行してくれる奴です�
       <pubDate>Mon, 08 Jun 2015 23:41:38 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-23/</guid>
-      <description>Lock Freeって何 複数スレッドや複数コアから同じデータを更新する場合、
-通常はlockをかけて排他制御を行いますが、lockをかけずに行う方法があるらしいです。
-lockをかける場合、その間そのデータにはアクセスできず、並列処理を止めてしまうため、
-並列数が大きくなるに従って性能が劣化していくそうです。
-lockなしで排他処理を行う場合、並列数を増やしても性能の劣化が無くなるそうです。
-やっていることとしては、値をコピーして変更を加え、
-「コピー前の値と現在の値が一緒かどうかをチェック」「変更した値を書き込む」を一括にやる命令を利用し、
-比較と更新を同時にするというものだそうです。
-(Compare-and-Swap、CAS命令)
-この比較して更新する命令があることで、
-ロックせずに複数から値を変更しても一貫性が保たれるらしいです。
-また、この命令が無いとlock freeが実現できない事が証明されているらしいです。
-コンペア・アンド・スワップ
-i386ではCMPXCHG〜命令でこれが出来るらしく、
-goのatomicパッケージでも利用されているようです。
-https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34</description>
+      <description>Lock Freeって何 複数スレッドや複数コアから同じデータを更新する場合、 通常はlockをかけて排他制御を行いますが、lockをかけずに行う方法が</description>
     </item>
     
     <item>
@@ -332,24 +152,7 @@ https://github.com/golang/go/blob/master/src/sync/atomic/asm_386.s#L34</descript
       <pubDate>Mon, 01 Jun 2015 22:00:39 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-22/</guid>
-      <description>今週まとめ
-Cでのマルチスレッド処理を調べてる Cにはクラスが無いので、Threadクラスを継承し、
-runメソッドをオーバーライドするといった、いろんな言語でよくあるパターンは使えません。
-代わりに、pthread_create関数にコールバック関数を渡すと、
-別スレッドから呼び出してくれるため、それを利用して別スレッドを作るようです。
-Cでのロック処理を調べている ロック用変数を作り、pthread_mutex_lock関数を呼ぶことで、ロックをかけられます。
-他のスレッドから起こされるまで待つには、
-mutexとcond変数を定義して、mutexのロックを取得して、
-pthread_cond_waitを呼びます。
-一定時間たったら呼ばれて無くても起きて欲しい場合は、
-pthread_cond_timedwaitを呼びます。
-なお、C++11からmutexオブジェクトといった、
-ロックや排他制御が簡単にできる仕組みが導入されています。
-C++ではintに[]演算が出来る 元ネタ
-http://twitter.com/mattn_jp/status/605245747429179392
-#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;memory.h&amp;gt; int main() { int v[] = {1, 2, 3}; int off = 2; printf(&amp;quot;%d\n&amp;quot;, off[v]); // 3 printf(&amp;quot;%d\n&amp;quot;, 1[v]); // 2 return 0; }  C++では、intやenum型に対して[]が実行された場合、暗黙的な方変換によりstd::ptrdiff_tに変換されます。
-そのため、a[b]は*(a+b)と同義になり、上の例は*(off+v)や*(1+v)と解釈され、 正しく動くようです。
-http://en.cppreference.com/w/cpp/language/operator_member_access</description>
+      <description>今週まとめ Cでのマルチスレッド処理を調べてる Cにはクラスが無いので、Threadクラスを継承し、 runメソッドをオーバーライドするといった、</description>
     </item>
     
     <item>
@@ -358,14 +161,7 @@ http://en.cppreference.com/w/cpp/language/operator_member_access</description>
       <pubDate>Mon, 25 May 2015 22:09:32 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-21/</guid>
-      <description> 体調を崩した 体調を崩して週の半分は倒れてた。
-3日倒れるとやることリストが大変なことになるので、
-体調がおかしい場合は速やかに医者に行って、薬をもらうべきだと再認識した。
-C++03以前ではオーバーロードされたコンストラクタが呼び出せない 以下のように、コンストラクタから別のコンストラクタを呼び出すことで、
-処理を共通化するのはわりと自然ではないかと思います。
-これはdelegate constructorとうい名前がついており、
-残念ながらC++11以降じゃないと使えません。
-struct A { A() : A(0) {} A(int num) : a(num) {} int a; };  </description>
+      <description>体調を崩した 体調を崩して週の半分は倒れてた。 3日倒れるとやることリストが大変なことになるので、 体調がおかしい場合は速やかに医者に行って、薬を</description>
     </item>
     
     <item>
@@ -374,12 +170,7 @@ struct A { A() : A(0) {} A(int num) : a(num) {} int a; };  </description>
       <pubDate>Mon, 18 May 2015 21:40:28 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-20/</guid>
-      <description>一週間何もしていないことが可視化される 毎週先週やったことをまとめているので、
-先週何もしていないのが可視化される…
-PRマージされた fluentd-forwarderに送っていたPRがマージされた。
-https://github.com/fluent/fluentd-forwarder/pull/10
-が、テストのバグでテストが通らないとの指摘が。
-ただし、手元のMacやLinuxでは通るので、Windowsだけの問題っぽいです。</description>
+      <description>一週間何もしていないことが可視化される 毎週先週やったことをまとめているので、 先週何もしていないのが可視化される… PRマージされた fluent</description>
     </item>
     
     <item>
@@ -388,17 +179,7 @@ https://github.com/fluent/fluentd-forwarder/pull/10
       <pubDate>Mon, 11 May 2015 21:55:04 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-19/</guid>
-      <description> atomicな処理でアライメントを揃える必要があるらしい goのatomic.AddInt64や、
-WindowsのInterlockedExchangeでは、
-32bit環境で64bitの値をアトミックに変更する場合、
-その値が64bit境界に置かれている必要があるらしいです。
-ですが、何故それが必要なのかを調べているのですが、それらしい理由が見つかりません…
-一応、Intelのアーキテクチャには、ロックをせずに変更する場合、
-64bitアライメントに乗っていない場合はアトミックな処理が保証されないと書いてありましたが、
-goではロックしてからCMPXCHG8Bを実行しており、アトミックな処理になるはずです。
-また、ロックやCMPXCHG8Bもメモリアライメントの制約は受けないため、特に問題は無さそうです。
-一応、64bit境界に無い場合は性能が低下する可能性があるそうですが…
-Android 触ってた  string.xmlは同じフォルダに別の名前のxmlを作っても、勝手にまとめてくれるので同じようにアクセスできるみたい。 Dropbox SDKを触ってみた  サンプルがかなり良い具合に出来ている  UIを変更できるのは描画用のスレッドだけ  doInBackgroundは別スレッドで処理を行う UIを変更しようとすると落ちる 終了時にonPostExecuteがUIスレッドで呼ばれるのでそこで処理する   fluentdを触ってる  自分用のアプリのログ処理を入れ換えた windowsとlinuxそれぞれあるけど、fluentd-forwarderを使ってlinuxのfluentdに集約 windowsはrubyで書いてる  ruby2.1じゃないと動かない  http://qiita.com/okahashi117/items/a0b55ea24a6ef7b6582b msgpackは未対応 オプションが渡せないため、bundlerも使えない  SSL接続に失敗する  https://gist.github.com/luislavena/f064211759ee0f806c88 ここのpemファイルの位置をSSL_CERT_FILE環境変数に設定する必要がある    fluentd-forwarder にPR送った  atomic処理のメモリアライメント的な問題でwindows 32bitだと動かなかったので直した  https://github.com/fluent/fluentd-forwarder/pull/10 まだマージされてないので、手元のブランチでビルドしたものを使ってる  goのパッケージシステムは手元で動かすのとものすごく相性が悪い  全てのパッケージバスを自分のリポジトリに書き換えないといけない しかもmasterブランチ限定   </description>
+      <description>atomicな処理でアライメントを揃える必要があるらしい goのatomic.AddInt64や、 WindowsのInterlockedExc</description>
     </item>
     
     <item>
@@ -407,15 +188,7 @@ Android 触ってた  string.xmlは同じフォルダに別の名前のxmlを作
       <pubDate>Mon, 04 May 2015 11:27:52 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-18/</guid>
-      <description>goのテストはクラス設計がとても大事っぽい まだこうした方が良いんじゃないか？ぐらいなので、
-ベストプラクティスは他にありそうです…
-rubyで関数の差し替え Rubyだと以下のように、
-すでに存在するクラスに対して関数を再定義したり、
-継承して関数の差し替えをすることが簡単にできます。
-class A def exec f() a() end def f print &amp;quot;f &amp;quot; end def a print &amp;quot;a\n&amp;quot; end end a = A.new a.exec # f a class A def f print &amp;quot;newf &amp;quot; end end a.exec #newf a class B &amp;lt; A def f print &amp;quot;newf &amp;quot; end end b = B.new b.exec #newf a  そのため、一部の関数をモックやスタブにし、正しく呼び出されているかを検証したり、
-その機能以外のところがちゃんと動いているかを検証するのが簡単にできます。
-goで関数の差し替え 埋め込みによる差し替え（できない） golangでは既存の構造体に関数を再定義することはできません。
-また、以下のrubyコードのように埋め込んだ後に関数を再定義しても、</description>
+      <description>goのテストはクラス設計がとても大事っぽい まだこうした方が良いんじゃないか？ぐらいなので、 ベストプラクティスは他にありそうです… rubyで関</description>
     </item>
     
     <item>
@@ -424,20 +197,7 @@ goで関数の差し替え 埋め込みによる差し替え（できない） g
       <pubDate>Mon, 27 Apr 2015 11:58:59 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-17/</guid>
-      <description>cpplintが便利そう AtomLinter/linter-cpplint
-Google Style Guideに沿っているかをチェックしてくれるcpplintを、
-Atom.ioから使えるようにしているPluginです。
-めっちゃ便利なのですが、標準だとcpplintのフィルターしか設定できず、
-他のオプションを設定できないため、PRを送りました。
-https://github.com/AtomLinter/linter-cpplint/pull/12
-レビュー待ちです(o゜▽゜)
-Apple Watch買った たまたま発売日に秋葉原を歩いていたら売っていたのでつい買ってしまいました。
-が、iPhoneをメインで使っているわけではないので、いまいち使い道が良くわからないです。
-しばらくは見せるようですかね…
-fluentd-forwarderを触ってた fluent/fluentd-forwarder
-Windowsのサーバで動かしているやつのログをとってくるの面倒だなー
-と思っていたので、便利そうです(o゜▽゜)
-とりあえず動かし方はわかったので、実際に入れてみようかと…</description>
+      <description>cpplintが便利そう AtomLinter/linter-cpplint Google Style Guideに沿っているかをチェックしてくれるcpplintを、 Atom.ioから使えるようにしているPlugi</description>
     </item>
     
     <item>
@@ -446,13 +206,7 @@ Windowsのサーバで動かしているやつのログをとってくるの面�
       <pubDate>Mon, 20 Apr 2015 07:36:53 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-16/</guid>
-      <description> goの開発環境充実中  go fmt  goのフォーマットをぱぱっと修正してくれます。  golint  動作に影響ないが推奨されないような部分を指摘し、何をすべきかを教えてくれます。 goのコーディング規約に沿っていないチェックが主です IntelliJから使えれば最高なんですが…   また、goの公式ではないですが、以下のテスティングツールが便利そうです。
- goconvey  テストの自動実行 go testの結果をブラウザで見やすくしてくれる 標準のテストを拡張したテストライブラリとしての機能もある  IntelliJ IDEA  go pluginを入れると凄い便利 Windowsの場合はVM上のLinuxに立てて、ネットワークドライブでアクセスするといい  goconveyをLinuxで動かしてブラウザで見る    勉強会参加 家にこもると良いことないので、わりと勉強会に出てました。
-だいたい行く前はめんどくさいなーとか、行っても意味ないんじゃ…みたいになるけど、
-いざ行くとかなり満足するし、有用な情報が手に入るので難しいです…
- 参加記録 GolangNotHttpNight（Gunosy.go#12
- 参加記録 第四回　ゲームサーバ勉強会  タスク管理アプリ作ってる  v0.0.1出した  https://github.com/ota42y/plaintodo/releases/tag/v0.0.1  タスク閲覧機能のみ 次はタスク追加機能とかつける
-  </description>
+      <description>goの開発環境充実中 go fmt goのフォーマットをぱぱっと修正してくれます。 golint 動作に影響ないが推奨されないような部分を指摘し、何をすべきかを教えて</description>
     </item>
     
     <item>
@@ -461,25 +215,7 @@ Windowsのサーバで動かしているやつのログをとってくるの面�
       <pubDate>Mon, 13 Apr 2015 11:53:02 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-15/</guid>
-      <description>Atom.ioのstarでパッケージ管理 Atom.ioでは、パッケージのページ上でそのパッケージにスターをつけることができます。
-https://atom.io/packages/project-manager
-ここでスターをつけたパッケージはユーザのお気に入り扱いになり、
-ユーザページ(例: https://atom.io/users/ota42y )上で確認できます。
-さらに、Atom.ioにはapmというパッケージ管理システムがついており、
-これにstarsオプションを与えることで一覧を見ることや、apm stars --installで、
-ユーザのスターをつけたパッケージをすべてインストールできます。
-https://github.com/atom/apm/blob/master/src/stars.coffee
-プラグインのバックアップはもちろんのこと、複数環境でのプラグイン同期にとても便利なので重宝します。
-タスク管理システム作ってる 最低限表示するだけのver. 0.0.1ができそうです。
-https://github.com/ota42y/plaintodo
-対話型インタフェースを作るのにlinerが凄い便利でした。
-golangのラインエディタはlinerが便利
-Travis.ciとか入れてCI回したいですが、テスト用コンテナでの依存パッケージの管理とか大変そうです…
-godepやgomみたいなバージョン管理の導入を検討しますかね。
-第6回ニコニコ学会β　データ研究会に参加した 参加記録 第6回ニコニコ学会β　データ研究会
-今回の基調講演も発表もとてもおもしろかったです。
-特に人狼はそこそこやっているため、とても参考になりました。
-deviantARTは存在を知らなかったので、いろいろ調べてみたいですね…</description>
+      <description>Atom.ioのstarでパッケージ管理 Atom.ioでは、パッケージのページ上でそのパッケージにスターをつけることができます。 https://atom.io/packages/project-manager ここでスタ</description>
     </item>
     
     <item>
@@ -488,21 +224,7 @@ deviantARTは存在を知らなかったので、いろいろ調べてみたい�
       <pubDate>Mon, 06 Apr 2015 07:37:34 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-14/</guid>
-      <description>pitが便利 cho45/pit
-ユーザ名やキー等が必要な場合に、pitからロードするコードを書くことで、
-保存されていればそれをロード、保存されていなければエディタを立ち上げて入力を促し、
-結果をpitのディレクトリに保存してくれるものです。
-これにより、アプリにパスワードを埋め込んだり、自分でいちいちファイルから読み込む必要がなくなり、
-秘密情報の管理がとても楽になります。
-golangにもpitがあるらしく、便利なのでgoで使ったやつにも入れようと思います。
-https://github.com/typester/go-pit
-changelogアプリに良いのがない githubの情報からchangelogを作ってくれるのはいくつかあります。
-https://github.com/skywinder/Github-Changelog-Generator/wiki/Alternatives
-ですが、どれも帯に短したすきに長しといった感じで、なかなか私が想定している使い方に合致した物がありません。
-やっていることはそんなに難しくないはずなので、やはり自作するしか無いのでしょうか…
-その場合、ある程度出力形式を変えられる形のがほしいですね。
-一応golangでgithubのapiラッパーはあるようです。
-google/go-github</description>
+      <description>pitが便利 cho45/pit ユーザ名やキー等が必要な場合に、pitからロードするコードを書くことで、 保存されていればそれをロード、保存されていなければエデ</description>
     </item>
     
     <item>
@@ -511,11 +233,7 @@ google/go-github</description>
       <pubDate>Sun, 29 Mar 2015 10:37:34 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-13/</guid>
-      <description> プロトタイプ展に行きました 東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;に行きました。
-全く同じ素材でも構造を変えることで、握ったり持ったりしたときの感触が全く違うのはおもしろかったです。
-現代アートっぽいやつはよくわからなかったですが…
-Goについて理解が深まった Golangを多く触った一週間でした。
- GoのポインタはC++ポインタとは違う gxuiで簡単なGUIアプリを作りました  gorutineのすばらしさを改めて感じる 描画処理とは別に平行して処理をしたい場合にgorutineで簡単に書ける   </description>
+      <description>プロトタイプ展に行きました 東京大学山中研究室プロトタイプ展2015 &amp;ldquo;PLAYFUL&amp;rdquo;に行きました。 全く同じ素材でも構</description>
     </item>
     
     <item>
@@ -524,18 +242,7 @@ Goについて理解が深まった Golangを多く触った一週間でした�
       <pubDate>Mon, 23 Mar 2015 07:34:46 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-12/</guid>
-      <description>gxuiを触ってた https://github.com/google/gxui
-GoogleによるGolang制のクロスプラットフォームなGUIライブラリです。
-クロスコンパイルは難しそうだけど、同じソースでビルドは普通にできそうです。
-ざっと見た限り、必要最低限しか整ってない感じなので、これからに期待です。
-Todoアプリ作成中 http://ota42y.com/pages/summary/2015/week-09/でやろうとしていたTodoアプリを作成中です。
-今月中にはできるかと思っていましたが、このサイトの作成に思った以上に時間をとられてしまい、あんまり進んでいないです…
-ただし、おおよその仕様はまとまりましたし、機能を大幅に削った最低ラインを決めました。
-最低限使い物になるまで半分ぐらいなので、後2週間ぐらいで作り上げたいと思います。
-https://github.com/ota42y/plaintodo
-Hugoからの出力をGithub Pagesにアップロードする Octopressの場合はGithub Pagesにアップロードしてくれるコマンドがありましたが、
-Hugoの場合、特にそんなコマンドはないようです。
-そのため、HugoがHTMLを出力するフォルダに、Github Pagesをcloneしておく必要があります。</description>
+      <description>gxuiを触ってた https://github.com/google/gxui GoogleによるGolang制のクロスプラットフォームなGUIライブラリです。 クロスコンパイルは難しそうだけど、同じソ</description>
     </item>
     
     <item>
@@ -544,18 +251,7 @@ Hugoの場合、特にそんなコマンドはないようです。
       <pubDate>Mon, 16 Mar 2015 07:34:46 +0900</pubDate>
       
       <guid>/pages/summary/2015/week-11/</guid>
-      <description> Hugoに移行した このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。
-OctopressからHugoに乗り換えた
-GoのWindows開発環境を整えた IntelliJを使うとWindowsでも問題なく扱えます。
-ただし、テストを実行するときはexeファイルを作ってから実行します。
-そのため、テストのたびにウィルスソフトのスキャンが挟まるため、テストが無駄に遅いです…
-特定のフォルダにexeファイルがはかれるため、そこだけ除外設定をしようかと検討中です。
-google breakpad マルチプラットフォームなクラッシュレポートみたいです。
-iOS,Android,Mac,Windows等かなりのプラットフォームに対応しているのでよさそうです。
-https://code.google.com/p/google-breakpad
-ちなみにMac OS10.9では以下のコマンドでビルドする必要があります。
-(引用元は忘れました…stackoverflowだったはず）
-xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configuration Release -target Breakpad ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES MACOSX_DEPLOYMENT_TARGET=10.8 GCC_VERSION=com.apple.compilers.llvm.clang.1_0  </description>
+      <description>Hugoに移行した このサイトは元々Octopressで動かしていましたが、Hugoに移行しました。 OctopressからHugoに乗り換えた</description>
     </item>
     
     <item>
@@ -564,23 +260,7 @@ xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configura
       <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-10/</guid>
-      <description>Hugoを実験中 今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。
-ゼロから作ると、テンプレート作成の大変さが身にしみます…
-デザインを考える部分はもちろんのこと、CSSとの格闘や、
-フレームワークの使い方とかを調べる必要があり、中々大変です。
-また、golangのテンプレート機能については情報が少ないので、
-やりたいことがあっても、普通に書くとうまくいかずに実現できない事が多々あったので、
-あとでちゃんと勉強し直した方がよさそうです。
-最も、本来テンプレート層で複雑な操作はするべきではなく、コントローラー側で処理をし、
-テンプレートは渡されたデータを表示するだけにした方が望ましいです。
-ただ、今回はhugo側にはあまり手を加えるのは避けたいため、
-コントローラ側に処理を追加する事が出来ず、テンプレート部分で頑張る必要がでてしまいました。
-テンプレートとhugoの間に普通のgoで処理を追加できたらいいのですが…
-また、hugo側で用意されている奴を上手く使えばできる事も、
-わざわざ自前でがんばって実装しようとしていたりしてて無駄が多いです…
-サンプル集みたいなのがもう少し整っていると良い気がします。
-ただ、やはり速度は本当に早く、編集してから描画まで10秒ぐらいかかっていたのが一瞬で終わります。
-テンプレートは今週末ぐらいに完成するはずなので、土日に入れ替えようと思います。</description>
+      <description>Hugoを実験中 今週はHugoに乗り換えるために、新しいサイト用のテンプレートを作っていました。 ゼロから作ると、テンプレート作成の大変さが身</description>
     </item>
     
     <item>
@@ -589,26 +269,7 @@ xcodebuild -sdk macosx10.9 -project src/client/mac/Breakpad.xcodeproj -configura
       <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-09/</guid>
-      <description>今年も15%が終わった…
-GoのcronにPR送った Goのcronとしてhttps://github.com/robfig/cronを使ってますが、
-実行中か否かを取得できずに不便でした。
-内部では管理しているので、それに対するゲッターを追加したPRを送りました。
-https://github.com/robfig/cron/pull/21
-Hugoが良さそう このサイトはOctopressで運用しています。
-ですが、記事数が増えてきたためか、変更して作り直すのに5秒ぐらいかかってしまいます。
-ちょっとした変更でも若干時間がかるため、かなりストレスがたまる仕組みです…
-同じく静的サイトを作成するソフトウェアで、Hugoというものがあるそうです。
-https://github.com/spf13/hugo
-Goで書かれており、作成する速度がかなり早いらしいので、乗り換えを検討中です。
-残念ながら、良い感じのテンプレートがないので、まずはそこから作る必要がありそうです。
-テキストベースのToDoアプリを考えた  Todo.txtが行けてないので自分に合ったやつを考える スペースと改行ででサブタスクを指定  箇条書きがそのままサブタスクになる  タスク名とサブタスク以外は全てオプションとして提供  優先度とかをベースシステムとしては持たない :due 2015-02-01とか、オプションとしてつける ベースはサブタスクとタスク名だけ   多分こんな感じになります。
-タスク１ :due 2015-02-01 サブタスク1 :due 2015-01-31 サブタスク2 :due 2015-01-01 :repeat 1 week サブタスク3 :url http://example.com/  テキストベースで編集するのとは別に、CLIも作らないとダメですね。
-フィルターとか、デフォルト値を入れて追加とかしにくいので…
-リポジトリはこれになります。
-https://github.com/ota42y/plaintodo
-今やってるもの＆これからやりたいこと  今やってること
- Goによるtumblr apiライブラリ 進捗どうですか？時に画像もつけてほしくなった tumblr apiからランダムで取ってくるために、tumblrライブラリを作る  ついでにリブログもする node-tumblrがリブログしないので作った  goでやりたかっただけ 予定していた機能(投稿取得、リブログ)はだいたい完成
- 完全にカバーしてないけど、ほしい部分は出来た  自分用自動化システム</description>
+      <description>今年も15%が終わった… GoのcronにPR送った Goのcronとしてhttps://github.com/robfig/cronを使ってま</description>
     </item>
     
     <item>
@@ -617,24 +278,7 @@ https://github.com/ota42y/plaintodo
       <pubDate>Sun, 22 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-08/</guid>
-      <description>Todo.txtは思想は良いけど実際使うと微妙 Todo.txt テキストオンリーでTodo管理ができる手法です。
-ファイルをDropboxに置くことで、
-どこでも同期してTodo管理ができるようになります。
-本当に単なるテキストなので管理が簡単で、エディタで編集も容易です。
-コマンドラインから条件を指定して表示できるのも便利で良い感じでした。
-RTM CLIのオフライン版みたいな使い勝手です。
-ただし、サブタスクが使えないという問題があります。 一応プラグインとして用意されてはいますが、
-そうすると他のプラグインが使えなくなってしまうため、別の問題が発生してしまいます。
-このテキストベースという考え方はすごく良く、かつ作るのもそんなに大変じゃなさそうなので、
-自分で作ってみた方が早そうです。
-Windown on Linuxで開発環境を整える Windowsで開発環境を整えるのは恐ろしく大変です。
-幸いなことに私のWindowsマシンは十分なスペックがあるため、
-VMware上にLinuxを立てて、SSHとファイル共有でしのぐことにしました。
-IDEとかはWindows側で動かしているため、IDEの実行ボタンが使えなくなるのがかなりつらいですが、
-Windows上で開発するよりかは幾分マシになっていると思います。
-ただし、IDEからデバッガが使えないため、そのあたりでつらい現実が待っている気がします。
-実行環境はリモートで、みたいなことができれば良いのですが…
-普段ターミナルでしか作業をしないのであれば、ターミナルの中が変わるだけなので問題ないと思います。</description>
+      <description>Todo.txtは思想は良いけど実際使うと微妙 Todo.txt テキストオンリーでTodo管理ができる手法です。 ファイルをDropboxに置くことで、 どこで</description>
     </item>
     
     <item>
@@ -643,19 +287,7 @@ Windows上で開発するよりかは幾分マシになっていると思いま�
       <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-07/</guid>
-      <description>既に今年の1/8が終わっているという事実…
-JenkinsのWorkflow Pluginがとても便利 Jenkins Workflow Pluginで複数slaveを扱うのが楽になる
-Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点 
-にまとめています。 Build Flow Pluginを多用していたならば、こっちに乗り換えた方がいろいろ楽ですね。
-ただし、まだ出たばかりでバグがあったり、所々かゆいところに手が届かなかったりするので、
-その辺の辛いところは結構あります…
-Remember The Milkが使いにくく感じる  良い点
- タスクの追加時に独自の記法で様々な条件をつけられる オフラインでAndroid, iOSで見られる(有料) 繰り返し処理、期日等の設定が十分に豊富 Evernotのノートとタスクを関連づけれる タスクと参考資料をくっつけられる ただし、RTM側でつけられる細かい情報をつけられない そのため設定はRTMでする必要があり、そこまで便利ではない  悪い点
- PC上で使いづらい ブラウザアプリはURLをショートカットキーで使えない 送信済みリスト等、複数人での作業用機能がOFFにできない 別のリストに移動するショートカットキーがない サブタスクが使えない 特定のタスクを細かく分割できない   特にサブタスクが使えず、かつリスト操作が弱いのがものすごく不便で、
-特定の大タスクに対してやることをざっと書き出したときに、
-それを上手くまとめられず、タスクの優先順位等がわかり辛くなります。
-もっとも、オフライン機能とか追加時のUIとかはすごく良いのでまだぎりぎり使えますが、
-代わりのサービスを探すか作るかしようと思います…</description>
+      <description>既に今年の1/8が終わっているという事実… JenkinsのWorkflow Pluginがとても便利 Jenkins Workflow Pluginで複数slaveを扱うのが</description>
     </item>
     
     <item>
@@ -664,18 +296,7 @@ Remember The Milkが使いにくく感じる  良い点
       <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-06/</guid>
-      <description>ちゃんとその週に何をやったかをまとめると、
-今週はあんまり活動していない事がよくわかりますね…
-Jenkins Workflow Pluginが素晴らしそう Jenkins ユーザ・カンファレンス 2015 東京で知った、Workflow Pluginが思った以上に良さそうです。
-Jenkins本体の機能では出来ないmaster/slaveを選択してコマンドを実行するといったことが可能になり、
-効率の良い分散ビルドが出来るようになります。
-そのうち詳しくまとめる予定…
-思った以上にTwitterに時間を取られる Aptrax | App Usage Trackerというツールで、
-スマホの各アプリの使用時間を計測していますが、Twitterの使用率が凄い結果になっていました。
-PC上で見ている時間も結構多く、かなりの時間を浪費している気がします…
-重要なことだけ抜き出してできる限り見ないみたいな事が必要ですね。
-twieveでツイートをevernoteに保存 twieveを使って、ツイートをevernoteに保存するようにしました。
-これでやってることを呟いておけば、今週何をやったかを簡単に思い出せるようになるはずです。</description>
+      <description>ちゃんとその週に何をやったかをまとめると、 今週はあんまり活動していない事がよくわかりますね… Jenkins Workflow Pluginが素晴らしそう Jenkins ユーザ・カンファ</description>
     </item>
     
     <item>
@@ -684,30 +305,7 @@ twieveでツイートをevernoteに保存 twieveを使って、ツイートをev
       <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-05/</guid>
-      <description>今週は二日ほど有給を取っていました。
-家で引きこもっていましたが、かなり有効に引きこもれたと思います。
-毎日色々していますが、やりたいことがどんどん増えてきます…
-効率をあげるにも限度がありますし、どうしたものですかね。
-Jenkins Workflow Plugin便利そう Jenkins ユーザ・カンファレンス 2015で聞いたjenkinsci/workflow-pluginを試しています。
-スレーブを指定してタスクを実行できたり、ファイルをスレーブから取ってきて別のスレーブに渡す等、
-今までBuild Pipeline Pluginでやっていたことがだいたい実現できて凄く良いです。
-あとはプロパティ等をファイルから読み込む方法さえ解れば完璧なのですが…
-Evernoteリンクを開くChrome拡張の更新 http://ota42y.com/blog/2015/01/31/evernote-opener-update/
-便利なのですが、新しいPCに設定する際にとても不便だったので楽に修正できるように機能拡張しました。
-Jenkinsのライブラリよさそう https://github.com/yosida95/golang-jenkins
-Webの反応めちゃくちゃ遅いので、よく見る結果とかはチャットに流せないかと思って見ています。
-(こっちの方がいろいろそろってるかも https://github.com/bndr/gojenkins)
-Remember The MilkのCLIを使ってみた RTM-CLIなるものがあるらしいので使ってみました。
-Web版は微妙に使いにくいので反応が早いこいつを試してみましたが、微妙でした。
-キャッシュされないために毎回認証して取ってくるので反応が悪く、
-速度を求めた場合の乗り換え先としては良くありませんでした。
-これにキャッシュ機能がつけばおそらく完璧なのですが、現状のコマンドラインツールだと厳しそうですね…
-ライブに参加していた μ&amp;rsquo;s Go→Go! LoveLive! 2015 ～Dream Sensation!に参加してました。
-風邪やインフルエンザの可能性を減らすために、2日前から有給取って家に引きこもっていました。
-1日目はチケットが取れなかったのでLVで、2日目は開場でしかもアリーナAブロックでした。
-前回の映像は何回も見ていましたが、やっぱり映像よりもLVがいいですし、
-LVよりも会場の方が何十倍も凄かったです。
-文才が無いのでこれぐらいにとどめておきますが、次のライブは両日当たるまで応募券を買おうと思います。</description>
+      <description>今週は二日ほど有給を取っていました。 家で引きこもっていましたが、かなり有効に引きこもれたと思います。 毎日色々していますが、やりたいことがどん</description>
     </item>
     
     <item>
@@ -716,24 +314,7 @@ LVよりも会場の方が何十倍も凄かったです。
       <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-04/</guid>
-      <description>先週やったことまとめ
-以外とあまりやってない。
-作りたいものは増えていくけど時間は無い。
-tumblrクライアント作ってる info APIだけはできた。Posts APIを作りたいけど、ちょっとめんどくさそう。
-複数の型を一つの配列で返して来るので、どうやって同じ配列に入れようか…
-たぶん全部入りのクラスで取り出して、個別のクラスに入れていく形になるかと。
-http://play.golang.org/p/tVLoIDVk&amp;ndash; この技を使えば違う型でも共通の配列に入れられるはず
-情報科学若手の会冬の陣2015に参加した 参加記録 情報科学若手の会冬の陣2015
-発表したい人生だった… _ (:3 」∠)_
-が、ここ半年間はずっと一日に使える時間が1〜2時間程度、かつ仕事は情報科学っぽい事をしてないので、
-発表ネタが全く作れないという…
-というか、特に技術的に成長してない気がするし、このままの生活を続けて大丈夫なのだろうか…
-Remember The Milk使いやすいが使いにくい わりといい線行ってるサービスだけど、Webクライアントが使いにくいのでちょっと残念。
-URLをショートカットから開けなかったり、ヘッダー画像が邪魔だったり…
-サブタスクが無いのもそれはそれで使いにくいですね。
-ただ、オフラインでスマホで見られますし、繰り返し設定など様々な設定が凄く楽にできる等
-機能的にはいいですし、UIもいいのであともう一声って感じですね…
-コマンドラインから対話的に操作できれば解決できそうな気がします。</description>
+      <description>先週やったことまとめ 以外とあまりやってない。 作りたいものは増えていくけど時間は無い。 tumblrクライアント作ってる info APIだけはできた。P</description>
     </item>
     
     <item>
@@ -742,35 +323,7 @@ URLをショートカットから開けなかったり、ヘッダー画像が�
       <pubDate>Sat, 17 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-03/</guid>
-      <description>Jenkins ユーザ・カンファレンス 2015 東京 参加しました
-Workflow Plugin等を導入したいのですが、
-現在クリティカルパス上の作業をしているために手が回りません…
-運用コストを下げられるので是非入れたいのですが、
-どうしても優先度は下がってしまいますね…
-Tumblrのgolang用ライブラリ 見当たらなかったので作成中(まだ何も動きません)
-https://github.com/ota42y/go-tumblr
-goのテストは特殊なフレームワークとか作らずに、普通にコードとして書くのを推奨しているそうです。
-rspecとかで専用のフレームワークにそって作るのとは大違い。
-書くのは面倒だけど、フレームワークの知識が無くても大丈夫というのは良いかもしれません。
-フレームワークの学習コストとそれによって得る効率化と、使わないことによる効率の低下とどっちが得なのでしょうか。 あと外部APIなので秘密情報をどうやってテストの時に設定するかが課題です。
-毎回書いては消すのはとても面倒なので…
-UIと強結合しているテスト cocos2d-xを使ってiPhoneアプリを作成していると、ゲームUIでTDDとかするのは実質不可能ではないかなと思います。 これはおそらくUI層の正しさが、状態に強く依存するのが原因です。
-ボタンを配置してタッチで特定のメソッドを呼び出すような場合、
-ボタンが画面上に表示されるかは、他のよりZ座標が大きいオブジェクトと被さっていないかをチェックする必要や、
-より優先度の高いタッチオブジェクトが存在しないかといったことをチェックする必要があります。
-さらに、演出中は表示されるけどタッチは出来ないなど、その部分以外の所の状態によって結果を変える必要があります。
-つまり、新しいボタンを配置するためには様々な状態のテストを作成し、
-かつほかのオブジェクトに対して新しい状態を追加することになるため、テストの変更がとても大きくなります。
-そのため、UI層でテストをする場合、作成・維持ともにとても大きくなっていくため、
-完全に不可能ではないですがコストか高く、現実的に出来るものではありません。
-ただし、UIコンポーネントについて個別にテストするのは有効だと思います。
-例えばボタンクラスであればタッチした時に、コールバックが呼ばれるか、範囲外の時に呼ばれないか等です。
-ただし、UIを作る際に個別にクラスを作ることはそんなに多くなく、
-多くがコンポーネントの配置と、その画面専用ロジックとのつなぎになるため、大きな効果は見込めなさそうです。
-なお、ゲームはそもそも共通で使う部分が少なく、画面内の状態がとても多いという前提があります。
-例えば通販サイトではヘッダーやサイドバーは共通で使い、メインの部分とは独立していますし、
-メインの部分も商品データが違うだけでテンプレートは同じといったように、共通で使う部分が多いので、
-そのような部分のテストは有効ではないかと思います。</description>
+      <description>Jenkins ユーザ・カンファレンス 2015 東京 参加しました Workflow Plugin等を導入したいのですが、 現在クリティカルパス上の作業をしているために手が回りません…</description>
     </item>
     
     <item>
@@ -779,23 +332,7 @@ UIと強結合しているテスト cocos2d-xを使ってiPhoneアプリを作�
       <pubDate>Sat, 10 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/pages/summary/2015/week-02/</guid>
-      <description>毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。
-主に1記事にするには難しいものや、失敗してダメだったものをまとめていく予定です。
-思った以上に面倒なので、来週はしないかもしれません…
-なんでブログに書くのか テキストでローカルに持っていても良いんですが、そうするとファイル管理が面倒になります。
-こうやってブログに書いておけば検索エンジンからたどれますし、個々のファイルの管理をしなくて良くなります。
-また、GithubのContributionsを使ってアウトプットを150日続けるでも書いたように、振り返りで1コミット稼げるので、振り返りをしっかりするようになるという狙いもあります。
-node-tumblrのテストが動かせなかった node-tumblrでリブログする機能が欲しかったので追加しようかと思いましたが、 そもそも今の状態のテストができなくて諦めました。
-例えばtwitterであれば、自分のfav一覧を正常に取れるかをテストするためには、 テストするアカウントでfavしておかなければなりません。 同じようなことがnode-tumblrのテストでも起きているのですが、 その準備に必要なものが何なのかがわからないため、テストできませんでした。
-テストを書くことも大事ですが、テストを実行するための手順を整えておくのも大事ですね…
-node-ircへのPRが取り込まれた 7月ぐらいに出したnode-ircのPRが取り込まれました。内容としてはIRCはCL-LFでメッセージを区切るに書いたように、古いサーバーは別の改行コードを送ってくるため、両方に対応できるようにする修正です。
-https://github.com/martynsmith/node-irc/pull/280
-ブランチ戦略が変わったらしく、出し直したためコミットは新しくなっています。
-PRにたいしてツッコミが来たり、出された反論コードがおかしいので、ちゃんと修正すれば動くよと返したりと大変でした。 英語でのコミュニケーションは言いたいことをどう書けばいいか解らないので大変です…ボギャブラリー不足ですね。
-インターステラーとベイマックスを観た ベイマックスは本国ではBig Hero 6というタイトルで公開されていて、 そのタイトル通り、ベイマックスのみが主人公ではなく、彼？を含む6人がアメコミヒーローになるという話だった。 また、映画の舞台が日本の風景をピクサー風に仕上げた街であり、主人公も日本人風の名前や顔立ちだったりと、 随所に日本リスペクトが見られました。
-インターステラーは近年には珍しい本気で作られたSF映画で、これSF詳しくない人には辛いんじゃないかな？ と心配になるぐらい、しっかりとSFしています。 私は大好物ですが、興行収入が良いのかどうかは謎ですね。
-映像としては専門家の監修の元でしっかりとした映像が作られており、 また、おそらく随所に2001年宇宙の旅のリスペクトっぽい部分があったのが面白かったです。
-特に好きなシーンは、物語の中盤で主人公が仲間の感情的な意見をバッサリと切り捨てて合理的な判断をしたのと、 最後の方のシーンですね。</description>
+      <description>毎週やったことをまとめることで、その週を振り替えられるのではないかと思ったので、土曜か日曜ぐらいにその週のまとめを書きます。 主に1記事にする</description>
     </item>
     
   </channel>

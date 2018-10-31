@@ -17,13 +17,7 @@
       <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/29/hubot-post-server/</guid>
-      <description>実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、
-Webサーバへのアクセスに対して反応することができます。
-例: scripts/httpd.coffee
-今回はその機能を利用し、
-/hubot/send_messageにPOSTされたデータをチャットに流すスクリプトを作りました。
-Hubot以外のアプリからこのURLを叩くことで、hubotの接続しているチャットに対して簡単にデータを送信できます。
- </description>
+      <description>実はHubotはWebサーバを立ち上げており、チャットからの入力以外にも、 Webサーバへのアクセスに対して反応することができます。 例: scripts/httpd.coffee 今回</description>
     </item>
     
   </channel>

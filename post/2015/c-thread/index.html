@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="C言語でのスレッド処理">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>C言語でのスレッド処理 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2015/c-thread/">C言語でのスレッド処理</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-06-18" class="post_data">
+    2015-06-18
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/c">c</a>
+    </span>
+    
+    <span class="post_data">
+        <a href="/tags/cpp">cpp</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>C言語でのスレッド処理と、ロックの仕方をまとめました。<br />
+他の言語のようにスレッド用のクラスを継承するのでは無く、<br />
+別スレッドで実行する関数のポインタと、<br />
+その関数に渡すデータのポインタを指定して実行するようです。</p>
+
+<h1 id="スレッドによる並行処理">スレッドによる並行処理</h1>
+
+<h2 id="スレッドの作成-pthread-create">スレッドの作成(pthread_create)</h2>
+
+<p>Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。</p>
+
+<pre><code class="language-cpp">int pthread_create(pthread_t * thread,
+	 pthread_attr_t * attr,
+	 void * (*start_routine)(void *),
+	 void * arg);
+</code></pre>
+
+<ul>
+<li>thread
+
+<ul>
+<li>スレッド管理用のpthread_t型の変数</li>
+</ul></li>
+<li>attr
+
+<ul>
+<li>スレッドの属性を指定する。</li>
+<li>NULLの場合はデフォルトが使われる</li>
+</ul></li>
+<li>(*start_routine)(void *)
+
+<ul>
+<li>別スレッドから呼び出される関数へのポインタ</li>
+</ul></li>
+<li>arg
+
+<ul>
+<li>start_routineの引数として渡すデータのポインタ</li>
+<li>元のスレッドからデータを送るのに使う</li>
+</ul></li>
+</ul>
+
+<h2 id="スレッドの終了を待つ-pthread-join">スレッドの終了を待つ(pthread_join)</h2>
+
+<p>pthread_joinで、指定したスレッドが終了するまで待機することができます。</p>
+
+<pre><code class="language-cpp">int pthread_join(pthread_t th, void **thread_return);
+</code></pre>
+
+<ul>
+<li>th
+
+<ul>
+<li>待機するスレッドをpthread_t型の変数で指定する</li>
+</ul></li>
+<li>**thread_return
+
+<ul>
+<li>スレッドの戻り値を格納する領域</li>
+</ul></li>
+</ul>
+
+<h2 id="サンプルコード">サンプルコード</h2>
+
+<p>以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。<br />
+排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。</p>
+
+<p>実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。</p>
+
+<p>なお、コンパイルする際はは-pthreadオプションを指定する必要があります。</p>
+
+<pre><code class="language-cpp">#include &quot;stdio.h&quot;
+#include &quot;pthread.h&quot;
+
+int a = 0;
+
+void *func_thread(void *p) {
+  printf(&quot;start %d\n&quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&quot;other theard change %d %d\n&quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  printf(&quot;test\n&quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;pthread, NULL, &amp;func_thread, &amp;b);
+
+  int i=0;
+  for(i=0; i &lt; 10000; i++){
+	int next = a + 1;
+	int now = a;
+	a = next;
+	if (now+1 != next) {
+	  printf(&quot;other theard change %d %d\n&quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&quot;a=%d\n&quot;, a);
+
+  return 0;
+}
+</code></pre>
+
+<h1 id="mutexによるロック処理">mutexによるロック処理</h1>
+
+<h2 id="排他制御を行う">排他制御を行う</h2>
+
+<p><code>pthread_mutex_t</code>型の変数に対して、<code>pthread_mutex_lock</code>、<code>pthread_mutex_unlock</code>を実行することで、<br />
+処理をロックすることができます。</p>
+
+<p><code>pthread_mutex_t</code>型の変数は<code>pthread_mutex_init</code>で初期化することができます。<br />
+このとき、第二引数にmutex属性を渡すことができ、NULLを渡した場合はデフォルト値が使われます。</p>
+
+<h2 id="サンプルコード-1">サンプルコード</h2>
+
+<p>上記の例にロックによる排他制御を入れました。<br />
+そのため、並列処理を行っても値は正しく処理されるため、何度やっても結果が正しくなります。</p>
+
+<pre><code>#include &quot;stdio.h&quot;
+#include &quot;pthread.h&quot;
+
+int a = 0;
+pthread_mutex_t mutex;
+
+void *func_thread(void *p) {
+  printf(&quot;start %d\n&quot;, *(int*)p);
+
+  int i=0;
+  for(i=0; i &lt; 10000; i++){
+    pthread_mutex_lock(&amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&quot;other theard change %d %d\n&quot;, a+1, next);
+	}
+  }
+
+  return 0;
+}
+
+int main(void) {
+  pthread_mutex_init(&amp;mutex, NULL);
+  
+  printf(&quot;test\n&quot;);
+
+  int b = 42;
+
+  pthread_t pthread;
+  pthread_create( &amp;pthread, NULL, &amp;func_thread, &amp;b);
+
+  int i=0;
+  for(i=0; i &lt; 10000; i++){
+    pthread_mutex_lock(&amp;mutex);
+	int next = a + 1;
+	int now = a;
+	a = next;
+    pthread_mutex_unlock(&amp;mutex);
+
+	if (now+1 != next) {
+	  printf(&quot;other theard change %d %d\n&quot;, a+1, next);
+	}
+  }
+
+  pthread_join(pthread, NULL); // pthreadで作られたスレッドが終わるまで待つ
+  printf(&quot;a=%d\n&quot;, a);
+
+  return 0;
+}
+</code></pre>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#スレッドによる並行処理">スレッドによる並行処理</a>
+<ul>
+<li><a href="#スレッドの作成-pthread-create">スレッドの作成(pthread_create)</a></li>
+<li><a href="#スレッドの終了を待つ-pthread-join">スレッドの終了を待つ(pthread_join)</a></li>
+<li><a href="#サンプルコード">サンプルコード</a></li>
+</ul></li>
+<li><a href="#mutexによるロック処理">mutexによるロック処理</a>
+<ul>
+<li><a href="#排他制御を行う">排他制御を行う</a></li>
+<li><a href="#サンプルコード-1">サンプルコード</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

@@ -17,14 +17,7 @@
       <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
       
       <guid>/blog/2016/02/07/dump_restore_command/</guid>
-      <description>まとめ  dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利  もちろんHDDでもいける Windowsは基本的にSDカードの第一パーティションしか認識できない   SDカードのデータ移行がしたい Androidに使っているMicroSDが速度面で不満が出てきたため、より早い物に入れ替えを行いました。
-ですが、アプリのデータを入れていたりと、通常のMicroSDと使い方がだいぶ違うため、普通にコピペでバックアップ・リストアすると、権限周りやシンボリックリンク周りで問題が起きそうでした。
-ASUS MeMO Pad 7 ME572CでLink2SDを動かす
-そこで、dump/restoreコマンドを使い、ファイルシステムを丸ごとバックアップ・リストアしました。今回の対象はSDカードですが、対象のデバイスは関係ないため、 HDDを対象としたバックアップも同じ手順で可能です。
-SDカードの第二パーティションのマウント Link2SDを使っているため、SDカードの第二パーティションにバックアップ対象が保存されています。このパーティションをマウントし、dumpコマンドを利用してバックアップを行います。
-なお、Windowsでは基本的にSDカードの第二パーティションはマウントできないため、Linux上で作業を行いました。
-# 接続された位置をfdiskで調べる sudo fdisk -l # 以下のようにSDカードのパーティションの位置が表示される # /dev/sdc1 42 42424242 4242424242 42 HPFS/NTFS/exFAT # /dev/sdc2 4242 42424242 42424242 42 Linux # ext3でフォーマットしているのでマウントする # (どうフォーマットしているかはその人次第です) sudo mount -t ext3 /dev/sdc2 /mnt/sd  dumpコマンドでバックアップ dumpコマンドを使うことで、ファイルシステムがext2,ext3,ext4のものをバックアップできます。 差分バックアップもサポートしていますが、今回はデータ移行が目的なのでフルバックアップを行います。
-# mount先の/mnt/sd以下をバックアップ sudo dump -0 -f /data/sd.dump /mnt/sd # -0でダンプレベル0(フルバックアップ) # -fでバックアップしたデータのファイル名を指定  restoreコマンドでリストア restoreコマンドを使うことで、dumpコマンドでバックアップしたデータをリストアできます。 バックアップが終わった時点でSDカードをフォーマット済みの新しい物に差し替え、 上記の手順で同じ場所にマウントしてあります。</description>
+      <description>まとめ dump/restoreコマンドでパーティションごとバックアップ/リストアができる SDカードの中身を移行するのに便利 もちろんHDDでも</description>
     </item>
     
     <item>
@@ -33,34 +26,7 @@ SDカードの第二パーティションのマウント Link2SDを使ってい�
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/21/android-dict/</guid>
-      <description>まとめ  clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dictが連携先として優秀 英辞郎は形式が違うため辛い Google Driveをビューワーとして使うといい  ポップアップ辞書アプリ iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。
-Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、
-clip2dicというアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。
-私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、
-他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。
-clip2dictから使えるオフライン辞書アプリ ColorDict https://play.google.com/store/apps/details?id=com.socialnmobile.colordict
-無料の辞書ソフトです。
-初期状態では日英、英日辞書は入っていませんが、
-別アプリとして配布されている辞書アプリをインストールすることで、 対応辞書を増やすことができます。 https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict
-(おそらくこちらの辞書を使用しています)
-StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。
-GoldenDict https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja
-Free版
-こちらもColorDictと同じく、辞書ファイルが必要になります。
-ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、
-より導入が簡単です（辞書としてはおそらく同じだと思います)。
-このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）
-複数の辞書ファイルを持っている場合は便利ですが、
-私はそんなに辞書ファイルを持っていないので無料で十分でした。
-その他 手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。
-pdicからStartDict形式の変換はとても手間がかかるのと、
-古すぎてネット上にある手順では出来なさそうなので諦めました。
-また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…
-いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、
-今のところ唯一出来たGoogle Driveをビューワーとして使っています。
-(オフラインでも別アプリからPDFビューワーとして呼び出せる)
-辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。
-これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。</description>
+      <description>まとめ clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dict</description>
     </item>
     
     <item>
@@ -69,35 +35,7 @@ pdicからStartDict形式の変換はとても手間がかかるのと、
       <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/30/link2sd/</guid>
-      <description>ME572CにはSDカードが挿せるため、
-本体の容量が足りなくなっても気軽に容量を追加できます。
-ですが、対応しているアプリしかSDカードにデータが保存できず、
-対応しているアプリでも機種によっては、
-上手くSDカードに入らない場合があります。
-実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、
-ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。
-このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。
-ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。
-なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。
-Link2SD Link2SDは、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。
-おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、
-アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。
-SDカードの準備 このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。
-このうち1つめが普通のSDカード領域として認識され、
-2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。
-なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。
-なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、
-Mini Toolのような専用ソフトでパーティションを作る必要があります。
-このとき、どちらのパーティションもPrimaryに設定しておく必要があります。
-パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。
-ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。
-fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、
-NTFS/ext3だと両方上手く認識したためこれを利用します。
-アプリをSDカードに移す Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。
-ただし、データをSDカードに移動する場合は有料アドオンが必要です。
-Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。
-EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。
-ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。</description>
+      <description>ME572CにはSDカードが挿せるため、 本体の容量が足りなくなっても気軽に容量を追加できます。 ですが、対応しているアプリしかSDカードにデー</description>
     </item>
     
     <item>
@@ -106,20 +44,7 @@ EvernoteやKindleではこのデータ部分が大きくなっていくため、
       <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/28/memopad-root/</guid>
-      <description>ASUS MeMO Pad 7 ME572Cを買いました。
-タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS
-Nexus 9とかと迷いましたが、
- コストパフォーマンスがいい  安くてそこそこ高性能  SDカードが使える  気軽に容量増強出来る   といった点から、これに決めました。
-ですが実際に届いて起動してみたところ、
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。
-特に「やることリスト」(ASUS Do It Later)というアプリは、
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。
-そのため、Rootを取って無効化することにしました。
-Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。
-(2014/12/28の最新版は1.4.6.8r)
-手順としては以下の通りになります。
- RootZenFoneをインストール Wifiと3Gを機内モードにして切る RootZenFoneを起動 通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す 変化がなくなるまで待つ  色々ポップアップが出たりする  もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動  この時点でRoot化出来ています  AsusLiveDemoというアカウントが追加されているため削除 RootZenFonを消す 通信を有効か SuperSuが自動でインストールされているので、最新版に更新 SuperSuを起動し、データ更新後に再起動を促されるので再起動  Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</description>
+      <description>ASUS MeMO Pad 7 ME572Cを買いました。 タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS Nexus 9とかと迷いましたが、 コストパフォーマンスがいい 安くてそこそこ高性能 SDカード</description>
     </item>
     
     <item>
@@ -128,21 +53,7 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/21/abc2014w/</guid>
-      <description>Android Bazaar and Conference 2014 Winterに参加してきました。
-なかなか興味深いお話を聞けたので、気になった部分を抜粋
- 携帯は９５％の人類が持ってる
- インターネットを利用するのは４割 スマホ利用者は３２％ スマホは１０年前の携帯と同じ水準まで来てる -１０年後は世界の携帯がスマホに置き換わる 今後１０年間で７０億人がインターネットに繋がる Androidは今のところ全世界で84.4%のシェア  各国のもの作り政策
- ドイツのINDUSTRIE 4.0 第四次産業革命 多数の企業を結んだバリューネットワーク 工場内の結合されたネットワーク　は出来てる
- アメリカ
- AMP立ち上げ
- アメリカで発明し、アメリカで製造する
- Made in Americaの復活
- 中国
- 2008年以降世界の製造業売り上げTop
- EU全体を合わせて、ようやく中国をちょっと上回る  第１２期５カ年計画
- ５年で１６８兆円使う IoTを重視する   Googleが買収したNest
- http://japan.cnet.com/news/commentary/35042541/ ネットに繋がるサーモスタット  Android Wear
- WearのNotificationはアプリの顔になる ノイジーな通知をするとアンインストールされる リストから選んで起動するのではなく、通知によってしかるべきタイミングで起動する わざわざ起動するのは減っていく   </description>
+      <description>Android Bazaar and Conference 2014 Winterに参加してきました。 なかなか興味深いお話を聞けたので、気になった部分を抜粋 携帯は９５％の人類が持ってる インターネットを</description>
     </item>
     
     <item>
@@ -151,19 +62,7 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/04/centos7-android-build/</guid>
-      <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686  他にもいくつかあった気がしますが、
-後はエラーとして出たコマンドをインストールするだけなので都度入れてください
-Android SDKとNDKのダウンロード http://developer.android.com/sdk/index.html
-https://developer.android.com/tools/sdk/ndk/index.html
-からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。
-その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。
-SDK Platformのインストール Eclipseが使えないためSDK Managerは使えませんが、
-代わりにコマンドラインからインストールすることができます。
-android update sdk -u -a -t tools,platform-tools android update sdk -u -a -t android-19 android update sdk -u -a -t extra-google-google_play_services  後は通常のコマンドラインからビルドする方法でビルド可能です。
-注意点 なお、MacやWindowsだとファイル名はcase insensitiveですが、
-CentOSだと普通はcase sensitiveなので注意です。
-特にCのincludeは大文字小文字を区別せずに動くため、
-case sensitiveな環境に持って行った場合に特に死にやすいです…(´・_・`)</description>
+      <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686 他にもいくつかあった気がしますが、 後はエラーとして出たコマンドをインストールするだけなので都度入れてくださ</description>
     </item>
     
   </channel>

@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="参加記録 GolangNotHttpNight（Gunosy.go#12）">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>参加記録 GolangNotHttpNight（Gunosy.go#12） | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2015/golang-no-http-night/">参加記録 GolangNotHttpNight（Gunosy.go#12）</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-04-14" class="post_data">
+    2015-04-14
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/conference">conference</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p><a href="http://gunosygo.connpass.com/event/13139/">GolangNotHttpNight（Gunosy.go#12）</a><br />
+に参加しました。</p>
+
+<p>ほぼ周りにgolangを使っている人がほとんどおらず、<br />
+情報がほぼ入ってこない環境にいるため、<br />
+ためになる話ばかりで、とても有意義な時間でした。</p>
+
+<h1 id="gomaについて">gomaについて</h1>
+
+<ul>
+<li><a href="https://speakerdeck.com/kyokomi/gomanituite">https://speakerdeck.com/kyokomi/gomanituite</a></li>
+<li><a href="https://github.com/kyokomi/goma">https://github.com/kyokomi/goma</a>
+
+<ul>
+<li><a href="http://doma.seasar.org/tutorial/">Doma</a>インスパイア</li>
+</ul></li>
+<li>DBのテーブルから対応する構造体とCRUD用の関数を作ってくれるみたい</li>
+<li>DBへのアクセスは書き出されたSQLファイルを使う
+
+<ul>
+<li>SQLはgo-bindataでバイナリに入れ込む</li>
+</ul></li>
+<li>いくつかライブラリを利用するが、作成されるコードには含まれないらしい
+
+<ul>
+<li>テーブル情報を取得するために<a href="https://github.com/go-xorm/xorm">xorm</a>を利用</li>
+<li>SQLファイル書き出しのために<a href="https://github.com/benbjohnson/ego">ego</a>を利用</li>
+<li>CLI用に<a href="https://github.com/codegangsta/cli">cli</a>を利用</li>
+</ul></li>
+</ul>
+
+<h1 id="golintを使おう">golintを使おう</h1>
+
+<ul>
+<li>いろいろ細かい所までチェックしてくれるgolintの話</li>
+<li>pre-commitで実行するといい</li>
+<li>よくわかってなかったのでちゃんと使おう</li>
+</ul>
+
+<h1 id="go-timeout-もしくはunixツールをgolangで書く話">go-timeout、もしくはUnixツールをgolangで書く話</h1>
+
+<ul>
+<li><a href="http://songmu.github.io/slides/gunosygo-12/#0">http://songmu.github.io/slides/gunosygo-12/#0</a></li>
+<li>mackerel-agentはgo製
+
+<ul>
+<li><a href="https://github.com/mackerelio/mackerel-agent">https://github.com/mackerelio/mackerel-agent</a></li>
+<li>サーバ監視用の情報をmackarelに送る
+
+<ul>
+<li><a href="https://mackerel.io/">https://mackerel.io/</a></li>
+</ul></li>
+<li>pluginで拡張できる
+
+<ul>
+<li>外部コマンドとして呼んでるだけ</li>
+</ul></li>
+</ul></li>
+<li>pluginが無限ループしたりするとブロックしてしまう
+
+<ul>
+<li>一定時間後にKILLするようにした
+
+<ul>
+<li>timeoutコマンドのようなものをgoで実装</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="golang-raspiで趣味的iot入門的な話">Golang+Raspiで趣味的IoT入門的な話</h1>
+
+<ul>
+<li><a href="https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua">https://speakerdeck.com/ymatsuwitter/golang-plus-raspidequ-wei-de-iotru-men-de-nahua</a></li>
+<li>Raspberry PiでIoT
+
+<ul>
+<li>armなのでgoでクロスコンパイル可能</li>
+</ul></li>
+<li>Gobot
+
+<ul>
+<li><a href="http://gobot.io/">http://gobot.io/</a></li>
+<li>いろんなデバイスをかなり抽象化された形で利用できる</li>
+<li>ロボットにパーツをつけていくメタファ</li>
+<li>対応していないと使えないけど、対応しているととても便利っぽい</li>
+</ul></li>
+<li>embed
+
+<ul>
+<li><a href="https://github.com/kidoman/embd">https://github.com/kidoman/embd</a></li>
+<li>低レベルなライブラリ</li>
+<li>GPIOを直接触れるみたい</li>
+<li>Arduinoプログラミングに近い印象</li>
+</ul></li>
+<li>プログラムよりもデータシートとの格闘が大変…</li>
+</ul>
+
+<h1 id="goでのステート管理の仕方">Goでのステート管理の仕方</h1>
+
+<ul>
+<li><a href="http://www.slideshare.net/ssuser939b6b/state-managementingo20150413">http://www.slideshare.net/ssuser939b6b/state-managementingo20150413</a></li>
+<li>GoでFSMを実装
+
+<ul>
+<li>いくつか書き方がある</li>
+<li>末尾最適化しない影響でうまくいかなかったり
+
+<ul>
+<li><a href="http://ymotongpoo.hatenablog.com/entry/2015/02/23/165341">http://ymotongpoo.hatenablog.com/entry/2015/02/23/165341</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="goと設定ファイル">Goと設定ファイル</h1>
+
+<ul>
+<li><a href="https://speakerdeck.com/cubicdaiya/gototoml">https://speakerdeck.com/cubicdaiya/gototoml</a></li>
+<li>TOMLの話</li>
+<li>advanced-ini</li>
+<li><a href="https://github.com/BurntSushi/toml">https://github.com/BurntSushi/toml</a>
+
+<ul>
+<li>goのTOML実装</li>
+<li>構造体に直接変換したり、その逆も出来る</li>
+<li>ライセンスが下品
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/WTFPL">http://ja.wikipedia.org/wiki/WTFPL</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="goでゲームを作る">Goでゲームを作る</h1>
+
+<ul>
+<li><a href="http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1">http://go-talks.appspot.com/github.com/guregu/slides/engi/engi.slide#1</a></li>
+<li><a href="https://github.com/ajhager/engi">https://github.com/ajhager/engi</a>
+
+<ul>
+<li>goのゲームライブラリ</li>
+<li>描画とゲームループは提供してるみたい</li>
+<li>音は出せないけど、別のを使うらしい</li>
+</ul></li>
+<li>夏コミで頒布予定</li>
+</ul>
+
+<h1 id="dbじゃないoracleの話">DBじゃないoracleの話</h1>
+
+<ul>
+<li><a href="http://www.slideshare.net/damemekam/dboracle-gunosygo12">http://www.slideshare.net/damemekam/dboracle-gunosygo12</a></li>
+<li>ソースコード解析をしてくれるツール、oracle
+
+<ul>
+<li><a href="https://godoc.org/golang.org/x/tools/oracle">https://godoc.org/golang.org/x/tools/oracle</a></li>
+<li>IDE並の機能があるみたい</li>
+</ul></li>
+<li>いろんなエディタに対応可能
+
+<ul>
+<li>atom用</li>
+<li><a href="https://atom.io/packages/go-oracle">https://atom.io/packages/go-oracle</a></li>
+</ul></li>
+<li>こういうツールが整っている環境すばらしい
+
+<ul>
+<li>go fmtとかも凄くいいと思う</li>
+</ul></li>
+</ul>
+
+<h1 id="gocon2015-summer">GoCon2015 Summer</h1>
+
+<ul>
+<li><a href="http://www.slideshare.net/takuyaueda967/goconsummer">http://www.slideshare.net/takuyaueda967/goconsummer</a></li>
+<li>とりあえず日程が出た</li>
+<li>会場探し中らしい</li>
+</ul>
+
+<h1 id="その他">その他</h1>
+
+<ul>
+<li>GojiなるWebフレームワークが良いらしい
+
+<ul>
+<li><a href="https://github.com/zenazn/goji">https://github.com/zenazn/goji</a></li>
+</ul></li>
+</ul>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#gomaについて">gomaについて</a></li>
+<li><a href="#golintを使おう">golintを使おう</a></li>
+<li><a href="#go-timeout-もしくはunixツールをgolangで書く話">go-timeout、もしくはUnixツールをgolangで書く話</a></li>
+<li><a href="#golang-raspiで趣味的iot入門的な話">Golang+Raspiで趣味的IoT入門的な話</a></li>
+<li><a href="#goでのステート管理の仕方">Goでのステート管理の仕方</a></li>
+<li><a href="#goと設定ファイル">Goと設定ファイル</a></li>
+<li><a href="#goでゲームを作る">Goでゲームを作る</a></li>
+<li><a href="#dbじゃないoracleの話">DBじゃないoracleの話</a></li>
+<li><a href="#gocon2015-summer">GoCon2015 Summer</a></li>
+<li><a href="#その他">その他</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

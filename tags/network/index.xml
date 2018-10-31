@@ -17,23 +17,7 @@
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/20/github-pages-new-ip/</guid>
-      <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、
-新しいIDアドレスを利用するようにとのwarningが来るようになりました。
-そのときに解消方法を調べたのですが、よくわからず放置していたところ、
-12月から新しいアドレスに設定にしないと使えなくなるらしいので慌ててアップデートしました。
-GitHub Pagesの旧IPアドレスが利用できなくなります。独自ドメインを利用しているユーザーで旧IPアドレスのままのレポジトリが影響されます。 https://t.co/1XI3X3NheA
-&amp;mdash; GitHub Japan (@GitHubJapan) 2014, 11月 7 
-確認方法 正しく設定されているかは、 GitHub Pages Legacy IP Deprecation に書いてある確認スクリプトを実行して、
-OK以外が表示されたらダメです。
-このサイトの場合は以下の通りですね。
-dig ota42y.com | grep -E &#39;(207.97.227.245|204.232.175.78|199.27.73.133)&#39; || echo “OK”
-修正手順 修正手順は簡単で、自分の持っているドメインを管理しているサービスに行って、
-Aレコードを下記のページにあるように変更するだけです。
-Tips for configuring an A record with your DNS provider - User Documentation
-私はさくらインターネットを使っていたため、以下の手順で変更できました。
- ドメインメニュー
- 対象のドメインのゾーン編集をクリック 左側の変更をクリック 既存のIPアドレスをクリックし、前述のGithubの新しいIPアドレスを設定する  変更をすると、先ほどのdigコマンドがOKを出すようになり、
-Github Pagesにコミットしても警告メールが飛ばなくなります。</description>
+      <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、 新しいIDアドレスを利用するよう</description>
     </item>
     
   </channel>

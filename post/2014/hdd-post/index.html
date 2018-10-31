@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HDDのパーティションテーブルが消えてからのデータ復旧">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>HDDのパーティションテーブルが消えてからのデータ復旧 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2014/hdd-post/">HDDのパーティションテーブルが消えてからのデータ復旧</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-10-03" class="post_data">
+    2014-10-03
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/windows">windows</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>先日デスクトップPCのデータ用HDDが吹っ飛びました。<br />
+原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。<br />
+復旧に成功したのでその手順をメモっておきます。</p>
+
+<h1 id="問題推定">問題推定</h1>
+
+<p>初めは何故データが消えたのかわからなかったため、その調査から始めました。<br />
+消えたのはデータ用HDDで、Windows本体は問題なく起動していたため、WindowsからHDDを見ると、<br />
+未フォーマット状態のディスクとして認識され、パーティションスタイルの選択から始まっていました。</p>
+
+<p>HDDは数ヶ月前に新調したものであり、異音やエラーなどの問題も無かったため、物理的な可能性は薄いと考えました。<br />
+また、直前に大量にデータを書き込んでもいないため、データを削除した線も薄そうです。</p>
+
+<p>さらに、一部のデータが読み込めなくなるのではなく、全データが一度に読み取り不能になったことから、<br />
+何らかの要因でパーティションが消えてデータが読み取り不能になり、<br />
+データ自体は残っているのではないかと考えました。</p>
+
+<h1 id="パーティションの確認">パーティションの確認</h1>
+
+<p>運良く手元にLinuxの起動ディスクがあったため、とりあえずパーティションがどうなっているかを確認しました。</p>
+
+<p>手順としては以下のようになります。<br />
+なお、HDDがsdaにマウントされていると仮定します。</p>
+
+<ul>
+<li>ddコマンドでHDDの先頭をコピーする<br />
+ddコマンドはディスクからファイルやディスクにデータをコピーできるコマンドです。<br />
+<code>sudo dd if=/dev/sda of=/tmp/hdd count=100</code><br />
+のようにすることで、sdaの先頭から100ブロック分を/tmp/hddファイルにコピーします。<br /></li>
+<li>hexdumpコマンドで中身を見る<br />
+hexdumpコマンドはファイルの中身を16進数で出力します。<br />
+<code>hexdump /tmp/hdd</code></li>
+</ul>
+
+<p>私の場合、hexdumpの出力が先頭50MBぐらい全て0だらけだったので、<br />
+パーティションが全て0埋めされて消えていました。</p>
+
+<p>そのため、次にパーティションの復活を試みます。</p>
+
+<h1 id="testdiskでパーティション復活">TestDiskでパーティション復活</h1>
+
+<p>壊れたディスクはPBRにしていたため、MBRと比べて大変になる場合が多いらしいですが、<br />
+TestDiskを使うと特に問題なく修復できました。</p>
+
+<p>詳しい使い方はこちら。<br />
+<a href="http://uiuicy.cs.land.to/testdisk1.html">【TestDisk】について</a></p>
+
+<p>私の場合、これでNTFSのパーティションを修復できましたが、<br />
+何故か書き込んでいないはずのWindowsディスクが壊れてしまい、<br />
+データと引き替えにWindowsが消えてしまいました…</p>
+
+<p>幸いWindowsディスクには特に重要なデータを入れていなかったのと、<br />
+Macからデータを読み出すことができたために難を逃れました。</p>
+
+<p>念のため、Windowsディスクは外して作業をした方がよさそうです。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#問題推定">問題推定</a></li>
+<li><a href="#パーティションの確認">パーティションの確認</a></li>
+<li><a href="#testdiskでパーティション復活">TestDiskでパーティション復活</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

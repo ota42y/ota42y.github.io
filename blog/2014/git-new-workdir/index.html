@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="スマホアプリ開発でgit-new-workdirがとても便利だった">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>スマホアプリ開発でgit-new-workdirがとても便利だった | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2014/git-new-workdir/">スマホアプリ開発でgit-new-workdirがとても便利だった</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-08-25" class="post_data">
+    2014-08-25
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/git">git</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<h1 id="まとめ">まとめ</h1>
+
+<ul>
+<li>ビルドに時間がかかる環境下では、ビルドのキャッシュが重要</li>
+<li>ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる</li>
+<li>別ブランチでちょっとした修正を行おうとすると、移動と戻りとで二回ビルドし直しが起きる</li>
+<li>リポジトリを複数cloneすると、管理が面倒</li>
+<li>git-new-workdirなら、.gitを共用しつつ、別々のフォルダで作業できる</li>
+<li>そのため、ビルドのキャッシュを最大限活用できる</li>
+<li>スマホアプリじゃなくても便利</li>
+</ul>
+
+<h1 id="ビルドのキャッシュ">ビルドのキャッシュ</h1>
+
+<p>Objective-cやJava、C++でスマホアプリを作成する場合、<br />
+どの言語もコンパイルが必要になります。<br />
+このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。</p>
+
+<p>ただし、多くの場合はキャッシュ機能が有効になっており、<br />
+変更したファイルのみがコンパイルされるため、<br />
+フルビルドをしなければ気にならないはずです。</p>
+
+<h1 id="gitのチェックアウトによるファイル変更問題">gitのチェックアウトによるファイル変更問題</h1>
+
+<p>gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。<br />
+これにより、ブランチ間の差分が全てビルド対象になってしまいます。</p>
+
+<p>当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、<br />
+別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。<br />
+ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…<br />
+なんてこともあり、時間が勿体ないです。</p>
+
+<p>かといって、リポジトリを二つ別々のフォルダにcloneすると、<br />
+別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々<br />
+いろいろと問題が起きます。</p>
+
+<p>こういった場合、git-new-workdirを使うことで、
+だいぶ楽に解決することができます。</p>
+
+<h1 id="git-new-workdirとは">git-new-workdirとは</h1>
+
+<p>これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。<br />
+これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、<br />
+片方で作成したコミットや、ローカルブランチ、git stashなどをもう片方で参照することができます。</p>
+
+<p>また、gitのワーキングディレクトリやステージングエリアは共用されないため、<br />
+コミットしていない変更が別のディレクトリに影響をあたることはありません。　</p>
+
+<h2 id="インストール">インストール</h2>
+
+<p><code>git/contrib/workdir/git-new-workdir</code>に入っていたので、<br />
+<code>export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH</code>
+でパスを通しました。</p>
+
+<h2 id="使い方">使い方</h2>
+
+<p><code>git-new-workdir repository_folder new_workdir branch_name(オプション)</code>です。<br />
+後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、<br />
+ほぼcheckout時間しかかかりません。</p>
+
+<p>新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。</p>
+
+<h1 id="注意点">注意点</h1>
+
+<p>同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。<br />
+なお、片方からもう片方が何をチェックアウトしているかはわからないため、<br />
+main/subといった使い方や、develop/releaseといった風に分けたり、<br />
+必要な時だけ作るといった方が事故らないと思います。</p>
+
+<p>また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、<br />
+残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。<br />
+そのため、高速に新しいworkdirを作れますが、<br />
+元のリポジトリを消すとworkdirの方もおかしくなると思われます。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#ビルドのキャッシュ">ビルドのキャッシュ</a></li>
+<li><a href="#gitのチェックアウトによるファイル変更問題">gitのチェックアウトによるファイル変更問題</a></li>
+<li><a href="#git-new-workdirとは">git-new-workdirとは</a>
+<ul>
+<li><a href="#インストール">インストール</a></li>
+<li><a href="#使い方">使い方</a></li>
+</ul></li>
+<li><a href="#注意点">注意点</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

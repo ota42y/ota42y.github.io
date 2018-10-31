@@ -17,33 +17,23 @@
       <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>/blog/2018/10/07/techbook_5_result/</guid>
-      <description>10/8の技術書典５で関わった本を３冊出しました。
-お買い求めくださった方、ありがとうございます。
-また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。
-また、既刊のマイクロサービス本もBOOTHで販売中です。
-  
-Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）
-How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）
-Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）
-なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。
-販売結果 マイクロサービス本は新刊３００、既刊１００冊＋αを持って行きましたが、どちらもほとんど残っておらず、多少残る予定で刷ったので非常に驚いています。
-Flutter本は１００冊全部売り切れました。
-こちらは被チェック数の時点で既に上回っており、手に取れなかった方には申し訳ないです。
-会社本も予想を超えて売れるなど大盛況でした。
-重ね重ねお買い求めいただきありがとうございます。
-今回３サークル併せて720冊ぐらい持ち込みましたが、そのうち600冊は売れているので本当にびっくりです…
-また、マイクロサービス本は新刊既刊共に売り切れず、かつ大量に残らずといった、ほぼ頒布数どおりの数を刷れたので、とてもいい結果になったと思います。
-販売数の推移 マイクロサービス本はそこそこの精度で販売冊数の推移を記録しており、以下のようになります。
-開始２時間で１５０冊ぐらい、残りの時間でもう１５０冊ぐらいなイメージです。
-なお、一部記録に失敗した本があるため、売れた冊数と上のグラフは微妙に違います…
-やはり最初の1時間の売り上げは凄い量になっています。
-Flutter本に関しては以下の通りです。
-13時の売り上げが0冊となっていますが、おそらく14時の売り上げにマージされていそうです。
-今回、わりとこういうのが多かったので次は売り上げ管理をやりやすい物にしたいと思います…
-被チェック数の推移 マイクロサービス本に関してはerukiti/techbookfest-circle-botを使わせて頂き、被チェック数を社内Slackに流していました。
-(共著者は全て社内の人間なので…)
-かいつまんでだすと以下になります。
-   日付 被チェック数     9/ 17 20:00 22   9/ 24 20:00 30   10/ 1 20:00 49   10/ 2 20:00 52   10/ 3 20:00 62   10/ 4 20:00 76   10/ 5 20:00 90   10/ 6 20:00 112   10/ 7 20:00 136   10/ 8 08:00 186   10/ 8 14:00 235    グラフとしてはこんな感じです。</description>
+      <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本を３冊出しました。&lt;br /&gt;
+お買い求めくださった方、ありがとうございます。&lt;/p&gt;
+
+&lt;p&gt;また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。&lt;br /&gt;
+また、既刊のマイクロサービス本もBOOTHで販売中です。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_2.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-flutter.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_1.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,37 +42,13 @@ Flutter本に関しては以下の通りです。
       <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>/blog/2018/10/06/techbook_5/</guid>
-      <description>10/8の技術書典５で関わった本が３冊でます。
-技術書典５で私が何故か３サークルの運営に関与していたので…
-Microservices architecture よろず本 その二 か１３「すべてがM(icro)になる」でマイクロサービスよろず本その二を頒布します！
-https://techbookfest.org/event/tbf05/circle/28570001
-この本はマイクロサービスアーキテクチャに関する実践を元にした本になります。
-インフラから概念的なレイヤーまで幅広く扱っています。
-また、食べログさんやQuipperさんにインタビューした記事があったりとかなり充実した内容になっています。
-私はPub/Subメッセージと冪等性について書いてます。
-既刊の販売もあり、どれも電子版も用意しています。
-こんな感じです
-How to Develop Flutter Apps う７０「牛だけどなんか質問ある？」でFlutterアプリに関する本を出します！
-https://techbookfest.org/event/tbf05/circle/26810001
-この本はFlutter開発の基礎的な所からFirebaseとの連携、Flutter Pluginを使ったアプリ開発について触れており、
-初心者から中級者まで幅広く使える内容になっています。
-今回私はFlutterでFirebaseを使ったログイン機能の実装みたいなのを書いてます。
-最近どうもFlutterの流れがもの凄いですし、Googleの推し方的にすぐに主流になるのでは…
-っていう感じなので今から始めるのはとてもオススメします。
-こんな感じです
-FiNC Technologies TECH BOOK EDITION ＃1 き40「謎のヘルスケアベンチャーFiNC（公式）」で会社公式の本が出ます！
-https://techbookfest.org/event/tbf05/circle/26870008
-内容は会社で行っている実装や組織の話、はてはボドゲを業務でやる話など様々です。
-今回私は、検索機能の改善を定量的に計りつつ行う記事を書いてます。
-まず、過去の検索ログから検索機能の精度がどれくらいなのかを数値化します。
-これでパラメータを変更してどれだけ精度が上がったかを計れるようになるので、
-精度が一番上がるようなパラメータに調整でき、検索結果がどれくらい良くなったかを計測できるようになります。
-こんな感じです。
-技術書展で出した本が商業出版されます！！ 前回の技術書典で出した本が商業で出版されます！
-詳しくはこちら。
-Amazon Web Servicesサーバーレスレシピ という本を出します
-なんで３サークルで書いてるの？ 詳しくはこちらを見てください(´・_・`)
-  なぜか技術書典５で ３サークルの運営をやってた話  from ota42y</description>
+      <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本が３冊でます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/blog/2018/2018-10-06-all_techbook.png&#34; width=&#39;50%&#39; /&gt;&lt;/p&gt;
+
+&lt;p&gt;技術書典５で私が何故か３サークルの運営に関与していたので…&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -91,11 +57,9 @@ Amazon Web Servicesサーバーレスレシピ という本を出します
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
-      <description>shinjuku.rbで話した内容です。
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
 資料あげようと思って完全に忘れていたので上げます…
-要約  bootsnapでの速度向上を計測した  rails runnerの起動時間を計測  かなりはやい 導入時のエラーは起きていない  繰り返し使った場合の影響はわからない   結論: とりあえず入れてみたら
-資料 ここです。
-  bootsnapはどれくらい早くなるのか  from ota42y</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -104,24 +68,25 @@ Amazon Web Servicesサーバーレスレシピ という本を出します
       <pubDate>Wed, 04 Apr 2018 00:10:37 +0900</pubDate>
       
       <guid>/blog/2018/04/04/virtual_gem/</guid>
-      <description>要約  gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる  5.2.0がリリースするまでインストールできないと気がつきにくい  任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った  https://github.com/ota42y/virtual_gem 5.2.0.rc2を元に5.2.0のgemを作れる 任意のgemの依存関係を書き換えられる 事前に依存関係が壊れるのを調べやすくなる   gemの依存関係によるインストール失敗 現在、Rails 5.2.0.rc2がリリースされています。
-ですが、仮に現状で上手く動いていたとしても5.2.0のリリース時に一部のgemの依存関係が5.2.0.rc2までしか受け入れておらず、インストールできなくなる可能性があります。
-gemには依存関係を設定できますが、&#39;&amp;lt; 5.2.0&#39; と書いた場合は5.2.0未満のgemを指定したこととなるため、5.2.0.rc2は対象となります。
-ですが、5.2.0は範囲外となるため、5.2.0をインストールすることはできません。
-そのため、rc版で問題なく動いていたとしても正式リリースされると依存関係を解決できずにアップデートできず、依存するgemの更新を待たないといけません。
-依存するgemが依存しているgemが同じような問題を含んでいた場合は、それらが全て解決するのを待つ必要があります。
-事前に依存関係を修正しておくことでこの問題を回避できますが、事前に全てのgemの依存関係を調べることはかなり難しいです。 かつ正式リリースされるまで問題は起こらないため先に対策するのは困難です。
-また、gemによっては正式リリースまで依存関係を修正しないポリシーもあり得るため、複雑な依存関係の場合には調べるのがいっそう困難になります。
-この問題は2つの原因から成り立っています。
- gemが正式リリースされるまでbundle installで新しいバージョンを試せない bundle install時の依存関係の解消にはgemの設定を直す必要がある  問題のあるgemを全てforkして、バージョンを書き換えた上でそれを使うことでこれらの問題は解決できます。
-ですが、継続的にmasterを追従していくことや、変更をするgemが大量にあった場合はそれを続けるのは困難です。
-virtual gemによる解決 この問題に対して、bundle install/update時にgemのバージョンと依存関係を書き換え、問題のある設定になっていないかを調べられるgemを作りました。 https://github.com/ota42y/virtual_gem
-仮想的なgemを作る 以下のようにGemfileで設定を行うと、特定バージョンのgemとして振る舞う仮想的なgemを作成して、依存関係の解決を行えます。
-require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42y_test_gem&#39;,new_version: &#39;0.3.0&#39;, original_version: &#39;0.2.0&#39;) source &amp;quot;https://rubygems.org&amp;quot; gem &#39;ota42y_test_gem&#39;, &#39;0.3.0&#39;  この例では、&amp;rsquo;ota42y_test_gem&amp;rsquo;のバージョン0.2.0を元に、バージョン0.3.0として振る舞う仮想的なgemを作成しています。
-0.3.0はこの世に存在していないので、通常ではbundlerは見つけられずに失敗します。
-ですが、virtual_gemによって仮想的なgemがインストールされている状態になるため、bundle installは成功します。
-これにより、rails 5.2.0.rc2をrails 5.2.0として扱うことができるため、依存関係の解決を試せます。
-依存関係を書き換える virtual_gemではまだ存在しないgemで依存関係の解決を試して見ることができますが、依存関係が衝突する可能性は十分にあります。 例えばrails 5.</description>
+      <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる
+
+&lt;ul&gt;
+&lt;li&gt;5.2.0がリリースするまでインストールできないと気がつきにくい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/virtual_gem&#34;&gt;https://github.com/ota42y/virtual_gem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5.2.0.rc2を元に5.2.0のgemを作れる&lt;/li&gt;
+&lt;li&gt;任意のgemの依存関係を書き換えられる&lt;/li&gt;
+&lt;li&gt;事前に依存関係が壊れるのを調べやすくなる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -130,17 +95,15 @@ require &#39;virtual_gem&#39; ::VirtualGem.register_virtual_gem(name: &#39;ota42
       <pubDate>Wed, 28 Mar 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/03/28/globalize_5/</guid>
-      <description>要約  columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい チェックして消す&amp;amp;今後増えないようにするgemを作った  問題  GlobalizeをRails5対応版(5.1.0.beta2)にあげる 一部の処理が落ちる(´・_・`)  原因 News.columns_hash.keysは、そのモデルのカラム名を配列で返します。
-GlobalizeのRails 5未対応版の5.0.1が入っているとDBのカラムをそのまま配列にして返します。
-しかし、Rails 5対応版の5.1.0.beta2では、I18n対応したカラム名と同名のカラムを除いたものを返します。
-そのため返ってくる値がバージョンによって代わり、それに依存している処理がおかしくなります。
-ただし、この影響を受けるカラムは多くの場合参照できないため、通常は仕様ミスや顕在化してないバグの可能性が高いです。
-解説 Globalize gemでは、あるモデルのカラムに対してtranslate指定をすることで、translate用のテーブルの同名カラムを参照するようになります。
-例えば以下のようなNewsモデルがある場合を考えます。
-# == Schema Information # # Table name: news # # id :integer not null, primary key # title :string(255) # description :string(255) class News translate :title, :description end  このモデルのtitleとdescriptionはtranslateされているので、newsテーブルの同名のカラムは使われません。 Globalizeによって、I18n対応した別テーブル(news_translates)の該当するlocaleのデータを取ってくるように変更されます。 そのため、translateによって処理が上書きされたカラムと同じ名前のカラムが元のテーブルにあっても、アクセスすることは出来ません。
-ですが、Globalize 5.0系ではcolumns_hash等で全てのカラムの一覧を取得した場合、このアクセス不能なカラムが一覧に入っています。 そのため、上書き前のカラムがあるという前提のコードを書けてしまいます。
-News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;title&amp;quot;, &amp;quot;description&amp;quot;, &amp;quot;created_at&amp;quot;, &amp;quot;updated_at&amp;quot;]  Globalizeの5.1系では、内部的に以下の方法でtranslateに設定されたカラム名が除外されるため、columns_hash等を使っても上書き前のカラムにアクセスできなくなります。
-News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&amp;quot;, &amp;quot;updated_at&amp;quot;]   Rails4系の場合  もとのcolumns_hashからtranslateしたカラムを消している。 Globalize::ActiveRecord::ClassMethods#columns_hash  Rails5系の場合  ignored_columnsでActiveRecord的にカラムを無効化 Rails5から追加されたメソッド Globalize::ActiveRecord::ActMacro#allow_translation_of_attributes   そのため、 columns_hash を利用して上書き前のカラムがあることを前提としたコードを書いている場合、処理が失敗します。</description>
+      <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる&lt;/li&gt;
+&lt;li&gt;だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい&lt;/li&gt;
+&lt;li&gt;チェックして消す&amp;amp;今後増えないようにするgemを作った&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -149,31 +112,13 @@ News.columns_hash.keys =&amp;gt; [&amp;quot;id&amp;quot;, &amp;quot;created_at&a
       <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
       
       <guid>/blog/2018/03/01/saml_vulnerability/</guid>
-      <description>複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。
-JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性
-どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。
-Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security
-要約 簡単に説明すると、認証した結果のデータを改ざんすることで別のユーザになりすませてしまう問題です。
-本来なら署名が存在するため改ざんしても検出されてしまいます。
-ただし、XMLの署名には意味的に同じであれば表現方法が違うデータであっても同じとして見なす仕様があります。
-そのため、問題のあるライブラリでただしく取り出せないような表現方法にデータを改ざんすることで、別のデータをライブラリに読み込ませることができてしまうと言う問題です。
-SAMLの署名 SAMLの認証の流れで、認証した結果誰なのかを認証する側のサービスが認証をお願いした側のサービスに送ってきます。
-この中には以下のように認証したユーザの情報と、改ざん防止のために署名が含まれています。
-この例ではNameIDの値に入っているota42y@ota42y.caが認証に成功したというデータになります。
-&amp;lt;!-- これは階層構造とかを大幅に省略しています --&amp;gt; &amp;lt;SAMLResponse&amp;gt; &amp;lt;NameID&amp;gt;ota42y@ota42y.ca&amp;lt;/NameID&amp;gt; &amp;lt;SignatureValue&amp;gt;BASE64_TEXT&amp;lt;/SignatureValue&amp;gt; &amp;lt;/SAMLResponse&amp;gt;  ここでNameIDの値を書き換えたとしても、署名した結果がSignatureValueにあるため、それを検証すれば書き換えられたとわかります。
-そのため、別のユーザへのなりすましを回避できています。
-XMLの正規化 XMLは以下のように、意味を変えずに属性の順番を変えたり空白やコメントを入れられます。
-&amp;lt;A C=&amp;quot;2&amp;quot; B=&amp;quot;1&amp;quot;&amp;gt;text&amp;lt;/A&amp;gt; &amp;lt;A B=&amp;quot;1&amp;quot; C=&amp;quot;2&amp;quot; &amp;gt;te&amp;lt;!-- comment--&amp;gt;xt&amp;lt;/ A &amp;gt;  この2つのXMLはハッシュ値が違いますが実際には同じ内容であり、これで署名が一致しなくなるのは困る場合があります。
-そのため、XMLの署名では正規化(canonicalization)を定義しています。
-正規化によって形式をそろえた状態で署名を検証することで、予期せぬ表現の違いで署名が一致しなくなるという事を防いでいます。
-一般的には以下のURLの方法で正規化が行われるそうです。
-この正規化ではコメントを削除しない仕様であり、例に挙げたXMLは同一とはみなされません。
-しかし、一般的にはだいたいの場合コメントも削除するようです。
-（今回の問題はこの違いも影響している）
-Exclusive XML Canonicalization Version 1.0
-問題となるライブラリの挙動 例えば以下のNameIDのユーザAとユーザBがいたとします
-ユーザA &amp;lt;NameID&amp;gt;ota42y@ota42y.ca&amp;lt;/NameID&amp;gt; ユーザB(.calはgoogleが持っているトップレベルドメインで実在します) &amp;lt;NameID&amp;gt;ota42y@ota42y.cal&amp;lt;/NameID&amp;gt;  このとき、ユーザBが以下のようにNameIDを書き換えます
-&amp;lt;NameID&amp;gt;ota42y@ota42y.co&amp;lt;!-- comment --&amp;gt;l&amp;lt;/NameID&amp;gt;</description>
+      <description>&lt;p&gt;複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。&lt;br /&gt;
+&lt;a href=&#34;https://jvn.jp/vu/JVNVU98536678/&#34;&gt;JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。&lt;br /&gt;
+&lt;a href=&#34;https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations&#34;&gt;Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -182,15 +127,7 @@ Exclusive XML Canonicalization Version 1.0
       <pubDate>Sun, 20 Aug 2017 22:44:10 +0900</pubDate>
       
       <guid>/blog/2017/08/20/rubygem-tutorial/</guid>
-      <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを下げるために30分程度で0からgemを作るハンズオンをやりました。
-これはそのときにやったことのメモで、現状これに沿って行っていけば簡単なgemを公開できるようになります。
-ゴール  簡単なgemを作成してrubygemsで公開するまで  事前準備  githubにアカウント作る git pushで自分のリポジトリにpushできる状態 ruby 2.0以上 gem install bundler 済み gem update &amp;ndash;system 済み  名前決め まずgemの名前を決めます。
-他のgemと名前が被ってはいけないので、
-https://rubygems.org/ で検索して無い名前をつける必要があります。
-面倒な場合は、 nickname-hellor-world とかなら被りません。
-今回は ota42y_test_gem で作るので、後は適度に読み替えてください。
-namespaceの階層を合わせるため、区切り文字は_ではなく-を使ってください。
-ひな形作成 bundle gem ota42y_test_gem -t Creating gem &#39;ota42y_test_gem&#39;... Code of conduct enabled in config create ota42y_test_gem/Gemfile create ota42y_test_gem/lib/ota42y_test_gem.rb create ota42y_test_gem/lib/ota42y_test_gem/version.rb create ota42y_test_gem/ota42y_test_gem.gemspec create ota42y_test_gem/Rakefile create ota42y_test_gem/README.md create ota42y_test_gem/bin/console create ota42y_test_gem/bin/setup create ota42y_test_gem/.gitignore create ota42y_test_gem/.travis.yml create ota42y_test_gem/.</description>
+      <description>背景 周りでgemを作りたいという人は多いのですが、なんか大変そうといった印象で実際に手を動かすのに躊躇する人が多かったので、心理的ハードルを</description>
     </item>
     
     <item>
@@ -199,16 +136,7 @@ namespaceの階層を合わせるため、区切り文字は_ではなく-を使
       <pubDate>Mon, 19 Dec 2016 22:37:37 +0900</pubDate>
       
       <guid>/blog/2016/12/19/finc-advent/</guid>
-      <description>FiNC Developer Advent Calendar 2016の19日目の記事です。
-要約  リクエスト・レスポンス形式のドキュメントはメンテが大変 メンテされていなくても気がつかないため放置され気味 committeeでJSON Schemaに実装が沿っているかを確認可能 prmdでJSON Schemaを楽に書ける＋人が読めるドキュメントが生成できる メンテされていない事が検出できるので続く（はず  API作成時のリクエスト・レスポンス形式問題 サーバとクライアントで並行開発しながらAPIを作成する場合、以下のようにリクエスト・レスポンス形式を整えにくいという問題があります。
- リクエストの形式が想定と違う  想定外のキーを送ってくる 構造が想定していない構造  レスポンスに知らないキーが含まれている 同じデータなのにエンドポイントによって形式が違う  enumの数値だったり、対応する文字列だったり カテゴリ名を返していたりカテゴリIDを返していたり   コミュニケーションや、APIに関するドキュメントをきちんとメンテしていれば回避可能な問題ですが、
-以下の2つを保証する必要があり、何のサポートなしに維持するのはとても大変です。
- 形式が全てドキュメント化されている ドキュメントと実装が揃っている事を保証する 同じデータは同じ形式になる事を保証する  そこで、今回話題にするJSON Schema+committee+prmdを導入することで、この問題を大幅に解決できます。
-JSON Schemaで仕様を定義する JSON SchemaとはJSONを用いてデータを記述する際の形式の1つで、主にアノテーションやバリデーションを目的としているものらしいです。
-詳しくはこちら
-http://json-schema.org/
-例えば以下のように定義すると、GET /v1/friendsが、access_tokenをパラメータとして必ず取り、戻り値には必ずfriendsとreccommendsというキーが含まれているという事を定義できます。 また、friendsとreccomendsの具体的な内容については別に定義して読み込みますが、同じ景色であるということも表現しています。 （なお、実際はもっと情報が多く、この部分だけでは動きません）
-{ &amp;quot;title&amp;quot;: &amp;quot;show self friends with recommends&amp;quot;, &amp;quot;href&amp;quot;: &amp;quot;/v1/friends&amp;quot;, &amp;quot;method&amp;quot;: &amp;quot;GET&amp;quot;, &amp;quot;schema&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;object&amp;quot;, &amp;quot;required&amp;quot;: [ &amp;quot;access_token&amp;quot; ], &amp;quot;properties&amp;quot;: { &amp;quot;access_token&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot; } } }, &amp;quot;targetSchema&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;object&amp;quot;, &amp;quot;required&amp;quot;: [ &amp;quot;friends&amp;quot;, &amp;quot;recommends&amp;quot; ], &amp;quot;properties&amp;quot;: { &amp;quot;friends&amp;quot;: { &amp;quot;$ref&amp;quot;: &amp;quot;#/definitions/user/definitions/friends&amp;quot; }, &amp;quot;recommends&amp;quot;: { &amp;quot;$ref&amp;quot;: &amp;quot;#/definitions/user/definitions/friends&amp;quot; } } } }  JSON Schemaにそって定義を書くことで、形式が統一されプログラムから処理しやすくなるのと、他の場所の定義を共有できるため、</description>
+      <description>FiNC Developer Advent Calendar 2016の19日目の記事です。 要約 リクエスト・レスポンス形式のドキュメントはメンテが大変 メンテされていなくても気がつかないため放置さ</description>
     </item>
     
     <item>
@@ -217,18 +145,7 @@ http://json-schema.org/
       <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
       
       <guid>/blog/2016/10/27/shinjuku-rb-42/</guid>
-      <description> Shinjuku.rb #42に行ってきました。
-http://shinjukurb.connpass.com/event/42245/
-今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。
-発表内容   Shinjukurb 42  from ota42y 
-Rubocopはソースコードをパーサgemを使ってASTに変換し、ちゃんとどういう構造なのかを見ていて凄くちゃんと解析していたので凄いなーと思う反面、 自分でルールを追加するのもの凄く大変そうでした。
-また、こういったコードの整形ツールは自転車小屋の議論になって導入するの凄く大変だよね…という闇の深いディスカッションが行われました… やはり何処も苦労するところは同じようです…(´・_・`)
-その他 リファクタリングを支援してくれるgemが紹介されていましたが、 基本的に既存部分を切り出す→新しいロジックと同時に実行して実行結果をチェック→結果をDBとかに保存する、 といった手順を踏んでおり、どれもやることは変わらず、rubyのリファクタリング手法としては一般的な方法なのかな…？と思いました。 (稀にしか起きない問題や、副作用をどう消すかといった部分は別途考える必要ありそう)
-Rubocopがやってくれる一般的なものではなく、もっと自分たち向けのチェック項目が欲しいけど、 ルール追加がめちゃくちゃ大変だなーと思っていたら、凄くいいgemの発表がありました。
-soutaro/querly: Query Method Calls from Ruby Programs
-メソッドが呼ばれているかをちゃんと解析してチェックできるので、
-ヤバそうなメソッドや使い方が怪しいやつとかを抽出できるらしく、凄く良さそうでした。
-他の方々の資料  reading suture scientist.md  </description>
+      <description>Shinjuku.rb #42に行ってきました。 http://shinjukurb.connpass.com/event/42245/ 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。 発表内容 Shinjukurb 42 from ota42y Ruboco</description>
     </item>
     
     <item>
@@ -237,15 +154,7 @@ soutaro/querly: Query Method Calls from Ruby Programs
       <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
       
       <guid>/blog/2016/10/22/ginza-rb-40/</guid>
-      <description> Ginza.rb 第40回に行ってきました。
-https://ginzarb.doorkeeper.jp/events/52895
-今回は参加者がLTをする形式で、14人ぐらい？LTがありました。
-発表内容   prmdのドキュメントが読みやすくなる話  from ota42y 
-JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆揃える利点を増やしてくれるので、とてもいい構成だと思います。
-また、prmdが出力するドキュメントにはcurlのコマンドやレスポンスのJSONが整った形式でついているため、 クライアント側としても手軽にAPIをテストすることができてとても有用なので、 最悪JSON Schema+prmdだけでも導入すると良いと思います。 (元クライアントからの意見)
-その他 ruby c extensionが凄い面白かったのでちょっと触ってみようと思います(｀・ω・´)
-他の方々の資料 #ginzarbのハッシュタグを見て見つかったものだけ上げています
- Ginza.rb 第40回 - koicの日記 Ginza.rb で &amp;ldquo;grifork&amp;rdquo; について発表してきた - weblog of key_amb 自分の使ったものをみせてみよう // Speaker Deck 勉強会/ginza.rb #40 - esa-pages.io Rails Authorization // Speaker Deck buoys gem の紹介  </description>
+      <description>Ginza.rb 第40回に行ってきました。 https://ginzarb.doorkeeper.jp/events/52895 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。 発表内容 prmdのドキュメントが読みやすくなる</description>
     </item>
     
     <item>
@@ -254,24 +163,7 @@ JSON Schema+prmd+committeeは、ドキュメントと実態を揃えられる＆
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
       <guid>/blog/2015/07/05/dino/</guid>
-      <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
-ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
-PCとからArduinoを制御する場合、
- 電子工作をしてArduinoと部品をつなげる Arduinoを制御したり、PCに情報を送るプログラムを書く PC側でArduinoからの情報を受け取って制御するプログラムを書く  の3種類の別々の作業が必要になります。
-Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。
-ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、
-rubyプログラムを書くだけでArduinoの制御が全てできるようになります。
-これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。
-dino Arduinoをrubyから扱うライブラリです。
-https://github.com/austinbv/dino
-Arduinoの全機能を外部から制御可能にするプログラムが付随しており、
-これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。
-サンプルコード A0ポートに対する入力を拾うプログラムは以下の通りです。
-board = Dino::Board.new(Dino::TxRx::Serial.new) sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board) sensor.when_data_received do |data| puts &amp;quot;data=#{data.to_i}&amp;quot; end sleep  ポートに対する入力があるたびにブロックが実行されます。
-このように、arduinoをほぼrubyのオブジェクトのように扱えるため、
-PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。
-ただし、当然ながらPCと接続して制御するものであり、
-Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。</description>
+      <description>まとめ PCからArduinoを制御するのは面倒 作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング</description>
     </item>
     
     <item>
@@ -280,16 +172,7 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/28/bundle-in-bundle/</guid>
-      <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、
-一回目のbundlerに対してbundleが実行されてしまい、
-別のbundleを呼び出せないという問題が起きました。
-これはbundlerが設定する環境変数が原因でした。
-まとめ  bundle exec中に、別のbundlerを実行するとおかしくなる  主にsystemやspawn等を使った場合 最初のbundle execと同じものであれば問題は起きない  bundlerが設定をしている環境変数が問題  別のbundlerを呼ぼうとして元のbundlerが呼ばれている  Bundler.with_clean_envで回避可能  Bundler.clean_systemでも可   問題 以下のような構成かつtestフォルダにいる状態で、
-bundle install --path vendor/bundle
-bundle exec test.rbを実行すると、
-test2内でbundlerを呼んだ時にエラーになります
-. ├─ test │ │ Gemfile (gemのhello_world_gemを使用) │ └─ test.rb | └─ test2 └─ Gemfile (gemのhello-worldを使用)  system &#39;hello_world_gem&#39; Dir.chdir(&amp;quot;../test2&amp;quot;) do # error system &#39;bundle install --path vendor/bundle&#39; system &#39;bundle exec hello-world&#39; end  エラー文言
-oh hai thar Using hello_world_gem 0.</description>
+      <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、 一回目のbundl</description>
     </item>
     
     <item>
@@ -298,21 +181,7 @@ oh hai thar Using hello_world_gem 0.</description>
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/25/ruby-hash/</guid>
-      <description>例は全てRuby 2.0を利用しています
-nilをキーとした値を持つハッシュをYAMLに書きたい場合、
-以下のように書いても&amp;rdquo;nil&amp;rdquo;という文字列として認識されます。
---- nil : nil  =&amp;gt; {&amp;quot;nil&amp;quot;=&amp;gt;&amp;quot;nil&amp;quot;}
-データがnilの場合は、データ部分に何も書かないことでnilを表現できます。
---- datanil :  =&amp;gt; {&amp;quot;datanil&amp;quot;=&amp;gt;nil}
-キーをnilにしたい場合、以下のように書いても、(Rubyだと)パースに失敗します。
---- : &amp;quot;key nil&amp;quot;  このような場合もYAMLの仕様では想定済みらしく、
-クエッションマークを使うことで、その後ろにあるものがキーであると明示できる仕様があります。
-http://yaml.org/spec/1.2/spec.html#id2772075
-これを利用して、以下のようにクエッションマークの後に何も書かず、
-その後コロンと値を設定することで、nilをキーとして設定できます。
---- ? : &amp;quot;key nil&amp;quot;  rubyで長い文字列をキーにする Rubyが利用しているPsychでは、以下のように128byte以上のデータをキーにして書き出した場合、
-?マークをつけて書き出します。
-require &#39;yaml&#39; def mkhash(k,v) h = {} h[k] = v h end long = &amp;quot;a&amp;quot; * 129 open(&amp;quot;long.yml&amp;quot;, &amp;quot;w&amp;quot;) {|file| file.write YAML.dump(mkhash(long, &amp;quot;long&amp;quot;)) }  --- ? aaaaaaaaaaaaaaaaaaaaaaaaaa...aaa : long  どうやらRubyが使っているYAMLライブラリのPsych内で、</description>
+      <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;rdquo;nil&amp;</description>
     </item>
     
     <item>
@@ -321,11 +190,7 @@ require &#39;yaml&#39; def mkhash(k,v) h = {} h[k] = v h end long = &amp;quot;a&
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/26/pty-ieo-error/</guid>
-      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと
-Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。
-require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end  どうやら、読み込んだ際にBSDだとnilになりますが、GNU/LinuxだとErrno::EIOが発生する仕様らしいです。
-Ruby on Linux PTY goes away without EOF, raises Errno::EIO
-にあるように、resqueするSafePtyを作ることで回避できます。</description>
+      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
     </item>
     
     <item>
@@ -334,23 +199,7 @@ Ruby on Linux PTY goes away without EOF, raises Errno::EIO
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/24/selenium/</guid>
-      <description>まとめ  selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 rubyのgemがあり、簡単に導入できる Firefoxならgemを入れるだけで動かせる  Rubyのスクレイピング方法 Rubyでスクレイピングする方法としては、 NokogiriやMechanizeが存在します。
-どちらもHTMLを解析してページの要素にアクセスします。
-ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、
-Javascriptで動的に変化するページなどにちゃんと対応するのはとても大変です。
-そこで、Webブラウザを直接操作してスクレイピングするライブラリの一つが、
-selenium-webdriverになります。
-selenium-webdriverのインストール Rubyではselenium-webdrierのgemをインストールするだけで完了です。
-なお、Google Chromeだとgem以外にもう一つインストールするものがありますが、
-今回は説明が面倒なので省略し、Firefoxで動かします。
-使い方 Selenium::WebDriver.for :firefox で、firefoxのウインドウに対応するWebDriverオブジェクトが取得できます。
-このWebDriverに対して、移動先のURLやDOM要素の取得などを行えます。
-また、細かい設定などの変更のために、Profileというものが用意されています。
-これに対して様々な設定をし、WebDriver作成時に設定することで、
-ブラウザの挙動を変更出来ます。
-以下は、pdfを開いたときに特定のフォルダに保存する設定がされた状態で、
-Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロードするコードになります。
-require &amp;quot;selenium-webdriver&amp;quot; profile = Selenium::WebDriver::Firefox::Profile.new profile[&#39;browser.download.dir&#39;] = &amp;quot;#{File.expand_path(File.dirname(__FILE__))}/down&amp;quot; profile[&#39;browser.download.folderList&#39;] = 2 profile[&#39;browser.download.useDownloadDir&#39;] = true profile[&#39;browser.helperApps.neverAsk.saveToDisk&#39;] = &amp;quot;application/pdf&amp;quot; profile[&#39;pdfjs.disabled&#39;] = true driver = Selenium::WebDriver.for :firefox, :profile =&amp;gt; profile driver.navigate.to &amp;quot;https://www.google.com/search?as_q=&amp;amp;as_epq=&amp;amp;as_oq=&amp;amp;as_eq=&amp;amp;as_nlo=&amp;amp;as_nhi=&amp;amp;lr=&amp;amp;cr=&amp;amp;as_qdr=all&amp;amp;as_sitesearch=&amp;amp;as_occt=any&amp;amp;safe=images&amp;amp;as_filetype=pdf&amp;amp;as_rights=&amp;amp;gws_rd=ssl&amp;quot; links = driver.find_element(:class, &#39;r&#39;).find_elements(:tag_name, &#39;a&#39;) if links links.each do |element| if element.</description>
+      <description>まとめ selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 r</description>
     </item>
     
     <item>
@@ -359,32 +208,7 @@ require &amp;quot;selenium-webdriver&amp;quot; profile = Selenium::WebDriver::Fi
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/16/evernote-url/</guid>
-      <description>まとめ  シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを実行できる  Automatorでスクリプトを実行する 前回(Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした) では、
-スクリプトの実行方法が微妙たったのでもう少し修正してみました。
-結論としては、Macと標準で入っているAutomatorを使うことで、
-ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。
-Automatorのワークフローを作る 単体のアプリケーションとして実行するため、
-Automatorを立ち上げアプリケーションを選択します。
-実行ディレクトリの取得 私の環境では、clipboardのインストール先はグローバルではなく、
-スクリプトのあるフォルダにbundler専用のディレクトリを作り、
-そこにインストールしています。
-そのため、スクリプトを実行するためにはそのパスに移動しないといけません。
-ですが、Automatorを実行した場合、
-カレントパスはユーザのホームディレクトリになり、
-実行したファイルのディレクトリではありません。
-参考: iNSTANTWiNE or Wine.framework と Automator の連携
-そのため、Apple Scriptを先に実行し、
-Automatorの実行ファイルがあるパスを求め、
-そこに移動するようにしています。
-自分自身のパスを求めるApple Script on run {input, parameters} set p to POSIX path of (path to me) return {p} return input end run  AutomatorのAppleScriptを実行を選び、
-このスクリプトを後述するシェルスクリプトの前に実行するようにします。
-これでシェルスクリプトに引数としてパスを渡せます。
-Evernote URLを置換するスクリプト 内容はほぼ前回と同じです。
-ただし、各種環境設定は読み込んでくれないため、
-sourceで読み込む必要があります。
-また、Automator側で引数の引き渡し方法を
-引数としてに設定する必要もあります。
-source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;clipboard&#39; url = Clipboard.</description>
+      <description>まとめ シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを</description>
     </item>
     
     <item>
@@ -393,33 +217,7 @@ source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;cl
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/10/evernote-link/</guid>
-      <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
-この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
-そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。
-AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、
-同じようにアプリでノートを開いてくれるため、とても便利でした。
-しかし、最近の変更により、https://www.evernote.com/ へのリンクに変わってしまい、
-ブラウザが起動してノートがEvernoteのサイト上で表示され、
-そこからさらにEvernoteのアプリが開くという挙動になりました。
-これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、
-オフライン状態ではノートを開くことができなくなってしまいました。
-正直使い物にならないレベルになってしまったのですが、
-幸いなことにevernote:///スキームは未だ有効です。
-また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。
-リンク置換スクリプトの作成 ノートリンクの仕様 以下は予想であり、正確なものではありません
-Evernoteのhttpsリンクは以下のようになっています。
-https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/
-対して、evernote:///スキームは以下のようになっています。
-evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/
-(ノート固有の文字列は二回とも同じ値になります)　どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。
-Windowsならクリップボードの置換ソフトはたくさんあるのですが、
-Macでは残念ながらまともな物はありませんでした。
-一応、ClipMenuは正規表現で置換ができますが、
-それを実行するまでにかなりキーストロークが必要なため、見送りました。
-理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。
-リンク置換スクリプト 結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。
-事前にclipboard gemをインストールしておく必要があります。
-#!/bin/bash pushd $(dirname $0) bundle exec ruby -e &amp;quot; require &#39;clipboard&#39; url = Clipboard.paste r = Regexp.new(\&amp;quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&amp;quot;) result = r.match url if result new_url = \&amp;quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&amp;quot; p new_url Clipboard.copy new_url end &amp;quot; popd  これをevernote.</description>
+      <description>まとめ Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリ</description>
     </item>
     
     <item>
@@ -428,14 +226,7 @@ Macでは残念ながらまともな物はありませんでした。
       <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
       
       <guid>/blog/2013/11/10/rails-trace-1/</guid>
-      <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。
-まだ全部追い切れてないですが、思った以上に長くなったのでとりあえずメモとして出 してみます。
-一部Rails力やRuby力が足りなくて追い切れない部分がありますが(´･_･`)
-##準備
-rails g controller Trace index create app/controllers/trace_controller.rb route get &amp;quot;trace/index&amp;quot; invoke erb create app/views/trace create app/views/trace/index.html.erb invoke test_unit create test/controllers/trace_controller_test.rb invoke helper create app/helpers/trace_helper.rb invoke test_unit create test/helpers/trace_helper_test.rb invoke assets invoke coffee create app/assets/javascripts/trace.js.coffee invoke scss create app/assets/stylesheets/trace.css.scss  というコントローラーを作り、
-class TraceController &amp;lt; ApplicationController def index caller().each{ |line| p line} end end  というtraceを用意し、ここにアクセスしてみました。
-出力されたログは以下のようになりました。(見にくかったので、GEMまでのパスはGEM_FILE_PATHとしてます)
-Started GET &amp;quot;/trace/index&amp;quot; for 127.0.0.1 at 2013-11-02 20:22:17 +0900 Processing by TraceController#index as HTML &amp;quot;/GEMLIFE_PATH/actionpack-4.</description>
+      <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。 まだ全部追</description>
     </item>
     
   </channel>

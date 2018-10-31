@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Shinjuku.rb #42でRubocopについて話した">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>Shinjuku.rb #42でRubocopについて話した | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2016/shinjuku-rb-42/">Shinjuku.rb #42でRubocopについて話した</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2016-10-27" class="post_data">
+    2016-10-27
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/ruby">ruby</a>
+    </span>
+    
+    <span class="post_data">
+        <a href="/tags/conference">conference</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>Shinjuku.rb #42に行ってきました。<br />
+<a href="http://shinjukurb.connpass.com/event/42245/">http://shinjukurb.connpass.com/event/42245/</a></p>
+
+<p>今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。</p>
+
+<h1 id="発表内容">発表内容</h1>
+
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/key/sotthH5RjKQHEg" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ota42y/shinjukurb-42" title="Shinjukurb 42" target="_blank">Shinjukurb 42</a> </strong> from <strong><a target="_blank" href="//www.slideshare.net/ota42y">ota42y</a></strong> </div></p>
+
+<p>Rubocopはソースコードをパーサgemを使ってASTに変換し、ちゃんとどういう構造なのかを見ていて凄くちゃんと解析していたので凄いなーと思う反面、
+自分でルールを追加するのもの凄く大変そうでした。</p>
+
+<p>また、こういったコードの整形ツールは自転車小屋の議論になって導入するの凄く大変だよね…という闇の深いディスカッションが行われました…
+やはり何処も苦労するところは同じようです…(´・_・`)</p>
+
+<h1 id="その他">その他</h1>
+
+<p>リファクタリングを支援してくれるgemが紹介されていましたが、
+基本的に既存部分を切り出す→新しいロジックと同時に実行して実行結果をチェック→結果をDBとかに保存する、
+といった手順を踏んでおり、どれもやることは変わらず、rubyのリファクタリング手法としては一般的な方法なのかな…？と思いました。
+(稀にしか起きない問題や、副作用をどう消すかといった部分は別途考える必要ありそう)</p>
+
+<p>Rubocopがやってくれる一般的なものではなく、もっと自分たち向けのチェック項目が欲しいけど、
+ルール追加がめちゃくちゃ大変だなーと思っていたら、凄くいいgemの発表がありました。<br />
+<a href="https://github.com/soutaro/querly">soutaro/querly: Query Method Calls from Ruby Programs</a></p>
+
+<p>メソッドが呼ばれているかをちゃんと解析してチェックできるので、<br />
+ヤバそうなメソッドや使い方が怪しいやつとかを抽出できるらしく、凄く良さそうでした。</p>
+
+<h1 id="他の方々の資料">他の方々の資料</h1>
+
+<ul>
+<li><a href="http://www.slideshare.net/treby/reading-suture">reading suture</a></li>
+<li><a href="https://gist.github.com/threetreeslight/ccf9e20e24cc3ee0c459b25de74d1688">scientist.md</a></li>
+</ul>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#発表内容">発表内容</a></li>
+<li><a href="#その他">その他</a></li>
+<li><a href="#他の方々の資料">他の方々の資料</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

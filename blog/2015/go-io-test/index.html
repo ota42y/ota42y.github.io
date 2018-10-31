@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="golangでIOへのテストを行う">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>golangでIOへのテストを行う | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/go-io-test/">golangでIOへのテストを行う</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-04-01" class="post_data">
+    2015-04-01
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/golang">golang</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<h1 id="まとめ">まとめ</h1>
+
+<ul>
+<li>fmt.Print等にちゃんと出力されるかテストしたい
+
+<ul>
+<li>結論としては直接は無理</li>
+</ul></li>
+<li>io.Writerを利用するように変えることで簡単にテスト可能
+
+<ul>
+<li>渡されたio.Writerに書き込むようにする</li>
+<li>通常はos.Stdout、テストの時はbytes.Bufferを渡す</li>
+<li>どちらもio.Writerを実装している</li>
+</ul></li>
+</ul>
+
+<h1 id="標準出力への書き込みをテストしたい">標準出力への書き込みをテストしたい</h1>
+
+<p>fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。<br />
+ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。</p>
+
+<p>このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、<br />
+テストの時は書き込み先を切り替えることで簡単にテストができるようになります。</p>
+
+<h2 id="fmt-fprintで出力先を指定する">fmt.Fprintで出力先を指定する</h2>
+
+<p>golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。<br />
+この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。<br />
+<a href="https://golang.org/pkg/fmt/#Fprint">https://golang.org/pkg/fmt/#Fprint</a></p>
+
+<p>io.Writerは<code>Write(p []byte) (n int, err error)</code>関数だけを持ったインターフェースです。<br />
+そのため、これを実装していればfmt.Fprintの書き込み先として使えます。<br />
+<a href="http://golang.org/pkg/io/#Writer">http://golang.org/pkg/io/#Writer</a></p>
+
+<p>golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。<br />
+そのため、os.Stdoutにfmt.Fprintで書き込むことにより、<br />
+出力先を変更可能な状態で標準出力に出力できます。</p>
+
+<h2 id="メモリ上に出力する">メモリ上に出力する</h2>
+
+<p>golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。<br />
+そして、String()関数により、書き込まれた文字列をstringとして取得できます。<br />
+<a href="http://golang.org/pkg/bytes/#Buffer">http://golang.org/pkg/bytes/#Buffer</a></p>
+
+<p>これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、<br />
+標準出力に出力されたかどうかをテストすることができるようになります。</p>
+
+<h1 id="サンプルコード">サンプルコード</h1>
+
+<p>print.go</p>
+
+<pre><code class="language-golang">import (
+    &quot;fmt&quot;
+    &quot;io&quot;
+    &quot;os&quot;
+)
+
+func testPrint(w io.Writer) {
+    fmt.Fprint(w, &quot;write test\n&quot;)
+}
+
+func main() {
+    testPrint(os.Stdout)
+}
+</code></pre>
+
+<p>print_test.go</p>
+
+<pre><code>package main
+import (
+    &quot;bytes&quot;
+    &quot;testing&quot;
+)
+
+func TestPrint(t *testing.T) {
+    buf := &amp;bytes.Buffer{}
+    testPrint(buf)
+    outputString := buf.String()
+    
+    correctString := &quot;write test\n&quot;
+    if correctString != outputString {
+        t.Errorf(&quot;output string shud be %s but %s&quot;, correctString, outputString)
+        t.FailNow()
+    }
+}
+</code></pre>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#まとめ">まとめ</a></li>
+<li><a href="#標準出力への書き込みをテストしたい">標準出力への書き込みをテストしたい</a>
+<ul>
+<li><a href="#fmt-fprintで出力先を指定する">fmt.Fprintで出力先を指定する</a></li>
+<li><a href="#メモリ上に出力する">メモリ上に出力する</a></li>
+</ul></li>
+<li><a href="#サンプルコード">サンプルコード</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

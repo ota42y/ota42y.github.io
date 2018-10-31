@@ -17,12 +17,7 @@
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/12/scfes-update/</guid>
-      <description>前に作ったスクフェス用パッケージを更新しました。
-https://github.com/ota42y/hubot-scfes
-今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。
-真夜中にレベルアップが起きたりすると面倒なので、これを見て事前に石を使うなり、
-別の難易度をやって遅らせるなりして、レベルアップのタイミング調整をすることが簡単になります。
-# 次のレベルアップまでexを何回プレイするか hubot scfes levelup count 830 ex =&amp;gt; 10 # 次のレベルアップはいつか hubot scfes levelup time 830 ex =&amp;gt; next levelup is Sun Aug 3 2014 2:52:52 GMT+0900 (JST)  なお、現在のスタミナ値は考慮していないため、実際は今たまってる分だけ早くなります。</description>
+      <description>前に作ったスクフェス用パッケージを更新しました。 https://github.com/ota42y/hubot-scfes 今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。 真夜中にレベルアッ</description>
     </item>
     
     <item>
@@ -31,22 +26,7 @@ https://github.com/ota42y/hubot-scfes
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/10/hubot-test/</guid>
-      <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
-普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、
-面倒な手順を踏むことになります。
-また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。
-しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、
-Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。
-そこで、作りたい機能をパッケージ化して作成することで、
-トライアンドエラーをする部分を最低限に絞って開発することができました。
-Hubot用パッケージの構成 Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、
-ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。
-さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、
-Hubotの連携部分と実際の処理を分けることができます。
-PackageClass = require(&#39;./package-name/package-class.coffee&#39;).PackageClass module.exports = (robot) -&amp;gt; package_class = new PackageClass robot.respond /test call (\d+)( \w+)?/, (msg) -&amp;gt; arg1 = parseInt msg.match[1] arg2 = msg.match[2] msg.reply package_class.testCall(arg1, arg2)  フォルダ構成は以下のようになります。
-parkage-root/ ├ package.json │ ├ src/ │ ├ hubot-command.coffee │ └ package-name/ │ └ package-class.coffee │ └ test/ ├ test-helper.coffee └ test-package-class.coffee  このように構成し、package-classに対してテストを作成することで、
-Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。
-前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。</description>
+      <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。 普通に頑張ると、起動してbotにメッセージ送って、動かなけれ</description>
     </item>
     
     <item>
@@ -55,16 +35,7 @@ Hubot固有の部分を最小限に減らし、通常のnpmパッケージのよ
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/01/hubot-reply/</guid>
-      <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、
-replyしてるのに発言元とは別のチャットに送信してしまうという問題が起きました。
-robot.respond /進捗 start/i, (msg) -&amp;gt; setTimeout(-&amp;gt; msg.reply &amp;quot;進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、
-そのユーザがreplyする時に最後に発言したチャットに対して行われるらしく、
-メッセージが作られた後に別のチャットに発言した場合、そちらに送られてしまうようです。
-そのため、以下のように送信先を待避することで回避できます。
-robot.respond /進捗 start/i, (msg) -&amp;gt; user = msg.message.user.name room = msg.message.user.room setTimeout(-&amp;gt; robot.send {room: room}, &amp;quot;#{user} 進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  原因となるコードを捜す というのは振る舞いから推測したものなので、実際にコードを追ってみます。
-hubot-irc.reply まずはhubot-ircのmsg.replyの中を見ます。
-https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78
-reply: (envelope, strings...) -&amp;gt; for str in strings @send envelope.user, &amp;quot;#{envelope.user.name}: #{str}&amp;quot;  メッセージをユーザ宛に変換し、sendメソッドにenvelope.</description>
+      <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、 replyしてるのに発言元とは別のチャットに送</description>
     </item>
     
     <item>
@@ -73,20 +44,7 @@ reply: (envelope, strings...) -&amp;gt; for str in strings @send envelope.user, 
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/28/hubot-scfes/</guid>
-      <description>スクフェス用の色々便利な機能が入ったHubotパッケージを作りました。
-https://github.com/ota42y/hubot-scfes
-今のところ主な機能は2つです。
-スタミナがMaxになる時間になったら通知する hubot scfes remind stamina 10 50
-で、スタミナの現在値が10、最大値が50の場合に、Maxになる時刻に通知してくれます。
-それ以外の値の場合は調節してください。
-スタミナがnの倍数になったときに通知する hubot scfes remind stamina 10 50 25
-で、スタミナの現在値が10、最大値が50として、25の倍数の時に通知してくれます。
-EXでちょうど使い切れるタイミングで通知するといった使い方を想定しています。
-未実装機能 イベント終了までにどれくらいスタミナが回復するかとか、
-レベルアップするのはいつぐらいになるかとか、
-そういった頭の中で適当に計算してる奴を機能化していこうと思います。
-ちなみにこいつは前に作ったstamina-calculatorを内部で使用しています。
-node.jsで細かくパッケージに分けて開発ってどうやるんだろうなーと思って、実益と練習がてら作った感じです。</description>
+      <description>スクフェス用の色々便利な機能が入ったHubotパッケージを作りました。 https://github.com/ota42y/hubot-scfes 今のところ主な機能は2つです。 スタミナがMaxになる時間になったら通</description>
     </item>
     
     <item>
@@ -95,14 +53,7 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/05/shinchoku/</guid>
-      <description> 作りました。
-30分ごとに進捗どうですか？と聞いてきます。
-何をやったかを計測するために定期的にログを残そうと思うのですが、
-大体忘れるので、こうやって適度に通知することで思いだそう！という試みです。
-使い方 進捗 startで30分ごとに進捗どうですか？と聞いてきます。
-進捗 stopでストップします。
-ホラー体験 setTimeoutが秒設定だと間違えて…(´･_･`)
-コード  </description>
+      <description>作りました。 30分ごとに進捗どうですか？と聞いてきます。 何をやったかを計測するために定期的にログを残そうと思うのですが、 大体忘れるので、こう</description>
     </item>
     
     <item>
@@ -111,23 +62,7 @@ node.jsで細かくパッケージに分けて開発ってどうやるんだろ�
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/02/social-game-stamina-calc/</guid>
-      <description> 作りました。
-スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー
-みたいなのを計算するのが面倒だったので、その辺の計算を自動でやってくれます。
-使い方 初期化 スタミナ1あたりいくつ回復するかはゲームによって違うので、コンストラクタで渡します。
-なお、指定は秒で行います。
-stamina_calculator = new StaminaCalculator 6*60
-この例ですと、6分で1スタミナ回復するゲームになります。
-指定した値までの回復時間(getNextMaxStaminaTime) 現在値と指定値を渡すと、指定した値までに何秒かかるかを返します。
-Maxまでどれくらいかな？とか、50になるのは何分後か？みたいな計算に使います。
-stamina_calculator.getNextMaxStaminaTime(10, 60)
-指定した倍数の値まで回復する時間(getMultipleRecoveryTime) 現在値とMAX値、それと倍数を渡すことで、指定した倍数になる時間を返します。
-今30で、一回25消費できるから、50か75か100になる時間を知りたい…みたいな時に使います。
-next_multiple_time = calc.getMultipleRecoveryTime(10, 80, 25)
-結果をDateオブジェクトにする メソッドを呼んだ時間から指定秒たった時点のDateオブジェクトを返します。
-Dateオブジェクトのコンストラクタには、指定時間後のオブジェクトを作る方法が見当たらなかったので作りました。
-stamina_calculator.convertToDate(second)
-サンプルコード StaminaCalculator = require(&#39;stamina-calculator&#39;).StaminaCalculator; stamina_calculator = new StaminaCalculator 6*60 second = stamina_calculator.getNextMaxStaminaTime(10, 60) console.log second # 今から何秒後にスタミナが５０回復するか console.log stamina_calculator.convertToDate(second) # 現在時刻からスタミナが５０回復する時間がDateオブジェクトで帰ってくる  </description>
+      <description>作りました。 スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー みたいなのを計算するのが面</description>
     </item>
     
   </channel>

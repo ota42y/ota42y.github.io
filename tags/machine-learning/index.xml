@@ -17,30 +17,7 @@
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
       <guid>/blog/2015/10/11/alchemyapi/</guid>
-      <description>まとめ  AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能性凄い  画像認識ライブラリすら必要ない世界…   AlchemyAPIで画像認識が凄い簡単にできる 先日のABPro2015でこんな発表をしました。
-  身近なサイバー攻撃から身を守る  from ota42y 
-ここで画像の判定にAlchemyAPIを利用しています。
-Twitterの画像URLをAPIに投げるだけでかなり精度のいい識別結果を返してくれるため、とても便利です。
-AlchemyAPIとは？ http://www.alchemyapi.com/
-IBMが買収した機械学習によるデータ分析会社です。
-画像認識や自然言語処理に強い会社だったらしく、その一部をIBM Bluemixで提供しています。
-IBM Bluemixは最小構成なら無料で使え、
-(おそらく)AlchemyAPIの使用権はアカウントを持っていれば1日1000件まで無料らしいので、
-回数は限られますが無料で画像認識ができます。
-どうやらIBM Bluemixは単なるクラウドサービスではなく、
-音声認識や機械翻訳、データ処理等複雑な処理をサービスとして簡単にセットアップできるようになっているらしく、
-その中の1つにAlchemyAPIが含まれているようです。
-なお、IBMが用意した画像認識サービスもあるらしく、そちらの方はBetaですが制限はないようです。
-使い方 IBM Bluemixのアカウントを作り、適当なアプリケーションを1つ作成します(仮想マシンを一個作る感じ)。
-その後、サービスからAlchemyAPIを選んで作ったアプリケーションに登録するだけです。
-登録が終わると作ったアプリケーションの環境変数としてapikeyが設定されるので、
-それを利用して画像のURLやデータをAPIに投げれば認識結果が帰ってきます。
-ライブラリ 公式がいくつかの言語のライブラリを提供しています。
-https://github.com/AlchemyAPI
-golangによる画像認識APIは無かったため、ライブラリを作りました。
-使いたい方はどうぞ。
-https://github.com/ota42y/go-alchemyapi
-サンプルコード package main import ( &amp;quot;os&amp;quot; &amp;quot;fmt&amp;quot; alchemyapi &amp;quot;github.com/ota42y/go-alchemyapi&amp;quot; ) func main() { token := os.Getenv(&amp;quot;ALCHEMYAPI_TOKEN&amp;quot;) if token == &amp;quot;&amp;quot; { fmt.Println(&amp;quot;skip this test because no token&amp;quot;) return } client := alchemyapi.</description>
+      <description>まとめ AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能</description>
     </item>
     
   </channel>

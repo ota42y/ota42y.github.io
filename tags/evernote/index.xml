@@ -17,12 +17,7 @@
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/31/evernote-opener-update/</guid>
-      <description>evernote url openerを更新しました。
-使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、
-ちょっと面倒だったので、ユーザが自分のノートリンクをペーストするだけで、設定するように変更しました。
-Evernoteからコピーできる、
-https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
-といった形式のリンクを張ることで、USER_SHARDとUSER_IDを保存します。</description>
+      <description>evernote url openerを更新しました。 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、 ちょっと面倒だったので、ユー</description>
     </item>
     
     <item>
@@ -31,33 +26,7 @@ https://www.evernote.com/shard/USER_SHARD//WORD/USER_ID/NODE_ID/
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/10/evernote-link/</guid>
-      <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
-この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
-そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。
-AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、
-同じようにアプリでノートを開いてくれるため、とても便利でした。
-しかし、最近の変更により、https://www.evernote.com/ へのリンクに変わってしまい、
-ブラウザが起動してノートがEvernoteのサイト上で表示され、
-そこからさらにEvernoteのアプリが開くという挙動になりました。
-これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、
-オフライン状態ではノートを開くことができなくなってしまいました。
-正直使い物にならないレベルになってしまったのですが、
-幸いなことにevernote:///スキームは未だ有効です。
-また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。
-リンク置換スクリプトの作成 ノートリンクの仕様 以下は予想であり、正確なものではありません
-Evernoteのhttpsリンクは以下のようになっています。
-https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/
-対して、evernote:///スキームは以下のようになっています。
-evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/
-(ノート固有の文字列は二回とも同じ値になります)　どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。
-Windowsならクリップボードの置換ソフトはたくさんあるのですが、
-Macでは残念ながらまともな物はありませんでした。
-一応、ClipMenuは正規表現で置換ができますが、
-それを実行するまでにかなりキーストロークが必要なため、見送りました。
-理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。
-リンク置換スクリプト 結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。
-事前にclipboard gemをインストールしておく必要があります。
-#!/bin/bash pushd $(dirname $0) bundle exec ruby -e &amp;quot; require &#39;clipboard&#39; url = Clipboard.paste r = Regexp.new(\&amp;quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&amp;quot;) result = r.match url if result new_url = \&amp;quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&amp;quot; p new_url Clipboard.copy new_url end &amp;quot; popd  これをevernote.</description>
+      <description>まとめ Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリ</description>
     </item>
     
   </channel>

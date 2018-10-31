@@ -17,14 +17,7 @@
       <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
       
       <guid>/blog/2016/02/25/docker_develop/</guid>
-      <description>概要 開発環境構築はだいたい辛い作業ですが、Dockerを使うことで構築がとても楽になります。もちろん銀の弾丸ではないので別のつらさは存在します。 しかし一歩も進まずに時間だけが過ぎることはなくなるため精神衛生上良く、開発を始める段階においてはとても効果的です。
-開発環境構築が辛い 開発環境構築はプログラミングをする上で必須の作業ですが、依存関係など非常に多くの落とし穴があることが多いです。 また、環境構築そのものが目的ということは少なく、その先に別にやりたい事が控えていることが多いと思います。 そのため、とりあえずやってみようと思った際に、その試してみるべき部分にたどり着けずに時間を浪費していくのはかなり辛いです…
-設定自動化スクリプトでは足りない 環境構築の手順が煩雑な問題に対しては、chefやAnsible等、自動で環境を構築する方法はいくつかあります。 これらは一度作れば同じ環境を何度でも作ることが出来ますが、2回目以降を楽にするものであるため初回はそれほど楽になりません。 また、すでに入っているものとの依存関係の問題などはこれらのツールでは解決しないため、 複雑な環境になればなるほど環境構築の難易度は上がります。
-開発環境にDockerを使う このような問題に対応するために、Dockerを開発環境として使うことを考えます。 Dockerでは毎回クリーンな環境から必要な分だけインストールするため、 依存関係地獄にはまりにくいです。 さらに、Dockerfileで構築手順を保存できるため、 複数のマシンで同じ環境を揃えるのが簡単で、かつ不要になったらコンテナを消すことで容量の削減にもなります。
-また、Dockerfileを本番環境に持って行き、そのままデプロイすることも可能です。 そのため、本番でだけバグが起きる…といったことも回避出来ます。
-Dockerで開発環境を整える 細かい部分はDocker入門を読むのが早いと思います。 そのため、割とさくっとしか説明しません。
-Dockerコンテナの作成 Dockerコンテナを構築するのに便利なDockerfileは、 ベースとなるコンテナをもとに、指定されたコマンドを実行してコンテナを作ってくれます。 例えば、以下のDockerfileはffmpegがインストール済みのコンテナに対して、 ニコニコ静画を使ったChainer用の学習済みモデルファイルを利用出来る環境を整えています。 ffmpeg自体はベースのコンテナに入っているため、その後にpythonの実行環境を入れ、様々なライブラリを入れているだけです。 コンテナの作成はこのDockerfileが置いてあるディレクトリまで移動し、 docker build -t ffmpeg_test . で作れます。
-FROM cellofellow/ffmpeg:latest RUN apt-get -y update &amp;amp;&amp;amp; apt-get -y upgrade RUN apt-get install -y ccache curl g++ gfortran git libhdf5-dev RUN apt-get install -y python-pip python-dev RUN pip install numpy==1.10.2 # scipy RUN apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran RUN pip install scipy RUN pip install Pillow RUN pip install scikit-image RUN pip install chainer==1.</description>
+      <description>概要 開発環境構築はだいたい辛い作業ですが、Dockerを使うことで構築がとても楽になります。もちろん銀の弾丸ではないので別のつらさは存在しま</description>
     </item>
     
   </channel>

@@ -17,32 +17,7 @@
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/16/evernote-url/</guid>
-      <description>まとめ  シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを実行できる  Automatorでスクリプトを実行する 前回(Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした) では、
-スクリプトの実行方法が微妙たったのでもう少し修正してみました。
-結論としては、Macと標準で入っているAutomatorを使うことで、
-ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。
-Automatorのワークフローを作る 単体のアプリケーションとして実行するため、
-Automatorを立ち上げアプリケーションを選択します。
-実行ディレクトリの取得 私の環境では、clipboardのインストール先はグローバルではなく、
-スクリプトのあるフォルダにbundler専用のディレクトリを作り、
-そこにインストールしています。
-そのため、スクリプトを実行するためにはそのパスに移動しないといけません。
-ですが、Automatorを実行した場合、
-カレントパスはユーザのホームディレクトリになり、
-実行したファイルのディレクトリではありません。
-参考: iNSTANTWiNE or Wine.framework と Automator の連携
-そのため、Apple Scriptを先に実行し、
-Automatorの実行ファイルがあるパスを求め、
-そこに移動するようにしています。
-自分自身のパスを求めるApple Script on run {input, parameters} set p to POSIX path of (path to me) return {p} return input end run  AutomatorのAppleScriptを実行を選び、
-このスクリプトを後述するシェルスクリプトの前に実行するようにします。
-これでシェルスクリプトに引数としてパスを渡せます。
-Evernote URLを置換するスクリプト 内容はほぼ前回と同じです。
-ただし、各種環境設定は読み込んでくれないため、
-sourceで読み込む必要があります。
-また、Automator側で引数の引き渡し方法を
-引数としてに設定する必要もあります。
-source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;clipboard&#39; url = Clipboard.</description>
+      <description>まとめ シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを</description>
     </item>
     
     <item>
@@ -51,33 +26,7 @@ source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;cl
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/10/evernote-link/</guid>
-      <description>まとめ  Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリプトの実行方法で問題あり  Evernoteのノートリンク仕様の変更 Evernoteでは図のように、「ノートリンクをコピー」で特定のノートに一対一対応するURIを取れます。
-この機能でコピーされるのは、これまでは evernote:///という独自スキームが使われていました。
-そのため、開こうとするとEvernoteアプリが立ち上がり、対応するノートを開いてくれていました。
-AndroidやiPhoneでもEvernoteアプリをインストールしてあれば、
-同じようにアプリでノートを開いてくれるため、とても便利でした。
-しかし、最近の変更により、https://www.evernote.com/ へのリンクに変わってしまい、
-ブラウザが起動してノートがEvernoteのサイト上で表示され、
-そこからさらにEvernoteのアプリが開くという挙動になりました。
-これにより、モバイル端末などではEvernoteへの通信時間が余計にかかるようになったうえに、
-オフライン状態ではノートを開くことができなくなってしまいました。
-正直使い物にならないレベルになってしまったのですが、
-幸いなことにevernote:///スキームは未だ有効です。
-また、必要な情報はどちらにも含まれているため、URIの変換スクリプトを書くことで対応可能です。
-リンク置換スクリプトの作成 ノートリンクの仕様 以下は予想であり、正確なものではありません
-Evernoteのhttpsリンクは以下のようになっています。
-https://www.evernote.com/shard/s2/nl/ユーザ固有の文字列/ノート固有の文字列/
-対して、evernote:///スキームは以下のようになっています。
-evernote:///view/ユーザ固有の文字列/s2/ノート固有の文字列/ノート固有の文字列/
-(ノート固有の文字列は二回とも同じ値になります)　どちらもユーザ固有の文字列とノート固有の文字列は含まれているため、相互に変換可能です。
-Windowsならクリップボードの置換ソフトはたくさんあるのですが、
-Macでは残念ながらまともな物はありませんでした。
-一応、ClipMenuは正規表現で置換ができますが、
-それを実行するまでにかなりキーストロークが必要なため、見送りました。
-理想は自動置換、最低でもスクリプトを簡単に実行できるのが最低条件です。
-リンク置換スクリプト 結局、クリップボードのURLをevernote:///に変換するスクリプトを作りました。
-事前にclipboard gemをインストールしておく必要があります。
-#!/bin/bash pushd $(dirname $0) bundle exec ruby -e &amp;quot; require &#39;clipboard&#39; url = Clipboard.paste r = Regexp.new(\&amp;quot;https://www.evernote.com/shard/s2/nl/([0-9]*)/(.*)/\&amp;quot;) result = r.match url if result new_url = \&amp;quot;evernote:///view/#{result[1]}/s2/#{result[2]}/#{result[2]}/\&amp;quot; p new_url Clipboard.copy new_url end &amp;quot; popd  これをevernote.</description>
+      <description>まとめ Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリ</description>
     </item>
     
   </channel>

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="C&#43;&#43;で少しでもビルド速度を速くする方法">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>C&#43;&#43;で少しでもビルド速度を速くする方法 | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2014/cpp-build/">C&#43;&#43;で少しでもビルド速度を速くする方法</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-09-23" class="post_data">
+    2014-09-23
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/cpp">cpp</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<h1 id="結論">結論</h1>
+
+<ul>
+<li>キャッシュを使う</li>
+<li>不要なinclude削除</li>
+<li>static or dynamic library化する</li>
+<li>並列コンパイルする</li>
+<li>分散コンパイルする</li>
+<li>いいパソコンを使う</li>
+</ul>
+
+<p>C++のビルドをちょっとでも高速化したかったので、<br />
+どうすれば早くなるのかを調べたのでまとめました。</p>
+
+<p>どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。</p>
+
+<h1 id="キャッシュを使う">キャッシュを使う</h1>
+
+<p>ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、<br />
+2回目以降のビルドは差分だけをコンパイルし直すため早くなります。<br />
+といっても、多分使わない方が珍しいと思いますが。</p>
+
+<h1 id="不要なinclude削除">不要なinclude削除</h1>
+
+<p><a href="http://ota42y.com/blog/2014/09/22/cpp-include/">C++で不要なincludeを減らす</a>のように、<br />
+不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。</p>
+
+<h1 id="static-library-or-dynamic-library化する">Static Library or Dynamic Library化する</h1>
+
+<p>切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、<br />
+本体のコンパイル時間が短縮されます。<br />
+簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。</p>
+
+<p>Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、<br />
+コンパイル時間は省略できるため大幅に早くなります。</p>
+
+<p>Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。<br />
+代わりに、ライブラリの部分だけ入れ換えるといったことができます。<br />
+ただし、iOSでは使えません…(´・_・`)　</p>
+
+<h1 id="並列コンパイルする">並列コンパイルする</h1>
+
+<p>makeにはjオプションがあり、指定した数だけ並列実行されます。<br />
+多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。</p>
+
+<h1 id="分散コンパイルする">分散コンパイルする</h1>
+
+<p>distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。<br />
+ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)</p>
+
+<h1 id="いいパソコンを使う">いいパソコンを使う</h1>
+
+<p>当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。<br />
+ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#結論">結論</a></li>
+<li><a href="#キャッシュを使う">キャッシュを使う</a></li>
+<li><a href="#不要なinclude削除">不要なinclude削除</a></li>
+<li><a href="#static-library-or-dynamic-library化する">Static Library or Dynamic Library化する</a></li>
+<li><a href="#並列コンパイルする">並列コンパイルする</a></li>
+<li><a href="#分散コンパイルする">分散コンパイルする</a></li>
+<li><a href="#いいパソコンを使う">いいパソコンを使う</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

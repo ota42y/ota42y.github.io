@@ -17,17 +17,7 @@
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/23/javascript-callback/</guid>
-      <description>関数リテラルではローカル変数には自由にアクセスできるので、
-ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。
-以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、
-実行時にエラーになります。
-(coffeescriptで書いていますがjavascriptと同じ結果です)
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @hello(1) test2.call( -&amp;gt; @hello(2) ) class Test2 call: (callback) -&amp;gt; callback()  関数リテラルはそれを作ったオブジェクトとは別のオブジェクトから呼び出されるらしく、
-またその時のthis(coffeescriptなので@hello(2)はthis.hello(2)と等価です)は、
-そのオブジェクトになり、メソッドがないため失敗するようです。
-以下のように、一度thisを待避させることで呼び出すことが出来ます。
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @hello(1) self = this test2.call( -&amp;gt; self.hello(2) ) class Test2 call: (callback) -&amp;gt; callback()  完全なコードはこちら
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @test = &amp;quot;test&amp;quot; @hello(1) self = this test2.</description>
+      <description>関数リテラルではローカル変数には自由にアクセスできるので、 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</description>
     </item>
     
     <item>
@@ -36,25 +26,7 @@ class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num c
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/27/arduino-browser/</guid>
-      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
-当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
-そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
-そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？
-と考えたところ、既にそのようなものがありました。
-試した結果をまとめます。
-noduino http://semu.github.io/noduino/
-Node.jsでArduinoを制御できます。 duinoというNode.jsからArduinoに接続するライブラリを利用し、
-Webサーバとして扱えるようにしているものみたいです。
-かなりいろいろな事ができ、使いやすいように作られていますが、
-ブラウザから制御するのはかなり苦労します。 ですが、Node.jsで実行する前提ならば、
-簡単でいろいろなことができるため最適だと思います。
-Serialport-server http://shokai.github.io/serialport-server/
-RubyからArduinoにアクセスし、その結果を返すサーバです。
-noduinoに比べるとできることは少ないですが、
-サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。
-
-というわけで、ブラウザからArduinoを制御する場合は、
-Serialport-serverが良さそうです。</description>
+      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、 当然ながらブラウザ本体やJavascriptにはそんな機能はありませ</description>
     </item>
     
     <item>
@@ -63,23 +35,7 @@ Serialport-serverが良さそうです。</description>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/26/optparse/</guid>
-      <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、
-各言語でそれをやってくれるライブラリが作られています。
-javascriptでそれにあたるのがOptparse-jsですが、
-使い方がちょっと独特です。
-インストール https://github.com/jfd/optparse-jsからどうぞ。
-npmにも登録されているので、node.jsからも簡単に使えます。
-使い方 オプション指定 どのようなオプションを宇受け取るかは配列で定義します。
-なお、短縮形も同時に定義できます。
-var options = [ [&amp;quot;-n&amp;quot;, &amp;quot;--name FILENAME&amp;quot;, &amp;quot;filename&amp;quot;], [&amp;quot;-t&amp;quot;, &amp;quot;--type TYPE&amp;quot;, &amp;quot;type&amp;quot;] ];  この場合、filenameを受け取る-nもしくは&amp;ndash;nameと、
-typeを受け取る-tもしくは&amp;ndash;typeを定義しています。
-この配列をOptionParserに渡してパーサー用オブジェクトを受け取ります。
-var parser = new optparse.OptionParser(options);  オプション処理 オプションを受け取ったときの処理は、パーサーオブジェクトに関数を渡して登録します。
-第一引数にオプション名、第二引数にそのオプションがあったときの処理を渡します。
-parser.on(&amp;quot;name&amp;quot;, function(opt, value) { parameter[&amp;quot;name&amp;quot;] = filename; });  パース実行 パーサーオブジェクトのparseメソッドでパースを実行できます。 ただし、スペースを自分で区切ってはくれないため、
-先に配列に分けておく必要があります。
-parser.parse(command_str.split(&amp;quot; &amp;quot;));  (勝手にオプション足したり、区切り文字を自由に設定できる、こうしていると思われます)
-サンプルコード var optparse = require(&#39;optparse&#39;); var command_str = &amp;quot;-name core -type f&amp;quot;; var options = [ [&amp;quot;-n&amp;quot;, &amp;quot;--name FILENAME&amp;quot;, &amp;quot;filename&amp;quot;], [&amp;quot;-t&amp;quot;, &amp;quot;--type TYPE&amp;quot;, &amp;quot;type&amp;quot;] ]; var parser = new optparse.</description>
+      <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、 各言語でそれをやってくれるライブラリが作られています。 javas</description>
     </item>
     
     <item>
@@ -88,19 +44,7 @@ parser.parse(command_str.split(&amp;quot; &amp;quot;));  (勝手にオプショ�
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/22/mocha-test/</guid>
-      <description>まとめ  Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ便利機能がある  Mochaの使い方 coffeescriptを前提にしています。
-テストの書き方 Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、
-そのitを呼び出す関数をdescribeに渡すしようです。
-describe &amp;quot;test root&amp;quot;, -&amp;gt; it &amp;quot;name&amp;quot;, (done) -&amp;gt; assert.equal getUserName, &amp;quot;user&amp;quot; done()  ただし、it関数では必ずdone()を呼び出す必要があります。
-これを呼ばない場合は終了を待ち続け、
-一定時間後にタイムアウトしてテストが失敗した扱いになります。
-beforeの使い方 rspecのbeforeにあたるものは、beforeEachになります。
-なお、変数を他のブロックに渡したい場合、
-以下のようにdescribeの中に変数名を書いておいて、
-beforeEachのなかで設定する必要があるみたいです。
-参考
-describe &amp;quot;test&amp;quot;, -&amp;gt; room_name = undefined beforeEach (done) -&amp;gt; room_name = &amp;quot;test_room&amp;quot; done() describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;executeNoteShow&amp;quot;, (done) -&amp;gt; assert.equal getRoomName(room_name), room_name done()  pendingテストの作り方 テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。
-describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;quot; // 関数を渡さない場合 // it.</description>
+      <description>まとめ Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ</description>
     </item>
     
     <item>
@@ -109,27 +53,7 @@ describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/21/intellij-node/</guid>
-      <description> node.js+mocha+coffeescriptな環境で開発をしていたところ、
-IntelliJ IDEAの設定方法が調べても無かったのでメモ。
-Node.jsプラグインのインストール Node.jsプラグインは公式から提供されています。
-そのため、IntelliJ のPreferences からPluginsを選び、
-NodeJSプラグインを選択するだけでインストール出来ます。
-ビルド設定 以下の画像の通りです。
- Node interpreter
-node.jsの実行ファイルの位置を設定します。 working directory
-対象のディレクトリ Mocha package
-Mochaの実行ファイルの位置 Extra Mocha options
-Mochaの設定を指定します 詳しくは後述 Test Directory
-Mochaのテストが入っている場所  Mochaのオプション 私の環境では主に次のような設定をしています、
- coffeescriptを利用している spec形式で出力 共通で読み込むファイルがある  これは、以下のオプションを入れることで実現できます。
---compilers coffee:coffee-script/register --reporter spec --require coffee-script --require test/test_helper.coffee --colors  問題点 以上で設定は終わりですが、いくつか問題点があります。
- デバッガが動かない
-coffeescriptから変換してるので、
-ブレークポイントがうまく動きません エラーになったテストに飛べない
-テストがエラーになったとしても、そのテストの位置に飛ぶ機能がありません。
-最も、IDEを使わずに開発している時と同じく、
-テストメッセージを頼りにテストファイルに移動すればいいので、
-大きな問題ではありませんが。  </description>
+      <description>node.js+mocha+coffeescriptな環境で開発をしていたところ、 IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.</description>
     </item>
     
     <item>
@@ -138,21 +62,7 @@ coffeescriptから変換してるので、
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
-      <description>まとめ
- Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人を非表示にする拡張作った DLはここから  Pixivのイラスト検索でフォロワーを除外できない Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、
-検索結果にフォローしてる人とそうでない人が交じります。
-私の場合、フォロー新着作品を全てチェックしているため、
-検索をする場合は、このイラスト書いてる新しい人を見つけたい！といった目的で行うことがほとんどです。
-そのため、フォロワー以外からの検索を行いたいのですが、
-残念ながらPixivにそのような機能はありませんでした。
-というわけで、Chrome拡張で実現しました。
-フィルタの基本機能 DLはここから。
-検索結果にはユーザのユニークIDが含まれているため、
-自分のフォローしている人と一致していれば非表示にしています。
-また、毎回通信するのは無駄が多いため、
-事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。
-そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。
-ソースコード https://github.com/ota42y/pixiv_follower_filter</description>
+      <description>まとめ Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人</description>
     </item>
     
     <item>
@@ -161,31 +71,7 @@ coffeescriptから変換してるので、
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/17/local-storage/</guid>
-      <description>Chrome拡張でデータを保存しようとした場合に、
-最も簡単に扱えるのが、localStorageです。
-manifest.jsonの設定 manifest.jsonに以下のパーミッションを追加してください
-&amp;quot;permissions&amp;quot;: [ &amp;quot;storage&amp;quot;, &amp;quot;unlimitedStorage&amp;quot; ],  使い方 localStorageという辞書型の変数が定義されるので、
-それに対して読み書きを行うだけで大丈夫です。
-localStorage[‘data’] = ‘aaa&#39; var data = localStorage[‘data’]  注意点 保存形式の制約 この方法で保存できるのは文字列だけになります。
-true/falseを保存しても文字列として出てきますし、
-オブジェクトを入れても正しく保存されません。
-このような場合、JSON.stringifyとJSON.parseを使い、
-JSONに変換して保存すると解決します。
-読み出せる場所の制約 localStorageはページごとに保存するデータがわかれているため、
-読み書きは同じ場所で行う必要があります。
-基本的にはbackgruond.jsで読み書きを行い、
-content_scriptsやpopupからbackground.jsを呼び出すのがいいと思います。
-popupからは以下のように、background.jsの関数を簡単に呼び出すことができます。
-// background.jsのgetDataを呼び出す var data = chrome.extension.getBackgroundPage().getData();  content_scriptsからは直接アクセスできないため、
-メッセージを通して呼び出す必要があり、少々面倒です。
-まず、background側にメッセージ受け取りと、コールバックを定義します。
-content_scriptsからのメッセージ内容がrequestに入っているので、
-それによって処理を分けています。
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) { if (request.method == &amp;quot;getUser&amp;quot;){ sendResponse({user_id: localStorage[request.user_id]}); }else{ sendResponse({}); } });  content_scriptから呼び出す場合は以下のように、
-データとコールバックを渡します。
-受け取り側でsendResponse()を読んだときの引数がresponseに入るので、
-それを利用してデータを取り出します。
-chrome.runtime.sendMessage({method: &amp;quot;getUser&amp;quot;, user_id: user_id}, function(response) { if(response.</description>
+      <description>Chrome拡張でデータを保存しようとした場合に、 最も簡単に扱えるのが、localStorageです。 manifest.jsonの設定 man</description>
     </item>
     
   </channel>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="参加記録 DroidKaigi">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>参加記録 DroidKaigi | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2015/droidkaigi/">参加記録 DroidKaigi</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2015-04-26" class="post_data">
+    2015-04-26
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/conference">conference</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              <p><a href="http://droidkaigi.connpass.com/event/13216/">DroidKaigi</a>に参加してきたのでメモ。</p>
+
+<p>Twitterで流れてくる情報によると、あっちのセッションもおもしろそう…<br />
+みたいなのがあったので、ちゃんとセッションの概要も読んで天秤にかけるべきでした。<br />
+（エクセルシートから該当のセッションを探すのが大変だったので挫折した）</p>
+
+<ul>
+<li><p>Activity, Fragment, CustomView の使い分け - マッチョなActivityにさよならする方法 -</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm">http://www.slideshare.net/yanzm/droid-kaigi2015-yanzm</a></li>
+<li>ActivityはFragmentのブセット的な印象。</li>
+<li>Fat Activityになりやすい場合はViewとか他の部分にコードを分割しましょうというお話っぽい。
+
+<ul>
+<li>RailsのFat Controller問題?</li>
+</ul></li>
+<li>Fragmentにできる事はそっちにどんどん任せて、ActivityはActivityにしか出来ない部分に集中しようってこと？</li>
+<li>Activityにしか出来ないことが多すぎるからFat Activity問題になってたので、
+似たようなことが出来るけどライフサイクルをコントロールできるクラスの登場によって、
+処理の分割ができるようになった感じ？</li>
+</ul></li>
+
+<li><p>開発を効率的に進めるられるまでの道程</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/TakaoSumitomo/ss-47393000">http://www.slideshare.net/TakaoSumitomo/ss-47393000</a></li>
+<li>コードを書くのとテストを書くのが一番開発で大変なところ</li>
+<li>どんな風にテストしているかの事例紹介
+
+<ul>
+<li>ダミーを作ってがんばる感じ</li>
+<li>複数の間を取り持つクラスは疎通確認のみ</li>
+</ul></li>
+</ul></li>
+
+<li><p>あるゲームアプリケーションの構成とアップデートサイクル</p>
+
+<ul>
+<li><a href="http://www.slideshare.net/kentaroiizuka/droidkaigi">http://www.slideshare.net/kentaroiizuka/droidkaigi</a></li>
+<li>様々なリソースから、バイナリやアップデータを作るまでをすべてJenkinsがやっている
+
+<ul>
+<li>専用のパイプラインエンジニアがいるらしい</li>
+</ul></li>
+<li><a href="https://github.com/KLab/PlaygroundOSS/">Playground</a>つよい
+
+<ul>
+<li>Cocosはお察しなできなので… (´・ω・｀)</li>
+</ul></li>
+<li>Luaでゲーム部分を書く
+
+<ul>
+<li>ゲーム部分以外はフレームワークが吸収</li>
+</ul></li>
+<li>リソースの追加ダウンロードとかもフレームワーク側が持っているらしい
+
+<ul>
+<li>ゲーム側はゲームとしての実装に専念できるっぽい<br /></li>
+</ul></li>
+</ul></li>
+
+<li><p>Android学ぶを君へ。生き抜くためのナレッジ共有</p>
+
+<ul>
+<li><a href="https://github.com/operando/DroidKaigi">https://github.com/operando/DroidKaigi</a></li>
+<li>有用な情報がたくさん</li>
+<li>adbが思っていた以上に優秀だった
+
+<ul>
+<li>任意のアプリのViewTreeが見られるらしい</li>
+</ul></li>
+<li>テスト書こう</li>
+<li>発表と関連する資料が全部まとまっているの凄い便利</li>
+</ul></li>
+
+<li><p>Kotlin</p>
+
+<ul>
+<li><a href="https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu">https://speakerdeck.com/ntaro/xin-yan-yu-kotlindeandroidpuroguramiingu</a></li>
+<li>Better Java凄い</li>
+<li>Javaで面倒なところを一通りつぶしてくれてる感じ</li>
+<li>Android Studioのプラグインもしっかり対応している様子</li>
+<li>静的型付けだけどちゃんと型推論してくれるので便利</li>
+</ul></li>
+
+<li><p>モバイルにおける電力最適化のための1プラクティス</p>
+
+<ul>
+<li>アプリの電力測定をする
+
+<ul>
+<li><a href="http://www.brilliantservice.co.jp/works/power_kit.html">http://www.brilliantservice.co.jp/works/power_kit.html</a></li>
+<li>こんな感じのを作る</li>
+</ul></li>
+<li>満充電状態なら、電源ケーブルを通る電力は大体アプリのために使われる仮定
+
+<ul>
+<li><a href="https://strawberry-linux.com/catalog/items?code=12031">https://strawberry-linux.com/catalog/items?code=12031</a></li>
+<li>どれくらいの電気が使われたかを測定する</li>
+</ul></li>
+<li>通信や描画が何度も起きるアプリは消費量も多め</li>
+<li>何をしているかで消費量はだいぶ違う</li>
+<li>全体の平均値より、スポットごとの値を比較した方が良い</li>
+</ul></li>
+
+<li><p>アプリを公開する前に、最低限知っておきたいセキュリティ事項</p>
+
+<ul>
+<li><a href="http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html">http://www.taosoftware.co.jp/blog/2015/04/cf5c5d90.html</a></li>
+<li>セキュリティ学習ツールAnCoLe
+
+<ul>
+<li><a href="https://www.ipa.go.jp/security/vuln/ancole/">https://www.ipa.go.jp/security/vuln/ancole/</a></li>
+</ul></li>
+<li>権限管理をしっかりとする</li>
+<li>デバッグコードやライブラリが変な挙動をしないか精査する
+
+<ul>
+<li>広告SDKは信頼できる物一覧がある</li>
+<li><a href="http://blog.androider.jp/dev/archives/3087">http://blog.androider.jp/dev/archives/3087</a></li>
+</ul></li>
+</ul></li>
+
+<li><p>その他</p>
+
+<ul>
+<li>複数セッションなのでもう片方も見たいのばかり…
+
+<ul>
+<li>特にARTとXMLの話は聞きたかった…<em>(:3 」∠)</em></li>
+</ul></li>
+<li><a href="http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle">http://www.slideshare.net/MakotoYamazaki/20150425-droidkaigi-gradle</a></li>
+<li><a href="http://www.slideshare.net/kmt-t/art-47396171">http://www.slideshare.net/kmt-t/art-47396171</a></li>
+<li><a href="http://www.slideshare.net/sola1980/androidse-linux">http://www.slideshare.net/sola1980/androidse-linux</a></li>
+<li><a href="http://www.slideshare.net/yuki930/ss-47398513">http://www.slideshare.net/yuki930/ss-47398513</a></li>
+<li><a href="https://speakerdeck.com/chocomelonchan/droidkaigi">https://speakerdeck.com/chocomelonchan/droidkaigi</a></li>
+<li><a href="https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro">https://speakerdeck.com/yulily100/tesainakaxmlwoshu-kuahurikai-fa-huro</a></li>
+<li><a href="https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue">https://speakerdeck.com/misyobun/da-rong-liang-detafalsedaunrodozhan-lue</a></li>
+</ul></li>
+</ul>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

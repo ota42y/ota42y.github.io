@@ -17,24 +17,7 @@
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
       <guid>/blog/2015/07/05/dino/</guid>
-      <description>まとめ  PCからArduinoを制御するのは面倒  作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング Arduinoプログラミングは専用言語 学習コストがある  dinoならrubyだけで全て完結できる  rubyからArduinoの全機能を制御するプログラムが付随 rubyのオブジェクト操作でArduinoを制御出来る   PCからArduinoを制御するのは面倒 Arduinoのおかげで、電子部品をプログラムから制御する際の敷居は大幅に下がりました。
-ですが、Arduinoを制御するためにC/C++をベースとした専用の言語を覚える必要があります。
-PCとからArduinoを制御する場合、
- 電子工作をしてArduinoと部品をつなげる Arduinoを制御したり、PCに情報を送るプログラムを書く PC側でArduinoからの情報を受け取って制御するプログラムを書く  の3種類の別々の作業が必要になります。
-Arduino抜きでやるよりかは簡単になりましたが、これもまだまだ面倒です。
-ここで、rubyのdinoというgemを使うと、Arduino本体のプログラミングを省略し、
-rubyプログラムを書くだけでArduinoの制御が全てできるようになります。
-これにより、PC側のプログラムを書くだけでArduinoを制御出来ます。
-dino Arduinoをrubyから扱うライブラリです。
-https://github.com/austinbv/dino
-Arduinoの全機能を外部から制御可能にするプログラムが付随しており、
-これを書き込むことで、arduinoをruby上のオブジェクトとして扱うことができます。
-サンプルコード A0ポートに対する入力を拾うプログラムは以下の通りです。
-board = Dino::Board.new(Dino::TxRx::Serial.new) sensor = Dino::Components::Sensor.new(pin: &#39;A0&#39;, board: board) sensor.when_data_received do |data| puts &amp;quot;data=#{data.to_i}&amp;quot; end sleep  ポートに対する入力があるたびにブロックが実行されます。
-このように、arduinoをほぼrubyのオブジェクトのように扱えるため、
-PC上でrubyプログラムを書くだけで、電子部品を制御することができるようになります。
-ただし、当然ながらPCと接続して制御するものであり、
-Arduino単体で動作させたい場合は今まで通りArduinoプログラムを書く必要があります。</description>
+      <description>まとめ PCからArduinoを制御するのは面倒 作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング</description>
     </item>
     
     <item>
@@ -43,17 +26,7 @@ Arduino単体で動作させたい場合は今まで通りArduinoプログラム
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
       <guid>/blog/2015/06/18/c-thread/</guid>
-      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。
-他の言語のようにスレッド用のクラスを継承するのでは無く、
-別スレッドで実行する関数のポインタと、
-その関数に渡すデータのポインタを指定して実行するようです。
-スレッドによる並行処理 スレッドの作成(pthread_create) Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。
-int pthread_create(pthread_t * thread, pthread_attr_t * attr, void * (*start_routine)(void *), void * arg);   thread  スレッド管理用のpthread_t型の変数  attr  スレッドの属性を指定する。 NULLの場合はデフォルトが使われる  (*start_routine)(void *)  別スレッドから呼び出される関数へのポインタ  arg  start_routineの引数として渡すデータのポインタ 元のスレッドからデータを送るのに使う   スレッドの終了を待つ(pthread_join) pthread_joinで、指定したスレッドが終了するまで待機することができます。
-int pthread_join(pthread_t th, void **thread_return);   th  待機するスレッドをpthread_t型の変数で指定する  **thread_return  スレッドの戻り値を格納する領域   サンプルコード 以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。
-排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。
-実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。
-なお、コンパイルする際はは-pthreadオプションを指定する必要があります。
-#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;pthread.</description>
+      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。 他の言語のようにスレッド用のクラスを継承するのでは無く、 別スレッドで実行する関数のポイ</description>
     </item>
     
     <item>
@@ -62,17 +35,7 @@ int pthread_join(pthread_t th, void **thread_return);   th  待機するスレ�
       <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
       
       <guid>/blog/2015/06/03/linux_local/</guid>
-      <description>突然プログラムが起動しなくなったため、
-原因を探ったところ、localesが壊れていました。
-そのため、再インストールすることで直りました。
-言語取得部分は動くけど、おかしい結果を返す壊れ方のため、
-発見にわりと手間取りました。
-まとめ  プログラム上でlocaleを参照する部分がおかしい結果を返す  常にANSI_X3.4-1968 Debian 7.8  dpkg-reconfigure localesが何か壊れているメッセージを出す  localeをアップデートすると直る apt-get install locales   localeの取得がおかしい pythonではgetpreferredencoding()で設定されている言語情報を取ってこれます。 ですが、
-LANG=&#39;ja_JP.UTF-8&#39; echo &#39;import locale; print locale.getpreferredencoding()&#39; | python
-を実行しても、ANSI_X3.4-1968が返ってきてしまい、日本語処理の部分でおかしくなっていました。
-(前にそのプログラムは動いていたので、気がついたらおかしくなっていました)
-localeを実行してみたところ、以下のように表示されました。
-locale -a locale: Cannot set LC_CTYPE to default locale: No such file or directory locale: Cannot set LC_MESSAGES to default locale: No such file or directory locale: Cannot set LC_COLLATE to default locale: No such file or directory C C.</description>
+      <description>突然プログラムが起動しなくなったため、 原因を探ったところ、localesが壊れていました。 そのため、再インストールすることで直りました。 言語</description>
     </item>
     
     <item>
@@ -81,18 +44,7 @@ locale -a locale: Cannot set LC_CTYPE to default locale: No such file or directo
       <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
       
       <guid>/blog/2015/05/06/go-struct-offset/</guid>
-      <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。
-通常意識する必要はありませんが、32bitと64bitで挙動がおかしい場合など、
-ごく希に調べる必要に迫られる場合があります。
-そのような場合、各要素のサイズや、構造体先頭からのオフセットを調べることで、
-メモリ上に構造体がどう置かれるかを調べることができます。
-C言語でのsizeofやoffsetofに対応する物が、golangのunsafeパッケージに用意されているため、
-これを利用することで構造体の様子を調べることができます。
-https://golang.org/pkg/unsafe/
-今回は以下のようなテスト構造体を使い、メモリ上にどのように置かれるかを調べました。
-テスト環境はwindows7(32bit)とmac(64bit)になります。
-type A struct { flag bool num int64 ptr *int64 mini int32 str string nums []int64 nums5 [5]int64 strs []string }  要素のサイズ unsafe.Sizeof関数は、引数の要素のサイズを調べ、バイト数をint型で返してくれます。
-a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括弧内は64bit log.Println(unsafe.Sizeof(a.flag)) // 1 log.Println(unsafe.Sizeof(a.num)) // 8 log.Println(unsafe.Sizeof(a.ptr)) // 4 (8) log.Println(unsafe.Sizeof(a.mini)) // 4 log.Println(unsafe.Sizeof(a.str)) // 8 (16) log.Println(unsafe.Sizeof(a.nums)) // 12 (24) log.Println(unsafe.Sizeof(a.nums5)) // 40 log.Println(unsafe.Sizeof(a.strs)) // 12 (24) a.</description>
+      <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。 通常意識する必要はありませんが、32bitと64bitで挙動</description>
     </item>
     
     <item>
@@ -101,31 +53,7 @@ a := A{} log.Println(unsafe.Sizeof(a)) // 92 (136) 括弧外は32bit環境、括
       <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
       
       <guid>/blog/2015/04/24/go-windows-development/</guid>
-      <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。
- WindowsのGolang開発  IntelliJ便利  機能がとても豊富  Windows上ではつらい  開発ツールが少ない LinuxはGUI使いづらい  LinuxのファイルをWindowsから変更する  良いところ取り  開発はWindows 実行はLinux  ファイルはSambaで共有  ネットワークドライブをマウント  IDEデバッグは使えなくなる  そのときだけWindowsで動かすとか     Golang開発環境を整える IntelliJでのGo開発環境 IntelliJ IDEAとGolang pluginはとてもよく動くため、
-Golang開発に関してはこれを使うのが最も簡単に快適な開発環境を整えられます。
-Go の開発環境は IntelliJ IDEA + golang plugin がマトモだった
-VMwareに開発環境を整える IntelliJもGolangはWindowsに対応しているため、比較的簡単に開発を行うことができます。
-ですが、開発に便利なツールの多くはUnixの方が使いやすいことが多いため、
-Windows上で開発するのは細かいところで面倒になることが多いです。
-そのため、仮想マシンや別サーバにLinuxマシンを1台作り、
-その中で開発をした方が何かと便利です。
-ですが、LinuxのGUI環境は現状まともな環境がなく、とても使いづらいため、
-開発以外の作業が発生する場合を考慮すると普段はできる限りWindowsを使用したくなります。
-そこで、開発はWindows上のIntelliJ等で行い、実行環境や開発ツールはLinux上に整え、
-それらをssh経由のCLIから操作するのが最も良い案になっています。
-このような構成にすることで、Unixで動く便利なツールを利用しつつ、
-Windowsの快適なGUI環境を利用することができます。
-また、ファイルや実行環境と手元の環境とが切り離されるため、
-複数の実行環境を切り替えたり、
-マシンを入れ替える際に再設定する量を減らすことができるという利点もあります。
-なお、私は手元のマシンのVMware上にLinuxを立てているため、転送速度はほぼ気になりません。
-IntelliJで別サーバのファイルにアクセスする 残念ながらIntelliJはこのような用途を想定していないため、 別マシンの環境下で作業できません。
-幸いなことに、Windowsがネットワークドライブとして別マシンのフォルダをマウントした場合、
-IntelliJからは普通のドライブとして見えるため、別マシンのファイルにアクセスすることができます。
-そこで、サーバ上の開発ディレクトリをSambaで共有し、
-Windowsからネットワークドライブとしてそのフォルダをマウントしてあげることで、
-IntelliJで開発を行うことができます。</description>
+      <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。 WindowsのGolang開発 IntelliJ便利 機能が</description>
     </item>
     
     <item>
@@ -134,11 +62,7 @@ IntelliJで開発を行うことができます。</description>
       <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
       
       <guid>/blog/2015/04/18/go-package-management/</guid>
-      <description>goでは標準でいろいろなツールが揃っていますが、
-npmやbundlerのようなパッケージの依存管理をするツールはありません。
-これは、goでは公開されている物は後方互換性を守り、
-それを崩す場合は違うインポートパスにするべきだという思想によるものらしいです。
- Packages intended for public use should try to maintain backwards compatibility as they evolve. The Go 1 compatibility &amp;gt;guidelines are a good reference here: don&amp;rsquo;t remove exported names, encourage tagged composite literals, and so on. If different &amp;gt;functionality is required, add a new name instead of changing an old one. If a complete break is required, create a new package &amp;gt;with a new import path.</description>
+      <description>goでは標準でいろいろなツールが揃っていますが、 npmやbundlerのようなパッケージの依存管理をするツールはありません。 これは、goでは</description>
     </item>
     
     <item>
@@ -147,16 +71,7 @@ npmやbundlerのようなパッケージの依存管理をするツールはあ�
       <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
       
       <guid>/blog/2015/04/11/go-liner/</guid>
-      <description>peterh/liner
-golangでCLIを作る際に活用できるラインエディタです。
-使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します。
-入力があると関数が入力を返してくるため、それによって処理を分岐します。
-なお、Ctrl+cの場合は普通に入力になりますが、Ctrl+dの場合はEOFとしてエラーを返してくるため、
-エラー時に終了するようにしておくことでCtrl+dで終了できます。
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&amp;quot; ) func main() { line := liner.NewLiner() defer line.Close() for { l, err := line.Prompt(&amp;quot;Input: &amp;quot;) if err != nil { fmt.Println(&amp;quot;error: &amp;quot;, err) } else { fmt.Println(&amp;quot;get: &amp;quot;, l) if l == &amp;quot;exit&amp;quot; { break } } } }  入力履歴を使う AppendHistory関数に文字列を渡すことで、上下キーで入力履歴をたどれます。
-State.AppendHistory
-また、WriteHistory関数でファイルへの書き込みを、ReadHistory関数でファイルからの読み込みを行えます。
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&amp;quot; &amp;quot;os&amp;quot; ) func main() { line := liner.</description>
+      <description>peterh/liner golangでCLIを作る際に活用できるラインエディタです。 使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します</description>
     </item>
     
     <item>
@@ -165,27 +80,7 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/peterh/liner&
       <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
       
       <guid>/blog/2015/04/01/go-io-test/</guid>
-      <description>まとめ  fmt.Print等にちゃんと出力されるかテストしたい  結論としては直接は無理  io.Writerを利用するように変えることで簡単にテスト可能  渡されたio.Writerに書き込むようにする 通常はos.Stdout、テストの時はbytes.Bufferを渡す どちらもio.Writerを実装している   標準出力への書き込みをテストしたい fmt.Print等で文字列を出力する場合、予期したものが出力されるかをテストしたい場合があります。
-ですが、fmt.Printはそのまま出力まで行ってしまうらしく、こちら側で制御することは難しそうです。
-このような場合、fmt.Printを使うのではなく、明示的に標準出力へ書き込むようにし、
-テストの時は書き込み先を切り替えることで簡単にテストができるようになります。
-fmt.Fprintで出力先を指定する golangでは任意の書き込み先に対して書き込むfmt.Fprint関数が用意されています。
-この関数は、io.Writerに対してフォーマット指定した文字列を書き込めます。
-https://golang.org/pkg/fmt/#Fprint
-io.WriterはWrite(p []byte) (n int, err error)関数だけを持ったインターフェースです。
-そのため、これを実装していればfmt.Fprintの書き込み先として使えます。
-http://golang.org/pkg/io/#Writer
-golangでは、io.Writerを実装した標準出力をos.Stdoutとして提供しています。
-そのため、os.Stdoutにfmt.Fprintで書き込むことにより、
-出力先を変更可能な状態で標準出力に出力できます。
-メモリ上に出力する golangでは、byets.Bufferもio.Writerを実装しており、こちらは書き込まれた文字列をメモリ上に保持してくれます。
-そして、String()関数により、書き込まれた文字列をstringとして取得できます。
-http://golang.org/pkg/bytes/#Buffer
-これを利用し、普段はos.Stdoutに書き込むようにし、テストの時に書き込み先をbyets.Bufferに変更することで、
-標準出力に出力されたかどうかをテストすることができるようになります。
-サンプルコード print.go
-import ( &amp;quot;fmt&amp;quot; &amp;quot;io&amp;quot; &amp;quot;os&amp;quot; ) func testPrint(w io.Writer) { fmt.Fprint(w, &amp;quot;write test\n&amp;quot;) } func main() { testPrint(os.Stdout) }  print_test.go
-package main import ( &amp;quot;bytes&amp;quot; &amp;quot;testing&amp;quot; ) func TestPrint(t *testing.</description>
+      <description>まとめ fmt.Print等にちゃんと出力されるかテストしたい 結論としては直接は無理 io.Writerを利用するように変えることで簡単にテスト</description>
     </item>
     
     <item>
@@ -194,14 +89,7 @@ package main import ( &amp;quot;bytes&amp;quot; &amp;quot;testing&amp;quot; ) fu
       <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
       
       <guid>/blog/2015/03/28/go_interface/</guid>
-      <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。
-Goでインターフェースを実装したクラスのポインタを扱う Goで以下のように、インターフェースを実装したクラスを受けたい場合があります。
-type Node interface{ ToString() string } func Output(l Node) { fmt.Println(l.ToString()) } type NodeTest struct{ } func (n NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := NodeTest{} Output(n) }  関数呼び出しのたびにオブジェクトがコピーされるのは無駄なので、 インターフェースのポインタを渡すように変更します。
-func Output(l *Node) { fmt.Println((*l).ToString()) } func (n *NodeTest) ToString() string{ return &amp;quot;test&amp;quot; } func main(){ n := &amp;amp;NodeTest{} Output(n) }  この場合、インターフェースのポインタは、インターフェースを実装したstructのポインタとは違うため、 関数の引数として渡すことができず、コンパイルが通りません。
-そのため、インターフェースを使う場合はオブジェクトをコピーせざるを得ないように思えますが、 ちゃんとこのような場合も解決方法は存在します。
-ポインタにインターフェースを実装する 上記の2番目のコードでは、NodeTest型のポインタに対してインターフェースを実装しています。
-そのため、以下のようにOutput関数の引数をNode型を受けるようにしておくのが正解になります。
-func Output(l Node) { fmt.</description>
+      <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。 Goでインターフェースを実装したクラスのポインタを扱う</description>
     </item>
     
     <item>
@@ -210,21 +98,7 @@ func Output(l Node) { fmt.</description>
       <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
       
       <guid>/blog/2015/03/22/gxui-install/</guid>
-      <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。
-WindowsへのインストールはGoの環境を整えるところでだいぶ大変だったので、手順を書いておきます。
-なお、一部の依存ライブラリが64bitに対応していないため、すべて32bit版を使います。
-Go言語の環境構築 Go本体に加えて、依存ライブラリのためにgcc,hg,gitが必要になります。
-元々SouceTreeがgitとhgを内部に持って、しかもコンソールまで提供していたのでそれを使っていましたが、
-mingwのgccを認識してくれないため、コマンドライン版をインストールし直しました。
-VCSのインストール git(http://git-scm.com/)とmercurial(http://mercurial.selenic.com/)をインストールします。
-gitの場合、git bash onlyではなく、コマンドラインからも使えるようにしてください
-mingwのインストール http://sourceforge.net/projects/mingw/からmingwを入れ、
-mingw32-baseとmingw32-gcc-g++にチェックを入れて、メニューのInstallationからApply Changesを選択します。
-なお、Goの64bitとmingwの64bitを使ったところ、glfwのインストール時にサポートしてないよって言われました。
-これは両方とも32bitに揃えることで回避できました。
-コマンドラインからgccが使えるようになっていれば大丈夫です。
-gxuiのインストール gxuiと4つの依存するパッケージをインストールします。
-go get http://github.com/google/gxui go get http://code.google.com/p/freetype-go/freetype/raster go get http://code.google.com/p/freetype-go/freetype/truetype go get http://github.com/go-gl/gl/v3.2-core/gl go get http://github.com/go-gl/glfw/v3.1/glfw  これだけでインストールはおしまいです。 gxui内のsample/下にあるサンプルを動かして確認をしてください。</description>
+      <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。 WindowsへのインストールはGoの環境を整えるところ</description>
     </item>
     
     <item>
@@ -233,27 +107,7 @@ go get http://github.com/google/gxui go get http://code.google.com/p/freetype-go
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
       <guid>/blog/2015/03/16/octopress_to_hugo/</guid>
-      <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、
-サイト作成ツールの部分をGolangで作られたHugoに置き換えました。
-まとめ  Octopress  Ruby制の静的サイト作成ツール 大量の記事を扱うと遅くなっていく  100記事で新しい記事のHTML出力まで10秒ぐらいかかる 見た目を確認したいときなどにとても不便   Hugo  Golang制の静的サイト作成ツール 利点 早い  100記事で200msぐらい  環境構築いらず  公式がバイナリ配布 手を加えないならそのまま使える Win-Mac両方使う人にはとても楽  欠点  テーマが少ない  このサイトも自作 https://github.com/ota42y/orange42   手を加えにくい  手を加えると環境構築いらずの利点が失われる クロスコンパイルは楽なのでそれほどでもない？  手を加える必要が無いのでそのとき考える     Octopressの問題点 HTMLのレンダリングが遅いです。
-Octopressにはローカルにサーバを立てて、実際に表示される画面をブラウザで表示する機能があります。
-この機能はファイルを監視しており、変更があるたびに再読込をしてくれるので、
-表示されるHTMLをみながらmarkdownを編集でき、とても役に立っていました。
-現在このブログは100記事ぐらいありますが、その状態だと1記事のHTMLを作るのに10秒ぐらいかかってしまいます。
-ちょっとした修正ごとに10秒待つのはなかなかにつらく、
-かつ記事が増えて行くにしたがって速度がより遅くなっていくことが予想できました。
-そのときちょうどGolangで作られたHugoのことを知り、速度もとても速いとのことなので乗り換えを検討しました
-乗り換え方はこちらのサイトを参考にさせていただきました。
-OctopressからHugoへ移行した
-Hugoの利点 HTMLのレンダリングが早い Octopressだと10秒ぐらいかかっていた状態をそのまま移行しましたが、
-ファイルを更新してからHTMLに変換されるまでの時間が400msにまで短縮され、
-ほとんど待ち時間が感じられないレベルになりました。
-特にチューニングとかを考えずにこの速度なので、とても助かります。
-環境構築いらず Hugo本体に手を入れないのであれば、様々な環境用の実行ファイルが配布されているため、
-環境構築でがんばる必要がありません。
-私はWindowsとMacの両方を使っていますが、WindowsでのRubyはつらいものがあるので、
-Windows向けのバイナリをダウンロードするだけですむのは大変便利です。
-Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、思った通りのサイトを作るためには自分で作らないと行けません。</description>
+      <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、 サイト作成ツールの部分をGol</description>
     </item>
     
     <item>
@@ -262,27 +116,7 @@ Hugoの問題点 テーマがない テーマの数が圧倒的に少なく、�
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/02/27/jenkins-remote-api/</guid>
-      <description>まとめ  JenkinsはWebベースのUI  操作の敷居が低い 使い込むと使いづらくなる 反応速度 複数のビルド実行  Remote access API  HTTP経由でJobを実行できる ページ表示を待たなくていいため高速 プログラムから実行可能 ただし、Jenkinsの仕様上、実行したビルドのビルド番号は解らない
-   JenkinsのJob実行は大変 JenkinsはWebブラウザを使ってGUIで操作するため、
-操作の敷居が低く、簡単に扱えるようになっています。
-ですが、ブラウザやJenkins本体の状態によってはとても遅くなってしまい、
-ページを切り替えるのに3，4秒待つといった状態まで遅くなると、
-ビルドをするのがとても辛くなります。
-また、パラメータの組み合わせの分だけビルドしようとすると、
-さらに辛くなってしまいます。
-このような場合に、Jenkinsに用意されているRemote access APIを使うことで、
-Jenkinsをプログラムから制御でき、反応の遅さに悩まされたり、
-パラメータの数だけクリックをする必要性から逃れられます。
-Remote access API 詳しくはこちら
-https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API
-https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build
-要するに、パラメータが無い場合は
-http://HOST/job/JOB_NAME/build に、ある場合は
-http://HOST/job/JOB_NAME/buildWithParameters にPOSTで投げるとビルドできます。
-パラメータの投げ方はフォームデータとしてでもいいですし、
-http://HOST/job/JOB_NAME/buildWithParameters?PARAMETER=Value のように、URLに直接入れても大丈夫のようです。
-サンプルスクリプト 3*3=9種類のビルドを一気に実行するスクリプトです
-require &#39;open-uri&#39; require &#39;net/http&#39; platforms = [&amp;quot;ios&amp;quot;, &amp;quot;android&amp;quot;, &amp;quot;windows&amp;quot;] settings = [&amp;quot;debug&amp;quot;,&amp;quot;release&amp;quot;, &amp;quot;store&amp;quot;] platforms.product(settings).each do |platform, setting| params = {:PLATFORM =&amp;gt; platform, :SETTING =&amp;gt; setting} p params url = URI.</description>
+      <description>まとめ JenkinsはWebベースのUI 操作の敷居が低い 使い込むと使いづらくなる 反応速度 複数のビルド実行 Remote access API HTTP経由でJobを実行でき</description>
     </item>
     
     <item>
@@ -291,19 +125,7 @@ require &#39;open-uri&#39; require &#39;net/http&#39; platforms = [&amp;quot;ios
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/02/11/jenkins-workflow/</guid>
-      <description>まとめ  ブランチをパラメーターにするとスクリプトを読めない  中身ではなく変数名のブランチを探しに行く 多分バグ  ファイルから読み込むるスクリプトを書けば解決  公式のflow.groovyを参考に 変数を使おうとすると面倒 java.io.Serializableを実装する必要あり   gitリポジトリ内のスクリプトを指定できない (以下に用意されているdocker上のJenkinsで確認しました)
-https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md
-Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込んで実行する機能があります。
-この機能を使うことで、リポジトリの内容とそれに対応するビルド手順を同時にバージョン管理出来るため、
-ビルド手順の変更がとてもやりやすくなります。
-ですが残念ながら、パラメータで指定したブランチをチェックアウトして読み込むと、以下のエラーになります。
-&amp;gt; git config remote.origin.url /var/lib/jenkins/workflow-plugin-pipeline-demo # timeout=10 Fetching upstream changes from /var/lib/jenkins/workflow-plugin-pipeline-demo &amp;gt; git --version # timeout=10 &amp;gt; git -c core.askpass=true fetch --tags --progress /var/lib/jenkins/workflow-plugin-pipeline-demo +refs/heads/*:refs/remotes/origin/* &amp;gt; git rev-parse origin/$BRANCH_NAME^{commit} # timeout=10 &amp;gt; git rev-parse $BRANCH_NAME^{commit} # timeout=10  パラメータの内容ではなく、パラメータの名前そのものを探しに行っており、おそらくバグと思われます。
-通常のJobでGit Pluginを使うと問題なくパラメータ指定が出来るため、Workflowのバグと思われます。
-このバグは、Jenkinsでは事前に設定した特定ブランチしかビルドしない場合は問題ありません。
-ですが、様々なブランチで実行する可能性がある場合、JenkinsのJob設定にスクリプトを書かなければならず、
-ビルド手順自体の管理が大変になります。
-このような場合、スクリプトをロードして実行するスクリプトをJobに設定することで、
-指定したブランチからスクリプトを読み込んで実行できます。</description>
+      <description>まとめ ブランチをパラメーターにするとスクリプトを読めない 中身ではなく変数名のブランチを探しに行く 多分バグ ファイルから読み込むるスクリプトを書</description>
     </item>
     
     <item>
@@ -312,30 +134,7 @@ Workflow Pluginでは、リポジトリ内のgroovyスクリプトを読み込�
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/02/10/workflow-plugin/</guid>
-      <description>まとめ  Jenkinsはjob単位でしかノードに割り振れない  複数ノードで分散ビルドするには設定を駆使する必要がある 結果としてjobの数が増えて管理コストが増大する  Workflow Pluginで大幅に改善する  スクリプトからノードを指定してコマンドを実行できる 複数のjobを組み合わせていたのが一つのスクリプトですむ スクリプトをVCSに入れればビルド設定のバージョン管理も可能   複数ノードをコントロールするのは難しい Jenkinsを一つのノードで運用している場合はそれほど問題になりませんが、
-複数のノードで、jobの一部の部分だけを別のノードで実行するなど、
-ある程度複雑な分散をやろうとすると、Jenkins本体の機能では不足してきます。
-このような問題に対して、これまではBuild Flow Pluginを使う事で解決が可能でしたが、
-Workflow Pluginを使う事で、さらに簡単に解決することが出来ます。
-Build Flow Pluginの問題点 Build Flow Pluginは基本的に複数の下流ビルドを管理するために作られているため、
-処理を分けようとするとjobの数が増加していきます。
-例えばネイティブアプリのビルドのようなCPUパワーを使う処理と、パワーを使わないアップロード処理がある場合、
-一つのノードで全てやるよりも、非力なサーバを確保してアップロード処理をそちらで実行した方が、
-ビルド用のノードはビルドに専念でき、無駄なくjobを実行できます。
-(また、masterとビルドを同じノードでやるとJenkins本体の処理が遅くなるため、分割する利点は他にもあります)
-(上段のup#4はup#3の間違いです…)
-ビルドが数十分、数時間かかるような巨大な処理の場合、
-処理を分散することで稼げる時間はかなりのものになります。
-従来では分割する作業を別のjobにし、かつBuild Flow Plugin用のjobを作る必要があります。
-さらに、ファイルの受け渡しもできないため、成果物として保存して、
-次のjobは前のjobの特定のビルド番号の成果物を取り出す…といった風になります。
-jobの数が増えると管理も大変ですし、使う方もどれを使えば良いのか解らなくなります。
-ここで、Workflow Pluginを使うことで大きく改善することが出来ます。
-Workflow Pluginを使ったビルド Workflow Pluginでは、slaveを選択してコマンドを実行、
-特定のファイルを別のslaveにコピーして処理を実行ということががスクリプトで書けます。
-例えば以下のように書くことで、masterでファイルを生成してslaveで実行、
-その後結果をmasterにコピーしてアップロードみたいな事が出来ます。
-node(&amp;quot;master&amp;quot;){ sh &amp;quot;rake config&amp;quot; archive &amp;quot;config.yml&amp;quot; } node(&amp;quot;slave&amp;quot;){ unarchive mapping: [&#39;config.yml&#39; : &#39;./&#39;] sh &amp;quot;rake build&amp;quot; archive &amp;quot;result.</description>
+      <description>まとめ Jenkinsはjob単位でしかノードに割り振れない 複数ノードで分散ビルドするには設定を駆使する必要がある 結果としてjobの数が増えて</description>
     </item>
     
     <item>
@@ -344,8 +143,7 @@ node(&amp;quot;master&amp;quot;){ sh &amp;quot;rake config&amp;quot; archive &am
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/02/03/leastsquaresmethod/</guid>
-      <description>こんな感じです。
-暗黙的にキャストしてくれないので若干面倒です。</description>
+      <description>こんな感じです。 暗黙的にキャストしてくれないので若干面倒です。</description>
     </item>
     
     <item>
@@ -354,16 +152,7 @@ node(&amp;quot;master&amp;quot;){ sh &amp;quot;rake config&amp;quot; archive &am
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/28/bundle-in-bundle/</guid>
-      <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、
-一回目のbundlerに対してbundleが実行されてしまい、
-別のbundleを呼び出せないという問題が起きました。
-これはbundlerが設定する環境変数が原因でした。
-まとめ  bundle exec中に、別のbundlerを実行するとおかしくなる  主にsystemやspawn等を使った場合 最初のbundle execと同じものであれば問題は起きない  bundlerが設定をしている環境変数が問題  別のbundlerを呼ぼうとして元のbundlerが呼ばれている  Bundler.with_clean_envで回避可能  Bundler.clean_systemでも可   問題 以下のような構成かつtestフォルダにいる状態で、
-bundle install --path vendor/bundle
-bundle exec test.rbを実行すると、
-test2内でbundlerを呼んだ時にエラーになります
-. ├─ test │ │ Gemfile (gemのhello_world_gemを使用) │ └─ test.rb | └─ test2 └─ Gemfile (gemのhello-worldを使用)  system &#39;hello_world_gem&#39; Dir.chdir(&amp;quot;../test2&amp;quot;) do # error system &#39;bundle install --path vendor/bundle&#39; system &#39;bundle exec hello-world&#39; end  エラー文言
-oh hai thar Using hello_world_gem 0.</description>
+      <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、 一回目のbundl</description>
     </item>
     
     <item>
@@ -372,15 +161,7 @@ oh hai thar Using hello_world_gem 0.</description>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/23/ram-disk/</guid>
-      <description>まとめ  RAMディスクを作ってビルドすると早くなる  SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思われる  Macだととても簡単にRAMディスクが作れる Jenkins等、ビルドが主目的の場合に有効と思われる メモリが余っているならやる価値はある  Mac OS XでのRAMディスク作成 Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。
-メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。
-また、rootでなくても作成できるため、非常に便利です
-ディスク作成手順 2つコマンドを実行するだけです。
-hdid -nomount ram://4096000 # 指定した容量でRAMディスクが作成されます。 # /dev/disk2等作成された場所が返ります。 # ファイルシステムがないためマウントは失敗します。 # そのため、-nomuntをつけています。 diskutil eraseDisk HFS+ RAM /dev/disk2 # 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします # さらに、RAMという名前でマウントします。 # これにより、/Volumes/RAMでアクセスできるようになります。 hdiutil detach disk2 # 作成したディスクをアンマウントして削除します # ディスクは消滅するのでご注意ください # diskutil unmountDisk # diskutil eject # の組み合わせと同じですが、コマンド一つになるため楽です  速度比較 Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。
-速度計測にはXbenchを使用しました。
-結果は以下の通りになりました。
-どれをとってもRAMディスクの方が圧倒的に早い結果になりました。
-ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。</description>
+      <description>まとめ RAMディスクを作ってビルドすると早くなる SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思</description>
     </item>
     
     <item>
@@ -389,34 +170,7 @@ hdid -nomount ram://4096000 # 指定した容量でRAMディスクが作成さ�
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/21/android-dict/</guid>
-      <description>まとめ  clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dictが連携先として優秀 英辞郎は形式が違うため辛い Google Driveをビューワーとして使うといい  ポップアップ辞書アプリ iOSやMacでは辞書機能がOSに統合されているため、英単語を選択するとそのまま辞書を引くことができます。
-Androidで同じぐらい楽に辞書を引けないかと思って調べたところ、
-clip2dicというアプリが、クリップボードの中身を自動でネット上の辞書から検索してくれました。
-私はタブレットをオフラインで使用していますが、このアプリは別のアプリを呼び出して検索できるため、
-他の辞書アプリを入れる事でオフラインでも辞書が引けるようになります。
-clip2dictから使えるオフライン辞書アプリ ColorDict https://play.google.com/store/apps/details?id=com.socialnmobile.colordict
-無料の辞書ソフトです。
-初期状態では日英、英日辞書は入っていませんが、
-別アプリとして配布されている辞書アプリをインストールすることで、 対応辞書を増やすことができます。 https://play.google.com/store/apps/details?id=colordict.dictdata.japanese.jmdict
-(おそらくこちらの辞書を使用しています)
-StartDict形式の辞書ファイルを持っているならば、端末内のdictdata内に置くことで、さらに辞書を追加できます。
-GoldenDict https://play.google.com/store/apps/details?id=mobi.goldendict.android&amp;amp;hl=ja
-Free版
-こちらもColorDictと同じく、辞書ファイルが必要になります。
-ただし、こちらはアプリ内から先ほどの辞書データをダウンロードできるため、
-より導入が簡単です（辞書としてはおそらく同じだと思います)。
-このアプリには、複数辞書を同時に検索できる利点があるらしいです（無料版は5個まで同時検索）
-複数の辞書ファイルを持っている場合は便利ですが、
-私はそんなに辞書ファイルを持っていないので無料で十分でした。
-その他 手元に英辞郎のだいぶ古い版が手元にありますが、上記二つのアプリでは対応していないpdic形式になります。
-pdicからStartDict形式の変換はとても手間がかかるのと、
-古すぎてネット上にある手順では出来なさそうなので諦めました。
-また、Adobe Readerは選択をすると単語ではなく文章を丸ごと選択するため、辞書検索に使えません…
-いくつかPDFビューワーを試しましたが多くは文字選択が出来ず、
-今のところ唯一出来たGoogle Driveをビューワーとして使っています。
-(オフラインでも別アプリからPDFビューワーとして呼び出せる)
-辞書は透明な別アプリとして元のアプリの上に表示されるらしく、閉じてPDFビューワーに移動するのが若干遅いです。
-これはおそらくclip2dicの仕様だと思われるため、解決方法は無さそうです。</description>
+      <description>まとめ clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dict</description>
     </item>
     
     <item>
@@ -425,17 +179,7 @@ pdicからStartDict形式の変換はとても手間がかかるのと、
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/07/mac-ghc-cr/</guid>
-      <description>Haskellでどう見ても文法的に間違っていないのに、
-何故かコンパイルエラーになっていましたが、
-改行コードが原因でした。
-ちょうど始めたばかりで、実は文法ミスや、
-バージョン違いとの切り分けが大変でしたが、
-結果は残念な結果になりました…
-まとめ  GHCではLF、CRLFは正しく動くがCRはダメ PDFからサンプルコードをコピペしたらCRになっていた  Macのプレビューでいくつか試したが、現状全てCRになる PDFが原因か、Preview.appがそういう仕様なのかは用検証   調査方法 以下のファイルを改行コードLFで保存します。
-lf.hs
-plus :: Integer -&amp;gt; Integer -&amp;gt; Integer plus a b = a + b main = print (plus 40 2)  LFのまま実行します
-file lf.hs # lf.hs: ASCII text runghc lf.hs # 42  CRLFに変換して実行します
-nkf -Lw lf.hs &amp;gt; crlf.hs file crlf.hs # crlf.hs: ASCII text, with CRLF line terminators runghc crlf.hs 42  CRに変換して実行します</description>
+      <description>Haskellでどう見ても文法的に間違っていないのに、 何故かコンパイルエラーになっていましたが、 改行コードが原因でした。 ちょうど始めたばかり</description>
     </item>
     
     <item>
@@ -444,18 +188,7 @@ nkf -Lw lf.hs &amp;gt; crlf.hs file crlf.hs # crlf.hs: ASCII text, with CRLF lin
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/06/c-inline-postscript/</guid>
-      <description>昨日の記事で、インライン展開について調べましたが、
-よくよく考えると片手落ちだったので追加調査しました。
-インライン展開がどう展開されるのかを調べた
-調査内容 昨日はヘッダと実装が書いてあるファイルとでの差は調べましたが、
-同じファイル内でどのようになるかは調べていませんでしたので、
-追加調査しました。
-方法は昨日と同じく、-Sオプションをつけて結果を見ます。
-ソースコード 以下のようなファイルを使います
-test.cpp
-#include &amp;lt;stdio.h&amp;gt; #include &amp;quot;func.h&amp;quot; int main() { TestA test; int a = test.getDirect(); int b = test.getThrough(); printf(&amp;quot;%d %d\n&amp;quot;, a, b); return 0; }  func.h
-class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(); };  func.cpp
-#include &amp;quot;func.h&amp;quot; int TestA::getDirect(){ return 42; } int TestA::getThrough(){ return getDirect() + getPrivate(); } int TestA::getPrivate(){ return 73; }  func.</description>
+      <description>昨日の記事で、インライン展開について調べましたが、 よくよく考えると片手落ちだったので追加調査しました。 インライン展開がどう展開されるのかを調</description>
     </item>
     
     <item>
@@ -464,18 +197,7 @@ class TestA{ public: int getDirect(); int getThrough(); private: int getPrivate(
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/05/c-inline/</guid>
-      <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、
-関数呼び出しのオーバーヘッドを削減する、インライン展開をします。
-インライン展開はコンパイル時にされるため、
-実際に行われたのか、どう行われているかは出力されません。
-そのため、コンパイルたコードがどうなってるかを調べ、
-インライン展開がどう展開しているのかを調べました。
-なお、アセンブラに関してはほとんど説明しません。
-「callq シンボル名(文字列)」で関数呼び出しを実行する事だけ理解していれば大丈夫です。
-ソースコード 以下のソースコードを使います
-test.cpp
-#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;func.h&amp;quot; int main(){ TestA test; int a = test.getNumInCpp(); int b = test.getNumInH(); int c = test.getNumInline(); int d = test.getNumCallCpp(); printf(&amp;quot;%d %d %d %d\n&amp;quot;, a, b, c, d); return 0; }  func.h
-class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumInH() { return 42; } int getNumCallCpp(){ return privateFunc() + getNumInH(); } int getNumInline(); //int getNumNormal(); }; inline int TestA::getNumInline(){return 321;} // そもそも定義できない // int TestA::getNumNormal(){return 111;}  func.</description>
+      <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、 関数呼び出しのオーバーヘッドを削減する、インライン展開をします。 インライン展開</description>
     </item>
     
     <item>
@@ -484,23 +206,7 @@ class TestA{ private: int privateFunc(); public: int getNumInCpp(); int getNumIn
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/03/unix-fork/</guid>
-      <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ
-という本を読んでいます。
-この中で、fork関数がどうやって子プロセスを作り、
-親子かを識別して別の値を返しているのかが解説されており、
-とても興味深かったです。
-以下にその概要をまとめました。
-fork関数 Cではfork関数を利用することで、子プロセスを作成することが出来ます。
-コードとしてはこんな感じですね。
-#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;sys/wait.h&amp;gt; int main() { pid_t pid = fork(); if (pid == 0) { sleep(1); printf(&amp;quot;child!\n&amp;quot;); return 0; } printf(&amp;quot;parent!\n&amp;quot;); int status; waitpid(pid, &amp;amp;status, 0); printf(&amp;quot;parent end\n&amp;quot;); return 0; }  子プロセスは親プロセスのデータをそのままコピーするため、変数などは全て同じ状態になります。
-ですが、fork関数は親プロセスの場合は子プロセスのIDを、子プロセスでは0を返すため、
-ユーザはfork関数の戻り値を見て、自身が親なのか子なのかを区別できるようになっています。
-では、fork関数の中ではどのようにして、親プロセスか子プロセスかを判断し、
-別の値を返しているのでしょうか。
-これは(UNIX V6では)switch関数の仕様を上手く使った実装により実現されていました。
-fork関数がプロセスの親子を区別する仕組み 親による子プロセスの作成 ライブラリのfork関数(source/s4/fork.s)を実行すると、
-システムコールによってカーネルのfork関数(sys/ken/sys1.c)が実行されます。
-fork() { register struct proc *p1, *p2; p1 = u.u_procp; for(p2 = &amp;amp;proc[0]; p2 &amp;lt; &amp;amp;proc[NPROC]; p2++) if(p2-&amp;gt;p_stat == NULL) goto found; u.</description>
+      <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ という本を読んでいます。 この中で、fork関数がどうやって子プロセスを作り、 親子</description>
     </item>
     
     <item>
@@ -509,35 +215,7 @@ fork() { register struct proc *p1, *p2; p1 = u.u_procp; for(p2 = &amp;amp;proc[0
       <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/30/link2sd/</guid>
-      <description>ME572CにはSDカードが挿せるため、
-本体の容量が足りなくなっても気軽に容量を追加できます。
-ですが、対応しているアプリしかSDカードにデータが保存できず、
-対応しているアプリでも機種によっては、
-上手くSDカードに入らない場合があります。
-実際、私が使っているアプリですとEvernote、KindleがSDへのデータ保存が出来ず、
-ニコニコ電子書籍アプリがGalaxy S5だとSDに保存できますが、ME572Cだと書籍データをSDに保存できません。
-このような場合、Link2SDというアプリを利用することで、強制的にSDカードにデータを保存する事が出来ます。
-ただし、Root化必須かつデータ部分をSDに移動するには有料アドオンが必要です。
-なお、このアプリは通常の管理画面から無効化できないアプリを無効化する機能も有しています。
-Link2SD Link2SDは、ほぼ全てのアプリをSDカードから読み込めるようにするアプリです。
-おそらくは、アプリが参照するフォルダをシンボリックリンクを利用してSDカードの中に向けており、
-アプリからの内蔵ストレージへのアクセスを、SDカードに飛ばしているのだと思われます。
-SDカードの準備 このアプリを使うためにはSDカードに二つのパーティションを切る必要があります。
-このうち1つめが普通のSDカード領域として認識され、
-2つめのパーティションがLink2SDによってアプリが書き込まれる領域になります。
-なお、2つめのパーティションがfat16もしくはfat32の場合、アプリのデータをSDカードに移動できません。
-なお、Windowsユーザの場合、OSが一つのパーティションしか扱えないため、
-Mini Toolのような専用ソフトでパーティションを作る必要があります。
-このとき、どちらのパーティションもPrimaryに設定しておく必要があります。
-パーティションのフォーマットは、端末によって上手くいく組み合わせとそうでない組み合わせがあるようです。
-ネット上にはext2/ext2でいけるという情報が見られますが、ME572CではLink2SDが上手く認識しませんでした。
-fat32/ext2もダメで、ext3/ext3だと第一パーティションは認識せず第二パーティションのみ認識、
-NTFS/ext3だと両方上手く認識したためこれを利用します。
-アプリをSDカードに移す Link2SDでシンボリックリンクを作成することで、アプリとデータをSDカードに移動できます。
-ただし、データをSDカードに移動する場合は有料アドオンが必要です。
-Link2SD上でアプリをクリックし、リンクを作成をすることでデータをSDカードに移動できます。
-EvernoteやKindleではこのデータ部分が大きくなっていくため、実質必須になります。
-ただし、画像の通り若干本体側にデータが残るため、完全に移動できるわけではありません。</description>
+      <description>ME572CにはSDカードが挿せるため、 本体の容量が足りなくなっても気軽に容量を追加できます。 ですが、対応しているアプリしかSDカードにデー</description>
     </item>
     
     <item>
@@ -546,20 +224,7 @@ EvernoteやKindleではこのデータ部分が大きくなっていくため、
       <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/28/memopad-root/</guid>
-      <description>ASUS MeMO Pad 7 ME572Cを買いました。
-タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS
-Nexus 9とかと迷いましたが、
- コストパフォーマンスがいい  安くてそこそこ高性能  SDカードが使える  気軽に容量増強出来る   といった点から、これに決めました。
-ですが実際に届いて起動してみたところ、
-余計なアプリ(Flipboard、Yahoo、謎のタスクアプリ等)が入っていました。
-特に「やることリスト」(ASUS Do It Later)というアプリは、
-定期的にGoogleアカウントにアクセスしようとする上に無効化もできず、かなり邪魔なアプリになっています。
-そのため、Rootを取って無効化することにしました。
-Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対応したため、これを使います。
-(2014/12/28の最新版は1.4.6.8r)
-手順としては以下の通りになります。
- RootZenFoneをインストール Wifiと3Gを機内モードにして切る RootZenFoneを起動 通信切れ＆危ないよ警告が出てくるので、通信が切れている事を確認して画面下のOKボタンを押す 変化がなくなるまで待つ  色々ポップアップが出たりする  もう一度RootZenFoneを起動し、rebootしろと出ているのを確認して再起動  この時点でRoot化出来ています  AsusLiveDemoというアカウントが追加されているため削除 RootZenFonを消す 通信を有効か SuperSuが自動でインストールされているので、最新版に更新 SuperSuを起動し、データ更新後に再起動を促されるので再起動  Root化ってこんなに簡単だっけ？とういぐらい簡単にできてしまいます。
-あとは適当な無効化アプリで対象のアプリを無効化orアンインストールすればおしまいです。</description>
+      <description>ASUS MeMO Pad 7 ME572Cを買いました。 タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS Nexus 9とかと迷いましたが、 コストパフォーマンスがいい 安くてそこそこ高性能 SDカード</description>
     </item>
     
     <item>
@@ -568,17 +233,7 @@ Root化手順 RootZenFoneというアプリが、1.4.6.6r以降でME572Cに対�
       <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/22/graphviz/</guid>
-      <description>こんな感じの画像を作る際に
-これまではパワポの図形機能とかペイントで頑張って作っていましたが、
-Graphvizを使うと自動で出力できます。
-Graphvizとは AT&amp;amp;Tが作ったグラフ描画のツールパッケージです。
-http://ja.wikipedia.org/wiki/Graphviz
-DOT言語というグラフ記述言語で記述されたグラフを、画像ファイル等に変換することができます。
-グラフのレイアウト等はGraphviz内のアルゴリズムによって自動で配置されますが、
-SVGで出力できるため、他のソフトで調整ができます。
-使い方 インストール brew gts graphviz
-dotファイルの作成 最初に見せたグラフは以下のように作ります。
-digraph G { Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Koto[image=&amp;quot;th_koto.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Umi[image=&amp;quot;th_umi.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Maki[image=&amp;quot;th_maki.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Rin[image=&amp;quot;th_rin.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Pana[image=&amp;quot;th_pana.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Nico[image=&amp;quot;th_nico.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Nozo[image=&amp;quot;th_nozo.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Eli[image=&amp;quot;th_eli.png&amp;quot;, label=&amp;quot;&amp;quot;, shape=plaintext]; Yuki[label=&amp;quot;雪穂&amp;quot;]; Nico -&amp;gt; Maki; Koto -&amp;gt; Umi; Rin -&amp;gt; Pana; Rin -&amp;gt; Maki; Nozo -&amp;gt; Eli; Nozo -&amp;gt; Nico; Koto -&amp;gt; Hono[dir = none]; Hono -&amp;gt; Umi; Hono -&amp;gt; Nico; Hono -&amp;gt; Maki; Hono -&amp;gt; Yuki; Hono -&amp;gt; Eli; Hono -&amp;gt; Rin; }  初めにレイアウトに使うアルゴリズムを書きます。</description>
+      <description>こんな感じの画像を作る際に これまではパワポの図形機能とかペイントで頑張って作っていましたが、 Graphvizを使うと自動で出力できます。 Gr</description>
     </item>
     
     <item>
@@ -587,18 +242,7 @@ digraph G { Hono[image=&amp;quot;th_hono.png&amp;quot;, label=&amp;quot;&amp;quo
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/19/gorm/</guid>
-      <description>golangではmysqldriverでmysqlにアクセスできますが、
-一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがあります。
-goでmysqlを使う
-そこでいろいろ探していたところ、
-ActiveRecordのように構造体を使ってDBにアクセスできるORMがありました。
-https://github.com/jinzhu/gorm
-自動でテーブル作ってくれたり、変更してくれたりと、他のORマッパーよりかはActiveRecordっぽいです。
-リレーションも勝手に貼ってくれるみたいです。
-ただし、取り出すときは元のオブジェクト→リレーションのオブジェクトと、
-順に取ってくる必要があり、自動でリレーション先のオブジェクトの取得はしてくれるわけではありません。
-(使わない場合は無駄なアクセスになるので、正しいと言えば正しいですが)
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/jinzhu/gorm&amp;quot; _ &amp;quot;github.com/lib/pq&amp;quot; _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) type User struct { Id int64 Name string `sql:&amp;quot;size:255&amp;quot;` Emails []Email // One-To-Many relationship (has many) } type Email struct { Id int64 UserId int64 // Foreign key for User (belongs to) Email string `sql:&amp;quot;type:varchar(100);&amp;quot;` // Set field&#39;s type } func main(){ db, err := gorm.Open(&amp;quot;mysql&amp;quot;, &amp;quot;root@/testdb?charset=utf8&amp;amp;parseTime=True&amp;quot;) fmt.Println(err) db.</description>
+      <description>golangではmysqldriverでmysqlにアクセスできますが、 一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがありま</description>
     </item>
     
     <item>
@@ -607,21 +251,7 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;github.com/jinzhu/gorm&a
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/03/go-yaml-struct/</guid>
-      <description>使い方がかなり特殊だったのでメモ
-(ドキュメントには書いてありますが…)
-goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、
-データを構造体にセットした状態で読み込むことが出来ます。
-特にGoでは構造体を使わない場合、interfaceへの変換を書きまくる事になるので、
-できる限り構造体を利用した方がお勧めです。
-以下のように、YAMLのキーとGoの構造体の名前を揃えることで、
-YAMLから構造体に直接データを代入できます。
-type Data struct { UserId int UserName string `yaml:&amp;quot;user_name&amp;quot;` Follownum int `yaml:&amp;quot;followNum&amp;quot;` MessageText string invaliddata string }  userid: 123 user_name: name followNum: 42 messageText: text invaliddata: data  後述するコードでYAMLを読み込むと、出力は以下の通りになります、
-=&amp;gt; {123 name 42 }
-UserIdに123、UserNameにname、Follownumに42、
-MessageTextとinvaliddataは空になっています。
-構造体とYAMLの対応付け仕様 特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。
-対応するキーは以下のような仕様になっているようです。
- 指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける  UserIdはuseridと対応付けられます  後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます  messageTextはダメで、messagetextでないといけません  構造体のメンバは大文字から始まる  そのため、invaliddataにはデータ入っていません 大文字から始まれば、途中が大文字でも大丈夫です UserIdはuseridと対応付けられます 途中を大文字にしても、全て小文字のキーを見に行きます MessageTextはmessagetextと対応付けられます  明示的に対応を設定することもできる  UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない) Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる   暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。</description>
+      <description>使い方がかなり特殊だったのでメモ (ドキュメントには書いてありますが…) goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、 デ</description>
     </item>
     
     <item>
@@ -630,24 +260,7 @@ MessageTextとinvaliddataは空になっています。
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/30/octopress-update/</guid>
-      <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。
-だいぶ前のOctopressをforkして、このブログ用の変更をコミットしていったため、
-forkして手を加えたリポジトリにfork元の修正を取り入れる事になったので、やりかたをメモしておきます。
-ブログ用リポジトリの状態 このブログは現在Github Pagesで運用しており、リポジトリはこちらになります。
-https://github.com/ota42y/ota42y.github.io
-ですが、これはOctopressの出力先のリポジトリであり、
-bitbucket上にOctopress自体のリポジトリが存在します。
-このリポジトリはだいぶ前のOctopressをベースに、このブログ用の修正や記事をコミットしていました。
-Octopressのアップデート 普段はOctopress側のリポジトリは使わないため、remoteからも削除してあるのでそれを入れます。
-その後、Octopress側のmasterとマージをするだけになります。
-git remote add octopress git@github.com:imathis/octopress.git git fetch octopress git merge octopress/master  その後、bundle installすれば終了…のはずでしたが、1つ落とし穴がありました。
-Jekyllがアップデートされたため、日付を出力するdate_time_htmlが変更されていました。
-https://github.com/imathis/octopress/pull/1643/files
-そのため、これを直すことで、無事アップデートは終了になりました。
-date_time_htmlが無くなったことはすぐに発見できましたが、
-このメソッドを持っていたオブジェクトが何なのかの発見に手間取り、結構時間がかかりました。
-Rubyの特徴上、変数にあらゆるオブジェクトが入る事があるため仕方ないのですが、
-その変数が何のオブジェクトなのかを簡単に調べる方法がほしいですね…</description>
+      <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。 だいぶ前のOctopressをforkして、このブログ用の</description>
     </item>
     
     <item>
@@ -656,29 +269,7 @@ Rubyの特徴上、変数にあらゆるオブジェクトが入る事がある�
       <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
-      <description>まとめ  Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒 全てをスクリプトで実行するのが理想だが、本体の機能を使いたい場合は対応できない build flow pluginがファイルを読み込んで実行できるようになった これにより、Jenkinsのjobを呼び出すスクリプトをリポジトリ内に入れてバージョン管理出来る  Jenkinsのjob設定問題 Jenkinsの大きな問題の一つは、Jenkinsのjob設定をどう管理するかだと思います。
-例えばビルド手順を変更する場合、プラグイン設定に後方互換性がないような変更を行うと、
-前のバージョンをビルドしたときにエラーになります。
-このような場合、通常は最新の変更を取り込む事で解決しますが、
-コードフリーズ中のリリースブランチのように、最新の変更を取り込めない場合はこの方法で解決できません。
-このような場合、二通りの解決方法が存在します。
-全部スクリプトで処理する方法 一つ目が全部スクリプトでやってしまう方法です。
-Jenkinsのjobからは単一のスクリプトだけを実行し、その中で全てを行います。
-この方法はJenkinsを単なるcronとしてしか使わないため、
-全部自分でやる必要がありますが自由度がとても高いのが特徴です。
-ですがこの方法では、プラグインや下流jobとの連携、特定の処理だけ別ノードで実行するなど、
-Jenkinsの機能が使えなくなります。
-新しいJobを作っていく方法 これに対し、jobの変更管理を諦め、どんどん新しいjobを作ってく方法があります。
-Jenkinsはjobのコピーが容易なため、後方互換性のない変更を加える段階で新しいjobに切り替え、
-以降はそちらでビルドし、過去のバージョン用のビルドが必要なときには残してある前のjobを実行します。
-この方法の場合、Jenkinsの機能を利用しつつ、複数のビルド設定を同時に扱うことが出来ますが、
-どのバージョンでどのjobを動かせばいいかを保存しておけないため、jobが増えていくと問題になります。
-これに対し、build flow pluginを使う事で、どのjobでビルドするかといった情報を、
-リポジトリ内に入れてバージョン管理することが出来ます。
-build flow pluginでjobの関係をリポジトリに入れる Jenkinsのbuild flow pluginでは、複数のjobをスクリプトから実行することが出来ます。
-Build Flow Plugin
-具体的には以下のように書くことで、job1が成功したらjob2を実行するといったことが出来ます。
-// 失敗から成功に変わったか判定 def isFixedBuild(result){ prev = build.previousBuild return prev.result != SUCCESS &amp;amp;&amp;amp; result == SUCCESS } // job1を実行 b = build(&amp;quot;job1&amp;quot;) // job1のログを出力する out.println b.getLog() if(b.result == SUCCESS){ // job1が成功していたらjob2を実行 b = build(&amp;quot;job2&amp;quot;) if (isFixedBuild(b.</description>
+      <description>まとめ Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒 全てをスクリプトで実行するのが理想だが、本体の機能</description>
     </item>
     
     <item>
@@ -687,21 +278,7 @@ Build Flow Plugin
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/25/ruby-hash/</guid>
-      <description>例は全てRuby 2.0を利用しています
-nilをキーとした値を持つハッシュをYAMLに書きたい場合、
-以下のように書いても&amp;rdquo;nil&amp;rdquo;という文字列として認識されます。
---- nil : nil  =&amp;gt; {&amp;quot;nil&amp;quot;=&amp;gt;&amp;quot;nil&amp;quot;}
-データがnilの場合は、データ部分に何も書かないことでnilを表現できます。
---- datanil :  =&amp;gt; {&amp;quot;datanil&amp;quot;=&amp;gt;nil}
-キーをnilにしたい場合、以下のように書いても、(Rubyだと)パースに失敗します。
---- : &amp;quot;key nil&amp;quot;  このような場合もYAMLの仕様では想定済みらしく、
-クエッションマークを使うことで、その後ろにあるものがキーであると明示できる仕様があります。
-http://yaml.org/spec/1.2/spec.html#id2772075
-これを利用して、以下のようにクエッションマークの後に何も書かず、
-その後コロンと値を設定することで、nilをキーとして設定できます。
---- ? : &amp;quot;key nil&amp;quot;  rubyで長い文字列をキーにする Rubyが利用しているPsychでは、以下のように128byte以上のデータをキーにして書き出した場合、
-?マークをつけて書き出します。
-require &#39;yaml&#39; def mkhash(k,v) h = {} h[k] = v h end long = &amp;quot;a&amp;quot; * 129 open(&amp;quot;long.yml&amp;quot;, &amp;quot;w&amp;quot;) {|file| file.write YAML.dump(mkhash(long, &amp;quot;long&amp;quot;)) }  --- ? aaaaaaaaaaaaaaaaaaaaaaaaaa...aaa : long  どうやらRubyが使っているYAMLライブラリのPsych内で、</description>
+      <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;rdquo;nil&amp;</description>
     </item>
     
     <item>
@@ -710,23 +287,7 @@ require &#39;yaml&#39; def mkhash(k,v) h = {} h[k] = v h end long = &amp;quot;a&
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/20/github-pages-new-ip/</guid>
-      <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、
-新しいIDアドレスを利用するようにとのwarningが来るようになりました。
-そのときに解消方法を調べたのですが、よくわからず放置していたところ、
-12月から新しいアドレスに設定にしないと使えなくなるらしいので慌ててアップデートしました。
-GitHub Pagesの旧IPアドレスが利用できなくなります。独自ドメインを利用しているユーザーで旧IPアドレスのままのレポジトリが影響されます。 https://t.co/1XI3X3NheA
-&amp;mdash; GitHub Japan (@GitHubJapan) 2014, 11月 7 
-確認方法 正しく設定されているかは、 GitHub Pages Legacy IP Deprecation に書いてある確認スクリプトを実行して、
-OK以外が表示されたらダメです。
-このサイトの場合は以下の通りですね。
-dig ota42y.com | grep -E &#39;(207.97.227.245|204.232.175.78|199.27.73.133)&#39; || echo “OK”
-修正手順 修正手順は簡単で、自分の持っているドメインを管理しているサービスに行って、
-Aレコードを下記のページにあるように変更するだけです。
-Tips for configuring an A record with your DNS provider - User Documentation
-私はさくらインターネットを使っていたため、以下の手順で変更できました。
- ドメインメニュー
- 対象のドメインのゾーン編集をクリック 左側の変更をクリック 既存のIPアドレスをクリックし、前述のGithubの新しいIPアドレスを設定する  変更をすると、先ほどのdigコマンドがOKを出すようになり、
-Github Pagesにコミットしても警告メールが飛ばなくなります。</description>
+      <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、 新しいIDアドレスを利用するよう</description>
     </item>
     
     <item>
@@ -735,15 +296,7 @@ Github Pagesにコミットしても警告メールが飛ばなくなります�
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/13/go-yaml/</guid>
-      <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。
-サイトにはメモリ上のデータに対してYAML化するサンプルしかありませんが、
-以下のようにすることでファイルからYAMLを読み込み、Mapとして扱うことが出来ます。
-またExampleには型を決めて読み込む方法しか乗っていませんが、
-以下の例では、go で yaml 等を「map[interface{}]interface{}」型で読み込んだ際の動的型の参照方法
-を参考に型を決めずにMapで読み込んでいます。
-かなり冗長な表現になっていますが…(´･_･`)
-a: Easy! b: c: 2 d: [3, 4]  package main import ( &amp;quot;fmt&amp;quot; &amp;quot;io/ioutil&amp;quot; &amp;quot;gopkg.in/yaml.v2&amp;quot; ) func main() { buf, err := ioutil.ReadFile(&amp;quot;test.yml&amp;quot;) if err != nil { return } m := make(map[interface{}]interface{}) err = yaml.Unmarshal(buf, &amp;amp;m) if err != nil { panic(err) } fmt.Printf(&amp;quot;%s\n&amp;quot;, m[&amp;quot;a&amp;quot;]) fmt.Printf(&amp;quot;%d\n&amp;quot;, m[&amp;quot;b&amp;quot;].(map[interface {}]interface {})[&amp;quot;c&amp;quot;]) }  出力結果
-Easy! 2  </description>
+      <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。 サイトにはメモリ上のデータに対</description>
     </item>
     
     <item>
@@ -752,22 +305,7 @@ Easy! 2  </description>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/10/hubot-test/</guid>
-      <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。
-普通に頑張ると、起動してbotにメッセージ送って、動かなければ止めて修正…といった、
-面倒な手順を踏むことになります。
-また、普通に起動するとエラーも吐いてくれないため、デバッグは非常に困難です。
-しかし、テストを書いて開発をする場合、メッセージ送信やメッセージのデータ取得など、
-Hubotに依存する部分をstubで置き換えるのはとても面倒な作業です。
-そこで、作りたい機能をパッケージ化して作成することで、
-トライアンドエラーをする部分を最低限に絞って開発することができました。
-Hubot用パッケージの構成 Hubotはpackage.jsonのmainに指定したファイルをロードしてくれるため、
-ここにhubot用のスクリプトを書くことで、Hubotスクリプトをnpmパッケージで管理できます。
-さらに、以下のようにhubotスクリプトから、処理をまとめたオブジェクトの特定のメソッドを呼び出すことで、
-Hubotの連携部分と実際の処理を分けることができます。
-PackageClass = require(&#39;./package-name/package-class.coffee&#39;).PackageClass module.exports = (robot) -&amp;gt; package_class = new PackageClass robot.respond /test call (\d+)( \w+)?/, (msg) -&amp;gt; arg1 = parseInt msg.match[1] arg2 = msg.match[2] msg.reply package_class.testCall(arg1, arg2)  フォルダ構成は以下のようになります。
-parkage-root/ ├ package.json │ ├ src/ │ ├ hubot-command.coffee │ └ package-name/ │ └ package-class.coffee │ └ test/ ├ test-helper.coffee └ test-package-class.coffee  このように構成し、package-classに対してテストを作成することで、
-Hubot固有の部分を最小限に減らし、通常のnpmパッケージのように開発できました。
-前述の通り、hubotとやりとりをするhubot-commandに対してテストをするのは手間がかかります。</description>
+      <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。 普通に頑張ると、起動してbotにメッセージ送って、動かなけれ</description>
     </item>
     
     <item>
@@ -776,23 +314,7 @@ Hubot固有の部分を最小限に減らし、通常のnpmパッケージのよ
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/08/size-t/</guid>
-      <description>size_tが何bitになるかは環境によって定義が異なります。
-そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化などで環境が変わると動かなくなります。
-#include &amp;lt;string&amp;gt; int main () { std::string test = &amp;quot;test text&amp;quot;; unsigned int pos = 0; printf(&amp;quot;size_t %lu\n&amp;quot;, sizeof(size_t)); pos = test.find(&amp;quot;ms&amp;quot;); printf(&amp;quot;pos %lu, %lu\n&amp;quot;, (size_t)pos, std::string::npos); if(pos != std::string::npos){ std::string text = test.substr(pos); printf(&amp;quot;%s\n&amp;quot;, text.c_str()); } return 0; }  std::stringのfindは引数の文字列が最初に出てくる位置か、見つからなかった場合にstd::string::nposを返します。
-この時、戻り値の型はsize_tになります。
-size_tは32bit上ではunsigned intの別名として定義される事が多いため、上記のコードは問題なく動きます。
-ですが64bitにした場合、size_tはunsigned long(8bit)の別名として定義される事があるため、
-unsigned int(4bit)で表せない範囲の値だった場合はデータが一部消滅します。
-さらに、std::string::nposは-1として定義されており、unsignedとして解釈した場合にはその値の最大値になります。
-size_tがunsigned intの場合、両者は同じ大きさのため特に意識する必要はありません。
-ですが、size_tがunsigned longとして定義されている場合、その最大値はunsined intでは表せないため、
-データが消滅し、結果として比較に失敗するという事が起きます。
-私の環境では、上記のコードは-1をunsigend intにした4294967295と,
--1をunsigend longにした18446744073709551615とを比較し、
-test textの4294967295文字目にアクセスして異常終了します。
-やっかいなことに、size_tをunsigned intではなくintに代入した場合、
--1は-1として解釈されるため、unsigend longと比較した際に最大値に変換されるため、上手くいってしまいます。
-とはいえ、安全性を求めるならば、出来るだけsize_tはsize_tとして扱うようにした方がいいと思います。</description>
+      <description>size_tが何bitになるかは環境によって定義が異なります。 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化など</description>
     </item>
     
     <item>
@@ -801,14 +323,7 @@ test textの4294967295文字目にアクセスして異常終了します。
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/07/cpp-64bit-cast/</guid>
-      <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、
-コンパイラもエラーにしない場合が多いです。
-ですが、64bitだと問題が起きることが多いため、64bitを対象にした場合にエラー扱いをする場合があり、
-突然わいて出る大量のエラーに悩まされる事があります…(´･_･`)
-intからvoid型のポインタへの変換 int型の値をvoid *を利用して保持したい場合、前の例のように、int型を保持するオブジェクトを作り、
-その中に値を入れた上で、そのオブジェクトへのポインタを持たせる必要があります。
-struct Container{ void* data; }; struct Num{ int n; }; // int型を保存する Num* numPointer = new Num(); numPointer-&amp;gt;n = 42; Container con; con.data = (void *)numPointer; // 42を取り出す int number = ((Num*)con.data)-&amp;gt;n; // newしたので必ず破棄する delete con.data; con.data = NULL;  ですが、世の中にはたまにvoid *にint型（やその他のプリミティブ型）を代入する不届き者がいます。
-int num = 42; Container con; con.data = (void*)num; // 42を取り出す int number = (int)con.data;  void *はポインタのため、32bit環境ではvoid*は32bitであり、intも基本的には32bitで同じサイズのため、</description>
+      <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、 コンパイラもエラーにしない場合が多いです。 で</description>
     </item>
     
     <item>
@@ -817,22 +332,7 @@ int num = 42; Container con; con.data = (void*)num; // 42を取り出す int num
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/06/cpp-void-pointer/</guid>
-      <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。
-ですが、実際にはポインタ型はメモリ上の特定アドレスを示すもののため、
-どの型のポインタであっても、データ自体はメモリ上のアドレスを示す何bitかの数値であり、全く同じです。
-（勿論、ポインタの示すアドレスに何があるかは異なります）
-そのため、ポインタ専用の変数を利用することで、あらゆる型のポインタを同じ変数に代入することができます。
-ただし、コンパイラの型チェックが効かなくなる等の理由から、基本的にはオススメできない手法です。
-C++の場合はテンプレートやクラスの継承、dynamic_castで解決できる場合はそちらを利用した方が安全です。
-汎用ポインタ void *型は汎用ポインタと呼ばれ、あらゆるポインタを代入することができます。
-これはたとえば以下のように、何の型かは指定しないけど、変数として持ちたいという場合に利用できます。
-この場合、変数定義をvoid *型にしておき、使う前後に目的の型にキャストすることで、
-様々な型を1つの変数で扱うことが出来ます。
-struct Container{ void* data; }; struct Num{ int n; }; const char* text = &amp;quot;text&amp;quot;; Container con1; con1.data = (void*)text; // dataにconst charのポインタを入れる Num* numPointer = new Num(); numPointer-&amp;gt;n = 42; Container con2; con2.data = (void*)numPointer; // dataにNum型のポインタを入れる printf(&amp;quot;%s\n&amp;quot;, (const char*)con1.data); // 取り出す際にキャストする printf(&amp;quot;%d\n&amp;quot;, ((Num*)con2.data)-&amp;gt;n);  なお、違うポインタを違う型にキャストして使うと、メモリ破壊などの予期せぬエラーを引き起こしますが、
-構文上はvoid *から元の型に戻す際のキャストは全て正しいと処理されます。
-そのため、おかしくなるキャストをしていてもコンパイラの型チェックでエラー検出が出来ません。
-前述の通り、C++の場合はvoid *を使わず、テンプレートやクラスの継承、dynamic_castで解決した方が安全です。
-mallocの戻り値 void *はmallocの戻り値としても使われています。</description>
+      <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。 ですが、実際にはポインタ型はメモリ上の特定アドレ</description>
     </item>
     
     <item>
@@ -841,16 +341,7 @@ mallocの戻り値 void *はmallocの戻り値としても使われています�
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/01/hubot-reply/</guid>
-      <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、
-replyしてるのに発言元とは別のチャットに送信してしまうという問題が起きました。
-robot.respond /進捗 start/i, (msg) -&amp;gt; setTimeout(-&amp;gt; msg.reply &amp;quot;進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  何度か意図的に起こしてみたところ、どうやらmsg.replyの送信先は、
-そのユーザがreplyする時に最後に発言したチャットに対して行われるらしく、
-メッセージが作られた後に別のチャットに発言した場合、そちらに送られてしまうようです。
-そのため、以下のように送信先を待避することで回避できます。
-robot.respond /進捗 start/i, (msg) -&amp;gt; user = msg.message.user.name room = msg.message.user.room setTimeout(-&amp;gt; robot.send {room: room}, &amp;quot;#{user} 進捗どうですか？&amp;quot; return , 30 * 60 * 1000) msg.send &amp;quot;進捗 start&amp;quot;  原因となるコードを捜す というのは振る舞いから推測したものなので、実際にコードを追ってみます。
-hubot-irc.reply まずはhubot-ircのmsg.replyの中を見ます。
-https://github.com/nandub/hubot-irc/blob/master/src/irc.coffee#L78
-reply: (envelope, strings...) -&amp;gt; for str in strings @send envelope.user, &amp;quot;#{envelope.user.name}: #{str}&amp;quot;  メッセージをユーザ宛に変換し、sendメソッドにenvelope.</description>
+      <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、 replyしてるのに発言元とは別のチャットに送</description>
     </item>
     
     <item>
@@ -859,11 +350,7 @@ reply: (envelope, strings...) -&amp;gt; for str in strings @send envelope.user, 
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/26/pty-ieo-error/</guid>
-      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと
-Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。
-require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end  どうやら、読み込んだ際にBSDだとnilになりますが、GNU/LinuxだとErrno::EIOが発生する仕様らしいです。
-Ruby on Linux PTY goes away without EOF, raises Errno::EIO
-にあるように、resqueするSafePtyを作ることで回避できます。</description>
+      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
     </item>
     
     <item>
@@ -872,17 +359,7 @@ Ruby on Linux PTY goes away without EOF, raises Errno::EIO
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/23/javascript-callback/</guid>
-      <description>関数リテラルではローカル変数には自由にアクセスできるので、
-ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。
-以下のように、コールバックとして自分のインスタンスメソッドを呼び出す関数を渡した場合、
-実行時にエラーになります。
-(coffeescriptで書いていますがjavascriptと同じ結果です)
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @hello(1) test2.call( -&amp;gt; @hello(2) ) class Test2 call: (callback) -&amp;gt; callback()  関数リテラルはそれを作ったオブジェクトとは別のオブジェクトから呼び出されるらしく、
-またその時のthis(coffeescriptなので@hello(2)はthis.hello(2)と等価です)は、
-そのオブジェクトになり、メソッドがないため失敗するようです。
-以下のように、一度thisを待避させることで呼び出すことが出来ます。
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @hello(1) self = this test2.call( -&amp;gt; self.hello(2) ) class Test2 call: (callback) -&amp;gt; callback()  完全なコードはこちら
-class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num call: (test2) -&amp;gt; @test = &amp;quot;test&amp;quot; @hello(1) self = this test2.</description>
+      <description>関数リテラルではローカル変数には自由にアクセスできるので、 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</description>
     </item>
     
     <item>
@@ -891,12 +368,7 @@ class Test hello: (num) -&amp;gt; console.log &amp;quot;hello &amp;quot; + num c
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/08/go-mysql-time/</guid>
-      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します…
-sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair: []uint8 -&amp;gt; *time.Time
-どうやらDSNにparseTime=trueオプションをつける必要があるようです(何故かは不明)
-db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;username:passy@/database_name?parseTime=true&amp;quot;)
-参考リンク
-https://github.com/go-sql-driver/mysql#timetime-support</description>
+      <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します… sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair:</description>
     </item>
     
     <item>
@@ -905,16 +377,7 @@ https://github.com/go-sql-driver/mysql#timetime-support</description>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/04/go-mysql/</guid>
-      <description>http://github.com/go-sql-driver/mysql
-がありましたので、それを使います。
-以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。
-import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; )  DB設定 以下の用に指定する事で、ローカルのmysqlの指定したデータベースにアクセス出来ます。
-db, err := sql.Open(&amp;quot;mysql&amp;quot;, &amp;quot;user:password@/dbname&amp;quot;) if err != nil { panic(err.Error()) } defer db.Close()  サーバやデータベース名などはDSN (Data Source Name)で指定するようです。
-あまり聞かない方法ですが、公式のREADMEに書いてあるのでそれを参考にすると良いと思います。
-使い方 前提条件 上記の方法でsql.Openの結果を変数のdbに保存済み、
-以下の構造体をDBに書き込むとします。
-type Post struct { RoomName string Message string MessageId string IsSend bool }  また、tableNameに書き込むテーブル名が保存されているとします。
-INSERT post := getPost()　// 書き込むためのデータを取得する stmtIns, err := db.Prepare(fmt.Sprintf(&amp;quot;INSERT INTO %s (room_name, message, message_id, is_send) VALUES (?, ?, ?</description>
+      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) DB設定 以下の用</description>
     </item>
     
     <item>
@@ -923,39 +386,7 @@ INSERT post := getPost()　// 書き込むためのデータを取得する stmt
       <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/03/hdd-post/</guid>
-      <description>先日デスクトップPCのデータ用HDDが吹っ飛びました。
-原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。
-復旧に成功したのでその手順をメモっておきます。
-問題推定 初めは何故データが消えたのかわからなかったため、その調査から始めました。
-消えたのはデータ用HDDで、Windows本体は問題なく起動していたため、WindowsからHDDを見ると、
-未フォーマット状態のディスクとして認識され、パーティションスタイルの選択から始まっていました。
-HDDは数ヶ月前に新調したものであり、異音やエラーなどの問題も無かったため、物理的な可能性は薄いと考えました。
-また、直前に大量にデータを書き込んでもいないため、データを削除した線も薄そうです。
-さらに、一部のデータが読み込めなくなるのではなく、全データが一度に読み取り不能になったことから、
-何らかの要因でパーティションが消えてデータが読み取り不能になり、
-データ自体は残っているのではないかと考えました。
-パーティションの確認 運良く手元にLinuxの起動ディスクがあったため、とりあえずパーティションがどうなっているかを確認しました。
-手順としては以下のようになります。
-なお、HDDがsdaにマウントされていると仮定します。
- ddコマンドでHDDの先頭をコピーする
-ddコマンドはディスクからファイルやディスクにデータをコピーできるコマンドです。
-sudo dd if=/dev/sda of=/tmp/hdd count=100
-のようにすることで、sdaの先頭から100ブロック分を/tmp/hddファイルにコピーします。
- hexdumpコマンドで中身を見る
-hexdumpコマンドはファイルの中身を16進数で出力します。
-hexdump /tmp/hdd  私の場合、hexdumpの出力が先頭50MBぐらい全て0だらけだったので、
-パーティションが全て0埋めされて消えていました。
-そのため、次にパーティションの復活を試みます。
-TestDiskでパーティション復活 壊れたディスクはPBRにしていたため、MBRと比べて大変になる場合が多いらしいですが、
-TestDiskを使うと特に問題なく修復できました。
-詳しい使い方はこちら。
-【TestDisk】について
-私の場合、これでNTFSのパーティションを修復できましたが、
-何故か書き込んでいないはずのWindowsディスクが壊れてしまい、
-データと引き替えにWindowsが消えてしまいました…
-幸いWindowsディスクには特に重要なデータを入れていなかったのと、
-Macからデータを読み出すことができたために難を逃れました。
-念のため、Windowsディスクは外して作業をした方がよさそうです。</description>
+      <description>先日デスクトップPCのデータ用HDDが吹っ飛びました。 原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。 復</description>
     </item>
     
     <item>
@@ -964,22 +395,7 @@ Macからデータを読み出すことができたために難を逃れまし�
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/29/npm-publish/</guid>
-      <description>とても簡単でしたがつい忘れるのでメモ。
-公開手順  npmjsに開発者登録をします。
-https://www.npmjs.org/
- npm adduserで~/.npmrcにnpmへのログイントークンを保存します。
- package.jsonに必要事項を書きます。
-こんな感じですね。
- npm publishで公開
- アップグレード版の配布もnpm publishで可能です。
-(ただし、package.json内のバージョンを変えないと新しいバージョンにはなりません)
-  非公開手順 間違えて変なバージョンを公開した場合など、公開したパッケージを削除したい場合は、
-npm unpublish パッケージ名前@バージョンで削除出来ます。
-何も指定しない場合全てのバージョンが対象になりますが、--forceをつける必要があります。
-ただし、削除してしまうので、そのパッケージに依存しているパッケージが悲惨なことになります。
-そのため、npm deprecateの方がアップグレードを促せるし推奨すると公式サイトには書いてあります。
-unpublishは間違えて公開した場合用ですね。
-なお、全てのバージョンを削除するとnpmからパッケージの情報も削除されます。</description>
+      <description>とても簡単でしたがつい忘れるのでメモ。 公開手順 npmjsに開発者登録をします。 https://www.npmjs.org/ npm adduserで~/.npmrcにnpmへのログイントーク</description>
     </item>
     
     <item>
@@ -988,24 +404,7 @@ unpublishは間違えて公開した場合用ですね。
       <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/26/shell-shock/</guid>
-      <description>Debianは探しても見つからなかったので…(´･_･`)
-ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三者から任意のコードが実行される脆弱性が見つかりました。
-GNU bash の脆弱性に関する注意喚起
-bashの脆弱性(CVE-2014-6271) #ShellShock の関連リンクをまとめてみた
-Blog: bashの脆弱性がヤバすぎる件 – x86-64.jp - くりす研
-bashで以下のスクリプトを実行し、出力文字列にvulnerableが出てきたらまずい状態です。
-env x=&#39;() { :;}; echo vulnerable&#39; bash -c &#39;echo hello&#39;  修正パッチ状況 この問題に対しては(まだ不十分ですが)修正パッチが公開されており、また各ディストリビューションでも修正したbashが配布されています。
-Redhad系の対策はこちら
-2014/09/24に発表されたBash脆弱性と解決法(RedHat系)
-Mac OS X系の対策はこちら
-CVE-2014-6271のbashの脆弱性に対応する方法　私の使っているDebian(squeeze)でも、パッチが適応されたbashを配布しています。
-https://security-tracker.debian.org/tracker/CVE-2014-6271
-修正版へのアップデート 修正されたbashはsqueezeの通常のリポジトリには修正版は公開されておらず、
-ltsリポジトリを参照する必要があります。(2014/09/26 7:00現在)
-LTS/Using - Debian Wikiにリポジトリが書いてあるので、それをapt-getの参照先に追加します。
-/etc/apt/sources.list.d`に、lts.listを作り、以下のように書き込みます。
-deb http://http.debian.net/debian/ squeeze-lts main contrib non-free deb-src http://http.debian.net/debian/ squeeze-lts main contrib non-free  (手元に環境がないので確認できませんが、おそらくWheezyでは以下のリポジトリで行けると思います)
-deb http://security.debian.org/ wheezy/updates main deb-src http://security.debian.org/ wheezy/updates main  この状態で</description>
+      <description>Debianは探しても見つからなかったので…(´･_･`) ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三</description>
     </item>
     
     <item>
@@ -1014,27 +413,7 @@ deb http://security.debian.org/ wheezy/updates main deb-src http://security.debi
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/23/cpp-build/</guid>
-      <description>結論  キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う  C++のビルドをちょっとでも高速化したかったので、
-どうすれば早くなるのかを調べたのでまとめました。
-どれか一つをやるというよりかは、複数の手法を組み合わせていくのがいいと思います。
-キャッシュを使う ccacheのように、コンパイル結果をキャッシュしておくソフトを使うことで、
-2回目以降のビルドは差分だけをコンパイルし直すため早くなります。
-といっても、多分使わない方が珍しいと思いますが。
-不要なinclude削除 C++で不要なincludeを減らすのように、
-不要なincludeを減らすことでコンパイル時間の短縮化と、キャッシュを最大限活用することができます。
-Static Library or Dynamic Library化する 切り出せる部分はライブラリとして切り出し、先にコンパイルしておくことで、
-本体のコンパイル時間が短縮されます。
-簡単に早くなりますが、ライブラリの切り出し方を工夫しないと効果が無い場合があります。
-Static Libraryの場合はリンクが必要なので、リンク時間は減らせませんが、
-コンパイル時間は省略できるため大幅に早くなります。
-Dynamic Libraryはリンク時間が不要になりますが、その分実際の実行時に時間がかかります。
-代わりに、ライブラリの部分だけ入れ換えるといったことができます。
-ただし、iOSでは使えません…(´・_・`)　並列コンパイルする makeにはjオプションがあり、指定した数だけ並列実行されます。
-多くしすぎると逆効果らしく、一般的にはコア数×2ぐらいを指定すると良いそうです。
-分散コンパイルする distcc等を使って分散コンパイルをすることで、劇的にコンパイル時間を短くできます。
-ただしその分だけPCが必要なのと、Xcodeは非対応です…(´・_・`)
-いいパソコンを使う 当たり前ですが、メモリ、CPU、SSDの性能を上げると早くなります。
-ただし、高いPCはコスパが悪いので、他の手法と組み合わせて上手い具合に良いところを見つけてください。</description>
+      <description>結論 キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う C++のビルドを</description>
     </item>
     
     <item>
@@ -1043,24 +422,7 @@ Dynamic Libraryはリンク時間が不要になりますが、その分実際�
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/22/cpp-include/</guid>
-      <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。
-そのため、includeする量が増えるほどコンパイラが解析する量も増え、
-結果としてコンパイル時間が長くなります。
-また、キャッシュを利用している場合、
-includeされているファイルのどれか一つでも変更があった場合はビルドし直しになるため、
-不要なincludeを消すとよりキャッシュを活用できます。
-クラスの前方宣言を活用する クラスのメソッドやプロパティへのアクセスをしない場合、クラスの実態を知る必要はありません。
-そのため、メンバ変数にクラスを持つ場合に、ポインタとして持たせることで、
-ヘッダファイルにincludeを書く必要が無くなります。
-これにより、不要なincludeを減らすことができます。
-例えば、以下のようなAクラスがあるとします。
-// TestA.h #include “InClass.h&amp;quot; class TestA{ public: TestA(); int getNumber(); private: InClass m_inclass; };  //TestA.cpp #include “TestA.h&amp;quot; TestA::TestA() { }; int TestA::getNumber(){ return m_inclass.getNumber(); };  このとき、TestAクラスをincludeするクラスは、InClassを使わない場合でも、
-TestA.hに書かれているために読み込んでしまいます。
-そのため、コンパイラが処理する量が増えるのと、
-InClass.hに変更があった場合に使っていないファイルまでコンパイルし直しになります。
-ここで、以下のようにクラスの前方宣言を使い、
-cppファイル側で読み込むことで、includeをヘッダファイルから削除できます。
-//TestA.h class InClass; class TestA{ public: TestA(); ~TestA(); int getNumber(); private: InClass* m_inclass; };  //TestA.cpp #include “TestA.h&amp;quot; #include &amp;quot;InClass.h&amp;quot; TestA::TestA() { m_inclass = new InClass(); }; TestA::~TestA() { delete m_inclass; }; int TestA::getNumber(){ return m_inclass-&amp;gt;getNumber(); };  これにより、TestAクラスをincludeしているクラスは、InClass.</description>
+      <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。 そのため、includ</description>
     </item>
     
     <item>
@@ -1069,15 +431,7 @@ cppファイル側で読み込むことで、includeをヘッダファイルか�
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/19/twitter-callback/</guid>
-      <description>Twitterはoauth/request_tokenへのアクセス時に、
-認証後のコールバック先をoauth_callbackパラメータで上書きできます。
-Twitterの開発者画面からは独自スキーマは登録できませんが、
-この機能で上書きをすると任意のスキーマをコールバックに設定できます。
-ただし、Twitterに何らかのURL(ダミーでも可)を設定してないと上書きできないようです。
-たとえば以下のようなコードを書いた場合、Twitterの開発者画面でURLを登録していないと、
-401 Authorization Required (OAuth::Unauthorized)が帰ってきますが、
-http://example.comのようにダミーURLを登録すると認証画面用のURLが帰ってきます。
-require &amp;quot;oauth&amp;quot; consumer_key = &amp;quot;&amp;quot; consumer_secret = &amp;quot;&amp;quot; consumer = OAuth::Consumer.new consumer_key, consumer_secret, site: &amp;quot;https://api.twitter.com&amp;quot; request_token = consumer.get_request_token oauth_callback: &amp;quot;ota42y://test&amp;quot; puts &amp;quot;Please visit here: #{request_token.authorize_url}&amp;quot;  参考: Twitter の AccessToken と AccessTokenSecret を Ruby で取得する</description>
+      <description>Twitterはoauth/request_tokenへのアクセス時に、 認証後のコールバック先をoauth_callbackパラメータで上書</description>
     </item>
     
     <item>
@@ -1086,15 +440,7 @@ require &amp;quot;oauth&amp;quot; consumer_key = &amp;quot;&amp;quot; consumer_s
       <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/13/sudo-error/</guid>
-      <description>cronやinit.d以下に置いたスクリプトで、
-別の以外のユーザで作業しようと思い、sudoを実行したところ、
-以下のようなエラーが出て実行できませんでした。
-sudo: sorry, you must have a tty to run sudo
-どうやら、ttyを使わない場合、sudoは権限に関係なく実行できないようです。
-sudoersにある
-Defaults requiretty
-をコメントアウトすることで解決しました。
-参考</description>
+      <description>cronやinit.d以下に置いたスクリプトで、 別の以外のユーザで作業しようと思い、sudoを実行したところ、 以下のようなエラーが出て実行で</description>
     </item>
     
     <item>
@@ -1103,17 +449,7 @@ Defaults requiretty
       <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/12/init-d/</guid>
-      <description>hubotを自動で実行してほしいなーと思ったので、
-OSの起動時にスクリプトを自動実行する方法を調べました。
-まず、/etc/init.d/ に実行可能なスクリプトを置きます。
-次に、スクリプトの二行目に、起動設定を書きます。
-# chkconfig: 345 99 01
-一つ目がランレベル、二つ目が起動順番、三つ目が終了順番になります。
-起動・終了は小さい数値から行われるため、
-前述の例ですと一番最後に起動し、一番最初に終了します。
-ランレベルについては Wikipediaの記事 を参考にしてください
-最後に、chkconfig --add (init.dに置いたスクリプト名)を実行して登録を行います。
-これで、起動時にスクリプトが実行されます。</description>
+      <description>hubotを自動で実行してほしいなーと思ったので、 OSの起動時にスクリプトを自動実行する方法を調べました。 まず、/etc/init.d/ に実</description>
     </item>
     
     <item>
@@ -1122,15 +458,7 @@ OSの起動時にスクリプトを自動実行する方法を調べました。
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/11/strncpy-bug/</guid>
-      <description>strncpyは結構はまりどころがあります。
-たとえば以下のコードは正しく動作しません。
-char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str);  strncpyはコピー先、コピー元、コピー長を引数で取ります。
-この際、strlen等でコピー元の文字長ぴったりを指定すると、
-終端文字がコピー先にコピーされません。
-そのため、事前に終端文字を設定しておかないと、
-未初期化の部分まで文字列扱いになります。
-以下のコードでその様子をうかがえます。
-#include &amp;lt;string&amp;gt; #include &amp;lt;stdio.h&amp;gt; int main(void){ char str[100] = {0}; str[0] = &#39;z&#39;; str[1] = &#39;z&#39;; str[2] = &#39;z&#39;; str[3] = &#39;z&#39;; str[4] = &#39;z&#39;; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\nlength %lu\noriginal length %lu\n&amp;quot;, str, strlen(str), strlen(c)); strcat(str, &amp;quot;.txt&amp;quot;); printf(&amp;quot;%s\nlength %lu\n&amp;quot;, str, strlen(str)); return 0; }  testz length 5 original length 4 testz.</description>
+      <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str); strncpyはコピー先、コ</description>
     </item>
     
     <item>
@@ -1139,13 +467,7 @@ char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/10/golang-file-split/</guid>
-      <description> Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別ファイル内の定数、変数、型、関数を参照することができます。
- Goコードの書き方
-とのことなので、試しに以下のようにmainパッケージを分割してコンパイルしたところ、上手くいきませんでした(´･_･`)
-// main.go package main import ( &amp;quot;fmt&amp;quot; ) func main() { fmt.Println(&amp;quot;main file&amp;quot;) OutputDiv() }  // div.go package main import ( &amp;quot;fmt&amp;quot; ) func OutputDiv() { fmt.Println(&amp;quot;div file&amp;quot;) }  go runの結果、分割したファイルにある関数を見つけられないエラーになります。
-go run main.go # command-line-arguments ./main.go:9: undefined: OutputDiv  どうやら、go runした場合は引数のファイルのみがコンパイル対象になるため、
-go run *.goか、必要なファイルを全てオプションとして渡す必要があるようです。
-go run main.go div.go main file div file  </description>
+      <description>Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別フ</description>
     </item>
     
     <item>
@@ -1154,8 +476,7 @@ go run main.go div.go main file div file  </description>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/09/golang-cron/</guid>
-      <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止めておく必要があります。
- </description>
+      <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止め</description>
     </item>
     
     <item>
@@ -1164,10 +485,7 @@ go run main.go div.go main file div file  </description>
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/07/git-copy-current-branch/</guid>
-      <description># copy current branch ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot;  Jenkinsでブランチ○○をビルドしたいような場合に、
-jenkinsに渡すために現在のブランチを調べるのが面倒だったので、
-簡単にコピペできるようにしました。
-なお、Mac限定です。</description>
+      <description># copy current branch ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot; Jenkinsでブランチ○○をビルドしたいような場合に、 jenkinsに渡すために現在のブラ</description>
     </item>
     
     <item>
@@ -1176,19 +494,7 @@ jenkinsに渡すために現在のブランチを調べるのが面倒だった�
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/04/centos7-android-build/</guid>
-      <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686  他にもいくつかあった気がしますが、
-後はエラーとして出たコマンドをインストールするだけなので都度入れてください
-Android SDKとNDKのダウンロード http://developer.android.com/sdk/index.html
-https://developer.android.com/tools/sdk/ndk/index.html
-からそれぞれ対応する物を取ってきて好きなフォルダに解凍します。
-その後、sdkとndkのディレクトリ、及びsdkのplatform-toolsディレクトリをPATHに追加します。
-SDK Platformのインストール Eclipseが使えないためSDK Managerは使えませんが、
-代わりにコマンドラインからインストールすることができます。
-android update sdk -u -a -t tools,platform-tools android update sdk -u -a -t android-19 android update sdk -u -a -t extra-google-google_play_services  後は通常のコマンドラインからビルドする方法でビルド可能です。
-注意点 なお、MacやWindowsだとファイル名はcase insensitiveですが、
-CentOSだと普通はcase sensitiveなので注意です。
-特にCのincludeは大文字小文字を区別せずに動くため、
-case sensitiveな環境に持って行った場合に特に死にやすいです…(´・_・`)</description>
+      <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686 他にもいくつかあった気がしますが、 後はエラーとして出たコマンドをインストールするだけなので都度入れてくださ</description>
     </item>
     
     <item>
@@ -1197,28 +503,7 @@ case sensitiveな環境に持って行った場合に特に死にやすいです
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/03/mgo-consistency/</guid>
-      <description>mgoのサンプルにあった
-session.SetMode(mgo.Monotonic, true)
-の意味がよくわからないので調べてみました。
-結論から書きますと、これは複数DBを利用した際の、
-データの一貫性をどの程度保証するかの設定です。
-一貫性制御 mgoには複数のDB間での一貫性を制御する３種類のモードがあります。
-const ( Eventual mode = 0 Monotonic mode = 1 Strong mode = 2 )  SetModeにこれを渡すことで、モードを切り替えられます。
-それぞれの内容は以下の通りです。
-おそらく一貫性がちゃんとしていくに従って、複雑化&amp;amp;遅くなっていきます。
-Eventual Consistency 最終的に辻褄が合えばいいよね設定です。
-データに変更が無く十分な時間が過ぎると、最終的に全ての更新が反映されます。
-更新済みのノードと、そうでないノードが混在する可能性があるため、
-どのノードから読み込むのかが固定されない場合、
-新しい値を読み込んだ後に、別のノードから古い値を読み込んでしまう…
-といったことが起きる可能性があるはずです。
-同じノードから読み取る場合は、後述するMonotonic Consistencyと同じになると思います。
-Monotonic Consistency あるプロセスが値を参照したら、以降はその値かそれより新しい値が読み込まれるという設定です。
-おそらく、値を参照したタイミングで最新かどうかは保証されないが、
-少なくとも古い値が読み込まれることはない、という状態だと思われます。
-Strong Consistency 常に必ず最新の値が読み込めるという状態です。
-一見すると良さそうですが、最新の値が読めるようになるまで読み込めないため、
-注意が必要です。</description>
+      <description>mgoのサンプルにあった session.SetMode(mgo.Monotonic, true) の意味がよくわからないので調べてみました。 結論から書きますと、これは複数DBを利用した際の、 データの一貫性をどの</description>
     </item>
     
     <item>
@@ -1227,13 +512,7 @@ Strong Consistency 常に必ず最新の値が読み込めるという状態で�
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/02/go-mongodb/</guid>
-      <description>mgoというライブラリが便利そうです。
-http://labix.org/mgo
-以下はtwitterからツイートを取ってきて、
-未登録のツイートをmongodbに保存するスクリプトです。
-今のところ、検索結果が存在するかどうかを調べる方法が解らなかったので、
-件数を数えてその結果をチェックしています。
- </description>
+      <description>mgoというライブラリが便利そうです。 http://labix.org/mgo 以下はtwitterからツイートを取ってきて、 未登録のツイートをmongodbに保存するスクリプトで</description>
     </item>
     
     <item>
@@ -1242,13 +521,7 @@ http://labix.org/mgo
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/01/mongodb-explain/</guid>
-      <description>事前データ準備  for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test3&amp;quot;, num: i*10000}) }  stringは3種類100個ずつ、numはuniqueなオブジェクトを作成します。
-インデックス作成 db.test_object.ensureIndex({&amp;quot;name&amp;quot;: 1})  で、test_objectコレクションのnameに対してインデックスを作成できます。
-また、
-db.test_object.getIndexes()  でインデックスを確認出来ます。
-なお、MongoDBのばあい、インデックスに使用したキーが存在しない場合もあります。 そのような場合は、キーを持っていないものはNULLとして扱われます。
-explain 検索したときにindexが使われているかはexplainで確認出来ます。
-db.test_object.find({&amp;quot;name&amp;quot;: &amp;quot;test1&amp;quot;, &amp;quot;num&amp;quot;: 10}).explain() { &amp;quot;cursor&amp;quot; : &amp;quot;BtreeCursor name_1&amp;quot;, &amp;quot;isMultiKey&amp;quot; : false, &amp;quot;n&amp;quot; : 1, &amp;quot;nscannedObjects&amp;quot; : 100, &amp;quot;nscanned&amp;quot; : 100, &amp;quot;nscannedObjectsAllPlans&amp;quot; : 100, &amp;quot;nscannedAllPlans&amp;quot; : 100, &amp;quot;scanAndOrder&amp;quot; : false, &amp;quot;indexOnly&amp;quot; : false, &amp;quot;nYields&amp;quot; : 0, &amp;quot;nChunkSkips&amp;quot; : 0, &amp;quot;millis&amp;quot; : 0, &amp;quot;indexBounds&amp;quot; : { &amp;quot;string&amp;quot; : [ [ &amp;quot;test1&amp;quot;, &amp;quot;test1&amp;quot; ] ] }, &amp;quot;server&amp;quot; : &amp;quot;ota42y:27017&amp;quot;, &amp;quot;filterSet&amp;quot; : false }  cursorが BasicCursorではなく、</description>
+      <description>事前データ準備 for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test3&amp;quot;, num: i*10000}) } stringは3種類100個ずつ、numはuniqueなオブ</description>
     </item>
     
     <item>
@@ -1257,9 +530,7 @@ db.test_object.find({&amp;quot;name&amp;quot;: &amp;quot;test1&amp;quot;, &amp;q
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/31/go-anaconda/</guid>
-      <description>anacondaが良さそう(ただしストリーミングAPI非対応)
-go get github.com/ChimeraCoder/anaconda
- </description>
+      <description>anacondaが良さそう(ただしストリーミングAPI非対応) go get github.com/ChimeraCoder/anaconda</description>
     </item>
     
     <item>
@@ -1268,15 +539,7 @@ go get github.com/ChimeraCoder/anaconda
       <pubDate>Sat, 30 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/30/sending-authentication-information/</guid>
-      <description>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、
-&#39;sending authentication information&#39;, system error: 32&amp;quot;.
-といったエラーが出て、mysqlへのログインすら不可能になってしまいました。
-どうやら、MySQL5.6から
-innodb_file_per_tableのデフォルト値が変わったのが原因みたいです。
-my.cnfに
-innodb_file_per_table = OFF
-を書くことでで解決します。
-参考</description>
+      <description>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、 &#39;sending authentication information&#39;, system error: 32&amp;quot;. といったエラーが出て、mysqlへのログイン</description>
     </item>
     
     <item>
@@ -1285,17 +548,7 @@ innodb_file_per_table = OFF
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/28/ios-build/</guid>
-      <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、
-普通にコマンドラインからビルドを実行していただけなので、 使っているコマンドをまとめました。
-なお、以下のサンプルプロジェクトを使って確認しました。
-CustomHTTPProtocol
-/usr/bin/agvtool バージョンを設定する /usr/bin/agvtool new-version -all (VERSION_NUMBER)
-xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更できます。
-バージョンを確認する /usr/bin/agvtool mvers -terse アプリのバージョン番号を確認出来ます。
-プロジェクト設定のVersionの部分ですね。
-(mversはmarketing-versionの略です)
-使える証明書を確認する /usr/bin/security find-identity -p codesigning -v 1) ABCDEFGHIJKLMNOPQRSTUVWXYZ(識別子) &amp;quot;iPhone Developer: ota42y (XXXXXXXX識別子)&amp;quot; 1 valid identities found  このコンピュータで使えるcodesigningの一覧が取れます。
-/usr/bin/xcodebuild 使えるSDKを確認する /usr/bin/xcodebuild -showsdks OS X SDKs: OS X 10.8 -sdk macosx10.8 OS X 10.9 -sdk macosx10.9 iOS SDKs: iOS 7.1 -sdk iphoneos7.1 iOS Simulator SDKs: Simulator - iOS 6.1 -sdk iphonesimulator6.</description>
+      <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、 普通にコマンドラインからビルドを実行</description>
     </item>
     
     <item>
@@ -1304,25 +557,7 @@ xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更で�
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/27/arduino-browser/</guid>
-      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、
-当然ながらブラウザ本体やJavascriptにはそんな機能はありません。
-そこで、Arduinoの制御をやるWebサーバをローカルに立てて、
-そこに向けて通信すれば、ブラウザからもArduinoの制御ができるのでは？
-と考えたところ、既にそのようなものがありました。
-試した結果をまとめます。
-noduino http://semu.github.io/noduino/
-Node.jsでArduinoを制御できます。 duinoというNode.jsからArduinoに接続するライブラリを利用し、
-Webサーバとして扱えるようにしているものみたいです。
-かなりいろいろな事ができ、使いやすいように作られていますが、
-ブラウザから制御するのはかなり苦労します。 ですが、Node.jsで実行する前提ならば、
-簡単でいろいろなことができるため最適だと思います。
-Serialport-server http://shokai.github.io/serialport-server/
-RubyからArduinoにアクセスし、その結果を返すサーバです。
-noduinoに比べるとできることは少ないですが、
-サンプルがちゃんと動き、Webブラウザから簡単に値がとれそうです。
-
-というわけで、ブラウザからArduinoを制御する場合は、
-Serialport-serverが良さそうです。</description>
+      <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、 当然ながらブラウザ本体やJavascriptにはそんな機能はありませ</description>
     </item>
     
     <item>
@@ -1331,23 +566,7 @@ Serialport-serverが良さそうです。</description>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/26/optparse/</guid>
-      <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、
-各言語でそれをやってくれるライブラリが作られています。
-javascriptでそれにあたるのがOptparse-jsですが、
-使い方がちょっと独特です。
-インストール https://github.com/jfd/optparse-jsからどうぞ。
-npmにも登録されているので、node.jsからも簡単に使えます。
-使い方 オプション指定 どのようなオプションを宇受け取るかは配列で定義します。
-なお、短縮形も同時に定義できます。
-var options = [ [&amp;quot;-n&amp;quot;, &amp;quot;--name FILENAME&amp;quot;, &amp;quot;filename&amp;quot;], [&amp;quot;-t&amp;quot;, &amp;quot;--type TYPE&amp;quot;, &amp;quot;type&amp;quot;] ];  この場合、filenameを受け取る-nもしくは&amp;ndash;nameと、
-typeを受け取る-tもしくは&amp;ndash;typeを定義しています。
-この配列をOptionParserに渡してパーサー用オブジェクトを受け取ります。
-var parser = new optparse.OptionParser(options);  オプション処理 オプションを受け取ったときの処理は、パーサーオブジェクトに関数を渡して登録します。
-第一引数にオプション名、第二引数にそのオプションがあったときの処理を渡します。
-parser.on(&amp;quot;name&amp;quot;, function(opt, value) { parameter[&amp;quot;name&amp;quot;] = filename; });  パース実行 パーサーオブジェクトのparseメソッドでパースを実行できます。 ただし、スペースを自分で区切ってはくれないため、
-先に配列に分けておく必要があります。
-parser.parse(command_str.split(&amp;quot; &amp;quot;));  (勝手にオプション足したり、区切り文字を自由に設定できる、こうしていると思われます)
-サンプルコード var optparse = require(&#39;optparse&#39;); var command_str = &amp;quot;-name core -type f&amp;quot;; var options = [ [&amp;quot;-n&amp;quot;, &amp;quot;--name FILENAME&amp;quot;, &amp;quot;filename&amp;quot;], [&amp;quot;-t&amp;quot;, &amp;quot;--type TYPE&amp;quot;, &amp;quot;type&amp;quot;] ]; var parser = new optparse.</description>
+      <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、 各言語でそれをやってくれるライブラリが作られています。 javas</description>
     </item>
     
     <item>
@@ -1356,40 +575,7 @@ parser.parse(command_str.split(&amp;quot; &amp;quot;));  (勝手にオプショ�
       <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/25/git-new-workdir/</guid>
-      <description>まとめ  ビルドに時間がかかる環境下では、ビルドのキャッシュが重要 ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる 別ブランチでちょっとした修正を行おうとすると、移動と戻りとで二回ビルドし直しが起きる リポジトリを複数cloneすると、管理が面倒 git-new-workdirなら、.gitを共用しつつ、別々のフォルダで作業できる そのため、ビルドのキャッシュを最大限活用できる スマホアプリじゃなくても便利  ビルドのキャッシュ Objective-cやJava、C++でスマホアプリを作成する場合、
-どの言語もコンパイルが必要になります。
-このコンパイルにかかる時間は、アプリの規模が大きくなるにつれて長くなっていきます。
-ただし、多くの場合はキャッシュ機能が有効になっており、
-変更したファイルのみがコンパイルされるため、
-フルビルドをしなければ気にならないはずです。
-gitのチェックアウトによるファイル変更問題 gitの場合、ブランチを切り替えると関連するファイルに対して全部変更が走ります。
-これにより、ブランチ間の差分が全てビルド対象になってしまいます。
-当然と言えば当然ですが、例えばちょっとした変更を別ブランチで行い多場合、
-別ブランチに切り替えて一回、作業後戻ってきて一回と、二回ビルドが必要になります。
-ブランチ間の差次第ですが、5分で終わる作業のために30分のフルビルド2回…
-なんてこともあり、時間が勿体ないです。
-かといって、リポジトリを二つ別々のフォルダにcloneすると、
-別々にリポジトリ更新したり、容量圧迫、間違えてコミットしたときにcherry-pickできない等々
-いろいろと問題が起きます。
-こういった場合、git-new-workdirを使うことで、 だいぶ楽に解決することができます。
-git-new-workdirとは これは同じ.gitを使って、複数のディレクトリにリポジトリをcloneできる機能になります。
-これにより、二つの別々のフォルダにそれぞれgit cloneしたのと同じ状態を維持しつつ、
-片方で作成したコミットや、ローカルブランチ、git stashなどをもう片方で参照することができます。
-また、gitのワーキングディレクトリやステージングエリアは共用されないため、
-コミットしていない変更が別のディレクトリに影響をあたることはありません。　インストール git/contrib/workdir/git-new-workdirに入っていたので、
-export PATH=/usr/local/share/git-core/contrib/workdir/:$PATH でパスを通しました。
-使い方 git-new-workdir repository_folder new_workdir branch_name(オプション)です。
-後述するように、gitのcloneは行わず、元のディレクトリへのシンボリックリンクを張るだけなので、
-ほぼcheckout時間しかかかりません。
-新しくできたworkdirは、普通にgit cloneしたときと同じように扱えます。
-注意点 同じブランチを同時に変更すると、予期せぬ結果になるので注意が必要です。
-なお、片方からもう片方が何をチェックアウトしているかはわからないため、
-main/subといった使い方や、develop/releaseといった風に分けたり、
-必要な時だけ作るといった方が事故らないと思います。
-また、新しいディレクトリの.gitには、HEADとindex、logの3つのみが新たに作られ、
-残りは全て元の.gitの該当ディレクトリへのシンボリックリンクになっています。
-そのため、高速に新しいworkdirを作れますが、
-元のリポジトリを消すとworkdirの方もおかしくなると思われます。</description>
+      <description>まとめ ビルドに時間がかかる環境下では、ビルドのキャッシュが重要 ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる 別ブランチ</description>
     </item>
     
     <item>
@@ -1398,23 +584,7 @@ main/subといった使い方や、develop/releaseといった風に分けたり
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/24/selenium/</guid>
-      <description>まとめ  selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 rubyのgemがあり、簡単に導入できる Firefoxならgemを入れるだけで動かせる  Rubyのスクレイピング方法 Rubyでスクレイピングする方法としては、 NokogiriやMechanizeが存在します。
-どちらもHTMLを解析してページの要素にアクセスします。
-ですが、実際のWebブラウザのエンジンとは違うため、若干の差異があったり、
-Javascriptで動的に変化するページなどにちゃんと対応するのはとても大変です。
-そこで、Webブラウザを直接操作してスクレイピングするライブラリの一つが、
-selenium-webdriverになります。
-selenium-webdriverのインストール Rubyではselenium-webdrierのgemをインストールするだけで完了です。
-なお、Google Chromeだとgem以外にもう一つインストールするものがありますが、
-今回は説明が面倒なので省略し、Firefoxで動かします。
-使い方 Selenium::WebDriver.for :firefox で、firefoxのウインドウに対応するWebDriverオブジェクトが取得できます。
-このWebDriverに対して、移動先のURLやDOM要素の取得などを行えます。
-また、細かい設定などの変更のために、Profileというものが用意されています。
-これに対して様々な設定をし、WebDriver作成時に設定することで、
-ブラウザの挙動を変更出来ます。
-以下は、pdfを開いたときに特定のフォルダに保存する設定がされた状態で、
-Googleでpdfを検索し、先頭の一つをdownフォルダにダウンロードするコードになります。
-require &amp;quot;selenium-webdriver&amp;quot; profile = Selenium::WebDriver::Firefox::Profile.new profile[&#39;browser.download.dir&#39;] = &amp;quot;#{File.expand_path(File.dirname(__FILE__))}/down&amp;quot; profile[&#39;browser.download.folderList&#39;] = 2 profile[&#39;browser.download.useDownloadDir&#39;] = true profile[&#39;browser.helperApps.neverAsk.saveToDisk&#39;] = &amp;quot;application/pdf&amp;quot; profile[&#39;pdfjs.disabled&#39;] = true driver = Selenium::WebDriver.for :firefox, :profile =&amp;gt; profile driver.navigate.to &amp;quot;https://www.google.com/search?as_q=&amp;amp;as_epq=&amp;amp;as_oq=&amp;amp;as_eq=&amp;amp;as_nlo=&amp;amp;as_nhi=&amp;amp;lr=&amp;amp;cr=&amp;amp;as_qdr=all&amp;amp;as_sitesearch=&amp;amp;as_occt=any&amp;amp;safe=images&amp;amp;as_filetype=pdf&amp;amp;as_rights=&amp;amp;gws_rd=ssl&amp;quot; links = driver.find_element(:class, &#39;r&#39;).find_elements(:tag_name, &#39;a&#39;) if links links.each do |element| if element.</description>
+      <description>まとめ selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 r</description>
     </item>
     
     <item>
@@ -1423,19 +593,7 @@ require &amp;quot;selenium-webdriver&amp;quot; profile = Selenium::WebDriver::Fi
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/22/mocha-test/</guid>
-      <description>まとめ  Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ便利機能がある  Mochaの使い方 coffeescriptを前提にしています。
-テストの書き方 Mochaのテストは以下のように、itにテスト内容を書いた関数を渡し、
-そのitを呼び出す関数をdescribeに渡すしようです。
-describe &amp;quot;test root&amp;quot;, -&amp;gt; it &amp;quot;name&amp;quot;, (done) -&amp;gt; assert.equal getUserName, &amp;quot;user&amp;quot; done()  ただし、it関数では必ずdone()を呼び出す必要があります。
-これを呼ばない場合は終了を待ち続け、
-一定時間後にタイムアウトしてテストが失敗した扱いになります。
-beforeの使い方 rspecのbeforeにあたるものは、beforeEachになります。
-なお、変数を他のブロックに渡したい場合、
-以下のようにdescribeの中に変数名を書いておいて、
-beforeEachのなかで設定する必要があるみたいです。
-参考
-describe &amp;quot;test&amp;quot;, -&amp;gt; room_name = undefined beforeEach (done) -&amp;gt; room_name = &amp;quot;test_room&amp;quot; done() describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;executeNoteShow&amp;quot;, (done) -&amp;gt; assert.equal getRoomName(room_name), room_name done()  pendingテストの作り方 テストの用意はしたけど、とりあえずpendingにしておきたい場合は二通りの方法があります。
-describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;quot; // 関数を渡さない場合 // it.</description>
+      <description>まとめ Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ</description>
     </item>
     
     <item>
@@ -1444,27 +602,7 @@ describe &amp;quot;functions&amp;quot;, -&amp;gt; it &amp;quot;pending test&amp;
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/21/intellij-node/</guid>
-      <description> node.js+mocha+coffeescriptな環境で開発をしていたところ、
-IntelliJ IDEAの設定方法が調べても無かったのでメモ。
-Node.jsプラグインのインストール Node.jsプラグインは公式から提供されています。
-そのため、IntelliJ のPreferences からPluginsを選び、
-NodeJSプラグインを選択するだけでインストール出来ます。
-ビルド設定 以下の画像の通りです。
- Node interpreter
-node.jsの実行ファイルの位置を設定します。 working directory
-対象のディレクトリ Mocha package
-Mochaの実行ファイルの位置 Extra Mocha options
-Mochaの設定を指定します 詳しくは後述 Test Directory
-Mochaのテストが入っている場所  Mochaのオプション 私の環境では主に次のような設定をしています、
- coffeescriptを利用している spec形式で出力 共通で読み込むファイルがある  これは、以下のオプションを入れることで実現できます。
---compilers coffee:coffee-script/register --reporter spec --require coffee-script --require test/test_helper.coffee --colors  問題点 以上で設定は終わりですが、いくつか問題点があります。
- デバッガが動かない
-coffeescriptから変換してるので、
-ブレークポイントがうまく動きません エラーになったテストに飛べない
-テストがエラーになったとしても、そのテストの位置に飛ぶ機能がありません。
-最も、IDEを使わずに開発している時と同じく、
-テストメッセージを頼りにテストファイルに移動すればいいので、
-大きな問題ではありませんが。  </description>
+      <description>node.js+mocha+coffeescriptな環境で開発をしていたところ、 IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.</description>
     </item>
     
     <item>
@@ -1473,21 +611,7 @@ coffeescriptから変換してるので、
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
-      <description>まとめ
- Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人を非表示にする拡張作った DLはここから  Pixivのイラスト検索でフォロワーを除外できない Pixivでイラスト検索をした場合、全ユーザを対象に検索が行われるため、
-検索結果にフォローしてる人とそうでない人が交じります。
-私の場合、フォロー新着作品を全てチェックしているため、
-検索をする場合は、このイラスト書いてる新しい人を見つけたい！といった目的で行うことがほとんどです。
-そのため、フォロワー以外からの検索を行いたいのですが、
-残念ながらPixivにそのような機能はありませんでした。
-というわけで、Chrome拡張で実現しました。
-フィルタの基本機能 DLはここから。
-検索結果にはユーザのユニークIDが含まれているため、
-自分のフォローしている人と一致していれば非表示にしています。
-また、毎回通信するのは無駄が多いため、
-事前にフォローしている人のIDをローカルに保存し、そこから読み出しています。
-そのため、ポップアップウィンドウから定期的にデータの更新をする必要があります。
-ソースコード https://github.com/ota42y/pixiv_follower_filter</description>
+      <description>まとめ Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人</description>
     </item>
     
     <item>
@@ -1496,31 +620,7 @@ coffeescriptから変換してるので、
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/17/local-storage/</guid>
-      <description>Chrome拡張でデータを保存しようとした場合に、
-最も簡単に扱えるのが、localStorageです。
-manifest.jsonの設定 manifest.jsonに以下のパーミッションを追加してください
-&amp;quot;permissions&amp;quot;: [ &amp;quot;storage&amp;quot;, &amp;quot;unlimitedStorage&amp;quot; ],  使い方 localStorageという辞書型の変数が定義されるので、
-それに対して読み書きを行うだけで大丈夫です。
-localStorage[‘data’] = ‘aaa&#39; var data = localStorage[‘data’]  注意点 保存形式の制約 この方法で保存できるのは文字列だけになります。
-true/falseを保存しても文字列として出てきますし、
-オブジェクトを入れても正しく保存されません。
-このような場合、JSON.stringifyとJSON.parseを使い、
-JSONに変換して保存すると解決します。
-読み出せる場所の制約 localStorageはページごとに保存するデータがわかれているため、
-読み書きは同じ場所で行う必要があります。
-基本的にはbackgruond.jsで読み書きを行い、
-content_scriptsやpopupからbackground.jsを呼び出すのがいいと思います。
-popupからは以下のように、background.jsの関数を簡単に呼び出すことができます。
-// background.jsのgetDataを呼び出す var data = chrome.extension.getBackgroundPage().getData();  content_scriptsからは直接アクセスできないため、
-メッセージを通して呼び出す必要があり、少々面倒です。
-まず、background側にメッセージ受け取りと、コールバックを定義します。
-content_scriptsからのメッセージ内容がrequestに入っているので、
-それによって処理を分けています。
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) { if (request.method == &amp;quot;getUser&amp;quot;){ sendResponse({user_id: localStorage[request.user_id]}); }else{ sendResponse({}); } });  content_scriptから呼び出す場合は以下のように、
-データとコールバックを渡します。
-受け取り側でsendResponse()を読んだときの引数がresponseに入るので、
-それを利用してデータを取り出します。
-chrome.runtime.sendMessage({method: &amp;quot;getUser&amp;quot;, user_id: user_id}, function(response) { if(response.</description>
+      <description>Chrome拡張でデータを保存しようとした場合に、 最も簡単に扱えるのが、localStorageです。 manifest.jsonの設定 man</description>
     </item>
     
     <item>
@@ -1529,32 +629,7 @@ chrome.runtime.sendMessage({method: &amp;quot;getUser&amp;quot;, user_id: user_i
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/16/evernote-url/</guid>
-      <description>まとめ  シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを実行できる  Automatorでスクリプトを実行する 前回(Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした) では、
-スクリプトの実行方法が微妙たったのでもう少し修正してみました。
-結論としては、Macと標準で入っているAutomatorを使うことで、
-ターミナルアプリを立ち上げずにシェルスクリプトを実行できます。
-Automatorのワークフローを作る 単体のアプリケーションとして実行するため、
-Automatorを立ち上げアプリケーションを選択します。
-実行ディレクトリの取得 私の環境では、clipboardのインストール先はグローバルではなく、
-スクリプトのあるフォルダにbundler専用のディレクトリを作り、
-そこにインストールしています。
-そのため、スクリプトを実行するためにはそのパスに移動しないといけません。
-ですが、Automatorを実行した場合、
-カレントパスはユーザのホームディレクトリになり、
-実行したファイルのディレクトリではありません。
-参考: iNSTANTWiNE or Wine.framework と Automator の連携
-そのため、Apple Scriptを先に実行し、
-Automatorの実行ファイルがあるパスを求め、
-そこに移動するようにしています。
-自分自身のパスを求めるApple Script on run {input, parameters} set p to POSIX path of (path to me) return {p} return input end run  AutomatorのAppleScriptを実行を選び、
-このスクリプトを後述するシェルスクリプトの前に実行するようにします。
-これでシェルスクリプトに引数としてパスを渡せます。
-Evernote URLを置換するスクリプト 内容はほぼ前回と同じです。
-ただし、各種環境設定は読み込んでくれないため、
-sourceで読み込む必要があります。
-また、Automator側で引数の引き渡し方法を
-引数としてに設定する必要もあります。
-source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;clipboard&#39; url = Clipboard.</description>
+      <description>まとめ シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを</description>
     </item>
     
     <item>
@@ -1563,14 +638,7 @@ source .zshrc pushd $(dirname $1) bundle exec ruby -e &amp;quot; require &#39;cl
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/11/find-if/</guid>
-      <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、
-関数orオブジェクトを渡すことで条件を自由に設定できます。
-参考
-このとき内部がどういう処理をして渡した関数を呼び出しているのかが気になったので調べました。
-特に、第三引数にクラスを渡す場合、何故()オペレータに条件を書く必要があるのかが気になりました。
-結論としては、実装を見れば簡単に解決しました。
-内部実装 find_ifの場合 template &amp;lt;class _InputIter, class _Predicate&amp;gt; inline _InputIter find_if(_InputIter __first, _InputIter __last, _Predicate __pred, input_iterator_tag) { while (__first != __last &amp;amp;&amp;amp; !__pred(*__first)) ++__first; return __first; }  ソートの場合 ソートは少々複雑なので、該当部分だけ抜き出します。
-template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt; void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp) { _RandomAccessIter __next = __last; --__next; while (__comp(__val, *__next)) { *__last = *__next; __last = __next; --__next; } *__last = __val; }  まとめ 動きとしてはとても簡単で、比較が必要なところで引数を実行しているだけです。</description>
+      <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、 関数orオブジェクトを渡すことで条件を自由に設定できます。 参考</description>
     </item>
     
     <item>
@@ -1579,16 +647,7 @@ template &amp;lt;class _RandomAccessIter, class _Tp, class _Compare&amp;gt; void
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/09/irc/</guid>
-      <description>IRCのプロトコルはRFCで決められていて、
-一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。
-http://tools.ietf.org/html/rfc1459.html#section-2.3
-が、古いやつとかは対応してない場合もあるらしく、
-メッセージを受け取る部分は両方に対応できるようにした方がいいとのことです。
-http://tools.ietf.org/html/rfc1459.html#section-8
-と、ちょうどLFしか送ってこないIRCサーバに、
-node-ircで接続したらはまったのでメモ。
-修正プルリクは出したけど、メンテ止まってる予感が…
-https://github.com/martynsmith/node-irc/pull/246</description>
+      <description>IRCのプロトコルはRFCで決められていて、 一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。 http://tools.ietf.org/html/rfc1459.html#section-2.3 が、古いやつとかは</description>
     </item>
     
     <item>
@@ -1597,22 +656,7 @@ https://github.com/martynsmith/node-irc/pull/246</description>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/05/msgpack/</guid>
-      <description>最近よく聞くMessagePackとは何かを調べたのでメモ。
-MessagePackとは バイナリでデータを保存するフォーマットです。
-JSONと比べると、保存した状態の可読性を犠牲にする代わりに、
-より早くて小さいフォーマットになっています。
-また、汎用的なフォーマットのため、
-いろんな言語(nodeとかrubyとかcppとか) で相互にデータを使えます。
-他のバイナリシリアライズフォーマットとの差 MessagePackはバッファをうまく使って早かったり、 読み込み途中でもデシリアライズできるとか、
-結構いろいろと高速化のための工夫がされています。
-(ただし、実装によって若干違いがあるようです)
-使い方 rubyならgem install msgpackで、 MacのC++ならbrew install msgpackで使えるようになります。
-なお、C++はgccに以下のオプションをつける必要があります。
-g++ test.cpp -lmsgpack -o test
-また、基本型は全てシリアライズ可能で、保存したいクラスのメンバ変数を、
-MSGPACK_DEFINEマクロに入れると、
-自動でシリアライズ/デシリアライズできるみたいです。
-コード C++ #include &amp;lt;msgpack.hpp&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iostream&amp;gt; using namespace std; struct User { User(std::string name, int id, std::vector&amp;lt;int&amp;gt; follower) : name(name) , id(id) , follower_id(follower) {} // 引数なしのコンストラクタは必須 User() : id(0) {} MSGPACK_DEFINE(name, id, follower_id); std::string name; int id; std::vector&amp;lt;int&amp;gt; follower_id; string toString(){ string ret = &amp;quot;name: &amp;quot;; ret += name; ret += &amp;quot; id: &amp;quot;; ret += std::to_string(id); ret += &amp;quot; follower: &amp;quot;; for(int i=0; i&amp;lt;follower_id.</description>
+      <description>最近よく聞くMessagePackとは何かを調べたのでメモ。 MessagePackとは バイナリでデータを保存するフォーマットです。 JSONと</description>
     </item>
     
     <item>
@@ -1621,54 +665,7 @@ MSGPACK_DEFINEマクロに入れると、
       <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/07/21/jenkins-architecture/</guid>
-      <description>変数やビルド後の通知設定等が違うために、
-ほぼ同じ内容のjobを15個ぐらい使っていたら、
-だんだんと運用が死んできたのでメモ。
-まとめ Jenkinsはプラグインの挙動を変えるのが難しいため、
-ほぼ同じだけれど若干違う手順を行う必要がある場合、
-似たようなjobが大量に並び、
-手順の変更時などに全てのjobを変えきるのが辛くなります。
-そこで、可能な限りビルド手順はスクリプトにするのと、
-jobを種類別に細かく分け、
-最上位のjobにはどの下流jobを実行するかだけを管理させることで、
-複雑なjobでも変更に強くすることができるようになります。
-前提条件  設定が全部で7種類ぐらいある 1ビルドはCPUをフルパワーで使って30分程度 一部の設定は定期実行やマージ毎でもビルドしたい 設定ごとに用途や使う頻度が違う為、定期実行タイミングは個別に設定したい ビルド後のデプロイ先や通知先、通知条件がいくつかある ビルド手順はバージョン/デプロイ先によって変化する  問題点 大きな問題として、
-Jenkins pulginで提供されている機能を切り替えるのが難しいという問題があります。
-たとえば、Jenkinsの拡張メールプラグインでは、
-そのjobの結果によって通知先や通知内容等を変更することができます。
-ですが、その定義自体を切り替えることが難しく、
-この場合は成功時にメールしないけど、
-この場合は成功時にメールするといった切り替えができませんでした。
-また、定期的に変更チェックするブランチや、チェックする間隔が設定毎に異なりますが、
-JenkinsのGit プラグインではそのあたりをうまく設定することが難しいようです。
-他にもdeploy先によって使うプラグインが微妙に違うなどの問題があり、
-ほぼ同じだけれど若干違うjobを15個並べるといった運用をしていました。
-こんな感じに、ほぼ同じだけれど若干違うビルドが並びます。
-結果として、ビルド手順の変更時などに全てのビルドを変更しきることが難しかったり、
-古い手順のバージョンのマイクロアップデートと、
-新しい手順のメジャーアップデートが重なったときに、
-ビルド前にJenkinsの設定を必ず変更する必要がある等、
-運用がかなり辛くなってきました。
-これに対する対策を考えましたが、あまり良いのが無い感じですが、
-とりあえずまとまったのでメモをしておきます。
-解決案 1.ビルド手順や通知を全てをシェルスクリプトにし、Jenkinsはシェルを叩くだけにする Jenkinsのプラグインをほぼ使用せず、全てスクリプトで解決する手法です。
-ビルド手順や通知がSCMに保存されるため、ビルド手順とバージョンが完全に紐付き、
-常に正しい手順で実行できるという利点があります。
-だだし、Jenkinsプラグインの恩恵を得られないため、
-今プラグインでやっている処理を全て置き換える必要があります。
-また、新たな手順の追加が大変と言った問題もあります。
-2.ワークスペース共有を使ってうまくやる チェックアウトとビルドジョブを切り離し、
-SCMのポーリング&amp;amp;チェックアウトだけを行うjobから、
-ビルドジョブを下流ビルドとして呼び出す方式です。
-こんな感じですね。
-ワークスペース共有を使い、
-下流ビルドは上流のワークスペース上でビルド作業を行うようにすることで、
-ビルドjobの数を大幅に減らすことができます。
-だだし、下流が実行中は上流ビルドが動かない事を保証しなければなりません。
-(ビルド途中に次のキューによってワークスペースが書き換えられる可能性がある) Parameterize pluginで下流が終わるまで終了を待つ事ができますが、
-複数のビルドが同時に走った場合にデッドロックに陥る可能性があります。 - A-Cとビルドするjobと、B-Cとビルドするjobがあり、jenkinsの同時実行が2の場合、
-2つのビルドを同時に実行するとCが2つともキューに積まれて進まない場合がある
-3.jobを疎結合にして成果物を使ってうまくやる 2のデッドロックを回避するために、疎結合にした版になります。</description>
+      <description>変数やビルド後の通知設定等が違うために、 ほぼ同じ内容のjobを15個ぐらい使っていたら、 だんだんと運用が死んできたのでメモ。 まとめ Jenki</description>
     </item>
     
     <item>
@@ -1677,30 +674,7 @@ SCMのポーリング&amp;amp;チェックアウトだけを行うjobから、
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/04/08/atom-plugin1/</guid>
-      <description>Github製のエディタAtomの招待が来ました。
-簡単なプラグインの作り方が公開されていましたので、 自分でも作ってみました。
-[Create Your First Package]https://atom.io/docs/latest/your-first-package)
-#テンプレート作成 Atomはプラグインのテンプレートを作る仕組みが入っています。 コマンドパレットから
-Generate Package  を選択して実行します。
-するとパッケージ名を聞かれます。
-適当に入力すると(ここではデフォルトのmy-package)、 ひな形がエディタで開きます。
-#コマンドを作る コマンドパレットに表示されて実行可能なコマンドを作ります。
-Atomの処理はCoffeeScriptで書きます。
-メイン部分はlib/my-package.coffeeなので、 このファイルを編集します。
-基本的に、module.exports =以降を書き換えればいいみたいです。
-この中にはテンプレートを作った段階でいろいろ書いてありますが、
-基本的に全部削除して大丈夫です。
-module.exports = activate: -&amp;gt; # コマンドと実行する関数を登録する atom.workspaceView.command &amp;quot;my-package:hello&amp;quot;, =&amp;gt; @hello() hello: -&amp;gt; # 今いるパネルを得る editor = atom.workspace.activePaneItem # 文字の挿入 editor.insertText(&#39;Hello, World!&#39;)  package jsonに &amp;ldquo;activationEvents&amp;rdquo;が存在するので、
-その値をさっき登録したコマンドを入れた配列 [&amp;quot;my-package:hello&amp;quot;] に変更します。
- チュートリアルにはこれをしないと、
-コマンドパレットに出ないと書いてありますが、
-atom.workspaceView.command &amp;quot;test-pkg:test&amp;quot;, =&amp;gt; @test()
-を実行するだけで出てくるので、必ずしも必要ではなさそうです
-(ただし、書いてあった方が安心できそう)
- 変更を反映するために、コマンドパレットから
-Window:Reload を実行します。
-そうすると、コマンドパレットにmy-package:helloが出てくるので、
-実行すると、今のカーソルの部分にHello, World!が挿入されます。</description>
+      <description>Github製のエディタAtomの招待が来ました。 簡単なプラグインの作り方が公開されていましたので、 自分でも作ってみました。 [Create Your First Package]https://atom.io/docs/latest/your-first-package) #テンプ</description>
     </item>
     
     <item>
@@ -1709,14 +683,7 @@ Window:Reload を実行します。
       <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
       
       <guid>/blog/2013/11/10/rails-trace-1/</guid>
-      <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。
-まだ全部追い切れてないですが、思った以上に長くなったのでとりあえずメモとして出 してみます。
-一部Rails力やRuby力が足りなくて追い切れない部分がありますが(´･_･`)
-##準備
-rails g controller Trace index create app/controllers/trace_controller.rb route get &amp;quot;trace/index&amp;quot; invoke erb create app/views/trace create app/views/trace/index.html.erb invoke test_unit create test/controllers/trace_controller_test.rb invoke helper create app/helpers/trace_helper.rb invoke test_unit create test/helpers/trace_helper_test.rb invoke assets invoke coffee create app/assets/javascripts/trace.js.coffee invoke scss create app/assets/stylesheets/trace.css.scss  というコントローラーを作り、
-class TraceController &amp;lt; ApplicationController def index caller().each{ |line| p line} end end  というtraceを用意し、ここにアクセスしてみました。
-出力されたログは以下のようになりました。(見にくかったので、GEMまでのパスはGEM_FILE_PATHとしてます)
-Started GET &amp;quot;/trace/index&amp;quot; for 127.0.0.1 at 2013-11-02 20:22:17 +0900 Processing by TraceController#index as HTML &amp;quot;/GEMLIFE_PATH/actionpack-4.</description>
+      <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。 まだ全部追</description>
     </item>
     
     <item>
@@ -1725,24 +692,7 @@ Started GET &amp;quot;/trace/index&amp;quot; for 127.0.0.1 at 2013-11-02 20:22:1
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>/blog/2013/09/25/octopress/</guid>
-      <description>前までブログシステムにはWordpressを使っていたんですが、
-個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。
-そこで、ちょっと話題になってる(らしい)Octopressを導入してみました。
-#Octopressって何？ jekyllを使って、
-github pages上で簡単にブログを作れるシステムらしいです。
-テキストファイルにmarkdown形式で書いてそれをコンパイル、ローカル上で確認することができ、
-githubのへデプロイすることでweb上に公開できるシステムになります。
-そのため、gitを使ってブログのデプロイやバックアップを作れるという、
-まさにプログラマー向けなブログシステムです。
-公式サイトにも、A blogging framework for hackersって書いてありますしね。
-インストールの仕方はこっち
-#運用方法 デプロイするgithubのリポジトリには、このブログのファイルが全部入ってます。
-ですが、実際にはこれはoctopressの_deployフォルダの中身だけで、
-このブログファイルをコンパイルするOctopressや、markdownで書かれた生原稿などは含まれていません。
-そこで、公開用のリポジトリとは別に、
-Octopressや原稿そのものもbutbucketのプライベートリポジトリで管理しています。
-こうすると、まだ書きかけの記事とかもgitで管理できるのでとても便利になります。
-今のところ、これでいけそうな感じなのでしばらくこれを使ってみようと思います。</description>
+      <description>前までブログシステムにはWordpressを使っていたんですが、 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。 そこ</description>
     </item>
     
   </channel>

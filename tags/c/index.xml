@@ -17,11 +17,7 @@
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
       <guid>/blog/2015/08/20/c-struct/</guid>
-      <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。
-ですが、intは4byte、boolは1byteなのでStは5byte、StStは6byteしか使わないため、サイズが増えてしまっています。
-#include &amp;quot;stdio.h&amp;quot; struct St{ int a; bool flag; }; struct StSt{ S s; bool f; }; int main(void) { printf(&amp;quot;%lu\n&amp;quot;, sizeof(St)); printf(&amp;quot;%lu\n&amp;quot;, sizeof(StSt)); return 0; }  原因 Cでは構造体の後ろにパディングを追加できるようになっています。
-6.7.2.1 Structure and union specifiers
-13 Within a structure object, the non-bit-field members and the units in which bit-fields reside have addresses that increase in the order in which they are declared. A pointer to a structure object, suitably converted, points to its initial member (or if that member is a bit-field, then to the unit in which it resides), and vice versa.</description>
+      <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。 ですが、intは4byte、boolは1byteなので</description>
     </item>
     
     <item>
@@ -30,17 +26,7 @@
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
       <guid>/blog/2015/06/18/c-thread/</guid>
-      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。
-他の言語のようにスレッド用のクラスを継承するのでは無く、
-別スレッドで実行する関数のポインタと、
-その関数に渡すデータのポインタを指定して実行するようです。
-スレッドによる並行処理 スレッドの作成(pthread_create) Cではpthread_createを利用することで、別スレッドで任意の関数を実行できます。
-int pthread_create(pthread_t * thread, pthread_attr_t * attr, void * (*start_routine)(void *), void * arg);   thread  スレッド管理用のpthread_t型の変数  attr  スレッドの属性を指定する。 NULLの場合はデフォルトが使われる  (*start_routine)(void *)  別スレッドから呼び出される関数へのポインタ  arg  start_routineの引数として渡すデータのポインタ 元のスレッドからデータを送るのに使う   スレッドの終了を待つ(pthread_join) pthread_joinで、指定したスレッドが終了するまで待機することができます。
-int pthread_join(pthread_t th, void **thread_return);   th  待機するスレッドをpthread_t型の変数で指定する  **thread_return  スレッドの戻り値を格納する領域   サンプルコード 以下の例はグローバルな値にメインとサブの2つのスレッドから加算処理を行っています。
-排他制御をしていないため、スレッドによる並行処理が行われると、値がおかしくなる可能性があります。
-実際、何度か実行すると値がおかしくなり、並行処理が行われていることが確認できます。
-なお、コンパイルする際はは-pthreadオプションを指定する必要があります。
-#include &amp;quot;stdio.h&amp;quot; #include &amp;quot;pthread.</description>
+      <description>C言語でのスレッド処理と、ロックの仕方をまとめました。 他の言語のようにスレッド用のクラスを継承するのでは無く、 別スレッドで実行する関数のポイ</description>
     </item>
     
   </channel>

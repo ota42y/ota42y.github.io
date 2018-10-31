@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="スタックに確保した変数の有効範囲に気をつける">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>スタックに確保した変数の有効範囲に気をつける | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+                      class="active"
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/blog/2014/stack-heap/">スタックに確保した変数の有効範囲に気をつける</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-09-16" class="post_data">
+    2014-09-16
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/cpp">cpp</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。<br />
+rubyとかjavaではこのような違いは基本的に意識する必要が無いため、間違った使い方をしてしまう場合があります。</p>
+
+<p>例えば、普通の変数はスタックに積まれるため、スコープを抜けるとたとえ使っていても破棄されます。</p>
+
+<p>以下に、関数の中で文字バッファをスタックに確保し、その参照を戻す関数の間違った例を上げます。</p>
+
+<pre><code class="language-cpp">#include &lt;string&gt;
+#include &lt;stdio.h&gt;
+
+char *getTextFilename(const char* basename){
+  char str[1024] = {0};
+  strncpy(str, basename, strlen(basename)+1);
+  strncat(str, &quot;.txt&quot;, 5);
+  return str;
+}
+int main(void){
+  char *test_filename = getTextFilename(&quot;test&quot;);
+  printf(&quot;%s\n&quot;, test_filename);
+
+  char *example_filename = getTextFilename(&quot;example&quot;);
+  printf(&quot;%s\n&quot;, example_filename);
+
+  printf(&quot;%s\n&quot;, test_filename);
+
+  return 0;
+}
+</code></pre>
+
+<p>環境によりますが、おそらく二回目のtest_filenameの出力がおかしくなると思います。<br />
+私の場合は以下のように、test_filenameにexample_filenameの内容が書き込まれていました。</p>
+
+<pre><code>test.txt
+example.txt
+example.txt
+</code></pre>
+
+<p>getTextFilename内のstrはスタックに確保されるので、関数終了時に解放されます。<br />
+そのため、戻り値の指し示す文字列は解放済みメモリとなり、勝手に変更される可能性があります。</p>
+
+<p>上の例ではたまたま同じアドレスが再利用されたため、同じ文字列が設定されました。<br />
+ですが、間に様々な処理を実行した場合は、謎の値が書き込まれるなどがあり得るため注意が必要です。</p>
+
+<h1 id="対策">対策</h1>
+
+<p>このような場合、いくつかの対策があります。</p>
+
+<h2 id="引数で渡す">引数で渡す</h2>
+
+<p>1つ目が、strncpyやstrncatのように、メモリ利用域を引数として受け取る方法です。<br />
+これにより、自分のスコープから外れても値を保持することができます。<br />
+先ほどの例ですと、main側でcharの配列を確保して関数の引数でそれを受け取るといった形です。</p>
+
+<p>確保したスコープを抜けるとやはり解放されますが、確実に解放されるためとても楽です。</p>
+
+<h2 id="ヒープに確保する">ヒープに確保する</h2>
+
+<p>2つ目はmallocやnewでヒープ領域に確保する方法です。<br />
+以下はnewで配列を確保するように書き換えました。</p>
+
+<pre><code class="language-cpp">#include &lt;string&gt;
+#include &lt;stdio.h&gt;
+
+char *getTextFilename(const char* basename){
+  char *str = new char[1024];
+  strncpy(str, basename, strlen(basename)+1);
+  strncat(str, &quot;.txt&quot;, 5);
+  return str;
+}
+int main(void){
+  char *test_filename = getTextFilename(&quot;test&quot;);
+  printf(&quot;%s\n&quot;, test_filename);
+
+  char *example_filename = getTextFilename(&quot;example&quot;);
+  printf(&quot;%s\n&quot;, example_filename);
+
+  printf(&quot;%s\n&quot;, test_filename);
+
+　// 明示的に解放しないと絶対に解放されない
+  delete test_filename;
+  delete example_filename;
+
+  return 0;
+}
+</code></pre>
+
+<p>newやmallocでメモリ領域を確保した場合、ヒープ領域に確保され、スコープを超えてメモリを確保し続けられます。<br />
+ただし、明示的に解放しないとメモリリークが起きるため、注意が必要です。</p>
+
+<h2 id="オブジェクトをコピーする">オブジェクトをコピーする</h2>
+
+<p>3つめがコピーを使う方法です。<br />
+今回の関数では配列を使っていますが、コピーコンストラクタをもつstd::stringを使うと、<br />
+スタック上の内容を関数の外に安全にコピー出来ます。</p>
+
+<pre><code class="language-cpp">#include &lt;string&gt;
+#include &lt;stdio.h&gt;
+
+std::string getTextFilename(const char* basename){
+  std::string text(basename);
+  text.append(&quot;.txt&quot;);
+  return text;
+}
+int main(void){
+  std::string test_filename = getTextFilename(&quot;test&quot;);
+  printf(&quot;%s\n&quot;, test_filename.c_str());
+
+  std::string example_filename = getTextFilename(&quot;example&quot;);
+  printf(&quot;%s\n&quot;, example_filename.c_str());
+
+  printf(&quot;%s\n&quot;, test_filename.c_str());
+
+  return 0;
+}
+</code></pre>
+
+<p>関数の戻り値は戻り先にコピーされるまでは保持されるという仕様があるらしく、<br />
+コピー可能なものに関しては戻り値としてちゃんと返すことが出来ます。<br />
+(これが無い場合、return 0の0も変更される可能性が出てきてしまうため、当然の仕様と言えます)</p>
+
+<p>ただし、コピー処理が走るため、オブジェクトが巨大な場合、<br />
+メモリ消費が増えたり、時間がかかる可能性があるので注意が必要です。</p>
+
+<p>#　まとめ
+スタックで確保した場合、解放忘れ等がないためとても簡単ですが、<br />
+スコープから抜けると解放されてしまうため、有効範囲を考えないといけません。</p>
+
+<p>今回は文字列で例を挙げましたが、自作クラスなどでもほぼ同じ事がいえます。<br />
+ただし、3つ目の方法はそのクラスと、メンバ変数として持ってるクラス全てにコピーコンストラクタを書いていないと、
+中途半端にコピーされ、ß予期せぬエラーに繋がります。　　</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#対策">対策</a>
+<ul>
+<li><a href="#引数で渡す">引数で渡す</a></li>
+<li><a href="#ヒープに確保する">ヒープに確保する</a></li>
+<li><a href="#オブジェクトをコピーする">オブジェクトをコピーする</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

@@ -17,15 +17,7 @@
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/2015/01/23/ram-disk/</guid>
-      <description>まとめ  RAMディスクを作ってビルドすると早くなる  SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思われる  Macだととても簡単にRAMディスクが作れる Jenkins等、ビルドが主目的の場合に有効と思われる メモリが余っているならやる価値はある  Mac OS XでのRAMディスク作成 Macではhdidコマンドを使うことで、メモリ領域をディスクとして使用することが出来ます。
-メモリはSSDと比べても遙かに早く、R/Wの激しい処理にうってつけです。
-また、rootでなくても作成できるため、非常に便利です
-ディスク作成手順 2つコマンドを実行するだけです。
-hdid -nomount ram://4096000 # 指定した容量でRAMディスクが作成されます。 # /dev/disk2等作成された場所が返ります。 # ファイルシステムがないためマウントは失敗します。 # そのため、-nomuntをつけています。 diskutil eraseDisk HFS+ RAM /dev/disk2 # 先ほど作成したディスク(/dev/disk2)をHFSでフォーマットします # さらに、RAMという名前でマウントします。 # これにより、/Volumes/RAMでアクセスできるようになります。 hdiutil detach disk2 # 作成したディスクをアンマウントして削除します # ディスクは消滅するのでご注意ください # diskutil unmountDisk # diskutil eject # の組み合わせと同じですが、コマンド一つになるため楽です  速度比較 Mac Book Air 13-inch Mid 2013のSSDと速度比較しました。
-速度計測にはXbenchを使用しました。
-結果は以下の通りになりました。
-どれをとってもRAMディスクの方が圧倒的に早い結果になりました。
-ブロックサイズが小さいwriteの場合は2倍程度になっていますが、それ以外は5倍〜10倍以上の差がついています。</description>
+      <description>まとめ RAMディスクを作ってビルドすると早くなる SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思</description>
     </item>
     
     <item>
@@ -34,17 +26,7 @@ hdid -nomount ram://4096000 # 指定した容量でRAMディスクが作成さ�
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/08/28/ios-build/</guid>
-      <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、
-普通にコマンドラインからビルドを実行していただけなので、 使っているコマンドをまとめました。
-なお、以下のサンプルプロジェクトを使って確認しました。
-CustomHTTPProtocol
-/usr/bin/agvtool バージョンを設定する /usr/bin/agvtool new-version -all (VERSION_NUMBER)
-xcodeのプロジェクト設定の、build部分(CFBundleVersion)を変更できます。
-バージョンを確認する /usr/bin/agvtool mvers -terse アプリのバージョン番号を確認出来ます。
-プロジェクト設定のVersionの部分ですね。
-(mversはmarketing-versionの略です)
-使える証明書を確認する /usr/bin/security find-identity -p codesigning -v 1) ABCDEFGHIJKLMNOPQRSTUVWXYZ(識別子) &amp;quot;iPhone Developer: ota42y (XXXXXXXX識別子)&amp;quot; 1 valid identities found  このコンピュータで使えるcodesigningの一覧が取れます。
-/usr/bin/xcodebuild 使えるSDKを確認する /usr/bin/xcodebuild -showsdks OS X SDKs: OS X 10.8 -sdk macosx10.8 OS X 10.9 -sdk macosx10.9 iOS SDKs: iOS 7.1 -sdk iphoneos7.1 iOS Simulator SDKs: Simulator - iOS 6.1 -sdk iphonesimulator6.</description>
+      <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、 普通にコマンドラインからビルドを実行</description>
     </item>
     
   </channel>

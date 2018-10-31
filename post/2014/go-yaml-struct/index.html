@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="golangでYAMLファイルを読み込んで構造体に入れる">
+    <meta name="author" content="ota42y">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.configure({tabReplace: '    '}); 
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    
+    <title>golangでYAMLファイルを読み込んで構造体に入れる | おおたの物置</title>
+    
+</head>
+
+
+<body>
+
+<header>
+    <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+              <a href="/" class="navbar-brand">おおたの物置</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li
+                      
+                      ><a href="/">Top</a></li>
+
+                    <li
+                      
+                      
+                      
+
+                      
+
+                      ><a href="/blog/">Blog</a></li>
+                    <li
+                      
+
+                      
+                      ><a href="/tags/">Tags</a></li>
+
+                    <li
+                      
+
+                      
+                      ><a href="/pages/">Pages</a></li>
+                </ul>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="">rss</a></p>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+              <h1 class="article_title"><a href="/post/2014/go-yaml-struct/">golangでYAMLファイルを読み込んで構造体に入れる</a></h1>
+              <p class="post_detail">
+    
+    <time datetime="2014-12-03" class="post_data">
+    2014-12-03
+    </time>
+    
+
+    
+    <span class="separator">|</span>
+    <span class="post_data">tags: [</span>
+
+    
+    <span class="post_data">
+        <a href="/tags/golang">golang</a>
+    </span>
+    
+
+    <span class="post_data">]</span>
+    
+</p>
+
+            </div>
+
+            <div class="article">
+              
+
+<p>使い方がかなり特殊だったのでメモ<br />
+(ドキュメントには書いてありますが…)</p>
+
+<p>goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、<br />
+データを構造体にセットした状態で読み込むことが出来ます。</p>
+
+<p>特にGoでは構造体を使わない場合、<a href="http://ota42y.com/blog/2014/11/13/go-yaml/">interfaceへの変換を書きまくる事になる</a>ので、<br />
+できる限り構造体を利用した方がお勧めです。</p>
+
+<p>以下のように、YAMLのキーとGoの構造体の名前を揃えることで、<br />
+YAMLから構造体に直接データを代入できます。</p>
+
+<pre><code class="language-go">type Data struct {
+  UserId      int
+  UserName    string `yaml:&quot;user_name&quot;`
+  Follownum   int    `yaml:&quot;followNum&quot;`
+  MessageText string
+  invaliddata string
+}
+</code></pre>
+
+<pre><code class="language-yaml">userid: 123
+user_name: name
+followNum: 42
+messageText: text
+invaliddata: data
+</code></pre>
+
+<p>後述するコードでYAMLを読み込むと、出力は以下の通りになります、<br />
+<code>=&gt; {123 name 42  }</code></p>
+
+<p>UserIdに123、UserNameにname、Follownumに42、<br />
+MessageTextとinvaliddataは空になっています。</p>
+
+<h1 id="構造体とyamlの対応付け仕様">構造体とYAMLの対応付け仕様</h1>
+
+<p>特に指定をしない場合、構造体の変数名に対応するキーと対応付けられます。<br />
+対応するキーは以下のような仕様になっているようです。</p>
+
+<ul>
+<li>指定が無い場合、変数名を全て小文字にしたYAMLのキーと対応付ける
+
+<ul>
+<li>UserIdはuseridと対応付けられます</li>
+</ul></li>
+<li>後述する方法で明示的な指定をしない限り、YAMLのキーは全て小文字のみ受け付けます
+
+<ul>
+<li>messageTextはダメで、messagetextでないといけません</li>
+</ul></li>
+<li>構造体のメンバは大文字から始まる
+
+<ul>
+<li>そのため、invaliddataにはデータ入っていません</li>
+<li>大文字から始まれば、途中が大文字でも大丈夫です</li>
+<li>UserIdはuseridと対応付けられます</li>
+<li>途中を大文字にしても、全て小文字のキーを見に行きます</li>
+<li>MessageTextはmessagetextと対応付けられます</li>
+</ul></li>
+<li>明示的に対応を設定することもできる
+
+<ul>
+<li>UserNameをuser_nameと対応付けたり(通常はUser_Nameというメンバ変数にしないといけない)</li>
+<li>Follownumの変数をfollowNumと対応付けるなど、上記の制限は無くなる</li>
+</ul></li>
+</ul>
+
+<p>暗黙のルールが多いですが、それさえ理解すればかなり簡単に書くことができます。</p>
+
+<h1 id="サンプルコード">サンプルコード</h1>
+
+<pre><code class="language-go">package main
+
+import (
+  &quot;gopkg.in/yaml.v2&quot;
+  &quot;io/ioutil&quot;
+  &quot;fmt&quot;
+)
+
+type Data struct {
+  UserId      int
+  UserName    string `yaml:&quot;user_name&quot;`
+  Follownum   int     `yaml:&quot;followNum&quot;`
+  MessageText string
+  invaliddata string
+}
+
+func main() {
+  buf, err := ioutil.ReadFile(&quot;test.yml&quot;)
+  if err != nil {
+    panic(err)
+  }
+
+  var d Data
+  err = yaml.Unmarshal(buf, &amp;d)
+  fmt.Println(d)
+}
+</code></pre>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            
+            <div id="toc">
+                <div id="toc_body">
+                    <div id="toc_index">目次</div>
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#構造体とyamlの対応付け仕様">構造体とYAMLの対応付け仕様</a></li>
+<li><a href="#サンプルコード">サンプルコード</a></li>
+</ul>
+</nav>
+                </div>
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div id="recent_item">
+  <div id="recent_item_index">最近の投稿</div>
+  <ul>
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5_result/">
+          
+          <time datetime="2018-10-07" class="recent_date">
+            2018-10-07
+          </time>
+          
+          技術書典５で本を３冊出しました
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbook_5/">
+          
+          <time datetime="2018-10-06" class="recent_date">
+            2018-10-06
+          </time>
+          
+          技術書典５で本が３冊出ます
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/2018-10-04/">
+          
+          <time datetime="2018-10-04" class="recent_date">
+            2018-10-04
+          </time>
+          
+          Amazon Web Servicesサーバーレスレシピ という本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/ryazo/">
+          
+          <time datetime="2018-08-01" class="recent_date">
+            2018-08-01
+          </time>
+          
+          RustでGyazoクローンを作った
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/goroutine/">
+          
+          <time datetime="2018-07-17" class="recent_date">
+            2018-07-17
+          </time>
+          
+          goroutineの動き方を調べた
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/bootsnap/">
+          
+          <time datetime="2018-06-04" class="recent_date">
+            2018-06-04
+          </time>
+          
+          bootsnapの速度計測
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/techbookfest_4/">
+          
+          <time datetime="2018-04-23" class="recent_date">
+            2018-04-23
+          </time>
+          
+          技術書展4でMicroservices architecture よろず本を出した
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/microservices_yorozu_book/">
+          
+          <time datetime="2018-04-10" class="recent_date">
+            2018-04-10
+          </time>
+          
+          技術書典4でMicroservices architectureよろず本を出します
+        </a>
+      </small>
+    </li>
+
+    
+
+    <li>
+      <small>
+        <a href="/blog/2018/virtual_gem/">
+          
+          <time datetime="2018-04-04" class="recent_date">
+            2018-04-04
+          </time>
+          
+          gemのバージョンアップで依存関係が壊れるのを調べやすくした
+        </a>
+      </small>
+    </li>
+
+    
+  </ul>
+</div>
+
+          </div>
+          <div class="row">
+            
+<div id="profile">
+  <div id="profile_index">プロフィール</div>
+  <p>
+    <a href=""><img class="icon" src=""></a>
+  </p>
+  <p class="name"></p>
+  <p></p>
+</div>
+
+          </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<footer class="small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center copyright">
+                Copyright © 2015 - ota42y powerd by <a href="https://github.com/ota42y/honokichi">Honokichi</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
