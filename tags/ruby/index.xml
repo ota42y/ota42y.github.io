@@ -6,10 +6,19 @@
     <description>Recent content in Ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 07 Oct 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Nov 2018 00:21:50 +0000</lastBuildDate>
     
 	<atom:link href="/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作った</title>
+      <link>/blog/2018/11/02/hyper_schema_to_openapi3/</link>
+      <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/11/02/hyper_schema_to_openapi3/</guid>
+      <description>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作りました。 一旦はOpenAPI3でエラーのない状態に変換できます 残念な</description>
+    </item>
     
     <item>
       <title>技術書典５で本を３冊出しました</title>
