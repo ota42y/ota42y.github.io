@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 02 Nov 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Nov 2018 03:21:50 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ヒヤリハットの対義語はヤハリヒットなのか？</title>
+      <link>/blog/2018/11/17/yahari_hit_trend/</link>
+      <pubDate>Sat, 17 Nov 2018 03:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/11/17/yahari_hit_trend/</guid>
+      <description>結論 Web上の2016/10/22以前のページをすべて調べた(数十ページなので) ヒヤリハットの対義語としている文献はなさそう ヤハリヒットとい</description>
+    </item>
     
     <item>
       <title>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作った</title>
