@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/2018/11/19/committee_3/</loc>
+    <lastmod>2018-11-19T09:10:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2018/11/17/yahari_hit_trend/</loc>
     <lastmod>2018-11-17T03:21:50+00:00</lastmod>
   </url>
@@ -985,7 +990,7 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2018-11-17T03:21:50+00:00</lastmod>
+    <lastmod>2018-11-19T09:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1068,7 +1073,7 @@
   
   <url>
     <loc>/tags/gem/</loc>
-    <lastmod>2018-06-04T09:10:37+09:00</lastmod>
+    <lastmod>2018-11-19T09:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1200,13 +1205,13 @@
   
   <url>
     <loc>/tags/rails/</loc>
-    <lastmod>2018-06-04T09:10:37+09:00</lastmod>
+    <lastmod>2018-11-19T09:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/ruby/</loc>
-    <lastmod>2018-11-02T00:21:50+00:00</lastmod>
+    <lastmod>2018-11-19T09:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1235,26 +1240,26 @@
   </url>
   
   <url>
-    <loc>/tags/tech/</loc>
-    <lastmod>2016-02-25T22:44:10+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/tech/</loc>
     <lastmod>2015-07-05T14:15:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/text/</loc>
-    <lastmod>2018-11-17T03:21:50+00:00</lastmod>
+    <loc>/tags/tech/</loc>
+    <lastmod>2016-02-25T22:44:10+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/text/</loc>
     <lastmod>2015-06-21T23:43:02+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/text/</loc>
+    <lastmod>2018-11-17T03:21:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1276,7 +1281,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-11-17T03:21:50+00:00</lastmod>
+    <lastmod>2018-11-19T09:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,19 @@
     <description>Recent content in Ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 02 Nov 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Nov 2018 09:10:37 +0900</lastBuildDate>
     
 	<atom:link href="/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>committee 3.0とOpenAPI3対応方針</title>
+      <link>/blog/2018/11/19/committee_3/</link>
+      <pubDate>Mon, 19 Nov 2018 09:10:37 +0900</pubDate>
+      
+      <guid>/blog/2018/11/19/committee_3/</guid>
+      <description>RubyでOpenAPIやJSON Hyper-Schemaを使い、リクエスト・レスポンスバリデーションができるcommitteeのコミッター</description>
+    </item>
     
     <item>
       <title>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作った</title>
