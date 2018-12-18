@@ -6,10 +6,19 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 01 Dec 2018 23:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Dec 2018 00:21:50 +0000</lastBuildDate>
     
 	<atom:link href="/tags/text/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>検索結果の良さを計測して定量的に改善していく話をDevelopers Boostで話しました</title>
+      <link>/blog/2018/12/18/developers_boost_presentation/</link>
+      <pubDate>Tue, 18 Dec 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/12/18/developers_boost_presentation/</guid>
+      <description>12/15日に開かれたDevelopers Boostというイベントで、検索結果の良さを計測して定量的に改善していくという内容で発表をさせて頂</description>
+    </item>
     
     <item>
       <title>Developers Boostで検索結果の良さを計測して定量的に改善していく話をします</title>

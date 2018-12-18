@@ -49,9 +49,7 @@
 &lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,9 +62,7 @@
 
 &lt;p&gt;&lt;img src=&#34;/images/blog/2018/2018-10-06-all_techbook.png&#34; width=&#39;50%&#39; /&gt;&lt;/p&gt;
 
-&lt;p&gt;技術書典５で私が何故か３サークルの運営に関与していたので…&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;技術書典５で私が何故か３サークルの運営に関与していたので…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -76,8 +72,7 @@
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
       <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
-資料あげようと思って完全に忘れていたので上げます…
-&lt;/p&gt;</description>
+資料あげようと思って完全に忘れていたので上げます…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -102,9 +97,7 @@
 &lt;li&gt;任意のgemの依存関係を書き換えられる&lt;/li&gt;
 &lt;li&gt;事前に依存関係が壊れるのを調べやすくなる&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -119,9 +112,7 @@
 &lt;li&gt;columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる&lt;/li&gt;
 &lt;li&gt;だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい&lt;/li&gt;
 &lt;li&gt;チェックして消す&amp;amp;今後増えないようにするgemを作った&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -134,9 +125,7 @@
 &lt;a href=&#34;https://jvn.jp/vu/JVNVU98536678/&#34;&gt;JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。&lt;br /&gt;
-&lt;a href=&#34;https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations&#34;&gt;Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;a href=&#34;https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations&#34;&gt;Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

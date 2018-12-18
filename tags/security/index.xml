@@ -21,9 +21,7 @@
 &lt;a href=&#34;https://jvn.jp/vu/JVNVU98536678/&#34;&gt;JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。&lt;br /&gt;
-&lt;a href=&#34;https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations&#34;&gt;Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;a href=&#34;https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations&#34;&gt;Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
