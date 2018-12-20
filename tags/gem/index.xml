@@ -27,7 +27,8 @@
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
       <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
-資料あげようと思って完全に忘れていたので上げます…&lt;/p&gt;</description>
+資料あげようと思って完全に忘れていたので上げます…
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,7 +53,9 @@
 &lt;li&gt;任意のgemの依存関係を書き換えられる&lt;/li&gt;
 &lt;li&gt;事前に依存関係が壊れるのを調べやすくなる&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,7 +70,9 @@
 &lt;li&gt;columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる&lt;/li&gt;
 &lt;li&gt;だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい&lt;/li&gt;
 &lt;li&gt;チェックして消す&amp;amp;今後増えないようにするgemを作った&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

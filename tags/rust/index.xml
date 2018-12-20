@@ -20,7 +20,9 @@
       <description>&lt;p&gt;RustでGyazoのサーバ側と同じ機能を有するRyazoを作りました。リポジトリはここです。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/ota42y/ryazo&#34;&gt;https://github.com/ota42y/ryazo&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://github.com/gyazo/Gyazo&#34;&gt;オリジナルのGyazo&lt;/a&gt;と比べてDBにSQLiteを使っているところが若干違いがあります。&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://github.com/gyazo/Gyazo&#34;&gt;オリジナルのGyazo&lt;/a&gt;と比べてDBにSQLiteを使っているところが若干違いがあります。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
