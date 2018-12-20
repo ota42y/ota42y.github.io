@@ -6,10 +6,19 @@
     <description>Recent content in Book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 02 Nov 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Dec 2018 00:21:50 +0000</lastBuildDate>
     
 	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小さい組織でMicroservices Architectureは止めた方がいい</title>
+      <link>/blog/2018/12/20/no_more_microservices/</link>
+      <pubDate>Thu, 20 Dec 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/blog/2018/12/20/no_more_microservices/</guid>
+      <description>この投稿はMicroservices Advent Calendar 2018 19日目の投稿です。 簡単なまとめ マイクロサービスの大きな利点は、 チームに権限と責任を委譲することで</description>
+    </item>
     
     <item>
       <title>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作った</title>
