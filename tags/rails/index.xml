@@ -6,10 +6,19 @@
     <description>Recent content in Rails on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 19 Nov 2018 09:10:37 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Dec 2018 09:10:37 +0900</lastBuildDate>
     
 	<atom:link href="/tags/rails/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>committee 3.0.0.alphaとOpenAPI3対応の現状</title>
+      <link>/blog/2018/12/27/committee_alpha/</link>
+      <pubDate>Thu, 27 Dec 2018 09:10:37 +0900</pubDate>
+      
+      <guid>/blog/2018/12/27/committee_alpha/</guid>
+      <description>committeeの3.0.0.alphaがリリースされました。 OpenAPI3対応とそれに伴う大規模なリファクタリングが入っています。 手元</description>
+    </item>
     
     <item>
       <title>committee 3.0とOpenAPI3対応方針</title>
@@ -27,8 +36,7 @@
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
       <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
-資料あげようと思って完全に忘れていたので上げます…
-&lt;/p&gt;</description>
+資料あげようと思って完全に忘れていたので上げます…&lt;/p&gt;</description>
     </item>
     
   </channel>
