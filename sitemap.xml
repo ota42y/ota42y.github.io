@@ -1260,26 +1260,26 @@
   </url>
   
   <url>
-    <loc>/categories/tech/</loc>
-    <lastmod>2015-07-05T14:15:20+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/tech/</loc>
     <lastmod>2016-02-25T22:44:10+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/text/</loc>
-    <lastmod>2015-06-21T23:43:02+09:00</lastmod>
+    <loc>/categories/tech/</loc>
+    <lastmod>2015-07-05T14:15:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/text/</loc>
     <lastmod>2018-12-18T00:21:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/text/</loc>
+    <lastmod>2015-06-21T23:43:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
