@@ -167,18 +167,9 @@ gem install grpc grpc-tools
 なお、gemで入れた場合はprotocコマンドはgrpc_tools_ruby_protocに、grpc_ruby_pluginはgrpc_tools_ruby_protoc_pluginという名前になっているのでご注意ください。</p>
 
 <p>protoファイルから.rbファイルを生成します。
-ここでは/work以下にcloneを行ったと過程し、/work/proto_rubyフォルダ以下に出力しています。</p>
+ここでは/work以下にcloneを行ったと仮定し、/work/proto_rubyフォルダ以下に出力しています。</p>
 
-<pre><code class="language-bash">cd /work
-mkdir proto_ruby
-export PROTO_DIR=/work/proto_ruby/
-
-find ./serving/tensorflow_serving -name *.proto | xargs grpc_tools_ruby_protoc -I=serving -I=serving/tensorflow --ruby_out=$PROTO_DIR --grpc_out=$PROTO_DIR --plugin=protoc-gen-grpc=`which grpc_tools_ruby_protoc_plugin` 
-
-grpc_tools_ruby_protoc -I serving/tensorflow --ruby_out=$PROTO_DIR --grpc_out=$PROTO_DIR --plugin=protoc-gen-grpc=`which grpc_tools_ruby_protoc_plugin` serving/tensorflow/tensorflow/core/{framework,example,protobuf}/*.proto
-
-grpc_tools_ruby_protoc -I serving/tensorflow --ruby_out=$PROTO_DIR --grpc_out=$PROTO_DIR --plugin=protoc-gen-grpc=`which grpc_tools_ruby_protoc_plugin` serving/tensorflow/tensorflow/core/lib/core/error_codes.proto
-</code></pre>
+<script src="https://gist.github.com/ota42y/3a7622f84ce86823f62457df4ff6639d.js?file=shell.sh"></script>
 
 <h3 id="gprcを利用してtenserflow-servingに送る">gPRCを利用してTenserFlow Servingに送る</h3>
 
