@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/2019/02/11/tenserflow_serving/</loc>
+    <lastmod>2019-02-11T10:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2019/02/02/committee3/</loc>
     <lastmod>2019-02-02T10:00:00+09:00</lastmod>
   </url>
@@ -1020,7 +1025,7 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2019-02-02T10:00:00+09:00</lastmod>
+    <lastmod>2019-02-11T10:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1241,7 +1246,7 @@
   
   <url>
     <loc>/tags/ruby/</loc>
-    <lastmod>2019-02-02T10:00:00+09:00</lastmod>
+    <lastmod>2019-02-11T10:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1282,6 +1287,12 @@
   </url>
   
   <url>
+    <loc>/tags/tenserflow/</loc>
+    <lastmod>2019-02-11T10:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/text/</loc>
     <lastmod>2018-12-18T00:21:50+00:00</lastmod>
     <priority>0</priority>
@@ -1311,7 +1322,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-02-02T10:00:00+09:00</lastmod>
+    <lastmod>2019-02-11T10:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   

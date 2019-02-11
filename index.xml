@@ -6,10 +6,19 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 02 Feb 2019 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 11 Feb 2019 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TensorFlow ServingでTensorFlowのモデルを運用する</title>
+      <link>/blog/2019/02/11/tenserflow_serving/</link>
+      <pubDate>Mon, 11 Feb 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/blog/2019/02/11/tenserflow_serving/</guid>
+      <description>TensorFlow ServingとはTensorFlowのモデルをマネージしてくれるサーバです。 モデルを処理するサーバ機能に加えて、複数モデルの管理、バージ</description>
+    </item>
     
     <item>
       <title>committeeのOpenAPI 3対応がでました</title>

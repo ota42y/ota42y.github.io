@@ -374,7 +374,7 @@
     <item>
       <title>Ruby</title>
       <link>/tags/ruby/</link>
-      <pubDate>Sat, 02 Feb 2019 10:00:00 +0900</pubDate>
+      <pubDate>Mon, 11 Feb 2019 10:00:00 +0900</pubDate>
       
       <guid>/tags/ruby/</guid>
       <description></description>
@@ -413,6 +413,15 @@
       <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
       
       <guid>/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tenserflow</title>
+      <link>/tags/tenserflow/</link>
+      <pubDate>Mon, 11 Feb 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/tags/tenserflow/</guid>
       <description></description>
     </item>
     
