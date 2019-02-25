@@ -59,7 +59,7 @@
     <item>
       <title>Aws</title>
       <link>/tags/aws/</link>
-      <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
+      <pubDate>Mon, 25 Feb 2019 10:00:00 +0900</pubDate>
       
       <guid>/tags/aws/</guid>
       <description></description>
@@ -363,6 +363,15 @@
     </item>
     
     <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Mon, 25 Feb 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Rails</title>
       <link>/tags/rails/</link>
       <pubDate>Sat, 02 Feb 2019 10:00:00 +0900</pubDate>
@@ -422,6 +431,15 @@
       <pubDate>Mon, 11 Feb 2019 10:00:00 +0900</pubDate>
       
       <guid>/tags/tenserflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tensorflow</title>
+      <link>/tags/tensorflow/</link>
+      <pubDate>Mon, 25 Feb 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/tags/tensorflow/</guid>
       <description></description>
     </item>
     
