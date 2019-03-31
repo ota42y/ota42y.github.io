@@ -62,7 +62,7 @@
       <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
       
       <guid>/blog/2018/11/02/hyper_schema_to_openapi3/</guid>
-      <description>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作りました。 一旦はOpenAPI3でエラーのない状態に変換できます 残念な</description>
+      <description>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作りました。 一旦はOpenAPI3でエラーのない状態に変換できます。 https://github.com/ota42y/json_hyperscheme_to_openapi3 残</description>
     </item>
     
     <item>
