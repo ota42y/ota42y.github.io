@@ -6,10 +6,21 @@
     <description>Recent content in Book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Dec 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Apr 2019 03:00:50 +0000</lastBuildDate>
     
 	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技術書典５でマイクロサービスよろず本その三を出します</title>
+      <link>/blog/2019/04/13/techbook_6/</link>
+      <pubDate>Sat, 13 Apr 2019 03:00:50 +0000</pubDate>
+      
+      <guid>/blog/2019/04/13/techbook_6/</guid>
+      <description>&lt;p&gt;4/14の&lt;a href=&#34;https://techbookfest.org/event/tbf06&#34;&gt;技術書典６&lt;/a&gt;で「Microservices architecture よろず本 その三」を出します。&lt;/p&gt;
+
+&lt;p&gt;こちらはよろず本シリーズ三冊目になりますが、これまでとはまた違ったトピックを扱っており、既刊を読んだことがあってもなくても有益な本になると思います。なお、目次はこの記事の一番下にあります。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小さい組織でMicroservices Architectureは止めた方がいい</title>

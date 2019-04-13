@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/2019/04/13/techbook_6/</loc>
+    <lastmod>2019-04-13T03:00:50+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2019/02/25/jaws_days_2019/</loc>
     <lastmod>2019-02-25T10:00:00+09:00</lastmod>
   </url>
@@ -1030,13 +1035,13 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2019-02-25T10:00:00+09:00</lastmod>
+    <lastmod>2019-04-13T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/book/</loc>
-    <lastmod>2018-12-20T00:21:50+00:00</lastmod>
+    <lastmod>2019-04-13T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1208,6 +1213,12 @@
   </url>
   
   <url>
+    <loc>/tags/microservices/</loc>
+    <lastmod>2019-04-13T03:00:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/mongodb/</loc>
     <lastmod>2015-12-02T07:25:25+09:00</lastmod>
     <priority>0</priority>
@@ -1339,7 +1350,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-02-25T10:00:00+09:00</lastmod>
+    <lastmod>2019-04-13T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
