@@ -6,10 +6,19 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 23 Apr 2019 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RubyKaigi 2019で登壇した時のCFPや準備の話</title>
+      <link>/blog/2019/04/24/rubykaigi_2019_cfp/</link>
+      <pubDate>Wed, 24 Apr 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/blog/2019/04/24/rubykaigi_2019_cfp/</guid>
+      <description>今回は未来の発表者のために発表までの準備や流れについて覚えているうちに書いていこうと思います。 発表内容はこちらを参考にしてください。 RubyKaigi 201</description>
+    </item>
     
     <item>
       <title>RubyKaigi 2019でOpenAPI 3について登壇しました</title>
