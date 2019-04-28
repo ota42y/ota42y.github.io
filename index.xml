@@ -6,10 +6,19 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 24 Apr 2019 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2019 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RailsDM 2019でマイクロサービスについての登壇をしました</title>
+      <link>/blog/2019/04/28/railsdm_2019/</link>
+      <pubDate>Sun, 28 Apr 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/blog/2019/04/28/railsdm_2019/</guid>
+      <description>だいぶ時間が空きましたが、2019/03/22-23で行われたRails Developers Meetup 2019にて、「我々はマイクロサービスとどう向き合うべきか」とい</description>
+    </item>
     
     <item>
       <title>RubyKaigi 2019で登壇した時のCFPや準備の話</title>

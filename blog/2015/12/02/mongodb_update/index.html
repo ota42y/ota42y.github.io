@@ -7,11 +7,12 @@
 	<title>MongoDB の update は部分 update ではない</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.52" />
+	<meta name="generator" content="Hugo 0.55.0-DEV" />
 	<meta property="og:title" content="MongoDB の update は部分 update ではない" />
 <meta property="og:description" content="まとめ MongoDB の update はレコードのID以外の要素を全て置き換える 指定したカラムだけ置き換えてはくれない 部分 update したい場合は専用の方法でクエリを作る MongoDB の update" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2015/12/02/mongodb_update/" /><meta property="article:published_time" content="2015-12-02T07:25:25&#43;09:00"/>
+<meta property="og:url" content="/blog/2015/12/02/mongodb_update/" />
+<meta property="article:published_time" content="2015-12-02T07:25:25&#43;09:00"/>
 <meta property="article:modified_time" content="2015-12-02T07:25:25&#43;09:00"/>
 
 	<meta name="twitter:card" content="summary"/>
@@ -187,6 +188,7 @@ col.find(a: 1).replace_one('$set' =&gt; {b:1})
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/04/28/railsdm_2019/">RailsDM 2019でマイクロサービスについての登壇をしました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/04/24/rubykaigi_2019_cfp/">RubyKaigi 2019で登壇した時のCFPや準備の話</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/04/23/rubykaigi_2019/">RubyKaigi 2019でOpenAPI 3について登壇しました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/04/15/techbook_6_result/">マイクロサービスよろず本その三を出しました</a></li>
@@ -196,7 +198,6 @@ col.find(a: 1).replace_one('$set' =&gt; {b:1})
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/02/02/committee3/">committeeのOpenAPI 3対応がでました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/01/25/committee_beta/">committee3.0.0.beta3と2.5.1が出ました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2018/12/27/committee_alpha/">committee 3.0.0.alphaとOpenAPI3対応状況</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/2018/12/20/no_more_microservices/">小さい組織でMicroservices Architectureは止めた方がいい</a></li>
 		</ul>
 	</div>
 </div>
