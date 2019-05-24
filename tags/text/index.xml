@@ -6,10 +6,19 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 18 Dec 2018 00:21:50 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 May 2019 19:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/text/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>株式会社FiNC Technologiesを退職します</title>
+      <link>/blog/2019/05/23/retirement_finc/</link>
+      <pubDate>Thu, 23 May 2019 19:00:00 +0900</pubDate>
+      
+      <guid>/blog/2019/05/23/retirement_finc/</guid>
+      <description>まとめ 6月末でやめます 成長できる環境に…要は「俺より強い奴に会いに行く」 有給あまり過ぎてて暇 誰？ 私です⊂(・8・)⊃ RubyKaigi 2019でOpenAP</description>
+    </item>
     
     <item>
       <title>検索結果の良さを計測して定量的に改善していく話をDevelopers Boostで話しました</title>
