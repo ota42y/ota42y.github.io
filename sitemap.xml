@@ -173,6 +173,11 @@
   </url>
   
   <url>
+    <loc>/pages/summary/2019/2019-06-01/</loc>
+    <lastmod>2016-06-01T22:40:59+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2016/04/28/lovelive-sun-aquarium/</loc>
     <lastmod>2016-04-28T00:21:46+09:00</lastmod>
   </url>
@@ -1280,7 +1285,7 @@
   
   <url>
     <loc>/pages/</loc>
-    <lastmod>2016-02-28T22:40:59+09:00</lastmod>
+    <lastmod>2016-06-01T22:40:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
