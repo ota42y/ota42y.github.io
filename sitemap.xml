@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/pages/summary/2019/2019-06-01/</loc>
+    <lastmod>2019-06-01T19:40:59+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2019/05/23/retirement_finc/</loc>
     <lastmod>2019-05-23T19:00:00+09:00</lastmod>
   </url>
@@ -170,11 +175,6 @@
   <url>
     <loc>/blog/2016/09/15/sea-bream-shock/</loc>
     <lastmod>2016-09-15T19:45:49+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/pages/summary/2019/2019-06-01/</loc>
-    <lastmod>2016-06-01T22:40:59+09:00</lastmod>
   </url>
   
   <url>
@@ -1285,7 +1285,7 @@
   
   <url>
     <loc>/pages/</loc>
-    <lastmod>2016-06-01T22:40:59+09:00</lastmod>
+    <lastmod>2019-06-01T19:40:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1385,7 +1385,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-05-23T19:00:00+09:00</lastmod>
+    <lastmod>2019-06-01T19:40:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   

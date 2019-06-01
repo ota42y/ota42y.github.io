@@ -6,10 +6,19 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 23 May 2019 19:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jun 2019 19:40:59 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019-06-01 weeklyまとめ</title>
+      <link>/pages/summary/2019/2019-06-01/</link>
+      <pubDate>Sat, 01 Jun 2019 19:40:59 +0900</pubDate>
+      
+      <guid>/pages/summary/2019/2019-06-01/</guid>
+      <description>ゼロから作るDeep Learning 2 自然言語編 読書会 第5回 今週は「ゼロから作るDeep Learning 2 自然言語編 読書会 第5回」に参加してました。 https://retrieva.connpass.com/event/131746/ ちょうど読んでたと</description>
+    </item>
     
     <item>
       <title>株式会社FiNC Technologiesを退職します</title>
@@ -393,15 +402,6 @@
       
       <guid>/blog/2016/09/15/sea-bream-shock/</guid>
       <description>6月末に前職のソーシャルゲーム会社を退職しました。 今はRoRエンジニアとして、ヘルスケアベンチャーで働いてます(｀・∀・´≡｀・∀・´) 欲し</description>
-    </item>
-    
-    <item>
-      <title>2019-06-01 weeklyまとめ</title>
-      <link>/pages/summary/2019/2019-06-01/</link>
-      <pubDate>Wed, 01 Jun 2016 22:40:59 +0900</pubDate>
-      
-      <guid>/pages/summary/2019/2019-06-01/</guid>
-      <description>ゼロから作るDeep Learning 2 自然言語編 読書会 第5回 今週は「ゼロから作るDeep Learning 2 自然言語編 読書会 第5回」に参加してました。 https://retrieva.connpass.com/event/131746/ ちょうど読んでたと</description>
     </item>
     
     <item>
