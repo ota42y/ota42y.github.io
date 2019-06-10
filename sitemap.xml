@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/pages/summary/2019/2019-06-10/</loc>
+    <lastmod>2019-06-10T19:40:59+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/pages/summary/2019/2019-06-01/</loc>
     <lastmod>2019-06-01T19:40:59+09:00</lastmod>
   </url>
@@ -1285,7 +1290,7 @@
   
   <url>
     <loc>/pages/</loc>
-    <lastmod>2019-06-01T19:40:59+09:00</lastmod>
+    <lastmod>2019-06-10T19:40:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1385,7 +1390,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-06-01T19:40:59+09:00</lastmod>
+    <lastmod>2019-06-10T19:40:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
