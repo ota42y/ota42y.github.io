@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 12 Jun 2019 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2019 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>読書記録「我々はなぜ我々だけなのか アジアから消えた多様な「人類」たち」</title>
+      <link>/blog/2019/06/22/isbn_978_4065020371/</link>
+      <pubDate>Sat, 22 Jun 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/blog/2019/06/22/isbn_978_4065020371/</guid>
+      <description>「我々はなぜ我々だけなのか アジアから消えた多様な「人類」たち」という本を読みました。 人類の進化の過程を「初期の猿人」「猿人」「原人」「旧人」</description>
+    </item>
     
     <item>
       <title>openapi_parser 0.3.1がでました</title>
