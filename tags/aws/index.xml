@@ -6,10 +6,19 @@
     <description>Recent content in Aws on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 25 Feb 2019 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS GlueでSpark開発をする</title>
+      <link>/blog/2019/06/28/glue_spark_ui/</link>
+      <pubDate>Fri, 28 Jun 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/blog/2019/06/28/glue_spark_ui/</guid>
+      <description>AWS Glueはフルマネージド名ETL(データの抽出、変換、ロード)サービスです。 S3やRDBのデータから、その形式を推定してカタログ登録してく</description>
+    </item>
     
     <item>
       <title>JAWS DAYS 2019でAWS SageMakerを活用してる話をした</title>
