@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/2019/09/16/techbook_7/</loc>
+    <lastmod>2019-09-16T03:00:50+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2019/09/02/docker_desktop_restart/</loc>
     <lastmod>2019-09-02T00:00:00+09:00</lastmod>
   </url>
@@ -1100,13 +1105,13 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2019-09-02T00:00:00+09:00</lastmod>
+    <lastmod>2019-09-16T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/book/</loc>
-    <lastmod>2019-06-22T10:00:00+09:00</lastmod>
+    <lastmod>2019-09-16T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1314,6 +1319,12 @@
   </url>
   
   <url>
+    <loc>/tags/openapi3/</loc>
+    <lastmod>2019-09-16T03:00:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/pages/</loc>
     <lastmod>2019-06-10T19:40:59+09:00</lastmod>
     <priority>0</priority>
@@ -1333,7 +1344,7 @@
   
   <url>
     <loc>/tags/ruby/</loc>
-    <lastmod>2019-06-12T10:00:00+09:00</lastmod>
+    <lastmod>2019-09-16T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1421,7 +1432,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-09-02T00:00:00+09:00</lastmod>
+    <lastmod>2019-09-16T03:00:50+00:00</lastmod>
     <priority>0</priority>
   </url>
   
