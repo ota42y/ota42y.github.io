@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Sep 2019 03:00:50 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Sep 2019 03:00:50 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技術書典７でOpenAPI 3の完全解説本を出しました</title>
+      <link>/blog/2019/09/23/techbook_7_result/</link>
+      <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
+      
+      <guid>/blog/2019/09/23/techbook_7_result/</guid>
+      <description>9/22の技術書典７で「OpenAPI 3を完全に理解できる本」を出しました！ https://techbookfest.org/event/tbf07/circle/5637271940235264 具体的な内容はこちら「技術書典７でOpenAPI 3の完全解説本</description>
+    </item>
     
     <item>
       <title>技術書典７でOpenAPI 3の完全解説本が出ます</title>
@@ -17,7 +26,7 @@
       <pubDate>Mon, 16 Sep 2019 03:00:50 +0000</pubDate>
       
       <guid>/blog/2019/09/16/techbook_7/</guid>
-      <description>9/22の技術書典７で「OpenAPI 3を完全に理解できる本」を出します。場所はう２２「すべてがM(icro)になる」です。 https://techbookfest.org/event/tbf07/circle/5637271940235264 OpenAPI 3に関するお</description>
+      <description>(9/13追記) おかげさまで紙の本は完売しました！！！電子版はBOOTHで販売中ですのでこちらもどうぞ。 https://booth.pm/ja/items/1571902 9/22の技術書典７で「OpenA</description>
     </item>
     
     <item>
