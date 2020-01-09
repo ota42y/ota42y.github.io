@@ -6,10 +6,19 @@
     <description>Recent content in Text on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 23 May 2019 19:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jan 2020 09:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/text/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年に何したかと2020年に何するか</title>
+      <link>/blog/2020/01/09/2019_to_2020/</link>
+      <pubDate>Thu, 09 Jan 2020 09:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/01/09/2019_to_2020/</guid>
+      <description>2019年の振り返りと2020年の話。 2019年の振り返り 2019年は簡単にまとめるなら技術の幅を広げた1年でした。 ちょうど7月で転職したの</description>
+    </item>
     
     <item>
       <title>株式会社FiNC Technologiesを退職します</title>
