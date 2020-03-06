@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubectl on おおたの物置</title>
+    <link>/tags/kubectl/</link>
+    <description>Recent content in Kubectl on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Fri, 06 Mar 2020 21:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/kubectl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</title>
+      <link>/blog/2020/03/06/kubectl_book/</link>
+      <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/03/06/kubectl_book/</guid>
+      <description>3/7のから始まる技術書典 応援祭で 「kubectl完全逆引きリファレンス」を頒布します。 kubectlの様々なコマンドを、実際にやりたいこと</description>
+    </item>
+    
+  </channel>
+</rss>

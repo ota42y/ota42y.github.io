@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.52" />
+	<meta property="og:title" content="技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します" />
+<meta property="og:description" content="3/7のから始まる技術書典 応援祭で 「kubectl完全逆引きリファレンス」を頒布します。 kubectlの様々なコマンドを、実際にやりたいこと" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020/03/06/kubectl_book/" /><meta property="article:published_time" content="2020-03-06T21:00:00&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-06T21:00:00&#43;09:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します"/>
+<meta name="twitter:description" content="3/7のから始まる技術書典 応援祭で 「kubectl完全逆引きリファレンス」を頒布します。 kubectlの様々なコマンドを、実際にやりたいこと"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo" role="banner">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<section class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 16 16"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+	<time class="meta__text" datetime="2020-03-06T21:00:00">2020-03-06</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/tags/book" rel="tag">book</a>, <a class="meta__link" href="/tags/kubectl" rel="tag">kubectl</a>, <a class="meta__link" href="/tags/kubernetes" rel="tag">kubernetes</a></span>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="/blog/2020/03/06/kubectl_book/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			
+
+<p>3/7のから始まる<a href="https://blog.techbookfest.org/2020/02/28/cheering-tbf/">技術書典　応援祭</a>で
+「kubectl完全逆引きリファレンス」を頒布します。</p>
+
+<p><img src="/images/blog/2020/2020-03-06-kubectl_book_cover.png" width='40%' /></p>
+
+<p>kubectlの様々なコマンドを、実際にやりたいことから逆引きが出来る本です。<br />
+Kubernetesを始める際、運用していく際に手元に置いておく事で安心の一冊になっています<sup class="footnote-ref" id="fnref:k8s-start"><a href="#fn:k8s-start">1</a></sup>。</p>
+
+<p>Podの操作はもちろんのこと、スケールアップ・ダウンしたいときやクラスターの外部に公開する場合、Nodeを停止したい場合など様々な利用シーンから、対応するkubectlコマンドの逆引きができるようになりました。</p>
+
+<p>形式は紙＋電子で、とらのあなでも販売しています。<br />
+<a href="https://ec.toranoana.jp/tora_r/ec/item/040030816901/">https://ec.toranoana.jp/tora_r/ec/item/040030816901/</a><br />
+電子版のみはBOOTHでも販売中です。<br />
+<a href="https://ota42y.booth.pm/items/1854936">https://ota42y.booth.pm/items/1854936</a></p>
+
+<p>また、OpenAPI 3を完全に理解できる本、Microservices architecture よろず本 その三、およびその一＆その二も電子版を販売中です。
+これらはBOOTHでも販売中ですので詳しくは<a href="https://ota42y.booth.pm/">こちらを見てください</a>。</p>
+
+<p>「Microservices architecture よろず本 その三」に関しては紙の在庫もあり、とらのあなで販売中です<sup class="footnote-ref" id="fnref:mbook3"><a href="#fn:mbook3">2</a></sup>。<br />
+<a href="https://ec.toranoana.jp/tora_r/ec/item/040030721446/">https://ec.toranoana.jp/tora_r/ec/item/040030721446/</a></p>
+
+<h1 id="目次やサンプル">目次やサンプル</h1>
+
+<p>「kubectl完全逆引きリファレンス」の目次やサンプルは以下になります。</p>
+
+<p><img src="/images/blog/2020/2020-03-06-kubectl_book_sample.png" width='50%' /></p>
+
+<pre><code>前書き
+
+第1 章はじめに
+1.1 kubectl の概要
+1.2 この本の構成
+1.3 kubectl のセットアップ
+1.3.1 バイナリファイルを直接取得する
+1.3.2 パッケージマネージャーを利用する
+
+第2 章kubectl の基本
+2.1 kubectl のコマンド仕様
+2.2 簡単な例
+2.3 コマンド一覧
+2.4 共通オプション
+2.5 出力オプション
+
+第3 章リソースを操作する
+3.1 リソースとはなにか
+3.2 リソースを表示する（get）
+3.2.1 ネームスペースのPod を表示する
+3.2.2 すべてネームスペースのDeployment を表示する
+3.2.3 表示する情報を抑制する
+3.2.4 ラベルを表示する
+3.2.5 ラベルで表示するリソースを絞り込む
+3.2.6 任意のフィールドで表示するリソースを絞り込む
+3.2.7 より詳細な情報を表示する
+3.2.8 リソースをJSON/YAML で出力する
+3.2.9 リソースの変化を監視する
+3.3 リソースを作成する（create）
+3.4 リソースの一部を更新する（set）
+3.4.1 環境変数を更新する
+3.5 ラベルを変更する（label）
+3.5.1 ラベルを設定・更新する
+3.5.2 ラベルを削除する
+3.6 アノテーションを付ける（annotate）
+3.6.1 新しいアノテーションを設定する
+3.6.2 アノテーションを削除する
+3.7 リソースを削除する
+3.7.1 指定したConfigMap を削除する
+3.7.2 指定したネームスペースのリソースをすべて削除する
+3.7.3 すべてのネームスペースのリソースをすべて削除する
+3.7.4 リソースが生成したリソースも削除する・削除しない
+3.8 リソースの詳細情報を表示する（describe）
+3.9 リソースが特定の状態になるまで待つ（wait）
+3.10 クラスタで使えるリソースや短縮表記を表示する（api-resources)
+
+第4 章定義ファイルに関するコマンド
+4.1 Kubernetes の定義ファイル
+4.2 定義ファイルを用いてリソースを作成・変更する（apply）
+4.3 クラスタ上のリソースの定義を編集する（edit）
+4.4 定義ファイルを用いてリソースを削除する（delete）
+4.5 リソースから定義ファイルを作る
+4.6 クラスタ上の定義と比較する（diff）
+4.7 クラスタ上のリソース定義の一部を変更する（patch）
+4.8 リソースを置き換える（replace）
+
+第5 章Pod やコンテナを操作する
+5.1 Pod を作る
+5.1.1 定義ファイルからPod を作る・変更する（apply）
+5.1.2 CLI からPod を作る（run）
+5.2 起動しているプロセスにアタッチする（attach）
+5.3 Pod 内のコンテナでコマンドを実行する（exec）
+5.4 ファイルの送受信を行う（cp）
+5.5 ログを表示する（logs）
+5.6 Port を手元のマシンと繋げる（port-forward）
+5.7 CPU/メモリの状態を表示する（Top）
+5.8 Pod を削除する（delete）
+
+第6 章複数のPod を作るリソースに対するコマンド
+6.1 定義ファイルからリソースを作成・更新する（apply）
+6.1.1 Deployment
+6.1.2 DaemonSet
+6.1.3 StatefulSet
+6.1.4 Job
+6.1.5 CronJob
+6.2 CLI からリソースを作る（run）
+6.2.1 Deployment
+6.2.2 Job
+6.2.3 CronJob
+6.3 削除する（delete）
+6.4 起動したPod にコマンドを実行する
+
+第7 章ロールアウトに関するコマンド（rollout）
+7.1 配下のPod をすべて再起動する（restart）
+7.2 状態の確認をする（status）
+7.3 履歴を確認する（history）
+7.4 ロールアウトを一時停止する（pause）
+7.5 ロールアウトを再開する（resume）
+7.6 ロールバックする（undo）
+
+第8 章スケールイン・スケールアウトに関するコマンド
+8.1 起動するPod の数を変更する
+8.1.1 設定ファイルから変更する（apply）
+8.1.2 CLI から変更する（scale）
+8.2 水平オートスケーリングを設定する
+8.2.1 定義ファイルから設定する（apply）
+8.2.2 CPU によるオートスケールをCLI で設定する（autoscale）
+
+第9 章Service に関するコマンド
+9.1 定義ファイルからService を作成・更新する（apply）
+9.2 CLI からService を作る（expose）
+
+第10 章ConfigMap に関するコマンド
+10.1 定義ファイルから作成・更新する（apply）
+10.2 ファイルから作成する（create）
+
+第11 章Node に関するコマンド
+11.1 Node を取得する（get）
+11.2 Node でのPod の新規実行を止める（cordon）
+11.3 Node で動いているPod をすべて消す(drain)
+11.4 Node でPod を起動できるようにする（uncordon）
+11.5 CPU/メモリ/ストレージの状態を表示する（top）
+11.6 指定したPod 以外を配置できなくする（taint）
+
+第12 章認証・認可に関するコマンド
+12.1 証明書署名要求を承認・否認する（certificate）
+12.1.1 証明書署名要求を承認する（approve）
+12.1.2 証明書署名要求を否認する（deny）
+12.2 Role/ClusterRole を作成・設定する
+12.2.1 apply を利用する
+12.2.2 create を利用する
+12.2.3 reconcile を利用する
+12.3 コマンドやリソースに対してアクセス可能か調べる（can-i）
+
+第13 章クラスタに関するコマンド
+13.1 クラスタやkubectl のバージョンを確認する（version）
+13.2 クラスタの情報を確認する（cluster-info）
+13.3 クラスタの詳細情報を保存する（dump）
+13.4 API サーバへのproxy を建てる（proxy）
+
+第14 章config に関するコマンド
+14.1 現在のコンテキストを確認する（current-context）
+14.2 コンテキストを表示する（get-contexts）
+14.3 現在のコンテキストを変更する（use-context）
+14.4 利用するconfig ファイルを変更する
+14.5 config ファイルを表示する（view）
+14.6 クラスタをすべて表示する（get-clusters）
+14.7 クラスタを登録する（set-cluster）
+14.8 クラスタの情報を削除する（delete-cluster）
+14.9 認証情報を設定する（set-credentials）
+14.10 コンテキストを登録する（set-context）
+14.11 コンテキストの名前を変更する（rename-context）
+14.12 コンテキストを削除する（delete-context）
+14.13 任意の値を登録・変更する（set）
+14.14 任意の値を削除する（unset）
+
+第15 章その他
+15.1 シェルでの補完を有効にする（completion）
+15.2 kustomize を利用する（kustomize）
+15.3 プラグイン一覧を表示する（plugin list）
+15.4 アルファ版機能を利用する（alpha）
+15.5 本書では取り扱わないコマンド
+
+付録A 利用例：Pod が起動しない理由を調べる
+
+付録B kustomize を活用する
+B.1 kustomize でConfigMap を設定する
+B.2 環境によって値を変更する
+
+付録C Kubernetes のリソース定義の調べ方
+</code></pre>
+
+<h1 id="正誤情報">正誤情報</h1>
+
+<p>紙版に対する正誤情報です。電子版は修正済みです。</p>
+
+<ul>
+<li>p24 第二段落
+
+<ul>
+<li><code>--resoruce-version</code>は<code>--resource-version</code>のtypoです</li>
+</ul></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:k8s-start">実際に自分がKubernetesを始めたときに困ったので、そういう時に解決するための一冊です
+ <a class="footnote-return" href="#fnref:k8s-start"><sup>[return]</sup></a></li>
+<li id="fn:mbook3">専売とついてませんが設定忘れただけで紙はここでのみ手に入ります。
+ <a class="footnote-return" href="#fnref:mbook3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16"><path d="M16 9.5c0 .373-.24.74-.5 1l-5 5c-.275.26-.634.5-1 .5-.373 0-.74-.24-1-.5L1 8a2.853 2.853 0 0 1-.7-1C.113 6.55 0 5.973 0 5.6V1.4C0 1.034.134.669.401.401.67.134 1.034 0 1.4 0h4.2c.373 0 .95.113 1.4.3.45.187.732.432 1 .7l7.5 7.502c.26.274.5.632.5.998zM3.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/book/" rel="tag">book</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/kubectl/" rel="tag">kubectl</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/kubernetes/" rel="tag">kubernetes</a></li>
+	</ul>
+</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/2020/01/09/2019_to_2020/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">2019年に何したかと2020年に何するか</p></a>
+	</div>
+</nav>
+
+
+			</section>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon-twitter" viewBox="0 0 384 312" width="24" height="24" fill="#fff"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/06/kubectl_book/">技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/01/09/2019_to_2020/">2019年に何したかと2020年に何するか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/11/28/bonfire_4/">Bonfire Backend #4で社内GPUクラスタとは別にEKSクラスターを運用してる話をした</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/16/techbook_7/">技術書典７でOpenAPI 3の完全解説本が出ます</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/02/docker_desktop_restart/">Docker Desktop for Macが起動しない場合の対処法</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/28/glue_spark_ui/">AWS GlueでSpark開発をする</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/25/microservices_vector/">マイクロサービスを蝕む負の力学</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/22/isbn_978_4065020371/">読書記録「我々はなぜ我々だけなのか アジアから消えた多様な「人類」たち」</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/12/openapi_parser_0_3_1/">openapi_parser 0.3.1がでました</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-31/">2015年31週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-30/">2015年30週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android" title="Android">Android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api" title="Api">Api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application" title="Application">Application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino" title="Arduino">Arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom" title="Atom">Atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws" title="Aws">Aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book" title="Book">Book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c" title="C">C</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee" title="Coffee">Coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript" title="Coffeescript">Coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference" title="Conference">Conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp" title="Cpp">Cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian" title="Debian">Debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch" title="Elasticsearch">Elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote" title="Evernote">Evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter" title="Flutter">Flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem" title="Gem">Gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git" title="Git">Git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang" title="Golang">Golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz" title="Graphviz">Graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell" title="Haskell">Haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot" title="Hubot">Hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios" title="Ios">Ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc" title="Irc">Irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins" title="Jenkins">Jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js" title="Js">Js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl" title="Kubectl">Kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes" title="Kubernetes">Kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac" title="Mac">Mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning" title="Machine learning">Machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math" title="Math">Math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices" title="Microservices">Microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb" title="Mongodb">Mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql" title="Mysql">Mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network" title="Network">Network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node" title="Node">Node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress" title="Octopress">Octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3" title="Openapi3">Openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python" title="Python">Python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails" title="Rails">Rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby" title="Ruby">Ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust" title="Rust">Rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security" title="Security">Security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark" title="Spark">Spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study" title="Study">Study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech" title="Tech">Tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow" title="Tenserflow">Tenserflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow" title="Tensorflow">Tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text" title="Text">Text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool" title="Tool">Tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

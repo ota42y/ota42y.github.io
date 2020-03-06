@@ -6,10 +6,19 @@
     <description>Recent content in Book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 23 Sep 2019 03:00:50 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 21:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</title>
+      <link>/blog/2020/03/06/kubectl_book/</link>
+      <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/03/06/kubectl_book/</guid>
+      <description>3/7のから始まる技術書典 応援祭で 「kubectl完全逆引きリファレンス」を頒布します。 kubectlの様々なコマンドを、実際にやりたいこと</description>
+    </item>
     
     <item>
       <title>技術書典７でOpenAPI 3の完全解説本を出しました</title>
