@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rust on おおたの物置</title>
+    <title>rust on おおたの物置</title>
     <link>/tags/rust/</link>
-    <description>Recent content in Rust on おおたの物置</description>
+    <description>Recent content in rust on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 01 Aug 2018 09:55:37 +0900</lastBuildDate>
@@ -17,9 +17,8 @@
       <pubDate>Wed, 01 Aug 2018 09:55:37 +0900</pubDate>
       
       <guid>/blog/2018/08/01/ryazo/</guid>
-      <description>&lt;p&gt;RustでGyazoのサーバ側と同じ機能を有するRyazoを作りました。リポジトリはここです。&lt;br /&gt;
+      <description>&lt;p&gt;RustでGyazoのサーバ側と同じ機能を有するRyazoを作りました。リポジトリはここです。&lt;br&gt;
 &lt;a href=&#34;https://github.com/ota42y/ryazo&#34;&gt;https://github.com/ota42y/ryazo&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/gyazo/Gyazo&#34;&gt;オリジナルのGyazo&lt;/a&gt;と比べてDBにSQLiteを使っているところが若干違いがあります。&lt;/p&gt;</description>
     </item>
     

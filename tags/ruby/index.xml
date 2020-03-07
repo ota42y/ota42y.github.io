@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ruby on おおたの物置</title>
+    <title>ruby on おおたの物置</title>
     <link>/tags/ruby/</link>
-    <description>Recent content in Ruby on おおたの物置</description>
+    <description>Recent content in ruby on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 23 Sep 2019 03:00:50 +0000</lastBuildDate>
@@ -134,20 +134,16 @@
       <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>/blog/2018/10/07/techbook_5_result/</guid>
-      <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本を３冊出しました。&lt;br /&gt;
+      <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本を３冊出しました。&lt;br&gt;
 お買い求めくださった方、ありがとうございます。&lt;/p&gt;
-
-&lt;p&gt;また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。&lt;br /&gt;
+&lt;p&gt;また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。&lt;br&gt;
 また、既刊のマイクロサービス本もBOOTHで販売中です。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_2.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-flutter.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_1.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。&lt;/p&gt;</description>
     </item>
     
@@ -158,9 +154,7 @@
       
       <guid>/blog/2018/10/06/techbook_5/</guid>
       <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本が３冊でます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/images/blog/2018/2018-10-06-all_techbook.png&#34; width=&#39;50%&#39; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;技術書典５で私が何故か３サークルの運営に関与していたので…&lt;/p&gt;</description>
     </item>
     
@@ -170,7 +164,7 @@
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
-      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br&gt;
 資料あげようと思って完全に忘れていたので上げます…&lt;/p&gt;</description>
     </item>
     
@@ -181,21 +175,20 @@
       
       <guid>/blog/2018/04/04/virtual_gem/</guid>
       <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる
-
 &lt;ul&gt;
 &lt;li&gt;5.2.0がリリースするまでインストールできないと気がつきにくい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/virtual_gem&#34;&gt;https://github.com/ota42y/virtual_gem&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;5.2.0.rc2を元に5.2.0のgemを作れる&lt;/li&gt;
 &lt;li&gt;任意のgemの依存関係を書き換えられる&lt;/li&gt;
 &lt;li&gt;事前に依存関係が壊れるのを調べやすくなる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -206,7 +199,6 @@
       
       <guid>/blog/2018/03/28/globalize_5/</guid>
       <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる&lt;/li&gt;
 &lt;li&gt;だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい&lt;/li&gt;
@@ -220,10 +212,9 @@
       <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
       
       <guid>/blog/2018/03/01/saml_vulnerability/</guid>
-      <description>&lt;p&gt;複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。&lt;br /&gt;
+      <description>&lt;p&gt;複数のSAMLライブラリに認証を回避できる脆弱性があると明らかになりました。&lt;br&gt;
 &lt;a href=&#34;https://jvn.jp/vu/JVNVU98536678/&#34;&gt;JVNVU#98536678: 複数の SAML ライブラリに認証回避の脆弱性&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。&lt;br /&gt;
+&lt;p&gt;どういう脆弱性なのかが書いてあり、かつ簡単に理解可能だったので詳細を書いていきます。&lt;br&gt;
 &lt;a href=&#34;https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations&#34;&gt;Duo Finds SAML Vulnerabilities Affecting Multiple Implementations | Duo Security&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -251,7 +242,7 @@
       <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
       
       <guid>/blog/2016/10/27/shinjuku-rb-42/</guid>
-      <description>Shinjuku.rb #42に行ってきました。 http://shinjukurb.connpass.com/event/42245/ 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。 発表内容 Shinjukurb 42 from ota42y Ruboco</description>
+      <description>Shinjuku.rb #42に行ってきました。 http://shinjukurb.connpass.com/event/42245/ 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。 発表内容 Rubocopはソー</description>
     </item>
     
     <item>
@@ -260,7 +251,7 @@
       <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
       
       <guid>/blog/2016/10/22/ginza-rb-40/</guid>
-      <description>Ginza.rb 第40回に行ってきました。 https://ginzarb.doorkeeper.jp/events/52895 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。 発表内容 prmdのドキュメントが読みやすくなる</description>
+      <description>Ginza.rb 第40回に行ってきました。 https://ginzarb.doorkeeper.jp/events/52895 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。 発表内容 JSON Schema+prmd+commit</description>
     </item>
     
     <item>
@@ -287,7 +278,7 @@
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/25/ruby-hash/</guid>
-      <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;rdquo;nil&amp;</description>
+      <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;quot;nil&amp;q</description>
     </item>
     
     <item>
@@ -296,7 +287,7 @@
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/26/pty-ieo-error/</guid>
-      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
+      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &amp;#39;pty&amp;#39; PTY.spawn(&amp;#34;ls&amp;#34;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
     </item>
     
     <item>

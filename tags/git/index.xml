@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on おおたの物置</title>
+    <title>git on おおたの物置</title>
     <link>/tags/git/</link>
-    <description>Recent content in Git on おおたの物置</description>
+    <description>Recent content in git on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 07 Sep 2014 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/07/git-copy-current-branch/</guid>
-      <description># copy current branch ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot; Jenkinsでブランチ○○をビルドしたいような場合に、 jenkinsに渡すために現在のブラ</description>
+      <description># copy current branch ccb = &amp;#34;!f() { echo `git symbolic-ref --short HEAD` | tr -d &amp;#39;\n&amp;#39; ``| pbcopy; pbpaste ; echo &amp;#39;&amp;#39;;}; f&amp;#34; Jenkinsでブランチ○○をビルドしたいような場合に、 jenkinsに渡すために現在のブラ</description>
     </item>
     
     <item>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Conference on おおたの物置</title>
+    <title>conference on おおたの物置</title>
     <link>/tags/conference/</link>
-    <description>Recent content in Conference on おおたの物置</description>
+    <description>Recent content in conference on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 27 Oct 2016 15:37:37 +0900</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
       
       <guid>/blog/2016/10/27/shinjuku-rb-42/</guid>
-      <description>Shinjuku.rb #42に行ってきました。 http://shinjukurb.connpass.com/event/42245/ 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。 発表内容 Shinjukurb 42 from ota42y Ruboco</description>
+      <description>Shinjuku.rb #42に行ってきました。 http://shinjukurb.connpass.com/event/42245/ 今回はコード分析・解析系のgemがテーマで、私はRubocopについて発表しました。 発表内容 Rubocopはソー</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Sat, 22 Oct 2016 22:37:37 +0900</pubDate>
       
       <guid>/blog/2016/10/22/ginza-rb-40/</guid>
-      <description>Ginza.rb 第40回に行ってきました。 https://ginzarb.doorkeeper.jp/events/52895 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。 発表内容 prmdのドキュメントが読みやすくなる</description>
+      <description>Ginza.rb 第40回に行ってきました。 https://ginzarb.doorkeeper.jp/events/52895 今回は参加者がLTをする形式で、14人ぐらい？LTがありました。 発表内容 JSON Schema+prmd+commit</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Sun, 18 Oct 2015 22:23:57 +0900</pubDate>
       
       <guid>/blog/2015/10/18/ma11/</guid>
-      <description>http://hacklog.jp/events/view/61 こんなの(バッカライザー)を作ったところ、Microsoft賞を頂きましたヽ(´ー｀)ノ 以下反省も含めたメモメモ Cloud.9便利 いい点 オ</description>
+      <description>http://hacklog.jp/events/view/61 こんなの(バッカライザー)を作ったところ、Microsoft賞を頂きましたヽ(´ー｀)ノ [](/images/blog/2015/2015-10-18 ma11.jpg) 以下反省も含めたメモメモ Cloud.9便利 いい</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Sat, 10 Oct 2015 23:58:16 +0900</pubDate>
       
       <guid>/blog/2015/10/10/abpro2015/</guid>
-      <description>togetterまとめ 身近なサイバー攻撃から身を守る from ota42y ディープラーニングによる画像認識でTL上の飯テロ画像を判定しています。 事前に発表タイ</description>
+      <description>togetterまとめ ディープラーニングによる画像認識でTL上の飯テロ画像を判定しています。 事前に発表タイミングをお昼直前にお願いしており、</description>
     </item>
     
     <item>
@@ -161,7 +161,7 @@
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/12/01/gocon-2014-autumn/</guid>
-      <description>Go Conference 2014 autumnに参加しました。 togetterまとめ 大体スライドが公開されているので、正確な内容はそちらをどうぞ。 #まとめ - Go言語のシ</description>
+      <description>Go Conference 2014 autumnに参加しました。 togetterまとめ 大体スライドが公開されているので、正確な内容はそちらをどうぞ。 #まとめ Go言語のシン</description>
     </item>
     
     <item>

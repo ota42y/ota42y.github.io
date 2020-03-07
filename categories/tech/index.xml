@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech on おおたの物置</title>
+    <title>tech on おおたの物置</title>
     <link>/categories/tech/</link>
-    <description>Recent content in Tech on おおたの物置</description>
+    <description>Recent content in tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
@@ -278,7 +278,7 @@
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/11/25/ruby-hash/</guid>
-      <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;rdquo;nil&amp;</description>
+      <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;quot;nil&amp;q</description>
     </item>
     
     <item>
@@ -350,7 +350,7 @@
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/26/pty-ieo-error/</guid>
-      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &#39;pty&#39; PTY.spawn(&amp;quot;ls&amp;quot;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
+      <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &amp;#39;pty&amp;#39; PTY.spawn(&amp;#34;ls&amp;#34;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
     </item>
     
     <item>
@@ -377,7 +377,7 @@
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/04/go-mysql/</guid>
-      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) DB設定 以下の用</description>
+      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;#34;github.com/go-sql-driver/mysql&amp;#34; ) DB設定 以下の用</description>
     </item>
     
     <item>
@@ -458,7 +458,7 @@
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/11/strncpy-bug/</guid>
-      <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str); strncpyはコピー先、コ</description>
+      <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;#34;test&amp;#34;; strncpy(str, c, strlen(c)); printf(&amp;#34;%s\n&amp;#34;, str); strncpyはコピー先、コ</description>
     </item>
     
     <item>
@@ -485,7 +485,7 @@
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/07/git-copy-current-branch/</guid>
-      <description># copy current branch ccb = &amp;quot;!f() { echo `git symbolic-ref --short HEAD` | tr -d &#39;\n&#39; ``| pbcopy; pbpaste ; echo &#39;&#39;;}; f&amp;quot; Jenkinsでブランチ○○をビルドしたいような場合に、 jenkinsに渡すために現在のブラ</description>
+      <description># copy current branch ccb = &amp;#34;!f() { echo `git symbolic-ref --short HEAD` | tr -d &amp;#39;\n&amp;#39; ``| pbcopy; pbpaste ; echo &amp;#39;&amp;#39;;}; f&amp;#34; Jenkinsでブランチ○○をビルドしたいような場合に、 jenkinsに渡すために現在のブラ</description>
     </item>
     
     <item>

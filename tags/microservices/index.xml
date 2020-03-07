@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microservices on おおたの物置</title>
+    <title>microservices on おおたの物置</title>
     <link>/tags/microservices/</link>
-    <description>Recent content in Microservices on おおたの物置</description>
+    <description>Recent content in microservices on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 25 Jun 2019 10:00:00 +0900</lastBuildDate>
@@ -28,17 +28,13 @@
       <guid>/blog/2019/04/15/techbook_6_result/</guid>
       <description>&lt;p&gt;4/14の&lt;a href=&#34;https://techbookfest.org/event/tbf06&#34;&gt;技術書典６&lt;/a&gt;で「Microservices architecture よろず本 その三」を出しました。
 お買い求めくださった方、ありがとうございます。&lt;/p&gt;
-
-&lt;p&gt;Microservices architecture よろず本 その三は在庫が残っていますので、BOOTHやとらのあなにてお買い求めいただけます。こちらは紙の場合も電子のPDFがおまけファイルとしてついてきます。&lt;br /&gt;
-とらのあなはこちら&lt;br /&gt;
+&lt;p&gt;Microservices architecture よろず本 その三は在庫が残っていますので、BOOTHやとらのあなにてお買い求めいただけます。こちらは紙の場合も電子のPDFがおまけファイルとしてついてきます。&lt;br&gt;
+とらのあなはこちら&lt;br&gt;
 &lt;a href=&#34;https://ec.toranoana.shop/tora/ec/item/040030721446&#34;&gt;https://ec.toranoana.shop/tora/ec/item/040030721446&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;BOOTHはこちらです&lt;br /&gt;
+&lt;p&gt;BOOTHはこちらです&lt;br&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/1316740&#34;&gt;https://ota42y.booth.pm/items/1316740&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Microservices architecture よろず本 その一＆その二は電子版のみの販売になります。&lt;br /&gt;
+&lt;p&gt;Microservices architecture よろず本 その一＆その二は電子版のみの販売になります。&lt;br&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/1316130&#34;&gt;https://ota42y.booth.pm/items/1316130&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;詳しい振り返りは以下になります&lt;/p&gt;</description>
     </item>
     
@@ -49,7 +45,6 @@
       
       <guid>/blog/2019/04/13/techbook_6/</guid>
       <description>&lt;p&gt;4/14の&lt;a href=&#34;https://techbookfest.org/event/tbf06&#34;&gt;技術書典６&lt;/a&gt;で「Microservices architecture よろず本 その三」を出します。場所はう５１「すべてがM(icro)になる」です。&lt;/p&gt;
-
 &lt;p&gt;こちらはよろず本シリーズ三冊目になりますが、これまでとはまた違ったトピックを扱っており、既刊を読んだことがあってもなくても有益な本になると思います。なお、目次はこの記事の一番下にあります。&lt;/p&gt;</description>
     </item>
     

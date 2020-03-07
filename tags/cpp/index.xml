@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cpp on おおたの物置</title>
+    <title>cpp on おおたの物置</title>
     <link>/tags/cpp/</link>
-    <description>Recent content in Cpp on おおたの物置</description>
+    <description>Recent content in cpp on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 31 Jan 2016 14:45:49 +0900</lastBuildDate>
@@ -26,7 +26,7 @@
       <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
       
       <guid>/blog/2015/08/29/cedec2015-coverity/</guid>
-      <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。 バグが入ったC++コードらしい。#CEDEC201</description>
+      <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。 バグがあるかどうかはCoverityが検出してくれ</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/09/11/strncpy-bug/</guid>
-      <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;quot;test&amp;quot;; strncpy(str, c, strlen(c)); printf(&amp;quot;%s\n&amp;quot;, str); strncpyはコピー先、コ</description>
+      <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;#34;test&amp;#34;; strncpy(str, c, strlen(c)); printf(&amp;#34;%s\n&amp;#34;, str); strncpyはコピー先、コ</description>
     </item>
     
   </channel>

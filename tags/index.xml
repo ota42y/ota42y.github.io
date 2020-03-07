@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on おおたの物置</title>
@@ -6,67 +6,13 @@
     <description>Recent content in Tags on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 07 Feb 2016 12:27:38 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 21:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Android</title>
-      <link>/tags/android/</link>
-      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
-      
-      <guid>/tags/android/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Api</title>
-      <link>/tags/api/</link>
-      <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Application</title>
-      <link>/tags/application/</link>
-      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/application/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Arduino</title>
-      <link>/tags/arduino/</link>
-      <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
-      
-      <guid>/tags/arduino/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Atom</title>
-      <link>/tags/atom/</link>
-      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/atom/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aws</title>
-      <link>/tags/aws/</link>
-      <pubDate>Fri, 28 Jun 2019 10:00:00 +0900</pubDate>
-      
-      <guid>/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Book</title>
+      <title>book</title>
       <link>/tags/book/</link>
       <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
       
@@ -75,65 +21,47 @@
     </item>
     
     <item>
-      <title>C</title>
-      <link>/tags/c/</link>
-      <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
+      <title>kubectl</title>
+      <link>/tags/kubectl/</link>
+      <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
       
-      <guid>/tags/c/</guid>
+      <guid>/tags/kubectl/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Chrome</title>
-      <link>/tags/chrome/</link>
-      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      <title>kubernetes</title>
+      <link>/tags/kubernetes/</link>
+      <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
       
-      <guid>/tags/chrome/</guid>
+      <guid>/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Coffee</title>
-      <link>/tags/coffee/</link>
-      <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
+      <title>text</title>
+      <link>/tags/text/</link>
+      <pubDate>Thu, 09 Jan 2020 09:00:00 +0900</pubDate>
       
-      <guid>/tags/coffee/</guid>
+      <guid>/tags/text/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Coffeescript</title>
-      <link>/tags/coffeescript/</link>
-      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
+      <title>openapi3</title>
+      <link>/tags/openapi3/</link>
+      <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
       
-      <guid>/tags/coffeescript/</guid>
+      <guid>/tags/openapi3/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Conference</title>
-      <link>/tags/conference/</link>
-      <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
+      <title>ruby</title>
+      <link>/tags/ruby/</link>
+      <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
       
-      <guid>/tags/conference/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cpp</title>
-      <link>/tags/cpp/</link>
-      <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
-      
-      <guid>/tags/cpp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Debian</title>
-      <link>/tags/debian/</link>
-      <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
-      
-      <guid>/tags/debian/</guid>
+      <guid>/tags/ruby/</guid>
       <description></description>
     </item>
     
@@ -147,259 +75,16 @@
     </item>
     
     <item>
-      <title>Elasticsearch</title>
-      <link>/tags/elasticsearch/</link>
-      <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
+      <title>aws</title>
+      <link>/tags/aws/</link>
+      <pubDate>Fri, 28 Jun 2019 10:00:00 +0900</pubDate>
       
-      <guid>/tags/elasticsearch/</guid>
+      <guid>/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Evernote</title>
-      <link>/tags/evernote/</link>
-      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/evernote/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Flutter</title>
-      <link>/tags/flutter/</link>
-      <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
-      
-      <guid>/tags/flutter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gem</title>
-      <link>/tags/gem/</link>
-      <pubDate>Wed, 12 Jun 2019 10:00:00 +0900</pubDate>
-      
-      <guid>/tags/gem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>/tags/git/</link>
-      <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>/tags/golang/</link>
-      <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
-      
-      <guid>/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Graphviz</title>
-      <link>/tags/graphviz/</link>
-      <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/graphviz/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Haskell</title>
-      <link>/tags/haskell/</link>
-      <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/haskell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hubot</title>
-      <link>/tags/hubot/</link>
-      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/hubot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>/tags/hugo/</link>
-      <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
-      
-      <guid>/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ios</title>
-      <link>/tags/ios/</link>
-      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/ios/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Irc</title>
-      <link>/tags/irc/</link>
-      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/irc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Javascript</title>
-      <link>/tags/javascript/</link>
-      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jenkins</title>
-      <link>/tags/jenkins/</link>
-      <pubDate>Sun, 28 Feb 2016 19:37:37 +0900</pubDate>
-      
-      <guid>/tags/jenkins/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Js</title>
-      <link>/tags/js/</link>
-      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubectl</title>
-      <link>/tags/kubectl/</link>
-      <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
-      
-      <guid>/tags/kubectl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>/tags/kubernetes/</link>
-      <pubDate>Fri, 06 Mar 2020 21:00:00 +0900</pubDate>
-      
-      <guid>/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>/tags/linux/</link>
-      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
-      
-      <guid>/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mac</title>
-      <link>/tags/mac/</link>
-      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/mac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine Learning</title>
-      <link>/tags/machine-learning/</link>
-      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
-      
-      <guid>/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Math</title>
-      <link>/tags/math/</link>
-      <pubDate>Fri, 18 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/math/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Microservices</title>
-      <link>/tags/microservices/</link>
-      <pubDate>Tue, 25 Jun 2019 10:00:00 +0900</pubDate>
-      
-      <guid>/tags/microservices/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mongodb</title>
-      <link>/tags/mongodb/</link>
-      <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
-      
-      <guid>/tags/mongodb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mysql</title>
-      <link>/tags/mysql/</link>
-      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Network</title>
-      <link>/tags/network/</link>
-      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/network/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Node</title>
-      <link>/tags/node/</link>
-      <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/node/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Octopress</title>
-      <link>/tags/octopress/</link>
-      <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/octopress/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Openapi3</title>
-      <link>/tags/openapi3/</link>
-      <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
-      
-      <guid>/tags/openapi3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
+      <title>python</title>
       <link>/tags/python/</link>
       <pubDate>Fri, 28 Jun 2019 10:00:00 +0900</pubDate>
       
@@ -408,43 +93,7 @@
     </item>
     
     <item>
-      <title>Rails</title>
-      <link>/tags/rails/</link>
-      <pubDate>Sat, 02 Feb 2019 10:00:00 +0900</pubDate>
-      
-      <guid>/tags/rails/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ruby</title>
-      <link>/tags/ruby/</link>
-      <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
-      
-      <guid>/tags/ruby/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rust</title>
-      <link>/tags/rust/</link>
-      <pubDate>Wed, 01 Aug 2018 09:55:37 +0900</pubDate>
-      
-      <guid>/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Security</title>
-      <link>/tags/security/</link>
-      <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
-      
-      <guid>/tags/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spark</title>
+      <title>spark</title>
       <link>/tags/spark/</link>
       <pubDate>Fri, 28 Jun 2019 10:00:00 +0900</pubDate>
       
@@ -453,34 +102,25 @@
     </item>
     
     <item>
-      <title>Study</title>
-      <link>/tags/study/</link>
-      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      <title>microservices</title>
+      <link>/tags/microservices/</link>
+      <pubDate>Tue, 25 Jun 2019 10:00:00 +0900</pubDate>
       
-      <guid>/tags/study/</guid>
+      <guid>/tags/microservices/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tech</title>
-      <link>/tags/tech/</link>
-      <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
+      <title>gem</title>
+      <link>/tags/gem/</link>
+      <pubDate>Wed, 12 Jun 2019 10:00:00 +0900</pubDate>
       
-      <guid>/tags/tech/</guid>
+      <guid>/tags/gem/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tenserflow</title>
-      <link>/tags/tenserflow/</link>
-      <pubDate>Mon, 11 Feb 2019 10:00:00 +0900</pubDate>
-      
-      <guid>/tags/tenserflow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tensorflow</title>
+      <title>tensorflow</title>
       <link>/tags/tensorflow/</link>
       <pubDate>Mon, 25 Feb 2019 10:00:00 +0900</pubDate>
       
@@ -489,16 +129,133 @@
     </item>
     
     <item>
-      <title>Text</title>
-      <link>/tags/text/</link>
-      <pubDate>Thu, 09 Jan 2020 09:00:00 +0900</pubDate>
+      <title>TenserFlow</title>
+      <link>/tags/tenserflow/</link>
+      <pubDate>Mon, 11 Feb 2019 10:00:00 +0900</pubDate>
       
-      <guid>/tags/text/</guid>
+      <guid>/tags/tenserflow/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tool</title>
+      <title>rails</title>
+      <link>/tags/rails/</link>
+      <pubDate>Sat, 02 Feb 2019 10:00:00 +0900</pubDate>
+      
+      <guid>/tags/rails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elasticsearch</title>
+      <link>/tags/elasticsearch/</link>
+      <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flutter</title>
+      <link>/tags/flutter/</link>
+      <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/tags/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>/tags/golang/</link>
+      <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
+      
+      <guid>/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>/tags/rust/</link>
+      <pubDate>Wed, 01 Aug 2018 09:55:37 +0900</pubDate>
+      
+      <guid>/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>/tags/security/</link>
+      <pubDate>Thu, 01 Mar 2018 15:17:35 +0000</pubDate>
+      
+      <guid>/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c</title>
+      <link>/tags/c/</link>
+      <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
+      
+      <guid>/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>conference</title>
+      <link>/tags/conference/</link>
+      <pubDate>Thu, 27 Oct 2016 15:37:37 +0900</pubDate>
+      
+      <guid>/tags/conference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jenkins</title>
+      <link>/tags/jenkins/</link>
+      <pubDate>Sun, 28 Feb 2016 19:37:37 +0900</pubDate>
+      
+      <guid>/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tech</title>
+      <link>/tags/tech/</link>
+      <pubDate>Thu, 25 Feb 2016 22:44:10 +0900</pubDate>
+      
+      <guid>/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>/tags/android/</link>
+      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
+      
+      <guid>/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Sun, 07 Feb 2016 12:27:38 +0900</pubDate>
+      
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cpp</title>
+      <link>/tags/cpp/</link>
+      <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
+      
+      <guid>/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tool</title>
       <link>/tags/tool/</link>
       <pubDate>Tue, 26 Jan 2016 22:24:44 +0900</pubDate>
       
@@ -507,11 +264,254 @@
     </item>
     
     <item>
-      <title>Windows</title>
+      <title>mongodb</title>
+      <link>/tags/mongodb/</link>
+      <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
+      
+      <guid>/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debian</title>
+      <link>/tags/debian/</link>
+      <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
+      
+      <guid>/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mac</title>
+      <link>/tags/mac/</link>
+      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
+      
+      <guid>/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>/tags/machine-learning/</link>
+      <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
+      
+      <guid>/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>/tags/hugo/</link>
+      <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
+      
+      <guid>/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arduino</title>
+      <link>/tags/arduino/</link>
+      <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
+      
+      <guid>/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>application</title>
+      <link>/tags/application/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/application/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chrome</title>
+      <link>/tags/chrome/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>evernote</title>
+      <link>/tags/evernote/</link>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/evernote/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ios</title>
+      <link>/tags/ios/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>haskell</title>
+      <link>/tags/haskell/</link>
+      <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/haskell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>graphviz</title>
+      <link>/tags/graphviz/</link>
+      <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/graphviz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>octopress</title>
+      <link>/tags/octopress/</link>
+      <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/octopress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>study</title>
+      <link>/tags/study/</link>
+      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/study/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>/tags/network/</link>
+      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hubot</title>
+      <link>/tags/hubot/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/hubot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coffee</title>
+      <link>/tags/coffee/</link>
+      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/coffee/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coffeescript</title>
+      <link>/tags/coffeescript/</link>
+      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/coffeescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>js</title>
+      <link>/tags/js/</link>
+      <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>/tags/mysql/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
       <link>/tags/windows/</link>
       <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node</title>
+      <link>/tags/node/</link>
+      <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>api</title>
+      <link>/tags/api/</link>
+      <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>/tags/git/</link>
+      <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>irc</title>
+      <link>/tags/irc/</link>
+      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/irc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>/tags/math/</link>
+      <pubDate>Fri, 18 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>atom</title>
+      <link>/tags/atom/</link>
+      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/atom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>/tags/javascript/</link>
+      <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/javascript/</guid>
       <description></description>
     </item>
     

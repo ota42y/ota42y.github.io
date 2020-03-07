@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gem on おおたの物置</title>
+    <title>gem on おおたの物置</title>
     <link>/tags/gem/</link>
-    <description>Recent content in Gem on おおたの物置</description>
+    <description>Recent content in gem on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 12 Jun 2019 10:00:00 +0900</lastBuildDate>
@@ -62,7 +62,7 @@
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
-      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br&gt;
 資料あげようと思って完全に忘れていたので上げます…&lt;/p&gt;</description>
     </item>
     
@@ -73,21 +73,20 @@
       
       <guid>/blog/2018/04/04/virtual_gem/</guid>
       <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;gemのdependencyに &amp;lt; 5.2.0と書いてあると、 5.2.0.rc2までインストールできる
-
 &lt;ul&gt;
 &lt;li&gt;5.2.0がリリースするまでインストールできないと気がつきにくい&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;任意のgem依存関係を上書きして、bundle install/updateを可能にするgemを作った
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/ota42y/virtual_gem&#34;&gt;https://github.com/ota42y/virtual_gem&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;5.2.0.rc2を元に5.2.0のgemを作れる&lt;/li&gt;
 &lt;li&gt;任意のgemの依存関係を書き換えられる&lt;/li&gt;
 &lt;li&gt;事前に依存関係が壊れるのを調べやすくなる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -98,7 +97,6 @@
       
       <guid>/blog/2018/03/28/globalize_5/</guid>
       <description>&lt;h1 id=&#34;要約&#34;&gt;要約&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;columns_hash等でI18n対応したカラムと同名のカラムを参照してると落ちる&lt;/li&gt;
 &lt;li&gt;だいたいGlobalizeのtranslateしたときの消し忘れなのでつらい&lt;/li&gt;

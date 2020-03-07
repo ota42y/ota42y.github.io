@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mysql on おおたの物置</title>
+    <title>mysql on おおたの物置</title>
     <link>/tags/mysql/</link>
-    <description>Recent content in Mysql on おおたの物置</description>
+    <description>Recent content in mysql on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 08 Oct 2014 00:00:00 +0000</lastBuildDate>
@@ -26,7 +26,7 @@
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>/blog/2014/10/04/go-mysql/</guid>
-      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot; ) DB設定 以下の用</description>
+      <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;#34;github.com/go-sql-driver/mysql&amp;#34; ) DB設定 以下の用</description>
     </item>
     
     <item>

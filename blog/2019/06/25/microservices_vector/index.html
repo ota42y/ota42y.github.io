@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>マイクロサービスを蝕む負の力学</title>
+	<title>マイクロサービスを蝕む負の力学 - おおたの物置</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.52" />
 	<meta property="og:title" content="マイクロサービスを蝕む負の力学" />
 <meta property="og:description" content="マイクロサービスを蝕む負の力学 マイクロサービスアーキテクチャでは、全体を分割し小さいチームとサービスにすることでチームの責任範囲を小さくし、" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2019/06/25/microservices_vector/" /><meta property="article:published_time" content="2019-06-25T10:00:00&#43;09:00"/>
-<meta property="article:modified_time" content="2019-06-25T10:00:00&#43;09:00"/>
+<meta property="og:url" content="/blog/2019/06/25/microservices_vector/" />
+<meta property="article:published_time" content="2019-06-25T10:00:00+09:00" />
+<meta property="article:modified_time" content="2019-06-25T10:00:00+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="マイクロサービスを蝕む負の力学"/>
@@ -22,6 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
+	
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -40,7 +41,7 @@ if (!doNotTrack) {
 	<div class="container container--outer">
 		<header class="header">
 	<div class="container">
-		<div class="logo" role="banner">
+		<div class="logo">
 			<a class="logo__link" href="/" title="おおたの物置" rel="home">
 				<div class="logo__title">おおたの物置</div>
 				
@@ -50,7 +51,7 @@ if (!doNotTrack) {
 	</div>
 </header>
 		<div class="wrapper flex">
-			<section class="primary">
+			<div class="primary">
 			
 <main class="main" role="main">
 	<article class="post">
@@ -58,8 +59,8 @@ if (!doNotTrack) {
 			<h1 class="post__title">マイクロサービスを蝕む負の力学</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 16 16"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-	<time class="meta__text" datetime="2019-06-25T10:00:00">2019-06-25</time>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-06-25T10:00:00&#43;09:00">2019-06-25</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -93,10 +94,7 @@ if (!doNotTrack) {
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			
-
-<h2 id="マイクロサービスを蝕む負の力学">マイクロサービスを蝕む負の力学</h2>
-
+			<h2 id="マイクロサービスを蝕む負の力学">マイクロサービスを蝕む負の力学</h2>
 <p>マイクロサービスアーキテクチャでは、全体を分割し小さいチームとサービスにすることでチームの責任範囲を小さくし、
 限られた範囲内で独自にPDCAを回すことで人数の拡大に対しても生産性を落とさないのが利点の一つになります。
 これにより個々のマイクロサービスの関心事は小さく保たれるため、構成はシンプルになり実装しやすくなります。
@@ -105,21 +103,17 @@ if (!doNotTrack) {
 そして、こういった複雑性や一部のマイクロサービスの不安定さは、そのマイクロサービスを構成する全員に悪影響を与えます。
 つまり、個々のマイクロサービスの複雑性がマイクロサービスアーキテクチャ全体に転化し、より複雑になるといったイメージです。
 このマイクロサービス全体の問題はdeeeetさんの<a href="https://deeeet.com/writing/2019/05/20/why-microservices/">なぜMicroservicesか?</a>の「Why NOT Microservices?」あたりが詳しいです。</p>
-
 <p>当然この状態を放っておくわけにはいかないので対策が必要になりますが、ここでマイクロサービスの負の力学が牙を向きます。
 モノリシックを複数のチームで触っている場合、依存関係や影響度といった原因で問題の難易度が上がりますが、
 コードベースは共有しており開発・QAの参加ハードルは低く、またパフォーマンスといった問題は直接自分のチームに影響を与えるため、他のチーム起源の問題であっても解決に動きやすいです。
 また、通信の問題などはモノリシックであればメソッド呼び出しに変わり安定するといったように、そもそも起きない事項もあります。</p>
-
 <p>マイクロサービスにした場合は完全に別々のシステムであるため問題を発見するのが難しくなり、問題そのものも複雑化します。
 また、見つけたとしても違うサービス、違うチームと協調して修正を行うのはモノリシックのそれに比べるとかなり大変です。
 例えばマイクロサービスにおいては通信周りの重要性がとても高く、サービスメッシュやApache Kafkaといった様々なミドルウェアを入れて解決を図ろうとすることが多いです。
 ですがその場合、それらを適切に設定・運用するためのリソースに加え、各サービスを管理しているチームに導入してもらうといった協調作業が必要になり、モノリシックに比べるとコストが大きくなります。
 また、マイクロサービス全体に関わる問題解決は全体としては嬉しいですが、ある特定のサービスチームに対しての嬉しさは分散され小さくなるため、
 特定のチームの目標に落とし込むのは難しく、チームとして解決に動くインセンティブが生まれにくいです。</p>
-
-<p><img src="/images/blog/2019/2019-06-25_micro_vector.png" alt="マイクロサービスの問題には手を出しにくい" /></p>
-
+<p><img src="/images/blog/2019/2019-06-25_micro_vector.png" alt="マイクロサービスの問題には手を出しにくい"></p>
 <p>特にチームにエンジニアがチームに少ない状態でマイクロサービスにした場合、
 マイクロサービス全体の問題解決をしている間はチームの作業は止まってしまい、目標達成に効果的な手を打つという観点から見るとリソースを割り当て辛いです。
 もちろんそういった影響が無いように頑張るという手段もありますが、
@@ -128,14 +122,11 @@ if (!doNotTrack) {
 このようにマイクロサービスでは個々のサービスの複雑性は抑えられますが、
 マイクロサービス全体の問題は難易度は上がり、かつリソースを割くインセンティブは下がってしまうため、
 問題を放置する方向に強い力学が生まれます。
-なお、ここで&rdquo;力学&rdquo;という言葉を使っているのは、これはある個人の意志や能力によって起きるもの・解決できるものではなく、
+なお、ここで&quot;力学&quot;という言葉を使っているのは、これはある個人の意志や能力によって起きるもの・解決できるものではなく、
 チームや組織全体としてそういう方向に選択をさせる無形有形の力が発生しているためです。</p>
-
 <h2 id="負の力学に対抗する">負の力学に対抗する</h2>
-
 <p>このマイクロサービスの負の力学に抗うにはどうすればいいでしょうか。
 おそらくですが解決方法は二通りあり、問題解決する力を増やすか、問題解決を簡単にするのどちらかだと思います。</p>
-
 <p>例えば各チームに複数人のエンジニアがいれば、
 マイクロサービス全体の問題解決にリソースを避いたとしてもチームの生産性への影響は相対的には少なく、
 問題解決にリソースを割きやすくなります。
@@ -147,9 +138,7 @@ if (!doNotTrack) {
 例えば１０個のマイクロサービスと２個のマイクロサービスを比較するなら、明らかに後者のほうが影響する場所やチームの数も少なくなり、
 問題が複雑になりにくいです。
 そのため問題の難易度は下がり、必要なリソースが減るために負の力学が強くならず解決できるようになります。</p>
-
-<p><img src="/images/blog/2019/2019-06-25_micro_base.png" alt="別の力学の基盤チーム" /></p>
-
+<p><img src="/images/blog/2019/2019-06-25_micro_base.png" alt="別の力学の基盤チーム"></p>
 <p>マイクロサービスアーキテクチャは個々のサービス単位で見ると複雑性が抑えられ、影響範囲が小さくなるためチームのことをするにはとても良いです。
 ですがチームを超えた領域に複雑性が寄せられていき、かつそういった領域の複雑性は個々のチームにとっては解決しづらい力学が働くため放置されやすくなります。
 十分なリソースがあれば基盤チームを作って複雑な問題に抗うこともできますが、そうでないのであれば問題を複雑にしないようにマイクロサービスの規模を抑えるといったのも一つの方法ではないかと思います。
@@ -157,37 +146,30 @@ if (!doNotTrack) {
 それを３人のスタートアップで運用するのは無謀です。
 最終的に正しい状態が現在の状態にとっても正しいわけではないので、自分のチームや組織全体の状態に照らし合わせて適応する必要があります。
 では具体的にどれくらいの人数でどれくらいマイクロサービスにすればいいかについてはおそらく解は無いのですが、
-マイクロサービス全体の問題にリソースを割く余裕が各チームにある、ある程度の規模を超えるなら選任の基盤チームが置けるというのが一つの指標ではないかと思います<sup class="footnote-ref" id="fnref:deeeet"><a href="#fn:deeeet">1</a></sup> <sup class="footnote-ref" id="fnref:cookpad"><a href="#fn:cookpad">2</a></sup>。</p>
-
+マイクロサービス全体の問題にリソースを割く余裕が各チームにある、ある程度の規模を超えるなら選任の基盤チームが置けるというのが一つの指標ではないかと思います<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
 <h2 id="補足事項">補足事項</h2>
-
 <p>マイクロサービスにおいては複雑性をアーキテクチャ全体に寄せるので、それを構成する個々のサービス自体は複雑になりにくいです。
 そのため、Railsアプリケーションであればそんなに複雑になることは少なく、またWeb API経由でしか依存が発生しないので、内部のリファクタリングも比較的やりやすく、十分なリソースが避けるのであれば特定のサービス間の問題は比較的かんたんに解決できます。
 そのため、マイクロサービス全体の問題を避けるために巨大なモノリシックにするよりかは、適切な数のマイクロサービスのほうが優れていると考えられます。
-ただし、例えばデータ整合性といったマイクロサービス特有の問題は発生し、かつしっかりとそれに対応するのはかなりのリソースが必要となるため<sup class="footnote-ref" id="fnref:data-integrity"><a href="#fn:data-integrity">3</a></sup>、数以外にも分割する内容など様々な要素を考慮する必要があります。</p>
-
+ただし、例えばデータ整合性といったマイクロサービス特有の問題は発生し、かつしっかりとそれに対応するのはかなりのリソースが必要となるため<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>、数以外にも分割する内容など様々な要素を考慮する必要があります。</p>
 <p>マイクロサービス化を抑えるという事はそのコストを後から支払う必要があり、多くの場合後からマイクロサービスにするのはコストがとてもかかるため、
 初めから最適解のマイクロサービスをやるよりも余計なコストがかかります。
 ただ、マイクロサービスの分割はエンジニアリング部分が大きいためある程度コントロール下に置きやすいですが、
 ビジネスの成功に関しては他の職種の影響がとても多くコントロールするのが難しく、かつビジネスが成功しないと最適解たどり着く前に倒産してしまうため、
 後者の問題を避けた方が良いというバイアスがかかっています。
 そのため、うまくビジネス側の問題もコントロール下に置ける組織体制が整っているならば、私が考えているより攻めたマイクロサービスにするのはありだと思います。</p>
-
 <p><a href="/blog/2019/05/23/retirement_finc/">退職しますエントリ</a>で、「マイクロサービスにおいては各サービスのサーバサイドエンジニアはそれほど高度な問題に直面しない」といったことや、
-    「本来ならマイクロサービス全体の複雑性に立ち向かうような行動にシフトするのが正しいのですが…様々な理由からそれは難しかった」と書いたのはこれが理由です。
+「本来ならマイクロサービス全体の複雑性に立ち向かうような行動にシフトするのが正しいのですが…様々な理由からそれは難しかった」と書いたのはこれが理由です。
 <a href="https://medium.com/finc-engineering/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%AE%E8%A9%95%E4%BE%A1%E5%88%B6%E5%BA%A6%E3%82%92%E7%B4%841-5%E5%B9%B4%E9%81%8B%E7%94%A8%E3%81%97%E3%81%A6%E5%88%86%E3%81%8B%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F%E3%81%93%E3%81%A8%E3%81%BE%E3%81%A8%E3%82%81-5ca204b066ee">FiNCではOKRを採用しているため</a>、プロジェクト全体のOKRが設定され、それを達成するために細かく分解されたものがチームの、最終的には個人のOKRに設定され、やること・やらないことが決まります。
 このとき、マイクロサービスの各サービス側のエンジニア(ここではアプリケーションエンジニアと呼びます)の目的はチームの目標達成のための行動がメインとなり、そうでない活動に対しては動きにくくなる設定になります。
-前述のように同規模のモノリシックと比べると、分割されたマイクロサービスは格段に複雑になりにくく、アプリケーションエンジニアが高度な問題にあたることは上手に作っていくと少なくなります<sup class="footnote-ref" id="fnref:big-problem"><a href="#fn:big-problem">4</a></sup>。</p>
-
+前述のように同規模のモノリシックと比べると、分割されたマイクロサービスは格段に複雑になりにくく、アプリケーションエンジニアが高度な問題にあたることは上手に作っていくと少なくなります<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。</p>
 <p>一方でマイクロサービス全体の複雑性は上がってくため、その領域には高度な問題が起こっていきますが、それを解決することは多くの場合目標を達成するのに直結する行動ではなく、アプリケーションエンジニアやサービスのチームとしてはより手を出さない方向への力学が働きます。
 一方でアプリケーション開発が直接の目標に置かれないエンジニア(ここでは基盤エンジニアと呼びます)には阻害する力学はない、もしくは小さいため問題解決に動きやすいです。
-もちろん私がやったように<a href="/blog/2019/04/24/rubykaigi_2019_cfp/">業務時間外の年末年始でOpenAPI 3を仕上げて</a>それを業務に導入するといった手により、&rdquo;無理矢理&rdquo;横断的な領域に攻め入る事も出来なくはないですが、
+もちろん私がやったように<a href="/blog/2019/04/24/rubykaigi_2019_cfp/">業務時間外の年末年始でOpenAPI 3を仕上げて</a>それを業務に導入するといった手により、&ldquo;無理矢理&quot;横断的な領域に攻め入る事も出来なくはないですが、
 マイクロサービスを採用する際にそれを期待して作るのは難しいかなと思います。</p>
-
 <p>ただし、後者の横断的課題に手を出すのが難しいというのはn=2,3人ぐらいの例であり、
 OKRの設定の仕方による影響や、私の立ち位置(炎上プロジェクトに突っ込んで火消しをさせる人員として確立してしまった)、会社の風土、ビジネスの仕方などに依存しているため、前提条件よっては多少変わる可能性があります。
 ですが、この記事全体で述べたようにそれを阻む力学はある程度の普遍性を持っており、適切な人員規模がないのにマイクロサービスをするのは筋が悪いな…といった感じです。</p>
-
 <p>また、これは同僚の<a href="https://note.mu/qsona/n/nde29215769ef">qsonaさんが書いたエントリ</a>とおそらく同じマイクロサービスアーキテクチャを意識しているにもかかわらず、正反対のような結論になっています。
 これはおそらく私がアプリケーションエンジニア側からみた実際の状態からの進め方について、向こうが基盤エンジニア側からみた最終的な目的地を話しており、
 違うポジションから違う時間軸の話しゆえにだと思います。
@@ -198,38 +180,42 @@ OKRの設定の仕方による影響や、私の立ち位置(炎上プロジェ�
 ただし、これはあくまでもアプリケーションエンジニア側からみた場合の話であり、別の目標を持ち違う力学にいる基盤エンジニア側からみた場合はおそらく別です。
 例えば全てのマイクロサービスで出てくる問題を解決する基盤チームはまずワークする事は無く、ある程度サービスチーム側にもそういったことができる人が必要です。
 そのため、基盤チームからみた場合はサービスチームにもマイクロサービス全体の課題解決をするリソースを捻出させる力学が発生します。</p>
-
 <p>このようにサービスチームはビジネス側にリソースを割く力学が生まれ、基盤チームはマイクロサービス側にリソースを割かせる力学が生まれます。
 ですがリソースは限られており、またビジネスが成功しないとそもそも事業が成り立たないのでサービスチームの力学は基本的にビジネス側に強く向いています。
 十分にリソースがあればビジネスを成長させつつマイクロサービスの問題も解決することができるのですが、
 そうでないならば、少ないリソースでやり過ごせる規模の問題に収まるように、マイクロサービスを大きくしすぎないのが一個の答えなのかなといった感じです。
-ただその場の状況や、周辺機能の進歩によって適切な規模のラインは動いていくため、一概に答えはないのでどうなのかという共通見解を作るのは難しいのですが…<sup class="footnote-ref" id="fnref:best-problem"><a href="#fn:best-problem">5</a></sup></p>
-<div class="footnotes">
-
-<hr />
-
+ただその場の状況や、周辺機能の進歩によって適切な規模のラインは動いていくため、一概に答えはないのでどうなのかという共通見解を作るのは難しいのですが…<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:deeeet">このあたりは<a href="https://deeeet.com/writing/2019/05/20/why-microservices/">deeeetさんの</a>「運用まで含めて各サービスに十分な人員を当てられない・将来的に当てられる予定がない，専用の基盤を構築する余裕がないならMicroservicesはやるべきではないと思う」という意見と一致してます
- <a class="footnote-return" href="#fnref:deeeet"><sup>[return]</sup></a></li>
-<li id="fn:cookpad">例えばcookpadとかは強い基盤チームを作って大きなマイクロサービスを進めていて、外から見た限りは上手く行ってる感じがします
- <a class="footnote-return" href="#fnref:cookpad"><sup>[return]</sup></a></li>
-<li id="fn:data-integrity">例えば決済システムだとこんな感じのシステムを構築する必要がありますが、それなりのリソースを使います。 <a href="https://tech.mercari.com/entry/2019/06/07/155849">https://tech.mercari.com/entry/2019/06/07/155849</a>
- <a class="footnote-return" href="#fnref:data-integrity"><sup>[return]</sup></a></li>
-<li id="fn:big-problem">もちろんそのチーム固有で難しい問題が起きたり、サービス間連携といったものがあるのでゼロにはなりませんが、基本的にはそれほど起きないです
- <a class="footnote-return" href="#fnref:big-problem"><sup>[return]</sup></a></li>
-<li id="fn:best-problem">例えば資金が潤沢なら最適解に近いマイクロサービスを作っても潰れずに生き残れる可能性が高いので無駄が少ないですし、サービスメッシュのようなツールが進化していけば問題解決を少ないリソースで行えるようになり、人数が少なくても運用できるようになるなど、様々な要因で適切なラインが変わっていきます
- <a class="footnote-return" href="#fnref:best-problem"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>このあたりは<a href="https://deeeet.com/writing/2019/05/20/why-microservices/">deeeetさんの</a>「運用まで含めて各サービスに十分な人員を当てられない・将来的に当てられる予定がない，専用の基盤を構築する余裕がないならMicroservicesはやるべきではないと思う」という意見と一致してます <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>例えばcookpadとかは強い基盤チームを作って大きなマイクロサービスを進めていて、外から見た限りは上手く行ってる感じがします <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>例えば決済システムだとこんな感じのシステムを構築する必要がありますが、それなりのリソースを使います。 <a href="https://tech.mercari.com/entry/2019/06/07/155849">https://tech.mercari.com/entry/2019/06/07/155849</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>もちろんそのチーム固有で難しい問題が起きたり、サービス間連携といったものがあるのでゼロにはなりませんが、基本的にはそれほど起きないです <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>例えば資金が潤沢なら最適解に近いマイクロサービスを作っても潰れずに生き残れる可能性が高いので無駄が少ないですし、サービスメッシュのようなツールが進化していけば問題解決を少ないリソースで行えるようになり、人数が少なくても運用できるようになるなど、様々な要因で適切なラインが変わっていきます <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
 		</div>
-		
+		<footer class="post__footer">
+			
 <div class="post__tags tags clearfix">
-	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16"><path d="M16 9.5c0 .373-.24.74-.5 1l-5 5c-.275.26-.634.5-1 .5-.373 0-.74-.24-1-.5L1 8a2.853 2.853 0 0 1-.7-1C.113 6.55 0 5.973 0 5.6V1.4C0 1.034.134.669.401.401.67.134 1.034 0 1.4 0h4.2c.373 0 .95.113 1.4.3.45.187.732.432 1 .7l7.5 7.502c.26.274.5.632.5.998zM3.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/microservices/" rel="tag">microservices</a></li>
 	</ul>
 </div>
+		</footer>
 	</article>
 </main>
 
@@ -255,7 +241,7 @@ OKRの設定の仕方による影響や、私の立ち位置(炎上プロジェ�
 </nav>
 
 
-			</section>
+			</div>
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -270,16 +256,18 @@ OKRの設定の仕方による影響や、私の立ち位置(炎上プロジェ�
 	<div class="widget-social__content widget__content">
 		<div class="widget-social__item widget__item">
 			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
-				<svg class="widget-social__link-icon icon-twitter" viewBox="0 0 384 312" width="24" height="24" fill="#fff"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
 				<span>Twitter</span>
 			</a>
 		</div>
 		<div class="widget-social__item widget__item">
 			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
-				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
 				<span>GitHub</span>
 			</a>
 		</div>
+
+		
 	</div>
 </div>
 <div class="widget-recent widget">
@@ -323,62 +311,62 @@ OKRの設定の仕方による影響や、私の立ち位置(炎上プロジェ�
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/android" title="Android">Android</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/api" title="Api">Api</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/application" title="Application">Application</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/arduino" title="Arduino">Arduino</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/atom" title="Atom">Atom</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/aws" title="Aws">Aws</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/book" title="Book">Book</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/c" title="C">C</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/coffee" title="Coffee">Coffee</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript" title="Coffeescript">Coffeescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/conference" title="Conference">Conference</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cpp" title="Cpp">Cpp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/debian" title="Debian">Debian</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch" title="Elasticsearch">Elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/evernote" title="Evernote">Evernote</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/flutter" title="Flutter">Flutter</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gem" title="Gem">Gem</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git" title="Git">Git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang" title="Golang">Golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz" title="Graphviz">Graphviz</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/haskell" title="Haskell">Haskell</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/hubot" title="Hubot">Hubot</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ios" title="Ios">Ios</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/irc" title="Irc">Irc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins" title="Jenkins">Jenkins</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/js" title="Js">Js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl" title="Kubectl">Kubectl</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes" title="Kubernetes">Kubernetes</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mac" title="Mac">Mac</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning" title="Machine learning">Machine learning</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/math" title="Math">Math</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/microservices" title="Microservices">Microservices</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb" title="Mongodb">Mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql" title="Mysql">Mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/network" title="Network">Network</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/node" title="Node">Node</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/octopress" title="Octopress">Octopress</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3" title="Openapi3">Openapi3</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/python" title="Python">Python</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rails" title="Rails">Rails</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ruby" title="Ruby">Ruby</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rust" title="Rust">Rust</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/security" title="Security">Security</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/spark" title="Spark">Spark</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/study" title="Study">Study</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tech" title="Tech">Tech</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow" title="Tenserflow">Tenserflow</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow" title="Tensorflow">Tensorflow</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/text" title="Text">Text</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tool" title="Tool">Tool</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
 	</div>
 </div>
 </aside>
@@ -393,5 +381,6 @@ OKRの設定の仕方による影響や、私の立ち位置(炎上プロジェ�
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script></body>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>

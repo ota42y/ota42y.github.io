@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flutter on おおたの物置</title>
+    <title>flutter on おおたの物置</title>
     <link>/tags/flutter/</link>
-    <description>Recent content in Flutter on おおたの物置</description>
+    <description>Recent content in flutter on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 02 Nov 2018 00:21:50 +0000</lastBuildDate>
@@ -26,20 +26,16 @@
       <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
       
       <guid>/blog/2018/10/07/techbook_5_result/</guid>
-      <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本を３冊出しました。&lt;br /&gt;
+      <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本を３冊出しました。&lt;br&gt;
 お買い求めくださった方、ありがとうございます。&lt;/p&gt;
-
-&lt;p&gt;また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。&lt;br /&gt;
+&lt;p&gt;また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。&lt;br&gt;
 また、既刊のマイクロサービス本もBOOTHで販売中です。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_2.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-flutter.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_1.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;なお、マイクロサービス本はリアルに私に合う人であれば、紙の本も少数ですが販売します。&lt;/p&gt;</description>
     </item>
     
@@ -50,9 +46,7 @@
       
       <guid>/blog/2018/10/06/techbook_5/</guid>
       <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本が３冊でます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/images/blog/2018/2018-10-06-all_techbook.png&#34; width=&#39;50%&#39; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;技術書典５で私が何故か３サークルの運営に関与していたので…&lt;/p&gt;</description>
     </item>
     

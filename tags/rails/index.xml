@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rails on おおたの物置</title>
+    <title>rails on おおたの物置</title>
     <link>/tags/rails/</link>
-    <description>Recent content in Rails on おおたの物置</description>
+    <description>Recent content in rails on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 02 Feb 2019 10:00:00 +0900</lastBuildDate>
@@ -53,7 +53,7 @@
       <pubDate>Mon, 04 Jun 2018 09:10:37 +0900</pubDate>
       
       <guid>/blog/2018/06/04/bootsnap/</guid>
-      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br /&gt;
+      <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br&gt;
 資料あげようと思って完全に忘れていたので上げます…&lt;/p&gt;</description>
     </item>
     
