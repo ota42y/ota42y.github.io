@@ -105,7 +105,7 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 <h1 id="node-and-label-parameter-plugin">Node and Label parameter plugin</h1>
 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/NodeLabel+Parameter+Plugin</a></p>
 <p>Node and Label parameter pluginは、以上の問題点を解決できるプラグインです。このプラグインを入れると、ビルド時のパラメータにNodeとLabelを追加することができるようになります。</p>
-<p><a href="/images/blog/2016/2016-02-28-jenkins_label_paramater.png"><!-- raw HTML omitted --></a></p>
+<p><a href="/images/blog/2016/2016-02-28-jenkins_label_paramater.png"><img src="/images/blog/2016/2016-02-28-jenkins_label_paramater.png"  width="40%" /></a></p>
 <p>Nodeの場合は文字通り任意のノード名でビルドノードを選択できます。
 また、Labelの場合はノードにつけたLabelでビルドするノードを選択できます。
 そのため、ノードにwindowsやmac等の適切なラベルをつけることで、任意のノードでビルドすることができるようになります。
@@ -114,7 +114,7 @@ Jenkinsでは基本機能として、実行するノードを制限して特定�
 <p>このプラグインは、特に設定がない場合は該当するノードのどれか一つでjobが実行されますが、以下のオプションをつけることで該当するノード全てで実行されるようになります。
 そのため、複数環境でテストしたい場合も１回ビルドを実行するだけで後は自動で全てのノードでビルドが実行されるようになります。
 なお、全ノードで実行される一つのビルドではなく、ノードごとに個別のビルドが実行されるようです。</p>
-<p><a href="/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png"><!-- raw HTML omitted --></a></p>
+<p><a href="/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png"><img src="/images/blog/2016/2016-02-28-jenkins_labe_run_all_nodes.png"  width="40%" /></a></p>
 <h1 id="pipeline-pluginとの違い">Pipeline Pluginとの違い</h1>
 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline Plugin</a>では、Jenkinsのジョブを丸ごとgroovyで書けるため、このプラグインよりもさらに柔軟に選択できます。
 ただ、こちらは本当にジョブの内容を全てgroovyで書く必要があり、既存のJenkinsの知見を活用できなかったり、他のプラグインとの相性はあまり良くないです。

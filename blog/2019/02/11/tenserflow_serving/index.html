@@ -107,10 +107,10 @@ TensorFlow公式で、Google社内でも使っているっぽいのである程�
 <p>作り方はチュートリアルの通りにpythonで作成します。
 だいたいこんな感じのコードでモデルが作れます。
 pb形式でモデルを保存する必要があるため、simple_saveを使って保存します。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/3a7622f84ce86823f62457df4ff6639d.js?file=fmnist.py"></script>
 <p>また、テスト用のデータを以下のスクリプトで作っておきます。あとでrubyからも利用するので２つ作り、正しい結果も確認しておきます。
 それぞれtest_data.jsonは9、ruby_data.jsonは2が正解です。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/3a7622f84ce86823f62457df4ff6639d.js?file=test_data.py"></script>
 <h2 id="tensorflow-servingの起動">TensorFlow Servingの起動</h2>
 <p>公式がDockerを用意しているのでそれを利用します。<br>
 <a href="https://hub.docker.com/r/tensorflow/serving">https://hub.docker.com/r/tensorflow/serving</a></p>
@@ -155,11 +155,11 @@ gem install grpc grpc-tools
 なお、gemで入れた場合はprotocコマンドはgrpc_tools_ruby_protocに、grpc_ruby_pluginはgrpc_tools_ruby_protoc_pluginという名前になっているのでご注意ください。</p>
 <p>protoファイルから.rbファイルを生成します。
 ここでは/work以下にcloneを行ったと仮定し、/work/proto_rubyフォルダ以下に出力しています。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/3a7622f84ce86823f62457df4ff6639d.js?file=shell.sh"></script>
 <h3 id="gprcを利用してtenserflow-servingに送る">gPRCを利用してTenserFlow Servingに送る</h3>
 <p>先程作ったruby_data.jsonを使ってTenserFlow Servingにデータを送り、その結果を得ます。
 やることとしてはgPRCを使って必要なデータを送るだけです。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/3a7622f84ce86823f62457df4ff6639d.js?file=serving.rb"></script>
 <h2 id="終わりに">終わりに</h2>
 <p>今回は使いませんでしたがTenserFlow Servingでは複数モデルの運用や、複数バージョンの運用ができます。
 その際も、model_specに指定するデータを変えるだけでアクセスが可能なため、TensorFlowのモデルを運用するために必要な機能は一通りまかなえそうです。</p>

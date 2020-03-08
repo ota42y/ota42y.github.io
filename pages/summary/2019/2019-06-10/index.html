@@ -97,7 +97,8 @@ if (!doNotTrack) {
 <p>様々なテーブルをjoinし、ユーザごとにデータを集計して <code>/user_id/output_name</code> といったパスに一人づつJSONファイルに出力していましたが、これが遅くなった原因でした。
 ユーザを何人かのパーティションにまとめ、 <code>/output_name/partition_key</code> といった複数人をまとめて１つのJSONファイルに出力したところ、数時間かかってた出力処理が数分で終わるようになりました。
 書き出し対象はS3なので、ネットワーク越しのI/Oが想像以上にめちゃくちゃ重かったのが原因でした。</p>
-<!-- raw HTML omitted -->
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Sparkで処理してRailsアプリケーションから読む都合で、数時間かけてユーザ一人づつのcsvを書き出してたけど、複数人まとめて書き出ししたら数分で終わった…ここまでI/O処理が重いとは… (s3に大量のファイルを作るので確かに…といったところ)</p>&mdash; おおた@RubyKaigi登壇done (@ota42y) <a href="https://twitter.com/ota42y/status/1137292015652069376?ref_src=twsrc%5Etfw">2019年6月8日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>この書き出したデータはさらにRailsアプリケーション側で読み込んで使うため、ユーザごとにファイルが別れている方がかなり楽で、それもあって複数ファイルに分割する方針をとっていたのですが、
 複雑性を寄せる場所を間違えましたね…
 とはいえ、Sparkになれた今なら簡単に受け取り処理側を書き換えられたので、結果的には最高の状態に仕上がりました。
@@ -110,7 +111,8 @@ AWS Glueだとメトリクスは見れるんですが、各stageの処理内容�
 実際Sparkだとこれが普通なのかな？と思っていたところに、全然もっと行けそうな話をきいたので調査し直したところ上の結果になったので、間接的にかなり効果がありました( ﾟ∀ﾟ)o彡゜</p>
 <h2 id="ポッドキャストに出ます">ポッドキャストに出ます</h2>
 <p><a href="https://anchor.fm/kinokoru">きのこるエフエム</a>というポッドキャストにお呼ばれしたので出ます( ﾟ∀ﾟ)o彡ﾟ</p>
-<!-- raw HTML omitted -->
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ポッドキャストに出ます⊂(・8・)⊃ <a href="https://t.co/snTzNX4bhn">https://t.co/snTzNX4bhn</a></p>&mdash; おおた@RubyKaigi登壇done (@ota42y) <a href="https://twitter.com/ota42y/status/1137617351329759232?ref_src=twsrc%5Etfw">2019年6月9日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 		</div>
 	</article>

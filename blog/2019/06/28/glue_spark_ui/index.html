@@ -115,7 +115,7 @@ AWS GlueでVPC内に開発用のノートブックを実行すると、以下の
 <p><img src="/images/blog/2019/2019-06-28_glue_dev_endpoint.png" alt="開発エンドポイントの設定画面"></p>
 <p>最後にSparkのapplication idを取得します。
 PySparkを使ってる場合は、<a href="https://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.SparkContext.applicationId">SparkContextのapplicationId</a>以下のようにするため、<code>spark_context.applicationId</code>を使います。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/eac2f8775a9ce8d260e2bc39639478e3.js"></script>
 <p>SparkのWeb UIは<code>/proxy/APPLICATION_ID/jobs/</code>以下にあるので、さっきのSSHによるローカルフォワードと合わせて以下のURLにアクセスすると、Web UIが表示されます。<br>
 <code>http://localhost:20888/proxy/APPLICATION_ID/jobs/</code></p>
 <h2 id="pycharmを使ったaws-glue開発">PyCharmを使ったAWS Glue開発</h2>

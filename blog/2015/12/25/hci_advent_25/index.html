@@ -121,14 +121,14 @@ if (!doNotTrack) {
 <p>今回もUIST2015から、<a href="http://dl.acm.org/citation.cfm?doid=2807442.2807485">Corona: Positioning Adjacent Device with Asymmetric Bluetooth Low Energy RSSI Distributions</a>という論文を紹介します。<br>
 これはBluetoothのRSSIだけを利用し、デバイスの相対的な位置を検出する手法についての論文です。</p>
 <p>動画はこちらになります。</p>
-<!-- raw HTML omitted -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VqAoxVhO4xA" frameborder="0" allowfullscreen></iframe>
 <h1 id="手法について">手法について</h1>
 <p>Bluetoothのチップの位置はデバイスの中心からずれたところに置かれているため、
 各辺からチップまでの距離はそれぞれ異なり、結果としてRSSIが異なってきます。この距離の違いから来るRSSIの違いを学習しておくことで、
 現在のRSSIからどの位置に置かれているかが識別できるというのがこの論文で提案している手法です。</p>
 <p>わかりにくいと思うので図にしました。灰色の長方形内にあり、中心線上にない任意の青色の点から、
 オレンジで表された各辺までの距離が全て異なるということがわかると思います。<br>
-<a href="/images/blog/2015/2015-12-25-corona-example.png"><!-- raw HTML omitted --></a></p>
+<a href="/images/blog/2015/2015-12-25-corona-example.png"><img src="/images/blog/2015/2015-12-25-corona-example.png"  width="20%" /></a></p>
 <p>実際、私の手元のタブレットでは左上にチップがあるため、右辺や下辺は遠く、上辺や左辺は近くなっており、RSSIも-40~-20までかなりの差が出ます。
 値は常に若干上下しますが直近数秒でまとめるとだいたい安定しているので、確かに識別に使えそうです。</p>
 <h1 id="やってみた">やってみた</h1>
@@ -136,7 +136,7 @@ if (!doNotTrack) {
 (15秒あたりから開始)<br>
 <a href="https://github.com/ota42y/corona-clone">https://github.com/ota42y/corona-clone</a></p>
 <p>実際に動いている様子は以下の通りです。</p>
-<!-- raw HTML omitted -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wsglHEhtYCM" frameborder="0" allowfullscreen></iframe>
 <p>オリジナルの手法をそのまま実装するのが大変だったので、学習量を少なめに、かつ適当なベイズ識別期に投げるだけとかなり簡素化しています。<br>
 動画の通り、かなり簡素化した状態でもわりといい精度でどの位置にあるかを識別できていますので、
 ちゃんとオリジナルのを実装すれば相当な精度になることが予想できます。</p>

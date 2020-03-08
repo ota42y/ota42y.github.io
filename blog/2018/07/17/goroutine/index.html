@@ -98,7 +98,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>shinjuku.rbで話した内容です。<br>
 が、スライドだけだとよくわからないのでもう少し文章を補足した版を上げておきます。</p>
-<!-- raw HTML omitted -->
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/6yiVbgPeuwuun4" width="340" height="290" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ota42y/goroutine-103278063" title="goroutineはどうやって動いているのか" target="_blank">goroutineはどうやって動いているのか</a> </strong> from <strong><a href="//www.slideshare.net/ota42y" target="_blank">ota42y</a></strong> </div>
 <h1 id="要約">要約</h1>
 <ul>
 <li>goroutineの実態はスレッド</li>
@@ -107,7 +107,7 @@ if (!doNotTrack) {
 </ul>
 <h1 id="goroutineとは何か">goroutineとは何か</h1>
 <p>以下のように書くと、非同期でgo xxxに渡した関数が実行されます。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/833cfbb6af92c0db17a1353d4e7acf5f.js"></script>
 <p>実態はスレッドらしいのですが、基本的にはうまく覆い隠されており、以下のような細かい点は意識しなくてよいようになっています。</p>
 <ul>
 <li>実行までの手順はどうなってるのか</li>
@@ -117,7 +117,7 @@ if (!doNotTrack) {
 <p>今回は、goはこれらの点をどう解決しているのかを調べました。</p>
 <h1 id="goroutineの登録">goroutineの登録</h1>
 <p>上記のコードのうち、go xxxの部分をコンパイルした結果は以下のようになっています。</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/ota42y/a9d95a5385dfda58d7e992ca2b1c4509.js"></script>
 <p>go xxxと書いた場合、コンパイルした結果を見る限り、runtime.newprocに関数ポインタ(?)を渡しています。<br>
 newprocは実質newproc1を読んでいるだけなので、newproc1で関数の非同期処理を始めていそうです。</p>
 <h1 id="newproc1の中身">newproc1の中身</h1>
@@ -148,23 +148,23 @@ newprocは実質newproc1を読んでいるだけなので、newproc1で関数の
 </ul>
 <h1 id="goroutineの登録-1">goroutineの登録</h1>
 <p>Gは作成されるとキューに積まれます。</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/images/blog/2018/2018-07-17-goroutien_1.png" /></p>
 <p>PはGを取り出して、Mにくっつけて関数を実行します。</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/images/blog/2018/2018-07-17-goroutien_2.png" /></p>
 <p>Mがsyscallとかロックとかで待ち状態になると、別のMを作りGを処理します。<br>
 Mのロックが解除されたらまた実行を始めます。</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/images/blog/2018/2018-07-17-goroutien_3.png" /></p>
 <h1 id="goroutineのスケジュール">goroutineのスケジュール</h1>
 <p>複数Pが存在する場合、キューが１つだと取り出し時に競合が発生します。<br>
 そのため、このままだと並列数を上げても速度が上がりません。</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/images/blog/2018/2018-07-17-goroutien_4.png" /></p>
 <p>そのため、Pごとにキューを用意して自分のキューを操作するようにします。<br>
 これにより、競合が発生しなくなるためスケールするようになります。<br>
 ただしこの方法ではP間でキューの中身に差が出るので適切な負荷分散が必要です。</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/images/blog/2018/2018-07-17-goroutien_5.png" /></p>
 <h1 id="work-stealingアルゴリズム">work-stealingアルゴリズム</h1>
 <p>Pごとにキューを持つようになったので、キューの量に差が出てしまい、結局スケールしなくなってしまいます。<br>
-<!-- raw HTML omitted --></p>
+<img src="/images/blog/2018/2018-07-17-goroutien_6.png" /></p>
 <p>Goではwork-stealingアルゴリズムで負荷分散を行うことで、この問題を回避しています。</p>
 <p>このアルゴリズムは以下のような特徴があります。</p>
 <ol>
@@ -173,13 +173,13 @@ Mのロックが解除されたらまた実行を始めます。</p>
 <li>別workerへのアクセス回数が少ないので競合が発生しにくい</li>
 </ol>
 <p>このアルゴリズムに従い、Pは自分のキューが空になると、別のPのキューにアクセスして中身を半分奪います。</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/images/blog/2018/2018-07-17-goroutien_7.png" /></p>
 <p>自分のキューが空になった時だけ奪うので、複数ワーカーでもアクセス回数は少なく抑えられています。<br>
 また、どのキューから盗むのかもランダムにしています。<br>
 この場合、キューが空になるタイミングが同じで、かつ奪うキューが被った場合のみ競合するため、起きにくくなっています。</p>
 <p>なお、Pが持つキューがあふれた場合の待避用としてglobalなキューも用意されています。<br>
 ここに対しては競合が発生しやすいですが、他のキューを見る回数は抑えられているため、あまり問題にはならないのではと思います。<br>
-<!-- raw HTML omitted --></p>
+<img src="/images/blog/2018/2018-07-17-goroutien_8.png" /></p>
 <p>このあたりの挙動は主にfindrunnable関数で行っているようです。<br>
 <a href="https://github.com/golang/go/blob/0a7ac93c27c9ade79fe0f66ae0bb81484c241ae5/src/runtime/proc.go#L2266">https://github.com/golang/go/blob/0a7ac93c27c9ade79fe0f66ae0bb81484c241ae5/src/runtime/proc.go#L2266</a></p>
 <h1 id="まとめ">まとめ</h1>
