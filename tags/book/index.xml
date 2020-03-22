@@ -6,10 +6,19 @@
     <description>Recent content in book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 06 Mar 2020 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 11:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技術書典 応援祭の集計スクリプトと中間集計</title>
+      <link>/blog/2020/03/22/techbook_8/</link>
+      <pubDate>Sun, 22 Mar 2020 11:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/03/22/techbook_8/</guid>
+      <description>3/7から始まっている技術書典 応援祭で「kubectl完全逆引きリファレンス」を頒布しています。 技術書典 応援祭でkubectl完全逆引きリフ</description>
+    </item>
     
     <item>
       <title>技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</title>
