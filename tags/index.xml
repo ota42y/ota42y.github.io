@@ -6,7 +6,7 @@
     <description>Recent content in Tags on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 22 Mar 2020 11:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2020 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>book</title>
       <link>/tags/book/</link>
-      <pubDate>Sun, 22 Mar 2020 11:00:00 +0900</pubDate>
+      <pubDate>Fri, 10 Apr 2020 10:00:00 +0900</pubDate>
       
       <guid>/tags/book/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>kubectl</title>
       <link>/tags/kubectl/</link>
-      <pubDate>Sun, 22 Mar 2020 11:00:00 +0900</pubDate>
+      <pubDate>Fri, 10 Apr 2020 10:00:00 +0900</pubDate>
       
       <guid>/tags/kubectl/</guid>
       <description></description>
@@ -32,7 +32,7 @@
     <item>
       <title>kubernetes</title>
       <link>/tags/kubernetes/</link>
-      <pubDate>Sun, 22 Mar 2020 11:00:00 +0900</pubDate>
+      <pubDate>Fri, 10 Apr 2020 10:00:00 +0900</pubDate>
       
       <guid>/tags/kubernetes/</guid>
       <description></description>
