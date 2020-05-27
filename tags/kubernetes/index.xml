@@ -6,10 +6,19 @@
     <description>Recent content in kubernetes on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 10 Apr 2020 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 20:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes(EKS)で秘密情報をどう扱うか</title>
+      <link>/blog/2020/05/26/kubernetes_secret/</link>
+      <pubDate>Tue, 26 May 2020 20:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/05/26/kubernetes_secret/</guid>
+      <description>まとめ 秘密情報をEKS上で楽に管理したい。 これまでは秘密情報を暗号化したファイルを使って注入してた 変数ごとに何が変更されたかを確認するのが面</description>
+    </item>
     
     <item>
       <title>#技術書典 応援祭の結果</title>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Kubernetes(EKS)で秘密情報をどう扱うか - おおたの物置</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Kubernetes(EKS)で秘密情報をどう扱うか" />
+<meta property="og:description" content="まとめ 秘密情報をEKS上で楽に管理したい。 これまでは秘密情報を暗号化したファイルを使って注入してた 変数ごとに何が変更されたかを確認するのが面" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020/05/26/kubernetes_secret/" />
+<meta property="article:published_time" content="2020-05-26T20:00:00+09:00" />
+<meta property="article:modified_time" content="2020-05-26T20:00:00+09:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kubernetes(EKS)で秘密情報をどう扱うか"/>
+<meta name="twitter:description" content="まとめ 秘密情報をEKS上で楽に管理したい。 これまでは秘密情報を暗号化したファイルを使って注入してた 変数ごとに何が変更されたかを確認するのが面"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Kubernetes(EKS)で秘密情報をどう扱うか</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-05-26T20:00:00&#43;09:00">2020-05-26</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/tags/kubernetes" rel="tag">kubernetes</a>, <a class="meta__link" href="/tags/eks" rel="tag">EKS</a></span>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="/blog/2020/05/26/kubernetes_secret/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<h1 id="まとめ">まとめ</h1>
+<ul>
+<li>秘密情報をEKS上で楽に管理したい。</li>
+<li>これまでは秘密情報を暗号化したファイルを使って注入してた
+<ul>
+<li>変数ごとに何が変更されたかを確認するのが面倒</li>
+<li>AWS KMSで暗号化してたのでAWS CLIのインストールのためにPythonを入れるのが微妙</li>
+</ul>
+</li>
+<li>KubernetesのSecretをそのまま使うのは避けたい
+<ul>
+<li>Base64してるだけで暗号化してない</li>
+<li>k8sの権限の強い人からは見えてしまう</li>
+</ul>
+</li>
+<li>環境変数の値だけを暗号化してPod内で複合
+<ul>
+<li>リポジトリに読める形でコミットできる
+<ul>
+<li>追加・変更されたか否かのレベルでなら確認できる</li>
+</ul>
+</li>
+<li>Pod以外は複合できないためマルチテナントなk8sだと権限管理が楽</li>
+<li><a href="https://github.com/realestate-com-au/shush">shush</a>ならバイナリ一個入れるだけですむ</li>
+<li>GKEに移っても実装できそうな規模なのでなんとかなりそう。</li>
+</ul>
+</li>
+<li>欠点もある
+<ul>
+<li>バイナリを一個置く必要がある</li>
+<li>entrypoint/commandの変更が必須</li>
+<li>起動時に暗号化した数だけEMSにリクエストが飛ぶ
+<ul>
+<li>Pod数が少ないなら課金は問題なさそう</li>
+<li>起動時間も数秒伸びるけど無視できるレベル</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Kubernetesの権限管理が大変じゃないならkubesecが楽そう
+<ul>
+<li>コンテナは一切気にしなくて良い</li>
+<li>Kubernetesの中にも</li>
+</ul>
+</li>
+</ul>
+<h1 id="背景と問題">背景と問題</h1>
+<p>Cookieの暗号化鍵やAccess Tokenといった秘密情報をEKS上で扱いやすい形で管理したいです。
+これらは本番や開発環境といった環境ごとに変化する値のため、Twelve-factor app<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> で言われているようにアプリケーションの外部に持たせたいです。<br>
+また、コンテナではIMAGE IMMUTABILITY PRINCIPLE(IIP、イメージ不変性の原則)<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>が重視されるため、設定をコンテナの外に外部化すべき要求がより強いです。そのため、環境変数や設定ファイルなどを利用してコンテナ外から秘密情報を切り替え、開発環境や本番環境等で同一のイメージを利用する方法が欲しくなります。</p>
+<p>このとき、秘密情報をそのままリポジトリにコミットすることは基本的に避け、暗号化を行い実行時に復号化するべきです。
+そのため、設定を外部化することに加え復号化をどのように行うかが重要になります。</p>
+<p>その他に以下のように解決したいことがありますが、全てを解決できなくても構いません。</p>
+<ul>
+<li>複合する範囲を狭める
+<ul>
+<li>複数の関係ないプロジェクトがEKS上で動きうるので、複合したデータへのアクセスは可能な限り狭めたい</li>
+</ul>
+</li>
+<li>設定の管理
+<ul>
+<li>値の追加・変更がレビュー時などに容易にわかるように</li>
+<li>できればソースコードと同一にして、反映タイミングの統一、ロールバック時に戻しやすく</li>
+</ul>
+</li>
+<li>依存関係の簡素化
+<ul>
+<li>アプリケーションには暗号化の有無を意識させない</li>
+<li>コンテナからも暗号化の有無を意識させない</li>
+<li>複合をコンテナ内でやるにしても依存関係は極力少なく<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+<li>AWSへの依存は可
+<ul>
+<li>どうせ別のクラウドに動かす際は大幅な変更が必要</li>
+<li>秘密情報のセット部分の修正は大変ではない</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="解決方法">解決方法</h1>
+<p>具体的にどうやるかについては、大きく分けてコンテナ内で解決する方法、Kubernetesで解決する方法、両方使って解決する方法の3つの方法が考えられます。</p>
+<h2 id="コンテナ内で解決する方法">コンテナ内で解決する方法</h2>
+<p>例えば.envやアプリが読み込む設定ファイルを暗号化して保存しておき、それを実行前に復号化してロードする方法です。<br>
+どこから、何を読み込むかといった情報を外部から与えることで、IIPを保ちつつ複数の環境に対応可能です。</p>
+<figure class="figure">
+    <a href="secret_include.png" target="_blank" title="original size">
+      
+      
+
+      
+       
+        
+      
+
+      
+        
+        <img src="/blog/2020/05/26/kubernetes_secret/secret_include_hufe42472866fbd93679afb6572b9ecae2_179118_700x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>AWS KMSに暗号化鍵があれば、AWS CLIを使って以下のようにファイルの暗号・復号化ができます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">aws kms decrypt --ciphertext-blob fileb://$ENC_FILE --query Plaintext --output text | base64 --decode &gt; $DEC_FILE
+aws kms encrypt --key-id $KEY_ID --plaintext fileb://$DEC_FILE --query CiphertextBlob --output text | base64 --decode &gt; $ENC_FILE
+</code></pre></div><p>これで暗号化したファイルをコンテナ内に入れておき、どのファイルを複合するかは秘密情報ではないため環境変数で設定すれば、一つのイメージで複数の環境にできます<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。特にEKSのPodは任意のIAM Roleを紐付けられるため<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>、特定のPodでのみ複合可能な暗号化ファイルが作成でき、権限管理も容易です。</p>
+<p>また、以下のようにAWS S3を活用することで、よりエレガントに解決可能です。<br>
+<a href="https://speakerdeck.com/joker1007/ling-he-shi-dai-falserailsyun-yong?slide=19">https://speakerdeck.com/joker1007/ling-he-shi-dai-falserailsyun-yong?slide=19</a></p>
+<p>他にもAWS Secrets Managerから取ってくるなどコンテナ内のコマンドで解決する方法の派生型はいくつかあります。</p>
+<p>これらの方法はECS等でも可能でかなり汎用性が高いですが、いくつかの問題点がありました。</p>
+<ol>
+<li>
+<p>変数の管理が困難<br>
+設定ファイルを暗号化して保存するため、基本的に中身は複合しないと読めません。<br>
+そのため特定の環境だけ設定し忘れ、変更し忘れといったことが起きやすいです。<br>
+また、外部に置いた場合はコードの管理とは別になるため、ある機能で新たに環境変数を設定して開発していたが、本番に出す際にそこには設定されていない…みたいなことは起きやすいです。</p>
+</li>
+<li>
+<p>AWS CLIを入れるのが面倒<br>
+現在はgolangでアプリケーションを書いているため顕著ですが、本来なら不要なAWS CLIをコンテナに入れないといけず、そのためにPythonのインストールが必要になるためかなり面倒になります。<br>
+特にベースとなるDockerイメージに軽量なものを使っていると顕著です。<br>
+ただし、AWS CLI v2はバイナリ単体で動くようになったため、この問題はかなり融和されました。</p>
+</li>
+</ol>
+<p>特に前者の問題はけっこう面倒であり、良い方法が無いかと考え次の2つの方法を検討しました。</p>
+<h1 id="kubernetesのsecretで解決する方法">KubernetesのSecretで解決する方法</h1>
+<p>KubernetesにはSecretと呼ばれる秘密情報を管理するための機能が存在します。<br>
+<a href="https://kubernetes.io/docs/concepts/configuration/secret/">https://kubernetes.io/docs/concepts/configuration/secret/</a></p>
+<p>Secretに保存したデータは環境変数としてPodに設定を行うことが出来るため、
+Secretに秘密情報を保存することで外部から設定を行うことができます。
+また、前述の方法と違いコンテナで復号化を行う必要がないため、
+PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素になります。</p>
+<p>kustomizeを利用してScertetを精製しているような場合、アプリケーションのデプロイとSecretの更新を同時に行うことができる、ロールバックもしやすいなど、Kubernetesの利点を最大限活用できます。</p>
+<figure class="figure">
+    <a href="k8s_secret.png" target="_blank" title="original size">
+      
+      
+
+      
+       
+        
+      
+
+      
+        
+        <img src="/blog/2020/05/26/kubernetes_secret/k8s_secret_hu1080ff339005fb813d7c4384cd344a7b_229002_700x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>しかし、Secretにはいくつかの注意点があり<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>、主に次の２点から利用できませんでした。</p>
+<ul>
+<li>通常ではBase64エンコードしただけなので簡単に値が読める
+<ul>
+<li>etcdの中に平文が入る</li>
+<li>Secretへのアクセスを適切に制御しなければならない
+<ul>
+<li>複数の独立したプロジェクトがEKS上で動くので相互に読めるのは避けたい</li>
+<li>Kubernetesの世界でのきめ細かい制御はしたくない
+<ul>
+<li>PodのRoleにリソース制御を行うので、そこに寄せたい</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>設定した値の管理が面倒
+<ul>
+<li>Secretのマニフェストファイルの扱いに困る</li>
+<li>暗号化してバージョン管理にコミットしたい</li>
+</ul>
+</li>
+</ul>
+<p>なお、この方法にはSecretを手元で暗号化しておく、KMSからSecretを作るなど様々な派生系があります。
+<figure class="figure">
+    <a href="k8s_secret_other.png" target="_blank" title="original size">
+      
+      
+
+      
+       
+        
+      
+
+      
+        
+        <img src="/blog/2020/05/26/kubernetes_secret/k8s_secret_other_hub5f738a92264146e4acd7af944bf407d_263731_700x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>
+<p>EKSのetcdの暗号化<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></p>
+<ul>
+<li>etcdを暗号化するため、保存されているデータは安全に管理される</li>
+<li>Pros
+<ul>
+<li>Kubernetes上で暗号化を意識しなくていい
+<ul>
+<li>k8sの管理者に細かい権限管理が不要であればとても便利</li>
+<li>相互に見せたくない場合はこれだけだと不十分</li>
+</ul>
+</li>
+<li>他の手法と組み合わせることもできるので、とりあえずやって他の方法と組み合わせることも可能</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>Secretの内部的な格納方法が変わるだけなので基本は変わらない
+<ul>
+<li>Secretへのアクセスが出来るなら平文が取得できる</li>
+</ul>
+</li>
+<li>秘密情報のバージョン管理に関する問題は解決しない</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Sealed Secrets</p>
+<ul>
+<li><a href="https://github.com/bitnami-labs/sealed-secrets">https://github.com/bitnami-labs/sealed-secrets</a>
+<ul>
+<li>暗号化されたSecretを表すSealedSecretというリソースと、複合するControllerを追加</li>
+<li>SealedSecretをapplyすると、Controllerが複合してSecretにする</li>
+</ul>
+</li>
+<li>Pros
+<ul>
+<li>リポジトリにはSealedSecretを保存すれば良いのでバージョン管理可能</li>
+<li>値のみが暗号化されるため環境変数名は確認できる</li>
+<li>Podは暗号化を意識する必要がない</li>
+<li>クラスタ上では通常のSecretになるので汎用性がある</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>クラスタ上の管理は通常のSecret同様</li>
+<li>暗号化する鍵ファイルの運用</li>
+<li>Controllerをクラスタ上に置くので若干コストがかかる</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>kubesec</p>
+<ul>
+<li><a href="https://github.com/shyiko/kubesec">https://github.com/shyiko/kubesec</a>
+<ul>
+<li>Secretの値だけを暗号・複合化する</li>
+<li>Sealed Secretsと違いSecretリソースを扱う</li>
+<li>複合したSecretをapplyして利用する
+<ul>
+<li><code>kubesec decrypt secret.enc.yml | kubectl apply -f -</code></li>
+</ul>
+</li>
+<li>ローカルやリポジトリのSecretマニフェストのみを暗号化するイメージ</li>
+</ul>
+</li>
+<li>Pros
+<ul>
+<li>リポジトリには暗号化したSecretを保存すれば良いのでバージョン管理可能</li>
+<li>値のみが暗号化されるため環境変数名は確認できる</li>
+<li>Podは暗号化を意識する必要がない</li>
+<li>クラスタ上では通常のSecretになるので汎用性がある</li>
+<li>AWS KMS/Cloud KMS対応</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>クラスタ上の管理は通常のSecret同様</li>
+<li>kubesecしたSecretとそうでないものを適切に使い分ける必要がある</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Kubernetes External Secrets</p>
+<ul>
+<li><a href="https://github.com/godaddy/kubernetes-external-secrets">https://github.com/godaddy/kubernetes-external-secrets</a>
+<ul>
+<li>外部のSecretManagerの値をSecretとして利用する
+<ul>
+<li>SecretManagerの値を示すExternalSecretsというリソースの追加</li>
+<li>値を読み出してSecretにするController</li>
+<li>AWS/GCP/Alibaba等複数のSecretManagerに対応</li>
+</ul>
+</li>
+<li>Pros
+<ul>
+<li>SecretManagerの機能を活用できる
+<ul>
+<li>ローテーションやバージョン管理</li>
+<li>削除保護等</li>
+</ul>
+</li>
+<li>リポジトリにExternalSecretをコミットできる
+<ul>
+<li>秘密情報そのものは入ってない</li>
+<li>参照のみ</li>
+</ul>
+</li>
+<li>暗号化・復号化をKubernetesは考えなくて良い
+<ul>
+<li>Controllerが全て行う</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>クラスタ上の管理は通常のSecret同様</li>
+<li>SecretManager側で適切に秘密情報を管理しなければならない
+<ul>
+<li>管理するところが増える…</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="両方を利用して解決する方法">両方を利用して解決する方法</h1>
+<h2 id="環境変数の値を暗号化する">環境変数の値を暗号化する</h2>
+<p>値を暗号化した環境変数をSecretを使って外から設定し、コンテナ内で複合する方法です。<br>
+具体的には秘密情報を暗号化し、<code>ENCRYPT_ACCESS_TOKEN</code>のようなPrefixを持った名前でSecretに設定します。
+このSecretをPodに環境変数として設定し、コンテナ内で前述のPrefixを持つ環境変数の値を複合してPrefixのない<code>ACCESS_TOKEN</code>のような環境変数に設定し直します。</p>
+<p>AWS CLIを利用したシェルスクリプトや、実装済みのバイナリとして<a href="https://github.com/realestate-com-au/shush">shush</a>というものがあります。</p>
+<figure class="figure">
+    <a href="k8s_secret_dec.png" target="_blank" title="original size">
+      
+      
+
+      
+       
+        
+      
+
+      
+        
+        <img src="/blog/2020/05/26/kubernetes_secret/k8s_secret_dec_hu1080ff339005fb813d7c4384cd344a7b_211136_700x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<ul>
+<li>Pros
+<ul>
+<li>鍵の管理をPodのIAM Roleに寄せられる</li>
+<li>暗号化した変数はバージョン管理可能</li>
+<li>変数の変更の有無は複合せずとも確認可能</li>
+<li>コンテナ内のプロセスでしか複合されない</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>コンテナに追加のバイナリインストールが必要
+<ul>
+<li>shushなら1個ですむとはいえ依存関係が増えはする</li>
+<li>復号化の前処理も実行時に必要になる</li>
+</ul>
+</li>
+<li>kubectl execコマンドを利用した際に環境変数のロードを手動でやる必要がある</li>
+<li>暗号化した鍵の数だけKMSにアクセスが行く
+<ul>
+<li>数が多いと料金がかかる
+<ul>
+<li>Pod数が多くないなら料金は十分安い</li>
+<li>KMSの料金はわりと安い</li>
+</ul>
+</li>
+<li>起動時間が鍵の個数によって伸びていく
+<ul>
+<li>AWS内の通信なので微々たるものだけど…</li>
+<li>並列に複合すればほとんど気にならないはず</li>
+</ul>
+</li>
+<li>KMSのアクセス制限
+<ul>
+<li>短時間に大量にアクセスすると制限に引っかかる可能性がある</li>
+<li><a href="https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/limits.html">https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/limits.html</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="設定ファイルを暗号化して直前に復号化する">設定ファイルを暗号化して直前に復号化する</h2>
+<p>暗号化したファイルをSecretにしておき、initContainerで複合する方法です。
+環境変数の場合、initContainerから変更はできない(はず)ですが、
+ファイルであればマウントしたものを変更可能なため、アプリケーションのコンテナからは独立して複合することができます。</p>
+<p>具体的にはkamsuというプロダクトがあります。<br>
+<a href="https://github.com/Soluto/kamus">https://github.com/Soluto/kamus</a></p>
+<p>なお、今回は環境変数で注入する前提だったため選択肢からは外しました。</p>
+<h1 id="どれが良いのか">どれが良いのか</h1>
+<p>コンテナ内で解決する方法、Kubernetesで解決する方法、両方を利用する方法の３つの方法を上げましたが、どれが良いかは何を担保したいかといった要件で大きく変わります。理想的には暗号化した値をSecretに入れ、Podにわたす直前に復号化するような仕組みがあるのが最高ですが、現状見つけられなかったので今回はshushを採用しようと考えています。</p>
+<p>一つのEKSクラスタ上に相互に見えてはいけない情報が載る可能性がある、設定の状態をバージョン管理システムで確認したいという点に比重を置き、これをshushは綺麗に解決してくれます。コンテナの依存関係は増えますがバイナリ一つなため影響は小さく、KMSへのアクセス回数はまだPodが少ないので問題にならない、起動時間の増加も微々たるものだったので前述の2つを解決できるなら問題ないと考えました。</p>
+<p>暗号化した設定ファイルという形を取ってよいのであればkamsは依存関係がかなりスッキリさせられるため良さそうです。
+また，強い権限がクラスター管理者に絞られて全部見えていい、権限の分類が少ないなど、
+細かい権限管理を行うことが問題にならない場合はKubernetesで解決する方法が最も楽です。
+その中でも、kubesecは導入・運用も簡単に始めることができるため、これを使うのが良さそうです。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://12factor.net/">https://12factor.net/</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://cloud.google.com/solutions/twelve-factor-app-development-on-gcp#3_configuration">https://cloud.google.com/solutions/twelve-factor-app-development-on-gcp#3_configuration</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://www.redhat.com/cms/managed-files/cl-cloud-native-container-design-whitepaper-f8808kc-201710-a4-ja.pdf">https://www.redhat.com/cms/managed-files/cl-cloud-native-container-design-whitepaper-f8808kc-201710-a4-ja.pdf</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>goのコンテナにAWS CLI v1のためにPythonを入れるとか避けたい <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>厳密には設定外部化ではないが、暗号化した全環境分のファイルを入れておけば追加の情報は外に無いのでギリギリ目を瞑っていいかなというところ <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>厳密にはPodを実行するServiceAccountに紐付けます<br>
+<a href="https://aws.amazon.com/jp/about-aws/whats-new/2019/09/amazon-eks-adds-support-to-assign-iam-permissions-to-kubernetes-service-accounts/">https://aws.amazon.com/jp/about-aws/whats-new/2019/09/amazon-eks-adds-support-to-assign-iam-permissions-to-kubernetes-service-accounts/</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p><a href="https://kubernetes.io/docs/concepts/configuration/secret/#risks">https://kubernetes.io/docs/concepts/configuration/secret/#risks</a> <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8" role="doc-endnote">
+<p><a href="https://aws.amazon.com/jp/about-aws/whats-new/2020/03/amazon-eks-adds-envelope-encryption-for-secrets-with-aws-kms/">Amazon EKS が AWS KMS を使った Secrets のエンベロープ暗号化に対応</a> <a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/kubernetes/" rel="tag">kubernetes</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/eks/" rel="tag">EKS</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/2020/04/10/techbook_8_end/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">#技術書典 応援祭の結果</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/22/techbook_8/">#技術書典 応援祭の集計スクリプトと中間集計</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/06/kubectl_book/">技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/01/09/2019_to_2020/">2019年に何したかと2020年に何するか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/11/28/bonfire_4/">Bonfire Backend #4で社内GPUクラスタとは別にEKSクラスターを運用してる話をした</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/16/techbook_7/">技術書典７でOpenAPI 3の完全解説本が出ます</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/02/docker_desktop_restart/">Docker Desktop for Macが起動しない場合の対処法</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/28/glue_spark_ui/">AWS GlueでSpark開発をする</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-31/">2015年31週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-30/">2015年30週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/eks/" title="EKS">EKS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

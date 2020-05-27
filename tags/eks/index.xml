@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EKS on おおたの物置</title>
+    <link>/tags/eks/</link>
+    <description>Recent content in EKS on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 26 May 2020 20:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/eks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes(EKS)で秘密情報をどう扱うか</title>
+      <link>/blog/2020/05/26/kubernetes_secret/</link>
+      <pubDate>Tue, 26 May 2020 20:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/05/26/kubernetes_secret/</guid>
+      <description>まとめ 秘密情報をEKS上で楽に管理したい。 これまでは秘密情報を暗号化したファイルを使って注入してた 変数ごとに何が変更されたかを確認するのが面</description>
+    </item>
+    
+  </channel>
+</rss>
