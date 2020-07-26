@@ -231,7 +231,7 @@ Mutex使ってロックをかけているだけみたい</p>
 rackから呼び出されるためだけに存在するやつっぽい。<br>
 引数を少しいじってる程度</p>
 <p>###<a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/engine.rb#L511">&quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/engine.rb:511:in `call&rsquo;&quot;</a>
-&lsquo;action_dispatch.routes'というキーで、ActionDispatch::Routing::RouteSetを追加している。<br>
+&lsquo;action_dispatch.routes&rsquo;というキーで、ActionDispatch::Routing::RouteSetを追加している。<br>
 また、SCRIPT_NAMEが存在する場合には、<br>
 ROUTES_オブジェクトID_SCRIPT_NAMEという名前で、同じ値をコピーして代入している。</p>
 <p>###<a href="https://github.com/rack/rack/blob/1.5.2/lib/rack/sendfile.rb#L112">&quot;/GEMLIFE_PATH/rack-1.5.2/lib/rack/sendfile.rb:112:in `call&rsquo;&quot;</a>
@@ -270,7 +270,7 @@ action_dispatch.request_idとして設定している。<br>
 ブロックを渡す相手の初期化→ブロック内の実行と、二回同じ箇所にくる。</p>
 <p>###<a href="https://github.com/rails/rails/blob/v4.0.1/railties/lib/rails/rack/logger.rb#L38">&quot;/GEMLIFE_PATH/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app&rsquo;&quot;</a>
 Debugの場合はログ出力にスペースを二つ挟んでいる。<br>
-その後、ActiveSupport::Nortificationsを使い、&lsquo;request.action_dispatch'という名前で、requestを通知している。<br>
+その後、ActiveSupport::Nortificationsを使い、&lsquo;request.action_dispatch&rsquo;という名前で、requestを通知している。<br>
 ここでリクエスト直後に処理を挟むようなライブラリを呼び出しているとか？</p>
 <p>###<a href="https://github.com/rails/rails/blob/v4.0.1/actionpack/lib/action_dispatch/middleware/show_exceptions.rb#L30">&quot;/GEMLIFE_PATH/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&rsquo;&quot;</a>
 基本何もしないけど、ここより下の階層から例外が投げられた場合に、<br>
@@ -373,6 +373,7 @@ action_dispatch.remote_ipにアクセスしてきたIPアドレスを保存し�
 	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/07/26/kubectl_book_18/">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/22/techbook_8/">#技術書典 応援祭の集計スクリプトと中間集計</a></li>
@@ -382,7 +383,6 @@ action_dispatch.remote_ipにアクセスしてきたIPアドレスを保存し�
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/16/techbook_7/">技術書典７でOpenAPI 3の完全解説本が出ます</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/02/docker_desktop_restart/">Docker Desktop for Macが起動しない場合の対処法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/28/glue_spark_ui/">AWS GlueでSpark開発をする</a></li>
             <p><a href='/blog'>さらに読む...</a></p>
 		</ul>
 	</div>

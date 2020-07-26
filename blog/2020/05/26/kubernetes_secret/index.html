@@ -178,27 +178,6 @@ if (!doNotTrack) {
 <h2 id="コンテナ内で解決する方法">コンテナ内で解決する方法</h2>
 <p>例えば.envやアプリが読み込む設定ファイルを暗号化して保存しておき、それを実行前に復号化してロードする方法です。<br>
 どこから、何を読み込むかといった情報を外部から与えることで、IIPを保ちつつ複数の環境に対応可能です。</p>
-<figure class="figure">
-    <a href="secret_include.png" target="_blank" title="original size">
-      
-      
-
-      
-       
-        
-      
-
-      
-        
-        <img src="/blog/2020/05/26/kubernetes_secret/secret_include_hufe42472866fbd93679afb6572b9ecae2_179118_700x0_resize_q100_box_2.png"
-             class="figure-img img-fluid" alt="">
-      
-    </a>
-    <figcaption class="figure-caption text-center" >
-      
-    </figcaption>
-  </figure>
-
 <p>AWS KMSに暗号化鍵があれば、AWS CLIを使って以下のようにファイルの暗号・復号化ができます。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">aws kms decrypt --ciphertext-blob fileb://$ENC_FILE --query Plaintext --output text | base64 --decode &gt; $DEC_FILE
 aws kms encrypt --key-id $KEY_ID --plaintext fileb://$DEC_FILE --query CiphertextBlob --output text | base64 --decode &gt; $ENC_FILE
@@ -230,27 +209,6 @@ Secretに秘密情報を保存することで外部から設定を行うこと�
 また、前述の方法と違いコンテナで復号化を行う必要がないため、
 PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素になります。</p>
 <p>kustomizeを利用してScertetを精製しているような場合、アプリケーションのデプロイとSecretの更新を同時に行うことができる、ロールバックもしやすいなど、Kubernetesの利点を最大限活用できます。</p>
-<figure class="figure">
-    <a href="k8s_secret.png" target="_blank" title="original size">
-      
-      
-
-      
-       
-        
-      
-
-      
-        
-        <img src="/blog/2020/05/26/kubernetes_secret/k8s_secret_hu1080ff339005fb813d7c4384cd344a7b_229002_700x0_resize_q100_box_2.png"
-             class="figure-img img-fluid" alt="">
-      
-    </a>
-    <figcaption class="figure-caption text-center" >
-      
-    </figcaption>
-  </figure>
-
 <p>しかし、Secretにはいくつかの注意点があり<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>、主に次の２点から利用できませんでした。</p>
 <ul>
 <li>通常ではBase64エンコードしただけなので簡単に値が読める
@@ -275,28 +233,7 @@ PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素にな
 </ul>
 </li>
 </ul>
-<p>なお、この方法にはSecretを手元で暗号化しておく、KMSからSecretを作るなど様々な派生系があります。
-<figure class="figure">
-    <a href="k8s_secret_other.png" target="_blank" title="original size">
-      
-      
-
-      
-       
-        
-      
-
-      
-        
-        <img src="/blog/2020/05/26/kubernetes_secret/k8s_secret_other_hub5f738a92264146e4acd7af944bf407d_263731_700x0_resize_q100_box_2.png"
-             class="figure-img img-fluid" alt="">
-      
-    </a>
-    <figcaption class="figure-caption text-center" >
-      
-    </figcaption>
-  </figure>
-</p>
+<p>なお、この方法にはいくつかの派生的な方法が存在します</p>
 <ul>
 <li>
 <p>EKSのetcdの暗号化<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></p>
@@ -437,27 +374,6 @@ PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素にな
 具体的には秘密情報を暗号化し、<code>ENCRYPT_ACCESS_TOKEN</code>のようなPrefixを持った名前でSecretに設定します。
 このSecretをPodに環境変数として設定し、コンテナ内で前述のPrefixを持つ環境変数の値を複合してPrefixのない<code>ACCESS_TOKEN</code>のような環境変数に設定し直します。</p>
 <p>AWS CLIを利用したシェルスクリプトや、実装済みのバイナリとして<a href="https://github.com/realestate-com-au/shush">shush</a>というものがあります。</p>
-<figure class="figure">
-    <a href="k8s_secret_dec.png" target="_blank" title="original size">
-      
-      
-
-      
-       
-        
-      
-
-      
-        
-        <img src="/blog/2020/05/26/kubernetes_secret/k8s_secret_dec_hu1080ff339005fb813d7c4384cd344a7b_211136_700x0_resize_q100_box_2.png"
-             class="figure-img img-fluid" alt="">
-      
-    </a>
-    <figcaption class="figure-caption text-center" >
-      
-    </figcaption>
-  </figure>
-
 <ul>
 <li>Pros
 <ul>
@@ -509,7 +425,7 @@ PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素にな
 <a href="https://github.com/Soluto/kamus">https://github.com/Soluto/kamus</a></p>
 <p>なお、今回は環境変数で注入する前提だったため選択肢からは外しました。</p>
 <h1 id="どれが良いのか">どれが良いのか</h1>
-<p>コンテナ内で解決する方法、Kubernetesで解決する方法、両方を利用する方法の３つの方法を上げましたが、どれが良いかは何を担保したいかといった要件で大きく変わります。理想的には暗号化した値をSecretに入れ、Podにわたす直前に復号化するような仕組みがあるのが最高ですが、現状見つけられなかったので今回はshushを採用しようと考えています。</p>
+<p>コンテナ内で解決する方法、Kubernetesで解決する方法、両方を利用する方法の３つの方法を上げましたが、どれが良いかは何を担保したいかといった要件で大きく変わります。理想的には暗号化した値をSecretに入れ、Podにわたす直前に復号化するような仕組みがあるのが最高ですが、現状見つけられなかったので今回はshushを採用しました。</p>
 <p>一つのEKSクラスタ上に相互に見えてはいけない情報が載る可能性がある、設定の状態をバージョン管理システムで確認したいという点に比重を置き、これをshushは綺麗に解決してくれます。コンテナの依存関係は増えますがバイナリ一つなため影響は小さく、KMSへのアクセス回数はまだPodが少ないので問題にならない、起動時間の増加も微々たるものだったので前述の2つを解決できるなら問題ないと考えました。</p>
 <p>暗号化した設定ファイルという形を取ってよいのであればkamsは依存関係がかなりスッキリさせられるため良さそうです。
 また，強い権限がクラスター管理者に絞られて全部見えていい、権限の分類が少ないなど、
@@ -576,6 +492,9 @@ PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素にな
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/blog/2020/04/10/techbook_8_end/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">#技術書典 応援祭の結果</p></a>
 	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/2020/07/26/kubectl_book_18/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</p></a>
+	</div>
 </nav>
 
 
@@ -612,6 +531,7 @@ PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素にな
 	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/07/26/kubectl_book_18/">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/22/techbook_8/">#技術書典 応援祭の集計スクリプトと中間集計</a></li>
@@ -621,7 +541,6 @@ PodのIAM Roleの制御やコンテナ内の依存関係が大幅に簡素にな
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/16/techbook_7/">技術書典７でOpenAPI 3の完全解説本が出ます</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/02/docker_desktop_restart/">Docker Desktop for Macが起動しない場合の対処法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/2019/06/28/glue_spark_ui/">AWS GlueでSpark開発をする</a></li>
             <p><a href='/blog'>さらに読む...</a></p>
 		</ul>
 	</div>
