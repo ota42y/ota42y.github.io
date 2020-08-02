@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 26 Jul 2020 14:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2020 21:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cargo-makeがrust以外でも便利</title>
+      <link>/blog/2020/08/02/cago-make/</link>
+      <pubDate>Sun, 02 Aug 2020 21:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/08/02/cago-make/</guid>
+      <description>まとめ タスクランナーをどうするかは人類共通の課題 自分以外のコンテキストの違う人を考えると大変 フロント・スマホの人がサーバ触るとか 汎用的に使え</description>
+    </item>
     
     <item>
       <title>kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</title>

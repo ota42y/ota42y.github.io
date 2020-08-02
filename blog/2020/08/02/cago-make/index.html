@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>cargo-makeがrust以外でも便利 - おおたの物置</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="cargo-makeがrust以外でも便利" />
+<meta property="og:description" content="まとめ タスクランナーをどうするかは人類共通の課題 自分以外のコンテキストの違う人を考えると大変 フロント・スマホの人がサーバ触るとか 汎用的に使え" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020/08/02/cago-make/" />
+<meta property="article:published_time" content="2020-08-02T21:00:00+09:00" />
+<meta property="article:modified_time" content="2020-08-02T21:00:00+09:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="cargo-makeがrust以外でも便利"/>
+<meta name="twitter:description" content="まとめ タスクランナーをどうするかは人類共通の課題 自分以外のコンテキストの違う人を考えると大変 フロント・スマホの人がサーバ触るとか 汎用的に使え"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">cargo-makeがrust以外でも便利</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-08-02T21:00:00&#43;09:00">2020-08-02</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/tags/rust" rel="tag">rust</a>, <a class="meta__link" href="/tags/cargo-make" rel="tag">cargo-make</a>, <a class="meta__link" href="/tags/make" rel="tag">make</a></span>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="/blog/2020/08/02/cago-make/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<h2 id="まとめ">まとめ</h2>
+<ul>
+<li>タスクランナーをどうするかは人類共通の課題
+<ul>
+<li>自分以外のコンテキストの違う人を考えると大変</li>
+<li>フロント・スマホの人がサーバ触るとか</li>
+</ul>
+</li>
+<li>汎用的に使えるツールは表現力や変更が辛い
+<ul>
+<li>make, シェルスクリプト, 自作バイナリ</li>
+</ul>
+</li>
+<li>表現力が高いツールは環境設定でハマりやすい
+<ul>
+<li>node/ruby/pythonは手元に入ってない場合がある</li>
+<li>バージョン・依存関係問題で失敗したりする</li>
+<li>Dockerで開発環境を提供してもDockerの外の事柄には対応できない
+<ul>
+<li>Dockerビルドしてデプロイとか</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cargo-makeがいい感じに使えそう
+<ul>
+<li>バイナリ一個置くだけでインストールできる
+<ul>
+<li>rustのツールであるcargoは<em>不要</em></li>
+</ul>
+</li>
+<li>Makefile.tomlの表現力がそこそこ高い</li>
+<li>Pythonで拡張可能</li>
+<li>npm-scriptsのより汎用的に使えるイメージ</li>
+</ul>
+</li>
+<li>欠点も少ない
+<ul>
+<li>表現力は豊か</li>
+<li>Dockerと組み合わせばだいたいなんとかなる
+<ul>
+<li><code>docker run xxxx</code>するタスクを作る</li>
+<li>ユーザが触る世界はcargo-makeさえあればいい</li>
+<li>cargo-makeとアプリ側のタスクとの両管理になるのはちょっと煩雑</li>
+</ul>
+</li>
+<li>ガッツリ開発する人→Docker内/直接インストールして自分でタスクを叩く</li>
+<li>利用者やそこまで深く触らない人→cargo-makeでDocker経由でタスクを叩く</li>
+<li>cargo-makeから各言語のツールを叩いても良い</li>
+</ul>
+</li>
+</ul>
+<h2 id="非メイン開発者を想定した場合のタスクランナー">非メイン開発者を想定した場合のタスクランナー</h2>
+<p>プロジェクトにおいてmakeやrakeといったタスクランナーをどうするかは結構難しい問題です。多くのプログラミング言語では何らかのタスクランナー<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>が提供されているため、ほとんどの場合まずはそれを利用してプロジェクトのテストやlint、データ作成やデプロイなどを行っていると思います。</p>
+<p>メイン開発者は多くの場合ランタイムや関連ライブラリをインストールし、それらのタスクランナーを実行できる環境にあるため問題は起きません。ですがDocker内でvscodeを利用して開発をしている場合はローカル環境(Dockerデーモンを実行している側の環境)にはランタイムを入れない場合があります。</p>
+<p>また、サーバを手元で動かしたいマイクロサービスの利用者側の開発者やフロントエンド開発者など、必ずしもアプリケーションを実行できる環境をインストールしていない人たちも、テスト用にデータ作成といったタスクを実行したい場合があります。</p>
+<p>macOSではRubyがデフォルトで入らなくなる<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>、WSL2によってWindows上のLinuxでの開発環境の勢力が強くなるといったことを考えると、特定のランタイムが入っていることを期待できません。
+前述のようなゲスト開発者に対してランタイムのインストールから始める、また<code>bundle install</code>や<code>npm install</code>時に関連するライブラリのバージョン違い等でインストールが失敗するといった問題を解決してもらうのはかなりハードルが高く、特に違う技術スタックの開発者だった場合は解決しづらいです。
+Dockerで環境を一式用意することである程度解決できますが、イメージのpushといったDocker外でやる作業、Dcokerへの習熟度といった問題もあるため、完全にDockerのみで解決はできません<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。</p>
+<p>シェルスクリプトやmakeといったほとんどの環境で動くものを利用することでインストールの煩雑さを回避できますが、表現力はそこまで高くなく、また複数のタスクの依存関係といった点で書きづらさがあります。
+goやrustでは簡単に複数の環境に対して実行可能なバイナリを作成できるため、専用ツールをプロジェクトごとに生成することで書きやすさを確保しつつ、汎用的に利用できることを両立できますが、代わりにちょっとしたタスクの変更ができないため更新や変更時に煩雑です。</p>
+<p>ということで、様々な環境で汎用的に動き、インストール時に問題が起きにくく、気軽に更新でき、表現力もそこそこ高いものが欲しくなります。
+今回はそれを実現するものとして <a href="https://github.com/sagiegurari/cargo-make">cargo-make</a> を紹介します。</p>
+<h2 id="cargo-mke">cargo-mke</h2>
+<p>cargo-makeはRustで書かれたタスクランナー&amp;ビルドツールです。
+タスクを記述したTOMLファイルをおいておくと、それを読み込んで適切なタスクを実行してくれます。
+基本はRustのcargoと組み合わせて使うものですが、実際にはcargoのインストールは不要で、cargo-make単体で動きます。
+インストールもcargoを使わず、公式サイトからバイナリを落とすだけで入れられるため、インストールにハマるといったこともありません。</p>
+<p>詳しいインストール方法や便利なtipsは<a href="https://qiita.com/ota42y/items/299197505062d4f7958b">cargo-makeをrust以外で利用するときの便利tips</a>に書きましたのでこちらをご覧ください。</p>
+<h3 id="cargo-makeのタスク定義">cargo-makeのタスク定義</h3>
+<p>タスクはMakefile.tomlに書いていきます。
+Makeよりだいぶ書きやすいです(ただし主観)。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">tasks</span>.<span style="color:#a6e22e">build</span>]
+<span style="color:#a6e22e">category</span> = <span style="color:#e6db74">&#34;develop&#34;</span>
+<span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;ビルドを実行する&#34;</span>
+<span style="color:#a6e22e">script</span> = [
+<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">go build ./server
+</span><span style="color:#e6db74">go build ./worker
+</span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+]
+
+[<span style="color:#a6e22e">tasks</span>.<span style="color:#a6e22e">upload</span>]
+<span style="color:#a6e22e">private</span> = <span style="color:#66d9ef">true</span>
+<span style="color:#a6e22e">category</span> = <span style="color:#e6db74">&#34;release&#34;</span>
+<span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;ファイルをS3にアップロード&#34;</span>
+<span style="color:#a6e22e">command</span> = <span style="color:#e6db74">&#34;aws&#34;</span>
+<span style="color:#a6e22e">args</span> = [<span style="color:#e6db74">&#34;s3&#34;</span>, <span style="color:#e6db74">&#34;cp&#34;</span>, <span style="color:#e6db74">&#34;xxxxxx&#34;</span>]
+
+[<span style="color:#a6e22e">tasks</span>.<span style="color:#a6e22e">deploy</span>]
+<span style="color:#a6e22e">category</span> = <span style="color:#e6db74">&#34;release&#34;</span>
+<span style="color:#a6e22e">describe</span> = <span style="color:#e6db74">&#34;リリースを行う。ビルド&amp;アップロード
+</span><span style="color:#e6db74">run_task = [
+</span><span style="color:#e6db74">    { name = [&#34;</span><span style="color:#a6e22e">build</span><span style="color:#e6db74">&#34;, &#34;</span><span style="color:#a6e22e">upload</span><span style="color:#960050;background-color:#1e0010">&#34;</span>] <span style="color:#960050;background-color:#1e0010">}</span>,
+]
+</code></pre></div><h3 id="dockerのラッパーにする">Dockerのラッパーにする</h3>
+<p>やっていることはただのコマンド実行なので、<code>docker run xxx npx cypress run</code>みたいに他のコマンドツールとの組み合わせも容易です。
+また、docker-composeを使っている場合、開発用のdocker imageにcargo-makeを入れておき、以下のようなタスクを用意することで<code>makers docker_run makers build</code> のように利用できます。
+これにより、dockerに慣れていない利用者も気にせずに利用できますし、手元に環境を作っているメイン開発者はdockerなしで動かすことができ、非常に便利になります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">tasks</span>.<span style="color:#a6e22e">docker_run</span>]
+<span style="color:#a6e22e">category</span> = <span style="color:#e6db74">&#34;develop&#34;</span>
+<span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;docker-composeでコマンドを実行します (e.g. makers docker_run makers build)&#34;</span>
+<span style="color:#a6e22e">command</span> = <span style="color:#e6db74">&#34;docker-compose&#34;</span>
+<span style="color:#a6e22e">args</span> = [<span style="color:#e6db74">&#34;exec&#34;</span>, <span style="color:#e6db74">&#34;app&#34;</span>, <span style="color:#e6db74">&#34;${@}&#34;</span>]
+</code></pre></div><h2 id="cargo-makeの欠点">cargo-makeの欠点</h2>
+<p>ただし、欠点も存在します。
+たとえばRubyのRakeではアプリと同じ言語なため、ライブラリを使い回す、メソッドを呼び出すなどかなり結合度の高いタスクを書くことが出来ますが、cargo-makeではそういったものは難しいです。自分ひとりしか触らない場合や、ライブラリ開発など同じ技術スタックを期待できるような場合、より特化したタスクランナーのほうが効率が良いです。</p>
+<p>そのため、基本的にはコマンド実行やタスクの依存関係の記述、ファイルの変更などに抑え、複雑な処理はアプリと親和性の高いタスクランナーを使うなど、ハイブリッドで利用していくのが良いと思います。
+実際、例えばawscliを使うようなコマンドはそのままシェルスクリプトMakefile内に書いている一方で、DBにユーザを作るタスクはバリデーションなどがあるので<code>script/test_user/main.go</code>にコードを書いて、<code>go run script/test_user/main.go USER PASS</code>を実行するタスクをMakefile.toml書くといった使い分けをしています。</p>
+<h2 id="まとめ-1">まとめ</h2>
+<p><code>cargo-make</code>は依存関係が無いために簡単に入れられ、makeよりも読み書きしやすい(主観)タスクランナーです。
+特に依存関係が無いため、コンテキストを共有しない人が参加するプロジェクトや、手元に開発環境を整えないような場合には非常に便利です。
+一方で特化したものに比べると弱い部分があるため、Dockerと組み合わせるなど、組み合わせて使うことでより便利に利用できます。</p>
+<h2 id="参考資料">参考資料</h2>
+<ul>
+<li><a href="https://github.com/sagiegurari/cargo-make">公式リポジトリ</a></li>
+<li><a href="https://qiita.com/ota42y/items/299197505062d4f7958b">cargo-makeをrust以外で利用するときの便利tips</a></li>
+<li><a href="https://tkat0.github.io/posts/cargo-make-1/">タスクランナーをmakeからcargo-makeへ移行</a>
+<ul>
+<li>cargo-make自体の説明はこちらのエントリが詳しいです</li>
+</ul>
+</li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Pythonならinvokeとか <a href="https://www.pyinvoke.org/">https://www.pyinvoke.org/</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>RubyならRakeがデフォルトで入っています <a href="https://docs.ruby-lang.org/ja/latest/library/rake.html">https://docs.ruby-lang.org/ja/latest/library/rake.html</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://applech2.com/archives/20190606-apple-deprecations-python-ruby-perl.html">https://applech2.com/archives/20190606-apple-deprecations-python-ruby-perl.html</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>iOS/Android開発ならDocker使わなかったりするのですべての人が習熟していることを期待できない <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/rust/" rel="tag">rust</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/cargo-make/" rel="tag">cargo-make</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/make/" rel="tag">make</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/2020/07/26/kubectl_book_18/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/08/02/cago-make/">cargo-makeがrust以外でも便利</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/07/26/kubectl_book_18/">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/22/techbook_8/">#技術書典 応援祭の集計スクリプトと中間集計</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/06/kubectl_book/">技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/01/09/2019_to_2020/">2019年に何したかと2020年に何するか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/11/28/bonfire_4/">Bonfire Backend #4で社内GPUクラスタとは別にEKSクラスターを運用してる話をした</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/16/techbook_7/">技術書典７でOpenAPI 3の完全解説本が出ます</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-31/">2015年31週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-30/">2015年30週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cargo-make/" title="cargo-make">cargo-make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/eks/" title="EKS">EKS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/make/" title="make">make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

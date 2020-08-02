@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cargo-make on おおたの物置</title>
+    <link>/tags/cargo-make/</link>
+    <description>Recent content in cargo-make on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 02 Aug 2020 21:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/cargo-make/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cargo-makeがrust以外でも便利</title>
+      <link>/blog/2020/08/02/cago-make/</link>
+      <pubDate>Sun, 02 Aug 2020 21:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/08/02/cago-make/</guid>
+      <description>まとめ タスクランナーをどうするかは人類共通の課題 自分以外のコンテキストの違う人を考えると大変 フロント・スマホの人がサーバ触るとか 汎用的に使え</description>
+    </item>
+    
+  </channel>
+</rss>
