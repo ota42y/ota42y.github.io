@@ -6,10 +6,28 @@
     <description>Recent content in Tags on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 02 Aug 2020 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2020 11:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>book</title>
+      <link>/tags/book/</link>
+      <pubDate>Fri, 11 Sep 2020 11:00:00 +0900</pubDate>
+      
+      <guid>/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openapi3</title>
+      <link>/tags/openapi3/</link>
+      <pubDate>Fri, 11 Sep 2020 11:00:00 +0900</pubDate>
+      
+      <guid>/tags/openapi3/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>cargo-make</title>
@@ -35,15 +53,6 @@
       <pubDate>Sun, 02 Aug 2020 21:00:00 +0900</pubDate>
       
       <guid>/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book</title>
-      <link>/tags/book/</link>
-      <pubDate>Sun, 26 Jul 2020 14:00:00 +0900</pubDate>
-      
-      <guid>/tags/book/</guid>
       <description></description>
     </item>
     
@@ -80,15 +89,6 @@
       <pubDate>Thu, 09 Jan 2020 09:00:00 +0900</pubDate>
       
       <guid>/tags/text/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>openapi3</title>
-      <link>/tags/openapi3/</link>
-      <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
-      
-      <guid>/tags/openapi3/</guid>
       <description></description>
     </item>
     

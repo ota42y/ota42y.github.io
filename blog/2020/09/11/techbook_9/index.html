@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>#技術書典9でOpenAPI 3の完全解説本を更新します - おおたの物置</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="#技術書典9でOpenAPI 3の完全解説本を更新します" />
+<meta property="og:description" content="9/12から始まるる技術書典9で「OpenAPI 3を完全に理解できる本 3.0.3対応版」を頒布します。 OpenAPI3に関するおそらく唯一の" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020/09/11/techbook_9/" />
+<meta property="og:image" content="/blog/2020/09/11/techbook_9/2019-09-16_openapi_book_cover.png"/>
+<meta property="article:published_time" content="2020-09-11T11:00:00+09:00" />
+<meta property="article:modified_time" content="2020-09-11T11:00:00+09:00" />
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/blog/2020/09/11/techbook_9/2019-09-16_openapi_book_cover.png"/>
+<meta name="twitter:title" content="#技術書典9でOpenAPI 3の完全解説本を更新します"/>
+<meta name="twitter:description" content="9/12から始まるる技術書典9で「OpenAPI 3を完全に理解できる本 3.0.3対応版」を頒布します。 OpenAPI3に関するおそらく唯一の"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">#技術書典9でOpenAPI 3の完全解説本を更新します</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-09-11T11:00:00&#43;09:00">2020-09-11</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/tags/book" rel="tag">book</a>, <a class="meta__link" href="/tags/openapi3" rel="tag">openapi3</a></span>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="/blog/2020/09/11/techbook_9/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<p>9/12から始まるる技術書典9で「<a href="https://techbookfest.org/product/4946120975319040">OpenAPI 3を完全に理解できる本 3.0.3対応版</a>」を頒布します。</p>
+<figure class="figure">
+    <a href="2019-09-16_openapi_book_cover.png" target="_blank" title="original size">
+      
+      
+
+      
+       
+        
+      
+
+      
+        
+        <img src="/blog/2020/09/11/techbook_9/2019-09-16_openapi_book_cover_hu3f8befb7eff64626d4778005829aa30a_1459530_300x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>OpenAPI3に関するおそらく唯一の日本語完全解説本です。
+この本ではOpenAPI 3の説明や、実際にどういう風に定義を書いていくかについての説明、および簡単な応用例などを載せています。</p>
+<p>こちらは、「<a href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a>」で頒布したものをアップデートし、現在の最新である3.0.3に対応させたものです。
+差分はそれほど大きくないため、既に持っている方向けには電子版を最新版に差し替えています。
+再度DLしていただくと最新のものに差し替わります。<br>
+また、物理本を少量ですが用意しました。</p>
+<p>他にも
+<a href="https://techbookfest.org/product/5767351924424704">kubectl完全逆引きリファレンス</a>と
+<a href="https://techbookfest.org/product/5648508560343040">Microservices architecture よろず本 その三</a>は物理本を若干数用意しています。
+<a href="https://techbookfest.org/product/268010001">Microservices architecture よろず本 その一＆その二</a>も頒布しています。</p>
+<h2 id="openapi-3を完全に理解できる本の目次">OpenAPI 3を完全に理解できる本の目次</h2>
+<p>内容は以下になります</p>
+<pre><code>第1章 OpenAPI とはなにか
+1.1 OpenAPIの概要
+1.2 OpenAPIの歴史
+
+第2章 OpenAPI 3 の簡単な説明
+2.1 基本構造 
+2.2 様々なパスの表現
+2.3 同じ要素を一箇所にまとめる 
+2.4 パラメータを利用する
+
+第3章 OpenAPI 3 仕様解説
+3.1 基本的な要素の仕様
+3.1.1 MUST SHOULDなどの表現 
+3.1.2 Path Templating
+3.1.3 Media TypesとMedia Type Range
+3.1.4 HTTPステータスコード
+3.2 OpenAPI3の基本仕様
+3.2.1 バージョン 
+3.2.2 フォーマット 
+3.2.3 ドキュメント構造と参照($ref)
+3.2.4 URLの相対パス表現 
+3.2.5 データタイプ 
+3.2.6 Rich Text Formatting
+3.3 各種Object解説 
+3.3.1 OpenAPI Object 
+3.3.2 Info Object
+3.3.3 Contact Object 
+3.3.4 License Object
+3.3.5 Server Object 
+3.3.6 Server Variable Object 
+3.3.7 Components Object
+3.3.8 Paths Object
+3.3.9 Path Item Object 
+3.3.10 Operation Object 
+3.3.11 External Documentation Object
+3.3.12 Parameter Object
+3.3.13 Request Body Object
+3.3.14 Media Type Object
+3.3.15 Encoding Object
+3.3.16 Responses Object 
+3.3.17 Response Object
+3.3.18 Callback Object
+3.3.19 Example Object
+3.3.20 Link Object 
+3.3.21 Header Object 
+3.3.22 Tag Object 
+3.3.23 Reference Object 
+3.3.24 SecurityScheme Object
+3.3.25 OAuthFlows Object 
+3.3.26 OAuthFlow Object
+3.3.27 Security Requirement Object
+3.4 Runtime Expressions 
+3.5 Specification Extensions
+3.6 Security Filtering 
+
+第4章 Schema Object と関連するオブジェクト
+4.0.1 Schema Objectの基本フィールド 
+4.0.2 OpenAPI 3で仕様変更したフィールド 
+4.0.3 OpenAPI 3で拡張したフィールド
+4.0.4 合成とPolymorphism 
+4.0.5 Discriminator Object 
+4.0.6 XMLObject
+
+第5章 定義ファイルの利用方法
+5.1 SwaggerUIを使ってAPIドキュメントにする 
+5.2 OpenAPI Generator を使ってクライアントライブラリを生成する
+5.3 committeeを使ってバリデーションを行う
+5.4 まとめ
+</code></pre>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/book/" rel="tag">book</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/openapi3/" rel="tag">openapi3</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/2020/08/02/cago-make/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">cargo-makeがrust以外でも便利</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/09/11/techbook_9/">#技術書典9でOpenAPI 3の完全解説本を更新します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/08/02/cago-make/">cargo-makeがrust以外でも便利</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/07/26/kubectl_book_18/">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/22/techbook_8/">#技術書典 応援祭の集計スクリプトと中間集計</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/06/kubectl_book/">技術書典 応援祭でkubectl完全逆引きリファレンスを頒布します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/01/09/2019_to_2020/">2019年に何したかと2020年に何するか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/11/28/bonfire_4/">Bonfire Backend #4で社内GPUクラスタとは別にEKSクラスターを運用してる話をした</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2019/09/23/techbook_7_result/">技術書典７でOpenAPI 3の完全解説本を出しました</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-31/">2015年31週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-30/">2015年30週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cargo-make/" title="cargo-make">cargo-make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/eks/" title="EKS">EKS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/make/" title="make">make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

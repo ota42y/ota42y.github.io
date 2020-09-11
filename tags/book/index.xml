@@ -6,10 +6,19 @@
     <description>Recent content in book on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 26 Jul 2020 14:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2020 11:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>#技術書典9でOpenAPI 3の完全解説本を更新します</title>
+      <link>/blog/2020/09/11/techbook_9/</link>
+      <pubDate>Fri, 11 Sep 2020 11:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/09/11/techbook_9/</guid>
+      <description>9/12から始まるる技術書典9で「OpenAPI 3を完全に理解できる本 3.0.3対応版」を頒布します。 OpenAPI3に関するおそらく唯一の</description>
+    </item>
     
     <item>
       <title>kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</title>
