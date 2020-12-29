@@ -6,10 +6,19 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 11 Sep 2020 11:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 29 Dec 2020 20:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ブシロードの宣伝戦略がなんとなく読める「煽動者」を読んだ</title>
+      <link>/blog/2020/12/29/bushiroad/</link>
+      <pubDate>Tue, 29 Dec 2020 20:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/12/29/bushiroad/</guid>
+      <description>最近、「煽動者 ～徹底プロモーション 仕掛人の哲学～」という本を読みました。 これは今かなり勢いのあるアニメ・ゲームのメディア企業であるブシロード</description>
+    </item>
     
     <item>
       <title>#技術書典9でOpenAPI 3の完全解説本を更新します</title>
