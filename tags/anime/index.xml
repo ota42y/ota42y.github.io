@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>anime on おおたの物置</title>
+    <link>/tags/anime/</link>
+    <description>Recent content in anime on おおたの物置</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 31 Dec 2020 17:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/anime/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1月から始まるIDOLY PRIDEが凄い可能性を感じるので第1話を見逃さずに観て欲しい</title>
+      <link>/blog/2020/12/31/idoly_pride/</link>
+      <pubDate>Thu, 31 Dec 2020 17:00:00 +0900</pubDate>
+      
+      <guid>/blog/2020/12/31/idoly_pride/</guid>
+      <description>1月からIDOLY PRIDE -アイドリープライド-というアニメが始まりますが、 11月の単独イベントに行って凄い可能性を感じて、第1話をリアルタイムで</description>
+    </item>
+    
+  </channel>
+</rss>
