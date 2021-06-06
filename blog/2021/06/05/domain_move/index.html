@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Route 53でサブドメインを別アカウントに移動するやり方 - おおたの物置</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Route 53でサブドメインを別アカウントに移動するやり方" />
+<meta property="og:description" content="あるアカウントで運用しているドメインを別のアカウントに遷移したので、 未来の自分がまた同じ事をする際に思考を再現できるようにするまとめました。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2021/06/05/domain_move/" />
+<meta property="article:published_time" content="2021-06-05T18:30:00+09:00" />
+<meta property="article:modified_time" content="2021-06-05T18:30:00+09:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Route 53でサブドメインを別アカウントに移動するやり方"/>
+<meta name="twitter:description" content="あるアカウントで運用しているドメインを別のアカウントに遷移したので、 未来の自分がまた同じ事をする際に思考を再現できるようにするまとめました。"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom-font.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Route 53でサブドメインを別アカウントに移動するやり方</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2021-06-05T18:30:00&#43;09:00">2021-06-05</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/tags/aws" rel="tag">AWS</a>, <a class="meta__link" href="/tags/domain" rel="tag">domain</a>, <a class="meta__link" href="/tags/route53" rel="tag">route53</a></span>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="/blog/2021/06/05/domain_move/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<p>あるアカウントで運用しているドメインを別のアカウントに遷移したので、
+未来の自分がまた同じ事をする際に思考を再現できるようにするまとめました。</p>
+<h1 id="前提条件">前提条件</h1>
+<ul>
+<li>ドメイン(domain)をAWSのアカウントAのRoute 53で管理(domain.com)</li>
+<li>domainのサブドメインsubもアカウントAのRoute53で管理(sub.domain.com)</li>
+<li>subはEKS上で<a href="https://github.com/kubernetes-sigs/aws-load-balancer-controller">AWS Load Balancer Controller</a>と<a href="https://github.com/kubernetes-sigs/external-dns">external-dns</a>を利用して設定している
+<ul>
+<li>ALBを立ち上げてAレコードを登録するのが自動で行われる</li>
+<li>subsub.sub.domain.comなどを作る可能性もある</li>
+</ul>
+</li>
+<li>subはACMで証明書を作成しており、DNSでの検証をしている</li>
+<li>subのEKSやRDSを可能な限りアカウントBに移動したい
+<ul>
+<li>理由がって残すのは(金額が高くないなら)OK</li>
+</ul>
+</li>
+</ul>
+<p>この前提条件のもとで、sub.domain.comをアカウントBに移動するかどうするかというところから考え始めました。</p>
+<h1 id="方法案">方法案</h1>
+<p>大まかな方針は2つありました。</p>
+<ol>
+<li>subのドメインをAに残してBからアクセスできるようにする</li>
+<li>subのドメインをBに移動する</li>
+</ol>
+<p>というのも、Route53の料金自体は大したことがないのでEKSやRDSを移動することに比べたら小さく、そちらのほうが都合がいいのであれば動かす必要は無いと考えました。</p>
+<p>また、ドメインが関わる部分として<br>
+a. subはACMのDNS検証を利用している<br>
+b. EKSから自動で変更される</p>
+<p>という2点が挙げられます。
+このうちaはドメインを移動すれば問題なくできますし、ドメインを残していたとしても
+<a href="https://docs.aws.amazon.com/ja_jp/acm/latest/userguide/dns-validation.html">CNAMEレコードを一回だけ登録すれば良い</a>ように読めるため、最初の一回だけ手動で登録すればよく、特に差はなさそうです。</p>
+<p>一方でbはexternal-dnsのpodに設定したroleがsubのレコードを変更できるようにする必要があります。
+ドメインを移動すれば特に問題はないのですが、ドメインを残したままやる場合、	external-dnsの<a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md#iam-policy">IAM Policy</a>を持ったRoleをAに作り、それをBからassume roleする必要があり、結構複雑なしくみになります。</p>
+<p>そのため、ドメインを遷移したほうが自由度が高く、A自体でやっているterraform設定と統一できることもあり、ドメインも遷移することにしました。</p>
+<h1 id="ドメインを遷移する方法">ドメインを遷移する方法</h1>
+<p>アカウントAでは親となるdomainのホストゾーン内にsubのレコードが登録されています。
+domainやsub以外にもapp.domain.comがいたりするので、domainのホストゾーンはAに残し、subだけを分離して管理をアカウントBで行いたいです。</p>
+<p>DNSには<a href="https://www.atmarkit.co.jp/ait/articles/1501/15/news008.html">サブドメインを委任する仕組み</a>があり、これを利用することで実現できます。
+具体的にはどのサーバがそのゾーンを管理しているかを示すNSレコードを利用し、親となるdomain.comのゾーンファイルに対して、アカウントBが変更できるNSサーバがsub.domain.comを管理しているというレコードを登録します。
+これでアカウントBからAレコード等を登録するとそれが利用できるようになります。</p>
+<h1 id="具体的な遷移手順">具体的な遷移手順</h1>
+<p>Bから見るとsubは他のところで管理されているドメインを自分のアカウントに持ってくると言えるので、この<a href="https://docs.aws.amazon.com/ja_jp/Route53/latest/DeveloperGuide/MigratingDNS.html">「Route 53 を使用中のドメインの DNS サービスにする」</a>の手順がほぼ使えます。</p>
+<p>今回は一時的に止めることが許容できたのと、ALBの作成をEKSにまかせているので事前に作るのが面倒だったので、手順はやりやすいように変えています。
+なお、数日前にアカウントAでsubのTTLを短く設定しておきます(60秒とか)。</p>
+<p>Bのterraformでドメインsubのホストゾーンを作成します</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_route53_zone&#34;</span> <span style="color:#e6db74">&#34;domain&#34;</span> {
+  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;sub.domain.com&#34;</span>
+}
+</code></pre></div><p>作成されたNSレコードをAのアカウントのドメインsubのNSレコードとして設定します。
+また、subの他のレコードは削除します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_route53_record&#34;</span> <span style="color:#e6db74">&#34;beta_account&#34;</span> {
+  <span style="color:#a6e22e">name</span>    = <span style="color:#e6db74">&#34;sub.domain.com&#34;</span>
+  <span style="color:#a6e22e">ttl</span>     = <span style="color:#ae81ff">60</span>
+  <span style="color:#a6e22e">type</span>    = <span style="color:#e6db74">&#34;NS&#34;</span>
+  <span style="color:#a6e22e">zone_id</span> = <span style="color:#a6e22e">aws_route53_zone</span>.<span style="color:#a6e22e">alpha</span>.<span style="color:#a6e22e">zone_id</span>
+
+  <span style="color:#a6e22e">records</span> = [
+    <span style="color:#e6db74">&#34;xxxx.awsdns-53.com.&#34;</span>,
+    <span style="color:#e6db74">&#34;yyyy.awsdns-54.co.jp.&#34;</span>,
+    <span style="color:#e6db74">&#34;zzzz.awsdns-55.ac.jp.&#34;</span>,
+    <span style="color:#e6db74">&#34;xxxx.awsdns-56.org.&#34;</span>
+  ]
+}
+</code></pre></div><p>これで完了です。
+あとは以下のように普通のzoneとしてACMを作ったりできますし、external-dnsからも変更ができるようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_acm_certificate&#34;</span> <span style="color:#e6db74">&#34;domain&#34;</span> {
+  <span style="color:#a6e22e">domain_name</span>       = <span style="color:#e6db74">&#34;sub.domain.com&#34;</span>
+  <span style="color:#a6e22e">validation_method</span> = <span style="color:#e6db74">&#34;DNS&#34;</span>
+}
+<span style="color:#66d9ef">
+</span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_route53_record&#34;</span> <span style="color:#e6db74">&#34;domain&#34;</span> {
+  <span style="color:#a6e22e">zone_id</span> = <span style="color:#a6e22e">aws_route53_zone</span>.<span style="color:#a6e22e">domain</span>.<span style="color:#a6e22e">zone_id</span>
+  <span style="color:#a6e22e">ttl</span>     = <span style="color:#ae81ff">60</span>
+  ....
+</code></pre></div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/aws/" rel="tag">AWS</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/domain/" rel="tag">domain</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/route53/" rel="tag">route53</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/2021/05/09/unicorn/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">「ユニコーン企業のひみつ」を読んだがたぶん「ひみつ」なんてものは無いのだろう</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2021/06/05/domain_move/">Route 53でサブドメインを別アカウントに移動するやり方</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2021/05/09/unicorn/">「ユニコーン企業のひみつ」を読んだがたぶん「ひみつ」なんてものは無いのだろう</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/12/31/idoly_pride/">1月から始まるIDOLY PRIDEが凄い可能性を感じるので第1話を見逃さずに観て欲しい</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/12/29/bushiroad/">ブシロードの宣伝戦略がなんとなく読める「煽動者」を読んだ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/09/11/techbook_9/">#技術書典9でOpenAPI 3の完全解説本を更新します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/08/02/cago-make/">cargo-makeがrust以外でも便利</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/07/26/kubectl_book_18/">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/03/22/techbook_8/">#技術書典 応援祭の集計スクリプトと中間集計</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-31/">2015年31週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-30/">2015年30週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/anime/" title="anime">anime</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cargo-make/" title="cargo-make">cargo-make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/domain/" title="domain">domain</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/eks/" title="EKS">EKS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/make/" title="make">make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/route53/" title="route53">route53</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

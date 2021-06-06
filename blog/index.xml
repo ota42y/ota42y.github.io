@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 09 May 2021 22:20:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Jun 2021 18:30:00 +0900</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Route 53でサブドメインを別アカウントに移動するやり方</title>
+      <link>/blog/2021/06/05/domain_move/</link>
+      <pubDate>Sat, 05 Jun 2021 18:30:00 +0900</pubDate>
+      
+      <guid>/blog/2021/06/05/domain_move/</guid>
+      <description>あるアカウントで運用しているドメインを別のアカウントに遷移したので、 未来の自分がまた同じ事をする際に思考を再現できるようにするまとめました。</description>
+    </item>
     
     <item>
       <title>「ユニコーン企業のひみつ」を読んだがたぶん「ひみつ」なんてものは無いのだろう</title>
