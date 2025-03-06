@@ -6,10 +6,49 @@
     <description>Recent content on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 05 Jun 2021 18:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 06 Mar 2025 22:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>習慣化できない人向けのLLMライフログ</title>
+      <link>/blog/2025/03/06/llm_memo/</link>
+      <pubDate>Thu, 06 Mar 2025 22:00:00 +0900</pubDate>
+      
+      <guid>/blog/2025/03/06/llm_memo/</guid>
+      <description>&lt;p&gt;「日々の活動をメモしろ」というのは、個人の生産性の文脈やライフログ等でよく言われます[要出典]。
+実際に私も古くはA4用紙にメモっていったり、いろいろな手帳を試したり、&lt;a href=&#34;https://kaorahi.github.io/howm/&#34;&gt;howm&lt;/a&gt;や&lt;a href=&#34;https://evernote.com&#34;&gt;Evernote&lt;/a&gt;、&lt;a href=&#34;https://obsidian.md/&#34;&gt;Obsidian&lt;/a&gt;で色々やっていた過去がありましたが、最終的にはどれも三日坊主になり継続しませんでした。&lt;/p&gt;
+&lt;p&gt;というのも、メモをするより作業したほうが早いですし、いつも手を動かす方を優先してつい作業をしてしまいます。&lt;br&gt;
+特にOSS活動や趣味開発をしている時などは、仕事の後で時間がないので手を動かす方を優先したいとなりがちです。
+実際、ここ1年ぐらいは毎週振り返りの予定をカレンダーに入れているのですが、2,3回ぐらいしか成功した記憶がありません。&lt;/p&gt;
+&lt;figure class=&#34;figure&#34;&gt;
+    
+    
+      
+    
+    &lt;a href=&#34;llm_memo_weekly_memo.png&#34; target=&#34;_blank&#34; title=&#34;original size&#34;&gt;
+      
+      
+      
+       
+        
+      
+
+      
+        
+        &lt;img src=&#34;/blog/2025/03/06/llm_memo/llm_memo_weekly_memo_hubf583603c0c905549dfb07f7ab23f259_29599_400x0_resize_q100_box_2.png&#34;
+             class=&#34;figure-img img-fluid&#34; alt=&#34;入れているがほぼ実行されない予定&#34;&gt;
+      
+    &lt;/a&gt;
+    &lt;figcaption class=&#34;figure-caption text-center&#34; &gt;
+      入れているがほぼ実行されない予定
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;正直、「LLMなんとかしてくれーーーーー」と思います。&lt;/p&gt;
+&lt;p&gt;なのでLLMになんとかしてもらいました&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Route 53でサブドメインを別アカウントに移動するやり方</title>
