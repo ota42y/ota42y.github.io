@@ -6,10 +6,19 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 10 Jun 2019 19:40:59 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jan 2026 16:36:57 +0900</lastBuildDate>
     
 	<atom:link href="/pages/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Factorio Space Exploration 深宇宙開発チュートリアル</title>
+      <link>/pages/other/2026/factorio_space_exploration/</link>
+      <pubDate>Thu, 01 Jan 2026 16:36:57 +0900</pubDate>
+      
+      <guid>/pages/other/2026/factorio_space_exploration/</guid>
+      <description>FactorioのSpace Explorationの後半では、深宇宙サイエンスパックという極めて難易度の高いサイエンスパックを作る必要があり</description>
+    </item>
     
     <item>
       <title>2019-06-10 weeklyまとめ</title>
