@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Factorio Space Exploration 宇宙船開発と物流について - おおたの物置</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Factorio Space Exploration 宇宙船開発と物流について" />
+<meta property="og:description" content="前回の記事(深宇宙開発チュートリアル) では何をすればいいかを書きましたが、今回はなぜそうなっているのか？について説明していきます。 船の基本設" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pages/other/2026/factorio_space_exploration_circuit/" />
+<meta property="article:published_time" content="2026-01-26T16:36:57+09:00" />
+<meta property="article:modified_time" content="2026-01-26T16:36:57+09:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Factorio Space Exploration 宇宙船開発と物流について"/>
+<meta name="twitter:description" content="前回の記事(深宇宙開発チュートリアル) では何をすればいいかを書きましたが、今回はなぜそうなっているのか？について説明していきます。 船の基本設"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom-font.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Factorio Space Exploration 宇宙船開発と物流について</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2026-01-26T16:36:57&#43;09:00">2026-01-26</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="/pages/other/2026/factorio_space_exploration_circuit/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<p>前回の記事(<a href="/pages/other/2026/factorio_space_exploration/">深宇宙開発チュートリアル</a>)
+では何をすればいいかを書きましたが、今回はなぜそうなっているのか？について説明していきます。</p>
+<h1 id="船の基本設計">船の基本設計</h1>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="starship.png" target="_blank" title="original size">
+      
+      
+      
+       
+        
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/starship_hu94efec6a1dd9a4ea894757ccfce017df_881074_600x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>船の基本的な使い方として、素材の運搬と現地の建設・修理があります。
+基本的に深宇宙(現地)に停めておいて、必要に応じてNauvis衛星軌道(母星)に取りに行ったり荷下ろしをし、
+終わり次第返ってくるという運用をします。</p>
+<p>これにより、現地の開発や現地で運悪く小隕石で壊れた場合でも修理ができるため、比較的安定します。宇宙船自体も自己修理できるんですが、当たりどころが悪いと復旧できないのでその場合は別の船で修理に向かってください。
+可能性としては低いので一旦無視しています。</p>
+<p>また、同時開発をしたいので基本的に自分が直接行かなくても開発できるように整えています。</p>
+<h2 id="宇宙船の建築計画">宇宙船の建築計画</h2>
+<p>宇宙船の建築計画はこれです。</p>
+<pre><code>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
+</code></pre><h2 id="補給物資の物流">補給物資の物流</h2>
+<p>船上部のこのあたりに補給物資を要求チェストで積み込んでいます。
+基本的に母星が一番揃っているので、積み込みは母星の物流ネットワークで積み込みます。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="unload_chest.png" target="_blank" title="original size">
+      
+      
+      
+       
+        
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/unload_chest_hua1ebc2e7e133163a620001dced2b1ec5_238091_600x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>現地ではバッファーチェストに入れることを想定しています。
+供給チェストの場合、再度要求チェストに物流ロボットが入れてしまい、無限にループするためです。
+船の要求チェストはバッファーチェストから取らないようにしているため、これで母星で積み込み、現地で荷下ろししつつ物流ネットワークに乗せることができます。
+もちろん、現地の物流ネットワークを使わないことで回避もできますが、現地でそういった開発をするのは大変なので物流ロボットにまかせています。</p>
+<p>硫酸に関してはタンクで輸送することもできますが、ナクイウム鉱床は結構遠いためパイプラインを作るのは大変です。
+実際に必要とされる用もそこまで多くないため、物流ロボットに任せるようにしています。</p>
+<h2 id="現地からの荷物輸送">現地からの荷物輸送</h2>
+<p>粉砕したナクイウムや、加工の副産物は現地で積んで母星で降ろします。
+これは船内では物流ネットワークを使わないで実現しています。</p>
+<p>そのため、母星側では以下のように搬送ベルトを使ってアクティブ供給チェストとパッシブ供給倉庫に入れています。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="cargo.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/cargo_hu641190c3ae6bc37f779f5da7ee851e75_528053_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<h3 id="粉砕したナクイウム">粉砕したナクイウム</h3>
+<p>最初に書いたように、船は建設用資材を提供するために現地に停泊をしていてほしいです。
+そのため、母星では粉砕したナクイウムを可能な限り早く降ろしてすぐに現地に向かってほしいです。</p>
+<p>供給チェストでこれをやると物流ロボット任せになって時間がかかるため、
+搬送ベルトで積み下ろし、母星側の倉庫に格納してからロボットで加工場へ持っていっています。</p>
+<p>また、積み荷の荷下ろしは船の右側の領域を使います。
+縦方向の利用スペースは小さい方が将来的に複数種類を積み下ろしできるため、倉庫ではなく鋼鉄チェストを複数並べ、縦2マスで出し入れできるようにしています。</p>
+<h3 id="現地の副産物">現地の副産物</h3>
+<p>現地では以下の副産物が処理できない形で出てきます。</p>
+<ul>
+<li>イリジウムの粉
+<ul>
+<li>ナクイウムを粉砕する際の副産物</li>
+<li>イリジウム板は再利用可能</li>
+<li>水は発電で消費可能</li>
+</ul>
+</li>
+<li>空のドラム缶
+<ul>
+<li>採掘用の硫酸のドラム缶を空にしたときに出る</li>
+<li>初期発電用の水を投入する際にも出る</li>
+</ul>
+</li>
+</ul>
+<p>これらは要求チェストを使って積み込むと、以下の理由から問題があります。</p>
+<ul>
+<li>母星で処理する必要があるが、ループしてしまう</li>
+<li>ナクイウム採掘を止めたくないため、現地ではアクティブ供給チェストで貯めないようにしたい</li>
+</ul>
+<p>そのため現地側で要求チェストを使って収集し、搬送ベルトで積み込むことで採掘に影響がないようにしています。</p>
+<h2 id="船の自動化">船の自動化</h2>
+<p>自動化の際はG(Go)=1を出発シグナルとして利用し、母星現地ともに条件回路で出発したいときにこれを入力します。
+条件回路に設定しきらない補給物資や、開拓時に手動で止めたい場合などに使うためにざっくり300秒の待機時間も設定しています。
+それ以外の絶対に満たしておきたい条件は条件回路で設定しています。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="nauvis_auto_start.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/nauvis_auto_start_huf3321d49266372585c18a521dcc4a070_33451_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>船の出発条件は以下になっており、基本的に母星現地ともに同様の条件にしています。
+バッファーチェストへの積み込みは条件回路は設定していないため、</p>
+<p>ただ、現地はナクイウムの積荷が満杯なら出発、母星はナクイウムの積荷がゼロなら出発と現在地によって条件が正反対になります。
+頑張れば船内でも条件回路を組めますが、船の外に置けば条件分岐が一つ減るのでシンプルになります。
+そのため、基本的に外側で条件を判定し、クランプ経由で結果を送信する形にしています。
+船は不要なスペースは少ない方が良いという仕様があるため、判断用の回路は減らしたいという背景もあります。</p>
+<p>なお、必要な情報が取れるように船の中は基本的に赤ケーブルでネットワークを作ってクランプに繋いでいます。
+水と燃料に関しては1個のタンクのみ、それ以外のチェストは全部にネットワークをつけています。
+ネットワークでは <code>G</code> や <code>1</code>、 <code>2</code>といった被らないものを制御用シグナルとして使っているので、基本的に全部混ぜてしまって問題ないです。</p>
+<h3 id="nauvis衛星軌道上の出港条件">Nauvis衛星軌道上の出港条件</h3>
+<p>具体的に条件回路で設定しているのは以下で、
+水と燃料を積み込み、かつ素材を全部おろしたら出発するという簡単な回路になっています。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="nauvis_start.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/nauvis_start_hua33607d73a91d1d5ea68686334f1b3da_508425_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>開拓のためにベルトなどを必ず積み込みたい場合は、ここに条件を増やすとよいです。</p>
+<h3 id="深宇宙側の出港条件">深宇宙側の出港条件</h3>
+<p>深宇宙側は以下の2つを条件として設定しています。</p>
+<ul>
+<li>荷物が一杯になったら</li>
+<li>補給物資を降ろし終わったら</li>
+</ul>
+<p>荷物が一杯になったらの条件は簡単で、すべて赤ケーブルで繋いでいるのでそれを取得して個数を数えるだけです。
+なお、定数回路は実際は何も出力しておらず、単に赤ケーブルの中継地点とだけ使います。
+これはケーブルをわかりやすくするためだけなので、他のやつでも良いです。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="deep_space_circuit_1.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/deep_space_circuit_1_hud559c1f71a1d9f760d8cef29037d4967_83113_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>補給物資に関しても同様に取得可能なため、0個かどうかを確認するだけで良いです。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="deep_space_circuit_2.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/deep_space_circuit_2_hu23573c6e9813138bc50554c4f323e785_87562_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>出発条件はこれはorで設定すればよいですが、補給物資は数的に少なくすぐに荷下ろし完了してしまうため、粉砕したナクイウムなどの積み込み時間を確保したいです。
+そのため、補給物資が空になり、かつ現地の粉砕したナクイウムが0個である場合に出発させることで、補給物資が無くてもその時溜まっているものを全部積み込んでから終了するようにしています。
+このとき、赤ケーブルで現地の情報を取得すると積み込んだものと混ざるので、現地のものは緑ケーブルで取得しています。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="deep_space_circuit3.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        <img src="deep_space_circuit3.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<h2 id="燃料">燃料</h2>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="fuel.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/fuel_hue1a5eb4d49b40d290a135a6fcb8f915b_286351_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>深宇宙に行くならイオンブースター一択です、燃費的にロケット燃料はきついです。
+上位のエンジンもありますがナクイウム研究が必要なので選べないですし、素材も高いです。</p>
+<p>ただし、イオンブースターは地上では使えないので、他の開拓のために星に降りたい場合はロケット燃料にする必要があります。
+ただ、一台に詰め込むよりかは別の船にしたほうがすっきりするのではと思いますが、やったことがないのでなんとも。</p>
+<p>燃料タンクは繋がっており、すべてのタンクでほぼ同量になるので、ケーブルは一箇所で良いと判断しています。</p>
+<h2 id="電力">電力</h2>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="electric_power.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/electric_power_hu86191661d3865c918886c5d2286bd3d3_831740_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>電力はエナジービームを利用しています。
+受信機は実質熱量を保存するコンテナにも使え、かなりの熱量を保存できるためこのようにしています。
+おそらく原子力でも頑張ればできますが、最悪深宇宙側で充電もできるのでこっちにしています。</p>
+<p>水は復水タービンで使いまわしています。
+少しづつ減っていくので母星で水は補給しますが、満杯まで入れてしまうと復水タービンの排水ができなくなるので、9割ぐらいで止めています。
+消費量は燃料に比べて少ないので、満杯まで入れなくても問題ないです。</p>
+<p>イオンエンジンを2台動かすと実は電力が少し足りないんですが、よほど速度を上げない限りは問題ないので無視しています。</p>
+<h2 id="武装について">武装について</h2>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="weapon.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/weapon_huea11de44dfb30a4f249777449a933f85_752582_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>Space Ageと違いレーザータレットが通るのと、でかい隕石は基本来ないので簡素化しています
+今の所シールドを抜かれたことはないので問題ないかと。</p>
+<h2 id="物流ステーションについて">物流ステーションについて</h2>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="robot_station.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/robot_station_hu956b15758f281ad8096f7314c180db4a_216255_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>左下に物流ステーションと、物流ロボットを置いています。
+このとき、インサータはステーションにロボットを入れない形で置いています。
+これは現地で必ずロボットを確保するのと、万が一ミスっても詰まないためです。</p>
+<p>というのも、自身が乗り込まないでも開発をする場合、
+物流・建築ロボットが無いと何もできずに積みます。
+母星だと物流ネットワークに繋がってしまうのでロボットの数が安定せず、
+確実に現地で使えるロボットを確保するためにこのようにしています。</p>
+<p>また、万が貯蔵チェストを置く前にロボットに指示を送ってしまった場合、
+ロボットが全部で払ってしまい貯蔵チェストを置けずに積むということも起きるため、
+ロボットの動作開始を自分でコントロールできるようにしています。</p>
+<h1 id="船のスケジュール">船のスケジュール</h1>
+<p>船のスケジュールはすべてFoenestraを経由するようにしています。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="starship_schedule.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/starship_schedule_hu51044649bd3e079ee495458ef9d378f2_80454_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>Foenestraはすべての恒星系から等距離で、10-20分程度で移動可能なため、
+どこの場所にも20-40分程度で到達可能になりかなりの時間短縮ができます。</p>
+<p>現地にはこのように通過用のドッキングをおいており、通過のためだけに使うことを想定しています。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="foenestra_clamp.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/pages/other/2026/factorio_space_exploration_circuit/foenestra_clamp_hube3b9326e89871653352e9fdf695a519_23730_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/pages/other/2026/factorio_space_exploration/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Factorio Space Exploration 深宇宙開発チュートリアル</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2025/03/06/llm_memo/">習慣化できない人向けのLLMライフログ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2021/06/05/domain_move/">Route 53でサブドメインを別アカウントに移動するやり方</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2021/05/09/unicorn/">「ユニコーン企業のひみつ」を読んだがたぶん「ひみつ」なんてものは無いのだろう</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/12/31/idoly_pride/">1月から始まるIDOLY PRIDEが凄い可能性を感じるので第1話を見逃さずに観て欲しい</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/12/29/bushiroad/">ブシロードの宣伝戦略がなんとなく読める「煽動者」を読んだ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/09/11/techbook_9/">#技術書典9でOpenAPI 3の完全解説本を更新します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/08/02/cago-make/">cargo-makeがrust以外でも便利</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/07/26/kubectl_book_18/">kubectl完全逆引きリファレンスが技術の泉シリーズから出ました</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/05/26/kubernetes_secret/">Kubernetes(EKS)で秘密情報をどう扱うか</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/04/10/techbook_8_end/">#技術書典 応援祭の結果</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/other/2026/factorio_space_exploration_circuit/">Factorio Space Exploration 宇宙船開発と物流について</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/other/2026/factorio_space_exploration/">Factorio Space Exploration 深宇宙開発チュートリアル</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/anime/" title="anime">anime</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cargo-make/" title="cargo-make">cargo-make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/domain/" title="domain">domain</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/eks/" title="EKS">EKS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/llm/" title="LLM">LLM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/make/" title="make">make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/route53/" title="route53">route53</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2026 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

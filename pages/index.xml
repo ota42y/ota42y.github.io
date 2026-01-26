@@ -6,15 +6,24 @@
     <description>Recent content in Pages on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 01 Jan 2026 16:36:57 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jan 2026 16:36:57 +0900</lastBuildDate>
     
 	<atom:link href="/pages/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Factorio Space Exploration 宇宙船開発と物流について</title>
+      <link>/pages/other/2026/factorio_space_exploration_circuit/</link>
+      <pubDate>Mon, 26 Jan 2026 16:36:57 +0900</pubDate>
+      
+      <guid>/pages/other/2026/factorio_space_exploration_circuit/</guid>
+      <description>前回の記事(深宇宙開発チュートリアル) では何をすればいいかを書きましたが、今回はなぜそうなっているのか？について説明していきます。 船の基本設</description>
+    </item>
+    
+    <item>
       <title>Factorio Space Exploration 深宇宙開発チュートリアル</title>
       <link>/pages/other/2026/factorio_space_exploration/</link>
-      <pubDate>Thu, 01 Jan 2026 16:36:57 +0900</pubDate>
+      <pubDate>Sun, 25 Jan 2026 15:00:00 +0900</pubDate>
       
       <guid>/pages/other/2026/factorio_space_exploration/</guid>
       <description>FactorioのSpace Explorationの後半では、深宇宙サイエンスパックという極めて難易度の高いサイエンスパックを作る必要があり</description>
