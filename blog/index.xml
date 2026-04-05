@@ -6,10 +6,45 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 06 Mar 2025 22:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2026 15:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Factorio Space Exploration 深宇宙開発チュートリアル</title>
+      <link>/blog/2026/04/05/factorio_space_exploration/</link>
+      <pubDate>Sun, 05 Apr 2026 15:00:00 +0900</pubDate>
+      
+      <guid>/blog/2026/04/05/factorio_space_exploration/</guid>
+      <description>&lt;p&gt;Factorioの大型Modの一つである&lt;a href=&#34;https://mods.factorio.com/mod/space-exploration&#34;&gt;Space Exploration&lt;/a&gt;(以下SE)をクリアしました。&lt;br&gt;
+複数人で合計1100時間ほどかかりましたが、いくつかSEで特有のことがあったので書き記していきます。&lt;/p&gt;
+&lt;figure class=&#34;figure&#34;&gt;
+    
+    
+      
+    
+    &lt;a href=&#34;spale_exploration_ending.png&#34; target=&#34;_blank&#34; title=&#34;original size&#34;&gt;
+      
+      
+      
+       
+        
+      
+
+      
+        
+        &lt;img src=&#34;/blog/2026/04/05/factorio_space_exploration/spale_exploration_ending_hu7d2bb53e1b8613f78d5400abafac42fa_1122325_600x0_resize_q100_box_2.png&#34;
+             class=&#34;figure-img img-fluid&#34; alt=&#34;&#34;&gt;
+      
+    &lt;/a&gt;
+    &lt;figcaption class=&#34;figure-caption text-center&#34; &gt;
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;まずは最後のサイエンスパックシリーズである深宇宙サイエンスパックについてです。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>習慣化できない人向けのLLMライフログ</title>
