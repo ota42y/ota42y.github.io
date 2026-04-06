@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>elasticsearch on おおたの物置</title>
-    <link>/tags/elasticsearch/</link>
+    <link>https://ota42y.com/tags/elasticsearch/</link>
     <description>Recent content in elasticsearch on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 02 Nov 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作った</title>
-      <link>/blog/2018/11/02/hyper_schema_to_openapi3/</link>
+      <link>https://ota42y.com/blog/2018/11/02/hyper_schema_to_openapi3/</link>
       <pubDate>Fri, 02 Nov 2018 00:21:50 +0000</pubDate>
       
-      <guid>/blog/2018/11/02/hyper_schema_to_openapi3/</guid>
+      <guid>https://ota42y.com/blog/2018/11/02/hyper_schema_to_openapi3/</guid>
       <description>JSON Hyper-SchemaからOpenAPI3に変換するスクリプトを作りました。 一旦はOpenAPI3でエラーのない状態に変換できます。 https://github.com/ota42y/json_hyperscheme_to_openapi3 残</description>
     </item>
     
     <item>
       <title>技術書典５で本を３冊出しました</title>
-      <link>/blog/2018/10/07/techbook_5_result/</link>
+      <link>https://ota42y.com/blog/2018/10/07/techbook_5_result/</link>
       <pubDate>Sun, 07 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>/blog/2018/10/07/techbook_5_result/</guid>
+      <guid>https://ota42y.com/blog/2018/10/07/techbook_5_result/</guid>
       <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本を３冊出しました。&lt;br&gt;
 お買い求めくださった方、ありがとうございます。&lt;/p&gt;
 &lt;p&gt;また、マイクロサービス本とFlutter本はBOOTHでも販売していますのでどうぞ。&lt;br&gt;
 また、既刊のマイクロサービス本もBOOTHで販売中です。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_2.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-flutter.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;img src=&#34;/images/blog/2018/2018-10-10-microservices_book_1.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;&lt;img src=&#34;https://ota42y.com/images/blog/2018/2018-10-10-microservices_book_2.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;&lt;img src=&#34;https://ota42y.com/images/blog/2018/2018-10-10-flutter.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;&lt;img src=&#34;https://ota42y.com/images/blog/2018/2018-10-10-microservices_book_1.jpg&#34; width=&#39;20%&#39; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://ota42y.booth.pm/items/1040359&#34;&gt;Microservices architecture よろず本 その二 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/1040373&#34;&gt;How to Develop Flutter Apps - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://ota42y.booth.pm/items/824288&#34;&gt;Microservices architecture よろず本 - ota42y - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/p&gt;
@@ -41,12 +41,12 @@
     
     <item>
       <title>技術書典５で本が３冊出ます</title>
-      <link>/blog/2018/10/06/techbook_5/</link>
+      <link>https://ota42y.com/blog/2018/10/06/techbook_5/</link>
       <pubDate>Sat, 06 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>/blog/2018/10/06/techbook_5/</guid>
+      <guid>https://ota42y.com/blog/2018/10/06/techbook_5/</guid>
       <description>&lt;p&gt;10/8の&lt;a href=&#34;https://techbookfest.org/event/tbf05&#34;&gt;技術書典５&lt;/a&gt;で関わった本が３冊でます。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/images/blog/2018/2018-10-06-all_techbook.png&#34; width=&#39;50%&#39; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ota42y.com/images/blog/2018/2018-10-06-all_techbook.png&#34; width=&#39;50%&#39; /&gt;&lt;/p&gt;
 &lt;p&gt;技術書典５で私が何故か３サークルの運営に関与していたので…&lt;/p&gt;</description>
     </item>
     

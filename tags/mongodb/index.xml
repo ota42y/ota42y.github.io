@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mongodb on おおたの物置</title>
-    <link>/tags/mongodb/</link>
+    <link>https://ota42y.com/tags/mongodb/</link>
     <description>Recent content in mongodb on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 02 Dec 2015 07:25:25 +0900</lastBuildDate>
     
-	<atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MongoDB の update は部分 update ではない</title>
-      <link>/blog/2015/12/02/mongodb_update/</link>
+      <link>https://ota42y.com/blog/2015/12/02/mongodb_update/</link>
       <pubDate>Wed, 02 Dec 2015 07:25:25 +0900</pubDate>
       
-      <guid>/blog/2015/12/02/mongodb_update/</guid>
+      <guid>https://ota42y.com/blog/2015/12/02/mongodb_update/</guid>
       <description>まとめ MongoDB の update はレコードのID以外の要素を全て置き換える 指定したカラムだけ置き換えてはくれない 部分 update したい場合は専用の方法でクエリを作る MongoDB の update</description>
     </item>
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
-      <link>/blog/2015/10/14/mongodb3-debian7-32bit/</link>
+      <link>https://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</link>
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
-      <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
+      <guid>https://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>まとめ Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違</description>
     </item>
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>/blog/2014/09/03/mgo-consistency/</link>
+      <link>https://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>https://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
       <description>mgoのサンプルにあった session.SetMode(mgo.Monotonic, true) の意味がよくわからないので調べてみました。 結論から書きますと、これは複数DBを利用した際の、 データの一貫性をどの</description>
     </item>
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>/blog/2014/09/02/go-mongodb/</link>
+      <link>https://ota42y.com/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/02/go-mongodb/</guid>
+      <guid>https://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
       <description>mgoというライブラリが便利そうです。 http://labix.org/mgo 以下はtwitterからツイートを取ってきて、 未登録のツイートをmongodbに保存するスクリプトで</description>
     </item>
     
     <item>
       <title>MongoDBでインデックスとexplainを使う</title>
-      <link>/blog/2014/09/01/mongodb-explain/</link>
+      <link>https://ota42y.com/blog/2014/09/01/mongodb-explain/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/01/mongodb-explain/</guid>
+      <guid>https://ota42y.com/blog/2014/09/01/mongodb-explain/</guid>
       <description>事前データ準備 for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test3&amp;quot;, num: i*10000}) } stringは3種類100個ずつ、numはuniqueなオブ</description>
     </item>
     

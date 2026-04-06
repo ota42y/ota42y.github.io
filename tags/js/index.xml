@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>js on おおたの物置</title>
-    <link>/tags/js/</link>
+    <link>https://ota42y.com/tags/js/</link>
     <description>Recent content in js on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 23 Oct 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/js/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/js/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>javascriptの関数リテラルではインスタンス変数にアクセスできない</title>
-      <link>/blog/2014/10/23/javascript-callback/</link>
+      <link>https://ota42y.com/blog/2014/10/23/javascript-callback/</link>
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/23/javascript-callback/</guid>
+      <guid>https://ota42y.com/blog/2014/10/23/javascript-callback/</guid>
       <description>関数リテラルではローカル変数には自由にアクセスできるので、 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</description>
     </item>
     
     <item>
       <title>ブラウザからArduinoを制御する</title>
-      <link>/blog/2014/08/27/arduino-browser/</link>
+      <link>https://ota42y.com/blog/2014/08/27/arduino-browser/</link>
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/27/arduino-browser/</guid>
+      <guid>https://ota42y.com/blog/2014/08/27/arduino-browser/</guid>
       <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、 当然ながらブラウザ本体やJavascriptにはそんな機能はありませ</description>
     </item>
     
     <item>
       <title>JavascriptでオプションのパースをするOptparse-js</title>
-      <link>/blog/2014/08/26/optparse/</link>
+      <link>https://ota42y.com/blog/2014/08/26/optparse/</link>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/26/optparse/</guid>
+      <guid>https://ota42y.com/blog/2014/08/26/optparse/</guid>
       <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、 各言語でそれをやってくれるライブラリが作られています。 javas</description>
     </item>
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>/blog/2014/08/22/mocha-test/</link>
+      <link>https://ota42y.com/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/22/mocha-test/</guid>
+      <guid>https://ota42y.com/blog/2014/08/22/mocha-test/</guid>
       <description>まとめ Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ</description>
     </item>
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>/blog/2014/08/21/intellij-node/</link>
+      <link>https://ota42y.com/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/21/intellij-node/</guid>
+      <guid>https://ota42y.com/blog/2014/08/21/intellij-node/</guid>
       <description>node.js+mocha+coffeescriptな環境で開発をしていたところ、 IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.</description>
     </item>
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>https://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>https://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>まとめ Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人</description>
     </item>
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>/blog/2014/08/17/local-storage/</link>
+      <link>https://ota42y.com/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/17/local-storage/</guid>
+      <guid>https://ota42y.com/blog/2014/08/17/local-storage/</guid>
       <description>Chrome拡張でデータを保存しようとした場合に、 最も簡単に扱えるのが、localStorageです。 manifest.jsonの設定 man</description>
     </item>
     

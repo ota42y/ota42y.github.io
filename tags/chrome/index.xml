@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chrome on おおたの物置</title>
-    <link>/tags/chrome/</link>
+    <link>https://ota42y.com/tags/chrome/</link>
     <description>Recent content in chrome on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>/blog/2015/01/31/evernote-opener-update/</link>
+      <link>https://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>https://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
       <description>evernote url openerを更新しました。 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、 ちょっと面倒だったので、ユー</description>
     </item>
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>https://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>https://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>まとめ Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人</description>
     </item>
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>/blog/2014/08/17/local-storage/</link>
+      <link>https://ota42y.com/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/17/local-storage/</guid>
+      <guid>https://ota42y.com/blog/2014/08/17/local-storage/</guid>
       <description>Chrome拡張でデータを保存しようとした場合に、 最も簡単に扱えるのが、localStorageです。 manifest.jsonの設定 man</description>
     </item>
     

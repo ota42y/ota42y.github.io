@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mac on おおたの物置</title>
-    <link>/tags/mac/</link>
+    <link>https://ota42y.com/tags/mac/</link>
     <description>Recent content in mac on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 16 Aug 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>AutomatorでEvernoteのノートリンクを置き換える</title>
-      <link>/blog/2014/08/16/evernote-url/</link>
+      <link>https://ota42y.com/blog/2014/08/16/evernote-url/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/16/evernote-url/</guid>
+      <guid>https://ota42y.com/blog/2014/08/16/evernote-url/</guid>
       <description>まとめ シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを</description>
     </item>
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>/blog/2014/08/10/evernote-link/</link>
+      <link>https://ota42y.com/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/10/evernote-link/</guid>
+      <guid>https://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>まとめ Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリ</description>
     </item>
     

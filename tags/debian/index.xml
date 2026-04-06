@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>debian on おおたの物置</title>
-    <link>/tags/debian/</link>
+    <link>https://ota42y.com/tags/debian/</link>
     <description>Recent content in debian on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 14 Oct 2015 23:24:16 +0900</lastBuildDate>
     
-	<atom:link href="/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Debian7にapt-getでmongodb3.0が入れられない</title>
-      <link>/blog/2015/10/14/mongodb3-debian7-32bit/</link>
+      <link>https://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</link>
       <pubDate>Wed, 14 Oct 2015 23:24:16 +0900</pubDate>
       
-      <guid>/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
+      <guid>https://ota42y.com/blog/2015/10/14/mongodb3-debian7-32bit/</guid>
       <description>まとめ Debian 7 32bitではmongodb3.0はapt-getで入れられない tarballで入れられるが、前のmongodbとファイル位置が違</description>
     </item>
     

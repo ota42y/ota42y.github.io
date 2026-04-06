@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>evernote on おおたの物置</title>
-    <link>/tags/evernote/</link>
+    <link>https://ota42y.com/tags/evernote/</link>
     <description>Recent content in evernote on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 31 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Evernoteのリンクをアプリで開くChrome拡張を更新した</title>
-      <link>/blog/2015/01/31/evernote-opener-update/</link>
+      <link>https://ota42y.com/blog/2015/01/31/evernote-opener-update/</link>
       <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/31/evernote-opener-update/</guid>
+      <guid>https://ota42y.com/blog/2015/01/31/evernote-opener-update/</guid>
       <description>evernote url openerを更新しました。 使うためには、EvernoteのユーザIDとShardを調べる必要がありますが、 ちょっと面倒だったので、ユー</description>
     </item>
     
     <item>
       <title>Evernoteのノートリンクが仕様変更で使い物にならないので何とかしようとした</title>
-      <link>/blog/2014/08/10/evernote-link/</link>
+      <link>https://ota42y.com/blog/2014/08/10/evernote-link/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/10/evernote-link/</guid>
+      <guid>https://ota42y.com/blog/2014/08/10/evernote-link/</guid>
       <description>まとめ Evernoteのノートリンクの仕様が変わって使い物にならなくなった 前の仕様でも動くので変換スクリプトを書いた ただし、Macではスクリ</description>
     </item>
     

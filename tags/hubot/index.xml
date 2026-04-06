@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hubot on おおたの物置</title>
-    <link>/tags/hubot/</link>
+    <link>https://ota42y.com/tags/hubot/</link>
     <description>Recent content in hubot on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 12 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>スクフェス用パッケージの更新</title>
-      <link>/blog/2014/11/12/scfes-update/</link>
+      <link>https://ota42y.com/blog/2014/11/12/scfes-update/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/12/scfes-update/</guid>
+      <guid>https://ota42y.com/blog/2014/11/12/scfes-update/</guid>
       <description>前に作ったスクフェス用パッケージを更新しました。 https://github.com/ota42y/hubot-scfes 今回は、いつぐらいにレベルアップするかを計算するコマンドを用意しました。 真夜中にレベルアッ</description>
     </item>
     
     <item>
       <title>Hubotの追加機能作成をテストで楽にする</title>
-      <link>/blog/2014/11/10/hubot-test/</link>
+      <link>https://ota42y.com/blog/2014/11/10/hubot-test/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/10/hubot-test/</guid>
+      <guid>https://ota42y.com/blog/2014/11/10/hubot-test/</guid>
       <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。 普通に頑張ると、起動してbotにメッセージ送って、動かなけれ</description>
     </item>
     
     <item>
       <title>hubot-ircではmsg.replyのリプライ先が変わるので注意</title>
-      <link>/blog/2014/11/01/hubot-reply/</link>
+      <link>https://ota42y.com/blog/2014/11/01/hubot-reply/</link>
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/01/hubot-reply/</guid>
+      <guid>https://ota42y.com/blog/2014/11/01/hubot-reply/</guid>
       <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、 replyしてるのに発言元とは別のチャットに送</description>
     </item>
     
     <item>
       <title>スクフェス用の機能が詰まったHubotパッケージを作った</title>
-      <link>/blog/2014/10/28/hubot-scfes/</link>
+      <link>https://ota42y.com/blog/2014/10/28/hubot-scfes/</link>
       <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/28/hubot-scfes/</guid>
+      <guid>https://ota42y.com/blog/2014/10/28/hubot-scfes/</guid>
       <description>スクフェス用の色々便利な機能が入ったHubotパッケージを作りました。 https://github.com/ota42y/hubot-scfes 今のところ主な機能は2つです。 スタミナがMaxになる時間になったら通</description>
     </item>
     
     <item>
       <title>進捗どうですか？を訪ねるhubotスクリプトを作った</title>
-      <link>/blog/2014/10/05/shinchoku/</link>
+      <link>https://ota42y.com/blog/2014/10/05/shinchoku/</link>
       <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/05/shinchoku/</guid>
+      <guid>https://ota42y.com/blog/2014/10/05/shinchoku/</guid>
       <description>作りました。 30分ごとに進捗どうですか？と聞いてきます。 何をやったかを計測するために定期的にログを残そうと思うのですが、 大体忘れるので、こう</description>
     </item>
     
     <item>
       <title>ソシャゲ用のスタミナ計算機を作った</title>
-      <link>/blog/2014/10/02/social-game-stamina-calc/</link>
+      <link>https://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</link>
       <pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/02/social-game-stamina-calc/</guid>
+      <guid>https://ota42y.com/blog/2014/10/02/social-game-stamina-calc/</guid>
       <description>作りました。 スタミナmaxまでどれくらいかなー？とか、次イベント曲(25消費)をやるのに区切りがいいのはいつかなー みたいなのを計算するのが面</description>
     </item>
     

@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>openapi3 on おおたの物置</title>
-    <link>/tags/openapi3/</link>
+    <link>https://ota42y.com/tags/openapi3/</link>
     <description>Recent content in openapi3 on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 11 Sep 2020 11:00:00 +0900</lastBuildDate>
     
-	<atom:link href="/tags/openapi3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/openapi3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>#技術書典9でOpenAPI 3の完全解説本を更新します</title>
-      <link>/blog/2020/09/11/techbook_9/</link>
+      <link>https://ota42y.com/blog/2020/09/11/techbook_9/</link>
       <pubDate>Fri, 11 Sep 2020 11:00:00 +0900</pubDate>
       
-      <guid>/blog/2020/09/11/techbook_9/</guid>
+      <guid>https://ota42y.com/blog/2020/09/11/techbook_9/</guid>
       <description>9/12から始まるる技術書典9で「OpenAPI 3を完全に理解できる本 3.0.3対応版」を頒布します。 OpenAPI3に関するおそらく唯一の</description>
     </item>
     
     <item>
       <title>技術書典７でOpenAPI 3の完全解説本を出しました</title>
-      <link>/blog/2019/09/23/techbook_7_result/</link>
+      <link>https://ota42y.com/blog/2019/09/23/techbook_7_result/</link>
       <pubDate>Mon, 23 Sep 2019 03:00:50 +0000</pubDate>
       
-      <guid>/blog/2019/09/23/techbook_7_result/</guid>
+      <guid>https://ota42y.com/blog/2019/09/23/techbook_7_result/</guid>
       <description>9/22の技術書典７で「OpenAPI 3を完全に理解できる本」を出しました！ https://techbookfest.org/event/tbf07/circle/5637271940235264 具体的な内容はこちら「技術書典７でOpenAPI 3の完全解説本</description>
     </item>
     
     <item>
       <title>技術書典７でOpenAPI 3の完全解説本が出ます</title>
-      <link>/blog/2019/09/16/techbook_7/</link>
+      <link>https://ota42y.com/blog/2019/09/16/techbook_7/</link>
       <pubDate>Mon, 16 Sep 2019 03:00:50 +0000</pubDate>
       
-      <guid>/blog/2019/09/16/techbook_7/</guid>
+      <guid>https://ota42y.com/blog/2019/09/16/techbook_7/</guid>
       <description>(9/13追記) おかげさまで紙の本は完売しました！！！電子版はBOOTHで販売中ですのでこちらもどうぞ。 https://booth.pm/ja/items/1571902 9/22の技術書典７で「OpenA</description>
     </item>
     

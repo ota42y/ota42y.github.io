@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on おおたの物置</title>
-    <link>/tags/golang/</link>
+    <link>https://ota42y.com/tags/golang/</link>
     <description>Recent content in golang on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 04 Oct 2018 00:21:50 +0000</lastBuildDate>
     
-	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Amazon Web Servicesサーバーレスレシピ という本を出します</title>
-      <link>/blog/2018/10/04/2018-10-04/</link>
+      <link>https://ota42y.com/blog/2018/10/04/2018-10-04/</link>
       <pubDate>Thu, 04 Oct 2018 00:21:50 +0000</pubDate>
       
-      <guid>/blog/2018/10/04/2018-10-04/</guid>
+      <guid>https://ota42y.com/blog/2018/10/04/2018-10-04/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B07HXW1MJW/ref=as_li_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=1211&amp;amp;creativeASIN=B07HXW1MJW&amp;amp;linkCode=as2&amp;amp;tag=ota42y-22&amp;amp;linkId=5174f8f30bb21372de55744805a36ad8&#34;&gt;Amazon Web Servicesサーバーレスレシピ&lt;/a&gt; という本が明日10/5に出ます。&lt;/p&gt;
 &lt;p&gt;&lt;a target=&#34;_blank&#34;  href=&#34;https://www.amazon.co.jp/gp/product/B07HXW1MJW/ref=as_li_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B07HXW1MJW&amp;linkCode=as2&amp;tag=ota42y-22&amp;linkId=5174f8f30bb21372de55744805a36ad8&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=JP&amp;ASIN=B07HXW1MJW&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=ota42y-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;//ir-jp.amazon-adsystem.com/e/ir?t=ota42y-22&amp;l=am2&amp;o=9&amp;a=B07HXW1MJW&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;元々技術書典で書いた本を更に加筆修正したものになります。&lt;/p&gt;</description>
@@ -24,200 +24,200 @@
     
     <item>
       <title>goroutineの動き方を調べた</title>
-      <link>/blog/2018/07/17/goroutine/</link>
+      <link>https://ota42y.com/blog/2018/07/17/goroutine/</link>
       <pubDate>Tue, 17 Jul 2018 08:00:37 +0900</pubDate>
       
-      <guid>/blog/2018/07/17/goroutine/</guid>
+      <guid>https://ota42y.com/blog/2018/07/17/goroutine/</guid>
       <description>&lt;p&gt;shinjuku.rbで話した内容です。&lt;br&gt;
 が、スライドだけだとよくわからないのでもう少し文章を補足した版を上げておきます。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
-      <link>/blog/2015/10/11/alchemyapi/</link>
+      <link>https://ota42y.com/blog/2015/10/11/alchemyapi/</link>
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
-      <guid>/blog/2015/10/11/alchemyapi/</guid>
+      <guid>https://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
       <description>まとめ AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能</description>
     </item>
     
     <item>
       <title>Go言語でメモリ上の大きさや配置を調べる</title>
-      <link>/blog/2015/05/06/go-struct-offset/</link>
+      <link>https://ota42y.com/blog/2015/05/06/go-struct-offset/</link>
       <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
       
-      <guid>/blog/2015/05/06/go-struct-offset/</guid>
+      <guid>https://ota42y.com/blog/2015/05/06/go-struct-offset/</guid>
       <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。 通常意識する必要はありませんが、32bitと64bitで挙動</description>
     </item>
     
     <item>
       <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
-      <link>/blog/2015/04/24/go-windows-development/</link>
+      <link>https://ota42y.com/blog/2015/04/24/go-windows-development/</link>
       <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
       
-      <guid>/blog/2015/04/24/go-windows-development/</guid>
+      <guid>https://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
       <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。 WindowsのGolang開発 IntelliJ便利 機能が</description>
     </item>
     
     <item>
       <title>golangのパッケージ管理</title>
-      <link>/blog/2015/04/18/go-package-management/</link>
+      <link>https://ota42y.com/blog/2015/04/18/go-package-management/</link>
       <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
       
-      <guid>/blog/2015/04/18/go-package-management/</guid>
+      <guid>https://ota42y.com/blog/2015/04/18/go-package-management/</guid>
       <description>goでは標準でいろいろなツールが揃っていますが、 npmやbundlerのようなパッケージの依存管理をするツールはありません。 これは、goでは</description>
     </item>
     
     <item>
       <title>golangのラインエディタはlinerが便利</title>
-      <link>/blog/2015/04/11/go-liner/</link>
+      <link>https://ota42y.com/blog/2015/04/11/go-liner/</link>
       <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
       
-      <guid>/blog/2015/04/11/go-liner/</guid>
+      <guid>https://ota42y.com/blog/2015/04/11/go-liner/</guid>
       <description>peterh/liner golangでCLIを作る際に活用できるラインエディタです。 使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します</description>
     </item>
     
     <item>
       <title>golangでIOへのテストを行う</title>
-      <link>/blog/2015/04/01/go-io-test/</link>
+      <link>https://ota42y.com/blog/2015/04/01/go-io-test/</link>
       <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
       
-      <guid>/blog/2015/04/01/go-io-test/</guid>
+      <guid>https://ota42y.com/blog/2015/04/01/go-io-test/</guid>
       <description>まとめ fmt.Print等にちゃんと出力されるかテストしたい 結論としては直接は無理 io.Writerを利用するように変えることで簡単にテスト</description>
     </item>
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
-      <link>/blog/2015/03/28/go_interface/</link>
+      <link>https://ota42y.com/blog/2015/03/28/go_interface/</link>
       <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
       
-      <guid>/blog/2015/03/28/go_interface/</guid>
+      <guid>https://ota42y.com/blog/2015/03/28/go_interface/</guid>
       <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。 Goでインターフェースを実装したクラスのポインタを扱う</description>
     </item>
     
     <item>
       <title>Windowsにgxuiをインストールする</title>
-      <link>/blog/2015/03/22/gxui-install/</link>
+      <link>https://ota42y.com/blog/2015/03/22/gxui-install/</link>
       <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
       
-      <guid>/blog/2015/03/22/gxui-install/</guid>
+      <guid>https://ota42y.com/blog/2015/03/22/gxui-install/</guid>
       <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。 WindowsへのインストールはGoの環境を整えるところ</description>
     </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
-      <link>/blog/2015/03/16/octopress_to_hugo/</link>
+      <link>https://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
-      <guid>/blog/2015/03/16/octopress_to_hugo/</guid>
+      <guid>https://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
       <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、 サイト作成ツールの部分をGol</description>
     </item>
     
     <item>
       <title>Go言語で一次の最小二乗法を実装した</title>
-      <link>/blog/2015/02/03/leastsquaresmethod/</link>
+      <link>https://ota42y.com/blog/2015/02/03/leastsquaresmethod/</link>
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/03/leastsquaresmethod/</guid>
+      <guid>https://ota42y.com/blog/2015/02/03/leastsquaresmethod/</guid>
       <description>こんな感じです。 暗黙的にキャストしてくれないので若干面倒です。</description>
     </item>
     
     <item>
       <title>GoのORマッパーGORMが便利</title>
-      <link>/blog/2014/12/19/gorm/</link>
+      <link>https://ota42y.com/blog/2014/12/19/gorm/</link>
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/19/gorm/</guid>
+      <guid>https://ota42y.com/blog/2014/12/19/gorm/</guid>
       <description>golangではmysqldriverでmysqlにアクセスできますが、 一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがありま</description>
     </item>
     
     <item>
       <title>golangでYAMLファイルを読み込んで構造体に入れる</title>
-      <link>/blog/2014/12/03/go-yaml-struct/</link>
+      <link>https://ota42y.com/blog/2014/12/03/go-yaml-struct/</link>
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/03/go-yaml-struct/</guid>
+      <guid>https://ota42y.com/blog/2014/12/03/go-yaml-struct/</guid>
       <description>使い方がかなり特殊だったのでメモ (ドキュメントには書いてありますが…) goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、 デ</description>
     </item>
     
     <item>
       <title>参加記録 Go Conference 2014 autumn</title>
-      <link>/blog/2014/12/01/gocon-2014-autumn/</link>
+      <link>https://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</link>
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/01/gocon-2014-autumn/</guid>
+      <guid>https://ota42y.com/blog/2014/12/01/gocon-2014-autumn/</guid>
       <description>Go Conference 2014 autumnに参加しました。 togetterまとめ 大体スライドが公開されているので、正確な内容はそちらをどうぞ。 #まとめ Go言語のシン</description>
     </item>
     
     <item>
       <title>golangでYAMLファイルを読み込む</title>
-      <link>/blog/2014/11/13/go-yaml/</link>
+      <link>https://ota42y.com/blog/2014/11/13/go-yaml/</link>
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/13/go-yaml/</guid>
+      <guid>https://ota42y.com/blog/2014/11/13/go-yaml/</guid>
       <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。 サイトにはメモリ上のデータに対</description>
     </item>
     
     <item>
       <title>goでtime.Timeをmysqlから読む</title>
-      <link>/blog/2014/10/08/go-mysql-time/</link>
+      <link>https://ota42y.com/blog/2014/10/08/go-mysql-time/</link>
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/08/go-mysql-time/</guid>
+      <guid>https://ota42y.com/blog/2014/10/08/go-mysql-time/</guid>
       <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します… sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair:</description>
     </item>
     
     <item>
       <title>goでmysqlを使う</title>
-      <link>/blog/2014/10/04/go-mysql/</link>
+      <link>https://ota42y.com/blog/2014/10/04/go-mysql/</link>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/04/go-mysql/</guid>
+      <guid>https://ota42y.com/blog/2014/10/04/go-mysql/</guid>
       <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;#34;github.com/go-sql-driver/mysql&amp;#34; ) DB設定 以下の用</description>
     </item>
     
     <item>
       <title>go runしても分割したファイルが認識されない</title>
-      <link>/blog/2014/09/10/golang-file-split/</link>
+      <link>https://ota42y.com/blog/2014/09/10/golang-file-split/</link>
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/10/golang-file-split/</guid>
+      <guid>https://ota42y.com/blog/2014/09/10/golang-file-split/</guid>
       <description>Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別フ</description>
     </item>
     
     <item>
       <title>golangでcronを使う</title>
-      <link>/blog/2014/09/09/golang-cron/</link>
+      <link>https://ota42y.com/blog/2014/09/09/golang-cron/</link>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/09/golang-cron/</guid>
+      <guid>https://ota42y.com/blog/2014/09/09/golang-cron/</guid>
       <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止め</description>
     </item>
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>/blog/2014/09/03/mgo-consistency/</link>
+      <link>https://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>https://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
       <description>mgoのサンプルにあった session.SetMode(mgo.Monotonic, true) の意味がよくわからないので調べてみました。 結論から書きますと、これは複数DBを利用した際の、 データの一貫性をどの</description>
     </item>
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>/blog/2014/09/02/go-mongodb/</link>
+      <link>https://ota42y.com/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/02/go-mongodb/</guid>
+      <guid>https://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
       <description>mgoというライブラリが便利そうです。 http://labix.org/mgo 以下はtwitterからツイートを取ってきて、 未登録のツイートをmongodbに保存するスクリプトで</description>
     </item>
     
     <item>
       <title>golangでtwitter APIを使う</title>
-      <link>/blog/2014/08/31/go-anaconda/</link>
+      <link>https://ota42y.com/blog/2014/08/31/go-anaconda/</link>
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/31/go-anaconda/</guid>
+      <guid>https://ota42y.com/blog/2014/08/31/go-anaconda/</guid>
       <description>anacondaが良さそう(ただしストリーミングAPI非対応) go get github.com/ChimeraCoder/anaconda</description>
     </item>
     

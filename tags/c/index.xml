@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>c on おおたの物置</title>
-    <link>/tags/c/</link>
+    <link>https://ota42y.com/tags/c/</link>
     <description>Recent content in c on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 20 Aug 2015 07:43:49 +0900</lastBuildDate>
     
-	<atom:link href="/tags/c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>構造体のサイズはsizeofをちゃんと使うべき</title>
-      <link>/blog/2015/08/20/c-struct/</link>
+      <link>https://ota42y.com/blog/2015/08/20/c-struct/</link>
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
-      <guid>/blog/2015/08/20/c-struct/</guid>
+      <guid>https://ota42y.com/blog/2015/08/20/c-struct/</guid>
       <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。 ですが、intは4byte、boolは1byteなので</description>
     </item>
     
     <item>
       <title>C言語でのスレッド処理</title>
-      <link>/blog/2015/06/18/c-thread/</link>
+      <link>https://ota42y.com/blog/2015/06/18/c-thread/</link>
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
-      <guid>/blog/2015/06/18/c-thread/</guid>
+      <guid>https://ota42y.com/blog/2015/06/18/c-thread/</guid>
       <description>C言語でのスレッド処理と、ロックの仕方をまとめました。 他の言語のようにスレッド用のクラスを継承するのでは無く、 別スレッドで実行する関数のポイ</description>
     </item>
     

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>microservices on おおたの物置</title>
-    <link>/tags/microservices/</link>
+    <link>https://ota42y.com/tags/microservices/</link>
     <description>Recent content in microservices on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 25 Jun 2019 10:00:00 +0900</lastBuildDate>
     
-	<atom:link href="/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>マイクロサービスを蝕む負の力学</title>
-      <link>/blog/2019/06/25/microservices_vector/</link>
+      <link>https://ota42y.com/blog/2019/06/25/microservices_vector/</link>
       <pubDate>Tue, 25 Jun 2019 10:00:00 +0900</pubDate>
       
-      <guid>/blog/2019/06/25/microservices_vector/</guid>
+      <guid>https://ota42y.com/blog/2019/06/25/microservices_vector/</guid>
       <description>マイクロサービスを蝕む負の力学 マイクロサービスアーキテクチャでは、全体を分割し小さいチームとサービスにすることでチームの責任範囲を小さくし、</description>
     </item>
     
     <item>
       <title>マイクロサービスよろず本その三を出しました</title>
-      <link>/blog/2019/04/15/techbook_6_result/</link>
+      <link>https://ota42y.com/blog/2019/04/15/techbook_6_result/</link>
       <pubDate>Mon, 15 Apr 2019 03:00:50 +0000</pubDate>
       
-      <guid>/blog/2019/04/15/techbook_6_result/</guid>
+      <guid>https://ota42y.com/blog/2019/04/15/techbook_6_result/</guid>
       <description>&lt;p&gt;4/14の&lt;a href=&#34;https://techbookfest.org/event/tbf06&#34;&gt;技術書典６&lt;/a&gt;で「Microservices architecture よろず本 その三」を出しました。
 お買い求めくださった方、ありがとうございます。&lt;/p&gt;
 &lt;p&gt;Microservices architecture よろず本 その三は在庫が残っていますので、BOOTHやとらのあなにてお買い求めいただけます。こちらは紙の場合も電子のPDFがおまけファイルとしてついてきます。&lt;br&gt;
@@ -40,10 +40,10 @@
     
     <item>
       <title>技術書典６でマイクロサービスよろず本その三を出します</title>
-      <link>/blog/2019/04/13/techbook_6/</link>
+      <link>https://ota42y.com/blog/2019/04/13/techbook_6/</link>
       <pubDate>Sat, 13 Apr 2019 03:00:50 +0000</pubDate>
       
-      <guid>/blog/2019/04/13/techbook_6/</guid>
+      <guid>https://ota42y.com/blog/2019/04/13/techbook_6/</guid>
       <description>&lt;p&gt;4/14の&lt;a href=&#34;https://techbookfest.org/event/tbf06&#34;&gt;技術書典６&lt;/a&gt;で「Microservices architecture よろず本 その三」を出します。場所はう５１「すべてがM(icro)になる」です。&lt;/p&gt;
 &lt;p&gt;こちらはよろず本シリーズ三冊目になりますが、これまでとはまた違ったトピックを扱っており、既刊を読んだことがあってもなくても有益な本になると思います。なお、目次はこの記事の一番下にあります。&lt;/p&gt;</description>
     </item>

@@ -2,696 +2,696 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tech on おおたの物置</title>
-    <link>/categories/tech/</link>
+    <link>https://ota42y.com/categories/tech/</link>
     <description>Recent content in tech on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 05 Jul 2015 14:15:20 +0900</lastBuildDate>
     
-	<atom:link href="/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>dinoでrubyからArduinoを扱う</title>
-      <link>/blog/2015/07/05/dino/</link>
+      <link>https://ota42y.com/blog/2015/07/05/dino/</link>
       <pubDate>Sun, 05 Jul 2015 14:15:20 +0900</pubDate>
       
-      <guid>/blog/2015/07/05/dino/</guid>
+      <guid>https://ota42y.com/blog/2015/07/05/dino/</guid>
       <description>まとめ PCからArduinoを制御するのは面倒 作業量が多い 電子工作 Arduinoプログラミング PCからArduinoを制御するプログラミング</description>
     </item>
     
     <item>
       <title>C言語でのスレッド処理</title>
-      <link>/blog/2015/06/18/c-thread/</link>
+      <link>https://ota42y.com/blog/2015/06/18/c-thread/</link>
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
-      <guid>/blog/2015/06/18/c-thread/</guid>
+      <guid>https://ota42y.com/blog/2015/06/18/c-thread/</guid>
       <description>C言語でのスレッド処理と、ロックの仕方をまとめました。 他の言語のようにスレッド用のクラスを継承するのでは無く、 別スレッドで実行する関数のポイ</description>
     </item>
     
     <item>
       <title>Linuxのlocaleがおかしくなっていた</title>
-      <link>/blog/2015/06/03/linux_local/</link>
+      <link>https://ota42y.com/blog/2015/06/03/linux_local/</link>
       <pubDate>Wed, 03 Jun 2015 07:39:36 +0900</pubDate>
       
-      <guid>/blog/2015/06/03/linux_local/</guid>
+      <guid>https://ota42y.com/blog/2015/06/03/linux_local/</guid>
       <description>突然プログラムが起動しなくなったため、 原因を探ったところ、localesが壊れていました。 そのため、再インストールすることで直りました。 言語</description>
     </item>
     
     <item>
       <title>Go言語でメモリ上の大きさや配置を調べる</title>
-      <link>/blog/2015/05/06/go-struct-offset/</link>
+      <link>https://ota42y.com/blog/2015/05/06/go-struct-offset/</link>
       <pubDate>Wed, 06 May 2015 20:16:57 +0900</pubDate>
       
-      <guid>/blog/2015/05/06/go-struct-offset/</guid>
+      <guid>https://ota42y.com/blog/2015/05/06/go-struct-offset/</guid>
       <description>golangで構造体を定義した場合、 メモリ上にどのように配置されるのでしょうか。 通常意識する必要はありませんが、32bitと64bitで挙動</description>
     </item>
     
     <item>
       <title>LinuxとIntelliJを使ったWindowsでのプログラミング環境</title>
-      <link>/blog/2015/04/24/go-windows-development/</link>
+      <link>https://ota42y.com/blog/2015/04/24/go-windows-development/</link>
       <pubDate>Fri, 24 Apr 2015 10:00:26 +0900</pubDate>
       
-      <guid>/blog/2015/04/24/go-windows-development/</guid>
+      <guid>https://ota42y.com/blog/2015/04/24/go-windows-development/</guid>
       <description>取り扱っているのはGolangですが、特にプログラミング言語は問わないと思います。 WindowsのGolang開発 IntelliJ便利 機能が</description>
     </item>
     
     <item>
       <title>golangのパッケージ管理</title>
-      <link>/blog/2015/04/18/go-package-management/</link>
+      <link>https://ota42y.com/blog/2015/04/18/go-package-management/</link>
       <pubDate>Sat, 18 Apr 2015 10:55:37 +0900</pubDate>
       
-      <guid>/blog/2015/04/18/go-package-management/</guid>
+      <guid>https://ota42y.com/blog/2015/04/18/go-package-management/</guid>
       <description>goでは標準でいろいろなツールが揃っていますが、 npmやbundlerのようなパッケージの依存管理をするツールはありません。 これは、goでは</description>
     </item>
     
     <item>
       <title>golangのラインエディタはlinerが便利</title>
-      <link>/blog/2015/04/11/go-liner/</link>
+      <link>https://ota42y.com/blog/2015/04/11/go-liner/</link>
       <pubDate>Sat, 11 Apr 2015 14:05:04 +0900</pubDate>
       
-      <guid>/blog/2015/04/11/go-liner/</guid>
+      <guid>https://ota42y.com/blog/2015/04/11/go-liner/</guid>
       <description>peterh/liner golangでCLIを作る際に活用できるラインエディタです。 使い方 liner.NewLinerで作成し、Prompt関数で入力を待機します</description>
     </item>
     
     <item>
       <title>golangでIOへのテストを行う</title>
-      <link>/blog/2015/04/01/go-io-test/</link>
+      <link>https://ota42y.com/blog/2015/04/01/go-io-test/</link>
       <pubDate>Wed, 01 Apr 2015 07:06:38 +0900</pubDate>
       
-      <guid>/blog/2015/04/01/go-io-test/</guid>
+      <guid>https://ota42y.com/blog/2015/04/01/go-io-test/</guid>
       <description>まとめ fmt.Print等にちゃんと出力されるかテストしたい 結論としては直接は無理 io.Writerを利用するように変えることで簡単にテスト</description>
     </item>
     
     <item>
       <title>GoのポインタはC&#43;&#43;ポインタとは違う</title>
-      <link>/blog/2015/03/28/go_interface/</link>
+      <link>https://ota42y.com/blog/2015/03/28/go_interface/</link>
       <pubDate>Sat, 28 Mar 2015 21:26:40 +0900</pubDate>
       
-      <guid>/blog/2015/03/28/go_interface/</guid>
+      <guid>https://ota42y.com/blog/2015/03/28/go_interface/</guid>
       <description>C++みたいなノリでGoのインターフェースとポインタを使ったところ、はまったのでメモ。 Goでインターフェースを実装したクラスのポインタを扱う</description>
     </item>
     
     <item>
       <title>Windowsにgxuiをインストールする</title>
-      <link>/blog/2015/03/22/gxui-install/</link>
+      <link>https://ota42y.com/blog/2015/03/22/gxui-install/</link>
       <pubDate>Sun, 22 Mar 2015 10:27:54 +0900</pubDate>
       
-      <guid>/blog/2015/03/22/gxui-install/</guid>
+      <guid>https://ota42y.com/blog/2015/03/22/gxui-install/</guid>
       <description>gxuiは、GoogleによるGo製のクロスプラットフォームなGUIライブラリです。 WindowsへのインストールはGoの環境を整えるところ</description>
     </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
-      <link>/blog/2015/03/16/octopress_to_hugo/</link>
+      <link>https://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
-      <guid>/blog/2015/03/16/octopress_to_hugo/</guid>
+      <guid>https://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
       <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、 サイト作成ツールの部分をGol</description>
     </item>
     
     <item>
       <title>JenkinsをHTTP経由で叩く</title>
-      <link>/blog/2015/02/27/jenkins-remote-api/</link>
+      <link>https://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/27/jenkins-remote-api/</guid>
+      <guid>https://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>まとめ JenkinsはWebベースのUI 操作の敷居が低い 使い込むと使いづらくなる 反応速度 複数のビルド実行 Remote access API HTTP経由でJobを実行でき</description>
     </item>
     
     <item>
       <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>/blog/2015/02/11/jenkins-workflow/</link>
+      <link>https://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/11/jenkins-workflow/</guid>
+      <guid>https://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
       <description>まとめ ブランチをパラメーターにするとスクリプトを読めない 中身ではなく変数名のブランチを探しに行く 多分バグ ファイルから読み込むるスクリプトを書</description>
     </item>
     
     <item>
       <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
-      <link>/blog/2015/02/10/workflow-plugin/</link>
+      <link>https://ota42y.com/blog/2015/02/10/workflow-plugin/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/10/workflow-plugin/</guid>
+      <guid>https://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
       <description>まとめ Jenkinsはjob単位でしかノードに割り振れない 複数ノードで分散ビルドするには設定を駆使する必要がある 結果としてjobの数が増えて</description>
     </item>
     
     <item>
       <title>Go言語で一次の最小二乗法を実装した</title>
-      <link>/blog/2015/02/03/leastsquaresmethod/</link>
+      <link>https://ota42y.com/blog/2015/02/03/leastsquaresmethod/</link>
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/03/leastsquaresmethod/</guid>
+      <guid>https://ota42y.com/blog/2015/02/03/leastsquaresmethod/</guid>
       <description>こんな感じです。 暗黙的にキャストしてくれないので若干面倒です。</description>
     </item>
     
     <item>
       <title>bundle中に別のbundleを呼ぶと予期しない結果になる対策</title>
-      <link>/blog/2015/01/28/bundle-in-bundle/</link>
+      <link>https://ota42y.com/blog/2015/01/28/bundle-in-bundle/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/28/bundle-in-bundle/</guid>
+      <guid>https://ota42y.com/blog/2015/01/28/bundle-in-bundle/</guid>
       <description>bundle execでrubyファイルを実行し、別のGemfileのあるディレクトリに移動してbundle系のコマンドを実行すると、 一回目のbundl</description>
     </item>
     
     <item>
       <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>/blog/2015/01/23/ram-disk/</link>
+      <link>https://ota42y.com/blog/2015/01/23/ram-disk/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/23/ram-disk/</guid>
+      <guid>https://ota42y.com/blog/2015/01/23/ram-disk/</guid>
       <description>まとめ RAMディスクを作ってビルドすると早くなる SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思</description>
     </item>
     
     <item>
       <title>Androidでクリップボードの中身を自動で辞書検索</title>
-      <link>/blog/2015/01/21/android-dict/</link>
+      <link>https://ota42y.com/blog/2015/01/21/android-dict/</link>
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/21/android-dict/</guid>
+      <guid>https://ota42y.com/blog/2015/01/21/android-dict/</guid>
       <description>まとめ clip2dicを使うとクリップボード内を自動で辞書検索する オフラインの別アプリからも検索可能 ColorDictとGolden Dict</description>
     </item>
     
     <item>
       <title>Macのghcは改行コードがCRだと動かない</title>
-      <link>/blog/2015/01/07/mac-ghc-cr/</link>
+      <link>https://ota42y.com/blog/2015/01/07/mac-ghc-cr/</link>
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/07/mac-ghc-cr/</guid>
+      <guid>https://ota42y.com/blog/2015/01/07/mac-ghc-cr/</guid>
       <description>Haskellでどう見ても文法的に間違っていないのに、 何故かコンパイルエラーになっていましたが、 改行コードが原因でした。 ちょうど始めたばかり</description>
     </item>
     
     <item>
       <title>インライン展開についての追加調査</title>
-      <link>/blog/2015/01/06/c-inline-postscript/</link>
+      <link>https://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/06/c-inline-postscript/</guid>
+      <guid>https://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
       <description>昨日の記事で、インライン展開について調べましたが、 よくよく考えると片手落ちだったので追加調査しました。 インライン展開がどう展開されるのかを調</description>
     </item>
     
     <item>
       <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>/blog/2015/01/05/c-inline/</link>
+      <link>https://ota42y.com/blog/2015/01/05/c-inline/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/05/c-inline/</guid>
+      <guid>https://ota42y.com/blog/2015/01/05/c-inline/</guid>
       <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、 関数呼び出しのオーバーヘッドを削減する、インライン展開をします。 インライン展開</description>
     </item>
     
     <item>
       <title>fork関数がどうやってプロセスを分割しているか</title>
-      <link>/blog/2015/01/03/unix-fork/</link>
+      <link>https://ota42y.com/blog/2015/01/03/unix-fork/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/03/unix-fork/</guid>
+      <guid>https://ota42y.com/blog/2015/01/03/unix-fork/</guid>
       <description>はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ という本を読んでいます。 この中で、fork関数がどうやって子プロセスを作り、 親子</description>
     </item>
     
     <item>
       <title>ASUS MeMO Pad 7 ME572CでLink2SDを動かす</title>
-      <link>/blog/2014/12/30/link2sd/</link>
+      <link>https://ota42y.com/blog/2014/12/30/link2sd/</link>
       <pubDate>Tue, 30 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/30/link2sd/</guid>
+      <guid>https://ota42y.com/blog/2014/12/30/link2sd/</guid>
       <description>ME572CにはSDカードが挿せるため、 本体の容量が足りなくなっても気軽に容量を追加できます。 ですが、対応しているアプリしかSDカードにデー</description>
     </item>
     
     <item>
       <title>ASUS MeMO Pad 7 ME572CをRoot化した</title>
-      <link>/blog/2014/12/28/memopad-root/</link>
+      <link>https://ota42y.com/blog/2014/12/28/memopad-root/</link>
       <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/28/memopad-root/</guid>
+      <guid>https://ota42y.com/blog/2014/12/28/memopad-root/</guid>
       <description>ASUS MeMO Pad 7 ME572Cを買いました。 タブレット - ASUS MeMO Pad 7 (ME572CL) - ASUS Nexus 9とかと迷いましたが、 コストパフォーマンスがいい 安くてそこそこ高性能 SDカード</description>
     </item>
     
     <item>
       <title>Graphvizを使うと、グラフ描画がとても楽になる</title>
-      <link>/blog/2014/12/22/graphviz/</link>
+      <link>https://ota42y.com/blog/2014/12/22/graphviz/</link>
       <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/22/graphviz/</guid>
+      <guid>https://ota42y.com/blog/2014/12/22/graphviz/</guid>
       <description>こんな感じの画像を作る際に これまではパワポの図形機能とかペイントで頑張って作っていましたが、 Graphvizを使うと自動で出力できます。 Gr</description>
     </item>
     
     <item>
       <title>GoのORマッパーGORMが便利</title>
-      <link>/blog/2014/12/19/gorm/</link>
+      <link>https://ota42y.com/blog/2014/12/19/gorm/</link>
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/19/gorm/</guid>
+      <guid>https://ota42y.com/blog/2014/12/19/gorm/</guid>
       <description>golangではmysqldriverでmysqlにアクセスできますが、 一つ一つ構造体に入れないといけなかったりと、けっこう辛いものがありま</description>
     </item>
     
     <item>
       <title>golangでYAMLファイルを読み込んで構造体に入れる</title>
-      <link>/blog/2014/12/03/go-yaml-struct/</link>
+      <link>https://ota42y.com/blog/2014/12/03/go-yaml-struct/</link>
       <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/12/03/go-yaml-struct/</guid>
+      <guid>https://ota42y.com/blog/2014/12/03/go-yaml-struct/</guid>
       <description>使い方がかなり特殊だったのでメモ (ドキュメントには書いてありますが…) goyamlでは、YAMLの構造とGoの構造体の構造を揃えておくと、 デ</description>
     </item>
     
     <item>
       <title>Octopressのアップデート手順</title>
-      <link>/blog/2014/11/30/octopress-update/</link>
+      <link>https://ota42y.com/blog/2014/11/30/octopress-update/</link>
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/30/octopress-update/</guid>
+      <guid>https://ota42y.com/blog/2014/11/30/octopress-update/</guid>
       <description>見た目は変わっていませんが、このブログのOctopressをアップデートしました。 だいぶ前のOctopressをforkして、このブログ用の</description>
     </item>
     
     <item>
       <title>Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる</title>
-      <link>/blog/2014/11/27/jenkins-build-flow-plugin/</link>
+      <link>https://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</link>
       <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
+      <guid>https://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
       <description>まとめ Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒 全てをスクリプトで実行するのが理想だが、本体の機能</description>
     </item>
     
     <item>
       <title>YAMLでnilをキーにしたハッシュを扱う</title>
-      <link>/blog/2014/11/25/ruby-hash/</link>
+      <link>https://ota42y.com/blog/2014/11/25/ruby-hash/</link>
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/25/ruby-hash/</guid>
+      <guid>https://ota42y.com/blog/2014/11/25/ruby-hash/</guid>
       <description>例は全てRuby 2.0を利用しています nilをキーとした値を持つハッシュをYAMLに書きたい場合、 以下のように書いても&amp;quot;nil&amp;q</description>
     </item>
     
     <item>
       <title>Github Pagesの新しいIPアドレス対応</title>
-      <link>/blog/2014/11/20/github-pages-new-ip/</link>
+      <link>https://ota42y.com/blog/2014/11/20/github-pages-new-ip/</link>
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/20/github-pages-new-ip/</guid>
+      <guid>https://ota42y.com/blog/2014/11/20/github-pages-new-ip/</guid>
       <description>これまでGithub Pagesで独自ドメインを運用していましたが、9月ぐらいから記事のアップロードのたびに、 新しいIDアドレスを利用するよう</description>
     </item>
     
     <item>
       <title>golangでYAMLファイルを読み込む</title>
-      <link>/blog/2014/11/13/go-yaml/</link>
+      <link>https://ota42y.com/blog/2014/11/13/go-yaml/</link>
       <pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/13/go-yaml/</guid>
+      <guid>https://ota42y.com/blog/2014/11/13/go-yaml/</guid>
       <description>https://github.com/go-yaml/yamlを使う事で、 goでYAMLを扱うことが出来ます。 サイトにはメモリ上のデータに対</description>
     </item>
     
     <item>
       <title>Hubotの追加機能作成をテストで楽にする</title>
-      <link>/blog/2014/11/10/hubot-test/</link>
+      <link>https://ota42y.com/blog/2014/11/10/hubot-test/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/10/hubot-test/</guid>
+      <guid>https://ota42y.com/blog/2014/11/10/hubot-test/</guid>
       <description>Hubotで追加機能を作るときに一番大変なのは、やはりテストの部分だと思います。 普通に頑張ると、起動してbotにメッセージ送って、動かなけれ</description>
     </item>
     
     <item>
       <title>size_tは環境によって定義が変わるという話</title>
-      <link>/blog/2014/11/08/size-t/</link>
+      <link>https://ota42y.com/blog/2014/11/08/size-t/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/08/size-t/</guid>
+      <guid>https://ota42y.com/blog/2014/11/08/size-t/</guid>
       <description>size_tが何bitになるかは環境によって定義が異なります。 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化など</description>
     </item>
     
     <item>
       <title>void型のポインタとint型を相互変換するなという話</title>
-      <link>/blog/2014/11/07/cpp-64bit-cast/</link>
+      <link>https://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</link>
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/07/cpp-64bit-cast/</guid>
+      <guid>https://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</guid>
       <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、 コンパイラもエラーにしない場合が多いです。 で</description>
     </item>
     
     <item>
       <title>汎用ポインタを使う</title>
-      <link>/blog/2014/11/06/cpp-void-pointer/</link>
+      <link>https://ota42y.com/blog/2014/11/06/cpp-void-pointer/</link>
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/06/cpp-void-pointer/</guid>
+      <guid>https://ota42y.com/blog/2014/11/06/cpp-void-pointer/</guid>
       <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。 ですが、実際にはポインタ型はメモリ上の特定アドレ</description>
     </item>
     
     <item>
       <title>hubot-ircではmsg.replyのリプライ先が変わるので注意</title>
-      <link>/blog/2014/11/01/hubot-reply/</link>
+      <link>https://ota42y.com/blog/2014/11/01/hubot-reply/</link>
       <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/01/hubot-reply/</guid>
+      <guid>https://ota42y.com/blog/2014/11/01/hubot-reply/</guid>
       <description>hubot-ircを使い、こういうコードで一定時間後に後からユーザに通知しようとしてたところ、 replyしてるのに発言元とは別のチャットに送</description>
     </item>
     
     <item>
       <title>Linux上でrubyのPTYを使うと、Errno::EIOが出る</title>
-      <link>/blog/2014/10/26/pty-ieo-error/</link>
+      <link>https://ota42y.com/blog/2014/10/26/pty-ieo-error/</link>
       <pubDate>Sun, 26 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/26/pty-ieo-error/</guid>
+      <guid>https://ota42y.com/blog/2014/10/26/pty-ieo-error/</guid>
       <description>以下のコードはMac OS X上だと上手く動きますが、Linux上だと Errno::EIO: Input/output error @ io_fillbuf というエラーが起きます。 require &amp;#39;pty&amp;#39; PTY.spawn(&amp;#34;ls&amp;#34;) do |r,w,pid| until r.eof? do puts r.readline end end どうやら、読み込ん</description>
     </item>
     
     <item>
       <title>javascriptの関数リテラルではインスタンス変数にアクセスできない</title>
-      <link>/blog/2014/10/23/javascript-callback/</link>
+      <link>https://ota42y.com/blog/2014/10/23/javascript-callback/</link>
       <pubDate>Thu, 23 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/23/javascript-callback/</guid>
+      <guid>https://ota42y.com/blog/2014/10/23/javascript-callback/</guid>
       <description>関数リテラルではローカル変数には自由にアクセスできるので、 ついインスタンスメソッド等にもアクセス出来ると思ってしまいましたが、違うようです。</description>
     </item>
     
     <item>
       <title>goでtime.Timeをmysqlから読む</title>
-      <link>/blog/2014/10/08/go-mysql-time/</link>
+      <link>https://ota42y.com/blog/2014/10/08/go-mysql-time/</link>
       <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/08/go-mysql-time/</guid>
+      <guid>https://ota42y.com/blog/2014/10/08/go-mysql-time/</guid>
       <description>goでtime.Time型をmysqlのDATETIME型として保存すると、以下のエラーが出て読み取りに失敗します… sql: Scan error on column index 3: unsupported driver -&amp;gt; Scan pair:</description>
     </item>
     
     <item>
       <title>goでmysqlを使う</title>
-      <link>/blog/2014/10/04/go-mysql/</link>
+      <link>https://ota42y.com/blog/2014/10/04/go-mysql/</link>
       <pubDate>Sat, 04 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/04/go-mysql/</guid>
+      <guid>https://ota42y.com/blog/2014/10/04/go-mysql/</guid>
       <description>http://github.com/go-sql-driver/mysql がありましたので、それを使います。 以下のように読み込むことで、sql.Openでmysqlを開くことが出来ます。 import ( _ &amp;#34;github.com/go-sql-driver/mysql&amp;#34; ) DB設定 以下の用</description>
     </item>
     
     <item>
       <title>HDDのパーティションテーブルが消えてからのデータ復旧</title>
-      <link>/blog/2014/10/03/hdd-post/</link>
+      <link>https://ota42y.com/blog/2014/10/03/hdd-post/</link>
       <pubDate>Fri, 03 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/10/03/hdd-post/</guid>
+      <guid>https://ota42y.com/blog/2014/10/03/hdd-post/</guid>
       <description>先日デスクトップPCのデータ用HDDが吹っ飛びました。 原因は不明ですがデータは消えておらず、パーティションテーブルか完全に消えていました。 復</description>
     </item>
     
     <item>
       <title>npmにパッケージを公開する手順</title>
-      <link>/blog/2014/09/29/npm-publish/</link>
+      <link>https://ota42y.com/blog/2014/09/29/npm-publish/</link>
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/29/npm-publish/</guid>
+      <guid>https://ota42y.com/blog/2014/09/29/npm-publish/</guid>
       <description>とても簡単でしたがつい忘れるのでメモ。 公開手順 npmjsに開発者登録をします。 https://www.npmjs.org/ npm adduserで~/.npmrcにnpmへのログイントーク</description>
     </item>
     
     <item>
       <title>Debian squeezeでShellShock対策</title>
-      <link>/blog/2014/09/26/shell-shock/</link>
+      <link>https://ota42y.com/blog/2014/09/26/shell-shock/</link>
       <pubDate>Fri, 26 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/26/shell-shock/</guid>
+      <guid>https://ota42y.com/blog/2014/09/26/shell-shock/</guid>
       <description>Debianは探しても見つからなかったので…(´･_･`) ShellShock(CVE-2014-6271) CVE-2014-6271(とCVE-2014-7169)として、bashに第三</description>
     </item>
     
     <item>
       <title>C&#43;&#43;で少しでもビルド速度を速くする方法</title>
-      <link>/blog/2014/09/23/cpp-build/</link>
+      <link>https://ota42y.com/blog/2014/09/23/cpp-build/</link>
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/23/cpp-build/</guid>
+      <guid>https://ota42y.com/blog/2014/09/23/cpp-build/</guid>
       <description>結論 キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う C++のビルドを</description>
     </item>
     
     <item>
       <title>C&#43;&#43;で不要なincludeを減らす</title>
-      <link>/blog/2014/09/22/cpp-include/</link>
+      <link>https://ota42y.com/blog/2014/09/22/cpp-include/</link>
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/22/cpp-include/</guid>
+      <guid>https://ota42y.com/blog/2014/09/22/cpp-include/</guid>
       <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。 そのため、includ</description>
     </item>
     
     <item>
       <title>Twitterのoath_callbackは設定していないと上書きできない</title>
-      <link>/blog/2014/09/19/twitter-callback/</link>
+      <link>https://ota42y.com/blog/2014/09/19/twitter-callback/</link>
       <pubDate>Fri, 19 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/19/twitter-callback/</guid>
+      <guid>https://ota42y.com/blog/2014/09/19/twitter-callback/</guid>
       <description>Twitterはoauth/request_tokenへのアクセス時に、 認証後のコールバック先をoauth_callbackパラメータで上書</description>
     </item>
     
     <item>
       <title>cronやinit.dでsudoを実行するとエラーになって実行できない</title>
-      <link>/blog/2014/09/13/sudo-error/</link>
+      <link>https://ota42y.com/blog/2014/09/13/sudo-error/</link>
       <pubDate>Sat, 13 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/13/sudo-error/</guid>
+      <guid>https://ota42y.com/blog/2014/09/13/sudo-error/</guid>
       <description>cronやinit.d以下に置いたスクリプトで、 別の以外のユーザで作業しようと思い、sudoを実行したところ、 以下のようなエラーが出て実行で</description>
     </item>
     
     <item>
       <title>Linux起動時に特定のシェルスクリプトを実行する</title>
-      <link>/blog/2014/09/12/init-d/</link>
+      <link>https://ota42y.com/blog/2014/09/12/init-d/</link>
       <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/12/init-d/</guid>
+      <guid>https://ota42y.com/blog/2014/09/12/init-d/</guid>
       <description>hubotを自動で実行してほしいなーと思ったので、 OSの起動時にスクリプトを自動実行する方法を調べました。 まず、/etc/init.d/ に実</description>
     </item>
     
     <item>
       <title>strncpyははまりやすい</title>
-      <link>/blog/2014/09/11/strncpy-bug/</link>
+      <link>https://ota42y.com/blog/2014/09/11/strncpy-bug/</link>
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/11/strncpy-bug/</guid>
+      <guid>https://ota42y.com/blog/2014/09/11/strncpy-bug/</guid>
       <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;#34;test&amp;#34;; strncpy(str, c, strlen(c)); printf(&amp;#34;%s\n&amp;#34;, str); strncpyはコピー先、コ</description>
     </item>
     
     <item>
       <title>go runしても分割したファイルが認識されない</title>
-      <link>/blog/2014/09/10/golang-file-split/</link>
+      <link>https://ota42y.com/blog/2014/09/10/golang-file-split/</link>
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/10/golang-file-split/</guid>
+      <guid>https://ota42y.com/blog/2014/09/10/golang-file-split/</guid>
       <description>Go言語では、ひとつのパッケージのソースファイルを一度にまとめてコンパイルするので、特別な決め事や宣言をすることなく、とあるファイルから別フ</description>
     </item>
     
     <item>
       <title>golangでcronを使う</title>
-      <link>/blog/2014/09/09/golang-cron/</link>
+      <link>https://ota42y.com/blog/2014/09/09/golang-cron/</link>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/09/golang-cron/</guid>
+      <guid>https://ota42y.com/blog/2014/09/09/golang-cron/</guid>
       <description>cronというライブラリがあるので、それを使うととても簡単です。 なお、終了すると当然ながら実行しないので、 time.Sleep等で処理を止め</description>
     </item>
     
     <item>
       <title>gitで現在のブランチ名をクリップボードにコピーする</title>
-      <link>/blog/2014/09/07/git-copy-current-branch/</link>
+      <link>https://ota42y.com/blog/2014/09/07/git-copy-current-branch/</link>
       <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/07/git-copy-current-branch/</guid>
+      <guid>https://ota42y.com/blog/2014/09/07/git-copy-current-branch/</guid>
       <description># copy current branch ccb = &amp;#34;!f() { echo `git symbolic-ref --short HEAD` | tr -d &amp;#39;\n&amp;#39; ``| pbcopy; pbpaste ; echo &amp;#39;&amp;#39;;}; f&amp;#34; Jenkinsでブランチ○○をビルドしたいような場合に、 jenkinsに渡すために現在のブラ</description>
     </item>
     
     <item>
       <title>CentOS7でAndroid SDKとNDKを使う</title>
-      <link>/blog/2014/09/04/centos7-android-build/</link>
+      <link>https://ota42y.com/blog/2014/09/04/centos7-android-build/</link>
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/04/centos7-android-build/</guid>
+      <guid>https://ota42y.com/blog/2014/09/04/centos7-android-build/</guid>
       <description>環境設定 sudo yum install java-1.7.0-openjdk-devel java-1.7.0-openjdk ant zip sudo yum install ld-linux.so.2 libstdc++.i686 zlib.i686 他にもいくつかあった気がしますが、 後はエラーとして出たコマンドをインストールするだけなので都度入れてくださ</description>
     </item>
     
     <item>
       <title>mgoのConsistencyについて</title>
-      <link>/blog/2014/09/03/mgo-consistency/</link>
+      <link>https://ota42y.com/blog/2014/09/03/mgo-consistency/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/03/mgo-consistency/</guid>
+      <guid>https://ota42y.com/blog/2014/09/03/mgo-consistency/</guid>
       <description>mgoのサンプルにあった session.SetMode(mgo.Monotonic, true) の意味がよくわからないので調べてみました。 結論から書きますと、これは複数DBを利用した際の、 データの一貫性をどの</description>
     </item>
     
     <item>
       <title>golangでmongodbを使う</title>
-      <link>/blog/2014/09/02/go-mongodb/</link>
+      <link>https://ota42y.com/blog/2014/09/02/go-mongodb/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/02/go-mongodb/</guid>
+      <guid>https://ota42y.com/blog/2014/09/02/go-mongodb/</guid>
       <description>mgoというライブラリが便利そうです。 http://labix.org/mgo 以下はtwitterからツイートを取ってきて、 未登録のツイートをmongodbに保存するスクリプトで</description>
     </item>
     
     <item>
       <title>MongoDBでインデックスとexplainを使う</title>
-      <link>/blog/2014/09/01/mongodb-explain/</link>
+      <link>https://ota42y.com/blog/2014/09/01/mongodb-explain/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/01/mongodb-explain/</guid>
+      <guid>https://ota42y.com/blog/2014/09/01/mongodb-explain/</guid>
       <description>事前データ準備 for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test1&amp;quot;, num: i}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test2&amp;quot;, num: i*1000}) } for (var i=0; i&amp;lt;100; i++) { db.test_object.save({name: &amp;quot;test3&amp;quot;, num: i*10000}) } stringは3種類100個ずつ、numはuniqueなオブ</description>
     </item>
     
     <item>
       <title>golangでtwitter APIを使う</title>
-      <link>/blog/2014/08/31/go-anaconda/</link>
+      <link>https://ota42y.com/blog/2014/08/31/go-anaconda/</link>
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/31/go-anaconda/</guid>
+      <guid>https://ota42y.com/blog/2014/08/31/go-anaconda/</guid>
       <description>anacondaが良さそう(ただしストリーミングAPI非対応) go get github.com/ChimeraCoder/anaconda</description>
     </item>
     
     <item>
       <title>sending authentication information</title>
-      <link>/blog/2014/08/30/sending-authentication-information/</link>
+      <link>https://ota42y.com/blog/2014/08/30/sending-authentication-information/</link>
       <pubDate>Sat, 30 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/30/sending-authentication-information/</guid>
+      <guid>https://ota42y.com/blog/2014/08/30/sending-authentication-information/</guid>
       <description>Mac OS X 10.8+MySQL5.6の環境でmysqlコマンドでログインしようとすると、 &#39;sending authentication information&#39;, system error: 32&amp;quot;. といったエラーが出て、mysqlへのログイン</description>
     </item>
     
     <item>
       <title>コマンドラインからiOSアプリをビルドする</title>
-      <link>/blog/2014/08/28/ios-build/</link>
+      <link>https://ota42y.com/blog/2014/08/28/ios-build/</link>
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/28/ios-build/</guid>
+      <guid>https://ota42y.com/blog/2014/08/28/ios-build/</guid>
       <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、 普通にコマンドラインからビルドを実行</description>
     </item>
     
     <item>
       <title>ブラウザからArduinoを制御する</title>
-      <link>/blog/2014/08/27/arduino-browser/</link>
+      <link>https://ota42y.com/blog/2014/08/27/arduino-browser/</link>
       <pubDate>Wed, 27 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/27/arduino-browser/</guid>
+      <guid>https://ota42y.com/blog/2014/08/27/arduino-browser/</guid>
       <description>Webブラウザから、接続されているArduinoの値を取りたいのですが、 当然ながらブラウザ本体やJavascriptにはそんな機能はありませ</description>
     </item>
     
     <item>
       <title>JavascriptでオプションのパースをするOptparse-js</title>
-      <link>/blog/2014/08/26/optparse/</link>
+      <link>https://ota42y.com/blog/2014/08/26/optparse/</link>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/26/optparse/</guid>
+      <guid>https://ota42y.com/blog/2014/08/26/optparse/</guid>
       <description>find /tmp -name core -type f -print のように、渡されたオプションを解析するのはよく行うことのため、 各言語でそれをやってくれるライブラリが作られています。 javas</description>
     </item>
     
     <item>
       <title>スマホアプリ開発でgit-new-workdirがとても便利だった</title>
-      <link>/blog/2014/08/25/git-new-workdir/</link>
+      <link>https://ota42y.com/blog/2014/08/25/git-new-workdir/</link>
       <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/25/git-new-workdir/</guid>
+      <guid>https://ota42y.com/blog/2014/08/25/git-new-workdir/</guid>
       <description>まとめ ビルドに時間がかかる環境下では、ビルドのキャッシュが重要 ブランチを切り替えると、ブランチ間の差分だけキャッシュが聞かなくなる 別ブランチ</description>
     </item>
     
     <item>
       <title>selenium-webdriverでRuby からブラウザを操作する</title>
-      <link>/blog/2014/08/24/selenium/</link>
+      <link>https://ota42y.com/blog/2014/08/24/selenium/</link>
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/24/selenium/</guid>
+      <guid>https://ota42y.com/blog/2014/08/24/selenium/</guid>
       <description>まとめ selenium-webdriverでプログラムからブラウザを制御できる ページのロードをまったり、ページ内のJSを実行したりできる。 r</description>
     </item>
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>/blog/2014/08/22/mocha-test/</link>
+      <link>https://ota42y.com/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/22/mocha-test/</guid>
+      <guid>https://ota42y.com/blog/2014/08/22/mocha-test/</guid>
       <description>まとめ Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ</description>
     </item>
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>/blog/2014/08/21/intellij-node/</link>
+      <link>https://ota42y.com/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/21/intellij-node/</guid>
+      <guid>https://ota42y.com/blog/2014/08/21/intellij-node/</guid>
       <description>node.js+mocha+coffeescriptな環境で開発をしていたところ、 IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.</description>
     </item>
     
     <item>
       <title>Pixivの検索フィルタ作った</title>
-      <link>/blog/2014/08/20/pixiv-follow-filter/</link>
+      <link>https://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/20/pixiv-follow-filter/</guid>
+      <guid>https://ota42y.com/blog/2014/08/20/pixiv-follow-filter/</guid>
       <description>まとめ Pixivの検索は全ユーザから ○○が好きな新しいユーザを探したい時に既にフォローしている人はノイズになる 検索結果からフォローしている人</description>
     </item>
     
     <item>
       <title>chrome extensionでデータを保存する</title>
-      <link>/blog/2014/08/17/local-storage/</link>
+      <link>https://ota42y.com/blog/2014/08/17/local-storage/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/17/local-storage/</guid>
+      <guid>https://ota42y.com/blog/2014/08/17/local-storage/</guid>
       <description>Chrome拡張でデータを保存しようとした場合に、 最も簡単に扱えるのが、localStorageです。 manifest.jsonの設定 man</description>
     </item>
     
     <item>
       <title>AutomatorでEvernoteのノートリンクを置き換える</title>
-      <link>/blog/2014/08/16/evernote-url/</link>
+      <link>https://ota42y.com/blog/2014/08/16/evernote-url/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/16/evernote-url/</guid>
+      <guid>https://ota42y.com/blog/2014/08/16/evernote-url/</guid>
       <description>まとめ シェルスクリプトをAlfredから直接実行すると無駄にターミナルが立ち上がる Automatorならターミナルを立ち上げずにスクリプトを</description>
     </item>
     
     <item>
       <title>sortやfind_ifの条件指定はどういう動きをしているのか</title>
-      <link>/blog/2014/08/11/find-if/</link>
+      <link>https://ota42y.com/blog/2014/08/11/find-if/</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/11/find-if/</guid>
+      <guid>https://ota42y.com/blog/2014/08/11/find-if/</guid>
       <description>C++でsortやfind_ifでは、イテレータのbeginとendに加えて、 関数orオブジェクトを渡すことで条件を自由に設定できます。 参考</description>
     </item>
     
     <item>
       <title>IRCはCL-LFでメッセージを区切る</title>
-      <link>/blog/2014/08/09/irc/</link>
+      <link>https://ota42y.com/blog/2014/08/09/irc/</link>
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/09/irc/</guid>
+      <guid>https://ota42y.com/blog/2014/08/09/irc/</guid>
       <description>IRCのプロトコルはRFCで決められていて、 一つのメッセージが512文字以下、CR-LFで区切られている前提らしいです。 http://tools.ietf.org/html/rfc1459.html#section-2.3 が、古いやつとかは</description>
     </item>
     
     <item>
       <title>MessagePack って何？</title>
-      <link>/blog/2014/08/05/msgpack/</link>
+      <link>https://ota42y.com/blog/2014/08/05/msgpack/</link>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/05/msgpack/</guid>
+      <guid>https://ota42y.com/blog/2014/08/05/msgpack/</guid>
       <description>最近よく聞くMessagePackとは何かを調べたのでメモ。 MessagePackとは バイナリでデータを保存するフォーマットです。 JSONと</description>
     </item>
     
     <item>
       <title>Jenkinsで複雑な処理をするときのjob構成について</title>
-      <link>/blog/2014/07/21/jenkins-architecture/</link>
+      <link>https://ota42y.com/blog/2014/07/21/jenkins-architecture/</link>
       <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/07/21/jenkins-architecture/</guid>
+      <guid>https://ota42y.com/blog/2014/07/21/jenkins-architecture/</guid>
       <description>変数やビルド後の通知設定等が違うために、 ほぼ同じ内容のjobを15個ぐらい使っていたら、 だんだんと運用が死んできたのでメモ。 まとめ Jenki</description>
     </item>
     
     <item>
       <title>Atomのプラグイン作の作り方その１</title>
-      <link>/blog/2014/04/08/atom-plugin1/</link>
+      <link>https://ota42y.com/blog/2014/04/08/atom-plugin1/</link>
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/04/08/atom-plugin1/</guid>
+      <guid>https://ota42y.com/blog/2014/04/08/atom-plugin1/</guid>
       <description>Github製のエディタAtomの招待が来ました。 簡単なプラグインの作り方が公開されていましたので、 自分でも作ってみました。 [Create Your First Package]https://atom.io/docs/latest/your-first-package) #テンプ</description>
     </item>
     
     <item>
       <title>Railsはアクセスをどう処理しているのか(1)</title>
-      <link>/blog/2013/11/10/rails-trace-1/</link>
+      <link>https://ota42y.com/blog/2013/11/10/rails-trace-1/</link>
       <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2013/11/10/rails-trace-1/</guid>
+      <guid>https://ota42y.com/blog/2013/11/10/rails-trace-1/</guid>
       <description>ふと、Railsのコントローラーに書いたコードがが実行されるまでに、 何が起きているのか気になったので、全部追ってみようと思います。 まだ全部追</description>
     </item>
     
     <item>
       <title>WordpressからOctopressへ</title>
-      <link>/blog/2013/09/25/octopress/</link>
+      <link>https://ota42y.com/blog/2013/09/25/octopress/</link>
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2013/09/25/octopress/</guid>
+      <guid>https://ota42y.com/blog/2013/09/25/octopress/</guid>
       <description>前までブログシステムにはWordpressを使っていたんですが、 個人でやるには無駄に高性能すぎて、ほとんどの機能を使っていませんでした。 そこ</description>
     </item>
     

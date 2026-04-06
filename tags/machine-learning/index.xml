@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>machine learning on おおたの物置</title>
-    <link>/tags/machine-learning/</link>
+    <link>https://ota42y.com/tags/machine-learning/</link>
     <description>Recent content in machine learning on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 11 Oct 2015 22:39:33 +0900</lastBuildDate>
     
-	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IBM BluemixのAlchemyAPIで超簡単に画像認識する</title>
-      <link>/blog/2015/10/11/alchemyapi/</link>
+      <link>https://ota42y.com/blog/2015/10/11/alchemyapi/</link>
       <pubDate>Sun, 11 Oct 2015 22:39:33 +0900</pubDate>
       
-      <guid>/blog/2015/10/11/alchemyapi/</guid>
+      <guid>https://ota42y.com/blog/2015/10/11/alchemyapi/</guid>
       <description>まとめ AlchemyAPIに画像をアップロードすると識別結果を返してくれる 無料で使える ライブラリも豊富 画像認識がAPIで呼び出せる世界の可能</description>
     </item>
     

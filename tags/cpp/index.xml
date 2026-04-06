@@ -2,129 +2,129 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cpp on おおたの物置</title>
-    <link>/tags/cpp/</link>
+    <link>https://ota42y.com/tags/cpp/</link>
     <description>Recent content in cpp on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 31 Jan 2016 14:45:49 +0900</lastBuildDate>
     
-	<atom:link href="/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>オーバーライドとオーバーロードは全く別物</title>
-      <link>/blog/2016/01/31/override-overload/</link>
+      <link>https://ota42y.com/blog/2016/01/31/override-overload/</link>
       <pubDate>Sun, 31 Jan 2016 14:45:49 +0900</pubDate>
       
-      <guid>/blog/2016/01/31/override-overload/</guid>
+      <guid>https://ota42y.com/blog/2016/01/31/override-overload/</guid>
       <description>EffectiveJavaを読んでて、C++でも当てはまるのかな？と思って試してみたら当てはまったので… まとめ オーバーライドされたvirtu</description>
     </item>
     
     <item>
       <title>CEDEC2015のCoverityクイズをどう直すか</title>
-      <link>/blog/2015/08/29/cedec2015-coverity/</link>
+      <link>https://ota42y.com/blog/2015/08/29/cedec2015-coverity/</link>
       <pubDate>Sat, 29 Aug 2015 17:35:03 +0900</pubDate>
       
-      <guid>/blog/2015/08/29/cedec2015-coverity/</guid>
+      <guid>https://ota42y.com/blog/2015/08/29/cedec2015-coverity/</guid>
       <description>CEDEC2015では、Coverity社のブースでバグのあるコードが掲示されていました。 バグが入ったC++コードらしい。#CEDEC201</description>
     </item>
     
     <item>
       <title>構造体のサイズはsizeofをちゃんと使うべき</title>
-      <link>/blog/2015/08/20/c-struct/</link>
+      <link>https://ota42y.com/blog/2015/08/20/c-struct/</link>
       <pubDate>Thu, 20 Aug 2015 07:43:49 +0900</pubDate>
       
-      <guid>/blog/2015/08/20/c-struct/</guid>
+      <guid>https://ota42y.com/blog/2015/08/20/c-struct/</guid>
       <description>以下のコードはApple LLVM version 6.1.0 (clang-602.0.53)で8と12を出力します。 ですが、intは4byte、boolは1byteなので</description>
     </item>
     
     <item>
       <title>C言語でのスレッド処理</title>
-      <link>/blog/2015/06/18/c-thread/</link>
+      <link>https://ota42y.com/blog/2015/06/18/c-thread/</link>
       <pubDate>Thu, 18 Jun 2015 07:47:43 +0900</pubDate>
       
-      <guid>/blog/2015/06/18/c-thread/</guid>
+      <guid>https://ota42y.com/blog/2015/06/18/c-thread/</guid>
       <description>C言語でのスレッド処理と、ロックの仕方をまとめました。 他の言語のようにスレッド用のクラスを継承するのでは無く、 別スレッドで実行する関数のポイ</description>
     </item>
     
     <item>
       <title>インライン展開についての追加調査</title>
-      <link>/blog/2015/01/06/c-inline-postscript/</link>
+      <link>https://ota42y.com/blog/2015/01/06/c-inline-postscript/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/06/c-inline-postscript/</guid>
+      <guid>https://ota42y.com/blog/2015/01/06/c-inline-postscript/</guid>
       <description>昨日の記事で、インライン展開について調べましたが、 よくよく考えると片手落ちだったので追加調査しました。 インライン展開がどう展開されるのかを調</description>
     </item>
     
     <item>
       <title>インライン展開がどう展開されるのかを調べた</title>
-      <link>/blog/2015/01/05/c-inline/</link>
+      <link>https://ota42y.com/blog/2015/01/05/c-inline/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/05/c-inline/</guid>
+      <guid>https://ota42y.com/blog/2015/01/05/c-inline/</guid>
       <description>C++コンパイラは、関数呼び出し部分にその関数の内容を展開し、 関数呼び出しのオーバーヘッドを削減する、インライン展開をします。 インライン展開</description>
     </item>
     
     <item>
       <title>size_tは環境によって定義が変わるという話</title>
-      <link>/blog/2014/11/08/size-t/</link>
+      <link>https://ota42y.com/blog/2014/11/08/size-t/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/08/size-t/</guid>
+      <guid>https://ota42y.com/blog/2014/11/08/size-t/</guid>
       <description>size_tが何bitになるかは環境によって定義が異なります。 そのため、以下のコードは多くの32bit下で上手くいきますが、64bit化など</description>
     </item>
     
     <item>
       <title>void型のポインタとint型を相互変換するなという話</title>
-      <link>/blog/2014/11/07/cpp-64bit-cast/</link>
+      <link>https://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</link>
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/07/cpp-64bit-cast/</guid>
+      <guid>https://ota42y.com/blog/2014/11/07/cpp-64bit-cast/</guid>
       <description>int型をvoid *に変換する場合も、その逆の場合も、32bitだと問題なく動くことが多いため、 コンパイラもエラーにしない場合が多いです。 で</description>
     </item>
     
     <item>
       <title>汎用ポインタを使う</title>
-      <link>/blog/2014/11/06/cpp-void-pointer/</link>
+      <link>https://ota42y.com/blog/2014/11/06/cpp-void-pointer/</link>
       <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/06/cpp-void-pointer/</guid>
+      <guid>https://ota42y.com/blog/2014/11/06/cpp-void-pointer/</guid>
       <description>int型のポインタとchar型のポインタは違う型のため、同じものとして扱うことは出来ません。 ですが、実際にはポインタ型はメモリ上の特定アドレ</description>
     </item>
     
     <item>
       <title>C&#43;&#43;で少しでもビルド速度を速くする方法</title>
-      <link>/blog/2014/09/23/cpp-build/</link>
+      <link>https://ota42y.com/blog/2014/09/23/cpp-build/</link>
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/23/cpp-build/</guid>
+      <guid>https://ota42y.com/blog/2014/09/23/cpp-build/</guid>
       <description>結論 キャッシュを使う 不要なinclude削除 static or dynamic library化する 並列コンパイルする 分散コンパイルする いいパソコンを使う C++のビルドを</description>
     </item>
     
     <item>
       <title>C&#43;&#43;で不要なincludeを減らす</title>
-      <link>/blog/2014/09/22/cpp-include/</link>
+      <link>https://ota42y.com/blog/2014/09/22/cpp-include/</link>
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/22/cpp-include/</guid>
+      <guid>https://ota42y.com/blog/2014/09/22/cpp-include/</guid>
       <description>不要なinclude削除 cppでは、includeは単にそこに書かれているファイルの内容を展開するだけになっています。 そのため、includ</description>
     </item>
     
     <item>
       <title>スタックに確保した変数の有効範囲に気をつける</title>
-      <link>/blog/2014/09/16/stack-heap/</link>
+      <link>https://ota42y.com/blog/2014/09/16/stack-heap/</link>
       <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/16/stack-heap/</guid>
+      <guid>https://ota42y.com/blog/2014/09/16/stack-heap/</guid>
       <description>C++にはスタックとヒープという、使い方の違うメモリ領域が存在します。 rubyとかjavaではこのような違いは基本的に意識する必要が無いため</description>
     </item>
     
     <item>
       <title>strncpyははまりやすい</title>
-      <link>/blog/2014/09/11/strncpy-bug/</link>
+      <link>https://ota42y.com/blog/2014/09/11/strncpy-bug/</link>
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/11/strncpy-bug/</guid>
+      <guid>https://ota42y.com/blog/2014/09/11/strncpy-bug/</guid>
       <description>strncpyは結構はまりどころがあります。 たとえば以下のコードは正しく動作しません。 char str[100]; const char * c = &amp;#34;test&amp;#34;; strncpy(str, c, strlen(c)); printf(&amp;#34;%s\n&amp;#34;, str); strncpyはコピー先、コ</description>
     </item>
     

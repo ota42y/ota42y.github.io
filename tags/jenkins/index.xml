@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jenkins on おおたの物置</title>
-    <link>/tags/jenkins/</link>
+    <link>https://ota42y.com/tags/jenkins/</link>
     <description>Recent content in jenkins on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 28 Feb 2016 19:37:37 +0900</lastBuildDate>
     
-	<atom:link href="/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Jenkinsのノード選択をNode and Label parameter pluginでやる</title>
-      <link>/blog/2016/02/28/jenkins_node_select/</link>
+      <link>https://ota42y.com/blog/2016/02/28/jenkins_node_select/</link>
       <pubDate>Sun, 28 Feb 2016 19:37:37 +0900</pubDate>
       
-      <guid>/blog/2016/02/28/jenkins_node_select/</guid>
+      <guid>https://ota42y.com/blog/2016/02/28/jenkins_node_select/</guid>
       <description>概要 Jenkinsのノード制御はあまりカスタマイズが効きません。そのため、ノードを細かく制御したい場合はジョブを分ける必要があり、ジョブ数が</description>
     </item>
     
     <item>
       <title>JenkinsをHTTP経由で叩く</title>
-      <link>/blog/2015/02/27/jenkins-remote-api/</link>
+      <link>https://ota42y.com/blog/2015/02/27/jenkins-remote-api/</link>
       <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/27/jenkins-remote-api/</guid>
+      <guid>https://ota42y.com/blog/2015/02/27/jenkins-remote-api/</guid>
       <description>まとめ JenkinsはWebベースのUI 操作の敷居が低い 使い込むと使いづらくなる 反応速度 複数のビルド実行 Remote access API HTTP経由でJobを実行でき</description>
     </item>
     
     <item>
       <title>Jenkins Workflow Pluginでリポジトリ内のスクリプトを読み込む時の注意点</title>
-      <link>/blog/2015/02/11/jenkins-workflow/</link>
+      <link>https://ota42y.com/blog/2015/02/11/jenkins-workflow/</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/11/jenkins-workflow/</guid>
+      <guid>https://ota42y.com/blog/2015/02/11/jenkins-workflow/</guid>
       <description>まとめ ブランチをパラメーターにするとスクリプトを読めない 中身ではなく変数名のブランチを探しに行く 多分バグ ファイルから読み込むるスクリプトを書</description>
     </item>
     
     <item>
       <title>Jenkins Workflow Pluginで複数slaveを扱うのが楽になる</title>
-      <link>/blog/2015/02/10/workflow-plugin/</link>
+      <link>https://ota42y.com/blog/2015/02/10/workflow-plugin/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/02/10/workflow-plugin/</guid>
+      <guid>https://ota42y.com/blog/2015/02/10/workflow-plugin/</guid>
       <description>まとめ Jenkinsはjob単位でしかノードに割り振れない 複数ノードで分散ビルドするには設定を駆使する必要がある 結果としてjobの数が増えて</description>
     </item>
     
     <item>
       <title>参加記録 Jenkins ユーザ・カンファレンス 2015 東京</title>
-      <link>/blog/2015/01/11/jenkins-conference/</link>
+      <link>https://ota42y.com/blog/2015/01/11/jenkins-conference/</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/11/jenkins-conference/</guid>
+      <guid>https://ota42y.com/blog/2015/01/11/jenkins-conference/</guid>
       <description>Jenkins ユーザ・カンファレンス 2015 東京に参加しました。 Togetterまとめ 発表まとめ アンケート結果 参加申し込み時のアンケート結果 多くの人のjobの</description>
     </item>
     
     <item>
       <title>Jenkinsのbuild flow pluginを使うとjobの設定管理が少し楽になる</title>
-      <link>/blog/2014/11/27/jenkins-build-flow-plugin/</link>
+      <link>https://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</link>
       <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
+      <guid>https://ota42y.com/blog/2014/11/27/jenkins-build-flow-plugin/</guid>
       <description>まとめ Jenkinsのjobの設定管理はリポジトリのバージョンと揃えないと行けないため面倒 全てをスクリプトで実行するのが理想だが、本体の機能</description>
     </item>
     
     <item>
       <title>Jenkinsで複雑な処理をするときのjob構成について</title>
-      <link>/blog/2014/07/21/jenkins-architecture/</link>
+      <link>https://ota42y.com/blog/2014/07/21/jenkins-architecture/</link>
       <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/07/21/jenkins-architecture/</guid>
+      <guid>https://ota42y.com/blog/2014/07/21/jenkins-architecture/</guid>
       <description>変数やビルド後の通知設定等が違うために、 ほぼ同じ内容のjobを15個ぐらい使っていたら、 だんだんと運用が死んできたのでメモ。 まとめ Jenki</description>
     </item>
     

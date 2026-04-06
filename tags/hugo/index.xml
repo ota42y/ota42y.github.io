@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on おおたの物置</title>
-    <link>/tags/hugo/</link>
+    <link>https://ota42y.com/tags/hugo/</link>
     <description>Recent content in hugo on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 29 Jul 2015 23:25:20 +0900</lastBuildDate>
     
-	<atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugoのブログテーマを作った</title>
-      <link>/blog/2015/07/29/blog_theme/</link>
+      <link>https://ota42y.com/blog/2015/07/29/blog_theme/</link>
       <pubDate>Wed, 29 Jul 2015 23:25:20 +0900</pubDate>
       
-      <guid>/blog/2015/07/29/blog_theme/</guid>
+      <guid>https://ota42y.com/blog/2015/07/29/blog_theme/</guid>
       <description>ブログテーマ更新を更新しました。 今回は、Bootstrapを元にしたHonokaを利用して作りました。 リポジトリはこちら https://github.com/ota42y/honokichi Bootstrap</description>
     </item>
     
     <item>
       <title>OctopressからHugoに乗り換えた</title>
-      <link>/blog/2015/03/16/octopress_to_hugo/</link>
+      <link>https://ota42y.com/blog/2015/03/16/octopress_to_hugo/</link>
       <pubDate>Mon, 16 Mar 2015 07:40:11 +0900</pubDate>
       
-      <guid>/blog/2015/03/16/octopress_to_hugo/</guid>
+      <guid>https://ota42y.com/blog/2015/03/16/octopress_to_hugo/</guid>
       <description>このサイトは元々静的サイト作成ツールのOctopressを使い、Github Pages上に構築していましたが、 サイト作成ツールの部分をGol</description>
     </item>
     

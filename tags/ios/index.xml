@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ios on おおたの物置</title>
-    <link>/tags/ios/</link>
+    <link>https://ota42y.com/tags/ios/</link>
     <description>Recent content in ios on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RAMディスクでiOSのビルド時間を短くする</title>
-      <link>/blog/2015/01/23/ram-disk/</link>
+      <link>https://ota42y.com/blog/2015/01/23/ram-disk/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015/01/23/ram-disk/</guid>
+      <guid>https://ota42y.com/blog/2015/01/23/ram-disk/</guid>
       <description>まとめ RAMディスクを作ってビルドすると早くなる SSD上でビルドすると9分 RAMディスクでビルドすると6分 Androidは未検証だが同じと思</description>
     </item>
     
     <item>
       <title>コマンドラインからiOSアプリをビルドする</title>
-      <link>/blog/2014/08/28/ios-build/</link>
+      <link>https://ota42y.com/blog/2014/08/28/ios-build/</link>
       <pubDate>Thu, 28 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/28/ios-build/</guid>
+      <guid>https://ota42y.com/blog/2014/08/28/ios-build/</guid>
       <description>JenkinsのXCode Pluginが便利なのですが、中で何をやっているか気になったので調べたところ、 普通にコマンドラインからビルドを実行</description>
     </item>
     

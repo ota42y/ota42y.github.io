@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>node on おおたの物置</title>
-    <link>/tags/node/</link>
+    <link>https://ota42y.com/tags/node/</link>
     <description>Recent content in node on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 29 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/node/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ota42y.com/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>npmにパッケージを公開する手順</title>
-      <link>/blog/2014/09/29/npm-publish/</link>
+      <link>https://ota42y.com/blog/2014/09/29/npm-publish/</link>
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/09/29/npm-publish/</guid>
+      <guid>https://ota42y.com/blog/2014/09/29/npm-publish/</guid>
       <description>とても簡単でしたがつい忘れるのでメモ。 公開手順 npmjsに開発者登録をします。 https://www.npmjs.org/ npm adduserで~/.npmrcにnpmへのログイントーク</description>
     </item>
     
     <item>
       <title>mocha&#43;chai&#43;sinsonでテストを書く為に必要な最低限の知識</title>
-      <link>/blog/2014/08/22/mocha-test/</link>
+      <link>https://ota42y.com/blog/2014/08/22/mocha-test/</link>
       <pubDate>Fri, 22 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/22/mocha-test/</guid>
+      <guid>https://ota42y.com/blog/2014/08/22/mocha-test/</guid>
       <description>まとめ Mochaではrspecっぽい感じにテストが書ける ただし、done()を呼ぶ必要がある等、細かい部分に差異がある sinonにはいろいろ</description>
     </item>
     
     <item>
       <title>IntelliJ IDEAで node.jsとmochaを使ってテストする</title>
-      <link>/blog/2014/08/21/intellij-node/</link>
+      <link>https://ota42y.com/blog/2014/08/21/intellij-node/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2014/08/21/intellij-node/</guid>
+      <guid>https://ota42y.com/blog/2014/08/21/intellij-node/</guid>
       <description>node.js+mocha+coffeescriptな環境で開発をしていたところ、 IntelliJ IDEAの設定方法が調べても無かったのでメモ。 Node.</description>
     </item>
     
