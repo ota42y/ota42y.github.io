@@ -6,10 +6,42 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 06 Apr 2026 22:00:57 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2026 15:00:57 +0900</lastBuildDate>
     
 	<atom:link href="https://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Factorio Space Exploration アルコスフィアについて</title>
+      <link>https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/</link>
+      <pubDate>Sat, 11 Apr 2026 15:00:57 +0900</pubDate>
+      
+      <guid>https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/</guid>
+      <description>&lt;p&gt;前回の記事(&lt;a href=&#34;https://ota42y.com/blog/2026/04/06/factorio_space_exploration_circuit/&#34;&gt;宇宙船開発と物流について&lt;/a&gt;)
+までで一通りの自動化ができたため、そのまま作っていけば宇宙サイエンスパック2までは問題なく進められます。&lt;/p&gt;
+&lt;p&gt;そうすると次に宇宙サイエンスパック3のためにアルコスフィアについて考えていく必要があるのでそれを書いていきます。&lt;/p&gt;
+&lt;figure class=&#34;figure&#34;&gt;
+    
+    
+      
+    
+    &lt;a href=&#34;sphere_recipe.png&#34; target=&#34;_blank&#34; title=&#34;original size&#34;&gt;
+      
+      
+      
+      
+
+      
+        
+        &lt;img src=&#34;https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/sphere_recipe_hu58b4c3522e2f72a9924ffceac0bacd48_248952_640x0_resize_q100_box_2.png&#34;
+             class=&#34;figure-img img-fluid&#34; alt=&#34;&#34;&gt;
+      
+    &lt;/a&gt;
+    &lt;figcaption class=&#34;figure-caption text-center&#34; &gt;
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;</description>
+    </item>
     
     <item>
       <title>Factorio Space Exploration 宇宙船開発と物流について</title>

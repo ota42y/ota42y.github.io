@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Factorio Space Exploration アルコスフィアについて - おおたの物置</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="前回の記事(宇宙船開発と物流について) までで一通りの自動化ができたため、そのまま作っていけば宇宙サイエンスパック2までは問題なく進められます。 そうすると次に宇宙サイエンスパック3のためにアルコスフィアについて考えていく必要があるのでそれを書いていきます。 ">
+	<meta property="og:title" content="Factorio Space Exploration アルコスフィアについて" />
+<meta property="og:description" content="前回の記事(宇宙船開発と物流について) までで一通りの自動化ができたため、そのまま作っていけば宇宙サイエンスパック2までは問題なく進められます。 そうすると次に宇宙サイエンスパック3のためにアルコスフィアについて考えていく必要があるのでそれを書いていきます。 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/" />
+<meta property="og:image" content="https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/sphere_line.png" />
+<meta property="article:published_time" content="2026-04-11T15:00:57&#43;09:00" />
+<meta property="article:modified_time" content="2026-04-11T15:00:57&#43;09:00" />
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@ota42y"/>
+<meta name="twitter:creator" content="@ota42y"/>
+<meta name="twitter:title" content="Factorio Space Exploration アルコスフィアについて"/>
+<meta name="twitter:description" content="前回の記事(宇宙船開発と物流について) までで一通りの自動化ができたため、そのまま作っていけば宇宙サイエンスパック2までは問題なく進められます。 そうすると次に宇宙サイエンスパック3のためにアルコスフィアについて考えていく必要があるのでそれを書いていきます。 "/>
+<meta name="twitter:image" content="https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/sphere_line.png"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom-font.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140648615-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="おおたの物置" rel="home">
+				<div class="logo__title">おおたの物置</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Factorio Space Exploration アルコスフィアについて</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2026-04-11T15:00:57&#43;09:00">2026-04-11</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		
+		<span class="twitter">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-via="ota42y">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</span>
+		
+
+		
+		<span class="hatena">
+			<a href="https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/" class="hatena-bookmark-button"
+			data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja"
+			title="このエントリーをはてなブックマークに追加">
+				<img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+					alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+			</a>
+			<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"
+					charset="utf-8" async="async">
+			</script>
+		</span>
+		
+	</span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<p>前回の記事(<a href="/blog/2026/04/06/factorio_space_exploration_circuit/">宇宙船開発と物流について</a>)
+までで一通りの自動化ができたため、そのまま作っていけば宇宙サイエンスパック2までは問題なく進められます。</p>
+<p>そうすると次に宇宙サイエンスパック3のためにアルコスフィアについて考えていく必要があるのでそれを書いていきます。</p>
+<figure class="figure">
+    
+    
+      
+    
+    <a href="sphere_recipe.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/blog/2026/04/11/factorio_space_exploration_sphere/sphere_recipe_hu58b4c3522e2f72a9924ffceac0bacd48_248952_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<h2 id="アルコスフィアとは">アルコスフィアとは</h2>
+<p>アルコスフィアはそれ本体と、 <code>(ギリシャ文字)・スフィア</code> という8種類のスフィアからなる素材を指します。</p>
+<p>このスフィアは宇宙サイエンスパック3等の最後のレシピを作っていくために必要な素材を作るために必要になってきますが、
+使っても他のスフィアに変化するだけで総量が変わらない　という特殊な性質を持っています。
+そのため、例えばαとβスフィアを1つづつ使うと、ζとωスフィアが副産物として出てくる　といったレシピが複数存在しています。</p>
+<p>また、各スフィアはアルコスフィアから作れ、アルコスフィア自体は深宇宙から衛星を打ち上げると獲得できます。
+ただ、入手がランダムかつ入手すればするほど確率が下がっていくので、
+基本的には手持ちにあるスフィアをうまくやりくりして回していくのが基本で、少しづつ総量が増えていくといった形になります。
+各スフィアは変換だけを行うレシピも用意されており、これを使って必要なスフィアに変換し、各種素材を作っていく必要があります。</p>
+<h2 id="アルコスフィア利用の基本方針">アルコスフィア利用の基本方針</h2>
+<p>素材を作っていくとスフィアの過不足が起こるため、いい感じに必要なものを取り出していく必要があります。<br>
+今回の場合、素材ごとに何が必要・不要とかをやっていくとレシピが増えた時面倒になるなと思ったので、
+全8種類を1セットにして出力するようにしました。
+これでアルコスフィアの在庫をうまくバランスさせて、セットを出力していけばよいとなりだいぶ考えることが楽になります。</p>
+<p>だいたい以下のような流れになります</p>
+<ol>
+<li>スフィアプールにアルコスフィアを全部入れる</li>
+<li>スフィアプールから各スフィアを1個づつ取り出す</li>
+<li>足りないスフィアを変換を使って作る</li>
+<li>全スフィアが1個づつ溜まったら出力</li>
+<li>素材を作った副産物や余ったスフィアを回収</li>
+<li>回収したスフィアをスフィアプールに入れる</li>
+</ol>
+<p>これで後はレシピを頑張って整備すれば無限に稼働し続けるはずです。</p>
+<h2 id="スフィア変換のレシピ解析">スフィア変換のレシピ解析</h2>
+<p>スフィア変換のレシピは全部で10種類あり、2個入れて2個出るものが8種類、4個入れて4個でるパターンが2種類の合計10種類あります。
+どれもあるスフィアを-1してあるスフィアを+1するため、表にすると以下のようになります。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+<th>J</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>-1</td>
+<td>1</td>
+<td></td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td></td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td></td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td></td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>これの2個入れて2個出てくるところの行と列を入れ替えて整理すると、こんな感じに2系統の変換に整理できます。<br>
+つまり、ラムダ、イプシロン、オメガ、シータを <code>ターゲット</code> としたとき、その他のスフィアの変換のみで <code>ターゲット</code> を1個づつ得ることができ、その逆も同様にできるということです。
+そのため、サイ、ファイ、ガンマ、ゼータのソーススフィア用のプールを用意し、そこから <code>ターゲット</code> を取り出す、同様に逆系統のプールも用意すればよいということがわかります。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>F</th>
+<th>G</th>
+<th>C</th>
+<th>A</th>
+<th>E</th>
+<th>G</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>-1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>シータ</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+<td></td>
+<td>-1</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>-1</td>
+<td></td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td></td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>1</td>
+<td>-1</td>
+<td></td>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="偏りの解消">偏りの解消</h2>
+<p>プールから必要に応じて取り出していくと、片方のプールに寄った場合に変換が止まってしまいます。
+ターゲット(例: ラムダ、イプシロン、オメガ、シータ)はもう反対の系統のソースになるため、
+自分のソースが十分な数があったら、変換を行い反対の系統のソースに送る必要があります。</p>
+<p>なお、この時何かしらのスフィアが0個になると変換ができなくなるため偏りが解消しづらくなります。
+そのため、最低何個か確保しつつ、余った分を変換していく必要があります。</p>
+<h2 id="偏りの解消に失敗するパターン">偏りの解消に失敗するパターン</h2>
+<p>また、単純に偏りを解消するだけでは途中で止まることがあります。
+例えば以下の2つのレシピで1回づつ変換すると、ガンマとゼータは互いに打ち消し合うため、<code>サイとファイ</code>を<code>ラムダとイプシロン</code>に変換できます。
+これは他にも同様に2つ組み合わせると片方のプールから特定のスフィアを減らして反対の系統のプールに送るという操作とみなせます。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>シータ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td></td>
+<td>-1</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>これを踏まえた上で例えばラムダ、イプシロン、サイ、ファイが20個、その他のスフィアが2個づつある場合を考えます。
+以下のように表の左の系統と右の系統は以下の個数になっています。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>左系統</th>
+<th>右系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>-</td>
+<td>20</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>-</td>
+<td>20</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>-</td>
+<td>2</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>-</td>
+<td>2</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>20</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>20</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>2</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>左系統からはサイ、ファイが大量にあり、ガンマとゼータは数個あるため、前述の変換を行うことでサイ、ファイをラムダ、イプシロンに変換し、右系統に送り込みます</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>左系統</th>
+<th>右系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>0</td>
+<td>20+1</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>0</td>
+<td>20+1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>20-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>20-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>右系統でも同様ラムダとイプシロンが余っているため変換します。
+解析した表によるとラムダとイプシロンを消費する場合、サイとファイに変換できます。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>左系統</th>
+<th>右系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>0</td>
+<td>21-1</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>0</td>
+<td>21-1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>19+1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>19+1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>結果として以下のように元の状態に戻ってしまいます。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>左系統</th>
+<th>右系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>これを回避するために、以下の4つ入れて4つ出すレシピが利用できます。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>I</th>
+<th>J</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>今回はこの右側の変換を行うことで以下のように変化します。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>左系統</th>
+<th>右系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>0</td>
+<td>20-1</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>0</td>
+<td>20-1</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>0</td>
+<td>2+1</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>0</td>
+<td>2+1</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>20-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>20-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>2+1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>2+1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>結果としてこのように偏りが是正されるため、あとは十分さが縮まるまで繰り返し実行するだけです。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>左系統</th>
+<th>右系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラムダ</td>
+<td>0</td>
+<td>19</td>
+</tr>
+<tr>
+<td>イプシロン</td>
+<td>0</td>
+<td>19</td>
+</tr>
+<tr>
+<td>オメガ</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>シータ</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>サイ</td>
+<td>19</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ファイ</td>
+<td>19</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ガンマ</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ゼータ</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="偏り解消するためのブループリント">偏り解消するためのブループリント</h2>
+<p>以上のことから、左系統と右系統でそれぞれスフィアプールを用意し、余っていたら変換をして反対の系統のプールに送る、
+もしくは4種変換をして偏りを解消していく　というのが基本的な戦略になります。</p>
+<p>というブループリントが以下になります。</p>
+<pre><code>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
+</code></pre><figure class="figure">
+    
+    
+      
+    
+    <a href="sphere_line.png" target="_blank" title="original size">
+      
+      
+      
+      
+
+      
+        
+        <img src="/blog/2026/04/11/factorio_space_exploration_sphere/sphere_line_hu801c1064d3c4e589b6fc7d4a7dcc3f73_950793_640x0_resize_q100_box_2.png"
+             class="figure-img img-fluid" alt="">
+      
+    </a>
+    <figcaption class="figure-caption text-center" >
+      
+    </figcaption>
+  </figure>
+
+<p>上下で系統を分け、ループしているコンベアをスフィアのプールにしています。
+真ん中右のが両系統のプールを利用する4個変換です。
+実際に運用すると変換速度が足りなかったので、2個変換するやつは4つ1セットを2セット用意しています。</p>
+<p>真ん中左の箱が出力用の箱になっており、ここに1種類1個づつスフィアを入れ、8個全部揃ったら出力にしています。
+条件としてはプールにn個以上あったら余っていると判断し、変換をするという仕組みになっています。
+使い終わったスフィアや、アルコスフィアから変換したやつは右下のラインから入れる想定で、
+適切に振り分けられて対応するプールに送ることができます。</p>
+<p>なお、前述したようにスフィアが減りすぎると困るため、プールには一定数を確保しておく必要があります。
+具体的には以下の条件を設定しています</p>
+<ul>
+<li>出力用に確保
+<ul>
+<li>中央左側の外に伸びているラインに入れる8個の箱</li>
+<li>対象スフィアが3個以上</li>
+</ul>
+</li>
+<li>2個変換実行
+<ul>
+<li>前述の表を元に、2種類実行して±0にならないスフィアを減るスフィアとする</li>
+<li>減るスフィアが5個以上</li>
+</ul>
+</li>
+<li>4個変換実行
+<ul>
+<li>材料の4種類のスフィアを減らすスフィアとする</li>
+<li>プールに減らすスフィアのどちらかが5個以上あったら投入</li>
+</ul>
+</li>
+</ul>
+<p>あとは出力のコンベアの先で材料を作り、結果として出てきたスフィアをプールに戻せば完了です。</p>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="ota42y avatar" src="/ota42y.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About ota42y</span>
+	</div>
+	<div class="authorbox__description">
+		C&#43;&#43;/Ruby/RoR/golang/rust/flutter。最近はElasticserachや機械学習系もやる
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/2026/04/06/factorio_space_exploration_circuit/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Factorio Space Exploration 宇宙船開発と物流について</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://ota42y.com/" />
+	</form>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/ota42y" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href='/blog'>Recent Posts</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/2026/04/11/factorio_space_exploration_sphere/">Factorio Space Exploration アルコスフィアについて</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2026/04/06/factorio_space_exploration_circuit/">Factorio Space Exploration 宇宙船開発と物流について</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2026/04/05/factorio_space_exploration/">Factorio Space Exploration 深宇宙開発チュートリアル</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2025/03/06/llm_memo/">習慣化できない人向けのLLMライフログ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2021/06/05/domain_move/">Route 53でサブドメインを別アカウントに移動するやり方</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2021/05/09/unicorn/">「ユニコーン企業のひみつ」を読んだがたぶん「ひみつ」なんてものは無いのだろう</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/12/31/idoly_pride/">1月から始まるIDOLY PRIDEが凄い可能性を感じるので第1話を見逃さずに観て欲しい</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/12/29/bushiroad/">ブシロードの宣伝戦略がなんとなく読める「煽動者」を読んだ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/09/11/techbook_9/">#技術書典9でOpenAPI 3の完全解説本を更新します</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/2020/08/02/cago-make/">cargo-makeがrust以外でも便利</a></li>
+            <p><a href='/blog'>さらに読む...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title"><a href="/pages">Recent pages</a></h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-10/">2019-06-10 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2019/2019-06-01/">2019-06-01 weeklyまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-02/">2016年02月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2016/2016-01/">2016年01月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/2015-12/">2015年12月まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-34/">2015年34週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-33/">2015年33週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-32/">2015年32週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-31/">2015年31週目まとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/pages/summary/2015/week-30/">2015年30週目まとめ</a></li>
+            <p><a href='/pages'>more...</a></p>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="android">android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/anime/" title="anime">anime</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="api">api</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/application/" title="application">application</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/arduino/" title="arduino">arduino</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/atom/" title="atom">atom</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="aws">aws</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/book/" title="book">book</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/c/" title="c">c</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cargo-make/" title="cargo-make">cargo-make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffee/" title="coffee">coffee</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coffeescript/" title="coffeescript">coffeescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conference/" title="conference">conference</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cpp/" title="cpp">cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/debian/" title="debian">debian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/domain/" title="domain">domain</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/eks/" title="EKS">EKS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/evernote/" title="evernote">evernote</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="flutter">flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gem/" title="gem">gem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/graphviz/" title="graphviz">graphviz</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/haskell/" title="haskell">haskell</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hubot/" title="hubot">hubot</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ios/" title="ios">ios</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/irc/" title="irc">irc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jenkins/" title="jenkins">jenkins</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/js/" title="js">js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubectl/" title="kubectl">kubectl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="kubernetes">kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/llm/" title="LLM">LLM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mac/" title="mac">mac</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="machine learning">machine learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/make/" title="make">make</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/math/" title="math">math</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="microservices">microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/network/" title="network">network</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/octopress/" title="octopress">octopress</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openapi3/" title="openapi3">openapi3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="python">python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/route53/" title="route53">route53</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="rust">rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="security">security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spark/" title="spark">spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/study/" title="study">study</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tech/" title="tech">tech</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tenserflow/" title="TenserFlow">TenserFlow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/text/" title="text">text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tool/" title="tool">tool</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2026 ota42y.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
