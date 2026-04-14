@@ -6,10 +6,45 @@
     <description>Recent content in Blogs on おおたの物置</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 11 Apr 2026 15:00:57 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 20:10:57 +0900</lastBuildDate>
     
 	<atom:link href="https://ota42y.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Factorio Space Exploration 銀河系脱出等について</title>
+      <link>https://ota42y.com/blog/2026/04/14/factorio_space_exploration_exit/</link>
+      <pubDate>Tue, 14 Apr 2026 20:10:57 +0900</pubDate>
+      
+      <guid>https://ota42y.com/blog/2026/04/14/factorio_space_exploration_exit/</guid>
+      <description>&lt;p&gt;前回の記事(&lt;a href=&#34;https://ota42y.com/blog/2026/04/11/factorio_space_exploration_sphere/&#34;&gt;アルコスフィアについて&lt;/a&gt;)
+までで深宇宙サイエンスパック4までは作れるため、後は銀河系を脱出するだけです。
+とはいえ初期に作った基地からまだまだな部分もあるので、それも説明しつつ銀河系脱出の船を紹介します。&lt;/p&gt;
+&lt;h2 id=&#34;銀河系脱出船&#34;&gt;銀河系脱出船&lt;/h2&gt;
+&lt;p&gt;これです。
+船体強度が4000あれば利用できます。&lt;/p&gt;
+&lt;figure class=&#34;figure&#34;&gt;
+    
+    
+      
+    
+    &lt;a href=&#34;victory_ship.png&#34; target=&#34;_blank&#34; title=&#34;original size&#34;&gt;
+      
+      
+      
+      
+
+      
+        
+        &lt;img src=&#34;https://ota42y.com/blog/2026/04/14/factorio_space_exploration_exit/victory_ship_hu6c85688c800e857f44815eefb1715027_1338123_640x0_resize_q100_box_2.png&#34;
+             class=&#34;figure-img img-fluid&#34; alt=&#34;&#34;&gt;
+      
+    &lt;/a&gt;
+    &lt;figcaption class=&#34;figure-caption text-center&#34; &gt;
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;</description>
+    </item>
     
     <item>
       <title>Factorio Space Exploration アルコスフィアについて</title>
